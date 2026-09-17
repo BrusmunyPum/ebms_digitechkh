@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - កញ្ចប់សេវា និងការជាវ</title>
+    <link rel="icon" type="image/png" href="../../../assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1a1a2e",
+                        accent: "#f59e0b",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../styles/custom.css">
+</head>
+<body class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <!-- Super Admin Sidebar -->
+    <aside class="w-64 bg-[#1a1a2e] text-white flex flex-col flex-shrink-0 select-none z-20 border-r border-slate-800">
+        <div class="h-[72px] px-6 flex items-center justify-between border-b border-white/10 flex-shrink-0">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center p-1 shadow-sm overflow-hidden flex-shrink-0">
+                    <img src="../../../assets/logo-mark-transparent.png" alt="DIGITECHKH" class="w-full h-full object-contain">
+                </div>
+                <div>
+                    <h1 class="text-lg font-semibold tracking-wider whitespace-nowrap text-white">DIGITECHKH</h1>
+                    <span class="text-[11px] font-medium text-amber-400 uppercase tracking-wider block">ស៊ុបភើរ អភិបាល</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="px-5 py-3 border-b border-white/5 bg-black/20">
+            <div class="flex items-center justify-between">
+                <span class="text-xs text-slate-400">តួនាទីប្រព័ន្ធ:</span>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                    <i class="fas fa-shield-halved text-[10px]"></i> អភិបាលកំពូល
+                </span>
+            </div>
+        </div>
+
+        <nav class="flex-1 overflow-y-auto px-4 py-4 space-y-1.5 scrollbar-hide text-sm">
+            <a href="../dashboard.html" class="flex items-center p-3 text-slate-300 hover:bg-white/5 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-chart-pie w-6 text-center text-slate-400"></i>
+                <span class="ml-3 text-[15px]">ផ្ទាំងគ្រប់គ្រង</span>
+            </a>
+
+            <a href="../1-companies/companies.html" class="flex items-center p-3 text-slate-300 hover:bg-white/5 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-building-columns w-6 text-center text-slate-400"></i>
+                <span class="ml-3 text-[15px]">គ្រប់គ្រងក្រុមហ៊ុន</span>
+            </a>
+
+            <a href="subscriptions.html" class="flex items-center p-3 bg-white/10 text-amber-300 font-medium rounded-xl shadow-sm transition-all whitespace-nowrap border border-white/10">
+                <i class="fas fa-cubes w-6 text-center text-amber-400"></i>
+                <span class="ml-3 text-[15px]">កញ្ចប់សេវា និងការជាវ</span>
+            </a>
+
+            <a href="../3-users/global-users.html" class="flex items-center p-3 text-slate-300 hover:bg-white/5 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-users-gear w-6 text-center text-slate-400"></i>
+                <span class="ml-3 text-[15px]">អ្នកប្រើប្រាស់សកល</span>
+            </a>
+
+            <a href="../4-audit-logs/audit-logs.html" class="flex items-center p-3 text-slate-300 hover:bg-white/5 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-clipboard-list w-6 text-center text-slate-400"></i>
+                <span class="ml-3 text-[15px]">កំណត់ត្រាសវនកម្ម</span>
+            </a>
+        </nav>
+
+        <div class="p-4 border-t border-white/10 bg-black/10">
+            <a href="../../1-login/login.html" class="flex items-center text-[15px] text-slate-400 hover:text-rose-400 transition-colors p-2 rounded-lg hover:bg-white/5">
+                <i class="fas fa-arrow-right-from-bracket w-6 mr-2"></i> ចាកចេញពីប្រព័ន្ធ
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div>
+                <h2 class="text-xl font-semibold text-gray-800 leading-tight">កញ្ចប់សេវាកម្ម និងការជាវ (Subscriptions)</h2>
+                <p class="text-xs font-normal text-gray-500 mt-0.5">គ្រប់គ្រងគម្រោងតម្លៃ វដ្តចេញវិក្កយបត្រ និងការបន្តសេវាប្រព័ន្ធ</p>
+            </div>
+            
+            <div class="flex items-center space-x-3">
+                <button onclick="showToast('ទម្រង់បង្កើតកញ្ចប់តម្លៃថ្មី ដំណើរការ', 'info')" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#1a1a2e] hover:bg-[#272744] text-white font-medium text-sm shadow-sm transition">
+                    <i class="fas fa-plus text-amber-400 text-xs"></i>
+                    <span>+ បង្កើតកញ្ចប់សេវាថ្មី</span>
+                </button>
+            </div>
+        </header>
+
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-4">
+            <div class="w-full space-y-5">
+                
+                <!-- Plan Tiers Overview Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                    <!-- Basic Tier -->
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm relative overflow-hidden">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">កញ្ចប់អាជីវកម្មខ្នាតតូច</span>
+                            <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700">7 ក្រុមហ៊ុន</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-800">$49.00 <span class="text-xs font-normal text-slate-400">/ ខែ</span></h3>
+                        <p class="text-xs text-slate-500 mt-2">កំណត់អ្នកប្រើប្រាស់ 5 នាក់, ទំហំផ្ទុក 10 GB</p>
+                    </div>
+
+                    <!-- Business Tier -->
+                    <div class="bg-white rounded-2xl p-5 border-2 border-blue-600 shadow-md relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-blue-600 text-white text-[10px] font-bold px-3 py-0.5 rounded-bl-xl uppercase">
+                            ពេញនិយមបំផុត
+                        </div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">កញ្ចប់អាជីវកម្មធំ (Pro)</span>
+                            <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-blue-50 text-blue-700">26 ក្រុមហ៊ុន</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-800">$149.00 <span class="text-xs font-normal text-slate-400">/ ខែ</span></h3>
+                        <p class="text-xs text-slate-500 mt-2">កំណត់អ្នកប្រើប្រាស់ 30 នាក់, ទំហំផ្ទុក 100 GB, ម៉ូឌុលពេញ</p>
+                    </div>
+
+                    <!-- Enterprise Tier -->
+                    <div class="bg-white rounded-2xl p-5 border border-purple-200 shadow-sm relative overflow-hidden">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-bold text-purple-700 uppercase tracking-wider">កញ្ចប់សហគ្រាស (Enterprise)</span>
+                            <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-purple-50 text-purple-700">18 ក្រុមហ៊ុន</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-800">$399.00 <span class="text-xs font-normal text-slate-400">/ ខែ</span></h3>
+                        <p class="text-xs text-slate-500 mt-2">អ្នកប្រើប្រាស់មិនកំណត់, ទំហំផ្ទុក 500 GB, ការគាំទ្រ 24/7</p>
+                    </div>
+                </div>
+
+                <!-- Subscriptions Table -->
+                <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+                    <div class="p-5 border-b border-slate-100 flex items-center justify-between">
+                        <h3 class="text-base font-semibold text-slate-800">បញ្ជីការជាវបច្ចុប្បន្នតាមក្រុមហ៊ុន</h3>
+                        <span class="text-xs text-slate-400">សរុប 48 កិច្ចសន្យាជាវ</span>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm">
+                            <thead class="bg-slate-50 text-slate-500 uppercase text-[11px] font-semibold border-b border-slate-100">
+                                <tr>
+                                    <th class="py-3 px-4">ក្រុមហ៊ុន</th>
+                                    <th class="py-3 px-4">កញ្ចប់សេវា</th>
+                                    <th class="py-3 px-4">តម្លៃប្រចាំខែ</th>
+                                    <th class="py-3 px-4">កាលបរិច្ឆេទចាប់ផ្តើម</th>
+                                    <th class="py-3 px-4">កាលបរិច្ឆេទផុតកំណត់</th>
+                                    <th class="py-3 px-4">ស្ថានភាពទូទាត់</th>
+                                    <th class="py-3 px-4 text-right">សកម្មភាព</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 text-slate-700 font-medium">
+                                <tr class="hover:bg-slate-50 transition">
+                                    <td class="py-3.5 px-4 font-semibold text-slate-800">ឌីជីថេក ខេមបូឌា ឯ.ក</td>
+                                    <td class="py-3.5 px-4"><span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-purple-50 text-purple-700 border border-purple-200">សហគ្រាស</span></td>
+                                    <td class="py-3.5 px-4">$399.00</td>
+                                    <td class="py-3.5 px-4 text-xs text-slate-500">15 មករា 2024</td>
+                                    <td class="py-3.5 px-4 text-xs text-slate-500">15 មករា 2027</td>
+                                    <td class="py-3.5 px-4"><span class="px-2 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700">បានទូទាត់</span></td>
+                                    <td class="py-3.5 px-4 text-right">
+                                        <button onclick="showToast('បានចេញវិក្កយបត្រជាវថ្មីរួចរាល់', 'success')" class="text-xs bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-lg text-slate-700">ចេញវិក្កយបត្រ</button>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-slate-50 transition">
+                                    <td class="py-3.5 px-4 font-semibold text-slate-800">អង្គរ ត្រេឌីង គ្រុប</td>
+                                    <td class="py-3.5 px-4"><span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-200">អាជីវកម្មធំ</span></td>
+                                    <td class="py-3.5 px-4">$149.00</td>
+                                    <td class="py-3.5 px-4 text-xs text-slate-500">22 កុម្ភៈ 2024</td>
+                                    <td class="py-3.5 px-4 text-xs text-slate-500">22 កុម្ភៈ 2027</td>
+                                    <td class="py-3.5 px-4"><span class="px-2 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700">បានទូទាត់</span></td>
+                                    <td class="py-3.5 px-4 text-right">
+                                        <button onclick="showToast('បានចេញវិក្កយបត្រជាវថ្មីរួចរាល់', 'success')" class="text-xs bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-lg text-slate-700">ចេញវិក្កយបត្រ</button>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-slate-50 transition">
+                                    <td class="py-3.5 px-4 font-semibold text-slate-800">បាត់ដំបង អាហរ័ណ នីហរ័ណ</td>
+                                    <td class="py-3.5 px-4"><span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-50 text-amber-700 border border-amber-200">សាកល្បង</span></td>
+                                    <td class="py-3.5 px-4">$0.00</td>
+                                    <td class="py-3.5 px-4 text-xs text-slate-500">10 មីនា 2026</td>
+                                    <td class="py-3.5 px-4 text-xs font-bold text-amber-600">24 មីនា 2026 (ជិតផុត)</td>
+                                    <td class="py-3.5 px-4"><span class="px-2 py-0.5 rounded-full text-xs font-semibold bg-amber-50 text-amber-700">សាកល្បងឥតគិតថ្លៃ</span></td>
+                                    <td class="py-3.5 px-4 text-right">
+                                        <button onclick="showToast('បានផ្ញើការផ្តល់ជូនពិសេសក្នុងការដំឡើងកញ្ចប់', 'info')" class="text-xs bg-amber-50 hover:bg-amber-100 text-amber-800 px-3 py-1.5 rounded-lg">ដំឡើងកញ្ចប់</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../scripts/ui-components.js"></script>
+</body>
+</html>

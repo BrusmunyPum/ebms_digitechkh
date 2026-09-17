@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - ចុះឈ្មោះក្រុមហ៊ុនថ្មី</title>
+    <link rel="icon" type="image/png" href="../../../assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1a1a2e",
+                        accent: "#e94560",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../styles/custom.css">
+</head>
+<body class="bg-slate-50 font-sans text-slate-800 text-[16px] flex h-screen overflow-hidden">
+
+    <!-- Super Admin Sidebar -->
+    <aside class="w-64 bg-[#1a1a2e] text-white flex flex-col flex-shrink-0 select-none z-20 border-r border-slate-800">
+        <div class="h-[72px] px-6 flex items-center justify-between border-b border-white/10 flex-shrink-0">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-amber-400/20 border border-amber-400/30 flex items-center justify-center p-1 shadow-sm overflow-hidden flex-shrink-0">
+                    <img src="../../../assets/logo-mark-transparent.png" alt="DIGITECHKH" class="w-full h-full object-contain">
+                </div>
+                <div>
+                    <h1 class="text-lg font-semibold tracking-wider whitespace-nowrap text-white">DIGITECHKH</h1>
+                    <span class="text-[11px] font-medium text-amber-300 uppercase tracking-wider block">ស៊ុបភើរ អភិបាល</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="px-5 py-3 border-b border-white/5 bg-black/20">
+            <div class="flex items-center justify-between">
+                <span class="text-xs text-slate-400">តួនាទីសកល:</span>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-400/10 text-amber-300 border border-amber-400/20">
+                    <i class="fas fa-shield-halved text-[10px]"></i> Super Admin
+                </span>
+            </div>
+        </div>
+
+        <nav class="flex-1 overflow-y-auto px-4 py-4 space-y-1.5 scrollbar-hide text-sm">
+            <a href="../dashboard.html" class="flex items-center p-3 text-slate-300 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-chart-line w-6 text-center text-slate-400"></i>
+                <span class="ml-3 text-[15px]">ផ្ទាំងគ្រប់គ្រងសកល</span>
+            </a>
+
+            <a href="companies.html" class="flex items-center p-3 bg-white/15 text-white font-medium rounded-xl shadow-sm transition-all whitespace-nowrap border border-white/10">
+                <i class="fas fa-building w-6 text-center text-amber-400"></i>
+                <span class="ml-3 text-[15px]">ក្រុមហ៊ុនអាជីវកម្ម</span>
+            </a>
+
+            <a href="../2-subscriptions/subscriptions.html" class="flex items-center p-3 text-slate-300 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-cubes w-6 text-center text-slate-400"></i>
+                <span class="ml-3 text-[15px]">កញ្ចប់សេវា Subscription</span>
+            </a>
+
+            <a href="../3-users/global-users.html" class="flex items-center p-3 text-slate-300 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-users-gear w-6 text-center text-slate-400"></i>
+                <span class="ml-3 text-[15px]">គណនីអ្នកប្រើប្រាស់</span>
+            </a>
+
+            <a href="../4-audit-logs/audit-logs.html" class="flex items-center p-3 text-slate-300 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-clock-rotate-left w-6 text-center text-slate-400"></i>
+                <span class="ml-3 text-[15px]">កំណត់ហេតុសវនកម្ម</span>
+            </a>
+        </nav>
+
+        <div class="p-4 border-t border-white/10 bg-black/10">
+            <a href="../../1-login/login.html" class="flex items-center text-[15px] text-slate-400 hover:text-rose-400 transition-colors p-2 rounded-lg hover:bg-white/5">
+                <i class="fas fa-arrow-right-from-bracket w-6 mr-2"></i> ចាកចេញពីប្រព័ន្ធ
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <!-- Header: h-[72px] seamless -->
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div class="flex items-center gap-4">
+                <a href="companies.html" 
+                   class="w-10 h-10 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-600 flex items-center justify-center transition border border-slate-200/70" 
+                   title="ត្រឡប់ទៅបញ្ជីក្រុមហ៊ុន">
+                    <i class="fas fa-arrow-left text-sm"></i>
+                </a>
+                <div>
+                    <h2 class="text-xl font-semibold text-gray-800 leading-tight">ចុះឈ្មោះក្រុមហ៊ុនអាជីវកម្មថ្មី</h2>
+                    <p class="text-xs font-normal text-gray-500 mt-0.5">បង្កើតគណនី Tenant ថ្មី កំណត់កញ្ចប់សេវា និងបង្កើតអ្នកគ្រប់គ្រងដំបូង</p>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-3">
+                <a href="companies.html" class="px-4 py-2.5 rounded-xl border border-slate-200 hover:bg-slate-100 text-slate-700 font-medium text-xs transition">
+                    បោះបង់
+                </a>
+                <button onclick="submitCompanyForm()" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#1a1a2e] hover:bg-[#272744] text-white font-medium text-xs shadow-sm transition">
+                    <i class="fas fa-check text-amber-400"></i>
+                    <span>រក្សាទុក និងបង្កើតក្រុមហ៊ុន</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Form Container -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-6">
+            <div class="w-full space-y-6">
+                
+                <!-- Section 1: Business Identity -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-5">
+                    <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+                        <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center text-sm font-bold">1</div>
+                        <div>
+                            <h3 class="font-semibold text-slate-800 text-base">ព័ត៌មានទូទៅនៃក្រុមហ៊ុន</h3>
+                            <p class="text-xs text-slate-500">ព័ត៌មានចុះបញ្ជីអាជីវកម្ម និងទំនាក់ទំនងផ្លូវការ</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">ឈ្មោះក្រុមហ៊ុន (ភាសាខ្មែរ) <span class="text-rose-500">*</span></label>
+                            <input type="text" id="compNameKh" placeholder="ឧ. ក្រុមហ៊ុន ដារ៉ា ត្រេឌីង ឯ.ក" 
+                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-[#1a1a2e] transition">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">ឈ្មោះក្រុមហ៊ុនជាអក្សរកាត់ / កូដ <span class="text-rose-500">*</span></label>
+                            <input type="text" id="compCode" placeholder="ឧ. DARA-TRD" 
+                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-[#1a1a2e] transition uppercase">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">លេខអត្តសញ្ញាណកម្មពន្ធ (TIN) <span class="text-rose-500">*</span></label>
+                            <input type="text" id="compTin" placeholder="ឧ. K009-887654321" 
+                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-[#1a1a2e] transition">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">ប្រភេទអាជីវកម្ម <span class="text-rose-500">*</span></label>
+                            <input type="text" id="compType" placeholder="ឧ. លក់រាយ និងដុំសម្ភារៈអេឡិចត្រូនិច" 
+                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-[#1a1a2e] transition">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">លេខទូរស័ព្ទផ្លូវការ <span class="text-rose-500">*</span></label>
+                            <input type="text" id="compPhone" placeholder="ឧ. 023 889 900" 
+                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-[#1a1a2e] transition">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">អ៊ីមែលផ្លូវការ <span class="text-rose-500">*</span></label>
+                            <input type="email" id="compEmail" placeholder="ឧ. info@daratrading.com" 
+                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-[#1a1a2e] transition">
+                        </div>
+
+                        <div class="md:col-span-3">
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">អាសយដ្ឋានទីតាំងស្នាក់ការកណ្តាល</label>
+                            <input type="text" id="compAddress" placeholder="អគារលេខ 128 មហាវិថីសហព័ន្ធរុស្ស៊ី រាជធានីភ្នំពេញ" 
+                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-[#1a1a2e] transition">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2: Subscription Package -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-5">
+                    <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+                        <div class="w-8 h-8 rounded-lg bg-blue-50 text-blue-700 flex items-center justify-center text-sm font-bold">2</div>
+                        <div>
+                            <h3 class="font-semibold text-slate-800 text-base">កញ្ចប់សេវាប្រព័ន្ធ (Subscription Plan)</h3>
+                            <p class="text-xs text-slate-500">កំណត់កញ្ចប់ប្រើប្រាស់ និងដែនកំណត់ធនធាន</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div onclick="selectPlan('standard')" id="plan-standard" class="p-4 rounded-2xl border-2 border-slate-200 hover:border-blue-500 cursor-pointer transition flex flex-col justify-between">
+                            <div>
+                                <span class="px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700 text-[11px] font-bold">កញ្ចប់មូលដ្ឋាន</span>
+                                <h4 class="font-bold text-slate-800 text-lg mt-2">$29.00 <span class="text-xs font-normal text-slate-500">/ ខែ</span></h4>
+                                <ul class="text-xs text-slate-600 mt-3 space-y-1.5">
+                                    <li><i class="fas fa-check text-emerald-600 text-[10px] mr-1.5"></i> អ្នកប្រើប្រាស់: រហូតដល់ 5 នាក់</li>
+                                    <li><i class="fas fa-check text-emerald-600 text-[10px] mr-1.5"></i> សាខា: 1 សាខា</li>
+                                    <li><i class="fas fa-check text-emerald-600 text-[10px] mr-1.5"></i> មុខងារ: លក់, ទិញ, ស្តុក</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div onclick="selectPlan('pro')" id="plan-pro" class="p-4 rounded-2xl border-2 border-[#1a1a2e] bg-slate-50/50 cursor-pointer transition flex flex-col justify-between relative shadow-sm">
+                            <span class="absolute -top-2.5 right-4 px-2.5 py-0.5 rounded-full bg-amber-400 text-slate-900 text-[10px] font-bold">ពេញនិយម</span>
+                            <div>
+                                <span class="px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-800 text-[11px] font-bold">កញ្ចប់អាជីវកម្ម (Pro)</span>
+                                <h4 class="font-bold text-slate-800 text-lg mt-2">$79.00 <span class="text-xs font-normal text-slate-500">/ ខែ</span></h4>
+                                <ul class="text-xs text-slate-600 mt-3 space-y-1.5">
+                                    <li><i class="fas fa-check text-emerald-600 text-[10px] mr-1.5"></i> អ្នកប្រើប្រាស់: រហូតដល់ 20 នាក់</li>
+                                    <li><i class="fas fa-check text-emerald-600 text-[10px] mr-1.5"></i> សាខា: រហូតដល់ 3 សាខា</li>
+                                    <li><i class="fas fa-check text-emerald-600 text-[10px] mr-1.5"></i> មុខងារ: ពេញលេញ + Touch POS</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div onclick="selectPlan('enterprise')" id="plan-enterprise" class="p-4 rounded-2xl border-2 border-slate-200 hover:border-purple-500 cursor-pointer transition flex flex-col justify-between">
+                            <div>
+                                <span class="px-2.5 py-0.5 rounded-full bg-purple-100 text-purple-800 text-[11px] font-bold">កញ្ចប់សហគ្រាស</span>
+                                <h4 class="font-bold text-slate-800 text-lg mt-2">$199.00 <span class="text-xs font-normal text-slate-500">/ ខែ</span></h4>
+                                <ul class="text-xs text-slate-600 mt-3 space-y-1.5">
+                                    <li><i class="fas fa-check text-emerald-600 text-[10px] mr-1.5"></i> អ្នកប្រើប្រាស់: គ្មានដែនកំណត់</li>
+                                    <li><i class="fas fa-check text-emerald-600 text-[10px] mr-1.5"></i> សាខា: គ្មានដែនកំណត់</li>
+                                    <li><i class="fas fa-check text-emerald-600 text-[10px] mr-1.5"></i> មុខងារ: គ្រប់ Portals ទាំងអស់</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 3: Primary Tenant Admin Account -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-5">
+                    <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+                        <div class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center text-sm font-bold">3</div>
+                        <div>
+                            <h3 class="font-semibold text-slate-800 text-base">គណនីអភិបាលដំបូងរបស់ក្រុមហ៊ុន (Primary Admin Account)</h3>
+                            <p class="text-xs text-slate-500">គណនីនេះនឹងទទួលបានសិទ្ធិជាអ្នកគ្រប់គ្រងទូទៅ (Company Admin)</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">ឈ្មោះអ្នកគ្រប់គ្រង <span class="text-rose-500">*</span></label>
+                            <input type="text" id="adminName" placeholder="ឧ. លោក សុខ ចាន់ថន" 
+                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-[#1a1a2e] transition">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">លេខទូរស័ព្ទចូលប្រព័ន្ធ <span class="text-rose-500">*</span></label>
+                            <input type="text" id="adminPhone" placeholder="ឧ. 012 998 877" 
+                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-[#1a1a2e] transition">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">អ៊ីមែលចូលប្រព័ន្ធ <span class="text-rose-500">*</span></label>
+                            <input type="email" id="adminEmail" placeholder="ឧ. admin@daratrading.com" 
+                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-[#1a1a2e] transition">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">ពាក្យសម្ងាត់បណ្តោះអាសន្ន <span class="text-rose-500">*</span></label>
+                            <input type="text" id="adminPass" value="Pass@2026#" 
+                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-[#1a1a2e] transition font-mono">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../scripts/ui-components.js"></script>
+    <script>
+        let selectedPlanType = 'pro';
+
+        function selectPlan(type) {
+            selectedPlanType = type;
+            ['standard', 'pro', 'enterprise'].forEach(p => {
+                const el = document.getElementById('plan-' + p);
+                if (el) {
+                    if (p === type) {
+                        el.classList.add('border-[#1a1a2e]', 'bg-slate-50/50');
+                        el.classList.remove('border-slate-200');
+                    } else {
+                        el.classList.remove('border-[#1a1a2e]', 'bg-slate-50/50');
+                        el.classList.add('border-slate-200');
+                    }
+                }
+            });
+        }
+
+        function submitCompanyForm() {
+            const name = document.getElementById('compNameKh').value.trim();
+            if (!name) {
+                showToast('សូមបញ្ចូលឈ្មោះក្រុមហ៊ុនអាជីវកម្ម', 'warning');
+                return;
+            }
+            showToast('បានចុះឈ្មោះក្រុមហ៊ុន "' + name + '" ដោយជោគជ័យ!', 'success');
+            setTimeout(() => {
+                window.location.href = 'companies.html';
+            }, 1200);
+        }
+    </script>
+</body>
+</html>

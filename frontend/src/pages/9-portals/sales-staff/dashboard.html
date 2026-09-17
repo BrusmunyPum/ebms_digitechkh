@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - ផ្ទាំងគ្រប់គ្រងបុគ្គលិកលក់</title>
+    <link rel="icon" type="image/png" href="../../../assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#7c2d12",
+                        'primary-dark': "#5c1f0b",
+                        accent: "#ea580c",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../styles/custom.css">
+</head>
+<body class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <!-- Sales Staff Sidebar -->
+    <aside class="w-64 bg-[#7c2d12] text-white flex flex-col flex-shrink-0 select-none z-20 border-r border-amber-900">
+        <div class="h-[72px] px-6 flex items-center justify-between border-b border-white/10 flex-shrink-0">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-amber-500/20 border border-amber-400/30 flex items-center justify-center p-1 shadow-sm overflow-hidden flex-shrink-0">
+                    <img src="../../../assets/logo-mark-transparent.png" alt="DIGITECHKH" class="w-full h-full object-contain">
+                </div>
+                <div>
+                    <h1 class="text-lg font-semibold tracking-wider whitespace-nowrap text-white">DIGITECHKH</h1>
+                    <span class="text-[11px] font-medium text-amber-300 uppercase tracking-wider block">ផ្នែកលក់</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="px-5 py-3 border-b border-white/5 bg-black/15">
+            <div class="flex items-center justify-between">
+                <span class="text-xs text-amber-200">តួនាទី:</span>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-500/20 text-amber-200 border border-amber-400/30">
+                    <i class="fas fa-hand-holding-dollar text-[10px]"></i> បុគ្គលិកលក់
+                </span>
+            </div>
+        </div>
+
+        <nav class="flex-1 overflow-y-auto px-4 py-4 space-y-1.5 scrollbar-hide text-sm">
+            <a href="dashboard.html" class="flex items-center p-3 bg-white/15 text-amber-200 font-medium rounded-xl shadow-sm transition-all whitespace-nowrap border border-white/10">
+                <i class="fas fa-chart-pie w-6 text-center text-amber-300"></i>
+                <span class="ml-3 text-[15px]">ផ្ទាំងគ្រប់គ្រង</span>
+            </a>
+
+            <a href="invoices.html" class="flex items-center p-3 text-amber-100 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-file-invoice-dollar w-6 text-center text-amber-300"></i>
+                <span class="ml-3 text-[15px]">វិក្កយបត្រលក់</span>
+            </a>
+
+            <a href="quotes.html" class="flex items-center p-3 text-amber-100 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-file-alt w-6 text-center text-amber-300"></i>
+                <span class="ml-3 text-[15px]">តារាងតម្លៃ & សម្រង់</span>
+            </a>
+
+            <a href="customers.html" class="flex items-center p-3 text-amber-100 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-users w-6 text-center text-amber-300"></i>
+                <span class="ml-3 text-[15px]">បញ្ជីអតិថិជន</span>
+            </a>
+
+            <a href="payments.html" class="flex items-center p-3 text-amber-100 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-credit-card w-6 text-center text-amber-300"></i>
+                <span class="ml-3 text-[15px]">បង្កាន់ដៃទទួលប្រាក់</span>
+            </a>
+        </nav>
+
+        <div class="p-4 border-t border-white/10 bg-black/10">
+            <a href="../../1-login/login.html" class="flex items-center text-[15px] text-amber-200 hover:text-rose-300 transition-colors p-2 rounded-lg hover:bg-white/5">
+                <i class="fas fa-arrow-right-from-bracket w-6 mr-2"></i> ចាកចេញ
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div>
+                <h2 class="text-xl font-semibold text-gray-800 leading-tight">ផ្ទាំងគ្រប់គ្រងបុគ្គលិកលក់</h2>
+                <p class="text-xs font-normal text-gray-500 mt-0.5">ស្វាគមន៍មកកាន់កន្លែងការងារលក់ផ្ទាល់ខ្លួន</p>
+            </div>
+            
+            <div class="flex items-center space-x-3">
+                <a href="invoices.html?action=create" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#7c2d12] hover:bg-[#5c1f0b] text-white text-xs font-semibold shadow-sm transition">
+                    <i class="fas fa-plus text-amber-400"></i>
+                    <span>+ បង្កើតវិក្កយបត្រថ្មី</span>
+                </a>
+
+                <div class="flex items-center border-l pl-3">
+                    <div class="w-10 h-10 rounded-full bg-[#7c2d12] text-amber-200 flex items-center justify-center font-bold text-sm shadow-sm">
+                        សខ
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-4">
+            <div class="w-full space-y-5">
+                
+                <!-- KPI Cards -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
+                        <span class="text-xs font-medium text-slate-500 block mb-1">ការលក់របស់ខ្ញុំថ្ងៃនេះ</span>
+                        <h3 class="text-2xl font-bold text-slate-800">$1,850.00</h3>
+                        <p class="text-xs text-emerald-600 mt-1 font-semibold">3 វិក្កយបត្រចេញរួច</p>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
+                        <span class="text-xs font-medium text-slate-500 block mb-1">ការលក់សរុបខែនេះ</span>
+                        <h3 class="text-2xl font-bold text-slate-800">$22,800.00</h3>
+                        <p class="text-xs text-slate-500 mt-1">គោលដៅ: $25,000.00</p>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
+                        <span class="text-xs font-medium text-slate-500 block mb-1">ភាគរយសម្រេចគោលដៅ</span>
+                        <h3 class="text-2xl font-bold text-amber-700">91.2%</h3>
+                        <div class="w-full bg-slate-100 h-2 rounded-full mt-2 overflow-hidden">
+                            <div class="bg-amber-600 h-2 rounded-full" style="width: 91.2%"></div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
+                        <span class="text-xs font-medium text-slate-500 block mb-1">អតិថិជនសកម្មរបស់ខ្ញុំ</span>
+                        <h3 class="text-2xl font-bold text-slate-800">28 នាក់</h3>
+                        <p class="text-xs text-blue-600 mt-1 font-semibold">+4 នាក់ខែនេះ</p>
+                    </div>
+                </div>
+
+                <!-- Recent My Invoices -->
+                <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+                    <div class="p-5 border-b border-slate-100 flex items-center justify-between">
+                        <h3 class="text-base font-semibold text-slate-800">វិក្កយបត្រថ្មីៗរបស់ខ្ញុំ</h3>
+                        <a href="invoices.html" class="text-xs font-semibold text-amber-700 hover:text-amber-800">មើលទាំងអស់</a>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm">
+                            <thead class="bg-slate-50 text-slate-500 uppercase text-[11px] font-semibold border-b border-slate-100">
+                                <tr>
+                                    <th class="py-3 px-4">លេខវិក្កយបត្រ</th>
+                                    <th class="py-3 px-4">អតិថិជន</th>
+                                    <th class="py-3 px-4">កាលបរិច្ឆេទ</th>
+                                    <th class="py-3 px-4">ទឹកប្រាក់</th>
+                                    <th class="py-3 px-4">ស្ថានភាព</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 text-slate-700 font-medium text-xs">
+                                <tr class="hover:bg-slate-50 transition">
+                                    <td class="py-3 px-4 font-bold text-slate-800">INV-2026-0095</td>
+                                    <td class="py-3 px-4">ក្រុមហ៊ុន រស្មី អភិវឌ្ឍន៍</td>
+                                    <td class="py-3 px-4 text-slate-500">17 កញ្ញា 2026</td>
+                                    <td class="py-3 px-4 font-bold text-slate-800">$850.00</td>
+                                    <td class="py-3 px-4"><span class="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-semibold">បានទូទាត់</span></td>
+                                </tr>
+                                <tr class="hover:bg-slate-50 transition">
+                                    <td class="py-3 px-4 font-bold text-slate-800">INV-2026-0094</td>
+                                    <td class="py-3 px-4">សាលារៀន អន្តរជាតិ អាស៊ី</td>
+                                    <td class="py-3 px-4 text-slate-500">17 កញ្ញា 2026</td>
+                                    <td class="py-3 px-4 font-bold text-slate-800">$1,000.00</td>
+                                    <td class="py-3 px-4"><span class="px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 font-semibold">នៅជំពាក់</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../scripts/ui-components.js"></script>
+</body>
+</html>

@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="km">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - ព័ត៌មានក្រុមហ៊ុន</title>
+    <link rel="icon" type="image/png" href="../../../assets/favicon.png">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts Kantumruy Pro & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../../styles/custom.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#24692D',
+                        'primary-dark': '#1c5223',
+                        'primary-light': '#2e8539',
+                        sidebar: '#0f2b5c'
+                    },
+                    fontFamily: {
+                        sans: ['Kantumruy Pro', 'Inter', 'sans-serif'],
+                        km: ['Kantumruy Pro', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-slate-50 text-slate-700 font-sans flex h-screen overflow-hidden">
+
+    <!-- Standard Sidebar -->
+        <!-- Standard Sidebar -->
+        <!-- Standard Sidebar -->
+        <!-- Standard Sidebar -->
+        <!-- Standard Sidebar -->
+        <!-- Standard Sidebar -->
+    <aside class="w-64 bg-[#1b5223] text-white flex flex-col flex-shrink-0 select-none z-20">
+        <!-- Sidebar Brand Container (Exact h-[72px] px-6) -->
+        <div class="h-[72px] px-6 flex items-center gap-3 border-b border-white/10 flex-shrink-0">
+            <div class="w-9 h-9 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center p-1 shadow-sm overflow-hidden flex-shrink-0">
+                <img src="../../../assets/logo-mark-transparent.png" alt="DIGITECHKH" class="w-full h-full object-contain">
+            </div>
+            <h1 class="text-xl font-semibold tracking-wider whitespace-nowrap">DIGITECHKH</h1>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="flex-1 overflow-y-auto px-4 py-4 space-y-1 scrollbar-hide text-sm">
+            <!-- ផ្ទាំងគ្រប់គ្រង -->
+            <a href="../../2-home/dashboard.html" data-nav="dashboard"
+                class="nav-item flex items-center p-3 text-emerald-100 hover:bg-white/10 hover:text-white rounded-xl transition-colors whitespace-nowrap">
+                <i class="fas fa-border-all w-6 text-center opacity-80"></i>
+                <span class="ml-3 text-[16px]">ផ្ទាំងគ្រប់គ្រង</span>
+            </a>
+
+            <!-- ការលក់ -->
+            <div>
+                <button id="btn-menu-sell" onclick="toggleMenu('menu-sell')"
+                    class="nav-parent w-full flex items-center justify-between p-3 text-emerald-100 hover:bg-white/10 hover:text-white rounded-xl transition-colors whitespace-nowrap">
+                    <div class="flex items-center">
+                        <i class="fas fa-money-bill w-6 text-center opacity-80"></i>
+                        <span class="ml-3 text-[16px]">ការលក់</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-xs opacity-60 transition-transform duration-200" id="icon-menu-sell"></i>
+                </button>
+                <div id="menu-sell" class="ml-6 pl-3 py-1.5 space-y-1 border-l border-white/20 mt-1 mb-2 hidden text-[15px]">
+                    <a href="../../3-sales/1-invoice/invoice.html" data-nav="sell-invoices" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-file-invoice-dollar w-5 text-center mr-2 text-xs opacity-70"></i> វិក្កយបត្រលក់
+                    </a>
+                    <a href="../../3-sales/2-quote/quote.html" data-nav="sell-prices" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-file-alt w-5 text-center opacity-70 mr-2 text-xs"></i> តារាងតម្លៃ
+                    </a>
+                    <a href="../../3-sales/3-customer/customer.html" data-nav="sell-customers" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-users w-5 text-center opacity-70 mr-2 text-xs"></i> បញ្ជីអតិថិជន
+                    </a>
+                    <a href="../../3-sales/4-payment/payment.html" data-nav="sell-receipts" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-credit-card w-5 text-center opacity-70 mr-2 text-xs"></i> បង្កាន់ដៃទូទាត់
+                    </a>
+                </div>
+            </div>
+
+            <!-- ការទិញ -->
+            <div>
+                <button id="btn-menu-buy" onclick="toggleMenu('menu-buy')"
+                    class="nav-parent w-full flex items-center justify-between p-3 text-emerald-100 hover:bg-white/10 hover:text-white rounded-xl transition-colors whitespace-nowrap">
+                    <div class="flex items-center">
+                        <i class="fas fa-cart-shopping w-6 text-center opacity-80"></i>
+                        <span class="ml-3 text-[16px]">ការទិញ</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-xs opacity-60 transition-transform duration-200" id="icon-menu-buy"></i>
+                </button>
+                <div id="menu-buy" class="ml-6 pl-3 py-1.5 space-y-1 border-l border-white/20 mt-1 mb-2 hidden text-[15px]">
+                    <a href="../../4-buy/1-bills/bills.html" data-nav="buy-invoices" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-file-invoice w-5 text-center opacity-70 mr-2 text-xs"></i> វិក្កយបត្របញ្ញាទិញ
+                    </a>
+                    <a href="../../4-buy/2-suppliers/suppliers.html" data-nav="buy-suppliers" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-truck w-5 text-center opacity-70 mr-2 text-xs"></i> អ្នកផ្គត់ផ្គង់
+                    </a>
+                    <a href="../../4-buy/3-disbursement/disbursement.html" data-nav="buy-expenses" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-money-check-alt w-5 text-center opacity-70 mr-2 text-xs"></i> ការទូទាត់ចំណាយ
+                    </a>
+                </div>
+            </div>
+
+            <!-- ស្តុកទំនិញ -->
+            <div>
+                <button id="btn-menu-stock" onclick="toggleMenu('menu-stock')"
+                    class="nav-parent w-full flex items-center justify-between p-3 text-emerald-100 hover:bg-white/10 hover:text-white rounded-xl transition-colors whitespace-nowrap">
+                    <div class="flex items-center">
+                        <i class="fas fa-boxes-stacked w-6 text-center opacity-80"></i>
+                        <span class="ml-3 text-[16px]">ស្តុកទំនិញ</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-xs opacity-60 transition-transform duration-200" id="icon-menu-stock"></i>
+                </button>
+                <div id="menu-stock" class="ml-6 pl-3 py-1.5 space-y-1 border-l border-white/20 mt-1 mb-2 hidden text-[15px]">
+                    <a href="../../5-stock/1-balance/balance.html" data-nav="stock-balance" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-box w-5 text-center opacity-70 mr-2 text-xs"></i> តុល្យភាពស្តុក
+                    </a>
+                    <a href="../../5-stock/2-catalog/catalog.html" data-nav="stock-catalog" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-list w-5 text-center opacity-70 mr-2 text-xs"></i> កាតាឡុកទំនិញ
+                    </a>
+                    <a href="../../5-stock/3-movement/movement.html" data-nav="stock-movements" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-clock-rotate-left w-5 text-center opacity-70 mr-2 text-xs"></i> ចលនាស្តុក
+                    </a>
+                </div>
+            </div>
+
+            <!-- របាយការណ៍ហិរញ្ញវត្ថុ -->
+            <div>
+                <button id="btn-menu-reports" onclick="toggleMenu('menu-reports')"
+                    class="nav-parent w-full flex items-center justify-between p-3 text-emerald-100 hover:bg-white/10 hover:text-white rounded-xl transition-colors whitespace-nowrap">
+                    <div class="flex items-center">
+                        <i class="fas fa-chart-line w-6 text-center opacity-80"></i>
+                        <span class="ml-3 text-[16px]">របាយការណ៍ហិរញ្ញវត្ថុ</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-xs opacity-60 transition-transform duration-200" id="icon-menu-reports"></i>
+                </button>
+                <div id="menu-reports" class="ml-6 pl-3 py-1.5 space-y-1 border-l border-white/20 mt-1 mb-2 hidden text-[15px]">
+                    <a href="../../6-reports/1-overview/overview.html" data-nav="reports-overview" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-chart-pie w-5 text-center opacity-70 mr-2 text-xs"></i> របាយការណ៍ទូទៅ
+                    </a>
+                    <a href="../../6-reports/2-sales/sales.html" data-nav="reports-sales" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-file-invoice-dollar w-5 text-center opacity-70 mr-2 text-xs"></i> របាយការណ៍លក់
+                    </a>
+                    <a href="../../6-reports/3-purchases/purchases.html" data-nav="reports-purchases" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-cart-shopping w-5 text-center opacity-70 mr-2 text-xs"></i> របាយការណ៍ទិញ
+                    </a>
+                    <a href="../../6-reports/4-stock/stock.html" data-nav="reports-stock" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-boxes-stacked w-5 text-center opacity-70 mr-2 text-xs"></i> របាយការណ៍ស្តុក
+                    </a>
+                </div>
+            </div>
+
+            <!-- ការកំណត់ប្រព័ន្ធ -->
+            <div>
+                <button id="btn-menu-settings" onclick="toggleMenu('menu-settings')"
+                    class="nav-parent w-full flex items-center justify-between p-3 bg-white/10 text-white font-medium rounded-xl transition-colors whitespace-nowrap">
+                    <div class="flex items-center">
+                        <i class="fas fa-gear w-6 text-center opacity-80"></i>
+                        <span class="ml-3 text-[16px]">ការកំណត់ប្រព័ន្ធ</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-xs opacity-60 transition-transform duration-200 rotate-90" id="icon-menu-settings"></i>
+                </button>
+                <div id="menu-settings" class="ml-6 pl-3 py-1.5 space-y-1 border-l border-white/20 mt-1 mb-2 text-[15px]">
+                    <a href="../../7-settings/1-company/company.html" data-nav="settings-company" class="nav-sub-item flex items-center px-3 py-2 bg-primary text-white shadow-sm font-medium rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-building w-5 text-center opacity-70 mr-2 text-xs"></i> ព័ត៌មានក្រុមហ៊ុន
+                    </a>
+                    <a href="../../7-settings/2-users/users.html" data-nav="settings-users" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-users-gear w-5 text-center opacity-70 mr-2 text-xs"></i> គ្រប់គ្រងអ្នកប្រើ
+                    </a>
+                    <a href="../../7-settings/3-tax/tax.html" data-nav="settings-tax" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-coins w-5 text-center opacity-70 mr-2 text-xs"></i> ពន្ធ និងរូបិយប័ណ្ណ
+                    </a>
+                    <a href="../../7-settings/4-notifications/notifications.html" data-nav="settings-notifications" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-bell w-5 text-center opacity-70 mr-2 text-xs"></i> ការជូនដំណឹង
+                    </a>
+                    <a href="../../7-settings/5-system/system.html" data-nav="settings-system" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-sliders w-5 text-center opacity-70 mr-2 text-xs"></i> ប្រព័ន្ធ និងសុវត្ថិភាព
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="p-4 border-t border-white/10">
+            <a href="../../1-login/login.html"
+                class="flex items-center text-[16px] text-emerald-100 hover:text-red-300 transition-colors p-2 rounded-lg hover:bg-primary">
+                <i class="fas fa-sign-out-alt w-6 mr-2"></i> ចាកចេញ
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+
+        <!-- Top Header (Standard h-[72px] px-6) -->
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+<div>
+                <h2 class="text-xl font-semibold text-gray-800 leading-tight">ព័ត៌មានក្រុមហ៊ុន</h2>
+                <p class="text-xs font-normal text-gray-500 mt-0.5">ការកំណត់ព័ត៌មានទូទៅ អាសយដ្ឋាន រូបសញ្ញា និងត្រាក្រុមហ៊ុន</p>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <button type="button" onclick="saveSettings()" class="h-9 px-5 bg-primary hover:bg-primary-dark text-white rounded-xl text-xs font-semibold flex items-center gap-2 shadow-sm transition">
+                    <i class="fas fa-save"></i>
+                    <span>រក្សាទុកការកំណត់</span>
+                </button>
+            
+                <div class="h-6 w-px bg-slate-200 mx-1"></div>
+
+                <!-- Notification Bell -->
+                <button onclick="toggleNotifications()" class="text-gray-500 hover:text-gray-700 relative p-2.5 rounded-xl hover:bg-slate-100 transition-colors cursor-pointer" title="ការជូនដំណឹង">
+                    <i class="fas fa-bell text-xl"></i>
+                    <span class="absolute top-1.5 right-1.5 flex h-2.5 w-2.5">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500"></span>
+                    </span>
+                </button>
+                
+                <!-- User Profile Avatar Only -->
+                <div class="flex items-center border-l pl-3 md:pl-4">
+                    <button class="relative rounded-full focus:outline-none focus:ring-2 focus:ring-primary/20 cursor-pointer" title="សុខ ចាន់ថន (អ្នកគ្រប់គ្រងកំពូល)">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=128&q=80" alt="សុខ ចាន់ថន" class="h-10 w-10 rounded-full object-cover shadow-sm border border-slate-200" />
+                        <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-2 ring-white"></span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Body Content (w-full Full Width) -->
+        <main class="flex-1 overflow-y-auto p-6 w-full space-y-6 scrollbar-hide">
+
+            <!-- Company Form Panels -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 space-y-8">
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Section A: ព័ត៌មានទូទៅ -->
+                    <div class="space-y-4">
+                        <h3 class="text-sm font-bold text-slate-800 pb-2 border-b border-slate-100 flex items-center gap-2">
+                            <i class="fas fa-circle-info text-primary"></i> ព័ត៌មានទូទៅ
+                        </h3>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1">ឈ្មោះក្រុមហ៊ុន <span class="text-rose-500">*</span></label>
+                            <input type="text" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary" value="DIGITECHKH Co., Ltd.">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1">ឈ្មោះអាជីវកម្ម (ខ្មែរ)</label>
+                            <input type="text" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary" value="ប៊ីអឹមអេស ឌីជីតិច ឯ.ក">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1">ប្រភេទអាជីវកម្ម</label>
+                            <div class="relative custom-dropdown" data-value="សេវាកម្ម">
+                                <button type="button" class="w-full flex items-center justify-between px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm hover:border-slate-300 focus:outline-none focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary text-left dropdown-toggle">
+                                    <span class="dropdown-label">សេវាកម្ម</span>
+                                    <i class="fas fa-chevron-down text-slate-400 text-xs"></i>
+                                </button>
+                                <div class="absolute z-10 w-full mt-1 bg-white border border-slate-200 rounded-xl shadow-lg hidden dropdown-menu">
+                                    <div class="py-1 max-h-48 overflow-y-auto scrollbar-hide">
+                                        <div class="px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 cursor-pointer dropdown-item">ពាណិជ្ជកម្ម</div>
+                                        <div class="px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 cursor-pointer dropdown-item">សេវាកម្ម</div>
+                                        <div class="px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 cursor-pointer dropdown-item">ផលិតកម្ម</div>
+                                        <div class="px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 cursor-pointer dropdown-item">ដទៃទៀត</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1">លេខអត្តសញ្ញាណពន្ធ (Tax ID)</label>
+                            <input type="text" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary" value="K001-901928374">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1">កាលបរិច្ឆេទចាប់ផ្តើមអាជីវកម្ម</label>
+                            <input type="date" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary" value="2020-01-01">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1">ភាសាប្រព័ន្ធ</label>
+                            <div class="relative custom-dropdown" data-value="ភាសាខ្មែរ">
+                                <button type="button" class="w-full flex items-center justify-between px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm hover:border-slate-300 focus:outline-none focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary text-left dropdown-toggle">
+                                    <span class="dropdown-label">ភាសាខ្មែរ</span>
+                                    <i class="fas fa-chevron-down text-slate-400 text-xs"></i>
+                                </button>
+                                <div class="absolute z-10 w-full mt-1 bg-white border border-slate-200 rounded-xl shadow-lg hidden dropdown-menu">
+                                    <div class="py-1 max-h-48 overflow-y-auto scrollbar-hide">
+                                        <div class="px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 cursor-pointer dropdown-item">ភាសាខ្មែរ</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section B: ព័ត៌មានទំនាក់ទំនង -->
+                    <div class="space-y-4">
+                        <h3 class="text-sm font-bold text-slate-800 pb-2 border-b border-slate-100 flex items-center gap-2">
+                            <i class="fas fa-address-book text-primary"></i> ព័ត៌មានទំនាក់ទំនង
+                        </h3>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1">អ៊ីមែលស្ថាប័ន</label>
+                            <input type="email" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary" value="info@digitechkh.com">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1">លេខទូរស័ព្ទ</label>
+                            <input type="text" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary" value="012 345 678">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1">គេហទំព័រ</label>
+                            <input type="url" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary" value="https://www.digitechkh.com">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1">អាស័យដ្ឋាន</label>
+                            <input type="text" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary" value="ផ្ទះលេខ 123 ផ្លូវ 456 សង្កាត់ទឹកល្អក់1 ខណ្ឌទួលគោក">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1">ខេត្ត/ក្រុង</label>
+                            <div class="relative custom-dropdown" data-value="រាជធានីភ្នំពេញ">
+                                <button type="button" class="w-full flex items-center justify-between px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm hover:border-slate-300 focus:outline-none focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary text-left dropdown-toggle">
+                                    <span class="dropdown-label">រាជធានីភ្នំពេញ</span>
+                                    <i class="fas fa-chevron-down text-slate-400 text-xs"></i>
+                                </button>
+                                <div class="absolute z-10 w-full mt-1 bg-white border border-slate-200 rounded-xl shadow-lg hidden dropdown-menu">
+                                    <div class="py-1 max-h-48 overflow-y-auto scrollbar-hide">
+                                        <div class="px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 cursor-pointer dropdown-item">រាជធានីភ្នំពេញ</div>
+                                        <div class="px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 cursor-pointer dropdown-item">ខេត្តកណ្តាល</div>
+                                        <div class="px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 cursor-pointer dropdown-item">ខេត្តសៀមរាប</div>
+                                        <div class="px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 cursor-pointer dropdown-item">ខេត្តបាត់ដំបង</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1">លេខប្រអប់សំបុត្រ</label>
+                            <input type="text" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary" value="12151">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section C: រូបតំណាង និងត្រា -->
+                <div class="border-t border-slate-100 pt-6">
+                    <h3 class="text-sm font-bold text-slate-800 mb-4 flex items-center gap-2">
+                        <i class="fas fa-image text-primary"></i> រូបតំណាង និងត្រាស្វ័យប្រវត្តិ
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-2">រូបតំណាងក្រុមហ៊ុន</label>
+                            <div class="border-2 border-dashed border-emerald-300 rounded-2xl bg-emerald-50/40 p-6 flex flex-col items-center justify-center hover:bg-emerald-50/60 transition-colors cursor-pointer text-center group relative">
+                                <div class="w-20 h-20 bg-white rounded-2xl p-2 flex items-center justify-center mb-3 shadow-md border border-slate-100">
+                                    <img src="../../../assets/logo-mark-transparent.png" alt="DIGITECHKH Logo" class="w-full h-full object-contain">
+                                </div>
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="text-xs font-semibold text-emerald-700 bg-emerald-100 px-2.5 py-0.5 rounded-full">រូបតំណាងសកម្ម</span>
+                                    <span class="text-xs text-slate-500">ចុចដើម្បីប្តូរថ្មី</span>
+                                </div>
+                                <p class="text-[11px] text-slate-400">ទំហំដែលបានណែនាំ 500x500 ភីកសែល</p>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-2">ហត្ថលេខាឌីជីថល ឬត្រាក្រុមហ៊ុន</label>
+                            <div class="border-2 border-dashed border-slate-200 rounded-2xl bg-slate-50 p-6 flex flex-col items-center justify-center hover:bg-slate-100 hover:border-slate-300 transition-colors cursor-pointer text-center group">
+                                <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-3 shadow-sm text-slate-400 group-hover:text-primary transition-colors">
+                                    <i class="fas fa-stamp text-2xl"></i>
+                                </div>
+                                <p class="text-sm text-slate-600 font-medium mb-1">ទាញរូបភាពទម្លាក់ទីនេះ ឬចុចជ្រើសរើស</p>
+                                <p class="text-xs text-slate-400">គាំទ្ររូបភាពប្រភេទផ្ទៃថ្លា ឬរូបភាពទូទៅ</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">ចំណាំបាតទំព័រឯកសារ</label>
+                        <textarea class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary min-h-[80px]" placeholder="សូមអរគុណដែលបានជ្រើសរើសសេវាកម្មរបស់យើងខ្ញុំ!"></textarea>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Toast Notification Container -->
+    
+
+    <script src="../../../scripts/ui-components.js"></script>
+    <script src="../../../scripts/sidebar.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            initSidebarNav();
+
+            // Custom Dropdown Logic
+            document.querySelectorAll('.custom-dropdown').forEach(dropdown => {
+                const toggle = dropdown.querySelector('.dropdown-toggle');
+                const menu = dropdown.querySelector('.dropdown-menu');
+                const label = dropdown.querySelector('.dropdown-label');
+                const items = dropdown.querySelectorAll('.dropdown-item');
+
+                toggle.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    document.querySelectorAll('.dropdown-menu').forEach(m => {
+                        if (m !== menu) m.classList.add('hidden');
+                    });
+                    menu.classList.toggle('hidden');
+                });
+
+                items.forEach(item => {
+                    item.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        label.textContent = item.textContent;
+                        dropdown.setAttribute('data-value', item.textContent);
+                        menu.classList.add('hidden');
+                    });
+                });
+            });
+
+            document.addEventListener('click', () => {
+                document.querySelectorAll('.custom-dropdown .dropdown-menu').forEach(m => m.classList.add('hidden'));
+            });
+        });
+
+        function saveSettings() {
+            showToast('ព័ត៌មានក្រុមហ៊ុនត្រូវបានរក្សាទុកដោយជោគជ័យ', 'success');
+        }
+    </script>
+</body>
+</html>

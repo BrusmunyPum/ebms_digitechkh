@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - ព័ត៌មានលម្អិតបញ្ជាទិញ PO-2026-0045</title>
+    <link rel="icon" type="image/png" href="../../../assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1c1917",
+                        accent: "#d97706",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../styles/custom.css">
+</head>
+<body class="bg-stone-100 font-sans text-stone-800 text-[16px] flex h-screen overflow-hidden">
+
+    <aside class="w-64 bg-[#1c1917] text-white flex flex-col flex-shrink-0 select-none z-20 border-r border-stone-800">
+        <div class="h-[72px] px-6 flex items-center justify-between border-b border-white/10 flex-shrink-0">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-amber-500/20 border border-amber-400/30 flex items-center justify-center p-1 shadow-sm overflow-hidden flex-shrink-0">
+                    <img src="../../../assets/logo-mark-transparent.png" alt="DIGITECHKH" class="w-full h-full object-contain">
+                </div>
+                <div>
+                    <h1 class="text-lg font-semibold tracking-wider whitespace-nowrap text-white">DIGITECHKH</h1>
+                    <span class="text-[11px] font-medium text-amber-400 uppercase tracking-wider block">ដៃគូផ្គត់ផ្គង់</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="px-5 py-3 border-b border-white/5 bg-black/20">
+            <div class="flex items-center justify-between">
+                <span class="text-xs text-stone-400">គណនីដៃគូ:</span>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                    <i class="fas fa-truck-ramp-box text-[10px]"></i> អ្នកផ្គត់ផ្គង់
+                </span>
+            </div>
+        </div>
+
+        <nav class="flex-1 overflow-y-auto px-4 py-4 space-y-1.5 scrollbar-hide text-sm">
+            <a href="dashboard.html" class="flex items-center p-3 text-stone-300 hover:bg-white/5 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-chart-pie w-6 text-center text-stone-400"></i>
+                <span class="ml-3 text-[15px]">ទិដ្ឋភាពរួម</span>
+            </a>
+
+            <a href="my-orders.html" class="flex items-center p-3 bg-white/10 text-amber-300 font-medium rounded-xl shadow-sm transition-all whitespace-nowrap border border-white/10">
+                <i class="fas fa-boxes-packing w-6 text-center text-amber-400"></i>
+                <span class="ml-3 text-[15px]">បញ្ជាទិញរបស់ខ្ញុំ (PO)</span>
+            </a>
+
+            <a href="my-bills.html" class="flex items-center p-3 text-stone-300 hover:bg-white/5 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-file-invoice-dollar w-6 text-center text-stone-400"></i>
+                <span class="ml-3 text-[15px]">វិក្កយបត្រដែលបានដាក់</span>
+            </a>
+
+            <a href="payments.html" class="flex items-center p-3 text-stone-300 hover:bg-white/5 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-money-bill-check w-6 text-center text-stone-400"></i>
+                <span class="ml-3 text-[15px]">ប្រវត្តិប្រាក់បានទទួល</span>
+            </a>
+        </nav>
+
+        <div class="p-4 border-t border-white/10 bg-black/10">
+            <a href="../../1-login/login.html" class="flex items-center text-[15px] text-stone-400 hover:text-rose-400 transition-colors p-2 rounded-lg hover:bg-white/5">
+                <i class="fas fa-arrow-right-from-bracket w-6 mr-2"></i> ចាកចេញ
+            </a>
+        </div>
+    </aside>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div class="flex items-center gap-4">
+                <a href="my-orders.html" class="w-10 h-10 rounded-xl bg-stone-50 hover:bg-stone-100 text-stone-600 flex items-center justify-center transition border border-stone-200/70" title="ត្រឡប់ទៅបញ្ជាទិញ">
+                    <i class="fas fa-arrow-left text-sm"></i>
+                </a>
+                <div>
+                    <div class="flex items-center gap-2.5">
+                        <h2 class="text-xl font-semibold text-stone-800 leading-tight">បញ្ជាទិញ PO-2026-0045</h2>
+                        <span id="orderStatusBadge" class="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-xs font-semibold">បានប្រគល់ទំនិញរួច</span>
+                    </div>
+                    <p class="text-xs font-normal text-stone-500 mt-0.5">កាលបរិច្ឆេទបញ្ជាទិញ: 16 កញ្ញា 2026</p>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-2.5">
+                <button onclick="window.print()" class="px-3.5 py-2 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-700 text-xs font-medium transition flex items-center gap-2">
+                    <i class="fas fa-print"></i> បោះពុម្ព
+                </button>
+                <a href="submit-bill.html?po=PO-2026-0045" class="px-4 py-2 rounded-xl bg-[#1c1917] hover:bg-stone-800 text-white text-xs font-medium transition flex items-center gap-2 shadow-sm">
+                    <i class="fas fa-file-invoice text-amber-400"></i> ដាក់វិក្កយបត្រទូទាត់
+                </a>
+            </div>
+        </header>
+
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-stone-50 px-4 md:px-6 py-4">
+            <div class="w-full space-y-4">
+                
+                <!-- Tracking Timeline -->
+                <div class="bg-white rounded-2xl border border-stone-200 shadow-sm p-5">
+                    <h3 class="text-xs font-semibold text-stone-500 uppercase tracking-wider mb-4">ដំណើរការបញ្ជាទិញ</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-xs">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-semibold text-stone-800">បានចេញបញ្ជាទិញ</p>
+                                <p class="text-[11px] text-stone-500">16 កញ្ញា 2026 - 09:00</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-xs">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-semibold text-stone-800">បានទទួលយកបញ្ជាទិញ</p>
+                                <p class="text-[11px] text-stone-500">16 កញ្ញា 2026 - 10:15</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-xs">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-semibold text-stone-800">បានប្រគល់ទំនិញដល់ឃ្លាំង</p>
+                                <p class="text-[11px] text-stone-500">16 កញ្ញា 2026 - 15:30</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center font-bold text-xs">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-semibold text-stone-800">រង់ចាំទូទាត់ប្រាក់</p>
+                                <p class="text-[11px] text-stone-500">វិក្កយបត្រកំពុងត្រួតពិនិត្យ</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Info Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-white rounded-2xl border border-stone-200 shadow-sm p-5 space-y-3">
+                        <h4 class="text-xs font-semibold text-stone-500 uppercase tracking-wider">ព័ត៌មានអ្នកបញ្ជាទិញ</h4>
+                        <div class="text-sm space-y-1">
+                            <p class="font-bold text-stone-800 text-[15px]">DIGITECHKH Co., Ltd.</p>
+                            <p class="text-stone-600 text-xs"><i class="fas fa-map-marker-alt text-amber-600 mr-1.5"></i> ឃ្លាំងកណ្តាល (សាខាភ្នំពេញ)</p>
+                            <p class="text-stone-600 text-xs"><i class="fas fa-user-tie text-amber-600 mr-1.5"></i> អ្នកទទួលខុសត្រូវ: លឹម ពិសិដ្ឋ (ប្រធានផ្នែកលទ្ធកម្ម)</p>
+                            <p class="text-stone-600 text-xs"><i class="fas fa-phone text-amber-600 mr-1.5"></i> ទូរស័ព្ទ: 012 999 888</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl border border-stone-200 shadow-sm p-5 space-y-3">
+                        <h4 class="text-xs font-semibold text-stone-500 uppercase tracking-wider">ព័ត៌មានការដឹកជញ្ជូន</h4>
+                        <div class="text-sm space-y-1">
+                            <p class="font-semibold text-stone-800 text-xs">ទីតាំងប្រគល់ទំនិញ: <span class="font-normal text-stone-600">អគារ 12A មហាវិថីព្រះមុនីវង្ស ភ្នំពេញ</span></p>
+                            <p class="font-semibold text-stone-800 text-xs">កាលបរិច្ឆេទប្រគល់ទំនិញ: <span class="font-normal text-stone-600">16 កញ្ញា 2026 (បានប្រគល់)</span></p>
+                            <p class="font-semibold text-stone-800 text-xs">លក្ខខណ្ឌទូទាត់: <span class="font-normal text-stone-600">ទូទាត់ក្នុងរយៈពេល 30 ថ្ងៃ (Net 30)</span></p>
+                            <p class="font-semibold text-stone-800 text-xs">កំណត់សម្គាល់: <span class="font-normal text-stone-600">សូមវេចខ្ចប់ការពារការប៉ះទង្គិចសម្រាប់គ្រឿងអេឡិចត្រូនិក</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Items Table -->
+                <div class="bg-white rounded-2xl border border-stone-200 shadow-sm overflow-hidden">
+                    <div class="px-5 py-4 border-b border-stone-100 flex items-center justify-between">
+                        <h4 class="text-sm font-semibold text-stone-800">មុខទំនិញបញ្ជាទិញ</h4>
+                        <span class="text-xs text-stone-500">2 មុខទំនិញ</span>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm">
+                            <thead class="bg-stone-50 text-stone-500 uppercase text-[11px] font-semibold border-b border-stone-100">
+                                <tr>
+                                    <th class="py-3 px-4">#</th>
+                                    <th class="py-3 px-4">បរិយាយទំនិញ</th>
+                                    <th class="py-3 px-4 text-center">បរិមាណ</th>
+                                    <th class="py-3 px-4 text-right">តម្លៃឯកតា</th>
+                                    <th class="py-3 px-4 text-right">ទឹកប្រាក់សរុប</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-stone-100 text-stone-700 font-medium text-xs">
+                                <tr>
+                                    <td class="py-3.5 px-4 text-stone-400">1</td>
+                                    <td class="py-3.5 px-4">
+                                        <p class="font-semibold text-stone-800">RAM Kingston Fury DDR5 32GB 5600MHz</p>
+                                        <p class="text-[11px] text-stone-400">SKU: RAM-DDR5-32G</p>
+                                    </td>
+                                    <td class="py-3.5 px-4 text-center font-bold">20 គ្រឿង</td>
+                                    <td class="py-3.5 px-4 text-right font-medium">$85.00</td>
+                                    <td class="py-3.5 px-4 text-right font-bold text-stone-800">$1,700.00</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-3.5 px-4 text-stone-400">2</td>
+                                    <td class="py-3.5 px-4">
+                                        <p class="font-semibold text-stone-800">Samsung 980 PRO PCIe 4.0 NVMe SSD 1TB</p>
+                                        <p class="text-[11px] text-stone-400">SKU: SSD-SAM-1TB</p>
+                                    </td>
+                                    <td class="py-3.5 px-4 text-center font-bold">15 គ្រឿង</td>
+                                    <td class="py-3.5 px-4 text-right font-medium">$100.00</td>
+                                    <td class="py-3.5 px-4 text-right font-bold text-stone-800">$1,500.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Financial Summary -->
+                    <div class="px-5 py-4 bg-stone-50 border-t border-stone-100 flex justify-end">
+                        <div class="w-72 space-y-2 text-xs">
+                            <div class="flex justify-between text-stone-600">
+                                <span>សរុបរងមុខទំនិញ:</span>
+                                <span class="font-semibold text-stone-800">$3,200.00</span>
+                            </div>
+                            <div class="flex justify-between text-stone-600">
+                                <span>អាករលើតម្លៃបន្ថែម (អតប 10%):</span>
+                                <span class="font-semibold text-stone-800">$0.00</span>
+                            </div>
+                            <div class="flex justify-between text-stone-900 font-bold text-sm pt-2 border-t border-stone-200">
+                                <span>ទឹកប្រាក់សរុប:</span>
+                                <span class="text-amber-800">$3,200.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../scripts/ui-components.js"></script>
+</body>
+</html>

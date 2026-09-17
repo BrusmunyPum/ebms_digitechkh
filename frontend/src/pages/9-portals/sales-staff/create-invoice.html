@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - បង្កើតវិក្កយបត្រលក់ថ្មី</title>
+    <link rel="icon" type="image/png" href="../../../assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#7c2d12",
+                        accent: "#f59e0b",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../styles/custom.css">
+</head>
+<body class="bg-amber-50/20 font-sans text-slate-800 text-[16px] flex h-screen overflow-hidden">
+
+    <!-- Sales Staff Sidebar -->
+    <aside class="w-64 bg-[#7c2d12] text-white flex flex-col flex-shrink-0 select-none z-20 border-r border-amber-900">
+        <div class="h-[72px] px-6 flex items-center justify-between border-b border-white/10 flex-shrink-0">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-amber-400/20 border border-amber-400/30 flex items-center justify-center p-1 shadow-sm overflow-hidden flex-shrink-0">
+                    <img src="../../../assets/logo-mark-transparent.png" alt="DIGITECHKH" class="w-full h-full object-contain">
+                </div>
+                <div>
+                    <h1 class="text-lg font-semibold tracking-wider whitespace-nowrap text-white">DIGITECHKH</h1>
+                    <span class="text-[11px] font-medium text-amber-300 uppercase tracking-wider block">បុគ្គលិកលក់</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="px-5 py-3 border-b border-white/5 bg-black/15">
+            <div class="flex items-center justify-between">
+                <span class="text-xs text-amber-200">តួនាទី:</span>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-500/20 text-amber-200 border border-amber-400/30">
+                    <i class="fas fa-hand-holding-dollar text-[10px]"></i> Sales Staff
+                </span>
+            </div>
+        </div>
+
+        <nav class="flex-1 overflow-y-auto px-4 py-4 space-y-1.5 scrollbar-hide text-sm">
+            <a href="dashboard.html" class="flex items-center p-3 text-amber-100 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-chart-pie w-6 text-center text-amber-300"></i>
+                <span class="ml-3 text-[15px]">ផ្ទាំងគ្រប់គ្រង</span>
+            </a>
+
+            <a href="invoices.html" class="flex items-center p-3 bg-white/15 text-white font-medium rounded-xl shadow-sm transition-all whitespace-nowrap border border-white/10">
+                <i class="fas fa-file-invoice-dollar w-6 text-center text-amber-300"></i>
+                <span class="ml-3 text-[15px]">វិក្កយបត្រលក់</span>
+            </a>
+
+            <a href="quotes.html" class="flex items-center p-3 text-amber-100 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-file-lines w-6 text-center text-amber-300"></i>
+                <span class="ml-3 text-[15px]">សម្រង់តម្លៃ</span>
+            </a>
+
+            <a href="customers.html" class="flex items-center p-3 text-amber-100 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-users w-6 text-center text-amber-300"></i>
+                <span class="ml-3 text-[15px]">អតិថិជនរបស់ខ្ញុំ</span>
+            </a>
+
+            <a href="payments.html" class="flex items-center p-3 text-amber-100 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-credit-card w-6 text-center text-amber-300"></i>
+                <span class="ml-3 text-[15px]">បង្កាន់ដៃទទួលប្រាក់</span>
+            </a>
+        </nav>
+
+        <div class="p-4 border-t border-white/10 bg-black/10">
+            <a href="../../1-login/login.html" class="flex items-center text-[15px] text-amber-200 hover:text-rose-300 transition-colors p-2 rounded-lg hover:bg-white/5">
+                <i class="fas fa-arrow-right-from-bracket w-6 mr-2"></i> ចាកចេញ
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <!-- Header: h-[72px] seamless -->
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div class="flex items-center gap-4">
+                <a href="invoices.html" 
+                   class="w-10 h-10 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-600 flex items-center justify-center transition border border-slate-200/70" 
+                   title="ត្រឡប់ទៅបញ្ជីវិក្កយបត្រ">
+                    <i class="fas fa-arrow-left text-sm"></i>
+                </a>
+                <div>
+                    <h2 class="text-xl font-semibold text-gray-800 leading-tight">បង្កើតវិក្កយបត្រលក់ថ្មី</h2>
+                    <p class="text-xs font-normal text-gray-500 mt-0.5">ចេញវិក្កយបត្រផ្លូវការ និងគណនាតម្លៃតាមកម្រិតអតិថិជនស្វ័យប្រវត្តិ</p>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-3">
+                <a href="invoices.html" class="px-4 py-2.5 rounded-xl border border-slate-200 hover:bg-slate-100 text-slate-700 font-medium text-xs transition">
+                    បោះបង់
+                </a>
+                <button onclick="saveInvoice('draft')" class="px-4 py-2.5 rounded-xl border border-[#7c2d12] text-[#7c2d12] hover:bg-amber-50 font-medium text-xs transition">
+                    រក្សាទុកជាព្រាង
+                </button>
+                <button onclick="saveInvoice('publish')" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#7c2d12] hover:bg-[#5c1f0b] text-white font-medium text-xs shadow-sm transition">
+                    <i class="fas fa-check text-amber-400"></i>
+                    <span>ចេញវិក្កយបត្រផ្លូវការ</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Form Container -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-6">
+            <div class="w-full space-y-6">
+                
+                <!-- Section 1: Customer & Invoice Meta -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        
+                        <!-- Customer Selection with Dynamic Pricing Level (Rule 10) -->
+                        <div class="md:col-span-2">
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">
+                                អតិថិជន <span class="text-rose-500">*</span>
+                            </label>
+                            <div class="relative">
+                                <select id="custSelect" onchange="onCustomerChange()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-[#7c2d12] transition">
+                                    <option value="1" data-level="ដុំ">ក្រុមហ៊ុន រស្មី អភិវឌ្ឍន៍ (កម្រិតតម្លៃ: ដុំ - បញ្ចុះ 10%)</option>
+                                    <option value="2" data-level="រាយ">សាលារៀន អន្តរជាតិ អាស៊ី (កម្រិតតម្លៃ: រាយ)</option>
+                                    <option value="3" data-level="VIP">សណ្ឋាគារ ភ្នំពេញ ហ្គ្រេន (កម្រិតតម្លៃ: VIP - បញ្ចុះ 15%)</option>
+                                </select>
+                            </div>
+                            <div class="flex items-center gap-2 mt-1.5">
+                                <span class="text-[11px] text-slate-400">កម្រិតតម្លៃសកម្ម:</span>
+                                <span id="custLevelBadge" class="px-2 py-0.5 rounded-md bg-amber-50 text-amber-800 text-[10px] font-bold border border-amber-200">អតិថិជនដុំ</span>
+                            </div>
+                        </div>
+
+                        <!-- Invoice Number (Auto Generated) -->
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">លេខវិក្កយបត្រ</label>
+                            <input type="text" value="INV-2026-0096" readonly 
+                                class="w-full bg-slate-100 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-600 font-bold outline-none">
+                        </div>
+
+                        <!-- Invoice Date -->
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">កាលបរិច្ឆេទចេញ</label>
+                            <input type="text" value="17 កញ្ញា 2026" readonly 
+                                class="w-full bg-slate-100 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-600 font-medium outline-none">
+                        </div>
+
+                        <!-- Payment Terms -->
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">លក្ខខណ្ឌទូទាត់</label>
+                            <select class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-[#7c2d12] transition">
+                                <option>ទូទាត់ភ្លាមៗ (Cash on Delivery)</option>
+                                <option>ជំពាក់ 15 ថ្ងៃ (Net 15)</option>
+                                <option selected>ជំពាក់ 30 ថ្ងៃ (Net 30)</option>
+                            </select>
+                        </div>
+
+                        <!-- Due Date -->
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">កាលកំណត់ទូទាត់</label>
+                            <input type="text" value="17 តុលា 2026" readonly 
+                                class="w-full bg-slate-100 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-600 font-medium outline-none">
+                        </div>
+
+                        <!-- Sales Person -->
+                        <div class="md:col-span-2">
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">បុគ្គលិកទទួលបន្ទុកលក់</label>
+                            <input type="text" value="សៅ សុខា (អ្នកចេញវិក្កយបត្រ)" readonly 
+                                class="w-full bg-slate-100 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-600 font-medium outline-none">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2: Items Table (Rule 13: No discount column, clean layout) -->
+                <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+                    <div class="p-4 border-b border-slate-100 flex items-center justify-between">
+                        <h3 class="font-semibold text-slate-800 text-sm">មុខទំនិញបញ្ជាទិញ</h3>
+                        <button onclick="addRow()" class="px-3 py-1.5 rounded-xl bg-amber-50 text-amber-800 hover:bg-amber-100 border border-amber-200 text-xs font-semibold transition inline-flex items-center gap-1.5">
+                            <i class="fas fa-plus text-[10px]"></i> បន្ថែមមុខទំនិញ
+                        </button>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs" id="itemsTable">
+                            <thead class="bg-slate-50 text-slate-500 uppercase text-[11px] font-semibold border-b border-slate-100">
+                                <tr>
+                                    <th class="py-3 px-4 w-12 text-center">#</th>
+                                    <th class="py-3 px-4">មុខទំនិញ</th>
+                                    <th class="py-3 px-4 w-28 text-center">ចំនួន</th>
+                                    <th class="py-3 px-4 w-36 text-right">តម្លៃឯកតា ($)</th>
+                                    <th class="py-3 px-4 w-36 text-right">សរុប ($)</th>
+                                    <th class="py-3 px-4 w-16 text-center">លុប</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 text-slate-700 font-medium" id="tableBody">
+                                <!-- Row 1 -->
+                                <tr>
+                                    <td class="py-3 px-4 text-center text-slate-400 font-bold">1</td>
+                                    <td class="py-3 px-4">
+                                        <select onchange="calculateTotals()" class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-xs font-semibold text-slate-800 focus:outline-none focus:border-[#7c2d12]">
+                                            <option value="650.00">កុំព្យូទ័រ Dell OptiPlex 7010</option>
+                                            <option value="18.00">កណ្ដុរឥតខ្សែ Logitech M331</option>
+                                            <option value="75.00">ក្តារចុច Keychron K2 Pro</option>
+                                        </select>
+                                    </td>
+                                    <td class="py-3 px-4 text-center">
+                                        <input type="number" value="2" min="1" oninput="calculateTotals()" 
+                                            class="w-20 bg-slate-50 border border-slate-200 rounded-lg p-2 text-center text-xs font-bold text-slate-800 focus:outline-none focus:border-[#7c2d12] row-qty">
+                                    </td>
+                                    <td class="py-3 px-4 text-right">
+                                        <input type="number" value="650.00" step="0.01" oninput="calculateTotals()" 
+                                            class="w-28 bg-slate-50 border border-slate-200 rounded-lg p-2 text-right text-xs font-bold text-slate-800 focus:outline-none focus:border-[#7c2d12] row-price">
+                                    </td>
+                                    <td class="py-3 px-4 text-right font-bold text-slate-800 text-sm row-total">
+                                        $1,300.00
+                                    </td>
+                                    <td class="py-3 px-4 text-center">
+                                        <button onclick="removeRow(this)" class="text-slate-400 hover:text-rose-500 p-1 transition">
+                                            <i class="fas fa-trash-can text-xs"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Section 3: Financial Summary Card (Standard Rule 13) -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm flex flex-col md:flex-row justify-between gap-6">
+                    <div class="flex-1 space-y-3">
+                        <label class="block text-xs font-semibold text-slate-700">កំណត់ចំណាំលើវិក្កយបត្រ</label>
+                        <textarea rows="3" placeholder="បញ្ចូលលក្ខខណ្ឌបន្ថែម ឬព័ត៌មានដឹកជញ្ជូន..." 
+                            class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-xs text-slate-800 focus:outline-none focus:border-[#7c2d12] transition resize-none"></textarea>
+                    </div>
+
+                    <div class="w-full md:w-80 space-y-2.5 text-xs">
+                        <div class="flex justify-between text-slate-600">
+                            <span>1. សរុបរងមុខទំនិញ:</span>
+                            <span class="font-semibold text-slate-800" id="subtotalLabel">$1,300.00</span>
+                        </div>
+                        <div class="flex justify-between items-center text-slate-600">
+                            <span>2. ចូលរួមមុន (Down Payment):</span>
+                            <input type="number" id="downPaymentInput" value="0.00" step="10" oninput="calculateTotals()" 
+                                class="w-24 bg-slate-50 border border-slate-200 rounded-lg p-1 text-right text-xs font-semibold text-slate-800">
+                        </div>
+                        <div class="flex justify-between items-center text-slate-600">
+                            <span>3. ការបញ្ចុះតម្លៃពិសេស:</span>
+                            <input type="number" id="discountInput" value="50.00" step="5" oninput="calculateTotals()" 
+                                class="w-24 bg-slate-50 border border-slate-200 rounded-lg p-1 text-right text-xs font-semibold text-rose-600">
+                        </div>
+                        <div class="flex justify-between text-slate-600">
+                            <span>4. អាករលើតម្លៃបន្ថែម (អតប 10%):</span>
+                            <span class="font-semibold text-slate-800" id="vatLabel">$125.00</span>
+                        </div>
+                        <div class="flex justify-between pt-3 border-t border-slate-200 text-sm font-bold text-slate-900">
+                            <span>5. ទឹកប្រាក់សរុបចុងក្រោយ:</span>
+                            <span class="text-[#7c2d12] text-lg font-bold" id="grandTotalLabel">$1,375.00</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../scripts/ui-components.js"></script>
+    <script>
+        function onCustomerChange() {
+            const select = document.getElementById('custSelect');
+            const level = select.options[select.selectedIndex].getAttribute('data-level');
+            const badge = document.getElementById('custLevelBadge');
+            badge.innerText = 'អតិថិជន' + level;
+            showToast('បានប្តូរកម្រិតតម្លៃអតិថិជនមក: ' + level, 'info', 1500);
+            calculateTotals();
+        }
+
+        function calculateTotals() {
+            const rows = document.querySelectorAll('#tableBody tr');
+            let subtotal = 0;
+            rows.forEach(r => {
+                const qty = parseFloat(r.querySelector('.row-qty')?.value || 1);
+                const price = parseFloat(r.querySelector('.row-price')?.value || 0);
+                const total = qty * price;
+                const totalEl = r.querySelector('.row-total');
+                if (totalEl) totalEl.innerText = '$' + total.toFixed(2);
+                subtotal += total;
+            });
+
+            const downPayment = parseFloat(document.getElementById('downPaymentInput')?.value || 0);
+            const discount = parseFloat(document.getElementById('discountInput')?.value || 0);
+            const taxable = Math.max(0, subtotal - discount);
+            const vat = taxable * 0.10;
+            const grandTotal = Math.max(0, taxable + vat - downPayment);
+
+            document.getElementById('subtotalLabel').innerText = '$' + subtotal.toFixed(2);
+            document.getElementById('vatLabel').innerText = '$' + vat.toFixed(2);
+            document.getElementById('grandTotalLabel').innerText = '$' + grandTotal.toFixed(2);
+        }
+
+        function addRow() {
+            const tbody = document.getElementById('tableBody');
+            const rowCount = tbody.querySelectorAll('tr').length + 1;
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td class="py-3 px-4 text-center text-slate-400 font-bold">${rowCount}</td>
+                <td class="py-3 px-4">
+                    <select onchange="calculateTotals()" class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-xs font-semibold text-slate-800 focus:outline-none focus:border-[#7c2d12]">
+                        <option value="18.00">កណ្ដុរឥតខ្សែ Logitech M331</option>
+                        <option value="75.00">ក្តារចុច Keychron K2 Pro</option>
+                        <option value="290.00">កាស Sony WH-1000XM5</option>
+                    </select>
+                </td>
+                <td class="py-3 px-4 text-center">
+                    <input type="number" value="1" min="1" oninput="calculateTotals()" 
+                        class="w-20 bg-slate-50 border border-slate-200 rounded-lg p-2 text-center text-xs font-bold text-slate-800 focus:outline-none focus:border-[#7c2d12] row-qty">
+                </td>
+                <td class="py-3 px-4 text-right">
+                    <input type="number" value="18.00" step="0.01" oninput="calculateTotals()" 
+                        class="w-28 bg-slate-50 border border-slate-200 rounded-lg p-2 text-right text-xs font-bold text-slate-800 focus:outline-none focus:border-[#7c2d12] row-price">
+                </td>
+                <td class="py-3 px-4 text-right font-bold text-slate-800 text-sm row-total">
+                    $18.00
+                </td>
+                <td class="py-3 px-4 text-center">
+                    <button onclick="removeRow(this)" class="text-slate-400 hover:text-rose-500 p-1 transition">
+                        <i class="fas fa-trash-can text-xs"></i>
+                    </button>
+                </td>
+            `;
+            tbody.appendChild(tr);
+            calculateTotals();
+        }
+
+        function removeRow(btn) {
+            const tbody = document.getElementById('tableBody');
+            if (tbody.querySelectorAll('tr').length <= 1) {
+                showToast('វិក្កយបត្រត្រូវមានមុខទំនិញយ៉ាងហោចណាស់មួយ', 'warning');
+                return;
+            }
+            btn.closest('tr').remove();
+            calculateTotals();
+        }
+
+        function saveInvoice(status) {
+            if (status === 'publish') {
+                showToast('បានចេញវិក្កយបត្រផ្លូវការ INV-2026-0096 ដោយជោគជ័យ!', 'success');
+            } else {
+                showToast('បានរក្សាទុកជាព្រាងវិក្កយបត្ររួចរាល់', 'info');
+            }
+            setTimeout(() => {
+                window.location.href = 'invoices.html';
+            }, 1200);
+        }
+    </script>
+</body>
+</html>

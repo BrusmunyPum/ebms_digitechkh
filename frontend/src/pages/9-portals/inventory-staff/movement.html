@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - ចលនាស្តុកទំនិញ</title>
+    <link rel="icon" type="image/png" href="../../../assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#4a1d96",
+                        accent: "#9333ea",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../styles/custom.css">
+</head>
+<body class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <aside class="w-64 bg-[#4a1d96] text-white flex flex-col flex-shrink-0 select-none z-20 border-r border-purple-900">
+        <div class="h-[72px] px-6 flex items-center justify-between border-b border-white/10 flex-shrink-0">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-purple-400/20 border border-purple-400/30 flex items-center justify-center p-1 shadow-sm overflow-hidden flex-shrink-0">
+                    <img src="../../../assets/logo-mark-transparent.png" alt="DIGITECHKH" class="w-full h-full object-contain">
+                </div>
+                <div>
+                    <h1 class="text-lg font-semibold tracking-wider whitespace-nowrap text-white">DIGITECHKH</h1>
+                    <span class="text-[11px] font-medium text-purple-300 uppercase tracking-wider block">ផ្នែកស្តុកទំនិញ</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="px-5 py-3 border-b border-white/5 bg-black/15">
+            <div class="flex items-center justify-between">
+                <span class="text-xs text-purple-200">តួនាទី:</span>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-purple-500/20 text-purple-200 border border-purple-400/30">
+                    <i class="fas fa-boxes-stacked text-[10px]"></i> បុគ្គលិកស្តុក
+                </span>
+            </div>
+        </div>
+
+        <nav class="flex-1 overflow-y-auto px-4 py-4 space-y-1.5 scrollbar-hide text-sm">
+            <a href="dashboard.html" class="flex items-center p-3 text-purple-100 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-chart-pie w-6 text-center text-purple-300"></i>
+                <span class="ml-3 text-[15px]">ផ្ទាំងគ្រប់គ្រង</span>
+            </a>
+
+            <a href="balance.html" class="flex items-center p-3 text-purple-100 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-boxes-stacked w-6 text-center text-purple-300"></i>
+                <span class="ml-3 text-[15px]">តុល្យភាពស្តុក</span>
+            </a>
+
+            <a href="catalog.html" class="flex items-center p-3 text-purple-100 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-list-check w-6 text-center text-purple-300"></i>
+                <span class="ml-3 text-[15px]">កាតាឡុកទំនិញ</span>
+            </a>
+
+            <a href="movement.html" class="flex items-center p-3 bg-white/15 text-purple-200 font-medium rounded-xl shadow-sm transition-all whitespace-nowrap border border-white/10">
+                <i class="fas fa-right-left w-6 text-center text-purple-300"></i>
+                <span class="ml-3 text-[15px]">ចលនាស្តុក (ចូល/ចេញ)</span>
+            </a>
+        </nav>
+
+        <div class="p-4 border-t border-white/10 bg-black/10">
+            <a href="../../1-login/login.html" class="flex items-center text-[15px] text-purple-200 hover:text-rose-300 transition-colors p-2 rounded-lg hover:bg-white/5">
+                <i class="fas fa-arrow-right-from-bracket w-6 mr-2"></i> ចាកចេញ
+            </a>
+        </div>
+    </aside>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div>
+                <h2 class="text-xl font-semibold text-gray-800 leading-tight">កំណត់ត្រាចលនាស្តុក (Stock Movement)</h2>
+                <p class="text-xs font-normal text-gray-500 mt-0.5">ប្រវត្តិនាំចូល បញ្ចេញលក់ និងការកែតម្រូវស្តុក</p>
+            </div>
+            
+            <div class="flex items-center space-x-3">
+                <a href="create-movement.html" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#4a1d96] hover:bg-[#3b0764] text-white font-medium text-sm shadow-sm transition">
+                    <i class="fas fa-dolly text-purple-300 text-xs"></i>
+                    <span>+ បង្កើតប័ណ្ណចលនា</span>
+                </a>
+            </div>
+        </header>
+
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-4">
+            <div class="w-full space-y-4">
+                
+                <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm">
+                            <thead class="bg-slate-50 text-slate-500 uppercase text-[11px] font-semibold border-b border-slate-100">
+                                <tr>
+                                    <th class="py-3 px-4">កាលបរិច្ឆេទ</th>
+                                    <th class="py-3 px-4">កូដ SKU</th>
+                                    <th class="py-3 px-4">ឈ្មោះមុខទំនិញ</th>
+                                    <th class="py-3 px-4">ប្រភេទចលនា</th>
+                                    <th class="py-3 px-4">ចំនួន</th>
+                                    <th class="py-3 px-4">ឯកសារយោង</th>
+                                    <th class="py-3 px-4">អ្នកអនុវត្ត</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 text-slate-700 font-medium text-xs">
+                                <tr class="hover:bg-slate-50 transition">
+                                    <td class="py-3.5 px-4 text-slate-500">17 កញ្ញា 2026 14:22</td>
+                                    <td class="py-3.5 px-4 font-mono font-bold text-slate-600">SKU-MOU-002</td>
+                                    <td class="py-3.5 px-4 font-semibold text-slate-800">កណ្ដុរឥតខ្សែ Logitech</td>
+                                    <td class="py-3.5 px-4"><span class="px-2 py-0.5 rounded-full bg-rose-50 text-rose-700 font-semibold">ចេញលក់ POS</span></td>
+                                    <td class="py-3.5 px-4 font-bold text-rose-600">-1 គ្រឿង</td>
+                                    <td class="py-3.5 px-4 text-slate-500">POS-2026-0018</td>
+                                    <td class="py-3.5 px-4">គិតប្រាក់</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50 transition">
+                                    <td class="py-3.5 px-4 text-slate-500">16 កញ្ញា 2026 15:10</td>
+                                    <td class="py-3.5 px-4 font-mono font-bold text-slate-600">SKU-LAP-001</td>
+                                    <td class="py-3.5 px-4 font-semibold text-slate-800">កុំព្យូទ័រ Dell XPS 15</td>
+                                    <td class="py-3.5 px-4"><span class="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-semibold">ចូលពីទិញ</span></td>
+                                    <td class="py-3.5 px-4 font-bold text-emerald-600">+5 គ្រឿង</td>
+                                    <td class="py-3.5 px-4 text-slate-500">PO-2026-0045</td>
+                                    <td class="py-3.5 px-4">បុគ្គលិកស្តុក</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../scripts/ui-components.js"></script>
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - បញ្ជីអនុម័តឯកសារ</title>
+    <link rel="icon" type="image/png" href="../../../assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1e3a5f",
+                        accent: "#0ea5e9",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../styles/custom.css">
+</head>
+<body class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <!-- Manager Sidebar -->
+    <aside class="w-64 bg-[#1e3a5f] text-white flex flex-col flex-shrink-0 select-none z-20 border-r border-slate-700">
+        <div class="h-[72px] px-6 flex items-center justify-between border-b border-white/10 flex-shrink-0">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-white/15 border border-white/20 flex items-center justify-center p-1 shadow-sm overflow-hidden flex-shrink-0">
+                    <img src="../../../assets/logo-mark-transparent.png" alt="DIGITECHKH" class="w-full h-full object-contain">
+                </div>
+                <div>
+                    <h1 class="text-lg font-semibold tracking-wider whitespace-nowrap text-white">DIGITECHKH</h1>
+                    <span class="text-[11px] font-medium text-sky-300 uppercase tracking-wider block">អ្នកគ្រប់គ្រង</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="px-5 py-3 border-b border-white/5 bg-black/15">
+            <div class="flex items-center justify-between">
+                <span class="text-xs text-sky-200">តួនាទី:</span>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-sky-500/20 text-sky-200 border border-sky-400/30">
+                    <i class="fas fa-user-tie text-[10px]"></i> ប្រធានផ្នែក / Manager
+                </span>
+            </div>
+        </div>
+
+        <nav class="flex-1 overflow-y-auto px-4 py-4 space-y-1.5 scrollbar-hide text-sm">
+            <a href="dashboard.html" class="flex items-center p-3 text-sky-100 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-chart-pie w-6 text-center text-sky-300"></i>
+                <span class="ml-3 text-[15px]">ផ្ទាំងគ្រប់គ្រង</span>
+            </a>
+
+            <a href="approvals.html" class="flex items-center justify-between p-3 bg-white/15 text-white font-medium rounded-xl shadow-sm transition-all whitespace-nowrap border border-white/10">
+                <div class="flex items-center">
+                    <i class="fas fa-stamp w-6 text-center text-sky-300"></i>
+                    <span class="ml-3 text-[15px]">ការអនុម័ត</span>
+                </div>
+                <span class="bg-rose-500 text-white text-xs px-2 py-0.5 rounded-full font-bold">5</span>
+            </a>
+
+            <a href="reports.html" class="flex items-center p-3 text-sky-100 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-chart-column w-6 text-center text-sky-300"></i>
+                <span class="ml-3 text-[15px]">របាយការណ៍សង្ខេប</span>
+            </a>
+        </nav>
+
+        <div class="p-4 border-t border-white/10 bg-black/10">
+            <a href="../../1-login/login.html" class="flex items-center text-[15px] text-sky-200 hover:text-rose-300 transition-colors p-2 rounded-lg hover:bg-white/5">
+                <i class="fas fa-arrow-right-from-bracket w-6 mr-2"></i> ចាកចេញ
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div>
+                <h2 class="text-xl font-semibold text-gray-800 leading-tight">បញ្ជីស្នើសុំការអនុម័ត (Approvals Queue)</h2>
+                <p class="text-xs font-normal text-gray-500 mt-0.5">ពិនិត្យ យល់ព្រម ឬបដិសេធលើវិក្កយបត្រ តារាងតម្លៃ និងការបញ្ជាទិញធំៗ</p>
+            </div>
+            
+            <div class="flex items-center space-x-3">
+                <span class="text-xs font-semibold px-3 py-1.5 rounded-xl bg-rose-50 text-rose-700 border border-rose-200">
+                    5 ករណីរង់ចាំការសម្រេច
+                </span>
+            </div>
+        </header>
+
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-4">
+            <div class="w-full space-y-4">
+                
+                <!-- Tab Controls -->
+                <div class="bg-white rounded-2xl p-2 border border-slate-200/80 shadow-sm flex items-center gap-2">
+                    <button class="px-5 py-2.5 rounded-xl bg-[#1e3a5f] text-white font-medium text-xs shadow-sm">
+                        វិក្កយបត្រលក់ (3)
+                    </button>
+                    <button class="px-5 py-2.5 rounded-xl text-slate-600 hover:bg-slate-100 font-medium text-xs transition">
+                        សម្រង់តម្លៃបញ្ចុះពិសេស (1)
+                    </button>
+                    <button class="px-5 py-2.5 rounded-xl text-slate-600 hover:bg-slate-100 font-medium text-xs transition">
+                        ការបញ្ជាទិញចូល (1)
+                    </button>
+                </div>
+
+                <!-- Approval Items Table -->
+                <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm">
+                            <thead class="bg-slate-50 text-slate-500 uppercase text-[11px] font-semibold border-b border-slate-100">
+                                <tr>
+                                    <th class="py-3.5 px-4">លេខឯកសារ</th>
+                                    <th class="py-3.5 px-4">អតិថិជន / ដៃគូ</th>
+                                    <th class="py-3.5 px-4">ស្នើដោយ</th>
+                                    <th class="py-3.5 px-4">ទឹកប្រាក់សរុប</th>
+                                    <th class="py-3.5 px-4">កាលបរិច្ឆេទ</th>
+                                    <th class="py-3.5 px-4">មូលហេតុស្នើសុំ</th>
+                                    <th class="py-3.5 px-4 text-right">ការសម្រេច</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 text-slate-700 font-medium text-xs">
+                                <!-- Row 1 -->
+                                <tr class="hover:bg-slate-50 transition" id="row-app-1">
+                                    <td class="py-3.5 px-4 font-bold text-slate-800">INV-2026-0102</td>
+                                    <td class="py-3.5 px-4">
+                                        <p class="font-semibold text-slate-800">ក្រុមហ៊ុន រស្មី អភិវឌ្ឍន៍</p>
+                                        <p class="text-[11px] text-slate-400">អតិថិជនដុំ</p>
+                                    </td>
+                                    <td class="py-3.5 px-4">សៅ សុខា (ផ្នែកលក់)</td>
+                                    <td class="py-3.5 px-4 font-bold text-slate-800 text-sm">$4,850.00</td>
+                                    <td class="py-3.5 px-4 text-slate-500">17 កញ្ញា 2026 11:30</td>
+                                    <td class="py-3.5 px-4 text-slate-600">
+                                        <span class="px-2 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200">
+                                            ជំពាក់លើសពី 30 ថ្ងៃ
+                                        </span>
+                                    </td>
+                                    <td class="py-3.5 px-4 text-right">
+                                        <div class="inline-flex items-center gap-1.5">
+                                            <a href="view-approval.html?id=INV-2026-0102" class="px-2.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium text-xs transition inline-flex items-center gap-1">
+                                                <i class="fas fa-eye text-[11px]"></i> ពិនិត្យ
+                                            </a>
+                                            <button onclick="approveItem('row-app-1', 'INV-2026-0102')" class="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-medium text-xs transition inline-flex items-center gap-1">
+                                                <i class="fas fa-check"></i> យល់ព្រម
+                                            </button>
+                                            <button onclick="rejectItem('row-app-1', 'INV-2026-0102')" class="px-3 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 font-medium text-xs transition inline-flex items-center gap-1">
+                                                <i class="fas fa-xmark"></i> បដិសេធ
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- Row 2 -->
+                                <tr class="hover:bg-slate-50 transition" id="row-app-2">
+                                    <td class="py-3.5 px-4 font-bold text-slate-800">INV-2026-0105</td>
+                                    <td class="py-3.5 px-4">
+                                        <p class="font-semibold text-slate-800">សណ្ឋាគារ ភ្នំពេញ ហ្គ្រេន</p>
+                                        <p class="text-[11px] text-slate-400">អតិថិជន VIP</p>
+                                    </td>
+                                    <td class="py-3.5 px-4">ហេង វិច្ឆិកា (ផ្នែកលក់)</td>
+                                    <td class="py-3.5 px-4 font-bold text-slate-800 text-sm">$8,200.00</td>
+                                    <td class="py-3.5 px-4 text-slate-500">17 កញ្ញា 2026 10:15</td>
+                                    <td class="py-3.5 px-4 text-slate-600">
+                                        <span class="px-2 py-0.5 rounded-full bg-blue-50 text-blue-800 border border-blue-200">
+                                            បញ្ចុះតម្លៃពិសេស 12%
+                                        </span>
+                                    </td>
+                                    <td class="py-3.5 px-4 text-right">
+                                        <div class="inline-flex items-center gap-1.5">
+                                            <a href="view-approval.html?id=INV-2026-0105" class="px-2.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium text-xs transition inline-flex items-center gap-1">
+                                                <i class="fas fa-eye text-[11px]"></i> ពិនិត្យ
+                                            </a>
+                                            <button onclick="approveItem('row-app-2', 'INV-2026-0105')" class="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-medium text-xs transition inline-flex items-center gap-1">
+                                                <i class="fas fa-check"></i> យល់ព្រម
+                                            </button>
+                                            <button onclick="rejectItem('row-app-2', 'INV-2026-0105')" class="px-3 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 font-medium text-xs transition inline-flex items-center gap-1">
+                                                <i class="fas fa-xmark"></i> បដិសេធ
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- Row 3 -->
+                                <tr class="hover:bg-slate-50 transition" id="row-app-3">
+                                    <td class="py-3.5 px-4 font-bold text-slate-800">INV-2026-0108</td>
+                                    <td class="py-3.5 px-4">
+                                        <p class="font-semibold text-slate-800">សាលារៀន អន្តរជាតិ អាស៊ី</p>
+                                        <p class="text-[11px] text-slate-400">អតិថិជនស្ថាប័ន</p>
+                                    </td>
+                                    <td class="py-3.5 px-4">សៅ សុខា (ផ្នែកលក់)</td>
+                                    <td class="py-3.5 px-4 font-bold text-slate-800 text-sm">$3,150.00</td>
+                                    <td class="py-3.5 px-4 text-slate-500">16 កញ្ញា 2026 16:45</td>
+                                    <td class="py-3.5 px-4 text-slate-600">
+                                        <span class="px-2 py-0.5 rounded-full bg-purple-50 text-purple-800 border border-purple-200">
+                                            លក្ខខណ្ឌទូទាត់ 60 ថ្ងៃ
+                                        </span>
+                                    </td>
+                                    <td class="py-3.5 px-4 text-right">
+                                        <div class="inline-flex items-center gap-1.5">
+                                            <button onclick="approveItem('row-app-3', 'INV-2026-0108')" class="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-medium text-xs transition inline-flex items-center gap-1">
+                                                <i class="fas fa-check"></i> យល់ព្រម
+                                            </button>
+                                            <button onclick="rejectItem('row-app-3', 'INV-2026-0108')" class="px-3 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 font-medium text-xs transition inline-flex items-center gap-1">
+                                                <i class="fas fa-xmark"></i> បដិសេធ
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../scripts/ui-components.js"></script>
+    <script>
+        function approveItem(rowId, docId) {
+            const row = document.getElementById(rowId);
+            if (row) {
+                row.style.opacity = '0.4';
+                row.style.pointerEvents = 'none';
+            }
+            showToast('បានអនុម័តឯកសារ ' + docId + ' ដោយជោគជ័យ', 'success');
+        }
+
+        function rejectItem(rowId, docId) {
+            const row = document.getElementById(rowId);
+            if (row) {
+                row.style.opacity = '0.4';
+                row.style.pointerEvents = 'none';
+            }
+            showToast('បានបដិសេធឯកសារ ' + docId + ' រួចរាល់', 'warning');
+        }
+    </script>
+</body>
+</html>

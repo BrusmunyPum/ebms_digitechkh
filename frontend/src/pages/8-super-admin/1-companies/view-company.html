@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - ព័ត៌មានលម្អិតក្រុមហ៊ុន</title>
+    <link rel="icon" type="image/png" href="../../../assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1a1a2e",
+                        accent: "#f59e0b",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../styles/custom.css">
+</head>
+<body class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <!-- Super Admin Sidebar -->
+    <aside class="w-64 bg-[#1a1a2e] text-white flex flex-col flex-shrink-0 select-none z-20 border-r border-slate-800">
+        <div class="h-[72px] px-6 flex items-center justify-between border-b border-white/10 flex-shrink-0">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center p-1 shadow-sm overflow-hidden flex-shrink-0">
+                    <img src="../../../assets/logo-mark-transparent.png" alt="DIGITECHKH" class="w-full h-full object-contain">
+                </div>
+                <div>
+                    <h1 class="text-lg font-semibold tracking-wider whitespace-nowrap text-white">DIGITECHKH</h1>
+                    <span class="text-[11px] font-medium text-amber-400 uppercase tracking-wider block">ស៊ុបភើរ អភិបាល</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="px-5 py-3 border-b border-white/5 bg-black/20">
+            <div class="flex items-center justify-between">
+                <span class="text-xs text-slate-400">តួនាទីប្រព័ន្ធ:</span>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                    <i class="fas fa-shield-halved text-[10px]"></i> អភិបាលកំពូល
+                </span>
+            </div>
+        </div>
+
+        <nav class="flex-1 overflow-y-auto px-4 py-4 space-y-1.5 scrollbar-hide text-sm">
+            <a href="../dashboard.html" class="flex items-center p-3 text-slate-300 hover:bg-white/5 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-chart-pie w-6 text-center text-slate-400"></i>
+                <span class="ml-3 text-[15px]">ផ្ទាំងគ្រប់គ្រង</span>
+            </a>
+
+            <a href="companies.html" class="flex items-center p-3 bg-white/10 text-amber-300 font-medium rounded-xl shadow-sm transition-all whitespace-nowrap border border-white/10">
+                <i class="fas fa-building-columns w-6 text-center text-amber-400"></i>
+                <span class="ml-3 text-[15px]">គ្រប់គ្រងក្រុមហ៊ុន</span>
+            </a>
+
+            <a href="../2-subscriptions/subscriptions.html" class="flex items-center p-3 text-slate-300 hover:bg-white/5 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-cubes w-6 text-center text-slate-400"></i>
+                <span class="ml-3 text-[15px]">កញ្ចប់សេវា និងការជាវ</span>
+            </a>
+
+            <a href="../3-users/global-users.html" class="flex items-center p-3 text-slate-300 hover:bg-white/5 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-users-gear w-6 text-center text-slate-400"></i>
+                <span class="ml-3 text-[15px]">អ្នកប្រើប្រាស់សកល</span>
+            </a>
+
+            <a href="../4-audit-logs/audit-logs.html" class="flex items-center p-3 text-slate-300 hover:bg-white/5 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-clipboard-list w-6 text-center text-slate-400"></i>
+                <span class="ml-3 text-[15px]">កំណត់ត្រាសវនកម្ម</span>
+            </a>
+        </nav>
+
+        <div class="p-4 border-t border-white/10 bg-black/10">
+            <a href="../../1-login/login.html" class="flex items-center text-[15px] text-slate-400 hover:text-rose-400 transition-colors p-2 rounded-lg hover:bg-white/5">
+                <i class="fas fa-arrow-right-from-bracket w-6 mr-2"></i> ចាកចេញពីប្រព័ន្ធ
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        
+        <!-- Header (Exact h-[72px] px-6) -->
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div class="flex items-center gap-4">
+                <!-- Standard Back Button -->
+                <a href="companies.html" 
+                   class="w-10 h-10 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-600 flex items-center justify-center transition border border-slate-200/70" 
+                   title="ត្រឡប់ទៅបញ្ជីក្រុមហ៊ុន">
+                    <i class="fas fa-arrow-left text-sm"></i>
+                </a>
+                <div>
+                    <h2 class="text-xl font-semibold text-gray-800 leading-tight">ឌីជីថេក ខេមបូឌា ឯ.ក (COM-001)</h2>
+                    <p class="text-xs font-normal text-gray-500 mt-0.5">ព័ត៌មានលម្អិតស្ថាប័ន កញ្ចប់សេវា និងគណនីបុគ្គលិក</p>
+                </div>
+            </div>
+            
+            <div class="flex items-center space-x-2.5">
+                <button onclick="showToast('បានផ្ញើសាររំលឹកកាលបរិច្ឆេទជាវទៅកាន់ក្រុមហ៊ុន', 'info')" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium transition flex items-center gap-1.5">
+                    <i class="fas fa-envelope"></i> ផ្ញើសារជូនដំណឹង
+                </button>
+                <button onclick="showToast('ទម្រង់កែប្រែកញ្ចប់សេវា ដំណើរការ', 'info')" class="px-4 py-2 rounded-xl bg-[#1a1a2e] hover:bg-[#272744] text-white text-xs font-medium transition flex items-center gap-1.5">
+                    <i class="fas fa-edit text-amber-400"></i> កែប្រែព័ត៌មាន
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Body -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-4">
+            <div class="w-full space-y-4">
+                
+                <!-- Company Summary Top Card -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm flex flex-wrap items-center justify-between gap-4">
+                    <div class="flex items-center gap-4">
+                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-700 text-white font-bold flex items-center justify-center text-xl shadow-md flex-shrink-0">
+                            DK
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-3">
+                                <h3 class="text-xl font-bold text-slate-800">ឌីជីថេក ខេមបូឌា ឯ.ក</h3>
+                                <span class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span> សកម្ម
+                                </span>
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-purple-50 text-purple-700 border border-purple-200">
+                                    កញ្ចប់សហគ្រាស
+                                </span>
+                            </div>
+                            <p class="text-xs text-slate-500 mt-1 flex items-center gap-4 flex-wrap">
+                                <span><i class="fas fa-fingerprint text-slate-400 mr-1"></i> លេខកូដពន្ធ: <strong>B01-2024-99881</strong></span>
+                                <span><i class="fas fa-location-dot text-slate-400 mr-1"></i> អគារ 128 មហាវិថីព្រះមុនីវង្ស រាជធានីភ្នំពេញ</span>
+                                <span><i class="fas fa-phone text-slate-400 mr-1"></i> 023 888 999</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Usage Stats Pill Box -->
+                    <div class="flex items-center gap-3 bg-slate-50 p-3 rounded-2xl border border-slate-200/70 text-xs">
+                        <div class="px-3 py-1 border-r border-slate-200 text-center">
+                            <span class="text-slate-400 block text-[11px]">អ្នកប្រើប្រាស់</span>
+                            <span class="font-bold text-slate-800 text-sm">42 / 50</span>
+                        </div>
+                        <div class="px-3 py-1 border-r border-slate-200 text-center">
+                            <span class="text-slate-400 block text-[11px]">ទំហំផ្ទុកទិន្នន័យ</span>
+                            <span class="font-bold text-slate-800 text-sm">8.4 GB</span>
+                        </div>
+                        <div class="px-3 py-1 text-center">
+                            <span class="text-slate-400 block text-[11px]">ផុតកំណត់ការជាវ</span>
+                            <span class="font-bold text-emerald-600 text-sm">15 មករា 2027</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabs & Content Area -->
+                <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+                    <div class="border-b border-slate-200 px-6 flex gap-6 text-sm font-semibold text-slate-500">
+                        <button class="py-4 border-b-2 border-[#1a1a2e] text-[#1a1a2e]">គណនីអ្នកប្រើប្រាស់ (42)</button>
+                        <button class="py-4 hover:text-slate-800 transition">ប្រវត្តិវិក្កយបត្រជាវ (8)</button>
+                        <button class="py-4 hover:text-slate-800 transition">កំណត់ត្រាសវនកម្ម (124)</button>
+                        <button class="py-4 hover:text-slate-800 transition">ការកំណត់ស្ថាប័ន</button>
+                    </div>
+
+                    <!-- Users List inside Company -->
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h4 class="text-sm font-semibold text-slate-800">បញ្ជីគណនីបុគ្គលិកក្នុងស្ថាប័ននេះ</h4>
+                            <span class="text-xs text-slate-400">អនុញ្ញាតបន្ថែមបាន 8 នាក់ទៀត</span>
+                        </div>
+
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-sm">
+                                <thead class="bg-slate-50 text-slate-500 uppercase text-[11px] font-semibold border-b border-slate-100">
+                                    <tr>
+                                        <th class="py-3 px-4">ឈ្មោះ និងអ៊ីមែល</th>
+                                        <th class="py-3 px-4">តួនាទី</th>
+                                        <th class="py-3 px-4">លេខទូរស័ព្ទ</th>
+                                        <th class="py-3 px-4">ចូលចុងក្រោយ</th>
+                                        <th class="py-3 px-4">ស្ថានភាព</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-100 text-slate-700 font-medium text-xs">
+                                    <tr class="hover:bg-slate-50 transition">
+                                        <td class="py-3 px-4 flex items-center gap-3">
+                                            <div class="w-7 h-7 rounded-full bg-slate-200 text-slate-700 font-bold flex items-center justify-center">
+                                                ស
+                                            </div>
+                                            <div>
+                                                <p class="font-semibold text-slate-800 text-xs">សុខ ចាន់ថន</p>
+                                                <p class="text-[11px] text-slate-400">chanthorn.sok@digitechkh.com</p>
+                                            </div>
+                                        </td>
+                                        <td class="py-3 px-4">
+                                            <span class="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-medium">អ្នកគ្រប់គ្រងទូទៅ</span>
+                                        </td>
+                                        <td class="py-3 px-4">012 345 678</td>
+                                        <td class="py-3 px-4 text-slate-400">10 នាទីមុន</td>
+                                        <td class="py-3 px-4">
+                                            <span class="text-emerald-600 font-medium">សកម្ម</span>
+                                        </td>
+                                    </tr>
+
+                                    <tr class="hover:bg-slate-50 transition">
+                                        <td class="py-3 px-4 flex items-center gap-3">
+                                            <div class="w-7 h-7 rounded-full bg-slate-200 text-slate-700 font-bold flex items-center justify-center">
+                                                ហ
+                                            </div>
+                                            <div>
+                                                <p class="font-semibold text-slate-800 text-xs">ហេង វិច្ឆិកា</p>
+                                                <p class="text-[11px] text-slate-400">vicheka.heng@digitechkh.com</p>
+                                            </div>
+                                        </td>
+                                        <td class="py-3 px-4">
+                                            <span class="px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 font-medium">អ្នកគ្រប់គ្រងផ្នែក</span>
+                                        </td>
+                                        <td class="py-3 px-4">087 600 064</td>
+                                        <td class="py-3 px-4 text-slate-400">2 ម៉ោងមុន</td>
+                                        <td class="py-3 px-4">
+                                            <span class="text-emerald-600 font-medium">សកម្ម</span>
+                                        </td>
+                                    </tr>
+
+                                    <tr class="hover:bg-slate-50 transition">
+                                        <td class="py-3 px-4 flex items-center gap-3">
+                                            <div class="w-7 h-7 rounded-full bg-slate-200 text-slate-700 font-bold flex items-center justify-center">
+                                                គ
+                                            </div>
+                                            <div>
+                                                <p class="font-semibold text-slate-800 text-xs">កែវ សោភា</p>
+                                                <p class="text-[11px] text-slate-400">sophea.keo@digitechkh.com</p>
+                                            </div>
+                                        </td>
+                                        <td class="py-3 px-4">
+                                            <span class="px-2 py-0.5 rounded-full bg-teal-50 text-teal-700 font-medium">គណនេយ្យករ</span>
+                                        </td>
+                                        <td class="py-3 px-4">098 112 233</td>
+                                        <td class="py-3 px-4 text-slate-400">ម្សិលមិញ</td>
+                                        <td class="py-3 px-4">
+                                            <span class="text-emerald-600 font-medium">សកម្ម</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../scripts/ui-components.js"></script>
+</body>
+</html>

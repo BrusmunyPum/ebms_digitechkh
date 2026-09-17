@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - កំណត់ត្រាសវនកម្មប្រព័ន្ធ</title>
+    <link rel="icon" type="image/png" href="../../../assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1a1a2e",
+                        accent: "#f59e0b",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../styles/custom.css">
+</head>
+<body class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <!-- Super Admin Sidebar -->
+    <aside class="w-64 bg-[#1a1a2e] text-white flex flex-col flex-shrink-0 select-none z-20 border-r border-slate-800">
+        <div class="h-[72px] px-6 flex items-center justify-between border-b border-white/10 flex-shrink-0">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center p-1 shadow-sm overflow-hidden flex-shrink-0">
+                    <img src="../../../assets/logo-mark-transparent.png" alt="DIGITECHKH" class="w-full h-full object-contain">
+                </div>
+                <div>
+                    <h1 class="text-lg font-semibold tracking-wider whitespace-nowrap text-white">DIGITECHKH</h1>
+                    <span class="text-[11px] font-medium text-amber-400 uppercase tracking-wider block">ស៊ុបភើរ អភិបាល</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="px-5 py-3 border-b border-white/5 bg-black/20">
+            <div class="flex items-center justify-between">
+                <span class="text-xs text-slate-400">តួនាទីប្រព័ន្ធ:</span>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                    <i class="fas fa-shield-halved text-[10px]"></i> អភិបាលកំពូល
+                </span>
+            </div>
+        </div>
+
+        <nav class="flex-1 overflow-y-auto px-4 py-4 space-y-1.5 scrollbar-hide text-sm">
+            <a href="../dashboard.html" class="flex items-center p-3 text-slate-300 hover:bg-white/5 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-chart-pie w-6 text-center text-slate-400"></i>
+                <span class="ml-3 text-[15px]">ផ្ទាំងគ្រប់គ្រង</span>
+            </a>
+
+            <a href="../1-companies/companies.html" class="flex items-center p-3 text-slate-300 hover:bg-white/5 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-building-columns w-6 text-center text-slate-400"></i>
+                <span class="ml-3 text-[15px]">គ្រប់គ្រងក្រុមហ៊ុន</span>
+            </a>
+
+            <a href="../2-subscriptions/subscriptions.html" class="flex items-center p-3 text-slate-300 hover:bg-white/5 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-cubes w-6 text-center text-slate-400"></i>
+                <span class="ml-3 text-[15px]">កញ្ចប់សេវា និងការជាវ</span>
+            </a>
+
+            <a href="../3-users/global-users.html" class="flex items-center p-3 text-slate-300 hover:bg-white/5 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-users-gear w-6 text-center text-slate-400"></i>
+                <span class="ml-3 text-[15px]">អ្នកប្រើប្រាស់សកល</span>
+            </a>
+
+            <a href="audit-logs.html" class="flex items-center p-3 bg-white/10 text-amber-300 font-medium rounded-xl shadow-sm transition-all whitespace-nowrap border border-white/10">
+                <i class="fas fa-clipboard-list w-6 text-center text-amber-400"></i>
+                <span class="ml-3 text-[15px]">កំណត់ត្រាសវនកម្ម</span>
+            </a>
+        </nav>
+
+        <div class="p-4 border-t border-white/10 bg-black/10">
+            <a href="../../1-login/login.html" class="flex items-center text-[15px] text-slate-400 hover:text-rose-400 transition-colors p-2 rounded-lg hover:bg-white/5">
+                <i class="fas fa-arrow-right-from-bracket w-6 mr-2"></i> ចាកចេញពីប្រព័ន្ធ
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div>
+                <h2 class="text-xl font-semibold text-gray-800 leading-tight">កំណត់ត្រាសវនកម្មប្រព័ន្ធ (Audit Logs)</h2>
+                <p class="text-xs font-normal text-gray-500 mt-0.5">តាមដានរាល់សកម្មភាព ការបង្កើត ការកែប្រែ និងការចូលប្រព័ន្ធដើម្បីសុវត្ថិភាពខ្ពស់</p>
+            </div>
+            
+            <div class="flex items-center space-x-3">
+                <button onclick="showToast('បានទាញយកកំណត់ត្រាសវនកម្មជាទម្រង់ CSV', 'success')" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium transition flex items-center gap-1.5">
+                    <i class="fas fa-download"></i> ទាញយកកំណត់ត្រា
+                </button>
+            </div>
+        </header>
+
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-4">
+            <div class="w-full space-y-4">
+                
+                <!-- Filters & Search Toolbar -->
+                <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200/80 flex flex-wrap items-center justify-between gap-3">
+                    <div class="flex flex-wrap items-center gap-3 flex-1">
+                        <div class="relative flex-1 max-w-md">
+                            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                                <i class="fas fa-search text-xs"></i>
+                            </span>
+                            <input type="text" placeholder="ស្វែងរកតាមអ្នកប្រើ សកម្មភាព ឬអាសយដ្ឋាន IP..." 
+                                class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-9 pr-4 py-2 text-sm text-slate-800 focus:outline-none focus:border-[#1a1a2e] transition placeholder:text-slate-400 placeholder:text-xs">
+                        </div>
+
+                        <!-- Action Types Filter -->
+                        <div class="flex items-center gap-1.5 bg-slate-100 p-1 rounded-xl text-xs font-medium">
+                            <button class="px-3 py-1.5 rounded-lg bg-white shadow-sm text-slate-800">ទាំងអស់</button>
+                            <button class="px-3 py-1.5 rounded-lg text-emerald-700 hover:text-emerald-900">បង្កើត</button>
+                            <button class="px-3 py-1.5 rounded-lg text-blue-700 hover:text-blue-900">កែប្រែ</button>
+                            <button class="px-3 py-1.5 rounded-lg text-rose-700 hover:text-rose-900">លុប</button>
+                            <button class="px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-800">ចូលប្រព័ន្ធ</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Audit Logs Table -->
+                <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm">
+                            <thead class="bg-slate-50 text-slate-500 uppercase text-[11px] font-semibold border-b border-slate-100">
+                                <tr>
+                                    <th class="py-3.5 px-4">កាលបរិច្ឆេទ និងម៉ោង</th>
+                                    <th class="py-3.5 px-4">អ្នកអនុវត្ត</th>
+                                    <th class="py-3.5 px-4">ក្រុមហ៊ុន</th>
+                                    <th class="py-3.5 px-4">សកម្មភាព</th>
+                                    <th class="py-3.5 px-4">ម៉ូឌុល</th>
+                                    <th class="py-3.5 px-4">ព័ត៌មានលម្អិត</th>
+                                    <th class="py-3.5 px-4">អាសយដ្ឋាន IP</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 text-slate-700 font-medium text-xs">
+                                <tr class="hover:bg-slate-50 transition">
+                                    <td class="py-3.5 px-4 text-slate-500">17 កញ្ញា 2026 13:45</td>
+                                    <td class="py-3.5 px-4 font-semibold text-slate-800">សុខ ចាន់ថន</td>
+                                    <td class="py-3.5 px-4">ឌីជីថេក ខេមបូឌា</td>
+                                    <td class="py-3.5 px-4">
+                                        <span class="px-2 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                                            បង្កើត
+                                        </span>
+                                    </td>
+                                    <td class="py-3.5 px-4">វិក្កយបត្រលក់</td>
+                                    <td class="py-3.5 px-4 text-slate-600">បានបង្កើតវិក្កយបត្រ INV-2026-0089 ($1,450.00)</td>
+                                    <td class="py-3.5 px-4 font-mono text-slate-400">119.15.160.42</td>
+                                </tr>
+
+                                <tr class="hover:bg-slate-50 transition">
+                                    <td class="py-3.5 px-4 text-slate-500">17 កញ្ញា 2026 13:30</td>
+                                    <td class="py-3.5 px-4 font-semibold text-slate-800">ហេង វិច្ឆិកា</td>
+                                    <td class="py-3.5 px-4">ឌីជីថេក ខេមបូឌា</td>
+                                    <td class="py-3.5 px-4">
+                                        <span class="px-2 py-0.5 rounded-full text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-200">
+                                            កែប្រែ
+                                        </span>
+                                    </td>
+                                    <td class="py-3.5 px-4">តារាងតម្លៃ</td>
+                                    <td class="py-3.5 px-4 text-slate-600">កែប្រែតម្លៃលក់មុខទំនិញ "កុំព្យូទ័រ Dell XPS"</td>
+                                    <td class="py-3.5 px-4 font-mono text-slate-400">119.15.160.45</td>
+                                </tr>
+
+                                <tr class="hover:bg-slate-50 transition">
+                                    <td class="py-3.5 px-4 text-slate-500">17 កញ្ញា 2026 12:15</td>
+                                    <td class="py-3.5 px-4 font-semibold text-slate-800">អភិបាលប្រព័ន្ធ</td>
+                                    <td class="py-3.5 px-4">គ្រប់គ្រងកណ្តាល</td>
+                                    <td class="py-3.5 px-4">
+                                        <span class="px-2 py-0.5 rounded-full text-xs font-semibold bg-purple-50 text-purple-700 border border-purple-200">
+                                            ដំឡើងកញ្ចប់
+                                        </span>
+                                    </td>
+                                    <td class="py-3.5 px-4">ការជាវ</td>
+                                    <td class="py-3.5 px-4 text-slate-600">ដំឡើងកញ្ចប់សេវាជូន "អង្គរ ត្រេឌីង" ទៅជា Pro Plan</td>
+                                    <td class="py-3.5 px-4 font-mono text-slate-400">103.216.50.8</td>
+                                </tr>
+
+                                <tr class="hover:bg-slate-50 transition">
+                                    <td class="py-3.5 px-4 text-slate-500">17 កញ្ញា 2026 10:05</td>
+                                    <td class="py-3.5 px-4 font-semibold text-slate-800">រ័ត្ន មករា</td>
+                                    <td class="py-3.5 px-4">អង្គរ ត្រេឌីង</td>
+                                    <td class="py-3.5 px-4">
+                                        <span class="px-2 py-0.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200">
+                                            ចូលប្រព័ន្ធ
+                                        </span>
+                                    </td>
+                                    <td class="py-3.5 px-4">ផ្ទៀងផ្ទាត់</td>
+                                    <td class="py-3.5 px-4 text-slate-600">ចូលប្រព័ន្ធជោគជ័យតាមរយៈ Web Portal</td>
+                                    <td class="py-3.5 px-4 font-mono text-slate-400">124.248.180.12</td>
+                                </tr>
+
+                                <tr class="hover:bg-slate-50 transition">
+                                    <td class="py-3.5 px-4 text-slate-500">17 កញ្ញា 2026 09:12</td>
+                                    <td class="py-3.5 px-4 font-semibold text-slate-800">មិនស្គាល់</td>
+                                    <td class="py-3.5 px-4">មិនស្គាល់</td>
+                                    <td class="py-3.5 px-4">
+                                        <span class="px-2 py-0.5 rounded-full text-xs font-semibold bg-rose-50 text-rose-700 border border-rose-200">
+                                            បរាជ័យ
+                                        </span>
+                                    </td>
+                                    <td class="py-3.5 px-4">សុវត្ថិភាព</td>
+                                    <td class="py-3.5 px-4 text-rose-600">បញ្ចូលពាក្យសម្ងាត់ខុសលើសចំនួនកំណត់ (Blocked)</td>
+                                    <td class="py-3.5 px-4 font-mono text-rose-500">103.216.50.12</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../scripts/ui-components.js"></script>
+</body>
+</html>

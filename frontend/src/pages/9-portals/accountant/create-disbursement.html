@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - បង្កើតប័ណ្ណចំណាយទូទាត់</title>
+    <link rel="icon" type="image/png" href="../../../assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#2d3748",
+                        accent: "#0d9488",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../styles/custom.css">
+</head>
+<body class="bg-slate-50 font-sans text-slate-800 text-[16px] flex h-screen overflow-hidden">
+
+    <!-- Accountant Sidebar -->
+    <aside class="w-64 bg-[#2d3748] text-white flex flex-col flex-shrink-0 select-none z-20 border-r border-slate-700">
+        <div class="h-[72px] px-6 flex items-center justify-between border-b border-white/10 flex-shrink-0">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-teal-400/20 border border-teal-400/30 flex items-center justify-center p-1 shadow-sm overflow-hidden flex-shrink-0">
+                    <img src="../../../assets/logo-mark-transparent.png" alt="DIGITECHKH" class="w-full h-full object-contain">
+                </div>
+                <div>
+                    <h1 class="text-lg font-semibold tracking-wider whitespace-nowrap text-white">DIGITECHKH</h1>
+                    <span class="text-[11px] font-medium text-teal-300 uppercase tracking-wider block">គណនេយ្យករ</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="px-5 py-3 border-b border-white/5 bg-black/15">
+            <div class="flex items-center justify-between">
+                <span class="text-xs text-slate-300">តួនាទី:</span>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-teal-500/20 text-teal-300 border border-teal-400/30">
+                    <i class="fas fa-calculator text-[10px]"></i> Accountant
+                </span>
+            </div>
+        </div>
+
+        <nav class="flex-1 overflow-y-auto px-4 py-4 space-y-1.5 scrollbar-hide text-sm">
+            <a href="dashboard.html" class="flex items-center p-3 text-slate-200 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-chart-pie w-6 text-center text-teal-300"></i>
+                <span class="ml-3 text-[15px]">ផ្ទាំងគ្រប់គ្រងហិរញ្ញវត្ថុ</span>
+            </a>
+
+            <a href="payments.html" class="flex items-center p-3 text-slate-200 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-hand-holding-dollar w-6 text-center text-teal-300"></i>
+                <span class="ml-3 text-[15px]">ចំណូលពីការលក់</span>
+            </a>
+
+            <a href="disbursements.html" class="flex items-center p-3 bg-white/15 text-white font-medium rounded-xl shadow-sm transition-all whitespace-nowrap border border-white/10">
+                <i class="fas fa-money-bill-transfer w-6 text-center text-teal-300"></i>
+                <span class="ml-3 text-[15px]">ប័ណ្ណចំណាយទូទាត់</span>
+            </a>
+
+            <a href="reports.html" class="flex items-center p-3 text-slate-200 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-file-invoice-dollar w-6 text-center text-teal-300"></i>
+                <span class="ml-3 text-[15px]">របាយការណ៍ពន្ធ និង P&L</span>
+            </a>
+        </nav>
+
+        <div class="p-4 border-t border-white/10 bg-black/10">
+            <a href="../../1-login/login.html" class="flex items-center text-[15px] text-slate-300 hover:text-rose-400 transition-colors p-2 rounded-lg hover:bg-white/5">
+                <i class="fas fa-arrow-right-from-bracket w-6 mr-2"></i> ចាកចេញ
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <!-- Header: h-[72px] seamless -->
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div class="flex items-center gap-4">
+                <a href="disbursements.html" 
+                   class="w-10 h-10 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-600 flex items-center justify-center transition border border-slate-200/70" 
+                   title="ត្រឡប់ទៅបញ្ជីប័ណ្ណចំណាយ">
+                    <i class="fas fa-arrow-left text-sm"></i>
+                </a>
+                <div>
+                    <h2 class="text-xl font-semibold text-gray-800 leading-tight">បង្កើតប័ណ្ណចំណាយទូទាត់ថ្មី (Payment Voucher)</h2>
+                    <p class="text-xs font-normal text-gray-500 mt-0.5">កត់ត្រាការចំណាយថ្លៃទំនិញ ឬចំណាយប្រតិបត្តិការទូទៅ</p>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-3">
+                <a href="disbursements.html" class="px-4 py-2.5 rounded-xl border border-slate-200 hover:bg-slate-100 text-slate-700 font-medium text-xs transition">
+                    បោះបង់
+                </a>
+                <button onclick="saveVoucher()" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#2d3748] hover:bg-[#1a202c] text-white font-medium text-xs shadow-sm transition">
+                    <i class="fas fa-check text-teal-400"></i>
+                    <span>ចេញប័ណ្ណចំណាយផ្លូវការ</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Form Container -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-6">
+            <div class="w-full space-y-6">
+                
+                <!-- Section 1: Voucher Details -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-5">
+                    <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+                        <div class="w-8 h-8 rounded-lg bg-teal-50 text-teal-700 flex items-center justify-center text-sm font-bold">1</div>
+                        <div>
+                            <h3 class="font-semibold text-slate-800 text-base">ព័ត៌មានទូទៅនៃប័ណ្ណចំណាយ</h3>
+                            <p class="text-xs text-slate-500">លេខប័ណ្ណ កាលបរិច្ឆេទ និងអ្នកទទួលប្រាក់</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">លេខប័ណ្ណចំណាយ</label>
+                            <input type="text" value="DISB-2026-0045" readonly 
+                                class="w-full bg-slate-100 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-600 font-bold outline-none">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">កាលបរិច្ឆេទចំណាយ</label>
+                            <input type="text" value="17 កញ្ញា 2026" readonly 
+                                class="w-full bg-slate-100 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-600 font-medium outline-none">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">ប្រភេទចំណាយ <span class="text-rose-500">*</span></label>
+                            <select class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-[#2d3748] transition">
+                                <option>ទូទាត់ថ្លៃទំនិញអ្នកផ្គត់ផ្គង់ (Supplier Bill)</option>
+                                <option>ចំណាយថ្លៃជួលទីតាំង (Rental Expense)</option>
+                                <option>ចំណាយទឹក ភ្លើង និងអ៊ីនធឺណិត (Utilities)</option>
+                                <option>ចំណាយប្រាក់បៀវត្សរ៍បុគ្គលិក (Salaries)</option>
+                            </select>
+                        </div>
+
+                        <div class="md:col-span-2">
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">អ្នកទទួលប្រាក់ (Payee) <span class="text-rose-500">*</span></label>
+                            <input type="text" id="payeeName" placeholder="ឧ. ក្រុមហ៊ុន អាប៊ីស៊ី ត្រេឌីង (អ្នកផ្គត់ផ្គង់)" 
+                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-[#2d3748] transition font-semibold">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">យោងលើវិក្កយបត្រទិញ</label>
+                            <input type="text" placeholder="ឧ. PO-2026-0044" 
+                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-[#2d3748] transition">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2: Payment Source & Amounts -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-5">
+                    <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+                        <div class="w-8 h-8 rounded-lg bg-blue-50 text-blue-700 flex items-center justify-center text-sm font-bold">2</div>
+                        <div>
+                            <h3 class="font-semibold text-slate-800 text-base">ប្រភពគណនីបង់ប្រាក់ និងការគណនាពន្ធ</h3>
+                            <p class="text-xs text-slate-500">គណនីធនាគារ ចំនួនទឹកប្រាក់ និងពន្ធកាត់ទុក (Withholding Tax)</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">គណនីបង់ប្រាក់ <span class="text-rose-500">*</span></label>
+                            <select class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-[#2d3748] transition">
+                                <option>ABA Bank (USD) - 001 234 567</option>
+                                <option>Canadia Bank (KHR) - 008 889 900</option>
+                                <option>សាច់ប្រាក់ក្នុងដៃ (Petty Cash)</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">ទឹកប្រាក់ចំណាយ ($) <span class="text-rose-500">*</span></label>
+                            <input type="number" id="disbAmount" value="2500.00" step="10" oninput="calculateNet()" 
+                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 font-bold text-base focus:outline-none focus:border-[#2d3748] transition">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">ពន្ធកាត់ទុក (Withholding Tax)</label>
+                            <select id="whtSelect" onchange="calculateNet()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-[#2d3748] transition">
+                                <option value="0">0% (មិនគិតពន្ធកាត់ទុក)</option>
+                                <option value="10">10% (ថ្លៃជួលអគារ/ទីតាំង)</option>
+                                <option value="15">15% (ថ្លៃសេវាប្រឹក្សា/បច្ចេកទេស)</option>
+                            </select>
+                        </div>
+
+                        <div class="md:col-span-3 pt-2">
+                            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 flex justify-between items-center text-xs">
+                                <div>
+                                    <span class="text-slate-500">ទឹកប្រាក់ត្រូវទូទាត់សុទ្ធជាក់ស្តែង (Net Payable):</span>
+                                    <h4 class="text-lg font-bold text-teal-700 mt-0.5" id="netAmountLabel">$2,500.00</h4>
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-slate-500">ពន្ធកាត់ទុករក្សាទុក:</span>
+                                    <h4 class="text-sm font-bold text-slate-800 mt-0.5" id="taxHoldLabel">$0.00</h4>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="md:col-span-3">
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">បរិយាយលម្អិតនៃប្រតិបត្តិការ</label>
+                            <textarea rows="2" placeholder="បញ្ចូលព័ត៌មានលម្អិតអំពីមូលហេតុនៃការចំណាយ..." 
+                                class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-xs text-slate-800 focus:outline-none focus:border-[#2d3748] transition resize-none"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../scripts/ui-components.js"></script>
+    <script>
+        function calculateNet() {
+            const amount = parseFloat(document.getElementById('disbAmount')?.value || 0);
+            const whtRate = parseFloat(document.getElementById('whtSelect')?.value || 0) / 100;
+            const tax = amount * whtRate;
+            const net = amount - tax;
+
+            document.getElementById('taxHoldLabel').innerText = '$' + tax.toFixed(2);
+            document.getElementById('netAmountLabel').innerText = '$' + net.toFixed(2);
+        }
+
+        function saveVoucher() {
+            const payee = document.getElementById('payeeName').value.trim();
+            if (!payee) {
+                showToast('សូមបញ្ចូលឈ្មោះអ្នកទទួលប្រាក់', 'warning');
+                return;
+            }
+            showToast('បានចេញប័ណ្ណចំណាយ DISB-2026-0045 ដោយជោគជ័យ!', 'success');
+            setTimeout(() => {
+                window.location.href = 'disbursements.html';
+            }, 1200);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - បន្ថែមអ្នកផ្គត់ផ្គង់ថ្មី</title>
+    <link rel="icon" type="image/png" href="../../../assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1e3a8a",
+                        accent: "#38bdf8",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../styles/custom.css">
+</head>
+<body class="bg-slate-50 font-sans text-slate-800 text-[16px] flex h-screen overflow-hidden">
+
+    <!-- Purchase Staff Sidebar -->
+    <aside class="w-64 bg-[#1e3a8a] text-white flex flex-col flex-shrink-0 select-none z-20 border-r border-blue-900">
+        <div class="h-[72px] px-6 flex items-center justify-between border-b border-white/10 flex-shrink-0">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-sky-400/20 border border-sky-400/30 flex items-center justify-center p-1 shadow-sm overflow-hidden flex-shrink-0">
+                    <img src="../../../assets/logo-mark-transparent.png" alt="DIGITECHKH" class="w-full h-full object-contain">
+                </div>
+                <div>
+                    <h1 class="text-lg font-semibold tracking-wider whitespace-nowrap text-white">DIGITECHKH</h1>
+                    <span class="text-[11px] font-medium text-sky-200 uppercase tracking-wider block">បុគ្គលិកផ្នែកទិញ</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="px-5 py-3 border-b border-white/5 bg-black/15">
+            <div class="flex items-center justify-between">
+                <span class="text-xs text-sky-200">តួនាទី:</span>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-sky-400/10 text-sky-200 border border-sky-400/20">
+                    <i class="fas fa-cart-shopping text-[10px]"></i> Purchase Staff
+                </span>
+            </div>
+        </div>
+
+        <nav class="flex-1 overflow-y-auto px-4 py-4 space-y-1.5 scrollbar-hide text-sm">
+            <a href="dashboard.html" class="flex items-center p-3 text-sky-100 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-chart-pie w-6 text-center text-sky-300"></i>
+                <span class="ml-3 text-[15px]">ផ្ទាំងគ្រប់គ្រង</span>
+            </a>
+
+            <a href="bills.html" class="flex items-center p-3 text-sky-100 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-receipt w-6 text-center text-sky-300"></i>
+                <span class="ml-3 text-[15px]">វិក្កយបត្របញ្ជាទិញ</span>
+            </a>
+
+            <a href="suppliers.html" class="flex items-center p-3 bg-white/15 text-white font-medium rounded-xl shadow-sm transition-all whitespace-nowrap border border-white/10">
+                <i class="fas fa-truck-field w-6 text-center text-sky-300"></i>
+                <span class="ml-3 text-[15px]">អ្នកផ្គត់ផ្គង់</span>
+            </a>
+
+            <a href="disbursements.html" class="flex items-center p-3 text-sky-100 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-money-bill-transfer w-6 text-center text-sky-300"></i>
+                <span class="ml-3 text-[15px]">ប័ណ្ណចំណាយទូទាត់</span>
+            </a>
+        </nav>
+
+        <div class="p-4 border-t border-white/10 bg-black/10">
+            <a href="../../1-login/login.html" class="flex items-center text-[15px] text-sky-200 hover:text-rose-300 transition-colors p-2 rounded-lg hover:bg-white/5">
+                <i class="fas fa-arrow-right-from-bracket w-6 mr-2"></i> ចាកចេញ
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <!-- Header: h-[72px] seamless -->
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div class="flex items-center gap-4">
+                <a href="suppliers.html" 
+                   class="w-10 h-10 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-600 flex items-center justify-center transition border border-slate-200/70" 
+                   title="ត្រឡប់ទៅបញ្ជីអ្នកផ្គត់ផ្គង់">
+                    <i class="fas fa-arrow-left text-sm"></i>
+                </a>
+                <div>
+                    <h2 class="text-xl font-semibold text-gray-800 leading-tight">បន្ថែមអ្នកផ្គត់ផ្គង់ថ្មី</h2>
+                    <p class="text-xs font-normal text-gray-500 mt-0.5">បង្កើតប្រវត្តិរូបដៃគូផ្គត់ផ្គង់ ព័ត៌មានទំនាក់ទំនង និងគណនីធនាគារ</p>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-3">
+                <a href="suppliers.html" class="px-4 py-2.5 rounded-xl border border-slate-200 hover:bg-slate-100 text-slate-700 font-medium text-xs transition">
+                    បោះបង់
+                </a>
+                <button onclick="saveSupplier()" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#1e3a8a] hover:bg-[#172554] text-white font-medium text-xs shadow-sm transition">
+                    <i class="fas fa-check text-sky-400"></i>
+                    <span>រក្សាទុកអ្នកផ្គត់ផ្គង់</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Form Container -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-6">
+            <div class="w-full space-y-6">
+                
+                <!-- Section 1: Supplier Identity -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-5">
+                    <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+                        <div class="w-8 h-8 rounded-lg bg-sky-50 text-sky-700 flex items-center justify-center text-sm font-bold">1</div>
+                        <div>
+                            <h3 class="font-semibold text-slate-800 text-base">ព័ត៌មានទូទៅនៃអ្នកផ្គត់ផ្គង់</h3>
+                            <p class="text-xs text-slate-500">ឈ្មោះក្រុមហ៊ុន លេខពន្ធ និងប្រភេទផ្គត់ផ្គង់</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">ឈ្មោះក្រុមហ៊ុន / អ្នកផ្គត់ផ្គង់ <span class="text-rose-500">*</span></label>
+                            <input type="text" id="suppName" placeholder="ឧ. ក្រុមហ៊ុន ដេប៉ូ កុំព្យូទ័រ ភ្នំពេញ" 
+                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-[#1e3a8a] transition font-semibold">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">កូដសម្គាល់អ្នកផ្គត់ផ្គង់</label>
+                            <input type="text" placeholder="ឧ. SUP-DPH" 
+                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-[#1e3a8a] transition uppercase">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">លេខសម្គាល់ពន្ធ (TIN)</label>
+                            <input type="text" placeholder="ឧ. K008-77665544" 
+                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-[#1e3a8a] transition">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">អ្នកទំនាក់ទំនងផ្លូវការ <span class="text-rose-500">*</span></label>
+                            <input type="text" placeholder="ឧ. លោក សេង វណ្ណា" 
+                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-[#1e3a8a] transition">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">លេខទូរស័ព្ទ <span class="text-rose-500">*</span></label>
+                            <input type="text" placeholder="ឧ. 023 777 888" 
+                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-[#1e3a8a] transition">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">អ៊ីមែលផ្លូវការ</label>
+                            <input type="email" placeholder="ឧ. sales@depotcomputer.com" 
+                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-[#1e3a8a] transition">
+                        </div>
+
+                        <div class="md:col-span-3">
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">អាសយដ្ឋានក្រុមហ៊ុន</label>
+                            <input type="text" placeholder="ផ្ទះលេខ 88 ផ្លូវកម្ពុជាក្រោម សង្កាត់ទឹកល្អក់ ខណ្ឌទួលគោក រាជធានីភ្នំពេញ" 
+                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-[#1e3a8a] transition">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2: Bank Account & Terms -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-5">
+                    <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+                        <div class="w-8 h-8 rounded-lg bg-blue-50 text-blue-700 flex items-center justify-center text-sm font-bold">2</div>
+                        <div>
+                            <h3 class="font-semibold text-slate-800 text-base">គណនីធនាគារ និងលក្ខខណ្ឌទូទាត់ប្រាក់</h3>
+                            <p class="text-xs text-slate-500">គណនីធនាគារសម្រាប់ផ្ទេរទូទាត់ថ្លៃទំនិញ</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">ឈ្មោះធនាគារ</label>
+                            <select class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-[#1e3a8a] transition">
+                                <option>ធនាគារ អេ ប៊ី អេ (ABA Bank)</option>
+                                <option>ធនាគារ កាណាឌីយ៉ា (Canadia Bank)</option>
+                                <option>ធនាគារ អេស៊ីលីដា (ACLEDA Bank)</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">ឈ្មោះគណនី</label>
+                            <input type="text" placeholder="DEPOT COMPUTER CO LTD" 
+                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-[#1e3a8a] transition uppercase">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">លេខគណនីធនាគារ</label>
+                            <input type="text" placeholder="001 988 776" 
+                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-[#1e3a8a] transition font-mono">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">លក្ខខណ្ឌទូទាត់ (Payment Terms)</label>
+                            <select class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-[#1e3a8a] transition">
+                                <option>ទូទាត់ពេលប្រគល់ទំនិញ (COD)</option>
+                                <option selected>ជំពាក់ 30 ថ្ងៃ (Net 30)</option>
+                                <option>ជំពាក់ 60 ថ្ងៃ (Net 60)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../scripts/ui-components.js"></script>
+    <script>
+        function saveSupplier() {
+            const name = document.getElementById('suppName').value.trim();
+            if (!name) {
+                showToast('សូមបញ្ចូលឈ្មោះអ្នកផ្គត់ផ្គង់', 'warning');
+                return;
+            }
+            showToast('បានបង្កើតអ្នកផ្គត់ផ្គង់ "' + name + '" ដោយជោគជ័យ!', 'success');
+            setTimeout(() => {
+                window.location.href = 'suppliers.html';
+            }, 1200);
+        }
+    </script>
+</body>
+</html>

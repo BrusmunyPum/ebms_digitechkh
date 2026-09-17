@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - ផ្ទាំងគិតប្រាក់រហ័ស (Touch POS)</title>
+    <link rel="icon" type="image/png" href="../../../assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#065f46",
+                        'primary-dark': "#044332",
+                        accent: "#10b981",
+                        lime: "#84cc16",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../styles/custom.css">
+</head>
+<body class="bg-slate-100 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden select-none">
+
+    <!-- Compact Cashier POS Sidebar -->
+    <aside class="w-20 lg:w-60 bg-[#065f46] text-white flex flex-col flex-shrink-0 z-20 border-r border-emerald-800">
+        <div class="h-[72px] px-4 lg:px-6 flex items-center justify-between border-b border-white/10 flex-shrink-0">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-lime-400/20 border border-lime-400/30 flex items-center justify-center p-1 shadow-sm overflow-hidden flex-shrink-0">
+                    <img src="../../../assets/logo-mark-transparent.png" alt="DIGITECHKH" class="w-full h-full object-contain">
+                </div>
+                <div class="hidden lg:block">
+                    <h1 class="text-lg font-semibold tracking-wider whitespace-nowrap text-white">DIGITECHKH</h1>
+                    <span class="text-[11px] font-medium text-lime-300 uppercase tracking-wider block">គិតប្រាក់ (POS)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="hidden lg:block px-5 py-3 border-b border-white/5 bg-black/15">
+            <div class="flex items-center justify-between">
+                <span class="text-xs text-emerald-200">តួនាទី:</span>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-lime-500/20 text-lime-200 border border-lime-400/30">
+                    <i class="fas fa-cash-register text-[10px]"></i> អ្នកគិតប្រាក់
+                </span>
+            </div>
+        </div>
+
+        <nav class="flex-1 overflow-y-auto px-2 lg:px-4 py-4 space-y-2 scrollbar-hide text-sm">
+            <a href="dashboard.html" class="flex items-center justify-center lg:justify-start p-3 bg-white/15 text-lime-200 font-medium rounded-xl shadow-sm transition-all border border-white/10" title="ផ្ទាំងគិតប្រាក់">
+                <i class="fas fa-cash-register w-6 text-center text-lime-300 text-lg"></i>
+                <span class="ml-3 text-[15px] hidden lg:inline">ផ្ទាំងគិតប្រាក់</span>
+            </a>
+
+            <a href="history.html" class="flex items-center justify-center lg:justify-start p-3 text-emerald-100 hover:bg-white/10 hover:text-white rounded-xl transition-all" title="ប្រវត្តិការលក់ថ្ងៃនេះ">
+                <i class="fas fa-clock-rotate-left w-6 text-center text-lime-300 text-lg"></i>
+                <span class="ml-3 text-[15px] hidden lg:inline">លក់ថ្ងៃនេះ</span>
+            </a>
+            <a href="close-shift.html" class="flex items-center justify-center lg:justify-start p-3 text-emerald-100 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap" title="បិទវេនគិតប្រាក់">
+                <i class="fas fa-lock w-6 text-center text-lime-300 text-lg"></i>
+                <span class="ml-3 text-[15px] hidden lg:inline">បិទវេនគិតប្រាក់</span>
+            </a>
+        </nav>
+
+        <!-- Shift Summary in Sidebar (Desktop) -->
+        <div class="hidden lg:block p-4 border-t border-white/10 bg-black/10 text-xs text-emerald-100 space-y-1.5">
+            <div class="flex justify-between">
+                <span>វេនគិតប្រាក់:</span>
+                <span class="font-bold text-white">វេនព្រឹក</span>
+            </div>
+            <div class="flex justify-between">
+                <span>វិក្កយបត្រថ្ងៃនេះ:</span>
+                <span class="font-bold text-lime-300">18 វិក្កយបត្រ</span>
+            </div>
+            <div class="flex justify-between">
+                <span>ប្រាក់ប្រមូលបាន:</span>
+                <span class="font-bold text-white">$428.50</span>
+            </div>
+        </div>
+
+        <div class="p-3 lg:p-4 border-t border-white/10 bg-black/15">
+            <a href="../../1-login/login.html" class="flex items-center text-xs lg:text-[15px] text-emerald-200 hover:text-rose-300 transition-colors p-2 rounded-lg hover:bg-white/5">
+                <i class="fas fa-arrow-right-from-bracket w-6 mr-1 lg:mr-2"></i> <span class="hidden lg:inline">ចាកចេញ</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Workspace -->
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        
+        <!-- Header (Exact h-[72px] px-6) -->
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div class="flex items-center gap-4">
+                <div>
+                    <h2 class="text-xl font-semibold text-gray-800 leading-tight">ផ្ទាំងលក់រហ័ស (Touch POS Counter)</h2>
+                    <p class="text-xs font-normal text-gray-500 mt-0.5">ចុចលើមុខទំនិញដើម្បីបញ្ចូលទៅក្នុងកន្ត្រកគិតប្រាក់</p>
+                </div>
+            </div>
+            
+            <div class="flex items-center space-x-3">
+                <a href="close-shift.html" class="px-3.5 py-2 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 text-xs font-semibold transition inline-flex items-center gap-1.5">
+                    <i class="fas fa-lock text-[11px]"></i>
+                    <span>បិទវេន (Close Shift)</span>
+                </a>
+                <div class="flex items-center gap-2 bg-emerald-50 text-emerald-800 px-3.5 py-1.5 rounded-xl border border-emerald-200 text-xs font-medium">
+                    <i class="fas fa-circle-check text-emerald-600"></i>
+                    <span>ម៉ាស៊ីនព្រីន: រួចរាល់</span>
+                </div>
+                <div class="flex items-center border-l pl-3">
+                    <div class="w-10 h-10 rounded-full bg-[#065f46] text-lime-200 flex items-center justify-center font-bold text-sm shadow-sm">
+                        គប
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- POS Body: Split 2 Columns (Products Left 65%, Cart Right 35%) -->
+        <div class="flex-1 flex overflow-hidden">
+            
+            <!-- LEFT PANEL: Categories & Product Grid -->
+            <div class="flex-1 flex flex-col p-4 overflow-hidden border-r border-slate-200 bg-slate-50">
+                <!-- Search & Category Filters -->
+                <div class="space-y-3 mb-4 flex-shrink-0">
+                    <!-- Search Bar -->
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                            <i class="fas fa-barcode text-base"></i>
+                        </span>
+                        <input type="text" id="posSearch" placeholder="ស្កេនបាកូដ ឬវាយឈ្មោះទំនិញដើម្បីស្វែងរក..." 
+                            class="w-full bg-white border border-slate-200 rounded-2xl pl-11 pr-4 py-3 text-sm text-slate-800 focus:outline-none focus:border-[#065f46] shadow-sm placeholder:text-slate-400">
+                    </div>
+
+                    <!-- Category Pills -->
+                    <div class="flex items-center gap-2 overflow-x-auto pb-1 text-xs font-semibold scrollbar-hide">
+                        <button class="px-4 py-2 rounded-xl bg-[#065f46] text-white shadow-sm flex-shrink-0">ទាំងអស់</button>
+                        <button class="px-4 py-2 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 text-slate-700 flex-shrink-0 transition">គ្រឿងអេឡិចត្រូនិក</button>
+                        <button class="px-4 py-2 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 text-slate-700 flex-shrink-0 transition">សម្ភារៈការិយាល័យ</button>
+                        <button class="px-4 py-2 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 text-slate-700 flex-shrink-0 transition">គ្រឿងបន្លាស់</button>
+                    </div>
+                </div>
+
+                <!-- Product Grid (Scrollable) -->
+                <div class="flex-1 overflow-y-auto pr-1">
+                    <div class="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-3">
+                        <!-- Product 1 -->
+                        <div onclick="addToCart('កណ្ដុរឥតខ្សែ Logitech', 18.00)" class="bg-white rounded-2xl p-3 border border-slate-200 hover:border-emerald-500 hover:shadow-md transition cursor-pointer flex flex-col justify-between active:scale-95 duration-100">
+                            <div class="w-full h-24 rounded-xl bg-slate-100 flex items-center justify-center text-slate-400 text-2xl mb-2 overflow-hidden">
+                                <i class="fas fa-computer-mouse"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-slate-800 text-xs leading-tight line-clamp-2">កណ្ដុរឥតខ្សែ Logitech M331</h4>
+                                <span class="text-[11px] text-slate-400 block mt-0.5">ស្តុក: 45</span>
+                            </div>
+                            <div class="mt-2 pt-2 border-t border-slate-100 flex items-center justify-between">
+                                <span class="font-bold text-emerald-700 text-sm">$18.00</span>
+                                <span class="w-6 h-6 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center text-xs"><i class="fas fa-plus"></i></span>
+                            </div>
+                        </div>
+
+                        <!-- Product 2 -->
+                        <div onclick="addToCart('ក្តារចុចមេកានិច Keychron', 75.00)" class="bg-white rounded-2xl p-3 border border-slate-200 hover:border-emerald-500 hover:shadow-md transition cursor-pointer flex flex-col justify-between active:scale-95 duration-100">
+                            <div class="w-full h-24 rounded-xl bg-slate-100 flex items-center justify-center text-slate-400 text-2xl mb-2 overflow-hidden">
+                                <i class="fas fa-keyboard"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-slate-800 text-xs leading-tight line-clamp-2">ក្តារចុច Keychron K2 Pro</h4>
+                                <span class="text-[11px] text-slate-400 block mt-0.5">ស្តុក: 20</span>
+                            </div>
+                            <div class="mt-2 pt-2 border-t border-slate-100 flex items-center justify-between">
+                                <span class="font-bold text-emerald-700 text-sm">$75.00</span>
+                                <span class="w-6 h-6 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center text-xs"><i class="fas fa-plus"></i></span>
+                            </div>
+                        </div>
+
+                        <!-- Product 3 -->
+                        <div onclick="addToCart('កាសស្តាប់ Sony WH-1000XM5', 290.00)" class="bg-white rounded-2xl p-3 border border-slate-200 hover:border-emerald-500 hover:shadow-md transition cursor-pointer flex flex-col justify-between active:scale-95 duration-100">
+                            <div class="w-full h-24 rounded-xl bg-slate-100 flex items-center justify-center text-slate-400 text-2xl mb-2 overflow-hidden">
+                                <i class="fas fa-headphones"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-slate-800 text-xs leading-tight line-clamp-2">កាស Sony WH-1000XM5</h4>
+                                <span class="text-[11px] text-slate-400 block mt-0.5">ស្តុក: 12</span>
+                            </div>
+                            <div class="mt-2 pt-2 border-t border-slate-100 flex items-center justify-between">
+                                <span class="font-bold text-emerald-700 text-sm">$290.00</span>
+                                <span class="w-6 h-6 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center text-xs"><i class="fas fa-plus"></i></span>
+                            </div>
+                        </div>
+
+                        <!-- Product 4 -->
+                        <div onclick="addToCart('ខ្សែសាក USB Type-C 65W', 12.00)" class="bg-white rounded-2xl p-3 border border-slate-200 hover:border-emerald-500 hover:shadow-md transition cursor-pointer flex flex-col justify-between active:scale-95 duration-100">
+                            <div class="w-full h-24 rounded-xl bg-slate-100 flex items-center justify-center text-slate-400 text-2xl mb-2 overflow-hidden">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-slate-800 text-xs leading-tight line-clamp-2">ខ្សែសាករហ័ស 65W Type-C</h4>
+                                <span class="text-[11px] text-slate-400 block mt-0.5">ស្តុក: 85</span>
+                            </div>
+                            <div class="mt-2 pt-2 border-t border-slate-100 flex items-center justify-between">
+                                <span class="font-bold text-emerald-700 text-sm">$12.00</span>
+                                <span class="w-6 h-6 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center text-xs"><i class="fas fa-plus"></i></span>
+                            </div>
+                        </div>
+
+                        <!-- Product 5 -->
+                        <div onclick="addToCart('ក្រដាសព្រីន Double A (A4)', 5.50)" class="bg-white rounded-2xl p-3 border border-slate-200 hover:border-emerald-500 hover:shadow-md transition cursor-pointer flex flex-col justify-between active:scale-95 duration-100">
+                            <div class="w-full h-24 rounded-xl bg-slate-100 flex items-center justify-center text-slate-400 text-2xl mb-2 overflow-hidden">
+                                <i class="fas fa-copy"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-slate-800 text-xs leading-tight line-clamp-2">ក្រដាសព្រីន Double A A4 80g</h4>
+                                <span class="text-[11px] text-slate-400 block mt-0.5">ស្តុក: 150</span>
+                            </div>
+                            <div class="mt-2 pt-2 border-t border-slate-100 flex items-center justify-between">
+                                <span class="font-bold text-emerald-700 text-sm">$5.50</span>
+                                <span class="w-6 h-6 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center text-xs"><i class="fas fa-plus"></i></span>
+                            </div>
+                        </div>
+
+                        <!-- Product 6 -->
+                        <div onclick="addToCart('ទឹកថ្នាំព្រីន Canon GI-790', 14.00)" class="bg-white rounded-2xl p-3 border border-slate-200 hover:border-emerald-500 hover:shadow-md transition cursor-pointer flex flex-col justify-between active:scale-95 duration-100">
+                            <div class="w-full h-24 rounded-xl bg-slate-100 flex items-center justify-center text-slate-400 text-2xl mb-2 overflow-hidden">
+                                <i class="fas fa-fill-drip"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-slate-800 text-xs leading-tight line-clamp-2">ទឹកថ្នាំ Canon GI-790 BK</h4>
+                                <span class="text-[11px] text-slate-400 block mt-0.5">ស្តុក: 60</span>
+                            </div>
+                            <div class="mt-2 pt-2 border-t border-slate-100 flex items-center justify-between">
+                                <span class="font-bold text-emerald-700 text-sm">$14.00</span>
+                                <span class="w-6 h-6 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center text-xs"><i class="fas fa-plus"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT PANEL: Live Cart / Order Ticket (350px - 420px) -->
+            <div class="w-80 lg:w-96 bg-white flex flex-col justify-between shadow-xl z-10 border-l border-slate-200">
+                <!-- Cart Header -->
+                <div class="p-4 border-b border-slate-100 flex items-center justify-between flex-shrink-0">
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-sm flex items-center gap-2">
+                            <i class="fas fa-cart-shopping text-emerald-600"></i> កន្ត្រកទំនិញ
+                        </h3>
+                        <span class="text-[11px] text-slate-400">វិក្កយបត្រថ្មី #POS-019</span>
+                    </div>
+                    <button onclick="clearCart()" class="text-xs text-rose-500 hover:text-rose-700 p-1 font-medium transition">
+                        សម្អាត
+                    </button>
+                </div>
+
+                <!-- Cart Items List (Scrollable) -->
+                <div id="cartItemsContainer" class="flex-1 overflow-y-auto p-4 space-y-3">
+                    <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+                        <div class="flex-1 min-w-0 pr-2">
+                            <h5 class="text-xs font-semibold text-slate-800 truncate">កណ្ដុរឥតខ្សែ Logitech</h5>
+                            <span class="text-[11px] text-emerald-600 font-bold">$18.00</span>
+                        </div>
+                        <div class="flex items-center gap-2 flex-shrink-0">
+                            <button class="w-6 h-6 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-xs text-slate-600">-</button>
+                            <span class="text-xs font-bold text-slate-800 w-4 text-center">1</span>
+                            <button class="w-6 h-6 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-xs text-slate-600">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cart Footer / Totals & Checkout -->
+                <div class="p-4 border-t border-slate-200 bg-slate-50/50 space-y-3 flex-shrink-0">
+                    <div class="space-y-1.5 text-xs">
+                        <div class="flex justify-between text-slate-500">
+                            <span>សរុបរង:</span>
+                            <span id="subtotalVal" class="font-semibold text-slate-800">$18.00</span>
+                        </div>
+                        <div class="flex justify-between text-slate-500">
+                            <span>ពន្ធ អតប (10%):</span>
+                            <span id="taxVal" class="font-semibold text-slate-800">$1.80</span>
+                        </div>
+                        <div class="flex justify-between text-base font-bold text-slate-900 pt-2 border-t border-slate-200">
+                            <span>ទឹកប្រាក់ត្រូវបង់:</span>
+                            <span id="totalVal" class="text-emerald-700 text-lg">$19.80</span>
+                        </div>
+                    </div>
+
+                    <!-- Payment Method Buttons -->
+                    <div class="grid grid-cols-3 gap-2 pt-1 text-xs font-semibold">
+                        <button class="p-2.5 rounded-xl bg-emerald-50 text-emerald-800 border-2 border-emerald-600 flex flex-col items-center gap-1">
+                            <i class="fas fa-money-bill-wave text-base"></i>
+                            <span>សាច់ប្រាក់</span>
+                        </button>
+                        <button class="p-2.5 rounded-xl bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 flex flex-col items-center gap-1 transition">
+                            <i class="fas fa-qrcode text-base text-rose-600"></i>
+                            <span>KHQR</span>
+                        </button>
+                        <button class="p-2.5 rounded-xl bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 flex flex-col items-center gap-1 transition">
+                            <i class="fas fa-credit-card text-base text-blue-600"></i>
+                            <span>កាត</span>
+                        </button>
+                    </div>
+
+                    <!-- Large Checkout Button -->
+                    <button onclick="checkoutPOS()" class="w-full py-3.5 px-4 rounded-2xl bg-[#065f46] hover:bg-[#044332] text-white font-bold text-base shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2 active:scale-98">
+                        <i class="fas fa-circle-check text-lime-400"></i>
+                        <span id="checkoutBtnText">គិតប្រាក់ ($19.80)</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="../../../scripts/ui-components.js"></script>
+    <script>
+        let cart = [
+            { name: 'កណ្ដុរឥតខ្សែ Logitech', price: 18.00, qty: 1 }
+        ];
+
+        function renderCart() {
+            const container = document.getElementById('cartItemsContainer');
+            if (!container) return;
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="h-full flex flex-col items-center justify-center text-slate-400 text-center py-12">
+                        <i class="fas fa-basket-shopping text-4xl mb-3 opacity-30"></i>
+                        <p class="text-xs">កន្ត្រកទទេស្អាត</p>
+                        <span class="text-[11px] text-slate-400">សូមចុចមុខទំនិញដើម្បីបន្ថែម</span>
+                    </div>
+                `;
+                updateTotals(0);
+                return;
+            }
+
+            let html = '';
+            let subtotal = 0;
+            cart.forEach((item, index) => {
+                subtotal += item.price * item.qty;
+                html += `
+                    <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+                        <div class="flex-1 min-w-0 pr-2">
+                            <h5 class="text-xs font-semibold text-slate-800 truncate">${item.name}</h5>
+                            <span class="text-[11px] text-emerald-600 font-bold">$${(item.price * item.qty).toFixed(2)}</span>
+                        </div>
+                        <div class="flex items-center gap-2 flex-shrink-0">
+                            <button onclick="updateQty(${index}, -1)" class="w-6 h-6 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-xs text-slate-600">-</button>
+                            <span class="text-xs font-bold text-slate-800 w-4 text-center">${item.qty}</span>
+                            <button onclick="updateQty(${index}, 1)" class="w-6 h-6 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-xs text-slate-600">+</button>
+                        </div>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+            updateTotals(subtotal);
+        }
+
+        function updateTotals(subtotal) {
+            const tax = subtotal * 0.1;
+            const total = subtotal + tax;
+            const subtotalEl = document.getElementById('subtotalVal');
+            const taxEl = document.getElementById('taxVal');
+            const totalEl = document.getElementById('totalVal');
+            const checkoutBtn = document.getElementById('checkoutBtnText');
+            if (subtotalEl) subtotalEl.innerText = '$' + subtotal.toFixed(2);
+            if (taxEl) taxEl.innerText = '$' + tax.toFixed(2);
+            if (totalEl) totalEl.innerText = '$' + total.toFixed(2);
+            if (checkoutBtn) checkoutBtn.innerText = 'គិតប្រាក់ ($' + total.toFixed(2) + ')';
+        }
+
+        function addToCart(name, price) {
+            const existing = cart.find(c => c.name === name);
+            if (existing) {
+                existing.qty++;
+            } else {
+                cart.push({ name, price, qty: 1 });
+            }
+            renderCart();
+            showToast('បានបញ្ចូល "' + name + '" ទៅក្នុងកន្ត្រក', 'success', 1200);
+        }
+
+        function updateQty(index, delta) {
+            if (cart[index]) {
+                cart[index].qty += delta;
+                if (cart[index].qty <= 0) {
+                    cart.splice(index, 1);
+                }
+                renderCart();
+            }
+        }
+
+        function clearCart() {
+            cart = [];
+            renderCart();
+            showToast('បានសម្អាតកន្ត្រកទំនិញរួចរាល់', 'info');
+        }
+
+        function checkoutPOS() {
+            if (cart.length === 0) {
+                showToast('សូមបញ្ចូលមុខទំនិញយ៉ាងហោចណាស់មួយមុខ', 'warning');
+                return;
+            }
+            showToast('ការគិតប្រាក់បានជោគជ័យ! កំពុងបោះពុម្ពវិក្កយបត្រ...', 'success');
+            cart = [];
+            renderCart();
+        }
+    </script>
+</body>
+</html>

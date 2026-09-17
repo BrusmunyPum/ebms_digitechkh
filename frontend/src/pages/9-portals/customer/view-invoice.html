@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - វិក្កយបត្រ INV-2026-0105</title>
+    <link rel="icon" type="image/png" href="../../../assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1e1b4b",
+                        accent: "#a855f7",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../styles/custom.css">
+    <style>
+        @media print {
+            aside, header, #paymentSidebar, .no-print {
+                display: none !important;
+            }
+            body {
+                background: white !important;
+            }
+            #invoiceDocument {
+                box-shadow: none !important;
+                border: none !important;
+                padding: 0 !important;
+                width: 100% !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-indigo-50/30 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <aside class="w-64 bg-[#1e1b4b] text-white flex flex-col flex-shrink-0 select-none z-20 border-r border-indigo-950 no-print">
+        <div class="h-[72px] px-6 flex items-center justify-between border-b border-white/10 flex-shrink-0">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-purple-500/20 border border-purple-400/30 flex items-center justify-center p-1 shadow-sm overflow-hidden flex-shrink-0">
+                    <img src="../../../assets/logo-mark-transparent.png" alt="DIGITECHKH" class="w-full h-full object-contain">
+                </div>
+                <div>
+                    <h1 class="text-lg font-semibold tracking-wider whitespace-nowrap text-white">DIGITECHKH</h1>
+                    <span class="text-[11px] font-medium text-purple-300 uppercase tracking-wider block">អតិថិជន</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="px-5 py-3 border-b border-white/5 bg-black/20">
+            <div class="flex items-center justify-between">
+                <span class="text-xs text-indigo-300">គណនី:</span>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-purple-500/20 text-purple-300 border border-purple-500/30">
+                    <i class="fas fa-user-check text-[10px]"></i> អតិថិជន
+                </span>
+            </div>
+        </div>
+
+        <nav class="flex-1 overflow-y-auto px-4 py-4 space-y-1.5 scrollbar-hide text-sm">
+            <a href="dashboard.html" class="flex items-center p-3 text-indigo-200 hover:bg-white/5 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-chart-pie w-6 text-center text-indigo-300"></i>
+                <span class="ml-3 text-[15px]">ទិដ្ឋភាពរួម</span>
+            </a>
+
+            <a href="my-invoices.html" class="flex items-center p-3 bg-white/10 text-purple-300 font-medium rounded-xl shadow-sm transition-all whitespace-nowrap border border-white/10">
+                <i class="fas fa-file-invoice-dollar w-6 text-center text-purple-400"></i>
+                <span class="ml-3 text-[15px]">វិក្កយបត្ររបស់ខ្ញុំ</span>
+            </a>
+
+            <a href="my-payments.html" class="flex items-center p-3 text-indigo-200 hover:bg-white/5 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-receipt w-6 text-center text-indigo-300"></i>
+                <span class="ml-3 text-[15px]">ប្រវត្តិទូទាត់ប្រាក់</span>
+            </a>
+
+            <a href="my-orders.html" class="flex items-center p-3 text-indigo-200 hover:bg-white/5 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-box-open w-6 text-center text-indigo-300"></i>
+                <span class="ml-3 text-[15px]">ស្ថានភាពការបញ្ជាទិញ</span>
+            </a>
+        </nav>
+
+        <div class="p-4 border-t border-white/10 bg-black/10">
+            <a href="../../1-login/login.html" class="flex items-center text-[15px] text-indigo-300 hover:text-rose-400 transition-colors p-2 rounded-lg hover:bg-white/5">
+                <i class="fas fa-arrow-right-from-bracket w-6 mr-2"></i> ចាកចេញ
+            </a>
+        </div>
+    </aside>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full no-print">
+            <div class="flex items-center gap-4">
+                <a href="my-invoices.html" class="w-10 h-10 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-600 flex items-center justify-center transition border border-slate-200/70" title="ត្រឡប់ទៅវិក្កយបត្រ">
+                    <i class="fas fa-arrow-left text-sm"></i>
+                </a>
+                <div>
+                    <div class="flex items-center gap-2.5">
+                        <h2 class="text-xl font-semibold text-gray-800 leading-tight">វិក្កយបត្រ INV-2026-0105</h2>
+                        <span id="invoiceStatusBadge" class="px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-700 text-xs font-semibold">នៅជំពាក់</span>
+                    </div>
+                    <p class="text-xs font-normal text-gray-500 mt-0.5">កាលបរិច្ឆេទចេញ: 17 កញ្ញា 2026 | កាលបរិច្ឆេទកំណត់: 24 កញ្ញា 2026</p>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-2.5">
+                <button onclick="window.print()" class="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium transition flex items-center gap-2">
+                    <i class="fas fa-print"></i> បោះពុម្ព
+                </button>
+            </div>
+        </header>
+
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-indigo-50/20 px-4 md:px-6 py-4">
+            <div class="w-full flex flex-col lg:flex-row gap-6 items-start">
+                
+                <!-- Invoice Document Section -->
+                <div id="invoiceDocument" class="flex-1 bg-white rounded-2xl border border-purple-100 shadow-sm p-8 space-y-6 w-full">
+                    <!-- Invoice Header -->
+                    <div class="flex justify-between items-start border-b border-slate-100 pb-6">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-400/20 flex items-center justify-center p-1.5 shadow-sm">
+                                <img src="../../../assets/logo-mark-transparent.png" alt="DIGITECHKH" class="w-full h-full object-contain">
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800">DIGITECHKH CO., LTD.</h3>
+                                <p class="text-xs text-slate-500">ប្រព័ន្ធគ្រប់គ្រងអាជីវកម្ម និងបច្ចេកវិទ្យាព័ត៌មាន</p>
+                                <p class="text-xs text-slate-500">អគារ 12A មហាវិថីព្រះមុនីវង្ស សង្កាត់បឹងកេងកង ភ្នំពេញ</p>
+                                <p class="text-xs text-slate-500">ទូរស័ព្ទ: 023 888 999 | អ៊ីមែល: billing@digitechkh.com</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <h2 class="text-2xl font-bold text-purple-950">វិក្កយបត្រ</h2>
+                            <p class="text-xs font-semibold text-slate-500 mt-1">លេខវិក្កយបត្រ: <span class="text-slate-800 font-bold">INV-2026-0105</span></p>
+                            <p class="text-xs text-slate-500">កាលបរិច្ឆេទ: <span class="text-slate-700">17 កញ្ញា 2026</span></p>
+                            <p class="text-xs text-slate-500">កាលកំណត់ទូទាត់: <span class="text-rose-600 font-semibold">24 កញ្ញា 2026</span></p>
+                        </div>
+                    </div>
+
+                    <!-- Customer Info & Destination -->
+                    <div class="grid grid-cols-2 gap-6 py-2 border-b border-slate-100">
+                        <div>
+                            <span class="text-[11px] font-semibold uppercase text-slate-400 block mb-1">ចេញជូនអតិថិជន:</span>
+                            <p class="font-bold text-slate-800 text-[15px]">ក្រុមហ៊ុន សុខុម ត្រេឌីង ឯ.ក</p>
+                            <p class="text-xs text-slate-600">អត្តលេខសម្គាល់សារពើពន្ធ (TIN): K009-902201994</p>
+                            <p class="text-xs text-slate-600">អាសយដ្ឋាន: ផ្ទះលេខ 45 ផ្លូវ 310 បឹងកេងកង ភ្នំពេញ</p>
+                            <p class="text-xs text-slate-600">អ្នកទំនាក់ទំនង: លោក សុខ ជា (012 888 777)</p>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-[11px] font-semibold uppercase text-slate-400 block mb-1">ព័ត៌មានការទូទាត់:</span>
+                            <p class="text-xs text-slate-600">លក្ខខណ្ឌទូទាត់: <span class="font-semibold text-slate-800">7 ថ្ងៃ (Net 7)</span></p>
+                            <p class="text-xs text-slate-600">វិធីសាស្ត្រទូទាត់: <span class="font-semibold text-purple-700">ស្កេន KHQR / ផ្ទេរប្រាក់</span></p>
+                        </div>
+                    </div>
+
+                    <!-- Items Table -->
+                    <div class="overflow-hidden border border-slate-200 rounded-xl">
+                        <table class="w-full text-left text-sm">
+                            <thead class="bg-slate-50 text-slate-600 uppercase text-[11px] font-semibold border-b border-slate-200">
+                                <tr>
+                                    <th class="py-3 px-4">#</th>
+                                    <th class="py-3 px-4">បរិយាយទំនិញ / សេវាកម្ម</th>
+                                    <th class="py-3 px-4 text-center">ចំនួន</th>
+                                    <th class="py-3 px-4 text-right">តម្លៃឯកតា</th>
+                                    <th class="py-3 px-4 text-right">ទឹកប្រាក់</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 text-slate-700 font-medium text-xs">
+                                <tr>
+                                    <td class="py-3 px-4 text-slate-400">1</td>
+                                    <td class="py-3 px-4">
+                                        <p class="font-semibold text-slate-800">Dell XPS 15 9530 (i7-13700H / 32GB / 1TB SSD / RTX 4060)</p>
+                                        <p class="text-[11px] text-slate-400">ការធានាផ្លូវការ 2 ឆ្នាំ</p>
+                                    </td>
+                                    <td class="py-3 px-4 text-center font-bold">4 គ្រឿង</td>
+                                    <td class="py-3 px-4 text-right">$1,800.00</td>
+                                    <td class="py-3 px-4 text-right font-bold text-slate-800">$7,200.00</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-3 px-4 text-slate-400">2</td>
+                                    <td class="py-3 px-4">
+                                        <p class="font-semibold text-slate-800">Dell UltraSharp 27" 4K Monitor (U2723QE)</p>
+                                        <p class="text-[11px] text-slate-400">IPS Black, Type-C Hub</p>
+                                    </td>
+                                    <td class="py-3 px-4 text-center font-bold">2 គ្រឿង</td>
+                                    <td class="py-3 px-4 text-right">$500.00</td>
+                                    <td class="py-3 px-4 text-right font-bold text-slate-800">$1,000.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Summary & Calculation -->
+                    <div class="flex justify-end pt-2">
+                        <div class="w-80 space-y-2 text-xs">
+                            <div class="flex justify-between text-slate-600">
+                                <span>សរុបរងមុខទំនិញ:</span>
+                                <span class="font-semibold text-slate-800">$8,200.00</span>
+                            </div>
+                            <div class="flex justify-between text-slate-600">
+                                <span>ចូលរួមមុន (Down Payment):</span>
+                                <span class="font-semibold text-slate-800">$0.00</span>
+                            </div>
+                            <div class="flex justify-between text-slate-600">
+                                <span>ការបញ្ចុះតម្លៃពិសេស:</span>
+                                <span class="font-semibold text-slate-800">$0.00</span>
+                            </div>
+                            <div class="flex justify-between text-slate-600">
+                                <span>អាករលើតម្លៃបន្ថែម (អតប 0%):</span>
+                                <span class="font-semibold text-slate-800">$0.00</span>
+                            </div>
+                            <div class="flex justify-between text-purple-950 font-bold text-sm pt-2 border-t-2 border-slate-200">
+                                <span>ទឹកប្រាក់សរុបត្រូវទូទាត់:</span>
+                                <span id="displayTotal" class="text-purple-700 text-base">$8,200.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Signatures Block -->
+                    <div class="pt-8 border-t border-slate-100 grid grid-cols-2 text-center text-xs text-slate-600">
+                        <div>
+                            <p class="font-semibold text-slate-800 mb-14">ហត្ថលេខាអ្នករៀបចំ</p>
+                            <p class="border-t border-slate-300 w-44 mx-auto pt-1 font-medium">ផ្នែកគណនេយ្យ DIGITECHKH</p>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-slate-800 mb-14">ហត្ថលេខា និងត្រាអតិថិជន</p>
+                            <p class="border-t border-slate-300 w-44 mx-auto pt-1 font-medium">ក្រុមហ៊ុន សុខុម ត្រេឌីង ឯ.ក</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Live KHQR Payment Card -->
+                <div id="paymentSidebar" class="w-full lg:w-96 bg-white rounded-2xl border border-purple-100 shadow-sm p-6 space-y-5 flex-shrink-0 no-print">
+                    <div class="text-center space-y-2">
+                        <!-- Bakong KHQR Header Banner -->
+                        <div class="bg-gradient-to-r from-red-600 to-rose-700 text-white rounded-xl py-2 px-4 flex items-center justify-between shadow-sm">
+                            <span class="text-xs font-bold tracking-wider uppercase">KHQR</span>
+                            <span class="text-[11px] font-medium bg-white/20 px-2 py-0.5 rounded">បាគង Bakong</span>
+                        </div>
+                        <h4 class="font-bold text-slate-800 text-base pt-1">ស្កេនដើម្បីទូទាត់ប្រាក់</h4>
+                        <p class="text-xs text-slate-500">គាំទ្រគ្រប់កម្មវិធីធនាគារក្នុងប្រទេសកម្ពុជា</p>
+                    </div>
+
+                    <!-- Dynamic QR Code Card -->
+                    <div class="p-5 bg-gradient-to-b from-slate-50 to-purple-50/40 rounded-2xl border border-purple-100 flex flex-col items-center justify-center text-center space-y-3">
+                        <div class="w-48 h-48 bg-white p-3 rounded-2xl shadow-sm border border-slate-200 flex items-center justify-center relative">
+                            <!-- QR Code Mock Graphic -->
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=bakong://digitechkh/invoice/INV-2026-0105/amount/8200" alt="KHQR Code" class="w-full h-full object-contain">
+                            <!-- Center KHQR Icon -->
+                            <div class="absolute inset-0 m-auto w-9 h-9 rounded-full bg-red-600 text-white flex items-center justify-center text-xs font-bold shadow-md border-2 border-white">
+                                KH
+                            </div>
+                        </div>
+
+                        <div class="space-y-0.5">
+                            <p class="text-xs font-semibold text-slate-800">DIGITECHKH CO., LTD.</p>
+                            <p class="text-xs text-slate-500">គណនី ABA: 001 888 999 (USD)</p>
+                            <p class="text-lg font-bold text-red-600 pt-1">$8,200.00</p>
+                            <p class="text-[11px] text-slate-400">យោង: INV-2026-0105</p>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="space-y-2 pt-1">
+                        <button id="btnConfirmPay" onclick="simulateCustomerPayment()" class="w-full py-3 bg-red-600 hover:bg-red-700 text-white font-semibold text-xs rounded-xl transition flex items-center justify-center gap-2 shadow-sm">
+                            <i class="fas fa-check-circle"></i> ខ្ញុំបានស្កេនទូទាត់រួចរាល់
+                        </button>
+                        <p class="text-[11px] text-center text-slate-400">ប្រព័ន្ធនឹងផ្ទៀងផ្ទាត់ការទូទាត់ដោយស្វ័យប្រវត្តិតាមរយៈបណ្តាញបាគង</p>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../scripts/ui-components.js"></script>
+    <script>
+        function simulateCustomerPayment() {
+            showToast('ការទូទាត់ចំនួន $8,200.00 តាមរយៈ KHQR ទទួលបានជោគជ័យ!', 'success');
+            
+            // Update UI status
+            const badge = document.getElementById('invoiceStatusBadge');
+            badge.className = 'px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-xs font-semibold';
+            badge.innerText = 'បានទូទាត់រួចរាល់';
+
+            const btn = document.getElementById('btnConfirmPay');
+            btn.className = 'w-full py-3 bg-emerald-600 text-white font-semibold text-xs rounded-xl cursor-default flex items-center justify-center gap-2';
+            btn.innerHTML = '<i class="fas fa-badge-check"></i> បានទូទាត់រួចរាល់';
+            btn.onclick = null;
+        }
+    </script>
+</body>
+</html>

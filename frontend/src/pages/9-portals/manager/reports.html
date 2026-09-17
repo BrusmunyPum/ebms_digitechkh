@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - របាយការណ៍សង្ខេបប្រធានផ្នែក</title>
+    <link rel="icon" type="image/png" href="../../../assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1e3a5f",
+                        accent: "#0ea5e9",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../styles/custom.css">
+</head>
+<body class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <!-- Manager Sidebar -->
+    <aside class="w-64 bg-[#1e3a5f] text-white flex flex-col flex-shrink-0 select-none z-20 border-r border-slate-700">
+        <div class="h-[72px] px-6 flex items-center justify-between border-b border-white/10 flex-shrink-0">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-white/15 border border-white/20 flex items-center justify-center p-1 shadow-sm overflow-hidden flex-shrink-0">
+                    <img src="../../../assets/logo-mark-transparent.png" alt="DIGITECHKH" class="w-full h-full object-contain">
+                </div>
+                <div>
+                    <h1 class="text-lg font-semibold tracking-wider whitespace-nowrap text-white">DIGITECHKH</h1>
+                    <span class="text-[11px] font-medium text-sky-300 uppercase tracking-wider block">អ្នកគ្រប់គ្រង</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="px-5 py-3 border-b border-white/5 bg-black/15">
+            <div class="flex items-center justify-between">
+                <span class="text-xs text-sky-200">តួនាទី:</span>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-sky-500/20 text-sky-200 border border-sky-400/30">
+                    <i class="fas fa-user-tie text-[10px]"></i> ប្រធានផ្នែក / Manager
+                </span>
+            </div>
+        </div>
+
+        <nav class="flex-1 overflow-y-auto px-4 py-4 space-y-1.5 scrollbar-hide text-sm">
+            <a href="dashboard.html" class="flex items-center p-3 text-sky-100 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-chart-pie w-6 text-center text-sky-300"></i>
+                <span class="ml-3 text-[15px]">ផ្ទាំងគ្រប់គ្រង</span>
+            </a>
+
+            <a href="approvals.html" class="flex items-center justify-between p-3 text-sky-100 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <div class="flex items-center">
+                    <i class="fas fa-stamp w-6 text-center text-sky-300"></i>
+                    <span class="ml-3 text-[15px]">ការអនុម័ត</span>
+                </div>
+                <span class="bg-rose-500 text-white text-xs px-2 py-0.5 rounded-full font-bold">5</span>
+            </a>
+
+            <a href="reports.html" class="flex items-center p-3 bg-white/15 text-white font-medium rounded-xl shadow-sm transition-all whitespace-nowrap border border-white/10">
+                <i class="fas fa-chart-column w-6 text-center text-sky-300"></i>
+                <span class="ml-3 text-[15px]">របាយការណ៍សង្ខេប</span>
+            </a>
+        </nav>
+
+        <div class="p-4 border-t border-white/10 bg-black/10">
+            <a href="../../1-login/login.html" class="flex items-center text-[15px] text-sky-200 hover:text-rose-300 transition-colors p-2 rounded-lg hover:bg-white/5">
+                <i class="fas fa-arrow-right-from-bracket w-6 mr-2"></i> ចាកចេញ
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div>
+                <h2 class="text-xl font-semibold text-gray-800 leading-tight">របាយការណ៍សង្ខេបអាជីវកម្ម</h2>
+                <p class="text-xs font-normal text-gray-500 mt-0.5">ទិដ្ឋភាពរបាយការណ៍លក់ ទិញ ស្តុក និងហិរញ្ញវត្ថុសម្រាប់ថ្នាក់ដឹកនាំ</p>
+            </div>
+            
+            <div class="flex items-center space-x-2">
+                <button onclick="showToast('បាននាំចេញរបាយការណ៍ជា PDF រួចរាល់', 'success')" class="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium transition flex items-center gap-1.5">
+                    <i class="fas fa-file-pdf text-rose-600"></i> PDF
+                </button>
+                <button onclick="showToast('បាននាំចេញរបាយការណ៍ជា Excel រួចរាល់', 'success')" class="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium transition flex items-center gap-1.5">
+                    <i class="fas fa-file-excel text-emerald-600"></i> Excel
+                </button>
+            </div>
+        </header>
+
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-4">
+            <div class="w-full space-y-4">
+                
+                <!-- Report Navigation Tabs -->
+                <div class="bg-white rounded-2xl p-2 border border-slate-200/80 shadow-sm flex flex-wrap items-center justify-between gap-3">
+                    <div class="flex items-center gap-2">
+                        <button class="px-4 py-2 rounded-xl bg-[#1e3a5f] text-white font-medium text-xs shadow-sm">
+                            របាយការណ៍លក់
+                        </button>
+                        <button class="px-4 py-2 rounded-xl text-slate-600 hover:bg-slate-100 font-medium text-xs transition">
+                            របាយការណ៍ទិញ
+                        </button>
+                        <button class="px-4 py-2 rounded-xl text-slate-600 hover:bg-slate-100 font-medium text-xs transition">
+                            របាយការណ៍ស្តុក
+                        </button>
+                        <button class="px-4 py-2 rounded-xl text-slate-600 hover:bg-slate-100 font-medium text-xs transition">
+                            សង្ខេបហិរញ្ញវត្ថុ
+                        </button>
+                    </div>
+
+                    <!-- Date Picker Filter -->
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs text-slate-400 hidden sm:inline">កាលបរិច្ឆេទ:</span>
+                        <div class="h-9 px-3 bg-slate-50 border border-slate-200 text-slate-700 text-xs rounded-xl flex items-center gap-2 shadow-sm">
+                            <i class="fas fa-calendar-days text-sky-600 text-xs"></i>
+                            <span class="font-medium text-slate-800">1 កញ្ញា - 30 កញ្ញា 2026</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sales Analytics Row -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm lg:col-span-2">
+                        <h3 class="text-base font-semibold text-slate-800 mb-3">ដំណើរការលក់ប្រចាំខែ</h3>
+                        <div id="managerReportChart" class="w-full h-72"></div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-base font-semibold text-slate-800 mb-3">សង្ខេបសមិទ្ធផលខែនេះ</h3>
+                            <div class="space-y-4 text-xs">
+                                <div class="p-3 rounded-xl bg-slate-50 border border-slate-100">
+                                    <span class="text-slate-500 block">វិក្កយបត្រចេញសរុប</span>
+                                    <span class="text-xl font-bold text-slate-800">142 វិក្កយបត្រ</span>
+                                </div>
+                                <div class="p-3 rounded-xl bg-slate-50 border border-slate-100">
+                                    <span class="text-slate-500 block">ប្រាក់បានប្រមូលរួច</span>
+                                    <span class="text-xl font-bold text-emerald-600">$54,200.00</span>
+                                </div>
+                                <div class="p-3 rounded-xl bg-slate-50 border border-slate-100">
+                                    <span class="text-slate-500 block">ប្រាក់ជំពាក់នៅសល់</span>
+                                    <span class="text-xl font-bold text-amber-600">$14,250.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detail Table -->
+                <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+                    <div class="p-5 border-b border-slate-100">
+                        <h3 class="text-base font-semibold text-slate-800">ទិន្នន័យលម្អិតតាមបុគ្គលិកលក់</h3>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm">
+                            <thead class="bg-slate-50 text-slate-500 uppercase text-[11px] font-semibold border-b border-slate-100">
+                                <tr>
+                                    <th class="py-3 px-4">បុគ្គលិកលក់</th>
+                                    <th class="py-3 px-4">ចំនួនវិក្កយបត្រ</th>
+                                    <th class="py-3 px-4">ទឹកប្រាក់លក់សរុប</th>
+                                    <th class="py-3 px-4">បានទូទាត់</th>
+                                    <th class="py-3 px-4">នៅជំពាក់</th>
+                                    <th class="py-3 px-4">សម្រេចគោលដៅ</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 text-slate-700 font-medium text-xs">
+                                <tr class="hover:bg-slate-50 transition">
+                                    <td class="py-3.5 px-4 font-semibold text-slate-800">ហេង វិច្ឆិកា</td>
+                                    <td class="py-3.5 px-4">58</td>
+                                    <td class="py-3.5 px-4 font-bold text-slate-800">$28,450.00</td>
+                                    <td class="py-3.5 px-4 text-emerald-600 font-semibold">$24,100.00</td>
+                                    <td class="py-3.5 px-4 text-amber-600 font-semibold">$4,350.00</td>
+                                    <td class="py-3.5 px-4"><span class="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-bold">114%</span></td>
+                                </tr>
+                                <tr class="hover:bg-slate-50 transition">
+                                    <td class="py-3.5 px-4 font-semibold text-slate-800">សៅ សុខា</td>
+                                    <td class="py-3.5 px-4">46</td>
+                                    <td class="py-3.5 px-4 font-bold text-slate-800">$22,800.00</td>
+                                    <td class="py-3.5 px-4 text-emerald-600 font-semibold">$18,500.00</td>
+                                    <td class="py-3.5 px-4 text-amber-600 font-semibold">$4,300.00</td>
+                                    <td class="py-3.5 px-4"><span class="px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 font-bold">96%</span></td>
+                                </tr>
+                                <tr class="hover:bg-slate-50 transition">
+                                    <td class="py-3.5 px-4 font-semibold text-slate-800">ចាន់ ធីតា</td>
+                                    <td class="py-3.5 px-4">38</td>
+                                    <td class="py-3.5 px-4 font-bold text-slate-800">$17,200.00</td>
+                                    <td class="py-3.5 px-4 text-emerald-600 font-semibold">$11,600.00</td>
+                                    <td class="py-3.5 px-4 text-amber-600 font-semibold">$5,600.00</td>
+                                    <td class="py-3.5 px-4"><span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 font-bold">86%</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../scripts/ui-components.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const chartEl = document.getElementById('managerReportChart');
+            if (chartEl) {
+                const chart = echarts.init(chartEl);
+                chart.setOption({
+                    tooltip: { trigger: 'axis' },
+                    grid: { top: '10%', left: '3%', right: '4%', bottom: '15%', containLabel: true },
+                    xAxis: {
+                        type: 'category',
+                        data: ['សប្តាហ៍ទី 1', 'សប្តាហ៍ទី 2', 'សប្តាហ៍ទី 3', 'សប្តាហ៍ទី 4']
+                    },
+                    yAxis: { type: 'value' },
+                    series: [
+                        { name: 'ការលក់', type: 'line', smooth: true, data: [14200, 18500, 16400, 19350], itemStyle: { color: '#1e3a5f' } }
+                    ]
+                });
+                window.addEventListener('resize', () => chart.resize());
+            }
+        });
+    </script>
+</body>
+</html>

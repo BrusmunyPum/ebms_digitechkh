@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - ប័ណ្ណបើកប្រាក់បៀវត្សរ៍បុគ្គលិក (Payslip)</title>
+    <link rel="icon" type="image/png" href="../../../assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#134e4a",
+                        accent: "#14b8a6",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../styles/custom.css">
+</head>
+<body class="bg-teal-50/20 font-sans text-slate-800 text-[16px] flex h-screen overflow-hidden">
+
+    <!-- HR Staff Sidebar -->
+    <aside class="w-64 bg-[#134e4a] text-white flex flex-col flex-shrink-0 select-none z-20 border-r border-teal-900 print:hidden">
+        <div class="h-[72px] px-6 flex items-center justify-between border-b border-white/10 flex-shrink-0">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-teal-400/20 border border-teal-400/30 flex items-center justify-center p-1 shadow-sm overflow-hidden flex-shrink-0">
+                    <img src="../../../assets/logo-mark-transparent.png" alt="DIGITECHKH" class="w-full h-full object-contain">
+                </div>
+                <div>
+                    <h1 class="text-lg font-semibold tracking-wider whitespace-nowrap text-white">DIGITECHKH</h1>
+                    <span class="text-[11px] font-medium text-teal-300 uppercase tracking-wider block">បុគ្គលិក HR & រដ្ឋបាល</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="px-5 py-3 border-b border-white/5 bg-black/15">
+            <div class="flex items-center justify-between">
+                <span class="text-xs text-teal-200">តួនាទី:</span>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-teal-500/20 text-teal-200 border border-teal-400/30">
+                    <i class="fas fa-id-card-clip text-[10px]"></i> HR Staff
+                </span>
+            </div>
+        </div>
+
+        <nav class="flex-1 overflow-y-auto px-4 py-4 space-y-1.5 scrollbar-hide text-sm">
+            <a href="dashboard.html" class="flex items-center p-3 text-teal-100 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-chart-pie w-6 text-center text-teal-300"></i>
+                <span class="ml-3 text-[15px]">ផ្ទាំងគ្រប់គ្រង HR</span>
+            </a>
+
+            <a href="employees.html" class="flex items-center p-3 text-teal-100 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-users-viewfinder w-6 text-center text-teal-300"></i>
+                <span class="ml-3 text-[15px]">បញ្ជីបុគ្គលិក</span>
+            </a>
+
+            <a href="attendance.html" class="flex items-center p-3 text-teal-100 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-fingerprint w-6 text-center text-teal-300"></i>
+                <span class="ml-3 text-[15px]">វត្តមានប្រចាំថ្ងៃ</span>
+            </a>
+
+            <a href="leave.html" class="flex items-center p-3 text-teal-100 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-calendar-check w-6 text-center text-teal-300"></i>
+                <span class="ml-3 text-[15px]">ច្បាប់ឈប់សម្រាក</span>
+            </a>
+
+            <a href="payroll.html" class="flex items-center p-3 bg-white/15 text-white font-medium rounded-xl shadow-sm transition-all whitespace-nowrap border border-white/10">
+                <i class="fas fa-file-invoice-dollar w-6 text-center text-teal-300"></i>
+                <span class="ml-3 text-[15px]">ប្រាក់បៀវត្សរ៍ (Payroll)</span>
+            </a>
+        </nav>
+
+        <div class="p-4 border-t border-white/10 bg-black/10">
+            <a href="../../1-login/login.html" class="flex items-center text-[15px] text-teal-200 hover:text-rose-300 transition-colors p-2 rounded-lg hover:bg-white/5">
+                <i class="fas fa-arrow-right-from-bracket w-6 mr-2"></i> ចាកចេញ
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <!-- Header: h-[72px] seamless -->
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full print:hidden">
+            <div class="flex items-center gap-4">
+                <a href="payroll.html" 
+                   class="w-10 h-10 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-600 flex items-center justify-center transition border border-slate-200/70" 
+                   title="ត្រឡប់ទៅបញ្ជីប្រាក់បៀវត្សរ៍">
+                    <i class="fas fa-arrow-left text-sm"></i>
+                </a>
+                <div>
+                    <h2 class="text-xl font-semibold text-gray-800 leading-tight">ប័ណ្ណបើកប្រាក់បៀវត្សរ៍ (Payslip)</h2>
+                    <p class="text-xs font-normal text-gray-500 mt-0.5">ប័ណ្ណប្រាក់ខែបុគ្គលិកផ្លូវការប្រចាំខែសីហា 2026</p>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-3">
+                <button onclick="window.print()" class="px-4 py-2.5 rounded-xl border border-slate-200 hover:bg-slate-100 text-slate-700 font-medium text-xs transition inline-flex items-center gap-1.5">
+                    <i class="fas fa-print"></i>
+                    <span>បោះពុម្ពប័ណ្ណ (Print)</span>
+                </button>
+                <button onclick="showToast('ទាញយក Payslip ជា PDF', 'info')" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#134e4a] hover:bg-[#0f3f3c] text-white font-medium text-xs shadow-sm transition">
+                    <i class="fas fa-file-pdf text-teal-300"></i>
+                    <span>ទាញយក PDF</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Printable Payslip Document -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-100/70 p-4 md:p-8">
+            <div class="w-full bg-white rounded-2xl shadow-sm border border-slate-200 p-8 md:p-12 max-w-3xl mx-auto space-y-6 print:p-0 print:border-none print:shadow-none">
+                
+                <!-- Payslip Header -->
+                <div class="flex justify-between items-start border-b border-slate-200 pb-6">
+                    <div class="flex items-center gap-3">
+                        <img src="../../../assets/logo-mark-transparent.png" alt="DIGITECHKH" class="w-12 h-12 object-contain">
+                        <div>
+                            <h2 class="text-lg font-bold text-slate-900 leading-tight">ក្រុមហ៊ុន ឌីជីថេក ខេអេច ឯ.ក</h2>
+                            <p class="text-xs text-slate-500 mt-0.5">DIGITECHKH CO., LTD. | រាជធានីភ្នំពេញ</p>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <h3 class="text-xl font-bold text-slate-800">ប័ណ្ណបើកប្រាក់បៀវត្សរ៍</h3>
+                        <p class="text-xs text-slate-500 font-bold">PAYSLIP - សីហា 2026</p>
+                        <p class="text-[11px] text-slate-400">កាលបរិច្ឆេទបើក: 31 សីហា 2026</p>
+                    </div>
+                </div>
+
+                <!-- Employee Information Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100 text-xs">
+                    <div>
+                        <span class="text-slate-400 block">ឈ្មោះបុគ្គលិក:</span>
+                        <span class="font-bold text-slate-800 text-sm">សៅ សុខា</span>
+                    </div>
+                    <div>
+                        <span class="text-slate-400 block">អត្តលេខបុគ្គលិក:</span>
+                        <span class="font-mono font-bold text-slate-800">EMP-2024-001</span>
+                    </div>
+                    <div>
+                        <span class="text-slate-400 block">ផ្នែក / ដេប៉ាតឺម៉ង់:</span>
+                        <span class="font-semibold text-slate-700">ផ្នែកលក់ (Sales)</span>
+                    </div>
+                    <div>
+                        <span class="text-slate-400 block">មុខតំណែង:</span>
+                        <span class="font-semibold text-slate-700">មន្ត្រីផ្នែកលក់ជាន់ខ្ពស់</span>
+                    </div>
+                    <div>
+                        <span class="text-slate-400 block">លេខកាត ប.ស.ស (NSSF):</span>
+                        <span class="font-mono text-slate-700">NSSF-112233</span>
+                    </div>
+                    <div>
+                        <span class="text-slate-400 block">វិធីសាស្ត្របើកប្រាក់:</span>
+                        <span class="font-semibold text-teal-700">ផ្ទេរតាម ABA Bank</span>
+                    </div>
+                </div>
+
+                <!-- Earnings & Deductions Tables -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
+                    <!-- Earnings Table -->
+                    <div class="border border-slate-200 rounded-xl overflow-hidden">
+                        <div class="bg-emerald-50 px-4 py-2.5 border-b border-emerald-100 font-bold text-xs text-emerald-800">
+                            ប្រាក់ចំណូល (Earnings)
+                        </div>
+                        <table class="w-full text-left text-xs">
+                            <tbody class="divide-y divide-slate-100 text-slate-700">
+                                <tr>
+                                    <td class="py-2.5 px-4">ប្រាក់បៀវត្សរ៍គោល (Basic Salary)</td>
+                                    <td class="py-2.5 px-4 text-right font-bold">$450.00</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 px-4">ប្រាក់បន្ថែមម៉ោង (Overtime OT)</td>
+                                    <td class="py-2.5 px-4 text-right font-bold">$50.00</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 px-4">ប្រាក់ឧបត្ថម្ភសាំង និងបាយ</td>
+                                    <td class="py-2.5 px-4 text-right font-bold">$30.00</td>
+                                </tr>
+                                <tr class="bg-slate-50 font-bold text-slate-900">
+                                    <td class="py-3 px-4">សរុបប្រាក់ចំណូល (Gross):</td>
+                                    <td class="py-3 px-4 text-right text-emerald-700">$530.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Deductions Table -->
+                    <div class="border border-slate-200 rounded-xl overflow-hidden">
+                        <div class="bg-rose-50 px-4 py-2.5 border-b border-rose-100 font-bold text-xs text-rose-800">
+                            ការកាត់កង (Deductions)
+                        </div>
+                        <table class="w-full text-left text-xs">
+                            <tbody class="divide-y divide-slate-100 text-slate-700">
+                                <tr>
+                                    <td class="py-2.5 px-4">វិភាគទាន ប.ស.ស សោធន (2%)</td>
+                                    <td class="py-2.5 px-4 text-right font-bold text-rose-600">-$9.00</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 px-4">វិភាគទាន ប.ស.ស ថែទាំសុខភាព</td>
+                                    <td class="py-2.5 px-4 text-right text-slate-400">$0.00</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 px-4">ពន្ធលើប្រាក់បៀវត្សរ៍ (TOS)</td>
+                                    <td class="py-2.5 px-4 text-right text-slate-400">$0.00</td>
+                                </tr>
+                                <tr class="bg-slate-50 font-bold text-slate-900">
+                                    <td class="py-3 px-4">សរុបការកាត់កង:</td>
+                                    <td class="py-3 px-4 text-right text-rose-600">-$9.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+                <!-- Net Pay Box -->
+                <div class="p-5 rounded-2xl bg-teal-50/80 border border-teal-200 flex justify-between items-center text-xs">
+                    <div>
+                        <span class="text-teal-800 font-semibold uppercase block">ប្រាក់បៀវត្សរ៍សុទ្ធត្រូវទទួលបាន (Net Payable Amount):</span>
+                        <p class="text-[11px] text-teal-600 mt-0.5">ប្រាក់ចំណូលសរុប $530.00 - ការកាត់កង $9.00</p>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-2xl font-black text-[#134e4a]">$521.00</span>
+                    </div>
+                </div>
+
+                <!-- 3 Signatures Block -->
+                <div class="pt-10 grid grid-cols-3 gap-6 text-center text-xs page-break-inside-avoid">
+                    <div class="space-y-12">
+                        <p class="font-bold text-slate-700">នាយកផ្នែកធនធានមនុស្ស</p>
+                        <div class="border-b border-slate-300 w-3/4 mx-auto"></div>
+                        <p class="text-slate-400">ហត្ថលេខា និងកាលបរិច្ឆេទ</p>
+                    </div>
+
+                    <div class="space-y-12">
+                        <p class="font-bold text-slate-700">គណនេយ្យករ</p>
+                        <div class="border-b border-slate-300 w-3/4 mx-auto"></div>
+                        <p class="text-slate-400">ហត្ថលេខា និងកាលបរិច្ឆេទ</p>
+                    </div>
+
+                    <div class="space-y-12">
+                        <p class="font-bold text-slate-700">បុគ្គលិកទទួលប្រាក់</p>
+                        <div class="border-b border-slate-300 w-3/4 mx-auto"></div>
+                        <p class="text-slate-400">ហត្ថលេខា និងកាលបរិច្ឆេទ</p>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../scripts/ui-components.js"></script>
+</body>
+</html>

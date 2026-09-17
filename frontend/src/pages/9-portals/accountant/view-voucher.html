@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - ប័ណ្ណចំណាយទូទាត់ផ្លូវការ</title>
+    <link rel="icon" type="image/png" href="../../../assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#2d3748",
+                        accent: "#0d9488",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../styles/custom.css">
+</head>
+<body class="bg-slate-50 font-sans text-slate-800 text-[16px] flex h-screen overflow-hidden">
+
+    <!-- Accountant Sidebar -->
+    <aside class="w-64 bg-[#2d3748] text-white flex flex-col flex-shrink-0 select-none z-20 border-r border-slate-700">
+        <div class="h-[72px] px-6 flex items-center justify-between border-b border-white/10 flex-shrink-0">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-teal-400/20 border border-teal-400/30 flex items-center justify-center p-1 shadow-sm overflow-hidden flex-shrink-0">
+                    <img src="../../../assets/logo-mark-transparent.png" alt="DIGITECHKH" class="w-full h-full object-contain">
+                </div>
+                <div>
+                    <h1 class="text-lg font-semibold tracking-wider whitespace-nowrap text-white">DIGITECHKH</h1>
+                    <span class="text-[11px] font-medium text-teal-300 uppercase tracking-wider block">គណនេយ្យករ</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="px-5 py-3 border-b border-white/5 bg-black/15">
+            <div class="flex items-center justify-between">
+                <span class="text-xs text-slate-300">តួនាទី:</span>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-teal-500/20 text-teal-300 border border-teal-400/30">
+                    <i class="fas fa-calculator text-[10px]"></i> Accountant
+                </span>
+            </div>
+        </div>
+
+        <nav class="flex-1 overflow-y-auto px-4 py-4 space-y-1.5 scrollbar-hide text-sm">
+            <a href="dashboard.html" class="flex items-center p-3 text-slate-200 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-chart-pie w-6 text-center text-teal-300"></i>
+                <span class="ml-3 text-[15px]">ផ្ទាំងគ្រប់គ្រងហិរញ្ញវត្ថុ</span>
+            </a>
+
+            <a href="payments.html" class="flex items-center p-3 text-slate-200 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-hand-holding-dollar w-6 text-center text-teal-300"></i>
+                <span class="ml-3 text-[15px]">ចំណូលពីការលក់</span>
+            </a>
+
+            <a href="disbursements.html" class="flex items-center p-3 bg-white/15 text-white font-medium rounded-xl shadow-sm transition-all whitespace-nowrap border border-white/10">
+                <i class="fas fa-money-bill-transfer w-6 text-center text-teal-300"></i>
+                <span class="ml-3 text-[15px]">ប័ណ្ណចំណាយទូទាត់</span>
+            </a>
+
+            <a href="reports.html" class="flex items-center p-3 text-slate-200 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-file-invoice-dollar w-6 text-center text-teal-300"></i>
+                <span class="ml-3 text-[15px]">របាយការណ៍ពន្ធ និង P&L</span>
+            </a>
+        </nav>
+
+        <div class="p-4 border-t border-white/10 bg-black/10">
+            <a href="../../1-login/login.html" class="flex items-center text-[15px] text-slate-300 hover:text-rose-400 transition-colors p-2 rounded-lg hover:bg-white/5">
+                <i class="fas fa-arrow-right-from-bracket w-6 mr-2"></i> ចាកចេញ
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <!-- Header: h-[72px] seamless -->
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full print:hidden">
+            <div class="flex items-center gap-4">
+                <a href="disbursements.html" 
+                   class="w-10 h-10 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-600 flex items-center justify-center transition border border-slate-200/70" 
+                   title="ត្រឡប់ទៅបញ្ជីប័ណ្ណចំណាយ">
+                    <i class="fas fa-arrow-left text-sm"></i>
+                </a>
+                <div>
+                    <h2 class="text-xl font-semibold text-gray-800 leading-tight">ប័ណ្ណចំណាយទូទាត់ផ្លូវការ (DISB-2026-0045)</h2>
+                    <p class="text-xs font-normal text-gray-500 mt-0.5">ប័ណ្ណចំណាយដែលបានអនុម័ត និងទូទាត់រួចរាល់</p>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-3">
+                <button onclick="window.print()" class="px-4 py-2.5 rounded-xl border border-slate-200 hover:bg-slate-100 text-slate-700 font-medium text-xs transition inline-flex items-center gap-1.5">
+                    <i class="fas fa-print"></i>
+                    <span>បោះពុម្ពប័ណ្ណ (Print)</span>
+                </button>
+                <button onclick="showToast('ទាញយកប័ណ្ណចំណាយជា PDF', 'info')" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#2d3748] hover:bg-[#1a202c] text-white font-medium text-xs shadow-sm transition">
+                    <i class="fas fa-file-pdf text-teal-400"></i>
+                    <span>ទាញយក PDF</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Printable Official Voucher Document -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-100/70 p-4 md:p-8">
+            <div class="w-full bg-white rounded-2xl shadow-sm border border-slate-200 p-8 md:p-12 max-w-4xl mx-auto space-y-8 print:p-0 print:border-none print:shadow-none">
+                
+                <!-- Document Header -->
+                <div class="flex justify-between items-start border-b border-slate-200 pb-6">
+                    <div class="flex items-center gap-3">
+                        <img src="../../../assets/logo-mark-transparent.png" alt="DIGITECHKH" class="w-12 h-12 object-contain">
+                        <div>
+                            <h2 class="text-lg font-bold text-slate-900 leading-tight">ក្រុមហ៊ុន ឌីជីថេក ខេអេច ឯ.ក</h2>
+                            <p class="text-xs text-slate-500 mt-0.5">DIGITECHKH CO., LTD. | លេខអត្តសញ្ញាណកម្មពន្ធ: K001-900887766</p>
+                            <p class="text-xs text-slate-500">អាសយដ្ឋាន: អគារលេខ 128 មហាវិថីសហព័ន្ធរុស្ស៊ី រាជធានីភ្នំពេញ</p>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <span class="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 font-bold text-xs border border-emerald-200">
+                            បានទូទាត់រួច
+                        </span>
+                        <h3 class="text-xl font-bold text-slate-800 mt-2">ប័ណ្ណចំណាយទូទាត់</h3>
+                        <p class="text-xs text-slate-500 font-bold">លេខប័ណ្ណ: DISB-2026-0045</p>
+                        <p class="text-xs text-slate-400">កាលបរិច្ឆេទ: 17 កញ្ញា 2026</p>
+                    </div>
+                </div>
+
+                <!-- Payee Details -->
+                <div class="grid grid-cols-2 gap-6 text-xs">
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 space-y-1.5">
+                        <span class="text-slate-400 block font-semibold uppercase">អ្នកទទួលប្រាក់ (Payee):</span>
+                        <h4 class="font-bold text-slate-800 text-sm">ក្រុមហ៊ុន អាប៊ីស៊ី ត្រេឌីង</h4>
+                        <p class="text-slate-600">អ្នកផ្គត់ផ្គង់សម្ភារៈកុំព្យូទ័រ និងបច្ចេកវិទ្យា</p>
+                        <p class="text-slate-500">លេខទូរស័ព្ទ: 023 555 666</p>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 space-y-1.5">
+                        <span class="text-slate-400 block font-semibold uppercase">ព័ត៌មានការទូទាត់:</span>
+                        <p class="text-slate-700"><span class="text-slate-400">វិធីសាស្ត្រ:</span> ផ្ទេរតាមធនាគារ (ABA Bank USD)</p>
+                        <p class="text-slate-700"><span class="text-slate-400">យោងលើវិក្កយបត្រ:</span> PO-2026-0044</p>
+                        <p class="text-slate-700"><span class="text-slate-400">ប្រភេទចំណាយ:</span> ថ្លៃទិញទំនិញចូលស្តុក</p>
+                    </div>
+                </div>
+
+                <!-- Expense Lines Table -->
+                <div class="border border-slate-200 rounded-xl overflow-hidden">
+                    <table class="w-full text-left text-xs">
+                        <thead class="bg-slate-50 text-slate-600 font-bold border-b border-slate-200">
+                            <tr>
+                                <th class="py-3 px-4 w-12 text-center">#</th>
+                                <th class="py-3 px-4">បរិយាយមុខចំណាយ</th>
+                                <th class="py-3 px-4 text-center">កូដគណនេយ្យ</th>
+                                <th class="py-3 px-4 text-right">ចំនួនទឹកប្រាក់</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 text-slate-700">
+                            <tr>
+                                <td class="py-3.5 px-4 text-center text-slate-400">1</td>
+                                <td class="py-3.5 px-4 font-semibold text-slate-800">
+                                    ទូទាត់ថ្លៃទិញកុំព្យូទ័រ Dell OptiPlex ចំនួន 10 គ្រឿង តាម PO-2026-0044
+                                </td>
+                                <td class="py-3.5 px-4 text-center font-mono">5100 - Cost of Goods</td>
+                                <td class="py-3.5 px-4 text-right font-bold text-slate-900">$2,500.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Summary Breakdown -->
+                <div class="max-w-xs ml-auto space-y-2 text-xs">
+                    <div class="flex justify-between text-slate-600">
+                        <span>សរុបទឹកប្រាក់ចំណាយ:</span>
+                        <span class="font-bold text-slate-800">$2,500.00</span>
+                    </div>
+                    <div class="flex justify-between text-slate-600">
+                        <span>ពន្ធកាត់ទុក (WHT 0%):</span>
+                        <span class="font-bold text-slate-800">$0.00</span>
+                    </div>
+                    <div class="flex justify-between pt-2 border-t border-slate-200 text-sm font-bold text-slate-900">
+                        <span>ទឹកប្រាក់ទូទាត់សុទ្ធ:</span>
+                        <span class="text-teal-700 text-base font-extrabold">$2,500.00</span>
+                    </div>
+                </div>
+
+                <!-- 4 Official Signatures Block -->
+                <div class="pt-12 grid grid-cols-4 gap-4 text-center text-xs page-break-inside-avoid">
+                    <div class="space-y-12">
+                        <p class="font-bold text-slate-700">អ្នករៀបចំ</p>
+                        <div class="border-b border-slate-300 w-3/4 mx-auto"></div>
+                        <p class="text-slate-500">កាលបរិច្ឆេទ: ..../..../2026</p>
+                    </div>
+
+                    <div class="space-y-12">
+                        <p class="font-bold text-slate-700">គណនេយ្យករ</p>
+                        <div class="border-b border-slate-300 w-3/4 mx-auto"></div>
+                        <p class="text-slate-500">កាលបរិច្ឆេទ: ..../..../2026</p>
+                    </div>
+
+                    <div class="space-y-12">
+                        <p class="font-bold text-slate-700">ប្រធានអនុម័ត</p>
+                        <div class="border-b border-slate-300 w-3/4 mx-auto"></div>
+                        <p class="text-slate-500">កាលបរិច្ឆេទ: ..../..../2026</p>
+                    </div>
+
+                    <div class="space-y-12">
+                        <p class="font-bold text-slate-700">អ្នកទទួលប្រាក់</p>
+                        <div class="border-b border-slate-300 w-3/4 mx-auto"></div>
+                        <p class="text-slate-500">កាលបរិច្ឆេទ: ..../..../2026</p>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../scripts/ui-components.js"></script>
+</body>
+</html>

@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+<html lang="km">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - ការទូទាត់ចំណាយ</title>
+    <link rel="icon" type="image/png" href="../../../assets/favicon.png">
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#24692D",
+                        'primary-light': "#2e7d38",
+                        'primary-dark': "#1b5223",
+                        'btn-navy': "#16255c",
+                        'brand-blue': "#1e3a8a",
+                        secondary: "#f1f5f9",
+                        accent: "#10b981",
+                        danger: "#ef4444",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../styles/custom.css">
+    <script src="../../../scripts/ui-components.js" defer></script>
+    <style>
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #printableVoucherArea, #printableVoucherArea * {
+                visibility: visible;
+            }
+            #printableVoucherArea {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                margin: 0;
+                padding: 24px;
+                border: none;
+                box-shadow: none;
+            }
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <!-- Toast Notification Container -->
+    
+
+    <!-- Standard DIGITECHKH Sidebar -->
+    <aside class="w-64 bg-[#1b5223] text-white flex flex-col flex-shrink-0 select-none z-20">
+        <!-- Sidebar Brand Container (Exact h-[72px] px-6) -->
+        <div class="h-[72px] px-6 flex items-center gap-3 border-b border-white/10 flex-shrink-0">
+            <div class="w-9 h-9 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center p-1 shadow-sm overflow-hidden flex-shrink-0">
+                <img src="../../../assets/logo-mark-transparent.png" alt="DIGITECHKH" class="w-full h-full object-contain">
+            </div>
+            <h1 class="text-xl font-semibold tracking-wider whitespace-nowrap">DIGITECHKH</h1>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="flex-1 overflow-y-auto px-4 py-4 space-y-1 scrollbar-hide text-sm">
+            <!-- ផ្ទាំងគ្រប់គ្រង -->
+            <a href="../../2-home/dashboard.html" data-nav="dashboard"
+                class="nav-item flex items-center p-3 text-emerald-100 hover:bg-white/10 hover:text-white rounded-xl transition-colors whitespace-nowrap">
+                <i class="fas fa-border-all w-6 text-center opacity-80"></i>
+                <span class="ml-3 text-[16px]">ផ្ទាំងគ្រប់គ្រង</span>
+            </a>
+
+            <!-- ការលក់ -->
+            <div>
+                <button id="btn-menu-sell" onclick="toggleMenu('menu-sell')"
+                    class="nav-parent w-full flex items-center justify-between p-3 text-emerald-100 hover:bg-white/10 hover:text-white rounded-xl transition-colors whitespace-nowrap">
+                    <div class="flex items-center">
+                        <i class="fas fa-money-bill w-6 text-center opacity-80"></i>
+                        <span class="ml-3 text-[16px]">ការលក់</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-xs opacity-60 transition-transform duration-200" id="icon-menu-sell"></i>
+                </button>
+                <div id="menu-sell" class="ml-6 pl-3 py-1.5 space-y-1 border-l border-white/20 mt-1 mb-2 hidden text-[15px]">
+                    <a href="../../3-sales/1-invoice/invoice.html" data-nav="sell-invoices" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-file-invoice-dollar w-5 text-center mr-2 text-xs opacity-70"></i> វិក្កយបត្រលក់
+                    </a>
+                    <a href="../../3-sales/2-quote/quote.html" data-nav="sell-prices" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-file-alt w-5 text-center opacity-70 mr-2 text-xs"></i> តារាងតម្លៃ
+                    </a>
+                    <a href="../../3-sales/3-customer/customer.html" data-nav="sell-customers" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-users w-5 text-center opacity-70 mr-2 text-xs"></i> បញ្ជីអតិថិជន
+                    </a>
+                    <a href="../../3-sales/4-payment/payment.html" data-nav="sell-receipts" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-credit-card w-5 text-center opacity-70 mr-2 text-xs"></i> បង្កាន់ដៃទូទាត់
+                    </a>
+                </div>
+            </div>
+
+            <!-- ការទិញ -->
+            <div>
+                <button id="btn-menu-buy" onclick="toggleMenu('menu-buy')"
+                    class="nav-parent w-full flex items-center justify-between p-3 bg-white/10 text-white font-medium rounded-xl transition-colors whitespace-nowrap">
+                    <div class="flex items-center">
+                        <i class="fas fa-cart-shopping w-6 text-center opacity-80"></i>
+                        <span class="ml-3 text-[16px]">ការទិញ</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-xs opacity-60 transition-transform duration-200 rotate-90" id="icon-menu-buy"></i>
+                </button>
+                <div id="menu-buy" class="ml-6 pl-3 py-1.5 space-y-1 border-l border-white/20 mt-1 mb-2 text-[15px]">
+                    <a href="../../4-buy/1-bills/bills.html" data-nav="buy-invoices" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-file-invoice w-5 text-center opacity-70 mr-2 text-xs"></i> វិក្កយបត្របញ្ញាទិញ
+                    </a>
+                    <a href="../../4-buy/2-suppliers/suppliers.html" data-nav="buy-suppliers" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-truck w-5 text-center opacity-70 mr-2 text-xs"></i> អ្នកផ្គត់ផ្គង់
+                    </a>
+                    <a href="../../4-buy/3-disbursement/disbursement.html" data-nav="buy-expenses" class="nav-sub-item flex items-center px-3 py-2 bg-primary text-white shadow-sm font-medium rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-money-check-alt w-5 text-center opacity-70 mr-2 text-xs"></i> ការទូទាត់ចំណាយ
+                    </a>
+                </div>
+            </div>
+
+            <!-- ស្តុកទំនិញ -->
+            <div>
+                <button id="btn-menu-stock" onclick="toggleMenu('menu-stock')"
+                    class="nav-parent w-full flex items-center justify-between p-3 text-emerald-100 hover:bg-white/10 hover:text-white rounded-xl transition-colors whitespace-nowrap">
+                    <div class="flex items-center">
+                        <i class="fas fa-boxes-stacked w-6 text-center opacity-80"></i>
+                        <span class="ml-3 text-[16px]">ស្តុកទំនិញ</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-xs opacity-60 transition-transform duration-200" id="icon-menu-stock"></i>
+                </button>
+                <div id="menu-stock" class="ml-6 pl-3 py-1.5 space-y-1 border-l border-white/20 mt-1 mb-2 hidden text-[15px]">
+                    <a href="../../5-stock/1-balance/balance.html" data-nav="stock-balance" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-box w-5 text-center opacity-70 mr-2 text-xs"></i> តុល្យភាពស្តុក
+                    </a>
+                    <a href="../../5-stock/2-catalog/catalog.html" data-nav="stock-catalog" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-list w-5 text-center opacity-70 mr-2 text-xs"></i> កាតាឡុកទំនិញ
+                    </a>
+                    <a href="../../5-stock/3-movement/movement.html" data-nav="stock-movements" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-clock-rotate-left w-5 text-center opacity-70 mr-2 text-xs"></i> ចលនាស្តុក
+                    </a>
+                </div>
+            </div>
+
+            <!-- របាយការណ៍ហិរញ្ញវត្ថុ -->
+            <div>
+                <button id="btn-menu-reports" onclick="toggleMenu('menu-reports')"
+                    class="nav-parent w-full flex items-center justify-between p-3 text-emerald-100 hover:bg-white/10 hover:text-white rounded-xl transition-colors whitespace-nowrap">
+                    <div class="flex items-center">
+                        <i class="fas fa-chart-line w-6 text-center opacity-80"></i>
+                        <span class="ml-3 text-[16px]">របាយការណ៍ហិរញ្ញវត្ថុ</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-xs opacity-60 transition-transform duration-200" id="icon-menu-reports"></i>
+                </button>
+                <div id="menu-reports" class="ml-6 pl-3 py-1.5 space-y-1 border-l border-white/20 mt-1 mb-2 hidden text-[15px]">
+                    <a href="../../6-reports/1-overview/overview.html" data-nav="reports-overview" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-chart-pie w-5 text-center opacity-70 mr-2 text-xs"></i> របាយការណ៍ទូទៅ
+                    </a>
+                    <a href="../../6-reports/2-sales/sales.html" data-nav="reports-sales" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-file-invoice-dollar w-5 text-center opacity-70 mr-2 text-xs"></i> របាយការណ៍លក់
+                    </a>
+                    <a href="../../6-reports/3-purchases/purchases.html" data-nav="reports-purchases" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-cart-shopping w-5 text-center opacity-70 mr-2 text-xs"></i> របាយការណ៍ទិញ
+                    </a>
+                    <a href="../../6-reports/4-stock/stock.html" data-nav="reports-stock" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-boxes-stacked w-5 text-center opacity-70 mr-2 text-xs"></i> របាយការណ៍ស្តុក
+                    </a>
+                </div>
+            </div>
+
+            <!-- ការកំណត់ប្រព័ន្ធ -->
+            <div>
+                <button id="btn-menu-settings" onclick="toggleMenu('menu-settings')"
+                    class="nav-parent w-full flex items-center justify-between p-3 text-emerald-100 hover:bg-white/10 hover:text-white rounded-xl transition-colors whitespace-nowrap">
+                    <div class="flex items-center">
+                        <i class="fas fa-gear w-6 text-center opacity-80"></i>
+                        <span class="ml-3 text-[16px]">ការកំណត់ប្រព័ន្ធ</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-xs opacity-60 transition-transform duration-200" id="icon-menu-settings"></i>
+                </button>
+                <div id="menu-settings" class="ml-6 pl-3 py-1.5 space-y-1 border-l border-white/20 mt-1 mb-2 hidden text-[15px]">
+                    <a href="../../7-settings/1-company/company.html" data-nav="settings-company" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-building w-5 text-center opacity-70 mr-2 text-xs"></i> ព័ត៌មានក្រុមហ៊ុន
+                    </a>
+                    <a href="../../7-settings/2-users/users.html" data-nav="settings-users" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-users-gear w-5 text-center opacity-70 mr-2 text-xs"></i> គ្រប់គ្រងអ្នកប្រើ
+                    </a>
+                    <a href="../../7-settings/3-tax/tax.html" data-nav="settings-tax" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-coins w-5 text-center opacity-70 mr-2 text-xs"></i> ពន្ធ និងរូបិយប័ណ្ណ
+                    </a>
+                    <a href="../../7-settings/4-notifications/notifications.html" data-nav="settings-notifications" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-bell w-5 text-center opacity-70 mr-2 text-xs"></i> ការជូនដំណឹង
+                    </a>
+                    <a href="../../7-settings/5-system/system.html" data-nav="settings-system" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-sliders w-5 text-center opacity-70 mr-2 text-xs"></i> ប្រព័ន្ធ និងសុវត្ថិភាព
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="p-4 border-t border-white/10">
+            <a href="../../1-login/login.html"
+                class="flex items-center text-[16px] text-emerald-100 hover:text-red-300 transition-colors p-2 rounded-lg hover:bg-primary">
+                <i class="fas fa-sign-out-alt w-6 mr-2"></i> ចាកចេញ
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="flex-1 flex flex-col h-full overflow-hidden bg-slate-50">
+
+        <!-- Top Header Navigation (Standard h-[72px]) -->
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+<div>
+                <h2 class="text-xl font-semibold text-gray-800 leading-tight">ការទូទាត់ចំណាយ</h2>
+                <p class="text-xs font-normal text-gray-500 mt-0.5">កត់ត្រា និងគ្រប់គ្រងការទូទាត់ចំណាយជូនអ្នកផ្គត់ផ្គង់ទាំងអស់</p>
+            </div>
+
+                        <div class="flex items-center space-x-3 md:space-x-4">
+                <!-- Notification Bell -->
+                <button onclick="toggleNotifications()" class="text-gray-500 hover:text-gray-700 relative p-2.5 rounded-xl hover:bg-slate-100 transition-colors cursor-pointer" title="ការជូនដំណឹង">
+                    <i class="fas fa-bell text-xl"></i>
+                    <span class="absolute top-1.5 right-1.5 flex h-2.5 w-2.5">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500"></span>
+                    </span>
+                </button>
+                
+                <!-- User Profile Avatar Only -->
+                <div class="flex items-center border-l pl-3 md:pl-4">
+                    <button class="relative rounded-full focus:outline-none focus:ring-2 focus:ring-primary/20 cursor-pointer" title="សុខ ចាន់ថន (អ្នកគ្រប់គ្រងកំពូល)">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=128&q=80" alt="សុខ ចាន់ថន" class="h-10 w-10 rounded-full object-cover shadow-sm border border-slate-200" />
+                        <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-2 ring-white"></span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Scrollable Main Content -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-4">
+            <div class="w-full space-y-4">
+
+                <!-- 1. KPI Cards Grid (Matching payment.html and bills.html) -->
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+
+                    <!-- Card 1: ចំណាយទូទាត់សរុប -->
+                    <div onclick="filterByMethod('all')" role="button" tabindex="0"
+                        class="relative bg-white border border-slate-200 rounded-xl p-4 hover:border-blue-200 hover:shadow-sm transition-all duration-200 cursor-pointer group flex flex-col justify-between">
+                        <span class="absolute top-3.5 right-3.5 text-[11px] font-semibold text-emerald-600 flex items-center gap-0.5">
+                            <i class="fas fa-arrow-down text-[8px]"></i> 5.4%
+                        </span>
+                        <div>
+                            <p class="text-[11px] text-slate-400 font-medium mb-1.5">ចំណាយទូទាត់សរុប</p>
+                            <div class="flex items-end justify-between gap-2 mb-2">
+                                <p class="text-[22px] font-bold text-slate-800 leading-none" id="kpiTotalDisbursed">$48,650.00</p>
+                                <div class="w-18 h-7 flex-shrink-0">
+                                    <svg viewBox="0 0 72 26" class="w-[72px] h-[26px] overflow-visible">
+                                        <defs>
+                                            <linearGradient id="sparklineDisb1" x1="0" y1="0" x2="0" y2="1">
+                                                <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.35"/>
+                                                <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.0"/>
+                                            </linearGradient>
+                                        </defs>
+                                        <path d="M 0,20 C 12,18 22,21 34,14 C 46,9 58,7 72,2 L 72,26 L 0,26 Z" fill="url(#sparklineDisb1)"/>
+                                        <path d="M 0,20 C 12,18 22,21 34,14 C 46,9 58,7 72,2" fill="none" stroke="#2563eb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-xs text-slate-400">8 ប្រតិបត្តិការទូទាត់ក្នុងខែនេះ</p>
+                    </div>
+
+                    <!-- Card 2: ផ្ទេរតាមធនាគារ ABA / KHQR -->
+                    <div onclick="filterByMethod('bank')" role="button" tabindex="0"
+                        class="relative bg-white border border-slate-200 rounded-xl p-4 hover:border-indigo-200 hover:shadow-sm transition-all duration-200 cursor-pointer group flex flex-col justify-between">
+                        <span class="absolute top-3.5 right-3.5 text-[11px] font-semibold text-indigo-600">74.8% ចំណាយ</span>
+                        <div>
+                            <p class="text-[11px] text-slate-400 font-medium mb-1.5">ផ្ទេរតាមធនាគារ ABA / KHQR</p>
+                            <p class="text-[22px] font-bold text-slate-800 leading-none mb-3" id="kpiBankDisbursed">$36,400.00</p>
+                        </div>
+                        <div class="space-y-1">
+                            <div class="w-full bg-slate-100 rounded-full h-[3px] overflow-hidden">
+                                <div class="bg-indigo-500 h-[3px] rounded-full" style="width: 74.8%"></div>
+                            </div>
+                            <p class="text-xs text-slate-400">5 ប្រតិបត្តិការ (ABA / អេស៊ីលីដា)</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: សាច់ប្រាក់សុទ្ធ -->
+                    <div onclick="filterByMethod('cash')" role="button" tabindex="0"
+                        class="relative bg-white border border-slate-200 rounded-xl p-4 hover:border-teal-200 hover:shadow-sm transition-all duration-200 cursor-pointer group flex flex-col justify-between">
+                        <span class="absolute top-3.5 right-3.5 text-[11px] font-semibold text-teal-600">21.1% ចំណាយ</span>
+                        <div>
+                            <p class="text-[11px] text-slate-400 font-medium mb-1.5">ទូទាត់ជាសាច់ប្រាក់សុទ្ធ</p>
+                            <p class="text-[22px] font-bold text-slate-800 leading-none mb-3" id="kpiCashDisbursed">$10,250.00</p>
+                        </div>
+                        <div class="space-y-1">
+                            <div class="w-full bg-slate-100 rounded-full h-[3px] overflow-hidden">
+                                <div class="bg-teal-500 h-[3px] rounded-full" style="width: 21.1%"></div>
+                            </div>
+                            <p class="text-xs text-slate-400">2 ប្រតិបត្តិការ (បេឡាសាច់ប្រាក់)</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: រង់ចាំអនុម័ត -->
+                    <div onclick="setStatusTab('pending')" role="button" tabindex="0"
+                        class="relative bg-white border border-amber-100 rounded-xl p-4 hover:border-amber-300 hover:shadow-sm transition-all duration-200 cursor-pointer group flex flex-col justify-between">
+                        <span class="absolute top-3.5 right-3.5 text-[11px] font-semibold text-amber-500">1 ប្រតិបត្តិការ</span>
+                        <div>
+                            <p class="text-[11px] text-slate-400 font-medium mb-1.5">រង់ចាំអនុម័តប័ណ្ណចំណាយ</p>
+                            <div class="flex items-end justify-between gap-2 mb-2">
+                                <p class="text-[22px] font-bold text-amber-500 leading-none" id="kpiPendingDisbursed">$2,000.00</p>
+                                <div class="w-18 h-7 flex-shrink-0">
+                                    <svg viewBox="0 0 72 26" class="w-[72px] h-[26px] overflow-visible">
+                                        <defs>
+                                            <linearGradient id="sparklineDisb4" x1="0" y1="0" x2="0" y2="1">
+                                                <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.25"/>
+                                                <stop offset="100%" stop-color="#f59e0b" stop-opacity="0.0"/>
+                                            </linearGradient>
+                                        </defs>
+                                        <path d="M 0,16 C 14,12 24,19 38,14 C 50,10 60,12 72,4 L 72,26 L 0,26 Z" fill="url(#sparklineDisb4)"/>
+                                        <path d="M 0,16 C 14,12 24,19 38,14 C 50,10 60,12 72,4" fill="none" stroke="#f59e0b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-xs text-amber-600">កំពុងរង់ចាំការចុះហត្ថលេខា</p>
+                    </div>
+
+                </div>
+
+                <!-- 2. Search & Filter Toolbar -->
+                <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-100 space-y-3">
+                    <div class="flex flex-wrap items-center justify-between gap-3">
+
+                        <!-- Search Bar -->
+                        <div class="relative flex-1 min-w-[280px] max-w-md">
+                            <i class="fas fa-search absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                            <input type="text" id="disbursementSearchInput" oninput="filterDisbursements()"
+                                placeholder="ស្វែងរកតាមលេខប័ណ្ណចំណាយ, លេខវិក្កយបត្រ, អ្នកផ្គត់ផ្គង់..."
+                                class="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:bg-white focus:border-primary transition" />
+                        </div>
+
+                        <!-- Action Buttons & Filters -->
+                        <div class="flex items-center gap-2 flex-wrap">
+
+                            <!-- Payment Method Custom Dropdown -->
+                            <div class="relative bms-custom-select" id="disbursementMethodFilterDropdown">
+                                <button type="button" onclick="toggleCustomDropdown('disbursementMethodFilterDropdown')"
+                                    class="h-10 px-3.5 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 text-xs rounded-xl flex items-center gap-2 shadow-sm transition-all focus:outline-none cursor-pointer">
+                                    <i class="fas fa-wallet text-slate-400 text-xs"></i>
+                                    <span class="selected-label font-medium text-slate-800" id="selectedMethodLabel">វិធីសាស្ត្រ៖ ទាំងអស់</span>
+                                    <i class="fas fa-chevron-down text-[10px] text-slate-400 transition-transform duration-200 ml-0.5 bms-custom-select-arrow"></i>
+                                </button>
+                                <input type="hidden" id="disbursementMethodFilterValue" value="all">
+                                <div class="bms-custom-select-menu absolute left-0 top-full mt-2 w-52 bg-white rounded-xl shadow-xl border border-slate-100 py-1.5 z-50 hidden">
+                                    <button type="button" onclick="selectDisbursementMethod('all', 'វិធីសាស្ត្រ៖ ទាំងអស់')"
+                                        class="w-full text-left px-3.5 py-2 text-xs text-slate-700 hover:bg-emerald-50 hover:text-primary flex items-center justify-between transition-colors">
+                                        <span>វិធីសាស្ត្រ៖ ទាំងអស់</span>
+                                        <i class="fas fa-check text-xs text-primary checkmark"></i>
+                                    </button>
+                                    <button type="button" onclick="selectDisbursementMethod('bank_aba', 'ធនាគារ ABA / KHQR')"
+                                        class="w-full text-left px-3.5 py-2 text-xs text-slate-700 hover:bg-emerald-50 hover:text-primary flex items-center justify-between transition-colors">
+                                        <span>ធនាគារ ABA / KHQR</span>
+                                        <i class="fas fa-check text-xs text-primary opacity-0 checkmark"></i>
+                                    </button>
+                                    <button type="button" onclick="selectDisbursementMethod('bank_acleda', 'ធនាគារ អេស៊ីលីដា')"
+                                        class="w-full text-left px-3.5 py-2 text-xs text-slate-700 hover:bg-emerald-50 hover:text-primary flex items-center justify-between transition-colors">
+                                        <span>ធនាគារ អេស៊ីលីដា</span>
+                                        <i class="fas fa-check text-xs text-primary opacity-0 checkmark"></i>
+                                    </button>
+                                    <button type="button" onclick="selectDisbursementMethod('cash', 'សាច់ប្រាក់សុទ្ធ')"
+                                        class="w-full text-left px-3.5 py-2 text-xs text-slate-700 hover:bg-emerald-50 hover:text-primary flex items-center justify-between transition-colors">
+                                        <span>សាច់ប្រាក់សុទ្ធ</span>
+                                        <i class="fas fa-check text-xs text-primary opacity-0 checkmark"></i>
+                                    </button>
+                                    <button type="button" onclick="selectDisbursementMethod('cheque', 'មូលប្បទានប័ត្រ')"
+                                        class="w-full text-left px-3.5 py-2 text-xs text-slate-700 hover:bg-emerald-50 hover:text-primary flex items-center justify-between transition-colors">
+                                        <span>មូលប្បទានប័ត្រ</span>
+                                        <i class="fas fa-check text-xs text-primary opacity-0 checkmark"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Export Report Button -->
+                            <button type="button" onclick="exportDisbursementsData()"
+                                class="h-10 px-4 bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200/70 rounded-xl flex items-center transition text-sm font-normal">
+                                <i class="fas fa-file-export mr-2 text-xs text-slate-500"></i>
+                                <span>ទាញយកទិន្នន័យ</span>
+                            </button>
+
+                            <!-- Record Disbursement Button -->
+                            <a href="create-disbursement.html"
+                                class="h-10 px-4 bg-primary hover:bg-primary-dark text-white rounded-xl flex items-center shadow-sm hover:shadow transition text-sm font-normal">
+                                <i class="fas fa-plus mr-2 text-xs"></i>
+                                <span>កត់ត្រាការទូទាត់ថ្មី</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Status Filter Tabs with Counts -->
+                    <div class="flex flex-wrap items-center gap-1.5 border-t border-slate-100 pt-3 text-sm">
+                        <button onclick="setStatusTab('all')" id="tab-all"
+                            class="status-tab px-3.5 py-1.5 rounded-xl bg-primary text-white font-medium text-xs shadow-sm transition">
+                            ទាំងអស់ (<span id="count-all">8</span>)
+                        </button>
+                        <button onclick="setStatusTab('completed')" id="tab-completed"
+                            class="status-tab px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium text-xs transition">
+                            ជោគជ័យ (<span id="count-completed">6</span>)
+                        </button>
+                        <button onclick="setStatusTab('pending')" id="tab-pending"
+                            class="status-tab px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium text-xs transition">
+                            រង់ចាំអនុម័ត (<span id="count-pending">1</span>)
+                        </button>
+                        <button onclick="setStatusTab('cancelled')" id="tab-cancelled"
+                            class="status-tab px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium text-xs transition">
+                            បោះបង់ (<span id="count-cancelled">1</span>)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 3. Disbursements Data Table -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse" id="disbursementsTable">
+                            <thead>
+                                <tr class="bg-slate-50/70 border-b border-slate-100 text-xs font-semibold text-slate-500 uppercase tracking-wider">
+                                    <th class="py-3 px-4 whitespace-nowrap">លេខប័ណ្ណចំណាយ</th>
+                                    <th class="py-3 px-4 whitespace-nowrap">អ្នកផ្គត់ផ្គង់</th>
+                                    <th class="py-3 px-4 whitespace-nowrap">វិក្កយបត្របញ្ញាទិញយោង</th>
+                                    <th class="py-3 px-4 whitespace-nowrap">វិធីសាស្ត្រ & គណនី</th>
+                                    <th class="py-3 px-4 text-right whitespace-nowrap">ទឹកប្រាក់ទូទាត់</th>
+                                    <th class="py-3 px-4 whitespace-nowrap">លេខយោងប្រតិបត្តិការ</th>
+                                    <th class="py-3 px-4 whitespace-nowrap">កាលបរិច្ឆេទ</th>
+                                    <th class="py-3 px-4 text-center whitespace-nowrap">ស្ថានភាព</th>
+                                    <th class="py-3 px-4 text-center w-16 whitespace-nowrap">សកម្មភាព</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 text-[15px] font-normal" id="disbursementsTableBody">
+                                <!-- Dynamic Rows rendered via JS -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Empty State -->
+                    <div id="disbursementsEmptyState" class="hidden py-12 text-center">
+                        <div class="w-12 h-12 rounded-2xl bg-slate-100 text-slate-400 flex items-center justify-center mx-auto mb-3 text-lg">
+                            <i class="fas fa-money-bill-transfer"></i>
+                        </div>
+                        <h3 class="text-sm font-semibold text-slate-700">មិនមានទិន្នន័យការទូទាត់ចំណាយឡើយ</h3>
+                        <p class="text-xs text-slate-400 mt-1">សូមសាកល្បងផ្លាស់ប្តូរពាក្យស្វែងរក ឬកាលបរិច្ឆេទតម្រងឡើងវិញ</p>
+                    </div>
+
+                    <!-- Table Pagination Footer -->
+                    <div class="p-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3 text-sm text-slate-500 bg-white">
+                        <div id="tableRecordCount">បង្ហាញ <strong class="text-slate-800" id="shownCountLabel">8</strong> នៃ <strong class="text-slate-800" id="totalCountLabel">8</strong> ប័ណ្ណចំណាយ</div>
+                        <div class="flex items-center space-x-1">
+                            <button class="px-3 py-1.5 rounded-lg border border-slate-200 hover:bg-slate-100 text-xs text-slate-600 disabled:opacity-50" disabled>មុន</button>
+                            <button class="px-3 py-1.5 rounded-lg bg-primary text-white text-xs font-semibold">1</button>
+                            <button class="px-3 py-1.5 rounded-lg border border-slate-200 hover:bg-slate-100 text-xs text-slate-600">2</button>
+                            <button class="px-3 py-1.5 rounded-lg border border-slate-200 hover:bg-slate-100 text-xs text-slate-600">បន្ទាប់</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Floating Row Action Dropdown Menu (`#rowActionDropdown`) -->
+    <div id="rowActionDropdown"
+        class="fixed z-[999] bg-white rounded-2xl shadow-2xl border border-slate-200/80 w-[280px] py-2 hidden animate-in fade-in zoom-in-95 duration-100 select-none">
+        <!-- Dynamic content injected via openRowActionMenu -->
+    </div>
+
+    <!-- Payment Voucher Detail Printable Modal -->
+    <div id="voucherDetailModal" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 items-center justify-center p-4 select-none">
+        <div class="bg-white rounded-3xl border border-slate-100 shadow-2xl w-full max-w-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150 flex flex-col max-h-[92vh]">
+            <!-- Modal Header -->
+            <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
+                <div class="flex items-center gap-3">
+                    <span class="w-9 h-9 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-sm shadow-xs">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </span>
+                    <div>
+                        <h3 class="text-base font-bold text-slate-800" id="modalVoucherTitle">ប័ណ្ណទូទាត់ចំណាយ #PV-2026-001</h3>
+                        <p class="text-xs text-slate-400 mt-0.5">ប្រព័ន្ធគ្រប់គ្រងអាជីវកម្ម DIGITECHKH</p>
+                    </div>
+                </div>
+                <button type="button" onclick="closeVoucherDetailModal()"
+                    class="w-8 h-8 rounded-xl bg-white border border-slate-200 text-slate-400 hover:text-slate-600 flex items-center justify-center transition">
+                    <i class="fas fa-times text-xs"></i>
+                </button>
+            </div>
+
+            <!-- Modal Printable Body -->
+            <div class="p-6 space-y-4 overflow-y-auto flex-1" id="printableVoucherArea">
+                <!-- Voucher Official Header -->
+                <div class="text-center pb-4 border-b border-dashed border-slate-200">
+                    <div class="text-xl font-bold text-slate-900 tracking-wider">DIGITECHKH</div>
+                    <div class="text-xs text-slate-500 mt-0.5 font-medium">ប័ណ្ណទូទាត់ចំណាយជាផ្លូវការ (Payment Voucher)</div>
+                    <div class="mt-2 inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold" id="pvStatusBadge">
+                        <!-- Injected -->
+                    </div>
+                </div>
+
+                <!-- Supplier & Voucher Details Grid -->
+                <div class="grid grid-cols-2 gap-3 text-xs">
+                    <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-100">
+                        <div class="text-[11px] text-slate-400 mb-1">ព័ត៌មានអ្នកផ្គត់ផ្គង់ (អ្នកទទួល)</div>
+                        <div class="font-bold text-slate-800 text-sm" id="pvSupplierCompany">ក្រុមហ៊ុន ខេមបូឌា បច្ចេកវិទ្យា ឯ.ក</div>
+                        <div class="text-slate-600 mt-0.5" id="pvSupplierContact">តំណាង៖ សុខ ពិសិដ្ឋ</div>
+                        <div class="text-slate-500 mt-0.5" id="pvSupplierPhone">ទូរស័ព្ទ៖ 012 345 678</div>
+                        <div class="text-slate-500 mt-0.5" id="pvSupplierAddress">អាសយដ្ឋាន៖ រាជធានីភ្នំពេញ</div>
+                    </div>
+                    <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-100 space-y-1">
+                        <div><span class="text-slate-400">លេខប័ណ្ណចំណាយ:</span> <span class="font-bold text-slate-800 ml-1 font-mono" id="pvVoucherNum">PV-2026-001</span></div>
+                        <div><span class="text-slate-400">វិក្កយបត្របញ្ញាទិញយោង:</span> <span class="font-semibold text-blue-600 ml-1 font-mono" id="pvBillRef">BILL-2026-001</span></div>
+                        <div><span class="text-slate-400">កាលបរិច្ឆេទចេញប័ណ្ណ:</span> <span class="font-medium text-slate-700 ml-1" id="pvDate">03/09/2026</span></div>
+                        <div><span class="text-slate-400">អ្នករៀបចំប័ណ្ណ:</span> <span class="font-medium text-slate-700 ml-1" id="pvCreatedBy">សុខ សំណាង</span></div>
+                    </div>
+                </div>
+
+                <!-- Payment Details Table -->
+                <div class="bg-slate-50/80 rounded-2xl p-4 border border-slate-200/80 space-y-2 text-xs">
+                    <div class="flex justify-between items-center text-slate-600">
+                        <span>វិធីសាស្ត្រទូទាត់</span>
+                        <span class="font-semibold text-slate-800" id="pvMethod">ផ្ទេរតាមធនាគារ ABA KHQR</span>
+                    </div>
+                    <div class="flex justify-between items-center text-slate-600">
+                        <span>គណនីធនាគារប្រភព</span>
+                        <span class="font-medium text-slate-800" id="pvAccount">DIGITECHKH - ABA (USD) - 001 234 567</span>
+                    </div>
+                    <div class="flex justify-between items-center text-slate-600">
+                        <span>លេខយោងប្រតិបត្តិការ (TXN / Cheque Ref)</span>
+                        <span class="font-mono text-slate-800" id="pvRefNum">TXN-884920</span>
+                    </div>
+                    <div class="flex justify-between items-center text-slate-600">
+                        <span>មូលហេតុ / គោលបំណងចំណាយ</span>
+                        <span class="font-medium text-slate-800" id="pvPurpose">ទូទាត់ថ្លៃសម្ភារកុំព្យូទ័រ និងបច្ចេកវិទ្យាការិយាល័យ</span>
+                    </div>
+                    <div class="pt-2 border-t border-slate-200 flex justify-between items-center text-base font-bold text-slate-900">
+                        <span>ទឹកប្រាក់ទូទាត់សរុប (Amount Disbursed)</span>
+                        <span class="text-emerald-700 text-lg" id="pvAmount">$2,450.00</span>
+                    </div>
+                </div>
+
+                <!-- Notes -->
+                <div class="text-xs text-slate-600 bg-slate-50 p-3 rounded-xl border border-slate-100">
+                    <span class="font-semibold text-slate-700">កំណត់សម្គាល់:</span>
+                    <span id="pvNotes" class="ml-1">បានផ្ទៀងផ្ទាត់ប័ណ្ណទំនិញចូលឃ្លាំង និងវិក្កយបត្រដើមរួចរាល់ ត្រឹមត្រូវតាមលក្ខខណ្ឌ</span>
+                </div>
+
+                <!-- Enterprise 4-Signature Block -->
+                <div class="pt-6 border-t border-slate-200 grid grid-cols-4 gap-3 text-center text-xs">
+                    <div class="flex flex-col items-center justify-between h-24">
+                        <span class="text-slate-500 font-medium">អ្នករៀបចំ</span>
+                        <span class="text-[11px] text-slate-400">..................................</span>
+                        <span class="font-semibold text-slate-800" id="pvSignPrepared">សុខ សំណាង</span>
+                    </div>
+                    <div class="flex flex-col items-center justify-between h-24">
+                        <span class="text-slate-500 font-medium">ប្រធានគណនេយ្យ</span>
+                        <span class="text-[11px] text-slate-400">..................................</span>
+                        <span class="font-semibold text-slate-800" id="pvSignAccountant">កែវ សោភា</span>
+                    </div>
+                    <div class="flex flex-col items-center justify-between h-24">
+                        <span class="text-slate-500 font-medium">អ្នកអនុម័ត</span>
+                        <span class="text-[11px] text-slate-400">..................................</span>
+                        <span class="font-semibold text-slate-800" id="pvSignApproved">លឹម ហុង</span>
+                    </div>
+                    <div class="flex flex-col items-center justify-between h-24">
+                        <span class="text-slate-500 font-medium">អ្នកទទួល / តំណាង</span>
+                        <span class="text-[11px] text-slate-400">..................................</span>
+                        <span class="font-semibold text-slate-800" id="pvSignReceiver">សុខ ពិសិដ្ឋ</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="px-6 py-4 border-t border-slate-100 bg-slate-50/50 flex items-center justify-between">
+                <button type="button" onclick="closeVoucherDetailModal()"
+                    class="h-9 px-4 rounded-xl text-xs text-slate-600 hover:bg-slate-200 transition font-medium">
+                    បិទ
+                </button>
+                <button type="button" onclick="printVoucherDirectly()"
+                    class="h-9 px-4 bg-primary hover:bg-primary-dark text-white rounded-xl text-xs font-medium transition shadow-xs flex items-center gap-2">
+                    <i class="fas fa-print text-xs"></i>
+                    <span>បោះពុម្ពប័ណ្ណចំណាយ</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Application Scripts -->
+    <script src="../../../scripts/ui-components.js"></script>
+    <script src="../../../scripts/sidebar.js"></script>
+    <script>
+        // Standard Dataset for Purchase Disbursements (ការទូទាត់ចំណាយ)
+        const DISBURSEMENTS_DATA = [
+            {
+                id: 'PV-2026-001',
+                voucherNumber: 'PV-2026-001',
+                supplierId: 'SUP-001',
+                supplierCompany: 'ក្រុមហ៊ុន ខេមបូឌា បច្ចេកវិទ្យា ឯ.ក',
+                supplierName: 'សុខ ពិសិដ្ឋ',
+                supplierPhone: '012 345 678',
+                supplierAvatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80',
+                billRef: 'BILL-2026-001',
+                methodKey: 'bank_aba',
+                methodName: 'ធនាគារ ABA / KHQR',
+                methodBadgeClass: 'bg-indigo-50 text-indigo-700 border-indigo-200',
+                accountName: 'DIGITECHKH - ABA (USD) - 001 234 567',
+                amount: 2450.00,
+                refNumber: 'TXN-884920',
+                date: '03/09/2026',
+                dateSort: '2026-09-03',
+                statusKey: 'completed',
+                statusName: 'ជោគជ័យ',
+                statusBadgeClass: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+                purpose: 'ទូទាត់ថ្លៃសម្ភារកុំព្យូទ័រ និងបច្ចេកវិទ្យាការិយាល័យ',
+                notes: 'បានផ្ទៀងផ្ទាត់ប័ណ្ណទំនិញចូលឃ្លាំង និងវិក្កយបត្រដើមរួចរាល់ ត្រឹមត្រូវតាមលក្ខខណ្ឌ',
+                createdBy: 'សុខ សំណាង'
+            },
+            {
+                id: 'PV-2026-002',
+                voucherNumber: 'PV-2026-002',
+                supplierId: 'SUP-002',
+                supplierCompany: 'ក្រុមហ៊ុន ស៊ីម៉ង់ត៍ និងដែកថែប ខ្មែរ ត្រេឌីង',
+                supplierName: 'ចាន់ វណ្ណា',
+                supplierPhone: '098 765 432',
+                supplierAvatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80',
+                billRef: 'BILL-2026-003',
+                methodKey: 'bank_acleda',
+                methodName: 'ធនាគារ អេស៊ីលីដា',
+                methodBadgeClass: 'bg-blue-50 text-blue-700 border-blue-200',
+                accountName: 'DIGITECHKH - ACLEDA (USD) - 100 892 411',
+                amount: 8500.00,
+                refNumber: 'TXN-773194',
+                date: '02/09/2026',
+                dateSort: '2026-09-02',
+                statusKey: 'completed',
+                statusName: 'ជោគជ័យ',
+                statusBadgeClass: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+                purpose: 'ទូទាត់ថ្លៃសម្ភារសំណង់ដែក និងស៊ីម៉ង់ត៍សម្រាប់គម្រោងឃ្លាំង',
+                notes: 'ការទូទាត់មុនកាលកំណត់ទទួលបានការបញ្ចុះតម្លៃ 2%',
+                createdBy: 'សុខ សំណាង'
+            },
+            {
+                id: 'PV-2026-003',
+                voucherNumber: 'PV-2026-003',
+                supplierId: 'SUP-003',
+                supplierCompany: 'ក្រុមហ៊ុន ភេសជ្ជៈ និងទឹកបរិសុទ្ធ អង្គរ',
+                supplierName: 'ម៉ៅ វ៉ាន់នី',
+                supplierPhone: '077 112 233',
+                supplierAvatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80',
+                billRef: 'BILL-2026-006',
+                methodKey: 'cash',
+                methodName: 'សាច់ប្រាក់សុទ្ធ',
+                methodBadgeClass: 'bg-teal-50 text-teal-700 border-teal-200',
+                accountName: 'បេឡាសាច់ប្រាក់រង (Petty Cash Fund)',
+                amount: 750.00,
+                refNumber: 'CASH-2026-041',
+                date: '01/09/2026',
+                dateSort: '2026-09-01',
+                statusKey: 'completed',
+                statusName: 'ជោគជ័យ',
+                statusBadgeClass: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+                purpose: 'ទូទាត់ថ្លៃភេសជ្ជៈ និងទឹកបរិសុទ្ធប្រចាំខែសម្រាប់បុគ្គលិក',
+                notes: 'មានបង្កាន់ដៃទទួលប្រាក់ជាក្រដាសពីអ្នកដឹកជញ្ជូន',
+                createdBy: 'កែវ សោភា'
+            },
+            {
+                id: 'PV-2026-004',
+                voucherNumber: 'PV-2026-004',
+                supplierId: 'SUP-004',
+                supplierCompany: 'ក្រុមហ៊ុន អាយធី សឹលូសិន អាស៊ី',
+                supplierName: 'លី សេងហុង',
+                supplierPhone: '011 889 900',
+                supplierAvatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=120&q=80',
+                billRef: 'BILL-2026-007',
+                methodKey: 'bank_aba',
+                methodName: 'ធនាគារ ABA / KHQR',
+                methodBadgeClass: 'bg-indigo-50 text-indigo-700 border-indigo-200',
+                accountName: 'DIGITECHKH - ABA (USD) - 001 234 567',
+                amount: 14200.00,
+                refNumber: 'TXN-902148',
+                date: '28/08/2026',
+                dateSort: '2026-08-28',
+                statusKey: 'completed',
+                statusName: 'ជោគជ័យ',
+                statusBadgeClass: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+                purpose: 'ទូទាត់ថ្លៃម៉ាស៊ីនមេ Server និងឧបករណ៍បណ្តាញ Network',
+                notes: 'បានផ្ទៀងផ្ទាត់ការដំឡើងរួចរាល់ដោយផ្នែកបច្ចេកទេស',
+                createdBy: 'សុខ សំណាង'
+            },
+            {
+                id: 'PV-2026-005',
+                voucherNumber: 'PV-2026-005',
+                supplierId: 'SUP-005',
+                supplierCompany: 'ក្រុមហ៊ុន ដឹកជញ្ជូន និងឡូជីស្ទីក រហ័ស',
+                supplierName: 'ឈុន សុខា',
+                supplierPhone: '089 554 433',
+                supplierAvatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=120&q=80',
+                billRef: 'BILL-2026-009',
+                methodKey: 'cash',
+                methodName: 'សាច់ប្រាក់សុទ្ធ',
+                methodBadgeClass: 'bg-teal-50 text-teal-700 border-teal-200',
+                accountName: 'បេឡាសាច់ប្រាក់រង (Petty Cash Fund)',
+                amount: 9500.00,
+                refNumber: 'CASH-2026-042',
+                date: '27/08/2026',
+                dateSort: '2026-08-27',
+                statusKey: 'completed',
+                statusName: 'ជោគជ័យ',
+                statusBadgeClass: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+                purpose: 'ទូទាត់ថ្លៃសេវាដឹកជញ្ជូន និងគយបញ្ចេញទំនិញ',
+                notes: 'បានកាត់កងប័ណ្ណចំណាយតាមការឯកភាពរបស់ប្រធានគ្រប់គ្រង',
+                createdBy: 'សុខ សំណាង'
+            },
+            {
+                id: 'PV-2026-006',
+                voucherNumber: 'PV-2026-006',
+                supplierId: 'SUP-006',
+                supplierCompany: 'ក្រុមហ៊ុន ហ្គ្រីន ហ្វាម សរីរាង្គ ឯ.ក',
+                supplierName: 'អ៊ុក ដារ៉ា',
+                supplierPhone: '016 443 322',
+                supplierAvatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=120&q=80',
+                billRef: 'BILL-2026-011',
+                methodKey: 'bank_aba',
+                methodName: 'ធនាគារ ABA / KHQR',
+                methodBadgeClass: 'bg-indigo-50 text-indigo-700 border-indigo-200',
+                accountName: 'DIGITECHKH - ABA (USD) - 001 234 567',
+                amount: 11250.00,
+                refNumber: 'TXN-911402',
+                date: '25/08/2026',
+                dateSort: '2026-08-25',
+                statusKey: 'completed',
+                statusName: 'ជោគជ័យ',
+                statusBadgeClass: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+                purpose: 'ទូទាត់ថ្លៃផលិតផលកសិកម្មសរីរាង្គសម្រាប់ស្តុកទីផ្សារ',
+                notes: 'ការទូទាត់តាមកិច្ចសន្យាដំណាក់កាលទី 2',
+                createdBy: 'កែវ សោភា'
+            },
+            {
+                id: 'PV-2026-007',
+                voucherNumber: 'PV-2026-007',
+                supplierId: 'SUP-007',
+                supplierCompany: 'ក្រុមហ៊ុន បោះពុម្ព និងវេចខ្ចប់ វឌ្ឍនៈ',
+                supplierName: 'ផន សារ៉េត',
+                supplierPhone: '093 221 100',
+                supplierAvatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&q=80',
+                billRef: 'BILL-2026-014',
+                methodKey: 'bank_aba',
+                methodName: 'ធនាគារ ABA / KHQR',
+                methodBadgeClass: 'bg-indigo-50 text-indigo-700 border-indigo-200',
+                accountName: 'DIGITECHKH - ABA (USD) - 001 234 567',
+                amount: 2000.00,
+                refNumber: 'TXN-Pending',
+                date: '04/09/2026',
+                dateSort: '2026-09-04',
+                statusKey: 'pending',
+                statusName: 'រង់ចាំអនុម័ត',
+                statusBadgeClass: 'bg-amber-50 text-amber-700 border-amber-200',
+                purpose: 'ទូទាត់ថ្លៃប្រអប់វេចខ្ចប់ និងតែមស្លាកសញ្ញាផលិតផល',
+                notes: 'រង់ចាំការត្រួតពិនិត្យចុះហត្ថលេខាពីប្រធានគណនេយ្យ',
+                createdBy: 'សុខ សំណាង'
+            },
+            {
+                id: 'PV-2026-008',
+                voucherNumber: 'PV-2026-008',
+                supplierId: 'SUP-008',
+                supplierCompany: 'ក្រុមហ៊ុន សម្ភារការិយាល័យ ទំនើប ភ្នំពេញ',
+                supplierName: 'តាំង គីមឡេង',
+                supplierPhone: '015 667 788',
+                supplierAvatar: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=120&q=80',
+                billRef: 'BILL-2026-015',
+                methodKey: 'cheque',
+                methodName: 'មូលប្បទានប័ត្រ',
+                methodBadgeClass: 'bg-slate-100 text-slate-700 border-slate-200',
+                accountName: 'DIGITECHKH - ACLEDA Current Account',
+                amount: 1500.00,
+                refNumber: 'CHQ-504910',
+                date: '20/08/2026',
+                dateSort: '2026-08-20',
+                statusKey: 'cancelled',
+                statusName: 'បោះបង់',
+                statusBadgeClass: 'bg-rose-50 text-rose-700 border-rose-200',
+                purpose: 'ទូទាត់ថ្លៃសម្ភារការិយាល័យខុសកាលវិភាគ',
+                notes: 'មូលប្បទានប័ត្រត្រូវបានលុបចោលដោយសារមានការកែប្រែចំនួនទំនិញក្នុងវិក្កយបត្រ',
+                createdBy: 'សុខ សំណាង'
+            }
+        ];
+
+        let activeStatusTab = 'all';
+        let activeMethodFilter = 'all';
+        let searchQuery = '';
+        let activeStartDate = new Date(2026, 8, 1);
+        let activeEndDate = new Date(2026, 8, 30);
+        let activePreset = 'ខែនេះ';
+
+        // Render Table Rows
+        function renderDisbursementsTable() {
+            const tbody = document.getElementById('disbursementsTableBody');
+            const emptyState = document.getElementById('disbursementsEmptyState');
+            if (!tbody) return;
+
+            const filtered = DISBURSEMENTS_DATA.filter(item => {
+                // Status Filter
+                if (activeStatusTab !== 'all' && item.statusKey !== activeStatusTab) {
+                    return false;
+                }
+                // Method Filter
+                if (activeMethodFilter !== 'all') {
+                    if (activeMethodFilter === 'bank' && !item.methodKey.startsWith('bank')) return false;
+                    if (activeMethodFilter !== 'bank' && item.methodKey !== activeMethodFilter) return false;
+                }
+                // Search Query
+                if (searchQuery.trim() !== '') {
+                    const q = searchQuery.toLowerCase().trim();
+                    const matchVoucher = item.voucherNumber.toLowerCase().includes(q);
+                    const matchCompany = item.supplierCompany.toLowerCase().includes(q);
+                    const matchName = item.supplierName.toLowerCase().includes(q);
+                    const matchBill = item.billRef.toLowerCase().includes(q);
+                    const matchRef = item.refNumber.toLowerCase().includes(q);
+                    if (!matchVoucher && !matchCompany && !matchName && !matchBill && !matchRef) {
+                        return false;
+                    }
+                }
+                return true;
+            });
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                document.getElementById('shownCountLabel').textContent = '0';
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+            document.getElementById('shownCountLabel').textContent = filtered.length.toString();
+            document.getElementById('totalCountLabel').textContent = DISBURSEMENTS_DATA.length.toString();
+
+            tbody.innerHTML = filtered.map(item => `
+                <tr class="hover:bg-slate-50/80 transition group">
+                    <td class="py-3.5 px-4 whitespace-nowrap">
+                        <span class="font-medium text-primary cursor-pointer hover:underline" onclick="viewVoucherDetail('${item.id}')">
+                            ${item.voucherNumber}
+                        </span>
+                        <p class="text-[11px] text-slate-400 font-normal">ដោយ៖ ${item.createdBy}</p>
+                    </td>
+                    <td class="py-3.5 px-4">
+                        <div class="flex items-center gap-2.5">
+                            <img src="${item.supplierAvatar}" alt="${item.supplierCompany}" class="w-7 h-7 rounded-full object-cover border border-slate-200 flex-shrink-0" />
+                            <div>
+                                <div class="font-medium text-slate-700 text-xs">${item.supplierCompany}</div>
+                                <div class="text-[11px] text-slate-400">${item.supplierName} • ${item.supplierPhone}</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="py-3.5 px-4">
+                        <a href="../bills/bills.html" class="inline-flex items-center gap-1 font-mono text-xs font-medium text-blue-600 hover:text-blue-800 hover:underline">
+                            <i class="fas fa-file-invoice text-[10px]"></i>
+                            <span>${item.billRef}</span>
+                        </a>
+                    </td>
+                    <td class="py-3.5 px-4">
+                        <div class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium border ${item.methodBadgeClass}">
+                            <i class="fas ${item.methodKey.startsWith('bank') ? 'fa-building-columns' : (item.methodKey === 'cash' ? 'fa-money-bill-1' : 'fa-money-check')} text-[10px]"></i>
+                            <span>${item.methodName}</span>
+                        </div>
+                        <div class="text-[11px] text-slate-400 mt-0.5 max-w-[180px] truncate" title="${item.accountName}">${item.accountName}</div>
+                    </td>
+                    <td class="py-3.5 px-4 text-right">
+                        <span class="font-medium text-slate-700 text-sm">$${item.amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+                    </td>
+                    <td class="py-3.5 px-4">
+                        <span class="font-mono text-xs text-slate-600 bg-slate-100 px-2 py-0.5 rounded-md">${item.refNumber}</span>
+                    </td>
+                    <td class="py-3.5 px-4 text-xs text-slate-500 whitespace-nowrap">
+                        <div class="flex items-center gap-1.5">
+                            <i class="fas fa-calendar-day text-[11px] text-slate-400"></i>
+                            <span>${item.date}</span>
+                        </div>
+                    </td>
+                    <td class="py-3.5 px-4 text-center">
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold border ${item.statusBadgeClass}">
+                            ${item.statusName}
+                        </span>
+                    </td>
+                    <td class="py-3.5 px-4 text-center">
+                        <button type="button" onclick="openRowActionMenu(event, '${item.id}')"
+                            class="w-8 h-8 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-500 hover:text-slate-800 flex items-center justify-center transition border border-slate-200/60 shadow-2xs mx-auto">
+                            <i class="fas fa-ellipsis-vertical text-xs"></i>
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+
+            updateTabCounts();
+        }
+
+        function updateTabCounts() {
+            const allCount = DISBURSEMENTS_DATA.length;
+            const completedCount = DISBURSEMENTS_DATA.filter(d => d.statusKey === 'completed').length;
+            const pendingCount = DISBURSEMENTS_DATA.filter(d => d.statusKey === 'pending').length;
+            const cancelledCount = DISBURSEMENTS_DATA.filter(d => d.statusKey === 'cancelled').length;
+
+            if (document.getElementById('count-all')) document.getElementById('count-all').textContent = allCount;
+            if (document.getElementById('count-completed')) document.getElementById('count-completed').textContent = completedCount;
+            if (document.getElementById('count-pending')) document.getElementById('count-pending').textContent = pendingCount;
+            if (document.getElementById('count-cancelled')) document.getElementById('count-cancelled').textContent = cancelledCount;
+        }
+
+        // Row Action Dropdown Menu (`#rowActionDropdown`)
+        let activeRowDisbursementId = null;
+
+        function openRowActionMenu(event, id) {
+            event.stopPropagation();
+            activeRowDisbursementId = id;
+            const item = DISBURSEMENTS_DATA.find(d => d.id === id);
+            if (!item) return;
+
+            const dropdown = document.getElementById('rowActionDropdown');
+
+            dropdown.innerHTML = `
+                <!-- Header with Full Supplier Company Name (No Truncation) -->
+                <div class="px-3 py-2.5 mb-1.5 bg-slate-50/90 rounded-xl border border-slate-100/90 mx-0.5">
+                    <div class="flex items-start gap-2.5">
+                        <img src="${item.supplierAvatar}" class="w-8 h-8 rounded-full object-cover border border-slate-200 shadow-xs flex-shrink-0 mt-0.5" />
+                        <div class="min-w-0 flex-1">
+                            <div class="flex items-center justify-between gap-1.5 mb-1">
+                                <span class="text-xs font-bold text-slate-800 tracking-tight leading-none font-mono">${item.voucherNumber}</span>
+                                <div class="flex-shrink-0">
+                                    <span class="text-[10px] px-2 py-0.5 rounded-full font-semibold ${item.statusBadgeClass}">${item.statusName}</span>
+                                </div>
+                            </div>
+                            <div class="text-[11px] font-medium text-slate-700 leading-snug break-words">
+                                ${item.supplierCompany}
+                            </div>
+                            <div class="text-[10px] text-slate-400 mt-0.5 truncate">
+                                ${item.supplierName} • ${item.refNumber}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Items -->
+                <div class="space-y-0.5">
+                    <a href="view-disbursement.html?id=${item.id}"
+                        class="w-full group px-2.5 py-2 rounded-xl text-left text-slate-700 hover:text-primary hover:bg-emerald-50/60 flex items-center gap-2.5 transition text-xs font-medium cursor-pointer">
+                        <span class="w-7 h-7 rounded-lg bg-slate-100 group-hover:bg-primary group-hover:text-white text-slate-500 flex items-center justify-center text-[11px] transition shadow-xs">
+                            <i class="fas fa-eye"></i>
+                        </span>
+                        <span class="flex-1">មើលព័ត៌មានលម្អិត</span>
+                    </a>
+                    <a href="edit-disbursement.html?id=${item.id}"
+                        class="w-full group px-2.5 py-2 rounded-xl text-left text-slate-700 hover:text-primary hover:bg-emerald-50/60 flex items-center gap-2.5 transition text-xs font-medium cursor-pointer">
+                        <span class="w-7 h-7 rounded-lg bg-slate-100 group-hover:bg-primary group-hover:text-white text-slate-500 flex items-center justify-center text-[11px] transition shadow-xs">
+                            <i class="fas fa-file-pen"></i>
+                        </span>
+                        <span class="flex-1">កែប្រែព័ត៌មានទូទាត់</span>
+                    </a>
+                    <button type="button" onclick="closeRowActionMenu(); printVoucherDirectlyFromRow('${item.id}')"
+                        class="w-full group px-2.5 py-2 rounded-xl text-left text-slate-700 hover:text-primary hover:bg-emerald-50/60 flex items-center gap-2.5 transition text-xs font-medium cursor-pointer">
+                        <span class="w-7 h-7 rounded-lg bg-slate-100 group-hover:bg-primary group-hover:text-white text-slate-500 flex items-center justify-center text-[11px] transition shadow-xs">
+                            <i class="fas fa-print"></i>
+                        </span>
+                        <span class="flex-1">បោះពុម្ពប័ណ្ណចំណាយ</span>
+                    </button>
+                    <button type="button" onclick="closeRowActionMenu(); downloadVoucherPDF('${item.id}')"
+                        class="w-full group px-2.5 py-2 rounded-xl text-left text-blue-700 hover:bg-blue-50 flex items-center gap-2.5 transition text-xs font-medium cursor-pointer">
+                        <span class="w-7 h-7 rounded-lg bg-blue-100/80 group-hover:bg-blue-600 group-hover:text-white text-blue-700 flex items-center justify-center text-[11px] transition shadow-xs">
+                            <i class="fas fa-file-pdf"></i>
+                        </span>
+                        <span class="flex-1">ទាញយកជាទម្រង់ PDF</span>
+                    </button>
+                    <div class="my-1 border-t border-slate-100 mx-1"></div>
+                    <button type="button" onclick="closeRowActionMenu(); deleteDisbursementConfirm('${item.id}', '${item.voucherNumber}')"
+                        class="w-full group px-2.5 py-2 rounded-xl text-left text-rose-600 hover:bg-rose-50 flex items-center gap-2.5 transition text-xs font-medium cursor-pointer">
+                        <span class="w-7 h-7 rounded-lg bg-rose-50 group-hover:bg-rose-600 group-hover:text-white text-rose-600 flex items-center justify-center text-[11px] transition shadow-xs">
+                            <i class="fas fa-trash-can"></i>
+                        </span>
+                        <span class="flex-1">លុបកំណត់ត្រា</span>
+                    </button>
+                </div>
+            `;
+
+            dropdown.classList.remove('hidden');
+
+            const btn = event.currentTarget;
+            const rect = btn.getBoundingClientRect();
+            const dropdownWidth = dropdown.offsetWidth || 280;
+            const dropdownHeight = dropdown.offsetHeight || 220;
+
+            // Anchor right edge of dropdown to right edge of button (widens to the left)
+            let left = rect.right - dropdownWidth;
+            if (left + dropdownWidth > window.innerWidth - 16) {
+                left = window.innerWidth - dropdownWidth - 16;
+            }
+            if (left < 16) left = 16;
+
+            let top = rect.bottom + 6;
+            if (top + dropdownHeight > window.innerHeight - 16) {
+                top = rect.top - dropdownHeight - 6;
+            }
+            if (top < 16) top = 16;
+
+            dropdown.style.left = `${left}px`;
+            dropdown.style.top = `${top}px`;
+        }
+
+        function closeRowActionMenu() {
+            const dropdown = document.getElementById('rowActionDropdown');
+            if (dropdown) dropdown.classList.add('hidden');
+        }
+
+        document.addEventListener('click', (e) => {
+            const dropdown = document.getElementById('rowActionDropdown');
+            if (dropdown && !dropdown.contains(e.target)) {
+                closeRowActionMenu();
+            }
+            const datePopover = document.getElementById('datePickerPopover');
+            const dateBtn = document.getElementById('dateRangePickerBtn');
+            if (datePopover && dateBtn && !datePopover.contains(e.target) && !dateBtn.contains(e.target)) {
+                datePopover.classList.add('hidden');
+                document.getElementById('datePickerChevron')?.classList.remove('rotate-180');
+            }
+            const methodSelect = document.getElementById('disbursementMethodFilterDropdown');
+            if (methodSelect && !methodSelect.contains(e.target)) {
+                methodSelect.querySelector('.bms-custom-select-menu')?.classList.add('hidden');
+                methodSelect.querySelector('.bms-custom-select-arrow')?.classList.remove('rotate-180');
+            }
+        });
+
+        // Filter Controls
+        function setStatusTab(status) {
+            activeStatusTab = status;
+            document.querySelectorAll('.status-tab').forEach(tab => {
+                tab.classList.remove('bg-primary', 'text-white');
+                tab.classList.add('bg-slate-100', 'text-slate-700', 'hover:bg-slate-200');
+            });
+            const activeBtn = document.getElementById(`tab-${status}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-slate-100', 'text-slate-700', 'hover:bg-slate-200');
+                activeBtn.classList.add('bg-primary', 'text-white');
+            }
+            renderDisbursementsTable();
+        }
+
+        function filterByMethod(method) {
+            if (method === 'all') {
+                selectDisbursementMethod('all', 'វិធីសាស្ត្រ៖ ទាំងអស់');
+            } else if (method === 'bank') {
+                selectDisbursementMethod('bank', 'ធនាគារ ABA / KHQR');
+            } else if (method === 'cash') {
+                selectDisbursementMethod('cash', 'សាច់ប្រាក់សុទ្ធ');
+            }
+        }
+
+        function selectDisbursementMethod(val, label) {
+            activeMethodFilter = val;
+            const labelEl = document.getElementById('selectedMethodLabel');
+            if (labelEl) labelEl.textContent = label;
+            const valInput = document.getElementById('disbursementMethodFilterValue');
+            if (valInput) valInput.value = val;
+
+            const dropdown = document.getElementById('disbursementMethodFilterDropdown');
+            if (dropdown) {
+                dropdown.querySelectorAll('.checkmark').forEach(cm => cm.classList.add('opacity-0'));
+                const clickedBtn = Array.from(dropdown.querySelectorAll('.bms-custom-select-menu button')).find(b => b.textContent.includes(label.replace('វិធីសាស្ត្រ៖ ', '')));
+                if (clickedBtn) {
+                    clickedBtn.querySelector('.checkmark')?.classList.remove('opacity-0');
+                }
+                dropdown.querySelector('.bms-custom-select-menu')?.classList.add('hidden');
+                dropdown.querySelector('.bms-custom-select-arrow')?.classList.remove('rotate-180');
+            }
+            renderDisbursementsTable();
+        }
+
+        function filterDisbursements() {
+            const input = document.getElementById('disbursementSearchInput');
+            searchQuery = input ? input.value : '';
+            renderDisbursementsTable();
+        }
+
+        function resetAllFilters() {
+            const searchInput = document.getElementById('disbursementSearchInput');
+            if (searchInput) searchInput.value = '';
+            searchQuery = '';
+            selectDisbursementMethod('all', 'វិធីសាស្ត្រ៖ ទាំងអស់');
+            setStatusTab('all');
+            selectPreset('ខែនេះ');
+            showToast('បានកំណត់តម្រងទាំងអស់ឡើងវិញ', 'info');
+        }
+
+        function exportDisbursementsData() {
+            showToast('កំពុងទាញយកទិន្នន័យប័ណ្ណចំណាយជាឯកសារ Excel...', 'success');
+        }
+
+        // Voucher Detail Page Navigation
+        function viewVoucherDetail(id) {
+            window.location.href = `view-disbursement.html?id=${id}`;
+        }
+
+        function closeVoucherDetailModal() {
+            document.getElementById('voucherDetailModal').classList.add('hidden');
+        }
+
+        function printVoucherDirectly() {
+            window.print();
+        }
+
+        function printVoucherDirectlyFromRow(id) {
+            viewVoucherDetail(id);
+            setTimeout(() => {
+                window.print();
+            }, 250);
+        }
+
+        function downloadVoucherPDF(id) {
+            const item = DISBURSEMENTS_DATA.find(d => d.id === id);
+            showToast(`កំពុងទាញយកប័ណ្ណចំណាយ ${item ? item.voucherNumber : id} ជា PDF...`, 'success');
+        }
+
+        async function deleteDisbursementConfirm(id, voucherNumber) {
+            const confirmed = await showCustomConfirm({
+                title: 'បញ្ជាក់ការលុបប័ណ្ណចំណាយ',
+                message: `តើលោកអ្នកពិតជាចង់លុបប័ណ្ណទូទាត់ចំណាយ "${voucherNumber}" នេះចេញពីប្រព័ន្ធមែនទេ? សកម្មភាពនេះមិនអាចត្រឡប់ក្រោយវិញបានឡើយ។`,
+                confirmText: 'លុបចេញ'
+            });
+
+            if (confirmed) {
+                const idx = DISBURSEMENTS_DATA.findIndex(d => d.id === id);
+                if (idx !== -1) {
+                    DISBURSEMENTS_DATA.splice(idx, 1);
+                    renderDisbursementsTable();
+                    showToast(`បានលុបប័ណ្ណចំណាយ ${voucherNumber} ដោយជោគជ័យ`, 'danger');
+                }
+            }
+        }
+
+        // Unified Date Range Picker Logic
+        let calCurrentYear = 2026;
+        let calCurrentMonth = 8; // 0-indexed, 8 = September
+
+        const KHMER_MONTHS = [
+            "មករា", "កុម្ភៈ", "មីនា", "មេសា", "ឧសភា", "មិថុនា",
+            "កក្កដា", "សីហា", "កញ្ញា", "តុលា", "វិច្ឆិកា", "ធ្នូ"
+        ];
+
+        function toggleDatePicker(e) {
+            e.stopPropagation();
+            const popover = document.getElementById('datePickerPopover');
+            const chevron = document.getElementById('datePickerChevron');
+            const isHidden = popover.classList.contains('hidden');
+            if (isHidden) {
+                popover.classList.remove('hidden');
+                if (chevron) chevron.classList.add('rotate-180');
+                renderCalendarGrid();
+            } else {
+                popover.classList.add('hidden');
+                if (chevron) chevron.classList.remove('rotate-180');
+            }
+        }
+
+        function changeCalendarMonth(delta) {
+            calCurrentMonth += delta;
+            if (calCurrentMonth < 0) {
+                calCurrentMonth = 11;
+                calCurrentYear--;
+            } else if (calCurrentMonth > 11) {
+                calCurrentMonth = 0;
+                calCurrentYear++;
+            }
+            renderCalendarGrid();
+        }
+
+        function renderCalendarGrid() {
+            const label = document.getElementById('calMonthYearLabel');
+            if (label) {
+                label.textContent = `${KHMER_MONTHS[calCurrentMonth]} ${calCurrentYear}`;
+            }
+
+            const grid = document.getElementById('calendarDaysGrid');
+            if (!grid) return;
+            grid.innerHTML = '';
+
+            const firstDayIndex = new Date(calCurrentYear, calCurrentMonth, 1).getDay();
+            const leadingEmpty = (firstDayIndex === 0) ? 6 : firstDayIndex - 1;
+            const daysInMonth = new Date(calCurrentYear, calCurrentMonth + 1, 0).getDate();
+
+            for (let i = 0; i < leadingEmpty; i++) {
+                const emptyCell = document.createElement('div');
+                emptyCell.className = 'h-8';
+                grid.appendChild(emptyCell);
+            }
+
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dateObj = new Date(calCurrentYear, calCurrentMonth, day);
+                const cell = document.createElement('button');
+                cell.type = 'button';
+                cell.className = 'h-8 w-8 mx-auto flex items-center justify-center rounded-full text-xs transition-colors relative';
+                cell.textContent = day;
+
+                const isStart = activeStartDate && isSameDay(dateObj, activeStartDate);
+                const isEnd = activeEndDate && isSameDay(dateObj, activeEndDate);
+                const inRange = activeStartDate && activeEndDate && dateObj > activeStartDate && dateObj < activeEndDate;
+
+                if (isStart || isEnd) {
+                    cell.className += ' bg-[#0f2b5c] text-white font-bold shadow-sm';
+                } else if (inRange) {
+                    cell.className += ' bg-slate-100 text-slate-800 rounded-none';
+                } else {
+                    cell.className += ' text-slate-700 hover:bg-slate-100';
+                }
+
+                cell.onclick = () => handleDateClick(dateObj);
+                grid.appendChild(cell);
+            }
+        }
+
+        function isSameDay(d1, d2) {
+            return d1.getFullYear() === d2.getFullYear() &&
+                   d1.getMonth() === d2.getMonth() &&
+                   d1.getDate() === d2.getDate();
+        }
+
+        function handleDateClick(dateObj) {
+            if (!activeStartDate || (activeStartDate && activeEndDate)) {
+                activeStartDate = dateObj;
+                activeEndDate = null;
+            } else if (activeStartDate && !activeEndDate) {
+                if (dateObj < activeStartDate) {
+                    activeEndDate = activeStartDate;
+                    activeStartDate = dateObj;
+                } else {
+                    activeEndDate = dateObj;
+                }
+            }
+            updateRangeTagDisplay();
+            renderCalendarGrid();
+        }
+
+        function selectPreset(preset) {
+            activePreset = preset;
+            const today = new Date(2026, 8, 4);
+
+            if (preset === 'ថ្ងៃនេះ') {
+                activeStartDate = new Date(today);
+                activeEndDate = new Date(today);
+            } else if (preset === 'ម្សិលមិញ') {
+                const y = new Date(today);
+                y.setDate(today.getDate() - 1);
+                activeStartDate = y;
+                activeEndDate = y;
+            } else if (preset === 'សប្តាហ៍នេះ') {
+                activeStartDate = new Date(2026, 7, 31);
+                activeEndDate = new Date(2026, 8, 6);
+            } else if (preset === 'សប្តាហ៍មុន') {
+                activeStartDate = new Date(2026, 7, 24);
+                activeEndDate = new Date(2026, 7, 30);
+            } else if (preset === 'ខែនេះ') {
+                activeStartDate = new Date(2026, 8, 1);
+                activeEndDate = new Date(2026, 8, 30);
+            } else if (preset === 'ខែមុន') {
+                activeStartDate = new Date(2026, 7, 1);
+                activeEndDate = new Date(2026, 7, 31);
+            } else if (preset === 'ឆ្នាំនេះ') {
+                activeStartDate = new Date(2026, 0, 1);
+                activeEndDate = new Date(2026, 11, 31);
+            } else if (preset === '7 ថ្ងៃចុងក្រោយ') {
+                const s = new Date(today);
+                s.setDate(today.getDate() - 6);
+                activeStartDate = s;
+                activeEndDate = new Date(today);
+            } else if (preset === '14 ថ្ងៃចុងក្រោយ') {
+                const s = new Date(today);
+                s.setDate(today.getDate() - 13);
+                activeStartDate = s;
+                activeEndDate = new Date(today);
+            } else if (preset === '30 ថ្ងៃចុងក្រោយ') {
+                const s = new Date(today);
+                s.setDate(today.getDate() - 29);
+                activeStartDate = s;
+                activeEndDate = new Date(today);
+            }
+
+            document.querySelectorAll('.preset-btn').forEach(btn => {
+                if (btn.textContent.trim() === preset) {
+                    btn.className = 'preset-btn w-full text-left px-3 py-1.5 rounded-lg bg-[#0f2b5c] text-white font-medium shadow-sm transition-colors';
+                } else {
+                    btn.className = 'preset-btn w-full text-left px-3 py-1.5 rounded-lg hover:bg-slate-100 transition-colors text-slate-600';
+                }
+            });
+
+            calCurrentMonth = activeStartDate.getMonth();
+            calCurrentYear = activeStartDate.getFullYear();
+
+            updateRangeTagDisplay();
+            renderCalendarGrid();
+        }
+
+        function updateRangeTagDisplay() {
+            const tag = document.getElementById('rangeTagLabel');
+            if (!tag) return;
+            if (activeStartDate && activeEndDate) {
+                tag.textContent = `${formatDateKhmer(activeStartDate)} - ${formatDateKhmer(activeEndDate)}`;
+            } else if (activeStartDate) {
+                tag.textContent = `${formatDateKhmer(activeStartDate)} - ...`;
+            } else {
+                tag.textContent = 'ជ្រើសរើសចន្លោះកាលបរិច្ឆេទ';
+            }
+        }
+
+        function formatDateKhmer(d) {
+            return `${d.getDate()} ${KHMER_MONTHS[d.getMonth()]}`;
+        }
+
+        function clearRangeTag() {
+            activeStartDate = null;
+            activeEndDate = null;
+            updateRangeTagDisplay();
+            renderCalendarGrid();
+        }
+
+        function applyDateRange() {
+            const btnLabel = document.getElementById('selectedDateLabel');
+            if (btnLabel && activeStartDate && activeEndDate) {
+                btnLabel.textContent = `${formatDateKhmer(activeStartDate)} - ${formatDateKhmer(activeEndDate)}`;
+            }
+            toggleDatePicker({ stopPropagation: () => {} });
+            showToast(`បានអនុវត្តតម្រងកាលបរិច្ឆេទ៖ ${btnLabel.textContent}`, 'success');
+            renderDisbursementsTable();
+        }
+
+        // Custom dropdown component helpers
+        function toggleCustomDropdown(containerId) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            const menu = container.querySelector('.bms-custom-select-menu');
+            const arrow = container.querySelector('.bms-custom-select-arrow');
+            if (!menu) return;
+            const isHidden = menu.classList.contains('hidden');
+            if (isHidden) {
+                menu.classList.remove('hidden');
+                if (arrow) arrow.classList.add('rotate-180');
+            } else {
+                menu.classList.add('hidden');
+                if (arrow) arrow.classList.remove('rotate-180');
+            }
+        }
+
+        // Initialize on DOM Ready
+        document.addEventListener('DOMContentLoaded', () => {
+            renderDisbursementsTable();
+            renderCalendarGrid();
+            updateRangeTagDisplay();
+        });
+    </script>
+</body>
+
+</html>

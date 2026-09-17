@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - បិទវេនគិតប្រាក់ (Close Shift)</title>
+    <link rel="icon" type="image/png" href="../../../assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#065f46",
+                        accent: "#10b981",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../styles/custom.css">
+</head>
+<body class="bg-emerald-50/20 font-sans text-slate-800 text-[16px] flex h-screen overflow-hidden">
+
+    <!-- Cashier Sidebar -->
+    <aside class="w-64 bg-[#065f46] text-white flex flex-col flex-shrink-0 select-none z-20 border-r border-emerald-900">
+        <div class="h-[72px] px-6 flex items-center justify-between border-b border-white/10 flex-shrink-0">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-lime-400/20 border border-lime-400/30 flex items-center justify-center p-1 shadow-sm overflow-hidden flex-shrink-0">
+                    <img src="../../../assets/logo-mark-transparent.png" alt="DIGITECHKH" class="w-full h-full object-contain">
+                </div>
+                <div>
+                    <h1 class="text-lg font-semibold tracking-wider whitespace-nowrap text-white">DIGITECHKH</h1>
+                    <span class="text-[11px] font-medium text-lime-300 uppercase tracking-wider block">អ្នកគិតប្រាក់ (POS)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="px-5 py-3 border-b border-white/5 bg-black/15">
+            <div class="flex items-center justify-between">
+                <span class="text-xs text-emerald-200">តួនាទី:</span>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-lime-500/20 text-lime-200 border border-lime-400/30">
+                    <i class="fas fa-cash-register text-[10px]"></i> Cashier POS
+                </span>
+            </div>
+        </div>
+
+        <nav class="flex-1 overflow-y-auto px-4 py-4 space-y-1.5 scrollbar-hide text-sm">
+            <a href="dashboard.html" class="flex items-center p-3 text-emerald-100 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-desktop w-6 text-center text-lime-300"></i>
+                <span class="ml-3 text-[15px]">ផ្ទាំងគិតប្រាក់ Touch POS</span>
+            </a>
+
+            <a href="history.html" class="flex items-center p-3 text-emerald-100 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-receipt w-6 text-center text-lime-300"></i>
+                <span class="ml-3 text-[15px]">ប្រវត្តិលក់វេននេះ</span>
+            </a>
+
+            <a href="close-shift.html" class="flex items-center p-3 bg-white/15 text-white font-medium rounded-xl shadow-sm transition-all whitespace-nowrap border border-white/10">
+                <i class="fas fa-lock w-6 text-center text-amber-300"></i>
+                <span class="ml-3 text-[15px]">បិទវេនគិតប្រាក់</span>
+            </a>
+        </nav>
+
+        <div class="p-4 border-t border-white/10 bg-black/10">
+            <a href="../../1-login/login.html" class="flex items-center text-[15px] text-emerald-200 hover:text-rose-300 transition-colors p-2 rounded-lg hover:bg-white/5">
+                <i class="fas fa-arrow-right-from-bracket w-6 mr-2"></i> ចាកចេញ
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <!-- Header: h-[72px] seamless -->
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div class="flex items-center gap-4">
+                <a href="dashboard.html" 
+                   class="w-10 h-10 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-600 flex items-center justify-center transition border border-slate-200/70" 
+                   title="ត្រឡប់ទៅផ្ទាំងគិតប្រាក់">
+                    <i class="fas fa-arrow-left text-sm"></i>
+                </a>
+                <div>
+                    <h2 class="text-xl font-semibold text-gray-800 leading-tight">បិទវេនគិតប្រាក់ (End of Shift Reconciliation)</h2>
+                    <p class="text-xs font-normal text-gray-500 mt-0.5">ផ្ទៀងផ្ទាត់សាច់ប្រាក់ក្នុងថត និងបោះពុម្ពប័ណ្ណបិទវេន X/Z Report</p>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-3">
+                <button onclick="window.print()" class="px-4 py-2.5 rounded-xl border border-slate-200 hover:bg-slate-100 text-slate-700 font-medium text-xs transition inline-flex items-center gap-1.5">
+                    <i class="fas fa-print"></i>
+                    <span>បោះពុម្ពប័ណ្ណសង្ខេប</span>
+                </button>
+                <button onclick="confirmCloseShift()" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-medium text-xs shadow-sm transition">
+                    <i class="fas fa-lock"></i>
+                    <span>បញ្ជាក់បិទវេន និងចាក់សោរ</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Form Container -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-6">
+            <div class="w-full space-y-6 max-w-4xl">
+                
+                <!-- Shift Information Card -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm grid grid-cols-2 md:grid-cols-4 gap-4 text-xs">
+                    <div>
+                        <span class="text-slate-400 block">អ្នកគិតប្រាក់:</span>
+                        <span class="font-bold text-slate-800 text-sm">កញ្ញា លី សុខុម</span>
+                    </div>
+                    <div>
+                        <span class="text-slate-400 block">ស្ថានីយ POS:</span>
+                        <span class="font-bold text-slate-800 text-sm">POS-Station-01</span>
+                    </div>
+                    <div>
+                        <span class="text-slate-400 block">វេនការងារ:</span>
+                        <span class="font-bold text-emerald-700">វេនព្រឹក (08:00 - 16:00)</span>
+                    </div>
+                    <div>
+                        <span class="text-slate-400 block">កាលបរិច្ឆេទ:</span>
+                        <span class="font-bold text-slate-800">17 កញ្ញា 2026</span>
+                    </div>
+                </div>
+
+                <!-- 2-Column Reconciliation Summary -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
+                    <!-- Left: System Calculated Totals -->
+                    <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-4">
+                        <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                            <h3 class="font-semibold text-slate-800 text-sm">1. ចំណូលលក់តាមប្រព័ន្ធ (System Totals)</h3>
+                            <span class="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-[11px] font-bold">18 វិក្កយបត្រ</span>
+                        </div>
+
+                        <div class="space-y-3 text-xs">
+                            <div class="flex justify-between items-center p-3 rounded-xl bg-slate-50">
+                                <span class="text-slate-600 flex items-center gap-2">
+                                    <i class="fas fa-wallet text-emerald-600"></i> សាច់ប្រាក់ដើមវេន (Opening Float):
+                                </span>
+                                <span class="font-bold text-slate-800">$50.00</span>
+                            </div>
+
+                            <div class="flex justify-between items-center p-3 rounded-xl bg-slate-50">
+                                <span class="text-slate-600 flex items-center gap-2">
+                                    <i class="fas fa-money-bill-wave text-emerald-600"></i> លក់បានជាសាច់ប្រាក់ (Cash Sales):
+                                </span>
+                                <span class="font-bold text-slate-800">$430.00</span>
+                            </div>
+
+                            <div class="flex justify-between items-center p-3 rounded-xl bg-slate-50">
+                                <span class="text-slate-600 flex items-center gap-2">
+                                    <i class="fas fa-qrcode text-blue-600"></i> លក់បានតាម KHQR (Bakong):
+                                </span>
+                                <span class="font-bold text-slate-800">$725.50</span>
+                            </div>
+
+                            <div class="flex justify-between items-center p-3 rounded-xl bg-slate-50">
+                                <span class="text-slate-600 flex items-center gap-2">
+                                    <i class="fas fa-credit-card text-purple-600"></i> លក់បានតាមកាត (Card / POS):
+                                </span>
+                                <span class="font-bold text-slate-800">$180.00</span>
+                            </div>
+
+                            <div class="pt-3 border-t border-slate-200">
+                                <div class="flex justify-between text-sm font-bold text-slate-900">
+                                    <span>សរុបលក់បានក្នុងវេន:</span>
+                                    <span class="text-emerald-700 text-base">$1,335.50</span>
+                                </div>
+                                <div class="flex justify-between text-xs text-slate-500 mt-1">
+                                    <span>សាច់ប្រាក់រំពឹងទុកក្នុងថត (ដើមវេន + លុយសុទ្ធ):</span>
+                                    <span class="font-bold text-slate-800">$480.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Actual Cash Drawer Count Input -->
+                    <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-4">
+                        <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                            <h3 class="font-semibold text-slate-800 text-sm">2. ការរាប់សាច់ប្រាក់ជាក់ស្តែង (Cash Drawer)</h3>
+                            <span class="text-[11px] text-slate-400">សូមបញ្ចូលចំនួនទឹកប្រាក់រាប់ឃើញ</span>
+                        </div>
+
+                        <div class="space-y-4 text-xs">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 mb-1.5">
+                                    សាច់ប្រាក់រាប់ជាក់ស្តែងក្នុងថត ($ USD) <span class="text-rose-500">*</span>
+                                </label>
+                                <div class="relative">
+                                    <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400 text-sm font-bold">$</span>
+                                    <input type="number" id="actualCashInput" value="480.00" step="1" oninput="calculateDiscrepancy()" 
+                                        class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-8 pr-4 py-3 text-base font-bold text-slate-800 focus:outline-none focus:border-[#065f46] transition">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 mb-1.5">
+                                    សាច់ប្រាក់រៀលរាប់ឃើញ (៛ KHR)
+                                </label>
+                                <div class="relative">
+                                    <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400 text-sm font-bold">៛</span>
+                                    <input type="number" value="0" step="1000" 
+                                        class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-8 pr-4 py-2 text-xs font-bold text-slate-800 focus:outline-none focus:border-[#065f46] transition">
+                                </div>
+                            </div>
+
+                            <!-- Discrepancy Result Card -->
+                            <div class="p-4 rounded-xl border" id="discrepancyCard">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <h4 class="font-bold text-xs" id="discrepancyTitle">ផលខុសគ្នាសាច់ប្រាក់ (Discrepancy)</h4>
+                                        <p class="text-[11px] text-slate-500 mt-0.5" id="discrepancyDesc">សាច់ប្រាក់រាប់ឃើញត្រូវគ្នានឹងប្រព័ន្ធ ១០០%</p>
+                                    </div>
+                                    <span class="text-base font-extrabold" id="discrepancyAmount">$0.00</span>
+                                </div>
+                            </div>
+
+                            <!-- Notes -->
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 mb-1.5">កំណត់ចំណាំបិទវេន (ស្រេចចិត្ត)</label>
+                                <textarea rows="2" placeholder="បញ្ចូលហេតុផលបើសិនជាមានលុយលើស ឬខ្វះ..." 
+                                    class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-xs text-slate-800 focus:outline-none focus:border-[#065f46] transition resize-none"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../scripts/ui-components.js"></script>
+    <script>
+        const expectedCash = 480.00;
+
+        function calculateDiscrepancy() {
+            const actual = parseFloat(document.getElementById('actualCashInput')?.value || 0);
+            const diff = actual - expectedCash;
+            const card = document.getElementById('discrepancyCard');
+            const title = document.getElementById('discrepancyTitle');
+            const desc = document.getElementById('discrepancyDesc');
+            const amount = document.getElementById('discrepancyAmount');
+
+            if (diff === 0) {
+                card.className = 'p-4 rounded-xl border border-emerald-200 bg-emerald-50 text-emerald-800';
+                title.innerText = 'សាច់ប្រាក់ផ្ទៀងផ្ទាត់ត្រឹមត្រូវល្អ';
+                desc.innerText = 'សាច់ប្រាក់រាប់ឃើញត្រូវគ្នានឹងប្រព័ន្ធ ១០០%';
+                amount.innerText = '$0.00';
+            } else if (diff > 0) {
+                card.className = 'p-4 rounded-xl border border-blue-200 bg-blue-50 text-blue-800';
+                title.innerText = 'សាច់ប្រាក់លើស (Cash Over)';
+                desc.innerText = 'សាច់ប្រាក់ក្នុងថតលើសពីការគណនារបស់ប្រព័ន្ធ';
+                amount.innerText = '+$' + diff.toFixed(2);
+            } else {
+                card.className = 'p-4 rounded-xl border border-rose-200 bg-rose-50 text-rose-800';
+                title.innerText = 'សាច់ប្រាក់ខ្វះ (Cash Short)';
+                desc.innerText = 'សាច់ប្រាក់ក្នុងថតខ្វះពីការគណនារបស់ប្រព័ន្ធ សូមពិនិត្យឡើងវិញ';
+                amount.innerText = '-$' + Math.abs(diff).toFixed(2);
+            }
+        }
+
+        function confirmCloseShift() {
+            showToast('វេនគិតប្រាក់ត្រូវបានបិទ និងចាក់សោរដោយជោគជ័យ!', 'success');
+            setTimeout(() => {
+                window.location.href = 'history.html';
+            }, 1200);
+        }
+    </script>
+</body>
+</html>

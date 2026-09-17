@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - ផ្ទាំងគ្រប់គ្រងបុគ្គលិកស្តុក</title>
+    <link rel="icon" type="image/png" href="../../../assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#4a1d96",
+                        'primary-dark': "#3b0764",
+                        accent: "#9333ea",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../styles/custom.css">
+</head>
+<body class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <!-- Inventory Staff Sidebar -->
+    <aside class="w-64 bg-[#4a1d96] text-white flex flex-col flex-shrink-0 select-none z-20 border-r border-purple-900">
+        <div class="h-[72px] px-6 flex items-center justify-between border-b border-white/10 flex-shrink-0">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-purple-400/20 border border-purple-400/30 flex items-center justify-center p-1 shadow-sm overflow-hidden flex-shrink-0">
+                    <img src="../../../assets/logo-mark-transparent.png" alt="DIGITECHKH" class="w-full h-full object-contain">
+                </div>
+                <div>
+                    <h1 class="text-lg font-semibold tracking-wider whitespace-nowrap text-white">DIGITECHKH</h1>
+                    <span class="text-[11px] font-medium text-purple-300 uppercase tracking-wider block">ផ្នែកស្តុកទំនិញ</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="px-5 py-3 border-b border-white/5 bg-black/15">
+            <div class="flex items-center justify-between">
+                <span class="text-xs text-purple-200">តួនាទី:</span>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-purple-500/20 text-purple-200 border border-purple-400/30">
+                    <i class="fas fa-boxes-stacked text-[10px]"></i> បុគ្គលិកស្តុក
+                </span>
+            </div>
+        </div>
+
+        <nav class="flex-1 overflow-y-auto px-4 py-4 space-y-1.5 scrollbar-hide text-sm">
+            <a href="dashboard.html" class="flex items-center p-3 bg-white/15 text-purple-200 font-medium rounded-xl shadow-sm transition-all whitespace-nowrap border border-white/10">
+                <i class="fas fa-chart-pie w-6 text-center text-purple-300"></i>
+                <span class="ml-3 text-[15px]">ផ្ទាំងគ្រប់គ្រង</span>
+            </a>
+
+            <a href="balance.html" class="flex items-center p-3 text-purple-100 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-boxes-stacked w-6 text-center text-purple-300"></i>
+                <span class="ml-3 text-[15px]">តុល្យភាពស្តុក</span>
+            </a>
+
+            <a href="catalog.html" class="flex items-center p-3 text-purple-100 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-list-check w-6 text-center text-purple-300"></i>
+                <span class="ml-3 text-[15px]">កាតាឡុកទំនិញ</span>
+            </a>
+
+            <a href="movement.html" class="flex items-center p-3 text-purple-100 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-right-left w-6 text-center text-purple-300"></i>
+                <span class="ml-3 text-[15px]">ចលនាស្តុក (ចូល/ចេញ)</span>
+            </a>
+
+            <div class="p-3 rounded-xl bg-white/5 border border-white/10 text-xs text-purple-200 mt-6 leading-relaxed">
+                <i class="fas fa-shield-halved mr-1 text-purple-300"></i> សុវត្ថិភាពទិន្នន័យ៖ តម្លៃទិញ និងតម្លៃលក់ត្រូវបានលាក់ដើម្បីការពារការបែកធ្លាយ។
+            </div>
+        </nav>
+
+        <div class="p-4 border-t border-white/10 bg-black/10">
+            <a href="../../1-login/login.html" class="flex items-center text-[15px] text-purple-200 hover:text-rose-300 transition-colors p-2 rounded-lg hover:bg-white/5">
+                <i class="fas fa-arrow-right-from-bracket w-6 mr-2"></i> ចាកចេញ
+            </a>
+        </div>
+    </aside>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div>
+                <h2 class="text-xl font-semibold text-gray-800 leading-tight">ផ្ទាំងគ្រប់គ្រងឃ្លាំង និងស្តុកទំនិញ</h2>
+                <p class="text-xs font-normal text-gray-500 mt-0.5">តាមដានចំនួនទំនិញជាក់ស្តែងក្នុងឃ្លាំង និងការផ្ទេរទំនិញ</p>
+            </div>
+            
+            <div class="flex items-center space-x-3">
+                <button onclick="showToast('ទម្រង់កត់ត្រាចលនាស្តុកថ្មី ដំណើរការ', 'info')" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#4a1d96] hover:bg-[#3b0764] text-white text-xs font-semibold shadow-sm transition">
+                    <i class="fas fa-plus text-purple-300"></i>
+                    <span>+ បញ្ចូលស្តុកថ្មី</span>
+                </button>
+
+                <div class="flex items-center border-l pl-3">
+                    <div class="w-10 h-10 rounded-full bg-[#4a1d96] text-purple-200 flex items-center justify-center font-bold text-sm shadow-sm">
+                        បស
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-4">
+            <div class="w-full space-y-5">
+                
+                <!-- Stock KPI Cards -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
+                        <span class="text-xs font-medium text-slate-500 block mb-1">មុខទំនិញសរុប (SKUs)</span>
+                        <h3 class="text-2xl font-bold text-slate-800">186 មុខ</h3>
+                        <p class="text-xs text-slate-500 mt-1">ទូទាំង 3 ឃ្លាំង</p>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
+                        <span class="text-xs font-medium text-slate-500 block mb-1">ចំនួនស្តុកសរុប</span>
+                        <h3 class="text-2xl font-bold text-purple-700">4,250 ឯកតា</h3>
+                        <p class="text-xs text-emerald-600 mt-1 font-semibold">ស្ថិតក្នុងកម្រិតល្អ</p>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-5 border-2 border-rose-200 bg-rose-50/20 shadow-sm">
+                        <span class="text-xs font-bold text-rose-700 block mb-1">ទំនិញជិតអស់ (Low Stock)</span>
+                        <h3 class="text-2xl font-bold text-rose-700">4 មុខ</h3>
+                        <p class="text-xs text-rose-600 mt-1">ទាបជាងកម្រិតស្តុកអប្បបរមា</p>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
+                        <span class="text-xs font-medium text-slate-500 block mb-1">ចលនាស្តុកថ្ងៃនេះ</span>
+                        <h3 class="text-2xl font-bold text-slate-800">12 ប្រតិបត្តិការ</h3>
+                        <p class="text-xs text-slate-500 mt-1">ចូល 3 · ចេញ 9</p>
+                    </div>
+                </div>
+
+                <!-- Low Stock Alert Items Table -->
+                <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+                    <div class="p-5 border-b border-slate-100 flex items-center justify-between">
+                        <h3 class="text-base font-semibold text-rose-700 flex items-center gap-2">
+                            <i class="fas fa-triangle-exclamation"></i> មុខទំនិញជិតអស់ពីស្តុក (ត្រូវបំពេញបន្ថែម)
+                        </h3>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm">
+                            <thead class="bg-slate-50 text-slate-500 uppercase text-[11px] font-semibold border-b border-slate-100">
+                                <tr>
+                                    <th class="py-3 px-4">កូដ SKU</th>
+                                    <th class="py-3 px-4">ឈ្មោះមុខទំនិញ</th>
+                                    <th class="py-3 px-4">ឃ្លាំង / ទីតាំង</th>
+                                    <th class="py-3 px-4">ស្តុកបច្ចុប្បន្ន</th>
+                                    <th class="py-3 px-4">កម្រិតអប្បបរមា</th>
+                                    <th class="py-3 px-4 text-right">ស្ថានភាព</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 text-slate-700 font-medium text-xs">
+                                <tr class="hover:bg-slate-50 transition">
+                                    <td class="py-3.5 px-4 font-mono font-bold text-slate-600">SKU-RAM-016</td>
+                                    <td class="py-3.5 px-4 font-semibold text-slate-800">RAM DDR5 16GB Kingston</td>
+                                    <td class="py-3.5 px-4">ឃ្លាំងកណ្តាល (ធ្នើ B-02)</td>
+                                    <td class="py-3.5 px-4 font-bold text-rose-600 text-sm">2 គ្រឿង</td>
+                                    <td class="py-3.5 px-4 text-slate-500">10 គ្រឿង</td>
+                                    <td class="py-3.5 px-4 text-right">
+                                        <span class="px-2.5 py-0.5 rounded-full bg-rose-50 text-rose-700 font-bold border border-rose-200">
+                                            បន្ទាន់
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-slate-50 transition">
+                                    <td class="py-3.5 px-4 font-mono font-bold text-slate-600">SKU-SSD-001</td>
+                                    <td class="py-3.5 px-4 font-semibold text-slate-800">SSD 1TB Samsung 980 Pro</td>
+                                    <td class="py-3.5 px-4">ឃ្លាំងកណ្តាល (ធ្នើ B-04)</td>
+                                    <td class="py-3.5 px-4 font-bold text-rose-600 text-sm">3 គ្រឿង</td>
+                                    <td class="py-3.5 px-4 text-slate-500">15 គ្រឿង</td>
+                                    <td class="py-3.5 px-4 text-right">
+                                        <span class="px-2.5 py-0.5 rounded-full bg-rose-50 text-rose-700 font-bold border border-rose-200">
+                                            បន្ទាន់
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../scripts/ui-components.js"></script>
+</body>
+</html>

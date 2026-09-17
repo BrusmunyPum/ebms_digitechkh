@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - បញ្ជីដឹកទំនិញរបស់ខ្ញុំ</title>
+    <link rel="icon" type="image/png" href="../../../assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#78350f",
+                        accent: "#f59e0b",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../styles/custom.css">
+</head>
+<body class="bg-amber-50/40 font-sans text-stone-800 text-[16px] flex h-screen overflow-hidden">
+
+    <aside class="w-64 bg-[#78350f] text-white flex flex-col flex-shrink-0 select-none z-20 border-r border-amber-900">
+        <div class="h-[72px] px-6 flex items-center justify-between border-b border-white/10 flex-shrink-0">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-amber-400/20 border border-amber-400/30 flex items-center justify-center p-1 shadow-sm overflow-hidden flex-shrink-0">
+                    <img src="../../../assets/logo-mark-transparent.png" alt="DIGITECHKH" class="w-full h-full object-contain">
+                </div>
+                <div>
+                    <h1 class="text-lg font-semibold tracking-wider whitespace-nowrap text-white">DIGITECHKH</h1>
+                    <span class="text-[11px] font-medium text-amber-300 uppercase tracking-wider block">អ្នកដឹកជញ្ជូន</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="px-5 py-3 border-b border-white/5 bg-black/15">
+            <div class="flex items-center justify-between">
+                <span class="text-xs text-amber-200">តួនាទី:</span>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-500/20 text-amber-200 border border-amber-400/30">
+                    <i class="fas fa-motorcycle text-[10px]"></i> អ្នកដឹកជញ្ជូន
+                </span>
+            </div>
+        </div>
+
+        <nav class="flex-1 overflow-y-auto px-4 py-4 space-y-1.5 scrollbar-hide text-sm">
+            <a href="dashboard.html" class="flex items-center p-3 text-amber-100 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-chart-pie w-6 text-center text-amber-300"></i>
+                <span class="ml-3 text-[15px]">ផ្ទាំងគ្រប់គ្រង</span>
+            </a>
+
+            <a href="my-deliveries.html" class="flex items-center p-3 bg-white/15 text-amber-200 font-medium rounded-xl shadow-sm transition-all whitespace-nowrap border border-white/10">
+                <i class="fas fa-truck-fast w-6 text-center text-amber-300"></i>
+                <span class="ml-3 text-[15px]">បញ្ជីដឹកទំនិញថ្ងៃនេះ</span>
+            </a>
+        </nav>
+
+        <div class="p-4 border-t border-white/10 bg-black/10">
+            <a href="../../1-login/login.html" class="flex items-center text-[15px] text-amber-200 hover:text-rose-300 transition-colors p-2 rounded-lg hover:bg-white/5">
+                <i class="fas fa-arrow-right-from-bracket w-6 mr-2"></i> ចាកចេញ
+            </a>
+        </div>
+    </aside>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div>
+                <h2 class="text-xl font-semibold text-stone-800 leading-tight">បញ្ជីទំនិញត្រូវដឹកជញ្ជូន</h2>
+                <p class="text-xs font-normal text-stone-500 mt-0.5">ព័ត៌មានអតិថិជន អាសយដ្ឋាន និងមុខទំនិញដែលត្រូវប្រគល់</p>
+            </div>
+        </header>
+
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-amber-50/30 px-4 md:px-6 py-4">
+            <div class="w-full space-y-4">
+                
+                <div class="bg-white rounded-2xl border border-amber-200/80 shadow-sm overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm">
+                            <thead class="bg-stone-50 text-stone-500 uppercase text-[11px] font-semibold border-b border-stone-100">
+                                <tr>
+                                    <th class="py-3 px-4">កូដដឹក</th>
+                                    <th class="py-3 px-4">អតិថិជន</th>
+                                    <th class="py-3 px-4">អាសយដ្ឋាន</th>
+                                    <th class="py-3 px-4">ទូរស័ព្ទ</th>
+                                    <th class="py-3 px-4">ស្ថានភាព</th>
+                                    <th class="py-3 px-4 text-right">សកម្មភាព</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-stone-100 text-stone-700 font-medium text-xs">
+                                <tr class="hover:bg-amber-50/40 transition">
+                                    <td class="py-3.5 px-4 font-bold text-stone-800">DEL-005</td>
+                                    <td class="py-3.5 px-4 font-semibold text-stone-800">សណ្ឋាគារ ភ្នំពេញ ហ្គ្រេន</td>
+                                    <td class="py-3.5 px-4 text-stone-600">ផ្ទះលេខ 45 ផ្លូវ 214 សង្កាត់បឹងរាំង ខណ្ឌដូនពេញ</td>
+                                    <td class="py-3.5 px-4 font-bold text-blue-600"><a href="tel:012334455">012 334 455</a></td>
+                                    <td class="py-3.5 px-4"><span class="px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 font-semibold">កំពុងដឹក</span></td>
+                                    <td class="py-3.5 px-4 text-right">
+                                        <a href="delivery-detail.html?id=DEL-005" class="px-3 py-1.5 rounded-xl bg-[#78350f] hover:bg-[#451a03] text-white font-semibold text-xs inline-flex items-center gap-1">
+                                            ពិនិត្យ និងបញ្ជាក់
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../scripts/ui-components.js"></script>
+</body>
+</html>

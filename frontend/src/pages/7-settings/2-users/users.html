@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="km">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - គ្រប់គ្រងអ្នកប្រើ</title>
+    <link rel="icon" type="image/png" href="../../../assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#24692D',
+                        'primary-dark': '#1b5223',
+                        'primary-light': '#e8f5e9',
+                        navy: '#0f2b5c',
+                    },
+                    fontFamily: {
+                        sans: ['"Kantumruy Pro"', '"Inter"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../styles/custom.css">
+    <style>
+        
+
+        #confirmModal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 99999;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(4px);
+        }
+        #confirmModal.show { display: flex; }
+
+        .custom-select-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            z-index: 40;
+            margin-top: 0.25rem;
+            overflow: hidden;
+        }
+
+        /* Custom Toggle */
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 38px;
+            height: 22px;
+        }
+        .toggle-switch input { opacity: 0; width: 0; height: 0; }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #cbd5e1;
+            transition: .3s;
+            border-radius: 22px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .3s;
+            border-radius: 50%;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+        input:checked + .slider {
+            background-color: #24692D;
+        }
+        input:checked + .slider:before {
+            transform: translateX(16px);
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+    <!-- Standard DIGITECHKH Sidebar -->
+    <aside class="w-64 bg-[#1b5223] text-white flex flex-col flex-shrink-0 select-none z-20">
+        <!-- Sidebar Brand Container (Exact h-[72px] px-6) -->
+        <div class="h-[72px] px-6 flex items-center gap-3 border-b border-white/10 flex-shrink-0">
+            <div class="w-9 h-9 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center p-1 shadow-sm overflow-hidden flex-shrink-0">
+                <img src="../../../assets/logo-mark-transparent.png" alt="DIGITECHKH" class="w-full h-full object-contain">
+            </div>
+            <h1 class="text-xl font-semibold tracking-wider whitespace-nowrap">DIGITECHKH</h1>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="flex-1 overflow-y-auto px-4 py-4 space-y-1 scrollbar-hide text-sm">
+            <!-- ផ្ទាំងគ្រប់គ្រង -->
+            <a href="../../2-home/dashboard.html" data-nav="dashboard"
+                class="nav-item flex items-center p-3 text-emerald-100 hover:bg-white/10 hover:text-white rounded-xl transition-colors whitespace-nowrap">
+                <i class="fas fa-border-all w-6 text-center opacity-80"></i>
+                <span class="ml-3 text-[16px]">ផ្ទាំងគ្រប់គ្រង</span>
+            </a>
+
+            <!-- ការលក់ -->
+            <div>
+                <button id="btn-menu-sell" onclick="toggleMenu('menu-sell')"
+                    class="nav-parent w-full flex items-center justify-between p-3 text-emerald-100 hover:bg-white/10 hover:text-white rounded-xl transition-colors whitespace-nowrap">
+                    <div class="flex items-center">
+                        <i class="fas fa-money-bill w-6 text-center opacity-80"></i>
+                        <span class="ml-3 text-[16px]">ការលក់</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-xs opacity-60 transition-transform duration-200" id="icon-menu-sell"></i>
+                </button>
+                <div id="menu-sell" class="ml-6 pl-3 py-1.5 space-y-1 border-l border-white/20 mt-1 mb-2 hidden text-[15px]">
+                    <a href="../../3-sales/1-invoice/invoice.html" data-nav="sell-invoices" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-file-invoice-dollar w-5 text-center mr-2 text-xs opacity-70"></i> វិក្កយបត្រលក់
+                    </a>
+                    <a href="../../3-sales/2-quote/quote.html" data-nav="sell-prices" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-file-alt w-5 text-center opacity-70 mr-2 text-xs"></i> តារាងតម្លៃ
+                    </a>
+                    <a href="../../3-sales/3-customer/customer.html" data-nav="sell-customers" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-users w-5 text-center opacity-70 mr-2 text-xs"></i> បញ្ជីអតិថិជន
+                    </a>
+                    <a href="../../3-sales/4-payment/payment.html" data-nav="sell-receipts" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-credit-card w-5 text-center opacity-70 mr-2 text-xs"></i> បង្កាន់ដៃទូទាត់
+                    </a>
+                </div>
+            </div>
+
+            <!-- ការទិញ -->
+            <div>
+                <button id="btn-menu-buy" onclick="toggleMenu('menu-buy')"
+                    class="nav-parent w-full flex items-center justify-between p-3 text-emerald-100 hover:bg-white/10 hover:text-white rounded-xl transition-colors whitespace-nowrap">
+                    <div class="flex items-center">
+                        <i class="fas fa-cart-shopping w-6 text-center opacity-80"></i>
+                        <span class="ml-3 text-[16px]">ការទិញ</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-xs opacity-60 transition-transform duration-200" id="icon-menu-buy"></i>
+                </button>
+                <div id="menu-buy" class="ml-6 pl-3 py-1.5 space-y-1 border-l border-white/20 mt-1 mb-2 hidden text-[15px]">
+                    <a href="../../4-buy/1-bills/bills.html" data-nav="buy-invoices" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-file-invoice w-5 text-center opacity-70 mr-2 text-xs"></i> វិក្កយបត្របញ្ញាទិញ
+                    </a>
+                    <a href="../../4-buy/2-suppliers/suppliers.html" data-nav="buy-suppliers" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-truck w-5 text-center opacity-70 mr-2 text-xs"></i> អ្នកផ្គត់ផ្គង់
+                    </a>
+                    <a href="../../4-buy/3-disbursement/disbursement.html" data-nav="buy-expenses" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-money-check-alt w-5 text-center opacity-70 mr-2 text-xs"></i> ការទូទាត់ចំណាយ
+                    </a>
+                </div>
+            </div>
+
+            <!-- ស្តុកទំនិញ -->
+            <div>
+                <button id="btn-menu-stock" onclick="toggleMenu('menu-stock')"
+                    class="nav-parent w-full flex items-center justify-between p-3 text-emerald-100 hover:bg-white/10 hover:text-white rounded-xl transition-colors whitespace-nowrap">
+                    <div class="flex items-center">
+                        <i class="fas fa-boxes-stacked w-6 text-center opacity-80"></i>
+                        <span class="ml-3 text-[16px]">ស្តុកទំនិញ</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-xs opacity-60 transition-transform duration-200" id="icon-menu-stock"></i>
+                </button>
+                <div id="menu-stock" class="ml-6 pl-3 py-1.5 space-y-1 border-l border-white/20 mt-1 mb-2 hidden text-[15px]">
+                    <a href="../../5-stock/1-balance/balance.html" data-nav="stock-balance" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-box w-5 text-center opacity-70 mr-2 text-xs"></i> តុល្យភាពស្តុក
+                    </a>
+                    <a href="../../5-stock/2-catalog/catalog.html" data-nav="stock-catalog" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-list w-5 text-center opacity-70 mr-2 text-xs"></i> កាតាឡុកទំនិញ
+                    </a>
+                    <a href="../../5-stock/3-movement/movement.html" data-nav="stock-movements" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-clock-rotate-left w-5 text-center opacity-70 mr-2 text-xs"></i> ចលនាស្តុក
+                    </a>
+                </div>
+            </div>
+
+            <!-- របាយការណ៍ហិរញ្ញវត្ថុ -->
+            <div>
+                <button id="btn-menu-reports" onclick="toggleMenu('menu-reports')"
+                    class="nav-parent w-full flex items-center justify-between p-3 text-emerald-100 hover:bg-white/10 hover:text-white rounded-xl transition-colors whitespace-nowrap">
+                    <div class="flex items-center">
+                        <i class="fas fa-chart-line w-6 text-center opacity-80"></i>
+                        <span class="ml-3 text-[16px]">របាយការណ៍ហិរញ្ញវត្ថុ</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-xs opacity-60 transition-transform duration-200" id="icon-menu-reports"></i>
+                </button>
+                <div id="menu-reports" class="ml-6 pl-3 py-1.5 space-y-1 border-l border-white/20 mt-1 mb-2 hidden text-[15px]">
+                    <a href="../../6-reports/1-overview/overview.html" data-nav="reports-overview" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-chart-pie w-5 text-center opacity-70 mr-2 text-xs"></i> របាយការណ៍ទូទៅ
+                    </a>
+                    <a href="../../6-reports/2-sales/sales.html" data-nav="reports-sales" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-file-invoice-dollar w-5 text-center opacity-70 mr-2 text-xs"></i> របាយការណ៍លក់
+                    </a>
+                    <a href="../../6-reports/3-purchases/purchases.html" data-nav="reports-purchases" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-cart-shopping w-5 text-center opacity-70 mr-2 text-xs"></i> របាយការណ៍ទិញ
+                    </a>
+                    <a href="../../6-reports/4-stock/stock.html" data-nav="reports-stock" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-boxes-stacked w-5 text-center opacity-70 mr-2 text-xs"></i> របាយការណ៍ស្តុក
+                    </a>
+                </div>
+            </div>
+
+            <!-- ការកំណត់ប្រព័ន្ធ -->
+            <div>
+                <button id="btn-menu-settings" onclick="toggleMenu('menu-settings')"
+                    class="nav-parent w-full flex items-center justify-between p-3 bg-white/10 text-white font-medium rounded-xl transition-colors whitespace-nowrap">
+                    <div class="flex items-center">
+                        <i class="fas fa-gear w-6 text-center opacity-80"></i>
+                        <span class="ml-3 text-[16px]">ការកំណត់ប្រព័ន្ធ</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-xs opacity-60 transition-transform duration-200 rotate-90" id="icon-menu-settings"></i>
+                </button>
+                <div id="menu-settings" class="ml-6 pl-3 py-1.5 space-y-1 border-l border-white/20 mt-1 mb-2 text-[15px]">
+                    <a href="../../7-settings/1-company/company.html" data-nav="settings-company" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-building w-5 text-center opacity-70 mr-2 text-xs"></i> ព័ត៌មានក្រុមហ៊ុន
+                    </a>
+                    <a href="../../7-settings/2-users/users.html" data-nav="settings-users" class="nav-sub-item flex items-center px-3 py-2 bg-primary text-white shadow-sm font-medium rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-users-gear w-5 text-center opacity-70 mr-2 text-xs"></i> គ្រប់គ្រងអ្នកប្រើ
+                    </a>
+                    <a href="../../7-settings/3-tax/tax.html" data-nav="settings-tax" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-coins w-5 text-center opacity-70 mr-2 text-xs"></i> ពន្ធ និងរូបិយប័ណ្ណ
+                    </a>
+                    <a href="../../7-settings/4-notifications/notifications.html" data-nav="settings-notifications" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-bell w-5 text-center opacity-70 mr-2 text-xs"></i> ការជូនដំណឹង
+                    </a>
+                    <a href="../../7-settings/5-system/system.html" data-nav="settings-system" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-sliders w-5 text-center opacity-70 mr-2 text-xs"></i> ប្រព័ន្ធ និងសុវត្ថិភាព
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="p-4 border-t border-white/10">
+            <a href="../../1-login/login.html"
+                class="flex items-center text-[16px] text-emerald-100 hover:text-red-300 transition-colors p-2 rounded-lg hover:bg-primary">
+                <i class="fas fa-sign-out-alt w-6 mr-2"></i> ចាកចេញ
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+
+        <!-- Top Header (Standard h-[72px]) -->
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+<div>
+                <h2 class="text-xl font-semibold text-gray-800 leading-tight">គ្រប់គ្រងអ្នកប្រើ</h2>
+                <p class="text-xs font-normal text-gray-500 mt-0.5">គ្រប់គ្រងគណនី តួនាទី និងសិទ្ធិប្រើប្រាស់ប្រព័ន្ធ</p>
+            </div>
+
+                        <div class="flex items-center space-x-3 md:space-x-4">
+                <!-- Notification Bell -->
+                <button onclick="toggleNotifications()" class="text-gray-500 hover:text-gray-700 relative p-2.5 rounded-xl hover:bg-slate-100 transition-colors cursor-pointer" title="ការជូនដំណឹង">
+                    <i class="fas fa-bell text-xl"></i>
+                    <span class="absolute top-1.5 right-1.5 flex h-2.5 w-2.5">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500"></span>
+                    </span>
+                </button>
+                
+                <!-- User Profile Avatar Only -->
+                <div class="flex items-center border-l pl-3 md:pl-4">
+                    <button class="relative rounded-full focus:outline-none focus:ring-2 focus:ring-primary/20 cursor-pointer" title="សុខ ចាន់ថន (អ្នកគ្រប់គ្រងកំពូល)">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=128&q=80" alt="សុខ ចាន់ថន" class="h-10 w-10 rounded-full object-cover shadow-sm border border-slate-200" />
+                        <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-2 ring-white"></span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Body Content -->
+        <main class="flex-1 overflow-y-auto p-6 w-full">
+
+            <!-- KPIs -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-500 font-medium">អ្នកប្រើប្រាស់សរុប</p>
+                        <h3 class="text-xl font-bold text-slate-800">4 នាក់</h3>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-500 font-medium">គណនីសកម្ម</p>
+                        <h3 class="text-xl font-bold text-slate-800">3 នាក់</h3>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center text-xl">
+                        <i class="fas fa-user-xmark"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-500 font-medium">គណនីផ្អាក</p>
+                        <h3 class="text-xl font-bold text-slate-800">1 នាក់</h3>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xl">
+                        <i class="fas fa-shield-halved"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-500 font-medium">តួនាទីក្នុងប្រព័ន្ធ</p>
+                        <h3 class="text-xl font-bold text-slate-800">3 តួនាទី</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Users Table Card -->
+            <div class="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden mb-6">
+                <!-- Filter Bar -->
+                <div class="p-4 border-b border-slate-100 bg-slate-50/50 flex flex-wrap gap-4 items-center justify-between">
+                    <div class="flex flex-wrap gap-3 items-center flex-1">
+                        <div class="relative min-w-[240px] max-w-xs flex-1">
+                            <input type="text" id="userSearchInput" oninput="filterUserTable()" placeholder="ស្វែងរកតាមឈ្មោះ ឬឈ្មោះគណនី..." class="w-full pl-9 pr-4 py-2 border border-slate-200 rounded-xl focus:outline-none focus:border-primary text-xs bg-white">
+                            <i class="fas fa-search absolute left-3 top-2.5 text-slate-400 text-xs"></i>
+                        </div>
+                        
+                        <!-- Role Filter Custom Dropdown -->
+                        <div class="relative w-44">
+                            <button type="button" id="roleFilterBtn" onclick="toggleRoleDropdown(event)" class="w-full h-9 px-3 bg-white border border-slate-200 rounded-xl text-xs text-slate-700 flex items-center justify-between hover:bg-slate-50 transition">
+                                <span id="currentRoleFilterLabel" class="truncate font-medium text-slate-800">តួនាទីទាំងអស់</span>
+                                <i class="fas fa-chevron-down text-[10px] text-slate-400 ml-2"></i>
+                            </button>
+                            <div id="roleDropdown" class="custom-select-dropdown hidden">
+                                <button type="button" onclick="selectRoleFilter('all', 'តួនាទីទាំងអស់')" class="w-full px-3 py-2 text-left text-xs text-slate-700 hover:bg-slate-50 transition">តួនាទីទាំងអស់</button>
+                                <button type="button" onclick="selectRoleFilter('admin', 'ជំនួយការប្រព័ន្ធ')" class="w-full px-3 py-2 text-left text-xs text-slate-700 hover:bg-slate-50 transition">ជំនួយការប្រព័ន្ធ</button>
+                                <button type="button" onclick="selectRoleFilter('manager', 'អ្នកគ្រប់គ្រង')" class="w-full px-3 py-2 text-left text-xs text-slate-700 hover:bg-slate-50 transition">អ្នកគ្រប់គ្រង</button>
+                                <button type="button" onclick="selectRoleFilter('staff', 'បុគ្គលិក')" class="w-full px-3 py-2 text-left text-xs text-slate-700 hover:bg-slate-50 transition">បុគ្គលិក</button>
+                            </div>
+                        </div>
+
+                        <!-- Status Filter Custom Dropdown -->
+                        <div class="relative w-36">
+                            <button type="button" id="statusFilterBtn" onclick="toggleStatusDropdown(event)" class="w-full h-9 px-3 bg-white border border-slate-200 rounded-xl text-xs text-slate-700 flex items-center justify-between hover:bg-slate-50 transition">
+                                <span id="currentStatusFilterLabel" class="truncate font-medium text-slate-800">ស្ថានភាពទាំងអស់</span>
+                                <i class="fas fa-chevron-down text-[10px] text-slate-400 ml-2"></i>
+                            </button>
+                            <div id="statusDropdown" class="custom-select-dropdown hidden">
+                                <button type="button" onclick="selectStatusFilter('all', 'ស្ថានភាពទាំងអស់')" class="w-full px-3 py-2 text-left text-xs text-slate-700 hover:bg-slate-50 transition">ស្ថានភាពទាំងអស់</button>
+                                <button type="button" onclick="selectStatusFilter('active', 'សកម្ម')" class="w-full px-3 py-2 text-left text-xs text-slate-700 hover:bg-slate-50 transition">សកម្ម</button>
+                                <button type="button" onclick="selectStatusFilter('inactive', 'ផ្អាក')" class="w-full px-3 py-2 text-left text-xs text-slate-700 hover:bg-slate-50 transition">ផ្អាក</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-3">
+                        <a href="create-user.html" class="h-10 px-4 bg-primary hover:bg-primary-dark text-white rounded-xl text-sm font-normal flex items-center gap-2 shadow-sm transition">
+                            <i class="fas fa-plus text-xs"></i>
+                            <span>បង្កើតអ្នកប្រើថ្មី</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-slate-50 text-slate-500 text-xs border-b border-slate-100 font-semibold">
+                                <th class="py-3.5 px-4 whitespace-nowrap">#</th>
+                                <th class="py-3.5 px-4 whitespace-nowrap">អ្នកប្រើប្រាស់</th>
+                                <th class="py-3.5 px-4 whitespace-nowrap">ឈ្មោះគណនី</th>
+                                <th class="py-3.5 px-4 whitespace-nowrap">ទំនាក់ទំនង</th>
+                                <th class="py-3.5 px-4 text-center whitespace-nowrap">តួនាទី</th>
+                                <th class="py-3.5 px-4 text-center whitespace-nowrap">ស្ថានភាព</th>
+                                <th class="py-3.5 px-4 text-center whitespace-nowrap">ចូលចុងក្រោយ</th>
+                                <th class="py-3.5 px-4 text-center whitespace-nowrap"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="userTableBody" class="text-xs divide-y divide-slate-100">
+                            <!-- Rows generated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Global Floating Action Dropdown (Rule 9) -->
+    <div id="rowActionDropdown" class="fixed z-50 bg-white border border-slate-200 rounded-2xl shadow-xl w-48 overflow-hidden hidden animate-in fade-in zoom-in-95 duration-100">
+        <div class="px-3 py-2 bg-slate-50 border-b border-slate-100 flex items-center justify-between">
+            <span class="text-[11px] font-semibold text-slate-400">សកម្មភាព</span>
+            <span id="actionItemName" class="text-xs font-mono font-medium text-slate-600 truncate"></span>
+        </div>
+        <div class="p-1">
+            <button onclick="viewUserRow()" class="w-full text-left px-3 py-2 text-xs text-slate-700 hover:bg-slate-50 rounded-xl flex items-center gap-2 transition">
+                <i class="fas fa-eye text-blue-500 w-4 text-center"></i> មើលព័ត៌មានលម្អិត
+            </button>
+            <button onclick="editUserRow()" class="w-full text-left px-3 py-2 text-xs text-slate-700 hover:bg-slate-50 rounded-xl flex items-center gap-2 transition">
+                <i class="fas fa-pen-to-square text-amber-500 w-4 text-center"></i> កែប្រែគណនី
+            </button>
+            <button onclick="resetUserPassword()" class="w-full text-left px-3 py-2 text-xs text-slate-700 hover:bg-slate-50 rounded-xl flex items-center gap-2 transition">
+                <i class="fas fa-key text-indigo-500 w-4 text-center"></i> ប្តូរពាក្យសម្ងាត់
+            </button>
+            <div class="h-px bg-slate-100 my-1 mx-2"></div>
+            <button onclick="deleteUserRow()" class="w-full text-left px-3 py-2 text-xs text-rose-600 hover:bg-rose-50 rounded-xl flex items-center gap-2 transition">
+                <i class="fas fa-trash-alt text-rose-500 w-4 text-center"></i> លុបគណនី
+            </button>
+        </div>
+    </div>
+
+    
+
+    
+    </div>
+
+    <!-- Page Scripts -->
+    <script>
+        const USERS_DATA = [
+            { id: 'USR-001', name: 'ពុំ ប្រុសមុន្នី', username: 'admin', email: 'brusmuny@digitechkh.com', phone: '012 888 999', role: 'admin', roleLabel: 'ជំនួយការប្រព័ន្ធ', roleBadge: 'bg-rose-50 text-rose-700 border-rose-200', active: true, lastLogin: 'ថ្ងៃនេះ, ម៉ោង 08:30' },
+            { id: 'USR-002', name: 'លោក រតនា', username: 'manager', email: 'rothana@digitechkh.com', phone: '010 333 444', role: 'manager', roleLabel: 'អ្នកគ្រប់គ្រង', roleBadge: 'bg-blue-50 text-blue-700 border-blue-200', active: true, lastLogin: 'ម្សិលមិញ, ម៉ោង 16:15' },
+            { id: 'USR-003', name: 'លោក សំអុល', username: 'staff01', email: 'samol@digitechkh.com', phone: '097 555 666', role: 'staff', roleLabel: 'បុគ្គលិក', roleBadge: 'bg-slate-100 text-slate-700 border-slate-200', active: true, lastLogin: '02 កញ្ញា 2026' },
+            { id: 'USR-004', name: 'លោក វិចិត្រ', username: 'staff02', email: 'vichet@digitechkh.com', phone: '077 222 111', role: 'staff', roleLabel: 'បុគ្គលិក', roleBadge: 'bg-slate-100 text-slate-700 border-slate-200', active: false, lastLogin: '25 សីហា 2026' }
+        ];
+
+        let currentActiveRole = 'all';
+        let currentActiveStatus = 'all';
+        let currentActiveUserId = null;
+
+        function renderUserTable(data) {
+            const tbody = document.getElementById('userTableBody');
+            tbody.innerHTML = '';
+
+            data.forEach((user, index) => {
+                const tr = document.createElement('tr');
+                tr.className = 'hover:bg-slate-50/75 transition-colors';
+                tr.innerHTML = `
+                    <td class="py-3.5 px-4 font-medium text-slate-400">${index + 1}</td>
+                    <td class="py-3.5 px-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xs">
+                                ${user.name.charAt(user.name.lastIndexOf(' ') + 1)}
+                            </div>
+                            <div>
+                                <p class="font-medium text-slate-700 text-xs">${user.name}</p>
+                                <p class="text-[11px] text-slate-400 font-mono">${user.id}</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="py-3.5 px-4 font-mono text-slate-700">${user.username}</td>
+                    <td class="py-3.5 px-4 text-xs text-slate-600">
+                        <p>${user.email}</p>
+                        <p class="text-slate-400">${user.phone}</p>
+                    </td>
+                    <td class="py-3.5 px-4 text-center">
+                        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium border ${user.roleBadge}">
+                            ${user.roleLabel}
+                        </span>
+                    </td>
+                    <td class="py-3.5 px-4 text-center">
+                        <label class="toggle-switch">
+                            <input type="checkbox" ${user.active ? 'checked' : ''} onchange="toggleUserStatus('${user.id}', this.checked)">
+                            <span class="slider"></span>
+                        </label>
+                    </td>
+                    <td class="py-3.5 px-4 text-center text-slate-500 text-[11px]">${user.lastLogin}</td>
+                    <td class="py-3.5 px-4 text-center">
+                        <button onclick="toggleRowAction(event, '${user.id}')" class="text-slate-400 hover:text-slate-700 p-1 rounded-lg hover:bg-slate-100 transition focus:outline-none">
+                            <i class="fas fa-ellipsis-vertical text-sm"></i>
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            document.getElementById('shownUserCount').textContent = data.length;
+        }
+
+        function filterUserTable() {
+            const searchVal = document.getElementById('userSearchInput').value.toLowerCase().trim();
+            const filtered = USERS_DATA.filter(item => {
+                const matchSearch = item.name.toLowerCase().includes(searchVal) ||
+                                    item.username.toLowerCase().includes(searchVal) ||
+                                    item.email.toLowerCase().includes(searchVal);
+                const matchRole = (currentActiveRole === 'all') || (item.role === currentActiveRole);
+                const matchStatus = (currentActiveStatus === 'all') || 
+                                    (currentActiveStatus === 'active' && item.active) ||
+                                    (currentActiveStatus === 'inactive' && !item.active);
+                return matchSearch && matchRole && matchStatus;
+            });
+            renderUserTable(filtered);
+        }
+
+        function toggleRoleDropdown(e) {
+            e.stopPropagation();
+            document.getElementById('statusDropdown').classList.add('hidden');
+            document.getElementById('roleDropdown').classList.toggle('hidden');
+        }
+
+        function selectRoleFilter(role, label) {
+            currentActiveRole = role;
+            document.getElementById('currentRoleFilterLabel').textContent = label;
+            document.getElementById('roleDropdown').classList.add('hidden');
+            filterUserTable();
+        }
+
+        function toggleStatusDropdown(e) {
+            e.stopPropagation();
+            document.getElementById('roleDropdown').classList.add('hidden');
+            document.getElementById('statusDropdown').classList.toggle('hidden');
+        }
+
+        function selectStatusFilter(status, label) {
+            currentActiveStatus = status;
+            document.getElementById('currentStatusFilterLabel').textContent = label;
+            document.getElementById('statusDropdown').classList.add('hidden');
+            filterUserTable();
+        }
+
+        function toggleUserStatus(userId, isChecked) {
+            const user = USERS_DATA.find(u => u.id === userId);
+            if (user) {
+                user.active = isChecked;
+                showToast(`បាន${isChecked ? 'បើកដំណើរការ' : 'ផ្អាកដំណើរការ'}គណនី ${user.name}`, isChecked ? 'success' : 'warning');
+            }
+        }
+
+        // Floating Row Action (Rule 9)
+        function toggleRowAction(e, id) {
+            e.stopPropagation();
+            currentActiveUserId = id;
+            const dropdown = document.getElementById('rowActionDropdown');
+            const label = document.getElementById('actionItemName');
+            label.textContent = id;
+
+            const rect = e.currentTarget.getBoundingClientRect();
+            dropdown.style.top = `${rect.bottom + window.scrollY + 6}px`;
+            dropdown.style.left = `${Math.min(rect.left - 140, window.innerWidth - 210)}px`;
+
+            dropdown.classList.remove('hidden');
+        }
+
+        function closeRowAction() {
+            const dropdown = document.getElementById('rowActionDropdown');
+            if (dropdown) dropdown.classList.add('hidden');
+        }
+
+        function viewUserRow() {
+            closeRowAction();
+            window.location.href = `view-user.html?id=${currentActiveUserId}`;
+        }
+
+        function editUserRow() {
+            closeRowAction();
+            window.location.href = `edit-user.html?id=${currentActiveUserId}`;
+        }
+
+        function resetUserPassword() {
+            closeRowAction();
+            showCustomConfirm({
+                title: 'កំណត់ពាក្យសម្ងាត់ឡើងវិញ',
+                message: `តើអ្នកពិតជាចង់ផ្ញើតំណកំណត់ពាក្យសម្ងាត់ថ្មីជូនគណនី ${currentActiveUserId} នេះមែនទេ?`,
+                onConfirm: () => {
+                    showToast(`បានផ្ញើតំណកំណត់ពាក្យសម្ងាត់ជូនគណនី ${currentActiveUserId} រួចរាល់`, 'success');
+                }
+            });
+        }
+
+        function deleteUserRow() {
+            closeRowAction();
+            showCustomConfirm({
+                title: 'លុបគណនីអ្នកប្រើ',
+                message: `តើអ្នកពិតជាចង់លុបគណនី ${currentActiveUserId} នេះចេញពីប្រព័ន្ធមែនទេ? សកម្មភាពនេះមិនអាចត្រឡប់វិញបានទេ។`,
+                onConfirm: () => {
+                    showToast(`បានលុបគណនី ${currentActiveUserId} ដោយជោគជ័យ`, 'success');
+                }
+            });
+        }
+
+        // Global click listener
+        document.addEventListener('click', (e) => {
+            const roleDropdown = document.getElementById('roleDropdown');
+            const roleBtn = document.getElementById('roleFilterBtn');
+            if (roleDropdown && !roleDropdown.classList.contains('hidden') && !roleDropdown.contains(e.target) && !roleBtn.contains(e.target)) {
+                roleDropdown.classList.add('hidden');
+            }
+
+            const statusDropdown = document.getElementById('statusDropdown');
+            const statusBtn = document.getElementById('statusFilterBtn');
+            if (statusDropdown && !statusDropdown.classList.contains('hidden') && !statusDropdown.contains(e.target) && !statusBtn.contains(e.target)) {
+                statusDropdown.classList.add('hidden');
+            }
+
+            closeRowAction();
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderUserTable(USERS_DATA);
+        });
+    </script>
+    <script src="../../../scripts/ui-components.js"></script>
+    <script src="../../../scripts/sidebar.js"></script>
+</body>
+
+</html>

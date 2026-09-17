@@ -1,0 +1,16 @@
+# Documentation folder (local reference only)
+documentation/
+
+# Operating System Files
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Editor / IDE directories
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Temporary / Scratch files
+scratch/

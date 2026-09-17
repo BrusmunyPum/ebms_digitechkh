@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="km">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - ព័ត៌មានលម្អិតសម្រង់តម្លៃ</title>
+    <link rel="icon" type="image/png" href="../../../assets/favicon.png">
+    <link rel="shortcut icon" type="image/png" href="../../../assets/favicon.png">
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#24692D",
+                        'primary-light': "#2e7d38",
+                        'primary-dark': "#1b5223",
+                        'btn-navy': "#16255c",
+                        'brand-blue': "#1e3a8a",
+                        secondary: "#f1f5f9",
+                        accent: "#10b981",
+                        danger: "#ef4444",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../styles/custom.css">
+</head>
+
+<body class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <!-- Sidebar Navigation -->
+        <!-- Standard Sidebar -->
+        <!-- Standard Sidebar -->
+        <!-- Standard Sidebar -->
+        <!-- Standard Sidebar -->
+        <!-- Standard Sidebar -->
+    <aside class="w-64 bg-[#1b5223] text-white flex flex-col flex-shrink-0 select-none z-20">
+        <!-- Sidebar Brand Container (Exact h-[72px] px-6) -->
+        <div class="h-[72px] px-6 flex items-center gap-3 border-b border-white/10 flex-shrink-0">
+            <div class="w-9 h-9 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center p-1 shadow-sm overflow-hidden flex-shrink-0">
+                <img src="../../../assets/logo-mark-transparent.png" alt="DIGITECHKH" class="w-full h-full object-contain">
+            </div>
+            <h1 class="text-xl font-semibold tracking-wider whitespace-nowrap">DIGITECHKH</h1>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="flex-1 overflow-y-auto px-4 py-4 space-y-1 scrollbar-hide text-sm">
+            <!-- ផ្ទាំងគ្រប់គ្រង -->
+            <a href="../../2-home/dashboard.html" data-nav="dashboard"
+                class="nav-item flex items-center p-3 text-emerald-100 hover:bg-white/10 hover:text-white rounded-xl transition-colors whitespace-nowrap">
+                <i class="fas fa-border-all w-6 text-center opacity-80"></i>
+                <span class="ml-3 text-[16px]">ផ្ទាំងគ្រប់គ្រង</span>
+            </a>
+
+            <!-- ការលក់ -->
+            <div>
+                <button id="btn-menu-sell" onclick="toggleMenu('menu-sell')"
+                    class="nav-parent w-full flex items-center justify-between p-3 bg-white/10 text-white font-medium rounded-xl transition-colors whitespace-nowrap">
+                    <div class="flex items-center">
+                        <i class="fas fa-money-bill w-6 text-center opacity-80"></i>
+                        <span class="ml-3 text-[16px]">ការលក់</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-xs opacity-60 transition-transform duration-200 rotate-90" id="icon-menu-sell"></i>
+                </button>
+                <div id="menu-sell" class="ml-6 pl-3 py-1.5 space-y-1 border-l border-white/20 mt-1 mb-2 text-[15px]">
+                    <a href="../../3-sales/1-invoice/invoice.html" data-nav="sell-invoices" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-file-invoice-dollar w-5 text-center mr-2 text-xs opacity-70"></i> វិក្កយបត្រលក់
+                    </a>
+                    <a href="../../3-sales/2-quote/quote.html" data-nav="sell-prices" class="nav-sub-item flex items-center px-3 py-2 bg-primary text-white shadow-sm font-medium rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-file-alt w-5 text-center opacity-70 mr-2 text-xs"></i> តារាងតម្លៃ
+                    </a>
+                    <a href="../../3-sales/3-customer/customer.html" data-nav="sell-customers" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-users w-5 text-center opacity-70 mr-2 text-xs"></i> បញ្ជីអតិថិជន
+                    </a>
+                    <a href="../../3-sales/4-payment/payment.html" data-nav="sell-receipts" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-credit-card w-5 text-center opacity-70 mr-2 text-xs"></i> បង្កាន់ដៃទូទាត់
+                    </a>
+                </div>
+            </div>
+
+            <!-- ការទិញ -->
+            <div>
+                <button id="btn-menu-buy" onclick="toggleMenu('menu-buy')"
+                    class="nav-parent w-full flex items-center justify-between p-3 text-emerald-100 hover:bg-white/10 hover:text-white rounded-xl transition-colors whitespace-nowrap">
+                    <div class="flex items-center">
+                        <i class="fas fa-cart-shopping w-6 text-center opacity-80"></i>
+                        <span class="ml-3 text-[16px]">ការទិញ</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-xs opacity-60 transition-transform duration-200" id="icon-menu-buy"></i>
+                </button>
+                <div id="menu-buy" class="ml-6 pl-3 py-1.5 space-y-1 border-l border-white/20 mt-1 mb-2 hidden text-[15px]">
+                    <a href="../../4-buy/1-bills/bills.html" data-nav="buy-invoices" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-file-invoice w-5 text-center opacity-70 mr-2 text-xs"></i> វិក្កយបត្របញ្ញាទិញ
+                    </a>
+                    <a href="../../4-buy/2-suppliers/suppliers.html" data-nav="buy-suppliers" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-truck w-5 text-center opacity-70 mr-2 text-xs"></i> អ្នកផ្គត់ផ្គង់
+                    </a>
+                    <a href="../../4-buy/3-disbursement/disbursement.html" data-nav="buy-expenses" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-money-check-alt w-5 text-center opacity-70 mr-2 text-xs"></i> ការទូទាត់ចំណាយ
+                    </a>
+                </div>
+            </div>
+
+            <!-- ស្តុកទំនិញ -->
+            <div>
+                <button id="btn-menu-stock" onclick="toggleMenu('menu-stock')"
+                    class="nav-parent w-full flex items-center justify-between p-3 text-emerald-100 hover:bg-white/10 hover:text-white rounded-xl transition-colors whitespace-nowrap">
+                    <div class="flex items-center">
+                        <i class="fas fa-boxes-stacked w-6 text-center opacity-80"></i>
+                        <span class="ml-3 text-[16px]">ស្តុកទំនិញ</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-xs opacity-60 transition-transform duration-200" id="icon-menu-stock"></i>
+                </button>
+                <div id="menu-stock" class="ml-6 pl-3 py-1.5 space-y-1 border-l border-white/20 mt-1 mb-2 hidden text-[15px]">
+                    <a href="../../5-stock/1-balance/balance.html" data-nav="stock-balance" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-box w-5 text-center opacity-70 mr-2 text-xs"></i> តុល្យភាពស្តុក
+                    </a>
+                    <a href="../../5-stock/2-catalog/catalog.html" data-nav="stock-catalog" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-list w-5 text-center opacity-70 mr-2 text-xs"></i> កាតាឡុកទំនិញ
+                    </a>
+                    <a href="../../5-stock/3-movement/movement.html" data-nav="stock-movements" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-clock-rotate-left w-5 text-center opacity-70 mr-2 text-xs"></i> ចលនាស្តុក
+                    </a>
+                </div>
+            </div>
+
+            <!-- របាយការណ៍ហិរញ្ញវត្ថុ -->
+            <div>
+                <button id="btn-menu-reports" onclick="toggleMenu('menu-reports')"
+                    class="nav-parent w-full flex items-center justify-between p-3 text-emerald-100 hover:bg-white/10 hover:text-white rounded-xl transition-colors whitespace-nowrap">
+                    <div class="flex items-center">
+                        <i class="fas fa-chart-line w-6 text-center opacity-80"></i>
+                        <span class="ml-3 text-[16px]">របាយការណ៍ហិរញ្ញវត្ថុ</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-xs opacity-60 transition-transform duration-200" id="icon-menu-reports"></i>
+                </button>
+                <div id="menu-reports" class="ml-6 pl-3 py-1.5 space-y-1 border-l border-white/20 mt-1 mb-2 hidden text-[15px]">
+                    <a href="../../6-reports/1-overview/overview.html" data-nav="reports-overview" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-chart-pie w-5 text-center opacity-70 mr-2 text-xs"></i> របាយការណ៍ទូទៅ
+                    </a>
+                    <a href="../../6-reports/2-sales/sales.html" data-nav="reports-sales" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-file-invoice-dollar w-5 text-center opacity-70 mr-2 text-xs"></i> របាយការណ៍លក់
+                    </a>
+                    <a href="../../6-reports/3-purchases/purchases.html" data-nav="reports-purchases" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-cart-shopping w-5 text-center opacity-70 mr-2 text-xs"></i> របាយការណ៍ទិញ
+                    </a>
+                    <a href="../../6-reports/4-stock/stock.html" data-nav="reports-stock" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-boxes-stacked w-5 text-center opacity-70 mr-2 text-xs"></i> របាយការណ៍ស្តុក
+                    </a>
+                </div>
+            </div>
+
+            <!-- ការកំណត់ប្រព័ន្ធ -->
+            <div>
+                <button id="btn-menu-settings" onclick="toggleMenu('menu-settings')"
+                    class="nav-parent w-full flex items-center justify-between p-3 text-emerald-100 hover:bg-white/10 hover:text-white rounded-xl transition-colors whitespace-nowrap">
+                    <div class="flex items-center">
+                        <i class="fas fa-gear w-6 text-center opacity-80"></i>
+                        <span class="ml-3 text-[16px]">ការកំណត់ប្រព័ន្ធ</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-xs opacity-60 transition-transform duration-200" id="icon-menu-settings"></i>
+                </button>
+                <div id="menu-settings" class="ml-6 pl-3 py-1.5 space-y-1 border-l border-white/20 mt-1 mb-2 hidden text-[15px]">
+                    <a href="../../7-settings/1-company/company.html" data-nav="settings-company" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-building w-5 text-center opacity-70 mr-2 text-xs"></i> ព័ត៌មានក្រុមហ៊ុន
+                    </a>
+                    <a href="../../7-settings/2-users/users.html" data-nav="settings-users" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-users-gear w-5 text-center opacity-70 mr-2 text-xs"></i> គ្រប់គ្រងអ្នកប្រើ
+                    </a>
+                    <a href="../../7-settings/3-tax/tax.html" data-nav="settings-tax" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-coins w-5 text-center opacity-70 mr-2 text-xs"></i> ពន្ធ និងរូបិយប័ណ្ណ
+                    </a>
+                    <a href="../../7-settings/4-notifications/notifications.html" data-nav="settings-notifications" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-bell w-5 text-center opacity-70 mr-2 text-xs"></i> ការជូនដំណឹង
+                    </a>
+                    <a href="../../7-settings/5-system/system.html" data-nav="settings-system" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-sliders w-5 text-center opacity-70 mr-2 text-xs"></i> ប្រព័ន្ធ និងសុវត្ថិភាព
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="p-4 border-t border-white/10">
+            <a href="../../1-login/login.html"
+                class="flex items-center text-[16px] text-emerald-100 hover:text-red-300 transition-colors p-2 rounded-lg hover:bg-primary">
+                <i class="fas fa-sign-out-alt w-6 mr-2"></i> ចាកចេញ
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <!-- Top Header (Exact 72px) -->
+        <header class="bg-white px-4 sm:px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div class="flex items-center gap-3 sm:gap-4 min-w-0">
+                <!-- Standard Back Button -->
+                <a href="quote.html"
+                    class="w-10 h-10 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-600 flex items-center justify-center transition border border-slate-200/70 flex-shrink-0"
+                    title="ត្រឡប់ទៅសម្រង់តម្លៃ">
+                    <i class="fas fa-arrow-left text-sm"></i>
+                </a>
+                <div class="min-w-0">
+                    <h2 class="text-base sm:text-xl font-semibold text-gray-800 leading-tight truncate">ព័ត៌មានលម្អិតសម្រង់តម្លៃ</h2>
+                    <p class="text-xs font-normal text-gray-500 mt-0.5 hidden sm:block truncate">ពិនិត្យមើលឯកសារសម្រង់តម្លៃជាផ្លូវការ បោះពុម្ព ឬបម្លែងជាវិក្កយបត្រ</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-1.5 sm:gap-3">
+                <!-- Edit Quote Button -->
+                <a id="btnEditQuote" href="edit-quote.html" title="កែប្រែសម្រង់តម្លៃ"
+                    class="h-9 sm:h-10 px-3 sm:px-4 bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200/70 rounded-xl flex items-center justify-center transition text-xs sm:text-sm font-normal">
+                    <i class="fas fa-file-pen sm:mr-2 text-xs text-slate-500"></i>
+                    <span class="hidden sm:inline">កែប្រែសម្រង់តម្លៃ</span>
+                </a>
+
+                <!-- Convert to Invoice Button -->
+                <a id="btnConvertToInvoice" href="../1-invoice/create-invoice.html" title="បម្លែងជាវិក្កយបត្រ"
+                    class="h-9 sm:h-10 px-3 sm:px-4 bg-primary hover:bg-primary-dark text-white rounded-xl flex items-center justify-center shadow-sm hover:shadow transition text-xs sm:text-sm font-normal">
+                    <i class="fas fa-file-export sm:mr-2 text-xs"></i>
+                    <span class="hidden sm:inline">បម្លែងជាវិក្កយបត្រ</span>
+                </a>
+
+                <!-- Print Button -->
+                <button onclick="window.print()"
+                    class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-600 flex items-center justify-center transition border border-slate-200/70 flex-shrink-0"
+                    title="បោះពុម្ពសម្រង់តម្លៃ">
+                    <i class="fas fa-print text-sm"></i>
+                </button>
+            
+                <div class="hidden sm:block h-6 w-px bg-slate-200 mx-1"></div>
+
+                <!-- Notification Bell -->
+                <button onclick="toggleNotifications()" class="text-gray-500 hover:text-gray-700 relative p-2 sm:p-2.5 rounded-xl hover:bg-slate-100 transition-colors cursor-pointer flex-shrink-0" title="ការជូនដំណឹង">
+                    <i class="fas fa-bell text-lg sm:text-xl"></i>
+                    <span class="absolute top-1.5 right-1.5 flex h-2.5 w-2.5">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500"></span>
+                    </span>
+                </button>
+                
+                <!-- User Profile Avatar Only -->
+                <div class="flex items-center sm:border-l pl-1 sm:pl-3 md:pl-4 flex-shrink-0">
+                    <button class="relative rounded-full focus:outline-none focus:ring-2 focus:ring-primary/20 cursor-pointer" title="សុខ ចាន់ថន (អ្នកគ្រប់គ្រងកំពូល)">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=128&q=80" alt="សុខ ចាន់ថន" class="h-8 w-8 sm:h-10 sm:w-10 rounded-full object-cover shadow-sm border border-slate-200" />
+                        <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-2 ring-white"></span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Scrollable Content -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-3 sm:px-6 py-4 sm:py-6">
+            <div class="printable-document w-full bg-white rounded-2xl border border-slate-200/80 shadow-xs p-4 sm:p-6 md:p-8 space-y-6 md:space-y-8">
+
+                <!-- 1. Document Branding & Header -->
+                <div class="flex flex-col sm:flex-row justify-between items-start gap-6 border-b border-slate-200 pb-6">
+                    <div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-11 h-11 flex items-center justify-center flex-shrink-0">
+                                <img src="../../../assets/logo-mark-transparent.png" alt="DIGITECHKH Logo" class="w-full h-full object-contain">
+                            </div>
+                            <div>
+                                <h1 class="text-xl font-bold text-slate-900 tracking-tight">DIGITECHKH Co., Ltd.</h1>
+                                <p class="text-xs text-slate-500">ដំណោះស្រាយប្រព័ន្ធគ្រប់គ្រងអាជីវកម្មឌីជីថល</p>
+                            </div>
+                        </div>
+                        <div class="text-xs text-slate-600 mt-4 space-y-0.5">
+                            <p>អាសយដ្ឋាន៖ អគារលេខ 18, ផ្លូវ 598, ខណ្ឌឬស្សីកែវ, រាជធានីភ្នំពេញ</p>
+                            <p>លេខទូរស័ព្ទ៖ 023 999 888 · អ៊ីមែល៖ contact@digitechkh.com</p>
+                            <p>លេខសម្គាល់សារពើពន្ធ៖ K002-984214589</p>
+                        </div>
+                    </div>
+
+                    <div class="text-left sm:text-right space-y-1">
+                        <span class="text-xs uppercase font-bold tracking-wider text-slate-400">ឯកសារផ្លូវការ</span>
+                        <h2 class="text-2xl font-black text-primary">សម្រង់តម្លៃ</h2>
+                        <p class="text-base font-bold text-slate-800" id="qtNumber">QT-2026-001</p>
+                        <div class="pt-2">
+                            <span id="qtStatusBadge" class="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                                បានយល់ព្រម
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Customer & Date Info Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-xs">
+                    <div class="bg-slate-50/70 p-4 rounded-xl border border-slate-100 space-y-1.5">
+                        <h4 class="font-bold text-slate-700 uppercase tracking-wider text-[11px] mb-2">ចេញជូនអតិថិជន៖</h4>
+                        <p class="text-sm font-bold text-slate-900" id="qtCustomerName">សុខ វណ្ណា (ក្រុមហ៊ុន សុខ វណ្ណា ត្រេឌីង)</p>
+                        <p class="text-slate-600">លេខសម្គាល់អតិថិជន៖ <span class="font-semibold text-slate-800" id="qtCustomerId">CUST-001</span> (អតិថិជនដុំ)</p>
+                        <p class="text-slate-600">លេខទូរស័ព្ទ៖ <span id="qtCustomerPhone">012 345 678</span></p>
+                        <p class="text-slate-600">អាសយដ្ឋាន៖ <span id="qtCustomerAddress">ផ្ទះលេខ 45, ផ្លូវ 271, សង្កាត់បឹងទំពន់, ខណ្ឌមានជ័យ, រាជធានីភ្នំពេញ</span></p>
+                    </div>
+
+                    <div class="bg-slate-50/70 p-4 rounded-xl border border-slate-100 space-y-1.5">
+                        <h4 class="font-bold text-slate-700 uppercase tracking-wider text-[11px] mb-2">កាលបរិច្ឆេទ និងសុពលភាព៖</h4>
+                        <div class="flex justify-between py-1 border-b border-slate-200/60">
+                            <span class="text-slate-500">កាលបរិច្ឆេទចេញ៖</span>
+                            <span class="font-semibold text-slate-800" id="qtIssueDate">12 កញ្ញា 2026</span>
+                        </div>
+                        <div class="flex justify-between py-1 border-b border-slate-200/60">
+                            <span class="text-slate-500">សុពលភាពដល់ថ្ងៃ៖</span>
+                            <span class="font-semibold text-slate-800" id="qtExpiryDate">27 កញ្ញា 2026 (15 ថ្ងៃ)</span>
+                        </div>
+                        <div class="flex justify-between py-1">
+                            <span class="text-slate-500">បុគ្គលិកផ្នែកលក់៖</span>
+                            <span class="font-semibold text-slate-800">ពុំ ប្រុសមុន្នី</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Line Items Table -->
+                <div class="overflow-x-auto rounded-xl border border-slate-200 bms-items-table-wrapper">
+                    <table class="w-full text-left text-xs bms-view-item-table">
+                        <thead class="bg-slate-100/80 text-slate-700 uppercase font-semibold border-b border-slate-200">
+                            <tr>
+                                <th class="py-3 px-4 w-12 text-center">#</th>
+                                <th class="py-3 px-4">បរិយាយមុខទំនិញ</th>
+                                <th class="py-3 px-4 text-center w-36">កូដទំនិញ</th>
+                                <th class="py-3 px-4 text-center w-28">ចំនួន</th>
+                                <th class="py-3 px-4 text-right w-36">តម្លៃឯកតា</th>
+                                <th class="py-3 px-4 text-right w-40">ទឹកប្រាក់សរុប</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100" id="qtLinesBody">
+                            <tr>
+                                <td class="py-3.5 px-4 text-center text-slate-400 col-num">1</td>
+                                <td class="py-3.5 px-4 font-semibold text-slate-800 col-product">ទូរស័ព្ទ iPhone 15 Pro Max 256GB</td>
+                                <td class="py-3.5 px-4 text-center text-slate-500 col-code">
+                                    <span class="md:hidden mobile-label text-slate-400">កូដ៖ </span>IPH15PM-256
+                                </td>
+                                <td class="py-3.5 px-4 text-center font-medium col-qty">
+                                    <span class="md:hidden mobile-label text-slate-400">ចំនួន៖ </span>2 គ្រឿង
+                                </td>
+                                <td class="py-3.5 px-4 text-right col-price">
+                                    <span class="md:hidden mobile-label text-slate-400">តម្លៃឯកតា៖ </span>$1,200.00
+                                </td>
+                                <td class="py-3.5 px-4 text-right font-bold text-slate-800 col-total">
+                                    <span class="md:hidden mobile-label text-slate-500 font-medium">សរុបទឹកប្រាក់៖</span>
+                                    <span>$2,400.00</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="py-3.5 px-4 text-center text-slate-400 col-num">2</td>
+                                <td class="py-3.5 px-4 font-semibold text-slate-800 col-product">ថេប្លេត iPad Air 11-inch M2 Wi-Fi 128GB</td>
+                                <td class="py-3.5 px-4 text-center text-slate-500 col-code">
+                                    <span class="md:hidden mobile-label text-slate-400">កូដ៖ </span>IPADAIR-M2-128
+                                </td>
+                                <td class="py-3.5 px-4 text-center font-medium col-qty">
+                                    <span class="md:hidden mobile-label text-slate-400">ចំនួន៖ </span>1 គ្រឿង
+                                </td>
+                                <td class="py-3.5 px-4 text-right col-price">
+                                    <span class="md:hidden mobile-label text-slate-400">តម្លៃឯកតា៖ </span>$650.00
+                                </td>
+                                <td class="py-3.5 px-4 text-right font-bold text-slate-800 col-total">
+                                    <span class="md:hidden mobile-label text-slate-500 font-medium">សរុបទឹកប្រាក់៖</span>
+                                    <span>$650.00</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 4. Summary Calculation & Notes -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-2 summary-section">
+                    <div class="space-y-3 text-xs">
+                        <h4 class="font-bold text-slate-700 uppercase tracking-wider text-[11px]">លក្ខខណ្ឌ និងចំណាំ៖</h4>
+                        <div class="bg-slate-50/70 p-4 rounded-xl border border-slate-100 text-slate-600 space-y-1.5 leading-relaxed">
+                            <p>• តម្លៃដែលបានបញ្ជាក់ក្នុងសម្រង់តម្លៃនេះមានសុពលភាពរយៈពេល 15 ថ្ងៃគិតចាប់ពីកាលបរិច្ឆេទចេញ។</p>
+                            <p>• រួមបញ្ចូលទាំងការដឹកជញ្ជូនឥតគិតថ្លៃក្នុងរាជធានីភ្នំពេញ។</p>
+                            <p>• ការធានាជាផ្លូវការរយៈពេល 1 ឆ្នាំពេញពីក្រុមហ៊ុន។</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2 text-xs">
+                        <div class="flex justify-between text-slate-600 py-1">
+                            <span>សរុបរងមុខទំនិញ៖</span>
+                            <span class="font-semibold text-slate-800" id="qtSubtotal">$3,050.00</span>
+                        </div>
+                        <div class="flex justify-between text-slate-600 py-1">
+                            <span>ចូលរួមមុន៖</span>
+                            <span class="font-semibold text-slate-800" id="qtDownPayment">$0.00</span>
+                        </div>
+                        <div class="flex justify-between text-slate-600 py-1">
+                            <span>ការបញ្ចុះតម្លៃពិសេស៖</span>
+                            <span class="font-semibold text-slate-800" id="qtDiscount">$0.00</span>
+                        </div>
+                        <div class="flex justify-between text-slate-600 py-1">
+                            <span>អាករលើតម្លៃបន្ថែម (អតប 10%)៖</span>
+                            <span class="font-semibold text-slate-800" id="qtVat">$305.00</span>
+                        </div>
+                        <div class="border-t-2 border-slate-200 pt-3 flex justify-between items-center text-sm font-bold text-slate-900">
+                            <span>ទឹកប្រាក់សរុបចុងក្រោយ៖</span>
+                            <span class="text-xl font-bold text-primary" id="qtGrandTotal">$3,355.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Signatures Grid -->
+                <div class="signature-section grid grid-cols-2 gap-12 pt-12 border-t border-slate-200 text-center text-xs text-slate-500">
+                    <div>
+                        <p class="mb-16 font-medium">ហត្ថលេខា និងឈ្មោះអ្នករៀបចំ</p>
+                        <p class="border-t border-slate-300 pt-1.5 w-48 mx-auto font-bold text-slate-800">ពុំ ប្រុសមុន្នី</p>
+                        <p class="text-[11px] text-slate-400">បុគ្គលិកផ្នែកលក់</p>
+                    </div>
+                    <div>
+                        <p class="mb-16 font-medium">ហត្ថលេខា និងឈ្មោះអតិថិជនយល់ព្រម</p>
+                        <p class="border-t border-slate-300 pt-1.5 w-48 mx-auto font-bold text-slate-800">សុខ វណ្ណា</p>
+                        <p class="text-[11px] text-slate-400">អតិថិជន</p>
+                    </div>
+                </div>
+
+                <!-- Print-Only Footer Notice -->
+                <div class="print-footer print-only">
+                    <span>ឯកសារសម្រង់តម្លៃផ្លូវការបង្កើតដោយប្រព័ន្ធ DIGITECHKH · មិនតម្រូវឱ្យមានត្រាឡើយប្រសិនបើមានហត្ថលេខា</span>
+                    <span>ទំព័រ 1/1</span>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../scripts/ui-components.js"></script>
+    <script src="../../../scripts/sidebar.js"></script>
+    <script>
+        const QUOTES_SAMPLE_DATA = [
+            {
+                id: "QT-2026-001",
+                customerName: "សុខ វណ្ណា (ក្រុមហ៊ុន សុខ វណ្ណា ត្រេឌីង)",
+                customerId: "CUST-001",
+                customerPhone: "012 345 678",
+                customerAddress: "ផ្ទះលេខ 45, ផ្លូវ 271, សង្កាត់បឹងទំពន់, ខណ្ឌមានជ័យ, រាជធានីភ្នំពេញ",
+                issueDate: "12 កញ្ញា 2026",
+                expiryDate: "27 កញ្ញា 2026 (15 ថ្ងៃ)",
+                status: "approved",
+                statusText: "បានយល់ព្រម",
+                subtotal: 3050.00,
+                downPayment: 0.00,
+                discount: 0.00,
+                vat: 305.00,
+                grandTotal: 3355.00
+            },
+            {
+                id: "QT-2026-002",
+                customerName: "គង់ សុជាតិ (ក្រុមហ៊ុន ខេអេស ឌីស្ត្រីប្យូសិន)",
+                customerId: "CUST-002",
+                customerPhone: "098 765 432",
+                customerAddress: "ផ្ទះលេខ 12, ផ្លូវ 63, សង្កាត់បឹងកេងកង1, រាជធានីភ្នំពេញ",
+                issueDate: "10 កញ្ញា 2026",
+                expiryDate: "25 កញ្ញា 2026 (15 ថ្ងៃ)",
+                status: "pending",
+                statusText: "រង់ចាំការឆ្លើយតប",
+                subtotal: 5800.00,
+                downPayment: 0.00,
+                discount: 100.00,
+                vat: 570.00,
+                grandTotal: 6270.00
+            }
+        ];
+
+        function loadQuoteDetail() {
+            const params = new URLSearchParams(window.location.search);
+            const quoteId = params.get('id') || 'QT-2026-001';
+            const q = QUOTES_SAMPLE_DATA.find(item => item.id === quoteId) || QUOTES_SAMPLE_DATA[0];
+
+            document.getElementById('qtNumber').textContent = q.id;
+            document.getElementById('qtCustomerName').textContent = q.customerName;
+            document.getElementById('qtCustomerId').textContent = q.customerId;
+            document.getElementById('qtCustomerPhone').textContent = q.customerPhone;
+            document.getElementById('qtCustomerAddress').textContent = q.customerAddress;
+            document.getElementById('qtIssueDate').textContent = q.issueDate;
+            document.getElementById('qtExpiryDate').textContent = q.expiryDate;
+            document.getElementById('qtStatusBadge').textContent = q.statusText;
+            document.getElementById('qtSubtotal').textContent = `$${q.subtotal.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            document.getElementById('qtDownPayment').textContent = `$${(q.downPayment || 0).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            document.getElementById('qtDiscount').textContent = `$${q.discount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            document.getElementById('qtVat').textContent = `$${q.vat.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            document.getElementById('qtGrandTotal').textContent = `$${q.grandTotal.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+
+            document.getElementById('btnEditQuote').href = `edit-quote.html?id=${q.id}`;
+            document.getElementById('btnConvertToInvoice').href = `../invoice/create-invoice.html?fromQuote=${q.id}&customerId=${q.customerId}`;
+        }
+
+        document.addEventListener('DOMContentLoaded', loadQuoteDetail);
+    </script>
+</body>
+
+</html>

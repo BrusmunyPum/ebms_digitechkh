@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - ច្រករបៀងអ្នកផ្គត់ផ្គង់</title>
+    <link rel="icon" type="image/png" href="../../../assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1c1917",
+                        accent: "#d97706",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../styles/custom.css">
+</head>
+<body class="bg-stone-100 font-sans text-stone-800 text-[16px] flex h-screen overflow-hidden">
+
+    <!-- Supplier Sidebar -->
+    <aside class="w-64 bg-[#1c1917] text-white flex flex-col flex-shrink-0 select-none z-20 border-r border-stone-800">
+        <div class="h-[72px] px-6 flex items-center justify-between border-b border-white/10 flex-shrink-0">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-amber-500/20 border border-amber-400/30 flex items-center justify-center p-1 shadow-sm overflow-hidden flex-shrink-0">
+                    <img src="../../../assets/logo-mark-transparent.png" alt="DIGITECHKH" class="w-full h-full object-contain">
+                </div>
+                <div>
+                    <h1 class="text-lg font-semibold tracking-wider whitespace-nowrap text-white">DIGITECHKH</h1>
+                    <span class="text-[11px] font-medium text-amber-400 uppercase tracking-wider block">ដៃគូផ្គត់ផ្គង់</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="px-5 py-3 border-b border-white/5 bg-black/20">
+            <div class="flex items-center justify-between">
+                <span class="text-xs text-stone-400">គណនីដៃគូ:</span>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                    <i class="fas fa-truck-ramp-box text-[10px]"></i> អ្នកផ្គត់ផ្គង់
+                </span>
+            </div>
+        </div>
+
+        <nav class="flex-1 overflow-y-auto px-4 py-4 space-y-1.5 scrollbar-hide text-sm">
+            <a href="dashboard.html" class="flex items-center p-3 bg-white/10 text-amber-300 font-medium rounded-xl shadow-sm transition-all whitespace-nowrap border border-white/10">
+                <i class="fas fa-chart-pie w-6 text-center text-amber-400"></i>
+                <span class="ml-3 text-[15px]">ទិដ្ឋភាពរួម</span>
+            </a>
+
+            <a href="my-orders.html" class="flex items-center p-3 text-stone-300 hover:bg-white/5 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-boxes-packing w-6 text-center text-stone-400"></i>
+                <span class="ml-3 text-[15px]">បញ្ជាទិញរបស់ខ្ញុំ (PO)</span>
+            </a>
+
+            <a href="my-bills.html" class="flex items-center p-3 text-stone-300 hover:bg-white/5 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-file-invoice-dollar w-6 text-center text-stone-400"></i>
+                <span class="ml-3 text-[15px]">វិក្កយបត្រដែលបានដាក់</span>
+            </a>
+
+            <a href="payments.html" class="flex items-center p-3 text-stone-300 hover:bg-white/5 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-money-bill-check w-6 text-center text-stone-400"></i>
+                <span class="ml-3 text-[15px]">ប្រវត្តិប្រាក់បានទទួល</span>
+            </a>
+        </nav>
+
+        <div class="p-4 border-t border-white/10 bg-black/10">
+            <a href="../../1-login/login.html" class="flex items-center text-[15px] text-stone-400 hover:text-rose-400 transition-colors p-2 rounded-lg hover:bg-white/5">
+                <i class="fas fa-arrow-right-from-bracket w-6 mr-2"></i> ចាកចេញ
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div>
+                <h2 class="text-xl font-semibold text-stone-800 leading-tight">ច្រករបៀងអ្នកផ្គត់ផ្គង់ (Supplier Portal)</h2>
+                <p class="text-xs font-normal text-stone-500 mt-0.5">សូមស្វាគមន៍, ក្រុមហ៊ុន ស៊ីភីយូ ខេមបូឌា ឯ.ក</p>
+            </div>
+            
+            <div class="flex items-center space-x-3">
+                <div class="flex items-center gap-2 bg-amber-50 text-amber-800 px-3 py-1.5 rounded-xl border border-amber-200 text-xs font-semibold">
+                    <i class="fas fa-award text-amber-600"></i> ដៃគូកម្រិតមាស
+                </div>
+                <div class="flex items-center border-l pl-3">
+                    <div class="w-10 h-10 rounded-full bg-stone-900 text-amber-300 flex items-center justify-center font-bold text-sm shadow-sm">
+                        CPU
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-stone-50 px-4 md:px-6 py-4">
+            <div class="w-full space-y-5">
+                
+                <!-- Supplier KPI Cards -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="bg-white rounded-2xl p-5 border border-stone-200 shadow-sm">
+                        <span class="text-xs font-medium text-stone-500 block mb-1">ការបញ្ជាទិញសកម្ម (POs)</span>
+                        <h3 class="text-2xl font-bold text-stone-800">2 ការបញ្ជាទិញ</h3>
+                        <p class="text-xs text-amber-600 mt-1 font-semibold">1 កំពុងរៀបចំដឹក</p>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-5 border border-stone-200 shadow-sm">
+                        <span class="text-xs font-medium text-stone-500 block mb-1">វិក្កយបត្របានដាក់សរុប</span>
+                        <h3 class="text-2xl font-bold text-stone-800">14 ច្បាប់</h3>
+                        <p class="text-xs text-stone-500 mt-1">ក្នុងឆ្នាំ 2026</p>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-5 border border-stone-200 shadow-sm">
+                        <span class="text-xs font-medium text-stone-500 block mb-1">ប្រាក់បានទទួលរួច</span>
+                        <h3 class="text-2xl font-bold text-emerald-700">$41,800.00</h3>
+                        <p class="text-xs text-emerald-600 mt-1">ទូទាត់ទាន់ពេលវេលា</p>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-5 border border-stone-200 shadow-sm">
+                        <span class="text-xs font-medium text-stone-500 block mb-1">ទឹកប្រាក់នៅសល់រង់ចាំទូទាត់</span>
+                        <h3 class="text-2xl font-bold text-amber-700">$3,200.00</h3>
+                        <p class="text-xs text-stone-500 mt-1">ផុតកំណត់នៅ 28 កញ្ញា</p>
+                    </div>
+                </div>
+
+                <!-- Recent Orders from DIGITECHKH -->
+                <div class="bg-white rounded-2xl border border-stone-200 shadow-sm overflow-hidden">
+                    <div class="p-5 border-b border-stone-100 flex items-center justify-between">
+                        <h3 class="text-base font-semibold text-stone-800">ការបញ្ជាទិញថ្មីៗពី DIGITECHKH</h3>
+                        <a href="my-orders.html" class="text-xs font-semibold text-amber-700 hover:text-amber-800">មើលទាំងអស់</a>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm">
+                            <thead class="bg-stone-50 text-stone-500 uppercase text-[11px] font-semibold border-b border-stone-100">
+                                <tr>
+                                    <th class="py-3 px-4">លេខបញ្ជាទិញ</th>
+                                    <th class="py-3 px-4">កាលបរិច្ឆេទ</th>
+                                    <th class="py-3 px-4">បរិយាយទំនិញ</th>
+                                    <th class="py-3 px-4">ទឹកប្រាក់សរុប</th>
+                                    <th class="py-3 px-4">ស្ថានភាព</th>
+                                    <th class="py-3 px-4 text-right">សកម្មភាព</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-stone-100 text-stone-700 font-medium text-xs">
+                                <tr class="hover:bg-stone-50 transition">
+                                    <td class="py-3.5 px-4 font-bold text-stone-800">PO-2026-0045</td>
+                                    <td class="py-3.5 px-4 text-stone-500">16 កញ្ញា 2026</td>
+                                    <td class="py-3.5 px-4">គ្រឿងបន្លាស់កុំព្យូទ័រ RAM & SSD</td>
+                                    <td class="py-3.5 px-4 font-bold text-stone-900 text-sm">$3,200.00</td>
+                                    <td class="py-3.5 px-4"><span class="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-semibold">បានទទួលរួច</span></td>
+                                    <td class="py-3.5 px-4 text-right">
+                                        <a href="my-bills.html?po=PO-2026-0045" class="text-xs bg-amber-50 hover:bg-amber-100 text-amber-800 px-3 py-1.5 rounded-lg">ដាក់វិក្កយបត្រ</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../scripts/ui-components.js"></script>
+</body>
+</html>

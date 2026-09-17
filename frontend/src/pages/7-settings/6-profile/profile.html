@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="km">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - កម្រងព័ត៌មានផ្ទាល់ខ្លួន</title>
+    <link rel="icon" type="image/png" href="../../../assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#24692D',
+                        'primary-dark': '#1b5223',
+                        'primary-light': '#e8f5e9',
+                        navy: '#0f2b5c',
+                    },
+                    fontFamily: {
+                        sans: ['"Kantumruy Pro"', '"Inter"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../styles/custom.css">
+</head>
+
+<body class="bg-slate-50 font-sans text-slate-700 text-[15px] flex h-screen overflow-hidden">
+    <!-- Standard DIGITECHKH Sidebar -->
+    <aside class="w-64 bg-[#1b5223] text-white flex flex-col flex-shrink-0 select-none z-20">
+        <!-- Sidebar Brand Container (Exact h-[72px] px-6 flex-shrink-0) -->
+        <div class="h-[72px] px-6 flex items-center gap-3 border-b border-white/10 flex-shrink-0">
+            <div class="w-9 h-9 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center p-1 shadow-sm overflow-hidden flex-shrink-0">
+                <img src="../../../assets/logo-mark-transparent.png" alt="DIGITECHKH" class="w-full h-full object-contain">
+            </div>
+            <h1 class="text-xl font-semibold tracking-wider whitespace-nowrap">DIGITECHKH</h1>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="flex-1 overflow-y-auto px-4 py-4 space-y-1 scrollbar-hide text-sm">
+            <!-- ផ្ទាំងគ្រប់គ្រង -->
+            <a href="../../2-home/dashboard.html" data-nav="dashboard"
+                class="nav-item flex items-center p-3 text-emerald-100 hover:bg-white/10 hover:text-white rounded-xl transition-colors whitespace-nowrap">
+                <i class="fas fa-border-all w-6 text-center opacity-80"></i>
+                <span class="ml-3 text-[16px]">ផ្ទាំងគ្រប់គ្រង</span>
+            </a>
+
+            <!-- ការលក់ -->
+            <div>
+                <button id="btn-menu-sell" onclick="toggleMenu('menu-sell')"
+                    class="nav-parent w-full flex items-center justify-between p-3 text-emerald-100 hover:bg-white/10 hover:text-white rounded-xl transition-colors whitespace-nowrap">
+                    <div class="flex items-center">
+                        <i class="fas fa-money-bill w-6 text-center opacity-80"></i>
+                        <span class="ml-3 text-[16px]">ការលក់</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-xs opacity-60 transition-transform duration-200" id="icon-menu-sell"></i>
+                </button>
+                <div id="menu-sell" class="ml-6 pl-3 py-1.5 space-y-1 border-l border-white/20 mt-1 mb-2 hidden text-[15px]">
+                    <a href="../../3-sales/1-invoice/invoice.html" data-nav="sell-invoices" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-file-invoice-dollar w-5 text-center mr-2 text-xs opacity-70"></i> វិក្កយបត្រលក់
+                    </a>
+                    <a href="../../3-sales/2-quote/quote.html" data-nav="sell-prices" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-file-alt w-5 text-center opacity-70 mr-2 text-xs"></i> សម្រង់តម្លៃ
+                    </a>
+                    <a href="../../3-sales/3-customer/customer.html" data-nav="sell-customers" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-users w-5 text-center opacity-70 mr-2 text-xs"></i> បញ្ជីអតិថិជន
+                    </a>
+                    <a href="../../3-sales/4-payment/payment.html" data-nav="sell-receipts" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-credit-card w-5 text-center opacity-70 mr-2 text-xs"></i> បង្កាន់ដៃទូទាត់
+                    </a>
+                </div>
+            </div>
+
+            <!-- ការទិញ -->
+            <div>
+                <button id="btn-menu-buy" onclick="toggleMenu('menu-buy')"
+                    class="nav-parent w-full flex items-center justify-between p-3 text-emerald-100 hover:bg-white/10 hover:text-white rounded-xl transition-colors whitespace-nowrap">
+                    <div class="flex items-center">
+                        <i class="fas fa-cart-shopping w-6 text-center opacity-80"></i>
+                        <span class="ml-3 text-[16px]">ការទិញ</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-xs opacity-60 transition-transform duration-200" id="icon-menu-buy"></i>
+                </button>
+                <div id="menu-buy" class="ml-6 pl-3 py-1.5 space-y-1 border-l border-white/20 mt-1 mb-2 hidden text-[15px]">
+                    <a href="../../4-buy/1-bills/bills.html" data-nav="buy-invoices" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-file-invoice w-5 text-center mr-2 text-xs opacity-70"></i> វិក្កយបត្របញ្ជាទិញ
+                    </a>
+                    <a href="../../4-buy/2-suppliers/suppliers.html" data-nav="buy-suppliers" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-truck w-5 text-center mr-2 text-xs opacity-70"></i> អ្នកផ្គត់ផ្គង់
+                    </a>
+                    <a href="../../4-buy/3-disbursement/disbursement.html" data-nav="buy-expenses" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-money-check-dollar w-5 text-center mr-2 text-xs opacity-70"></i> ការទូទាត់ចំណាយ
+                    </a>
+                </div>
+            </div>
+
+            <!-- ស្តុកទំនិញ -->
+            <div>
+                <button id="btn-menu-stock" onclick="toggleMenu('menu-stock')"
+                    class="nav-parent w-full flex items-center justify-between p-3 text-emerald-100 hover:bg-white/10 hover:text-white rounded-xl transition-colors whitespace-nowrap">
+                    <div class="flex items-center">
+                        <i class="fas fa-boxes-stacked w-6 text-center opacity-80"></i>
+                        <span class="ml-3 text-[16px]">ស្តុកទំនិញ</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-xs opacity-60 transition-transform duration-200" id="icon-menu-stock"></i>
+                </button>
+                <div id="menu-stock" class="ml-6 pl-3 py-1.5 space-y-1 border-l border-white/20 mt-1 mb-2 hidden text-[15px]">
+                    <a href="../../5-stock/1-balance/balance.html" data-nav="stock-balance" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-box w-5 text-center mr-2 text-xs opacity-70"></i> តុល្យភាពស្តុក
+                    </a>
+                    <a href="../../5-stock/2-catalog/catalog.html" data-nav="stock-catalog" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-list w-5 text-center mr-2 text-xs opacity-70"></i> កាតាឡុកទំនិញ
+                    </a>
+                    <a href="../../5-stock/3-movement/movement.html" data-nav="stock-movement" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-arrow-right-arrow-left w-5 text-center mr-2 text-xs opacity-70"></i> ចលនាស្តុក
+                    </a>
+                </div>
+            </div>
+
+            <!-- របាយការណ៍ហិរញ្ញវត្ថុ -->
+            <div>
+                <button id="btn-menu-reports" onclick="toggleMenu('menu-reports')"
+                    class="nav-parent w-full flex items-center justify-between p-3 text-emerald-100 hover:bg-white/10 hover:text-white rounded-xl transition-colors whitespace-nowrap">
+                    <div class="flex items-center">
+                        <i class="fas fa-chart-line w-6 text-center opacity-80"></i>
+                        <span class="ml-3 text-[16px]">របាយការណ៍ហិរញ្ញវត្ថុ</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-xs opacity-60 transition-transform duration-200" id="icon-menu-reports"></i>
+                </button>
+                <div id="menu-reports" class="ml-6 pl-3 py-1.5 space-y-1 border-l border-white/20 mt-1 mb-2 hidden text-[15px]">
+                    <a href="../../6-reports/1-overview/overview.html" data-nav="reports-overview" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-chart-pie w-5 text-center opacity-70 mr-2 text-xs"></i> របាយការណ៍ទូទៅ
+                    </a>
+                    <a href="../../6-reports/2-sales/sales.html" data-nav="reports-sales" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-file-invoice-dollar w-5 text-center opacity-70 mr-2 text-xs"></i> របាយការណ៍លក់
+                    </a>
+                    <a href="../../6-reports/3-purchases/purchases.html" data-nav="reports-purchases" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-cart-shopping w-5 text-center opacity-70 mr-2 text-xs"></i> របាយការណ៍ទិញ
+                    </a>
+                    <a href="../../6-reports/4-stock/stock.html" data-nav="reports-stock" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-boxes-stacked w-5 text-center opacity-70 mr-2 text-xs"></i> របាយការណ៍ស្តុក
+                    </a>
+                </div>
+            </div>
+
+            <!-- ការកំណត់ប្រព័ន្ធ -->
+            <div>
+                <button id="btn-menu-settings" onclick="toggleMenu('menu-settings')"
+                    class="nav-parent w-full flex items-center justify-between p-3 text-emerald-100 hover:bg-white/10 hover:text-white rounded-xl transition-colors whitespace-nowrap">
+                    <div class="flex items-center">
+                        <i class="fas fa-gear w-6 text-center opacity-80"></i>
+                        <span class="ml-3 text-[16px]">ការកំណត់ប្រព័ន្ធ</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-xs opacity-60 transition-transform duration-200" id="icon-menu-settings"></i>
+                </button>
+                <div id="menu-settings" class="ml-6 pl-3 py-1.5 space-y-1 border-l border-white/20 mt-1 mb-2 hidden text-[15px]">
+                    <a href="../1-company/company.html" data-nav="settings-company" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-building w-5 text-center opacity-70 mr-2 text-xs"></i> ព័ត៌មានក្រុមហ៊ុន
+                    </a>
+                    <a href="../2-users/users.html" data-nav="settings-users" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-users-gear w-5 text-center opacity-70 mr-2 text-xs"></i> គ្រប់គ្រងអ្នកប្រើ
+                    </a>
+                    <a href="../3-tax/tax.html" data-nav="settings-tax" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-coins w-5 text-center opacity-70 mr-2 text-xs"></i> ពន្ធ និងរូបិយប័ណ្ណ
+                    </a>
+                    <a href="../4-notifications/notifications.html" data-nav="settings-notifications" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-bell w-5 text-center opacity-70 mr-2 text-xs"></i> ការជូនដំណឹង
+                    </a>
+                    <a href="../5-system/system.html" data-nav="settings-system" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-sliders w-5 text-center opacity-70 mr-2 text-xs"></i> ប្រព័ន្ធ និងសុវត្ថិភាព
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="p-4 border-t border-white/10">
+            <a href="../../1-login/login.html"
+                class="flex items-center text-[15px] text-emerald-100 hover:text-red-300 transition-colors p-2 rounded-lg hover:bg-primary">
+                <i class="fas fa-sign-out-alt w-6 mr-2"></i> ចាកចេញ
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+
+        <!-- Top Header (Standard h-[72px] with Rule 5 Unified Icon-only Back Button) -->
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+<div class="flex items-center gap-4">
+                <a href="../../2-home/dashboard.html" 
+                   class="w-10 h-10 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-600 flex items-center justify-center transition border border-slate-200/70" 
+                   title="ត្រឡប់ទៅផ្ទាំងគ្រប់គ្រង">
+                    <i class="fas fa-arrow-left text-sm"></i>
+                </a>
+                <div>
+                    <h2 class="text-xl font-semibold text-gray-800 leading-tight">កម្រងព័ត៌មានផ្ទាល់ខ្លួន</h2>
+                    <p class="text-xs font-normal text-gray-500 mt-0.5">ការគ្រប់គ្រងព័ត៌មានគណនី សុវត្ថិភាព និងការអនុញ្ញាតផ្ទាល់ខ្លួន</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <button type="button" onclick="openChangePasswordModal()" 
+                    class="h-9 px-4 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 rounded-xl text-xs font-medium flex items-center gap-2 transition shadow-xs cursor-pointer">
+                    <i class="fas fa-key text-slate-400"></i>
+                    <span>ប្តូរពាក្យសម្ងាត់</span>
+                </button>
+                <button type="button" onclick="saveProfileChanges()" 
+                    class="h-9 px-5 bg-primary hover:bg-primary-dark text-white rounded-xl text-xs font-semibold flex items-center gap-2 shadow-sm transition cursor-pointer">
+                    <i class="fas fa-save"></i>
+                    <span>រក្សាទុកការកែប្រែ</span>
+                </button>
+            
+                <div class="h-6 w-px bg-slate-200 mx-1"></div>
+
+                <!-- Notification Bell -->
+                <button onclick="toggleNotifications()" class="text-gray-500 hover:text-gray-700 relative p-2.5 rounded-xl hover:bg-slate-100 transition-colors cursor-pointer" title="ការជូនដំណឹង">
+                    <i class="fas fa-bell text-xl"></i>
+                    <span class="absolute top-1.5 right-1.5 flex h-2.5 w-2.5">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500"></span>
+                    </span>
+                </button>
+                
+                <!-- User Profile Avatar Only -->
+                <div class="flex items-center border-l pl-3 md:pl-4">
+                    <button class="relative rounded-full focus:outline-none focus:ring-2 focus:ring-primary/20 cursor-pointer" title="សុខ ចាន់ថន (អ្នកគ្រប់គ្រងកំពូល)">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=128&q=80" alt="សុខ ចាន់ថន" class="h-10 w-10 rounded-full object-cover shadow-sm border border-slate-200" />
+                        <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-2 ring-white"></span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Body Content (w-full Full Width) -->
+        <main class="flex-1 overflow-y-auto p-6 w-full space-y-6 scrollbar-hide">
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+                <!-- Left Column: Profile Overview Card (lg:col-span-4) -->
+                <div class="lg:col-span-4 space-y-6">
+
+                    <!-- Profile ID Card -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm text-center relative overflow-hidden">
+                        <div class="absolute top-0 left-0 right-0 h-20 bg-gradient-to-r from-emerald-500/10 via-primary/10 to-teal-500/10"></div>
+                        
+                        <!-- Avatar Container with Online Badge & Upload Trigger -->
+                        <div class="relative inline-block mt-4 mb-3">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=256&q=80"
+                                alt="User Avatar"
+                                class="w-24 h-24 rounded-full object-cover border-4 border-white shadow-md mx-auto" />
+                            <span class="absolute bottom-1 right-1 w-5 h-5 bg-emerald-500 border-2 border-white rounded-full flex items-center justify-center text-[9px] text-white shadow-xs" title="កំពុងសកម្ម">
+                                <i class="fas fa-check"></i>
+                            </span>
+                            <button type="button" onclick="triggerAvatarUpload()" 
+                                class="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-white hover:bg-slate-50 text-slate-600 border border-slate-200 shadow-sm flex items-center justify-center transition cursor-pointer"
+                                title="ផ្លាស់ប្តូររូបថត">
+                                <i class="fas fa-camera text-xs"></i>
+                            </button>
+                            <input type="file" id="avatarFileInput" class="hidden" accept="image/*" onchange="handleAvatarSelected(event)">
+                        </div>
+
+                        <h3 class="text-lg font-semibold text-slate-800">សុខ ចាន់ថន</h3>
+                        <p class="text-xs text-slate-400 font-mono mt-0.5">@chanthon.sok</p>
+
+                        <!-- Role & Status Pills -->
+                        <div class="mt-3 flex items-center justify-center gap-2 flex-wrap">
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200/60">
+                                <i class="fas fa-shield-halved text-[11px]"></i> អ្នកគ្រប់គ្រងកំពូល
+                            </span>
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-slate-100 text-slate-700 border border-slate-200/60">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> សកម្ម
+                            </span>
+                        </div>
+
+                        <!-- User Metadata List -->
+                        <div class="mt-6 pt-5 border-t border-slate-100 space-y-3.5 text-left text-xs">
+                            <div class="flex items-center justify-between">
+                                <span class="text-slate-400">លេខកូដសម្គាល់៖</span>
+                                <span class="font-mono font-medium text-slate-700">USR-2024-001</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-slate-400">អ៊ីមែលផ្លូវការ៖</span>
+                                <span class="font-medium text-slate-700 truncate max-w-[180px]">chanthon.sok@digitechkh.com</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-slate-400">លេខទូរស័ព្ទ៖</span>
+                                <span class="font-medium text-slate-700">012 987 654</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-slate-400">ផ្នែក / ការិយាល័យ៖</span>
+                                <span class="font-medium text-slate-700">ថ្នាក់ដឹកនាំទូទៅ</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-slate-400">សាខាបំពេញការងារ៖</span>
+                                <span class="font-medium text-slate-700">ការិយាល័យកណ្តាល (ភ្នំពេញ)</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-slate-400">កាលបរិច្ឆេទបង្កើត៖</span>
+                                <span class="font-medium text-slate-700">15 មករា 2024</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-slate-400">ចូលប្រើចុងក្រោយ៖</span>
+                                <span class="font-medium text-slate-700">05 កញ្ញា 2025 • 09:30 ព្រឹក</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Storage & Account Security Metric Card -->
+                    <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2.5">
+                                <div class="w-8 h-8 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-xs">
+                                    <i class="fas fa-cloud"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xs font-semibold text-slate-800">ទំហំផ្ទុកឯកសារភ្ជាប់</h4>
+                                    <p class="text-[11px] text-slate-400">4.2 GB នៃ 20 GB ត្រូវបានប្រើ</p>
+                                </div>
+                            </div>
+                            <span class="text-xs font-bold text-slate-700">21%</span>
+                        </div>
+                        <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+                            <div class="h-full bg-blue-600 rounded-full" style="width: 21%;"></div>
+                        </div>
+
+                        <div class="pt-3 border-t border-slate-100 flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-shield-check text-emerald-600 text-sm"></i>
+                                <span class="text-xs text-slate-600">កម្រិតសុវត្ថិភាពគណនី៖</span>
+                            </div>
+                            <span class="text-xs font-semibold text-emerald-700">ល្អប្រសើរ (95%)</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right Column: Profile Detailed Forms (lg:col-span-8) -->
+                <div class="lg:col-span-8 space-y-6">
+
+                    <!-- Section 1: ព័ត៌មានផ្ទាល់ខ្លួន (Personal Information) -->
+                    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 space-y-5">
+                        <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                            <div class="flex items-center gap-2.5">
+                                <div class="w-8 h-8 rounded-xl bg-emerald-50 text-primary flex items-center justify-center text-sm">
+                                    <i class="fas fa-id-card"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-sm font-semibold text-slate-800">ព័ត៌មានផ្ទាល់ខ្លួន</h3>
+                                    <p class="text-[11px] text-slate-400">ព័ត៌មានមូលដ្ឋាន និងអត្តសញ្ញាណរបស់អ្នកប្រើប្រាស់</p>
+                                </div>
+                            </div>
+                            <span class="text-[11px] px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-600 font-medium">ទម្រង់កែប្រែ</span>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                            <div>
+                                <label class="block font-medium text-slate-700 mb-1.5">គោត្តនាម និងនាម (ខ្មែរ) <span class="text-rose-500">*</span></label>
+                                <input type="text" id="fullNameInput" value="សុខ ចាន់ថន" 
+                                    class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition font-medium text-slate-800" />
+                            </div>
+
+                            <div>
+                                <label class="block font-medium text-slate-700 mb-1.5">ឈ្មោះជាអក្សរឡាតាំង (Latin Name) <span class="text-rose-500">*</span></label>
+                                <input type="text" id="latinNameInput" value="SOK CHANTHON" 
+                                    class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition font-medium text-slate-800" />
+                            </div>
+
+                            <div>
+                                <label class="block font-medium text-slate-700 mb-1.5">ភេទ</label>
+                                <div class="relative bms-custom-select" id="genderDropdown">
+                                    <button type="button" onclick="toggleCustomDropdown('genderDropdown')" 
+                                        class="w-full flex items-center justify-between px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl text-xs hover:border-slate-300 focus:outline-none focus:border-primary transition cursor-pointer">
+                                        <span class="selected-label font-medium text-slate-800">ស្រី</span>
+                                        <i class="fas fa-chevron-down text-[10px] text-slate-400 bms-custom-select-arrow transition-transform duration-200"></i>
+                                    </button>
+                                    <input type="hidden" id="genderInput" value="ស្រី">
+                                    <div class="bms-custom-select-menu absolute z-50 left-0 right-0 mt-1 bg-white border border-slate-200 rounded-xl shadow-xl hidden py-1 text-xs">
+                                        <button type="button" onclick="selectCustomOption('genderDropdown', 'ស្រី', 'ស្រី')" class="w-full text-left px-3.5 py-2 hover:bg-slate-50 cursor-pointer flex items-center justify-between text-slate-700">
+                                            <span>ស្រី</span>
+                                            <i class="fas fa-check text-primary text-xs checkmark"></i>
+                                        </button>
+                                        <button type="button" onclick="selectCustomOption('genderDropdown', 'ប្រុស', 'ប្រុស')" class="w-full text-left px-3.5 py-2 hover:bg-slate-50 cursor-pointer flex items-center justify-between text-slate-700">
+                                            <span>ប្រុស</span>
+                                            <i class="fas fa-check text-primary text-xs opacity-0 checkmark"></i>
+                                        </button>
+                                        <button type="button" onclick="selectCustomOption('genderDropdown', 'ផ្សេងទៀត', 'ផ្សេងទៀត')" class="w-full text-left px-3.5 py-2 hover:bg-slate-50 cursor-pointer flex items-center justify-between text-slate-700">
+                                            <span>ផ្សេងទៀត</span>
+                                            <i class="fas fa-check text-primary text-xs opacity-0 checkmark"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block font-medium text-slate-700 mb-1.5">ថ្ងៃខែឆ្នាំកំណើត</label>
+                                <div class="relative bms-date-picker">
+                                    <input type="hidden" id="profileDob" value="1992-05-18" />
+                                    <button type="button" onclick="toggleSingleDatePicker('profileDob')"
+                                        class="w-full px-3.5 py-2.5 bg-white hover:bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 flex items-center justify-between focus:outline-none focus:border-primary transition cursor-pointer">
+                                        <span id="profileDob-display" class="bms-date-label font-medium text-slate-800">18/05/1992</span>
+                                        <i class="fas fa-calendar-days text-primary text-xs"></i>
+                                    </button>
+                                    <div id="profileDob-popover" onclick="event.stopPropagation()"
+                                        class="bms-date-popover absolute left-0 top-full mt-1.5 w-[280px] bg-white rounded-2xl border border-slate-200 shadow-2xl z-50 p-3.5 hidden select-none">
+                                        <div class="flex items-center justify-between mb-2.5 px-1">
+                                            <span id="profileDob-month-label" class="text-xs font-bold text-slate-800"></span>
+                                            <div class="flex items-center gap-1">
+                                                <button type="button" onclick="changeSinglePickerMonth('profileDob', -1)" class="w-7 h-7 rounded-lg hover:bg-slate-100 text-slate-500 hover:text-slate-800 flex items-center justify-center transition">
+                                                    <i class="fas fa-chevron-left text-[10px]"></i>
+                                                </button>
+                                                <button type="button" onclick="changeSinglePickerMonth('profileDob', 1)" class="w-7 h-7 rounded-lg hover:bg-slate-100 text-slate-500 hover:text-slate-800 flex items-center justify-center transition">
+                                                    <i class="fas fa-chevron-right text-[10px]"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="grid grid-cols-7 text-center text-[11px] font-semibold text-slate-400 mb-1.5">
+                                            <span>ច</span><span>អ</span><span>ព</span><span>ព្រ</span><span>សុ</span><span>ស</span><span>អា</span>
+                                        </div>
+                                        <div id="profileDob-days-grid" class="grid grid-cols-7 text-center text-xs gap-y-1"></div>
+                                        <div class="mt-2.5 pt-2 border-t border-slate-100 flex items-center justify-between">
+                                            <button type="button" onclick="closeSingleDatePicker('profileDob')" class="text-[11px] text-slate-500 hover:text-slate-800 font-medium">បិទ</button>
+                                            <button type="button" onclick="setSinglePickerToday('profileDob')" class="text-[11px] text-primary hover:underline font-medium">ថ្ងៃនេះ</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block font-medium text-slate-700 mb-1.5">អ៊ីមែលផ្លូវការ <span class="text-rose-500">*</span></label>
+                                <input type="email" id="emailInput" value="chanthon.sok@digitechkh.com" 
+                                    class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition font-medium text-slate-800" />
+                            </div>
+
+                            <div>
+                                <label class="block font-medium text-slate-700 mb-1.5">លេខទូរស័ព្ទ <span class="text-rose-500">*</span></label>
+                                <input type="tel" id="phoneInput" value="012 987 654" 
+                                    class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition font-medium text-slate-800" />
+                            </div>
+
+                            <div class="md:col-span-2">
+                                <label class="block font-medium text-slate-700 mb-1.5">អាសយដ្ឋានបច្ចុប្បន្ន</label>
+                                <input type="text" value="#12 ផ្លូវ 271 សង្កាត់បឹងទំពុន ខណ្ឌមានជ័យ រាជធានីភ្នំពេញ" 
+                                    class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition font-medium text-slate-800" />
+                            </div>
+
+                            <div class="md:col-span-2">
+                                <label class="block font-medium text-slate-700 mb-1.5">ភាសាប្រព័ន្ធដែលពេញចិត្ត (Interface Language)</label>
+                                <div class="relative bms-custom-select" id="langDropdown">
+                                    <button type="button" onclick="toggleCustomDropdown('langDropdown')" 
+                                        class="w-full flex items-center justify-between px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl text-xs hover:border-slate-300 focus:outline-none focus:border-primary transition cursor-pointer">
+                                        <div class="selected-label flex items-center gap-2 font-medium text-slate-800">
+                                            <span class="w-5 h-5 rounded-full bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-700">ខ្មែរ</span>
+                                            <span>ភាសាខ្មែរ (Default)</span>
+                                        </div>
+                                        <i class="fas fa-chevron-down text-[10px] text-slate-400 bms-custom-select-arrow transition-transform duration-200"></i>
+                                    </button>
+                                    <input type="hidden" id="langInput" value="kh" onchange="showToast('បានប្តូរភាសាប្រព័ន្ធដោយជោគជ័យ', 'info')">
+                                    <div class="bms-custom-select-menu absolute z-50 left-0 right-0 mt-1 bg-white border border-slate-200 rounded-xl shadow-xl hidden py-1 text-xs">
+                                        <button type="button" onclick="selectCustomOption('langDropdown', 'kh', '<div class=\'flex items-center gap-2\'><span class=\'w-5 h-5 rounded-full bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-700\'>ខ្មែរ</span><span class=\'font-medium text-slate-800\'>ភាសាខ្មែរ (Default)</span></div>')" class="w-full text-left px-3.5 py-2 hover:bg-slate-50 cursor-pointer flex items-center justify-between text-slate-700">
+                                            <div class="flex items-center gap-2">
+                                                <span class="w-5 h-5 rounded-full bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-700">ខ្មែរ</span>
+                                                <span class="font-medium text-slate-800">ភាសាខ្មែរ (Default)</span>
+                                            </div>
+                                            <i class="fas fa-check text-primary text-xs checkmark"></i>
+                                        </button>
+                                        <button type="button" onclick="selectCustomOption('langDropdown', 'en', '<div class=\'flex items-center gap-2\'><span class=\'w-5 h-5 rounded-full bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-700\'>EN</span><span class=\'font-medium text-slate-800\'>English (International)</span></div>')" class="w-full text-left px-3.5 py-2 hover:bg-slate-50 cursor-pointer flex items-center justify-between text-slate-700">
+                                            <div class="flex items-center gap-2">
+                                                <span class="w-5 h-5 rounded-full bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-700">EN</span>
+                                                <span class="font-medium text-slate-800">English (International)</span>
+                                            </div>
+                                            <i class="fas fa-check text-primary text-xs opacity-0 checkmark"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 2: សុវត្ថិភាព និងការចូលប្រើប្រព័ន្ធ (Security & Authentication) -->
+                    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 space-y-5">
+                        <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                            <div class="flex items-center gap-2.5">
+                                <div class="w-8 h-8 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-sm">
+                                    <i class="fas fa-shield-halved"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-sm font-semibold text-slate-800">សុវត្ថិភាព និងការចូលប្រើប្រព័ន្ធ</h3>
+                                    <p class="text-[11px] text-slate-400">គ្រប់គ្រងពាក្យសម្ងាត់ និងការការពារគណនី</p>
+                                </div>
+                            </div>
+                            <span class="text-[11px] px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-medium border border-emerald-200/60">សុវត្ថិភាពខ្ពស់</span>
+                        </div>
+
+                        <!-- Password Row -->
+                        <div class="flex items-center justify-between p-4 bg-slate-50/70 rounded-xl border border-slate-100">
+                            <div>
+                                <h4 class="text-xs font-semibold text-slate-800">ពាក្យសម្ងាត់គណនី</h4>
+                                <p class="text-[11px] text-slate-400 mt-0.5">ប្តូរចុងក្រោយ៖ 30 ថ្ងៃមុន • កម្រិតសុវត្ថិភាពខ្លាំង</p>
+                                <p class="text-xs font-mono text-slate-500 tracking-widest mt-1">••••••••••••••••</p>
+                            </div>
+                            <button type="button" onclick="openChangePasswordModal()" 
+                                class="px-3.5 py-2 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 rounded-xl text-xs font-medium flex items-center gap-2 transition shadow-xs cursor-pointer">
+                                <i class="fas fa-key text-slate-400"></i>
+                                <span>ប្តូរពាក្យសម្ងាត់</span>
+                            </button>
+                        </div>
+
+                        <!-- 2FA Row -->
+                        <div class="flex items-center justify-between p-4 bg-slate-50/70 rounded-xl border border-slate-100">
+                            <div class="flex items-start gap-3">
+                                <div class="w-9 h-9 rounded-xl bg-emerald-100/70 text-emerald-700 flex items-center justify-center text-base flex-shrink-0 mt-0.5">
+                                    <i class="fas fa-mobile-screen-button"></i>
+                                </div>
+                                <div>
+                                    <div class="flex items-center gap-2">
+                                        <h4 class="text-xs font-semibold text-slate-800">ការផ្ទៀងផ្ទាត់ 2 ជំហាន (Two-Factor Authentication)</h4>
+                                        <span class="px-2 py-0.5 rounded-full text-[10px] font-medium bg-emerald-100 text-emerald-800" id="twoFaBadge">បានបើកដំណើរការ</span>
+                                    </div>
+                                    <p class="text-[11px] text-slate-400 mt-0.5">ការពារការចូលប្រើដោយទាមទារលេខកូដពី Google Authenticator</p>
+                                </div>
+                            </div>
+                            <!-- Switch Toggle -->
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" id="twoFaToggle" class="sr-only peer" checked onchange="handleTwoFaToggle(this)">
+                                <div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                            </label>
+                        </div>
+
+                        <!-- Active Sessions List -->
+                        <div class="space-y-3 pt-2">
+                            <div class="flex items-center justify-between">
+                                <h4 class="text-xs font-semibold text-slate-800 flex items-center gap-1.5">
+                                    <i class="fas fa-laptop-code text-primary"></i> សម័យចូលប្រើប្រព័ន្ធសកម្ម (Active Login Sessions)
+                                </h4>
+                                <button type="button" onclick="terminateOtherSessions()" class="text-[11px] font-medium text-rose-600 hover:underline cursor-pointer">
+                                    <i class="fas fa-power-off mr-1"></i> បញ្ចប់សម័យលើឧបករណ៍ផ្សេងទៀត
+                                </button>
+                            </div>
+
+                            <div class="space-y-2 text-xs">
+                                <!-- Session 1: Current -->
+                                <div class="p-3 bg-white rounded-xl border border-slate-200/80 flex items-center justify-between">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded-lg bg-emerald-50 text-primary flex items-center justify-center text-sm flex-shrink-0">
+                                            <i class="fas fa-desktop"></i>
+                                        </div>
+                                        <div>
+                                            <div class="flex items-center gap-2">
+                                                <span class="font-semibold text-slate-800">Chrome នៅលើ Windows 11</span>
+                                                <span class="px-2 py-0.2 rounded-full text-[10px] font-medium bg-emerald-100 text-emerald-800">ឧបករណ៍នេះ</span>
+                                            </div>
+                                            <p class="text-[11px] text-slate-400 mt-0.5">IP: 103.205.120.45 • រាជធានីភ្នំពេញ • សកម្មឥឡូវនេះ</p>
+                                        </div>
+                                    </div>
+                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                                </div>
+
+                                <!-- Session 2: Mobile -->
+                                <div class="p-3 bg-slate-50/60 rounded-xl border border-slate-100 flex items-center justify-between" id="mobileSessionItem">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded-lg bg-slate-100 text-slate-600 flex items-center justify-center text-sm flex-shrink-0">
+                                            <i class="fas fa-mobile-screen"></i>
+                                        </div>
+                                        <div>
+                                            <span class="font-semibold text-slate-700">Safari នៅលើ iPhone 15 Pro</span>
+                                            <p class="text-[11px] text-slate-400 mt-0.5">IP: 103.205.120.89 • រាជធានីភ្នំពេញ • 2 ម៉ោងមុន</p>
+                                        </div>
+                                    </div>
+                                    <button type="button" onclick="terminateSession('mobileSessionItem')" class="text-slate-400 hover:text-rose-600 transition" title="បិទសម័យនេះ">
+                                        <i class="fas fa-xmark text-sm"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 3: សិទ្ធិប្រតិបត្តិការក្នុងប្រព័ន្ធ (Assigned System Permissions) -->
+                    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 space-y-4">
+                        <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                            <div class="flex items-center gap-2.5">
+                                <div class="w-8 h-8 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-sm">
+                                    <i class="fas fa-key"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-sm font-semibold text-slate-800">សិទ្ធិប្រតិបត្តិការក្នុងប្រព័ន្ធ (System Permissions)</h3>
+                                    <p class="text-[11px] text-slate-400">សិទ្ធិគ្រប់គ្រងត្រូវបានផ្តល់ដោយស្វ័យប្រវត្តិសម្រាប់ «អ្នកគ្រប់គ្រងកំពូល»</p>
+                                </div>
+                            </div>
+                            <span class="text-[11px] px-2.5 py-0.5 rounded-full bg-purple-50 text-purple-700 font-medium border border-purple-200/50">សិទ្ធិពេញលេញ (Full Access)</span>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+                            <div class="p-3 bg-slate-50/70 rounded-xl border border-slate-100 flex items-center gap-2.5">
+                                <div class="w-7 h-7 rounded-lg bg-emerald-100/70 text-emerald-700 flex items-center justify-center text-xs">
+                                    <i class="fas fa-file-invoice"></i>
+                                </div>
+                                <div>
+                                    <div class="font-semibold text-slate-800">ផ្នែកលក់ & វិក្កយបត្រ</div>
+                                    <div class="text-[10px] text-emerald-600 font-medium">គ្រប់គ្រងពេញលេញ 100%</div>
+                                </div>
+                            </div>
+
+                            <div class="p-3 bg-slate-50/70 rounded-xl border border-slate-100 flex items-center gap-2.5">
+                                <div class="w-7 h-7 rounded-lg bg-blue-100/70 text-blue-700 flex items-center justify-center text-xs">
+                                    <i class="fas fa-cart-shopping"></i>
+                                </div>
+                                <div>
+                                    <div class="font-semibold text-slate-800">ផ្នែកទិញ & ចំណាយ</div>
+                                    <div class="text-[10px] text-emerald-600 font-medium">គ្រប់គ្រងពេញលេញ 100%</div>
+                                </div>
+                            </div>
+
+                            <div class="p-3 bg-slate-50/70 rounded-xl border border-slate-100 flex items-center gap-2.5">
+                                <div class="w-7 h-7 rounded-lg bg-purple-100/70 text-purple-700 flex items-center justify-center text-xs">
+                                    <i class="fas fa-boxes-stacked"></i>
+                                </div>
+                                <div>
+                                    <div class="font-semibold text-slate-800">ស្តុកទំនិញ & ឃ្លាំង</div>
+                                    <div class="text-[10px] text-emerald-600 font-medium">គ្រប់គ្រងពេញលេញ 100%</div>
+                                </div>
+                            </div>
+
+                            <div class="p-3 bg-slate-50/70 rounded-xl border border-slate-100 flex items-center gap-2.5">
+                                <div class="w-7 h-7 rounded-lg bg-amber-100/70 text-amber-700 flex items-center justify-center text-xs">
+                                    <i class="fas fa-circle-check"></i>
+                                </div>
+                                <div>
+                                    <div class="font-semibold text-slate-800">ការត្រួតពិនិត្យ & អនុម័ត</div>
+                                    <div class="text-[10px] text-emerald-600 font-medium">សិទ្ធិអនុម័តកំពូល</div>
+                                </div>
+                            </div>
+
+                            <div class="p-3 bg-slate-50/70 rounded-xl border border-slate-100 flex items-center gap-2.5">
+                                <div class="w-7 h-7 rounded-lg bg-rose-100/70 text-rose-700 flex items-center justify-center text-xs">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <div>
+                                    <div class="font-semibold text-slate-800">របាយការណ៍ & ហិរញ្ញវត្ថុ</div>
+                                    <div class="text-[10px] text-emerald-600 font-medium">មើល & ទាញយកទិន្នន័យ</div>
+                                </div>
+                            </div>
+
+                            <div class="p-3 bg-slate-50/70 rounded-xl border border-slate-100 flex items-center gap-2.5">
+                                <div class="w-7 h-7 rounded-lg bg-indigo-100/70 text-indigo-700 flex items-center justify-center text-xs">
+                                    <i class="fas fa-gears"></i>
+                                </div>
+                                <div>
+                                    <div class="font-semibold text-slate-800">ប្រព័ន្ធ & អ្នកប្រើប្រាស់</div>
+                                    <div class="text-[10px] text-emerald-600 font-medium">សិទ្ធិកំណត់កម្រិតខ្ពស់</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Interactive Scripts -->
+    <script>
+
+        // 2FA Toggle Handler
+        function handleTwoFaToggle(checkbox) {
+            const badge = document.getElementById('twoFaBadge');
+            if (checkbox.checked) {
+                badge.className = 'px-2 py-0.5 rounded-full text-[10px] font-medium bg-emerald-100 text-emerald-800';
+                badge.textContent = 'បានបើកដំណើរការ';
+                showToast('បានបើកដំណើរការផ្ទៀងផ្ទាត់ 2 ជំហាន (2FA) ដោយជោគជ័យ', 'success');
+            } else {
+                badge.className = 'px-2 py-0.5 rounded-full text-[10px] font-medium bg-slate-100 text-slate-600';
+                badge.textContent = 'បានបិទដំណើរការ';
+                showToast('បានបិទដំណើរការផ្ទៀងផ្ទាត់ 2 ជំហាន (2FA)', 'warning');
+            }
+        }
+
+        // Avatar Upload Handlers
+        function triggerAvatarUpload() {
+            document.getElementById('avatarFileInput')?.click();
+        }
+
+        function handleAvatarSelected(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            if (file.size > 2 * 1024 * 1024) {
+                showToast('ទំហំរូបភាពមិនត្រូវលើសពី 2 MB ឡើយ!', 'warning');
+                return;
+            }
+            showToast('បានផ្លាស់ប្តូររូបតំណាងគណនីដោយជោគជ័យ!', 'success');
+        }
+
+        // Save Profile Changes
+        function saveProfileChanges() {
+            const name = document.getElementById('fullNameInput')?.value.trim();
+            const email = document.getElementById('emailInput')?.value.trim();
+            const phone = document.getElementById('phoneInput')?.value.trim();
+
+            if (!name || !email || !phone) {
+                showToast('សូមបំពេញព័ត៌មានចាំបាច់ឱ្យបានពេញលេញ!', 'warning');
+                return;
+            }
+
+            showToast('បានរក្សាទុកព័ត៌មានកម្រងផ្ទាល់ខ្លួនដោយជោគជ័យ!', 'success');
+        }
+
+        // Terminate Sessions
+        function terminateSession(elementId) {
+            const el = document.getElementById(elementId);
+            if (el) {
+                el.remove();
+                showToast('បានបញ្ចប់សម័យចូលប្រើប្រព័ន្ធលើឧបករណ៍ Safari (iPhone) រួចរាល់', 'info');
+            }
+        }
+
+        function terminateOtherSessions() {
+            const mobileEl = document.getElementById('mobileSessionItem');
+            if (mobileEl) {
+                mobileEl.remove();
+                showToast('បានបញ្ចប់សម័យចូលប្រើប្រព័ន្ធលើគ្រប់ឧបករណ៍ផ្សេងទៀតដោយជោគជ័យ!', 'success');
+            } else {
+                showToast('មិនមានឧបករណ៍ផ្សេងទៀតកំពុងចូលប្រើប្រព័ន្ធឡើយ', 'info');
+            }
+        }
+    </script>
+
+    <!-- Unified Sidebar & UI Components Scripts -->
+    <script src="../../../scripts/ui-components.js"></script>
+    <script src="../../../scripts/sidebar.js"></script>
+</body>
+
+</html>

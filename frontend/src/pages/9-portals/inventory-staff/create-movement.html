@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - បង្កើតប័ណ្ណចលនាស្តុក</title>
+    <link rel="icon" type="image/png" href="../../../assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#4a1d96",
+                        accent: "#a855f7",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../styles/custom.css">
+</head>
+<body class="bg-purple-50/20 font-sans text-slate-800 text-[16px] flex h-screen overflow-hidden">
+
+    <!-- Inventory Staff Sidebar -->
+    <aside class="w-64 bg-[#4a1d96] text-white flex flex-col flex-shrink-0 select-none z-20 border-r border-purple-950">
+        <div class="h-[72px] px-6 flex items-center justify-between border-b border-white/10 flex-shrink-0">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-purple-400/20 border border-purple-400/30 flex items-center justify-center p-1 shadow-sm overflow-hidden flex-shrink-0">
+                    <img src="../../../assets/logo-mark-transparent.png" alt="DIGITECHKH" class="w-full h-full object-contain">
+                </div>
+                <div>
+                    <h1 class="text-lg font-semibold tracking-wider whitespace-nowrap text-white">DIGITECHKH</h1>
+                    <span class="text-[11px] font-medium text-purple-200 uppercase tracking-wider block">បុគ្គលិកផ្នែកស្តុក</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="px-5 py-3 border-b border-white/5 bg-black/15">
+            <div class="flex items-center justify-between">
+                <span class="text-xs text-purple-200">តួនាទី:</span>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-purple-400/10 text-purple-200 border border-purple-400/20">
+                    <i class="fas fa-boxes-stacked text-[10px]"></i> Inventory Staff
+                </span>
+            </div>
+        </div>
+
+        <nav class="flex-1 overflow-y-auto px-4 py-4 space-y-1.5 scrollbar-hide text-sm">
+            <a href="dashboard.html" class="flex items-center p-3 text-purple-100 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-chart-pie w-6 text-center text-purple-300"></i>
+                <span class="ml-3 text-[15px]">ផ្ទាំងគ្រប់គ្រងស្តុក</span>
+            </a>
+
+            <a href="balance.html" class="flex items-center p-3 text-purple-100 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-warehouse w-6 text-center text-purple-300"></i>
+                <span class="ml-3 text-[15px]">តុល្យភាពស្តុកទំនិញ</span>
+            </a>
+
+            <a href="catalog.html" class="flex items-center p-3 text-purple-100 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-barcode w-6 text-center text-purple-300"></i>
+                <span class="ml-3 text-[15px]">កាតាឡុកទំនិញ SKU</span>
+            </a>
+
+            <a href="movement.html" class="flex items-center p-3 bg-white/15 text-white font-medium rounded-xl shadow-sm transition-all whitespace-nowrap border border-white/10">
+                <i class="fas fa-dolly w-6 text-center text-purple-300"></i>
+                <span class="ml-3 text-[15px]">ប័ណ្ណចលនាស្តុក</span>
+            </a>
+        </nav>
+
+        <div class="p-4 border-t border-white/10 bg-black/10">
+            <a href="../../1-login/login.html" class="flex items-center text-[15px] text-purple-200 hover:text-rose-300 transition-colors p-2 rounded-lg hover:bg-white/5">
+                <i class="fas fa-arrow-right-from-bracket w-6 mr-2"></i> ចាកចេញ
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <!-- Header: h-[72px] seamless -->
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div class="flex items-center gap-4">
+                <a href="movement.html" 
+                   class="w-10 h-10 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-600 flex items-center justify-center transition border border-slate-200/70" 
+                   title="ត្រឡប់ទៅប័ណ្ណចលនាស្តុក">
+                    <i class="fas fa-arrow-left text-sm"></i>
+                </a>
+                <div>
+                    <h2 class="text-xl font-semibold text-gray-800 leading-tight">បង្កើតប័ណ្ណចលនាស្តុក (Stock Movement Slip)</h2>
+                    <p class="text-xs font-normal text-gray-500 mt-0.5">ផ្ទេរទំនិញរវាងឃ្លាំង នាំចូលស្តុក ឬនាំចេញប្រើប្រាស់</p>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-3">
+                <a href="movement.html" class="px-4 py-2.5 rounded-xl border border-slate-200 hover:bg-slate-100 text-slate-700 font-medium text-xs transition">
+                    បោះបង់
+                </a>
+                <button onclick="saveMovement()" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#4a1d96] hover:bg-[#3b157a] text-white font-medium text-xs shadow-sm transition">
+                    <i class="fas fa-check text-purple-300"></i>
+                    <span>បញ្ជាក់ចលនាស្តុក</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Form Container -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-6">
+            <div class="w-full space-y-6">
+                
+                <!-- Section 1: Movement Metadata -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">ប្រភេទចលនាស្តុក <span class="text-rose-500">*</span></label>
+                            <select class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-[#4a1d96] transition">
+                                <option>ផ្ទេររវាងឃ្លាំង (Internal Transfer)</option>
+                                <option>នាំចូលស្តុកពីការទិញ (Goods Receipt)</option>
+                                <option>នាំចេញស្តុកសម្រាប់លក់ (Stock Delivery)</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">លេខប័ណ្ណចលនា</label>
+                            <input type="text" value="MOV-2026-0089" readonly 
+                                class="w-full bg-slate-100 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-600 font-bold outline-none">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">កាលបរិច្ឆេទ</label>
+                            <input type="text" value="17 កញ្ញា 2026" readonly 
+                                class="w-full bg-slate-100 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-600 font-medium outline-none">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">បុគ្គលិកទទួលបន្ទុក</label>
+                            <input type="text" value="ជា សុផាត" readonly 
+                                class="w-full bg-slate-100 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-600 font-medium outline-none">
+                        </div>
+
+                        <div class="md:col-span-2">
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">ឃ្លាំងដើមទី (Source Warehouse) <span class="text-rose-500">*</span></label>
+                            <select class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-[#4a1d96] transition">
+                                <option>ឃ្លាំងកណ្តាល (ភ្នំពេញ)</option>
+                                <option>ឃ្លាំងទួលគោក</option>
+                            </select>
+                        </div>
+
+                        <div class="md:col-span-2">
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">ឃ្លាំងគោលដៅ (Destination Warehouse) <span class="text-rose-500">*</span></label>
+                            <select class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-[#4a1d96] transition">
+                                <option>ឃ្លាំងទួលគោក</option>
+                                <option>ឃ្លាំងសៀមរាប</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2: Items Table (STRICT ZERO PRICE LEAKAGE) -->
+                <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+                    <div class="p-4 border-b border-slate-100 flex items-center justify-between">
+                        <h3 class="font-semibold text-slate-800 text-sm">បញ្ជីមុខទំនិញដែលត្រូវផ្ទេរ</h3>
+                        <button class="px-3 py-1.5 rounded-xl bg-purple-50 text-purple-800 hover:bg-purple-100 border border-purple-200 text-xs font-semibold transition inline-flex items-center gap-1.5">
+                            <i class="fas fa-plus text-[10px]"></i> បន្ថែមមុខទំនិញ
+                        </button>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs">
+                            <thead class="bg-slate-50 text-slate-500 uppercase text-[11px] font-semibold border-b border-slate-100">
+                                <tr>
+                                    <th class="py-3 px-4 w-12 text-center">#</th>
+                                    <th class="py-3 px-4">មុខទំនិញ</th>
+                                    <th class="py-3 px-4">កូដ SKU</th>
+                                    <th class="py-3 px-4 w-36 text-center">ចំនួនផ្ទេរ</th>
+                                    <th class="py-3 px-4 w-28 text-center">ខ្នាត</th>
+                                    <th class="py-3 px-4 w-16 text-center">លុប</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 text-slate-700 font-medium">
+                                <tr>
+                                    <td class="py-3.5 px-4 text-center text-slate-400 font-bold">1</td>
+                                    <td class="py-3.5 px-4 font-bold text-slate-800">កុំព្យូទ័រ Dell OptiPlex 7010</td>
+                                    <td class="py-3.5 px-4 font-mono text-slate-500">DEL-OPT-7010</td>
+                                    <td class="py-3.5 px-4 text-center">
+                                        <input type="number" value="10" min="1" 
+                                            class="w-24 bg-slate-50 border border-slate-200 rounded-lg p-2 text-center text-xs font-bold text-slate-800 focus:outline-none focus:border-[#4a1d96]">
+                                    </td>
+                                    <td class="py-3.5 px-4 text-center font-semibold text-slate-600">ឈុត</td>
+                                    <td class="py-3.5 px-4 text-center text-slate-400 hover:text-rose-500 cursor-pointer"><i class="fas fa-trash-can"></i></td>
+                                </tr>
+                                <tr>
+                                    <td class="py-3.5 px-4 text-center text-slate-400 font-bold">2</td>
+                                    <td class="py-3.5 px-4 font-bold text-slate-800">កណ្ដុរឥតខ្សែ Logitech M331</td>
+                                    <td class="py-3.5 px-4 font-mono text-slate-500">MOU-LOG-M331</td>
+                                    <td class="py-3.5 px-4 text-center">
+                                        <input type="number" value="25" min="1" 
+                                            class="w-24 bg-slate-50 border border-slate-200 rounded-lg p-2 text-center text-xs font-bold text-slate-800 focus:outline-none focus:border-[#4a1d96]">
+                                    </td>
+                                    <td class="py-3.5 px-4 text-center font-semibold text-slate-600">គ្រឿង</td>
+                                    <td class="py-3.5 px-4 text-center text-slate-400 hover:text-rose-500 cursor-pointer"><i class="fas fa-trash-can"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Section 3: Notes -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-3">
+                    <label class="block text-xs font-semibold text-slate-700">កំណត់ចំណាំការផ្ទេរទំនិញ</label>
+                    <textarea rows="2" placeholder="បញ្ចូលព័ត៌មានរថយន្តដឹក ឬអ្នកបើកបរទទួលខុសត្រូវ..." 
+                        class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-xs text-slate-800 focus:outline-none focus:border-[#4a1d96] transition resize-none"></textarea>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../scripts/ui-components.js"></script>
+    <script>
+        function saveMovement() {
+            showToast('បានបង្កើតប័ណ្ណចលនាស្តុក MOV-2026-0089 ដោយជោគជ័យ!', 'success');
+            setTimeout(() => {
+                window.location.href = 'movement.html';
+            }, 1200);
+        }
+    </script>
+</body>
+</html>

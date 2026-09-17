@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - ផ្ទាំងគ្រប់គ្រង</title>
+    <link rel="icon" type="image/png" href="../../assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Apache ECharts via CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#24692D",
+                        'primary-light': "#2e7d38",
+                        'primary-dark': "#1b5223",
+                        'btn-navy': "#16255c",
+                        'brand-blue': "#1e3a8a",
+                        secondary: "#f1f5f9",
+                        accent: "#10b981",
+                        danger: "#ef4444",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../styles/custom.css">
+</head>
+<body class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+    <!-- Standard DIGITECHKH Sidebar -->
+    <aside class="w-64 bg-[#1b5223] text-white flex flex-col flex-shrink-0 select-none z-20">
+        <!-- Sidebar Brand Container (Exact h-[72px] px-6) -->
+        <div class="h-[72px] px-6 flex items-center gap-3 border-b border-white/10 flex-shrink-0">
+            <div class="w-9 h-9 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center p-1 shadow-sm overflow-hidden flex-shrink-0">
+                <img src="../../assets/logo-mark-transparent.png" alt="DIGITECHKH" class="w-full h-full object-contain">
+            </div>
+            <h1 class="text-xl font-semibold tracking-wider whitespace-nowrap">DIGITECHKH</h1>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="flex-1 overflow-y-auto px-4 py-4 space-y-1 scrollbar-hide text-sm">
+            <!-- ផ្ទាំងគ្រប់គ្រង -->
+            <a href="dashboard.html" data-nav="dashboard"
+                class="nav-item flex items-center p-3 bg-primary text-white shadow-sm font-medium rounded-xl transition-colors whitespace-nowrap">
+                <i class="fas fa-border-all w-6 text-center opacity-80"></i>
+                <span class="ml-3 text-[16px]">ផ្ទាំងគ្រប់គ្រង</span>
+            </a>
+
+            <!-- ការលក់ -->
+            <div>
+                <button id="btn-menu-sell" onclick="toggleMenu('menu-sell')"
+                    class="nav-parent w-full flex items-center justify-between p-3 text-emerald-100 hover:bg-white/10 hover:text-white rounded-xl transition-colors whitespace-nowrap">
+                    <div class="flex items-center">
+                        <i class="fas fa-money-bill w-6 text-center opacity-80"></i>
+                        <span class="ml-3 text-[16px]">ការលក់</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-xs opacity-60 transition-transform duration-200" id="icon-menu-sell"></i>
+                </button>
+                <div id="menu-sell" class="ml-6 pl-3 py-1.5 space-y-1 border-l border-white/20 mt-1 mb-2 hidden text-[15px]">
+                    <a href="../3-sales/1-invoice/invoice.html" data-nav="sell-invoices" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-file-invoice-dollar w-5 text-center mr-2 text-xs opacity-70"></i> វិក្កយបត្រលក់
+                    </a>
+                    <a href="../3-sales/2-quote/quote.html" data-nav="sell-prices" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-file-alt w-5 text-center opacity-70 mr-2 text-xs"></i> តារាងតម្លៃ
+                    </a>
+                    <a href="../3-sales/3-customer/customer.html" data-nav="sell-customers" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-users w-5 text-center opacity-70 mr-2 text-xs"></i> បញ្ជីអតិថិជន
+                    </a>
+                    <a href="../3-sales/4-payment/payment.html" data-nav="sell-receipts" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-credit-card w-5 text-center opacity-70 mr-2 text-xs"></i> បង្កាន់ដៃទូទាត់
+                    </a>
+                </div>
+            </div>
+
+            <!-- ការទិញ -->
+            <div>
+                <button id="btn-menu-buy" onclick="toggleMenu('menu-buy')"
+                    class="nav-parent w-full flex items-center justify-between p-3 text-emerald-100 hover:bg-white/10 hover:text-white rounded-xl transition-colors whitespace-nowrap">
+                    <div class="flex items-center">
+                        <i class="fas fa-cart-shopping w-6 text-center opacity-80"></i>
+                        <span class="ml-3 text-[16px]">ការទិញ</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-xs opacity-60 transition-transform duration-200" id="icon-menu-buy"></i>
+                </button>
+                <div id="menu-buy" class="ml-6 pl-3 py-1.5 space-y-1 border-l border-white/20 mt-1 mb-2 hidden text-[15px]">
+                    <a href="../4-buy/1-bills/bills.html" data-nav="buy-invoices" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-file-invoice w-5 text-center opacity-70 mr-2 text-xs"></i> វិក្កយបត្របញ្ញាទិញ
+                    </a>
+                    <a href="../4-buy/2-suppliers/suppliers.html" data-nav="buy-suppliers" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-truck w-5 text-center opacity-70 mr-2 text-xs"></i> អ្នកផ្គត់ផ្គង់
+                    </a>
+                    <a href="../4-buy/3-disbursement/disbursement.html" data-nav="buy-expenses" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-money-check-alt w-5 text-center opacity-70 mr-2 text-xs"></i> ការទូទាត់ចំណាយ
+                    </a>
+                </div>
+            </div>
+
+            <!-- ស្តុកទំនិញ -->
+            <div>
+                <button id="btn-menu-stock" onclick="toggleMenu('menu-stock')"
+                    class="nav-parent w-full flex items-center justify-between p-3 text-emerald-100 hover:bg-white/10 hover:text-white rounded-xl transition-colors whitespace-nowrap">
+                    <div class="flex items-center">
+                        <i class="fas fa-boxes-stacked w-6 text-center opacity-80"></i>
+                        <span class="ml-3 text-[16px]">ស្តុកទំនិញ</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-xs opacity-60 transition-transform duration-200" id="icon-menu-stock"></i>
+                </button>
+                <div id="menu-stock" class="ml-6 pl-3 py-1.5 space-y-1 border-l border-white/20 mt-1 mb-2 hidden text-[15px]">
+                    <a href="../5-stock/1-balance/balance.html" data-nav="stock-balance" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-box w-5 text-center opacity-70 mr-2 text-xs"></i> តុល្យភាពស្តុក
+                    </a>
+                    <a href="../5-stock/2-catalog/catalog.html" data-nav="stock-catalog" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-list w-5 text-center opacity-70 mr-2 text-xs"></i> កាតាឡុកទំនិញ
+                    </a>
+                    <a href="../5-stock/3-movement/movement.html" data-nav="stock-movements" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-clock-rotate-left w-5 text-center opacity-70 mr-2 text-xs"></i> ចលនាស្តុក
+                    </a>
+                </div>
+            </div>
+
+            <!-- របាយការណ៍ហិរញ្ញវត្ថុ -->
+            <div>
+                <button id="btn-menu-reports" onclick="toggleMenu('menu-reports')"
+                    class="nav-parent w-full flex items-center justify-between p-3 text-emerald-100 hover:bg-white/10 hover:text-white rounded-xl transition-colors whitespace-nowrap">
+                    <div class="flex items-center">
+                        <i class="fas fa-chart-line w-6 text-center opacity-80"></i>
+                        <span class="ml-3 text-[16px]">របាយការណ៍ហិរញ្ញវត្ថុ</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-xs opacity-60 transition-transform duration-200" id="icon-menu-reports"></i>
+                </button>
+                <div id="menu-reports" class="ml-6 pl-3 py-1.5 space-y-1 border-l border-white/20 mt-1 mb-2 hidden text-[15px]">
+                    <a href="../6-reports/1-overview/overview.html" data-nav="reports-overview" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-chart-pie w-5 text-center opacity-70 mr-2 text-xs"></i> របាយការណ៍ទូទៅ
+                    </a>
+                    <a href="../6-reports/2-sales/sales.html" data-nav="reports-sales" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-file-invoice-dollar w-5 text-center opacity-70 mr-2 text-xs"></i> របាយការណ៍លក់
+                    </a>
+                    <a href="../6-reports/3-purchases/purchases.html" data-nav="reports-purchases" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-cart-shopping w-5 text-center opacity-70 mr-2 text-xs"></i> របាយការណ៍ទិញ
+                    </a>
+                    <a href="../6-reports/4-stock/stock.html" data-nav="reports-stock" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-boxes-stacked w-5 text-center opacity-70 mr-2 text-xs"></i> របាយការណ៍ស្តុក
+                    </a>
+                </div>
+            </div>
+
+            <!-- ការកំណត់ប្រព័ន្ធ -->
+            <div>
+                <button id="btn-menu-settings" onclick="toggleMenu('menu-settings')"
+                    class="nav-parent w-full flex items-center justify-between p-3 text-emerald-100 hover:bg-white/10 hover:text-white rounded-xl transition-colors whitespace-nowrap">
+                    <div class="flex items-center">
+                        <i class="fas fa-gear w-6 text-center opacity-80"></i>
+                        <span class="ml-3 text-[16px]">ការកំណត់ប្រព័ន្ធ</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-xs opacity-60 transition-transform duration-200" id="icon-menu-settings"></i>
+                </button>
+                <div id="menu-settings" class="ml-6 pl-3 py-1.5 space-y-1 border-l border-white/20 mt-1 mb-2 hidden text-[15px]">
+                    <a href="../7-settings/1-company/company.html" data-nav="settings-company" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-building w-5 text-center opacity-70 mr-2 text-xs"></i> ព័ត៌មានក្រុមហ៊ុន
+                    </a>
+                    <a href="../7-settings/2-users/users.html" data-nav="settings-users" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-users-gear w-5 text-center opacity-70 mr-2 text-xs"></i> គ្រប់គ្រងអ្នកប្រើ
+                    </a>
+                    <a href="../7-settings/3-tax/tax.html" data-nav="settings-tax" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-coins w-5 text-center opacity-70 mr-2 text-xs"></i> ពន្ធ និងរូបិយប័ណ្ណ
+                    </a>
+                    <a href="../7-settings/4-notifications/notifications.html" data-nav="settings-notifications" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-bell w-5 text-center opacity-70 mr-2 text-xs"></i> ការជូនដំណឹង
+                    </a>
+                    <a href="../7-settings/5-system/system.html" data-nav="settings-system" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-sliders w-5 text-center opacity-70 mr-2 text-xs"></i> ប្រព័ន្ធ និងសុវត្ថិភាព
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="p-4 border-t border-white/10">
+            <a href="../1-login/login.html"
+                class="flex items-center text-[16px] text-emerald-100 hover:text-red-300 transition-colors p-2 rounded-lg hover:bg-primary">
+                <i class="fas fa-sign-out-alt w-6 mr-2"></i> ចាកចេញ
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        
+        <!-- Top Header -->
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+<div>
+                <h2 class="text-xl font-semibold text-gray-800 leading-tight">ផ្ទាំងគ្រប់គ្រង</h2>
+                <p class="text-xs font-normal text-gray-500 mt-0.5">ស្វាគមន៍មកកាន់ប្រព័ន្ធគ្រប់គ្រងអាជីវកម្ម DIGITECHKH</p>
+            </div>
+            
+                        <div class="flex items-center space-x-3 md:space-x-4">
+                <!-- Notification Bell -->
+                <button onclick="toggleNotifications()" class="text-gray-500 hover:text-gray-700 relative p-2.5 rounded-xl hover:bg-slate-100 transition-colors cursor-pointer" title="ការជូនដំណឹង">
+                    <i class="fas fa-bell text-xl"></i>
+                    <span class="absolute top-1.5 right-1.5 flex h-2.5 w-2.5">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500"></span>
+                    </span>
+                </button>
+                
+                <!-- User Profile Avatar Only -->
+                <div class="flex items-center border-l pl-3 md:pl-4">
+                    <button class="relative rounded-full focus:outline-none focus:ring-2 focus:ring-primary/20 cursor-pointer" title="សុខ ចាន់ថន (អ្នកគ្រប់គ្រងកំពូល)">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=128&q=80" alt="សុខ ចាន់ថន" class="h-10 w-10 rounded-full object-cover shadow-sm border border-slate-200" />
+                        <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-2 ring-white"></span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Content Scrollable Area -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-4">
+            <div class="w-full space-y-4">
+
+                <!-- Quick Action Bar -->
+                <div class="bg-white rounded-2xl p-3 px-4 shadow-sm border border-slate-100 flex flex-wrap items-center justify-between gap-3">
+                    <div class="flex items-center gap-2">
+                        <span class="text-sm font-semibold text-slate-700 uppercase tracking-wider bg-slate-100 px-3 py-1.5 rounded-lg flex items-center gap-1.5 flex-shrink-0">
+                            <i class="fas fa-bolt text-amber-500"></i> សកម្មភាពរហ័ស
+                        </span>
+                    </div>
+                    <div class="flex items-center gap-2.5 text-[16px] overflow-x-auto no-scrollbar w-full sm:w-auto pb-1 sm:pb-0">
+                        <a href="../3-sales/1-invoice/create-invoice.html" class="flex-shrink-0 whitespace-nowrap flex items-center gap-2 text-[16px] font-normal text-primary bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-4 py-2 rounded-xl transition-all">
+                            <i class="fas fa-file-circle-plus text-emerald-600"></i>
+                            <span>+ វិក្កយបត្រថ្មី</span>
+                        </a>
+                        <a href="../4-buy/3-disbursement/create-disbursement.html" class="flex-shrink-0 whitespace-nowrap flex items-center gap-2 text-[16px] font-normal text-rose-600 bg-rose-50 hover:bg-rose-100 border border-rose-200 px-4 py-2 rounded-xl transition-all">
+                            <i class="fas fa-receipt text-rose-500"></i>
+                            <span>+ កត់ត្រាចំណាយ</span>
+                        </a>
+                        <a href="../3-sales/3-customer/create-customer.html" class="flex-shrink-0 whitespace-nowrap flex items-center gap-2 text-[16px] font-normal text-blue-600 bg-blue-50 hover:bg-blue-100 border border-blue-200 px-4 py-2 rounded-xl transition-all">
+                            <i class="fas fa-user-plus text-blue-500"></i>
+                            <span>+ បន្ថែមអតិថិជន</span>
+                        </a>
+                        <a href="../5-stock/3-movement/create-movement.html" class="flex-shrink-0 whitespace-nowrap flex items-center gap-2 text-[16px] font-normal text-purple-600 bg-purple-50 hover:bg-purple-100 border border-purple-200 px-4 py-2 rounded-xl transition-all">
+                            <i class="fas fa-box-open text-purple-500"></i>
+                            <span>+ បញ្ចូលស្តុក</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Top Section: Bank Account + 4 Vertical Stat Cards + Cash Flow EChart -->
+                <div class="grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12 gap-4 items-stretch">
+                    
+                    <!-- 1. Admin Review & Approvals Card (col-span-3) -->
+                    <div class="md:col-span-6 lg:col-span-3 bg-primary text-white rounded-2xl p-4 sm:p-6 shadow-md flex flex-col justify-between relative overflow-hidden">
+                        <div class="z-10">
+                            <!-- Pending Alert Badge -->
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="bg-amber-400/20 border border-amber-300/30 text-amber-200 text-xs font-semibold px-3 py-1 rounded-full flex items-center gap-1.5 animate-pulse">
+                                    <i class="fas fa-bell text-amber-300 text-xs"></i> 5 សំណើរង់ចាំពិនិត្យ
+                                </span>
+                                <span class="text-xs text-emerald-200/80 font-normal">ថ្ងៃនេះ</span>
+                            </div>
+                            
+                            <h3 class="text-lg font-semibold mb-2 leading-snug">ការត្រួតពិនិត្យសម្រាប់ Admin</h3>
+                            <p class="text-sm font-normal text-emerald-50/90 leading-relaxed mb-4">
+                                មានប្រតិបត្តិការថ្មីចំនួន 5 ត្រូវការការពិនិត្យផ្ទៀងផ្ទាត់ និងអនុម័តពីអ្នកគ្រប់គ្រង។
+                            </p>
+
+                            <!-- Review Items Checklist -->
+                            <div class="space-y-2 text-xs text-emerald-100/90 mb-4 bg-black/15 p-3 rounded-xl border border-white/10">
+                                <div class="flex items-center justify-between">
+                                    <span class="flex items-center gap-2">
+                                        <i class="fas fa-file-invoice text-emerald-300 text-[11px]"></i>
+                                        <span>វិក្កយបត្រលក់ថ្មី</span>
+                                    </span>
+                                    <span class="bg-white/20 px-2 py-0.5 rounded font-semibold text-white">3 ច្បាប់</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="flex items-center gap-2">
+                                        <i class="fas fa-receipt text-rose-300 text-[11px]"></i>
+                                        <span>សំណើទូទាត់ចំណាយ</span>
+                                    </span>
+                                    <span class="bg-white/20 px-2 py-0.5 rounded font-semibold text-white">2 ច្បាប់</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="approvals.html" class="bg-emerald-100 hover:bg-emerald-200 text-primary font-normal py-2.5 px-4 rounded-xl transition z-10 w-full text-center text-[16px] shadow-sm flex items-center justify-center gap-2">
+                            <i class="fas fa-clipboard-check text-base"></i>
+                            <span>ពិនិត្យ និងអនុម័ត</span>
+                        </a>
+                        <!-- Decorative shapes -->
+                        <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-white/5 rounded-full blur-2xl"></div>
+                        <div class="absolute -top-10 -left-10 w-32 h-32 bg-white/5 rounded-full blur-xl"></div>
+                    </div>
+
+                    <!-- 2. 4 Vertical Stat Cards (col-span-3) -->
+                    <div class="md:col-span-6 lg:col-span-3 flex flex-col justify-between gap-3">
+                        
+                        <!-- Card 1: ចំណូលសរុប -->
+                        <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-100 flex items-center justify-between hover:shadow-md transition-shadow">
+                            <div class="flex items-center space-x-3.5">
+                                <div class="bg-purple-100 text-purple-600 w-11 h-11 rounded-xl flex items-center justify-center text-base flex-shrink-0">
+                                    <i class="fas fa-credit-card"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-normal text-gray-500 mb-0.5">ចំណូលសរុប</p>
+                                    <p class="text-lg font-semibold text-slate-800" id="stat-revenue">$27,350</p>
+                                </div>
+                            </div>
+                            <div class="text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-md text-xs font-normal flex items-center">
+                                +3.6% <i class="fas fa-arrow-up-right ml-1 text-[10px]"></i>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: បានចេញវិក្កយបត្រ -->
+                        <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-100 flex items-center justify-between hover:shadow-md transition-shadow">
+                            <div class="flex items-center space-x-3.5">
+                                <div class="bg-teal-100 text-teal-600 w-11 h-11 rounded-xl flex items-center justify-center text-base flex-shrink-0">
+                                    <i class="fas fa-file-invoice-dollar"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-normal text-gray-500 mb-0.5">បានចេញវិក្កយបត្រ</p>
+                                    <p class="text-lg font-semibold text-slate-800" id="stat-expense">$7,020</p>
+                                </div>
+                            </div>
+                            <div class="text-rose-500 bg-rose-50 px-2.5 py-1 rounded-md text-xs font-normal flex items-center">
+                                -2.05% <i class="fas fa-arrow-down-right ml-1 text-[10px]"></i>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: ទទួលបាន -->
+                        <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-100 flex items-center justify-between hover:shadow-md transition-shadow">
+                            <div class="flex items-center space-x-3.5">
+                                <div class="bg-emerald-100 text-emerald-600 w-11 h-11 rounded-xl flex items-center justify-center text-base flex-shrink-0">
+                                    <i class="fas fa-wallet"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-normal text-gray-500 mb-0.5">ទទួលបាន</p>
+                                    <p class="text-lg font-semibold text-slate-800" id="stat-profit">$4,950</p>
+                                </div>
+                            </div>
+                            <div class="text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-md text-xs font-normal flex items-center">
+                                +1.5% <i class="fas fa-arrow-up-right ml-1 text-[10px]"></i>
+                            </div>
+                        </div>
+
+                        <!-- Card 4: អតិថិជន -->
+                        <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-100 flex items-center justify-between hover:shadow-md transition-shadow">
+                            <div class="flex items-center space-x-3.5">
+                                <div class="bg-lime-100 text-lime-600 w-11 h-11 rounded-xl flex items-center justify-center text-base flex-shrink-0">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-normal text-gray-500 mb-0.5">អតិថិជន</p>
+                                    <p class="text-lg font-semibold text-slate-800" id="stat-customers">3,065</p>
+                                </div>
+                            </div>
+                            <div class="text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-md text-xs font-normal flex items-center">
+                                +5.04% <i class="fas fa-arrow-up-right ml-1 text-[10px]"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. Cash Flow EChart (col-span-6) -->
+                    <div class="md:col-span-12 lg:col-span-6 bg-white rounded-2xl p-4 sm:p-6 shadow-sm border border-slate-100 flex flex-col justify-between">
+                        <!-- Chart Header -->
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-2.5">
+                            <div>
+                                <h3 class="text-base font-semibold text-slate-800">ការយល់ដឹងអំពីសាច់ប្រាក់</h3>
+                                <p class="text-xs font-normal text-gray-500 mt-0.5">ប្រភពចំណូល និងការចំណាយអាជីវកម្មរបស់អ្នក</p>
+                            </div>
+                            <div class="flex items-center gap-2 relative w-full sm:w-auto justify-between sm:justify-end">
+                                <span class="text-xs text-slate-400 hidden lg:inline">កាលបរិច្ឆេទ:</span>
+
+                                <!-- Date Range Trigger Button -->
+                                <div class="relative flex-1 sm:flex-initial">
+                                    <button id="dateRangePickerBtn" onclick="toggleDatePicker(event)"
+                                        class="w-full sm:w-auto h-9 px-3 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 text-xs rounded-xl flex items-center justify-center sm:justify-start gap-2 shadow-sm transition-all focus:outline-none cursor-pointer whitespace-nowrap">
+                                        <i class="fas fa-calendar-days text-primary text-xs flex-shrink-0"></i>
+                                        <span id="selectedDateLabel" class="font-medium text-slate-800 truncate">1 កញ្ញា - 30 កញ្ញា</span>
+                                        <i class="fas fa-chevron-down text-[10px] text-slate-400 transition-transform duration-200 ml-0.5 flex-shrink-0" id="datePickerChevron"></i>
+                                    </button>
+
+                                    <!-- Date Range Picker Popover Dropdown -->
+                                    <div id="datePickerPopover" onclick="event.stopPropagation()"
+                                        class="absolute right-0 top-full mt-2 w-[480px] bg-white rounded-2xl shadow-2xl border border-slate-200 z-50 hidden overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+                                        <div class="grid grid-cols-12 divide-x divide-slate-100">
+                                            <!-- Left Presets Column (col-span-4) -->
+                                            <div class="col-span-4 p-2 py-3 space-y-0.5 text-xs font-normal text-slate-600 bg-slate-50/70">
+                                                <button type="button" onclick="selectPreset('ថ្ងៃនេះ')" class="preset-btn w-full text-left px-3 py-1.5 rounded-lg hover:bg-slate-100 transition-colors">ថ្ងៃនេះ</button>
+                                                <button type="button" onclick="selectPreset('ម្សិលមិញ')" class="preset-btn w-full text-left px-3 py-1.5 rounded-lg hover:bg-slate-100 transition-colors">ម្សិលមិញ</button>
+                                                <button type="button" onclick="selectPreset('សប្តាហ៍នេះ')" class="preset-btn w-full text-left px-3 py-1.5 rounded-lg hover:bg-slate-100 transition-colors">សប្តាហ៍នេះ</button>
+                                                <button type="button" onclick="selectPreset('សប្តាហ៍មុន')" class="preset-btn w-full text-left px-3 py-1.5 rounded-lg hover:bg-slate-100 transition-colors">សប្តាហ៍មុន</button>
+                                                <button type="button" onclick="selectPreset('ខែនេះ')" class="preset-btn w-full text-left px-3 py-1.5 rounded-lg bg-[#0f2b5c] text-white font-medium shadow-sm transition-colors">ខែនេះ</button>
+                                                <button type="button" onclick="selectPreset('ខែមុន')" class="preset-btn w-full text-left px-3 py-1.5 rounded-lg hover:bg-slate-100 transition-colors">ខែមុន</button>
+                                                <button type="button" onclick="selectPreset('ឆ្នាំនេះ')" class="preset-btn w-full text-left px-3 py-1.5 rounded-lg hover:bg-slate-100 transition-colors">ឆ្នាំនេះ</button>
+                                                <button type="button" onclick="selectPreset('7 ថ្ងៃចុងក្រោយ')" class="preset-btn w-full text-left px-3 py-1.5 rounded-lg hover:bg-slate-100 transition-colors">7 ថ្ងៃចុងក្រោយ</button>
+                                                <button type="button" onclick="selectPreset('14 ថ្ងៃចុងក្រោយ')" class="preset-btn w-full text-left px-3 py-1.5 rounded-lg hover:bg-slate-100 transition-colors">14 ថ្ងៃចុងក្រោយ</button>
+                                                <button type="button" onclick="selectPreset('30 ថ្ងៃចុងក្រោយ')" class="preset-btn w-full text-left px-3 py-1.5 rounded-lg hover:bg-slate-100 transition-colors">30 ថ្ងៃចុងក្រោយ</button>
+                                            </div>
+
+                                            <!-- Right Calendar View (col-span-8) -->
+                                            <div class="col-span-8 p-4 flex flex-col justify-between">
+                                                <div>
+                                                    <!-- Calendar Header with Month Navigation -->
+                                                    <div class="flex items-center justify-between mb-3 px-1">
+                                                        <span id="calMonthYearLabel" class="text-sm font-semibold text-slate-900">កញ្ញា 2026</span>
+                                                        <div class="flex items-center gap-1 text-slate-400">
+                                                            <button type="button" onclick="changeCalendarMonth(-1)" title="ខែមុន" class="hover:text-slate-700 p-1 rounded-lg hover:bg-slate-100 transition"><i class="fas fa-chevron-left text-xs"></i></button>
+                                                            <button type="button" onclick="changeCalendarMonth(1)" title="ខែបន្ទាប់" class="hover:text-slate-700 p-1 rounded-lg hover:bg-slate-100 transition"><i class="fas fa-chevron-right text-xs"></i></button>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Weekdays -->
+                                                    <div class="grid grid-cols-7 text-center text-xs font-normal text-slate-400 mb-2">
+                                                        <span>ច</span><span>អ</span><span>ព</span><span>ព្រ</span><span>សុ</span><span>ស</span><span>អា</span>
+                                                    </div>
+
+                                                    <!-- Dynamic Days Grid with Range Selection -->
+                                                    <div id="calendarDaysGrid" class="grid grid-cols-7 text-center text-xs font-normal gap-y-1">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Footer -->
+                                        <div class="p-3 px-4 border-t border-slate-100 bg-white flex items-center justify-between">
+                                            <div class="flex items-center gap-1.5 bg-slate-100 px-3 py-1 rounded-full text-xs font-normal text-slate-700">
+                                                <span id="rangeTagLabel">1 កញ្ញា - 30 កញ្ញា</span>
+                                                <button type="button" onclick="clearRangeTag()" class="text-slate-400 hover:text-slate-600 ml-1">
+                                                    <i class="fas fa-times-circle text-xs"></i>
+                                                </button>
+                                            </div>
+                                            <div class="flex items-center gap-2">
+                                                <button type="button" onclick="toggleDatePicker(event)" class="px-3.5 py-1.5 rounded-xl text-xs font-normal text-slate-600 hover:bg-slate-100 transition-colors">
+                                                    បោះបង់
+                                                </button>
+                                                <button type="button" onclick="applyDateRange()" class="px-4 py-1.5 rounded-xl text-xs font-normal bg-[#0f2b5c] hover:bg-[#193a73] text-white shadow-sm transition-all">
+                                                    ជ្រើសរើស
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button onclick="showToast('ទាញយករបាយការណ៍សាច់ប្រាក់ជា Excel រួចរាល់', 'success')" class="text-sm font-normal text-slate-600 bg-slate-100 hover:bg-slate-200 px-3.5 py-1.5 rounded-xl transition-colors flex items-center gap-1.5">
+                                    <i class="fas fa-download text-xs"></i>
+                                    <span>របាយការណ៍</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Live Snapshot Tag -->
+                        <div class="flex items-center gap-2 my-1">
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-normal bg-primary text-white shadow-sm">
+                                <i class="fas fa-arrow-trend-up text-accent text-xs"></i>
+                                <span>ចំណូលខ្ពស់បំផុត: <strong class="ml-1">$50,000 (មិថុនា)</strong></span>
+                            </span>
+                        </div>
+
+                        <!-- ECharts Container for Cash Flow -->
+                        <div id="cashFlowChart" class="w-full h-52"></div>
+
+                        <!-- Custom Legend below chart -->
+                        <div class="flex items-center justify-center gap-6 mt-1 pt-1.5 border-t border-slate-50 text-sm font-normal text-slate-600">
+                            <div class="flex items-center gap-1.5">
+                                <span class="w-3 h-3 rounded-none bg-[#24692D]"></span>
+                                <span>ចំណូលចូល</span>
+                            </div>
+                            <div class="flex items-center gap-1.5">
+                                <span class="w-3 h-3 rounded-none bg-[#16255c]"></span>
+                                <span>ចំណាយចេញ</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Middle Section: Additional Analytical ECharts & Low Stock Alert -->
+                <div class="grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12 gap-4 items-stretch">
+                    
+                    <!-- Sales by Category Donut Chart (col-span-5) -->
+                    <div class="md:col-span-12 lg:col-span-5 bg-white rounded-2xl p-4 sm:p-6 shadow-sm border border-slate-100 flex flex-col justify-between">
+                        <div class="flex justify-between items-center mb-2">
+                            <div>
+                                <h3 class="font-semibold text-base text-slate-800">ចំណាត់ថ្នាក់ការលក់</h3>
+                                <p class="text-xs font-normal text-gray-500 mt-0.5">ការបែងចែកចំណូលតាមប្រភេទទំនិញ</p>
+                            </div>
+                            <span class="text-xs font-normal text-emerald-700 bg-emerald-50 px-3 py-1 rounded-lg">
+                                សរុប 4 ប្រភេទ
+                            </span>
+                        </div>
+                        
+                        <!-- ECharts Category Donut Container -->
+                        <div id="categoryChart" class="w-full h-56 sm:h-52"></div>
+                    </div>
+
+                    <!-- Low Stock Alerts & Real-time Action Table (col-span-7) -->
+                    <div class="md:col-span-12 lg:col-span-7 bg-white rounded-2xl p-4 sm:p-6 shadow-sm border border-slate-100 flex flex-col justify-between">
+                        <div class="flex items-center justify-between gap-2 mb-3">
+                            <div class="flex items-center gap-2 min-w-0">
+                                <span class="w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse flex-shrink-0"></span>
+                                <h3 class="font-semibold text-sm sm:text-base text-slate-800 truncate">ការជូនដំណឹងស្តុកទំនិញជិតអស់</h3>
+                            </div>
+                            <a href="../5-stock/1-balance/balance.html" class="text-xs sm:text-sm font-normal text-emerald-700 hover:text-emerald-800 flex items-center gap-1 flex-shrink-0 whitespace-nowrap">
+                                <span>មើលទាំងអស់</span>
+                                <i class="fas fa-chevron-right text-[10px]"></i>
+                            </a>
+                        </div>
+                        
+                        <div class="overflow-x-auto flex-1">
+                            <table class="w-full text-left min-w-0 sm:min-w-[500px]" id="dashLowStockTable">
+                                <thead class="text-xs font-normal text-gray-500 uppercase border-b border-slate-100">
+                                    <tr>
+                                        <th class="pb-2.5 font-normal">រូបភាព & ឈ្មោះទំនិញ</th>
+                                        <th class="pb-2.5 font-normal text-center">ស្តុកនៅសល់</th>
+                                        <th class="pb-2.5 font-normal text-center">កម្រិតប្រកាស</th>
+                                        <th class="pb-2.5 font-normal text-right">សកម្មភាព</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-50 text-[15px] font-normal">
+                                    <tr class="hover:bg-slate-50/70 transition-colors">
+                                        <td class="py-3 font-normal text-slate-800">
+                                            <a href="../5-stock/1-balance/view-balance.html?id=STK-001" class="flex items-center gap-3 hover:text-primary transition group">
+                                                <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=120&q=80" 
+                                                     alt="iPhone 15 Pro Max 256GB" 
+                                                     class="w-10 h-10 rounded-xl object-cover border border-slate-200 shadow-xs flex-shrink-0 group-hover:border-primary/50 transition">
+                                                <div>
+                                                    <p class="text-[15px] font-medium leading-tight text-slate-800 group-hover:text-primary">iPhone 15 Pro Max 256GB</p>
+                                                    <p class="text-xs text-slate-400 font-mono">IPH15PM-256</p>
+                                                </div>
+                                            </a>
+                                        </td>
+                                        <td class="py-3 text-center">
+                                            <span class="bg-rose-50 text-rose-600 px-3 py-1 rounded-lg text-xs font-medium border border-rose-100">
+                                                នៅសល់ 3 គ្រឿង
+                                            </span>
+                                        </td>
+                                        <td class="py-3 text-center text-slate-500 text-xs">10 គ្រឿង</td>
+                                        <td class="py-3 text-right">
+                                            <a href="../4-buy/1-bills/create-bills.html?item=IPH15PM-256" class="inline-flex items-center gap-1.5 bg-primary hover:bg-primary-dark text-white text-xs px-3.5 py-1.5 rounded-lg transition-colors shadow-xs">
+                                                <i class="fas fa-cart-plus text-[11px]"></i>
+                                                <span>+ បញ្ជាទិញ</span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50/70 transition-colors">
+                                        <td class="py-3 font-normal text-slate-800">
+                                            <a href="../5-stock/1-balance/view-balance.html?id=STK-002" class="flex items-center gap-3 hover:text-primary transition group">
+                                                <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=120&q=80" 
+                                                     alt="MacBook Air M3 15-inch" 
+                                                     class="w-10 h-10 rounded-xl object-cover border border-slate-200 shadow-xs flex-shrink-0 group-hover:border-primary/50 transition">
+                                                <div>
+                                                    <p class="text-[15px] font-medium leading-tight text-slate-800 group-hover:text-primary">MacBook Air M3 15-inch</p>
+                                                    <p class="text-xs text-slate-400 font-mono">MBA-M3-15</p>
+                                                </div>
+                                            </a>
+                                        </td>
+                                        <td class="py-3 text-center">
+                                            <span class="bg-amber-50 text-amber-600 px-3 py-1 rounded-lg text-xs font-medium border border-amber-100">
+                                                នៅសល់ 5 គ្រឿង
+                                            </span>
+                                        </td>
+                                        <td class="py-3 text-center text-slate-500 text-xs">15 គ្រឿង</td>
+                                        <td class="py-3 text-right">
+                                            <a href="../4-buy/1-bills/create-bills.html?item=MBA-M3-15" class="inline-flex items-center gap-1.5 bg-primary hover:bg-primary-dark text-white text-xs px-3.5 py-1.5 rounded-lg transition-colors shadow-xs">
+                                                <i class="fas fa-cart-plus text-[11px]"></i>
+                                                <span>+ បញ្ជាទិញ</span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50/70 transition-colors">
+                                        <td class="py-3 font-normal text-slate-800">
+                                            <a href="../5-stock/1-balance/view-balance.html?id=STK-003" class="flex items-center gap-3 hover:text-primary transition group">
+                                                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=120&q=80" 
+                                                     alt="Sony WH-1000XM5" 
+                                                     class="w-10 h-10 rounded-xl object-cover border border-slate-200 shadow-xs flex-shrink-0 group-hover:border-primary/50 transition">
+                                                <div>
+                                                    <p class="text-[15px] font-medium leading-tight text-slate-800 group-hover:text-primary">Sony WH-1000XM5</p>
+                                                    <p class="text-xs text-slate-400 font-mono">SONY-WHXM5</p>
+                                                </div>
+                                            </a>
+                                        </td>
+                                        <td class="py-3 text-center">
+                                            <span class="bg-rose-50 text-rose-600 px-3 py-1 rounded-lg text-xs font-medium border border-rose-100">
+                                                នៅសល់ 2 គ្រឿង
+                                            </span>
+                                        </td>
+                                        <td class="py-3 text-center text-slate-500 text-xs">8 គ្រឿង</td>
+                                        <td class="py-3 text-right">
+                                            <a href="../4-buy/1-bills/create-bills.html?item=SONY-WHXM5" class="inline-flex items-center gap-1.5 bg-primary hover:bg-primary-dark text-white text-xs px-3.5 py-1.5 rounded-lg transition-colors shadow-xs">
+                                                <i class="fas fa-cart-plus text-[11px]"></i>
+                                                <span>+ បញ្ជាទិញ</span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Bottom Section: Orders Chart (ECharts) & Recent Invoices Table -->
+                <div class="grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12 gap-4 items-start">
+                    
+                    <!-- Left: Total Orders EChart (col-span-5) -->
+                    <div class="md:col-span-12 lg:col-span-5 bg-white rounded-2xl p-4 sm:p-6 shadow-sm border border-slate-100 flex flex-col justify-between min-h-[380px] lg:h-[460px]">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="font-semibold text-base text-slate-800">ការបញ្ជាទិញសរុប</h3>
+                            <!-- Custom Dropdown for Order Filter (Rule 6 compliant) -->
+                            <div class="relative inline-block text-left" id="orderFilterContainer">
+                                <button type="button" onclick="toggleOrderFilterDropdown(event)" id="orderFilterBtn" class="bg-slate-50 hover:bg-slate-100 border border-slate-200 text-xs font-medium text-slate-700 rounded-xl px-3 py-1.5 focus:outline-none flex items-center gap-2 transition shadow-sm cursor-pointer">
+                                    <span id="orderFilterLabel">ប្រចាំសប្តាហ៍</span>
+                                    <i class="fas fa-chevron-down text-[10px] text-slate-400 transition-transform duration-200" id="orderFilterChevron"></i>
+                                </button>
+                                <div id="orderFilterMenu" class="hidden absolute right-0 mt-1.5 w-36 bg-white rounded-xl shadow-lg border border-slate-100 py-1.5 z-50 text-xs">
+                                    <button type="button" onclick="selectOrderFilter('week', 'ប្រចាំសប្តាហ៍')" class="w-full px-3.5 py-2 text-left hover:bg-slate-50 text-slate-700 flex items-center justify-between font-medium transition cursor-pointer">
+                                        <span>ប្រចាំសប្តាហ៍</span>
+                                        <i class="fas fa-check text-primary text-xs" id="checkOrderWeek"></i>
+                                    </button>
+                                    <button type="button" onclick="selectOrderFilter('month', 'ប្រចាំខែ')" class="w-full px-3.5 py-2 text-left hover:bg-slate-50 text-slate-700 flex items-center justify-between font-medium transition cursor-pointer">
+                                        <span>ប្រចាំខែ</span>
+                                        <i class="fas fa-check text-primary text-xs hidden" id="checkOrderMonth"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-baseline space-x-3 mb-2">
+                            <span class="text-3xl font-semibold text-slate-800" id="total-orders">3,021</span>
+                            <span class="text-sm font-normal text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full flex items-center" id="total-orders-change">
+                                កើនឡើង +164 <i class="fas fa-arrow-up-right ml-1 text-xs"></i>
+                            </span>
+                        </div>
+                        
+                        <!-- ECharts Container for Orders -->
+                        <div id="ordersChart" class="w-full h-64 mt-auto"></div>
+                    </div>
+
+                    <!-- Right: Recent Invoices Table (col-span-7) -->
+                    <div class="md:col-span-12 lg:col-span-7 bg-white rounded-2xl p-4 sm:p-6 shadow-sm border border-slate-100 flex flex-col min-h-[380px] lg:h-[460px]">
+                        <div class="flex flex-wrap justify-between items-center mb-3 gap-2">
+                            <div>
+                                <h3 class="font-semibold text-base text-slate-800">វិក្កយបត្រថ្មីៗ</h3>
+                                <p class="text-xs font-normal text-gray-500 mt-0.5">បញ្ជីប្រតិបត្តិការចេញវិក្កយបត្រចុងក្រោយ</p>
+                            </div>
+                            
+                            <!-- Search & Filter Tabs (All 4 Statuses) -->
+                            <div class="flex items-center gap-2 overflow-x-auto no-scrollbar max-w-full pb-1 sm:pb-0">
+                                <div class="flex bg-slate-100 p-1 rounded-xl text-xs font-medium flex-shrink-0">
+                                    <button type="button" onclick="filterDashboardInvoices('all')" id="dashTabAll" class="dash-inv-filter-btn px-3 py-1 rounded-lg bg-white shadow-sm text-slate-800 transition font-semibold cursor-pointer">ទាំងអស់</button>
+                                    <button type="button" onclick="filterDashboardInvoices('paid')" id="dashTabPaid" class="dash-inv-filter-btn px-3 py-1 rounded-lg text-slate-500 hover:text-slate-800 transition cursor-pointer">បានទូទាត់</button>
+                                    <button type="button" onclick="filterDashboardInvoices('pending')" id="dashTabPending" class="dash-inv-filter-btn px-3 py-1 rounded-lg text-slate-500 hover:text-slate-800 transition cursor-pointer">រង់ចាំទូទាត់</button>
+                                    <button type="button" onclick="filterDashboardInvoices('overdue')" id="dashTabOverdue" class="dash-inv-filter-btn px-3 py-1 rounded-lg text-slate-500 hover:text-slate-800 transition cursor-pointer">ហួសកំណត់</button>
+                                </div>
+                                <a href="../3-sales/1-invoice/invoice.html" class="text-xs text-primary hover:text-primary-dark font-medium px-2 py-1 rounded-lg hover:bg-slate-50 transition flex items-center gap-1 flex-shrink-0" title="មើលវិក្កយបត្រទាំងអស់">
+                                    <span>មើលទាំងអស់</span>
+                                    <i class="fas fa-chevron-right text-[10px]"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="overflow-x-auto flex-1">
+                            <table class="w-full text-left min-w-0 sm:min-w-[560px]" id="dashRecentInvoicesTable">
+                                <thead class="text-xs font-normal text-gray-500 uppercase border-b border-gray-100">
+                                    <tr>
+                                        <th class="pb-3 font-normal">ស្ថានភាព</th>
+                                        <th class="pb-3 font-normal">លេខវិក្កយបត្រ</th>
+                                        <th class="pb-3 font-normal">អតិថិជន</th>
+                                        <th class="pb-3 font-normal text-right">ទឹកប្រាក់</th>
+                                        <th class="pb-3 font-normal text-right">កាលបរិច្ឆេទ</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-50 text-[15px] font-normal" id="dashInvoicesBody">
+                                    <tr class="hover:bg-slate-50/70 transition-colors dash-inv-row" data-status="overdue">
+                                        <td class="py-3.5"><span class="bg-rose-50 text-rose-700 border border-rose-200 px-2.5 py-1 rounded-full text-xs font-medium whitespace-nowrap">ហួសកំណត់</span></td>
+                                        <td class="py-3.5 font-medium text-primary hover:underline whitespace-nowrap"><a href="../3-sales/1-invoice/view-invoice.html?id=inv-41">INV-2026-0041</a></td>
+                                        <td class="py-3.5 text-slate-700 font-medium">
+                                            <p class="leading-tight">ហេង វិច្ឆិកា</p>
+                                            <p class="text-xs text-slate-400 font-normal">វិច្ឆិកា តិចណូឡូជី</p>
+                                        </td>
+                                        <td class="py-3.5 text-right font-medium text-slate-800">$1,250.00</td>
+                                        <td class="py-3.5 text-right font-normal text-slate-500 text-xs">12/09/2026</td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50/70 transition-colors dash-inv-row" data-status="paid">
+                                        <td class="py-3.5"><span class="bg-emerald-50 text-emerald-700 border border-emerald-200 px-2.5 py-1 rounded-full text-xs font-medium whitespace-nowrap">បានទូទាត់</span></td>
+                                        <td class="py-3.5 font-medium text-primary hover:underline whitespace-nowrap"><a href="../3-sales/1-invoice/view-invoice.html?id=inv-42">INV-2026-0042</a></td>
+                                        <td class="py-3.5 text-slate-700 font-medium">
+                                            <p class="leading-tight">សុខ វណ្ណា</p>
+                                            <p class="text-xs text-slate-400 font-normal">ក្រុមហ៊ុន សុខ វណ្ណា ត្រេឌីង</p>
+                                        </td>
+                                        <td class="py-3.5 text-right font-medium text-slate-800">$3,250.00</td>
+                                        <td class="py-3.5 text-right font-normal text-slate-500 text-xs">14/09/2026</td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50/70 transition-colors dash-inv-row" data-status="paid">
+                                        <td class="py-3.5"><span class="bg-emerald-50 text-emerald-700 border border-emerald-200 px-2.5 py-1 rounded-full text-xs font-medium whitespace-nowrap">បានទូទាត់</span></td>
+                                        <td class="py-3.5 font-medium text-primary hover:underline whitespace-nowrap"><a href="../3-sales/1-invoice/view-invoice.html?id=inv-39">INV-2026-0039</a></td>
+                                        <td class="py-3.5 text-slate-700 font-medium">
+                                            <p class="leading-tight">គឹម សុផល</p>
+                                            <p class="text-xs text-slate-400 font-normal">ក្រុមហ៊ុន សុផល អាហរ័ណ នីហរ័ណ</p>
+                                        </td>
+                                        <td class="py-3.5 text-right font-medium text-slate-800">$12,800.00</td>
+                                        <td class="py-3.5 text-right font-normal text-slate-500 text-xs">03/09/2026</td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50/70 transition-colors dash-inv-row" data-status="overdue">
+                                        <td class="py-3.5"><span class="bg-rose-50 text-rose-700 border border-rose-200 px-2.5 py-1 rounded-full text-xs font-medium whitespace-nowrap">ហួសកំណត់</span></td>
+                                        <td class="py-3.5 font-medium text-primary hover:underline whitespace-nowrap"><a href="../3-sales/1-invoice/view-invoice.html?id=inv-40">INV-2026-0040</a></td>
+                                        <td class="py-3.5 text-slate-700 font-medium">
+                                            <p class="leading-tight">ចាន់ ធារ៉ា</p>
+                                            <p class="text-xs text-slate-400 font-normal">ធារ៉ា ឌីជីថល</p>
+                                        </td>
+                                        <td class="py-3.5 text-right font-medium text-slate-800">$4,040.00</td>
+                                        <td class="py-3.5 text-right font-normal text-slate-500 text-xs">08/09/2026</td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50/70 transition-colors dash-inv-row" data-status="pending">
+                                        <td class="py-3.5"><span class="bg-amber-50 text-amber-700 border border-amber-200 px-2.5 py-1 rounded-full text-xs font-medium whitespace-nowrap">រង់ចាំទូទាត់</span></td>
+                                        <td class="py-3.5 font-medium text-primary hover:underline whitespace-nowrap"><a href="../3-sales/1-invoice/view-invoice.html?id=inv-38">INV-2026-0038</a></td>
+                                        <td class="py-3.5 text-slate-700 font-medium">
+                                            <p class="leading-tight">សួស ធីតា</p>
+                                            <p class="text-xs text-slate-400 font-normal">ហាងកាហ្វេ និងនំបុ័ង ធីតា</p>
+                                        </td>
+                                        <td class="py-3.5 text-right font-medium text-slate-800">$1,650.00</td>
+                                        <td class="py-3.5 text-right font-normal text-slate-500 text-xs">03/09/2026</td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50/70 transition-colors dash-inv-row" data-status="pending">
+                                        <td class="py-3.5"><span class="bg-amber-50 text-amber-700 border border-amber-200 px-2.5 py-1 rounded-full text-xs font-medium whitespace-nowrap">រង់ចាំទូទាត់</span></td>
+                                        <td class="py-3.5 font-medium text-primary hover:underline whitespace-nowrap"><a href="../3-sales/1-invoice/view-invoice.html?id=inv-37">INV-2026-0037</a></td>
+                                        <td class="py-3.5 text-slate-700 font-medium">
+                                            <p class="leading-tight">អ៊ុក ផល្លា</p>
+                                            <p class="text-xs text-slate-400 font-normal">ក្រុមហ៊ុន ផល្លា ត្រេឌីង</p>
+                                        </td>
+                                        <td class="py-3.5 text-right font-medium text-slate-800">$2,400.00</td>
+                                        <td class="py-3.5 text-right font-normal text-slate-500 text-xs">01/09/2026</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    
+
+
+    <!-- Sidebar Script -->
+    <script src="../../scripts/ui-components.js"></script>
+    <script src="../../scripts/sidebar.js"></script>
+
+    <!-- UI Scripts -->
+    <script>
+
+        
+        function filterDashboardInvoices(status) {
+            const rows = document.querySelectorAll('.dash-inv-row');
+            rows.forEach(r => {
+                if (status === 'all' || r.getAttribute('data-status') === status) {
+                    r.style.display = '';
+                } else {
+                    r.style.display = 'none';
+                }
+            });
+
+            const tabs = {
+                all: document.getElementById('dashTabAll'),
+                paid: document.getElementById('dashTabPaid'),
+                pending: document.getElementById('dashTabPending'),
+                overdue: document.getElementById('dashTabOverdue')
+            };
+
+            Object.keys(tabs).forEach(k => {
+                if (tabs[k]) {
+                    if (k === status) {
+                        tabs[k].className = 'dash-inv-filter-btn px-3 py-1 rounded-lg bg-white shadow-sm text-slate-800 transition font-semibold cursor-pointer';
+                    } else {
+                        tabs[k].className = 'dash-inv-filter-btn px-3 py-1 rounded-lg text-slate-500 hover:text-slate-800 transition cursor-pointer';
+                    }
+                }
+            });
+
+            if (window.ordersChartInstance) {
+                window.ordersChartInstance.resize();
+            }
+        }
+
+        // Custom Dropdown for Orders Filter
+        function toggleOrderFilterDropdown(event) {
+            if (event) event.stopPropagation();
+            const menu = document.getElementById('orderFilterMenu');
+            const chevron = document.getElementById('orderFilterChevron');
+            if (menu) {
+                const isHidden = menu.classList.contains('hidden');
+                menu.classList.toggle('hidden');
+                if (chevron) {
+                    if (isHidden) chevron.classList.add('rotate-180');
+                    else chevron.classList.remove('rotate-180');
+                }
+            }
+        }
+
+        function selectOrderFilter(period, label) {
+            const labelEl = document.getElementById('orderFilterLabel');
+            if (labelEl) labelEl.textContent = label;
+
+            const checkWeek = document.getElementById('checkOrderWeek');
+            const checkMonth = document.getElementById('checkOrderMonth');
+            if (checkWeek && checkMonth) {
+                if (period === 'week') {
+                    checkWeek.classList.remove('hidden');
+                    checkMonth.classList.add('hidden');
+                } else {
+                    checkWeek.classList.add('hidden');
+                    checkMonth.classList.remove('hidden');
+                }
+            }
+
+            const menu = document.getElementById('orderFilterMenu');
+            const chevron = document.getElementById('orderFilterChevron');
+            if (menu) menu.classList.add('hidden');
+            if (chevron) chevron.classList.remove('rotate-180');
+
+            const isMonth = (period === 'month');
+            const totalEl = document.getElementById('total-orders');
+            const changeEl = document.getElementById('total-orders-change');
+            if (totalEl) totalEl.textContent = isMonth ? '12,840' : '3,021';
+            if (changeEl) {
+                changeEl.innerHTML = isMonth 
+                    ? 'កើនឡើង +842 <i class="fas fa-arrow-up-right ml-1 text-xs"></i>' 
+                    : 'កើនឡើង +164 <i class="fas fa-arrow-up-right ml-1 text-xs"></i>';
+            }
+
+            if (window.ordersChartInstance) {
+                window.ordersChartInstance.setOption({
+                    series: [{
+                        data: isMonth ? [
+                            { value: 1800, itemStyle: { color: '#dcfce7', borderRadius: 0 } },
+                            { value: 2400, itemStyle: { color: '#dcfce7', borderRadius: 0 } },
+                            { value: 1600, itemStyle: { color: '#dcfce7', borderRadius: 0 } },
+                            { 
+                                value: 4200, 
+                                itemStyle: { color: '#24692D', borderRadius: 0 },
+                                label: { show: true, position: 'top', formatter: '4200', backgroundColor: '#24692D', color: '#fff', padding: [4, 7], borderRadius: 4, fontFamily: 'Kantumruy Pro' }
+                            },
+                            { value: 2900, itemStyle: { color: '#dcfce7', borderRadius: 0 } },
+                            { value: 2100, itemStyle: { color: '#dcfce7', borderRadius: 0 } },
+                            { value: 1400, itemStyle: { color: '#dcfce7', borderRadius: 0 } }
+                        ] : [
+                            { value: 450, itemStyle: { color: '#dcfce7', borderRadius: 0 } },
+                            { value: 680, itemStyle: { color: '#dcfce7', borderRadius: 0 } },
+                            { value: 380, itemStyle: { color: '#dcfce7', borderRadius: 0 } },
+                            { 
+                                value: 1308, 
+                                itemStyle: { color: '#24692D', borderRadius: 0 },
+                                label: { show: true, position: 'top', formatter: '1308', backgroundColor: '#24692D', color: '#fff', padding: [4, 7], borderRadius: 4, fontFamily: 'Kantumruy Pro' }
+                            },
+                            { value: 820, itemStyle: { color: '#dcfce7', borderRadius: 0 } },
+                            { value: 520, itemStyle: { color: '#dcfce7', borderRadius: 0 } },
+                            { value: 320, itemStyle: { color: '#dcfce7', borderRadius: 0 } }
+                        ]
+                    }]
+                });
+            }
+        }
+
+        function openModal(id) {
+            const modal = document.getElementById(id);
+            if (modal) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            }
+        }
+
+        function closeModal(id) {
+            const modal = document.getElementById(id);
+            if (modal) {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }
+        }
+
+        function handleInvoiceSubmit(e) {
+            e.preventDefault();
+            closeModal('createInvoiceModal');
+            showToast('វិក្កយបត្រថ្មីត្រូវបានបង្កើត និងរក្សាទុកក្នុងប្រព័ន្ធដោយជោគជ័យ!', 'success');
+        }
+
+        function handleExpenseSubmit(e) {
+            e.preventDefault();
+            closeModal('recordExpenseModal');
+            showToast('ការចំណាយត្រូវបានកត់ត្រា និងរក្សាទុកដោយជោគជ័យ!', 'success');
+        }
+
+        function handleCustomerSubmit(e) {
+            e.preventDefault();
+            closeModal('addCustomerModal');
+            showToast('អតិថិជនថ្មីត្រូវបានបន្ថែមទៅក្នុងបញ្ជីដោយជោគជ័យ!', 'success');
+        }
+
+        function handleStockSubmit(e) {
+            e.preventDefault();
+            closeModal('addStockModal');
+            showToast('ស្តុកទំនិញថ្មីត្រូវបានបញ្ចូលទៅក្នុងឃ្លាំងដោយជោគជ័យ!', 'success');
+        }
+
+        // Date Range Selection Logic
+        let calCurrentYear = 2026;
+        let calCurrentMonth = 9;
+        let rangeStartDate = new Date(2026, 8, 1);
+        let rangeEndDate = new Date(2026, 8, 30);
+        let selectingRangeStart = false;
+        let currentPresetName = 'ខែនេះ';
+
+        const MONTH_NAMES_KH = {
+            1: 'មករា', 2: 'កុម្ភៈ', 3: 'មីនា', 4: 'មេសា',
+            5: 'ឧសភា', 6: 'មិថុនា', 7: 'កក្កដា', 8: 'សីហា',
+            9: 'កញ្ញា', 10: 'តុលា', 11: 'វិច្ឆិកា', 12: 'ធ្នូ'
+        };
+
+        function toggleDatePicker(e) {
+            if (e && e.stopPropagation) e.stopPropagation();
+            const popover = document.getElementById('datePickerPopover');
+            const chevron = document.getElementById('datePickerChevron');
+            if (!popover) return;
+            const isHidden = popover.classList.contains('hidden');
+            if (isHidden) {
+                popover.classList.remove('hidden');
+                if (chevron) chevron.classList.add('rotate-180');
+                renderCalendarGrid();
+            } else {
+                popover.classList.add('hidden');
+                if (chevron) chevron.classList.remove('rotate-180');
+            }
+        }
+
+        function changeCalendarMonth(delta) {
+            calCurrentMonth += delta;
+            if (calCurrentMonth > 12) {
+                calCurrentMonth = 1;
+                calCurrentYear += 1;
+            } else if (calCurrentMonth < 1) {
+                calCurrentMonth = 12;
+                calCurrentYear -= 1;
+            }
+            renderCalendarGrid();
+        }
+
+        function updateRangeLabels(btnText, tagText) {
+            const btnEl = document.getElementById('selectedDateLabel');
+            const tagEl = document.getElementById('rangeTagLabel');
+            if (btnEl) btnEl.textContent = btnText;
+            if (tagEl) tagEl.textContent = tagText;
+        }
+
+        function highlightPresetButton(name) {
+            document.querySelectorAll('.preset-btn').forEach(btn => {
+                if (name && btn.textContent.trim() === name) {
+                    btn.className = 'preset-btn w-full text-left px-3 py-1.5 rounded-lg bg-[#0f2b5c] text-white font-medium shadow-sm transition-colors';
+                } else {
+                    btn.className = 'preset-btn w-full text-left px-3 py-1.5 rounded-lg hover:bg-slate-100 transition-colors text-slate-600';
+                }
+            });
+        }
+
+        function handleDateClick(year, month, day) {
+            const clickedDate = new Date(year, month - 1, day);
+            clickedDate.setHours(0, 0, 0, 0);
+
+            if (!selectingRangeStart || (rangeStartDate && rangeEndDate)) {
+                // 1st click: Set start date
+                rangeStartDate = clickedDate;
+                rangeEndDate = null;
+                selectingRangeStart = true;
+                currentPresetName = null;
+
+                const startStr = `${day} ${MONTH_NAMES_KH[month]}`;
+                const tagEl = document.getElementById('rangeTagLabel');
+                if (tagEl) tagEl.textContent = `${startStr} (សូមជ្រើសថ្ងៃបញ្ចប់)`;
+            } else {
+                // 2nd click: Set end date
+                if (clickedDate < rangeStartDate) {
+                    rangeEndDate = rangeStartDate;
+                    rangeStartDate = clickedDate;
+                } else {
+                    rangeEndDate = clickedDate;
+                }
+                selectingRangeStart = false;
+
+                const sD = rangeStartDate.getDate();
+                const sM = MONTH_NAMES_KH[rangeStartDate.getMonth() + 1];
+                const eD = rangeEndDate.getDate();
+                const eM = MONTH_NAMES_KH[rangeEndDate.getMonth() + 1];
+                
+                let rangeText = '';
+                if (rangeStartDate.getTime() === rangeEndDate.getTime()) {
+                    rangeText = `${sD} ${sM}`;
+                } else {
+                    rangeText = `${sD} ${sM} - ${eD} ${eM}`;
+                }
+
+                updateRangeLabels(rangeText, rangeText);
+                updateDashboardDateRange();
+            }
+
+            highlightPresetButton(null);
+            renderCalendarGrid();
+        }
+
+        function renderCalendarGrid() {
+            const grid = document.getElementById('calendarDaysGrid');
+            const monthLabel = document.getElementById('calMonthYearLabel');
+            if (!grid) return;
+
+            monthLabel.textContent = `${MONTH_NAMES_KH[calCurrentMonth]} ${calCurrentYear}`;
+            grid.innerHTML = '';
+
+            const daysInMonth = new Date(calCurrentYear, calCurrentMonth, 0).getDate();
+            const firstDayIndex = new Date(calCurrentYear, calCurrentMonth - 1, 1).getDay();
+            const leadingBlanks = firstDayIndex === 0 ? 6 : firstDayIndex - 1;
+
+            // Empty leading cells
+            for (let i = 0; i < leadingBlanks; i++) {
+                const emptyCell = document.createElement('span');
+                grid.appendChild(emptyCell);
+            }
+
+            let effectiveStart = rangeStartDate ? new Date(rangeStartDate) : null;
+            let effectiveEnd = rangeEndDate ? new Date(rangeEndDate) : null;
+            if (effectiveStart) effectiveStart.setHours(0, 0, 0, 0);
+            if (effectiveEnd) effectiveEnd.setHours(0, 0, 0, 0);
+
+            for (let d = 1; d <= daysInMonth; d++) {
+                const currentD = new Date(calCurrentYear, calCurrentMonth - 1, d);
+                currentD.setHours(0, 0, 0, 0);
+
+                const isStart = effectiveStart && currentD.getTime() === effectiveStart.getTime();
+                const isEnd = effectiveEnd && currentD.getTime() === effectiveEnd.getTime();
+                const isInRange = effectiveStart && effectiveEnd && currentD > effectiveStart && currentD < effectiveEnd;
+
+                const cellWrapper = document.createElement('div');
+                cellWrapper.className = 'flex items-center justify-center cursor-pointer h-7';
+                cellWrapper.onclick = () => handleDateClick(calCurrentYear, calCurrentMonth, d);
+
+                if (isStart && isEnd) {
+                    cellWrapper.innerHTML = `<span class="w-7 h-7 rounded-full bg-[#0f2b5c] text-white flex items-center justify-center font-bold text-xs shadow">${d}</span>`;
+                } else if (isStart && effectiveEnd) {
+                    cellWrapper.className += ' bg-slate-100 rounded-l-full';
+                    cellWrapper.innerHTML = `<span class="w-7 h-7 rounded-full bg-[#0f2b5c] text-white flex items-center justify-center font-bold text-xs shadow">${d}</span>`;
+                } else if (isStart && !effectiveEnd) {
+                    cellWrapper.innerHTML = `<span class="w-7 h-7 rounded-full bg-[#0f2b5c] text-white flex items-center justify-center font-bold text-xs ring-2 ring-primary/30 shadow">${d}</span>`;
+                } else if (isEnd) {
+                    cellWrapper.className += ' bg-slate-100 rounded-r-full';
+                    cellWrapper.innerHTML = `<span class="w-7 h-7 rounded-full bg-[#0f2b5c] text-white flex items-center justify-center font-bold text-xs shadow">${d}</span>`;
+                } else if (isInRange) {
+                    cellWrapper.className += ' bg-slate-100 text-slate-800 font-medium text-xs';
+                    cellWrapper.innerHTML = `<span>${d}</span>`;
+                } else {
+                    cellWrapper.className += ' rounded-lg hover:bg-slate-100 text-slate-700 transition text-xs';
+                    cellWrapper.innerHTML = `<span>${d}</span>`;
+                }
+
+                grid.appendChild(cellWrapper);
+            }
+        }
+
+        function selectPreset(name) {
+            currentPresetName = name;
+            selectingRangeStart = false;
+
+            if (name === 'ថ្ងៃនេះ') {
+                calCurrentMonth = 9;
+                rangeStartDate = new Date(2026, 8, 3);
+                rangeEndDate = new Date(2026, 8, 3);
+                updateRangeLabels('3 កញ្ញា', '3 កញ្ញា');
+            } else if (name === 'ម្សិលមិញ') {
+                calCurrentMonth = 9;
+                rangeStartDate = new Date(2026, 8, 2);
+                rangeEndDate = new Date(2026, 8, 2);
+                updateRangeLabels('2 កញ្ញា', '2 កញ្ញា');
+            } else if (name === 'សប្តាហ៍នេះ') {
+                calCurrentMonth = 9;
+                rangeStartDate = new Date(2026, 8, 1);
+                rangeEndDate = new Date(2026, 8, 7);
+                updateRangeLabels('1 កញ្ញា - 7 កញ្ញា', '1 កញ្ញា - 7 កញ្ញា');
+            } else if (name === 'សប្តាហ៍មុន') {
+                calCurrentMonth = 8;
+                rangeStartDate = new Date(2026, 7, 24);
+                rangeEndDate = new Date(2026, 7, 30);
+                updateRangeLabels('24 សីហា - 30 សីហា', '24 សីហា - 30 សីហា');
+            } else if (name === 'ខែនេះ') {
+                calCurrentMonth = 9;
+                rangeStartDate = new Date(2026, 8, 1);
+                rangeEndDate = new Date(2026, 8, 30);
+                updateRangeLabels('1 កញ្ញា - 30 កញ្ញា', '1 កញ្ញា - 30 កញ្ញា');
+            } else if (name === 'ខែមុន') {
+                calCurrentMonth = 8;
+                rangeStartDate = new Date(2026, 7, 1);
+                rangeEndDate = new Date(2026, 7, 31);
+                updateRangeLabels('1 សីហា - 31 សីហា', '1 សីហា - 31 សីហា');
+            } else if (name === 'ឆ្នាំនេះ') {
+                calCurrentMonth = 9;
+                rangeStartDate = new Date(2026, 0, 1);
+                rangeEndDate = new Date(2026, 11, 31);
+                updateRangeLabels('ឆ្នាំ 2026', 'ឆ្នាំ 2026');
+            } else if (name === '7 ថ្ងៃចុងក្រោយ') {
+                calCurrentMonth = 9;
+                rangeStartDate = new Date(2026, 7, 28);
+                rangeEndDate = new Date(2026, 8, 3);
+                updateRangeLabels('28 សីហា - 3 កញ្ញា', '28 សីហា - 3 កញ្ញា');
+            } else if (name === '14 ថ្ងៃចុងក្រោយ') {
+                calCurrentMonth = 9;
+                rangeStartDate = new Date(2026, 7, 21);
+                rangeEndDate = new Date(2026, 8, 3);
+                updateRangeLabels('21 សីហា - 3 កញ្ញា', '21 សីហា - 3 កញ្ញា');
+            } else if (name === '30 ថ្ងៃចុងក្រោយ') {
+                calCurrentMonth = 9;
+                rangeStartDate = new Date(2026, 7, 5);
+                rangeEndDate = new Date(2026, 8, 3);
+                updateRangeLabels('5 សីហា - 3 កញ្ញា', '5 សីហា - 3 កញ្ញា');
+            }
+
+            highlightPresetButton(name);
+            renderCalendarGrid();
+            updateDashboardDateRange();
+        }
+
+        function clearRangeTag() {
+            currentPresetName = 'ទាំងអស់';
+            rangeStartDate = null;
+            rangeEndDate = null;
+            selectingRangeStart = false;
+            updateRangeLabels('ទាំងអស់', 'ទាំងអស់');
+            highlightPresetButton(null);
+            renderCalendarGrid();
+            updateDashboardDateRange();
+        }
+
+        function applyDateRange() {
+            if (selectingRangeStart && rangeStartDate && !rangeEndDate) {
+                rangeEndDate = new Date(rangeStartDate);
+                selectingRangeStart = false;
+                const d = rangeStartDate.getDate();
+                const m = MONTH_NAMES_KH[rangeStartDate.getMonth() + 1];
+                const text = `${d} ${m}`;
+                updateRangeLabels(text, text);
+            }
+            toggleDatePicker();
+            updateDashboardDateRange();
+        }
+
+        function updateDashboardDateRange() {
+            const lbl = document.getElementById('selectedDateLabel');
+            const currentRange = lbl ? lbl.textContent : '';
+            showToast(`បានអនុវត្តតម្រងកាលបរិច្ឆេទ៖ ${currentRange}`);
+        }
+
+        // Close popover when clicked outside
+        document.addEventListener('click', (e) => {
+            const popover = document.getElementById('datePickerPopover');
+            const btn = document.getElementById('dateRangePickerBtn');
+            if (popover && !popover.classList.contains('hidden')) {
+                if (!popover.contains(e.target) && !btn.contains(e.target)) {
+                    popover.classList.add('hidden');
+                    const chevron = document.getElementById('datePickerChevron');
+                    if (chevron) chevron.classList.remove('rotate-180');
+                }
+            }
+
+            // Close order filter dropdown
+            const orderMenu = document.getElementById('orderFilterMenu');
+            const orderContainer = document.getElementById('orderFilterContainer');
+            if (orderMenu && !orderMenu.classList.contains('hidden')) {
+                if (orderContainer && !orderContainer.contains(e.target)) {
+                    orderMenu.classList.add('hidden');
+                    const orderChevron = document.getElementById('orderFilterChevron');
+                    if (orderChevron) orderChevron.classList.remove('rotate-180');
+                }
+            }
+        });
+    </script>
+
+    <!-- ECharts Initialization Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCalendarGrid();
+            highlightPresetButton('ខែនេះ');
+
+            // 1. Cash Flow Chart (12 Months Comparison)
+            const cashFlowDom = document.getElementById('cashFlowChart');
+            if (cashFlowDom) {
+                const cashFlowChart = echarts.init(cashFlowDom);
+                const cashFlowOption = {
+                    textStyle: { fontFamily: 'Kantumruy Pro, sans-serif', fontSize: 14 },
+                    tooltip: {
+                        trigger: 'axis',
+                        axisPointer: { type: 'shadow' },
+                        textStyle: { fontFamily: 'Kantumruy Pro, sans-serif', fontSize: 14.5 },
+                        formatter: function(params) {
+                            let res = `<strong>${params[0].name}</strong><br/>`;
+                            params.forEach(item => {
+                                res += `${item.marker} ${item.seriesName}: <strong>$${item.value.toLocaleString()}</strong><br/>`;
+                            });
+                            return res;
+                        }
+                    },
+                    grid: {
+                        top: 20,
+                        left: 10,
+                        right: 15,
+                        bottom: window.innerWidth < 640 ? 25 : 10,
+                        containLabel: true
+                    },
+                    xAxis: {
+                        type: 'category',
+                        data: ['មករា', 'កុម្ភៈ', 'មិនា', 'មេសា', 'ឧសភា', 'មិថុនា', 'កក្កដា', 'សីហា', 'កញ្ញា', 'តុលា', 'វិច្ឆិកា', 'ធ្នូ'],
+                        axisLine: { lineStyle: { color: '#e2e8f0' } },
+                        axisLabel: { 
+                            interval: 0,
+                            rotate: window.innerWidth < 640 ? 35 : 0,
+                            color: '#64748b', 
+                            fontSize: window.innerWidth < 640 ? 10 : 12, 
+                            fontFamily: 'Kantumruy Pro, sans-serif' 
+                        },
+                        axisTick: { show: false }
+                    },
+                    yAxis: {
+                        type: 'value',
+                        axisLabel: {
+                            formatter: '${value}',
+                            color: '#94a3b8',
+                            fontSize: 12,
+                            fontFamily: 'Kantumruy Pro, sans-serif'
+                        },
+                        splitLine: { lineStyle: { color: '#f1f5f9', type: 'dashed' } }
+                    },
+                    series: [
+                        {
+                            name: 'ចំណូលចូល',
+                            type: 'bar',
+                            barMaxWidth: 10,
+                            barGap: '0%',
+                            itemStyle: {
+                                color: '#24692D',
+                                borderRadius: 0
+                            },
+                            data: [38000, 45000, 34000, 41000, 48000, 50000, 46000, 36000, 40000, 34000, 43000, 36000]
+                        },
+                        {
+                            name: 'ចំណាយចេញ',
+                            type: 'bar',
+                            barMaxWidth: 10,
+                            itemStyle: {
+                                color: '#16255c',
+                                borderRadius: 0
+                            },
+                            data: [20000, 30000, 21000, 27000, 23000, 32000, 34000, 22000, 24000, 21000, 28000, 22000]
+                        }
+                    ]
+                };
+                cashFlowChart.setOption(cashFlowOption);
+                window.addEventListener('resize', () => {
+                    const isMob = window.innerWidth < 640;
+                    cashFlowChart.setOption({
+                        grid: { bottom: isMob ? 25 : 10 },
+                        xAxis: {
+                            axisLabel: {
+                                interval: 0,
+                                rotate: isMob ? 35 : 0,
+                                fontSize: isMob ? 10 : 12
+                            }
+                        }
+                    });
+                    cashFlowChart.resize();
+                });
+            }
+
+            // 2. Sales by Category Donut Chart
+            const categoryDom = document.getElementById('categoryChart');
+            if (categoryDom) {
+                const categoryChart = echarts.init(categoryDom);
+                const categoryOption = {
+                    textStyle: { fontFamily: 'Kantumruy Pro, sans-serif', fontSize: 13 },
+                    tooltip: {
+                        trigger: 'item',
+                        textStyle: { fontFamily: 'Kantumruy Pro, sans-serif', fontSize: 13 },
+                        formatter: '{b}: <strong>${c}</strong> ({d}%)'
+                    },
+                    legend: {
+                        bottom: 0,
+                        left: 'center',
+                        itemGap: 8,
+                        textStyle: { fontFamily: 'Kantumruy Pro, sans-serif', fontSize: 12, color: '#64748b' }
+                    },
+                    series: [
+                        {
+                            name: 'ចំណាត់ថ្នាក់',
+                            type: 'pie',
+                            radius: ['40%', '65%'],
+                            center: ['50%', '42%'],
+                            avoidLabelOverlap: false,
+                            itemStyle: {
+                                borderRadius: 6,
+                                borderColor: '#fff',
+                                borderWidth: 2
+                            },
+                            label: { show: false },
+                            data: [
+                                { value: 14500, name: 'ទូរស័ព្ទ & ថេប្លេត', itemStyle: { color: '#24692D' } },
+                                { value: 8200, name: 'កុំព្យូទ័រ & Laptop', itemStyle: { color: '#16255c' } },
+                                { value: 3400, name: 'គ្រឿងបន្លាស់', itemStyle: { color: '#10b981' } },
+                                { value: 1250, name: 'សេវាកម្មជួសជុល', itemStyle: { color: '#93c5fd' } }
+                            ]
+                        }
+                    ]
+                };
+                categoryChart.setOption(categoryOption);
+                window.addEventListener('resize', () => categoryChart.resize());
+            }
+
+            // 3. Total Orders Chart (7 Days with Thursday highlighted)
+            const ordersDom = document.getElementById('ordersChart');
+            if (ordersDom) {
+                window.ordersChartInstance = echarts.init(ordersDom);
+                const ordersOption = {
+                    textStyle: { fontFamily: 'Kantumruy Pro, sans-serif', fontSize: 14 },
+                    tooltip: {
+                        trigger: 'item',
+                        textStyle: { fontFamily: 'Kantumruy Pro, sans-serif', fontSize: 14.5 },
+                        formatter: '{b}: <strong>{c} ការបញ្ជាទិញ</strong>'
+                    },
+                    grid: {
+                        top: 32,
+                        left: 0,
+                        right: 0,
+                        bottom: 15,
+                        containLabel: true
+                    },
+                    xAxis: {
+                        type: 'category',
+                        data: ['ចន្ទ', 'អង្គារ', 'ពុធ', 'ព្រហស្បតិ៍', 'សុក្រ', 'សៅរ៍', 'អាទិត្យ'],
+                        axisLine: { show: false },
+                        axisTick: { show: false },
+                        axisLabel: { 
+                            interval: 0,
+                            color: '#64748b', 
+                            fontSize: 11.5, 
+                            fontFamily: 'Kantumruy Pro, sans-serif' 
+                        }
+                    },
+                    yAxis: {
+                        type: 'value',
+                        show: false
+                    },
+                    series: [
+                        {
+                            type: 'bar',
+                            barMaxWidth: 20,
+                            data: [
+                                { value: 450, itemStyle: { color: '#dcfce7', borderRadius: 0 } },
+                                { value: 680, itemStyle: { color: '#dcfce7', borderRadius: 0 } },
+                                { value: 380, itemStyle: { color: '#dcfce7', borderRadius: 0 } },
+                                { 
+                                    value: 1308, 
+                                    itemStyle: { color: '#24692D', borderRadius: 0 },
+                                    label: {
+                                        show: true,
+                                        position: 'top',
+                                        formatter: '1308',
+                                        backgroundColor: '#24692D',
+                                        color: '#ffffff',
+                                        padding: [4, 7],
+                                        borderRadius: 4,
+                                        fontSize: 12,
+                                        fontFamily: 'Kantumruy Pro, sans-serif'
+                                    }
+                                },
+                                { value: 820, itemStyle: { color: '#dcfce7', borderRadius: 0 } },
+                                { value: 520, itemStyle: { color: '#dcfce7', borderRadius: 0 } },
+                                { value: 320, itemStyle: { color: '#dcfce7', borderRadius: 0 } }
+                            ]
+                        }
+                    ]
+                };
+                window.ordersChartInstance.setOption(ordersOption);
+                window.addEventListener('resize', () => window.ordersChartInstance && window.ordersChartInstance.resize());
+            }
+        });
+    </script>
+</body>
+</html>

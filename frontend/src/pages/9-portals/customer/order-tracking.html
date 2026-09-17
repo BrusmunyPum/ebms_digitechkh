@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - តាមដានការដឹកជញ្ជូន QT-2026-0042</title>
+    <link rel="icon" type="image/png" href="../../../assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1e1b4b",
+                        accent: "#a855f7",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../styles/custom.css">
+</head>
+<body class="bg-indigo-50/30 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <aside class="w-64 bg-[#1e1b4b] text-white flex flex-col flex-shrink-0 select-none z-20 border-r border-indigo-950">
+        <div class="h-[72px] px-6 flex items-center justify-between border-b border-white/10 flex-shrink-0">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-purple-500/20 border border-purple-400/30 flex items-center justify-center p-1 shadow-sm overflow-hidden flex-shrink-0">
+                    <img src="../../../assets/logo-mark-transparent.png" alt="DIGITECHKH" class="w-full h-full object-contain">
+                </div>
+                <div>
+                    <h1 class="text-lg font-semibold tracking-wider whitespace-nowrap text-white">DIGITECHKH</h1>
+                    <span class="text-[11px] font-medium text-purple-300 uppercase tracking-wider block">អតិថិជន</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="px-5 py-3 border-b border-white/5 bg-black/20">
+            <div class="flex items-center justify-between">
+                <span class="text-xs text-indigo-300">គណនី:</span>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-purple-500/20 text-purple-300 border border-purple-500/30">
+                    <i class="fas fa-user-check text-[10px]"></i> អតិថិជន
+                </span>
+            </div>
+        </div>
+
+        <nav class="flex-1 overflow-y-auto px-4 py-4 space-y-1.5 scrollbar-hide text-sm">
+            <a href="dashboard.html" class="flex items-center p-3 text-indigo-200 hover:bg-white/5 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-chart-pie w-6 text-center text-indigo-300"></i>
+                <span class="ml-3 text-[15px]">ទិដ្ឋភាពរួម</span>
+            </a>
+
+            <a href="my-invoices.html" class="flex items-center p-3 text-indigo-200 hover:bg-white/5 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-file-invoice-dollar w-6 text-center text-indigo-300"></i>
+                <span class="ml-3 text-[15px]">វិក្កយបត្ររបស់ខ្ញុំ</span>
+            </a>
+
+            <a href="my-payments.html" class="flex items-center p-3 text-indigo-200 hover:bg-white/5 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-receipt w-6 text-center text-indigo-300"></i>
+                <span class="ml-3 text-[15px]">ប្រវត្តិទូទាត់ប្រាក់</span>
+            </a>
+
+            <a href="my-orders.html" class="flex items-center p-3 bg-white/10 text-purple-300 font-medium rounded-xl shadow-sm transition-all whitespace-nowrap border border-white/10">
+                <i class="fas fa-box-open w-6 text-center text-purple-400"></i>
+                <span class="ml-3 text-[15px]">ស្ថានភាពការបញ្ជាទិញ</span>
+            </a>
+        </nav>
+
+        <div class="p-4 border-t border-white/10 bg-black/10">
+            <a href="../../1-login/login.html" class="flex items-center text-[15px] text-indigo-300 hover:text-rose-400 transition-colors p-2 rounded-lg hover:bg-white/5">
+                <i class="fas fa-arrow-right-from-bracket w-6 mr-2"></i> ចាកចេញ
+            </a>
+        </div>
+    </aside>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div class="flex items-center gap-4">
+                <a href="my-orders.html" class="w-10 h-10 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-600 flex items-center justify-center transition border border-slate-200/70" title="ត្រឡប់ទៅការបញ្ជាទិញ">
+                    <i class="fas fa-arrow-left text-sm"></i>
+                </a>
+                <div>
+                    <div class="flex items-center gap-2.5">
+                        <h2 class="text-xl font-semibold text-gray-800 leading-tight">តាមដានការដឹកជញ្ជូន QT-2026-0042</h2>
+                        <span class="px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 text-xs font-semibold flex items-center gap-1.5">
+                            <span class="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span> កំពុងដឹកជញ្ជូន
+                        </span>
+                    </div>
+                    <p class="text-xs font-normal text-gray-500 mt-0.5">ការបញ្ជាទិញកាលពី 16 កញ្ញា 2026 | ប៉ាន់ស្មានមកដល់ក្នុងរយៈពេល 30 នាទីទៀត</p>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-2.5">
+                <button onclick="showToast('ទាក់ទងផ្នែកបម្រើអតិថិជន: 023 888 999', 'info')" class="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium transition flex items-center gap-2">
+                    <i class="fas fa-headset text-purple-600"></i> ជំនួយបច្ចេកទេស
+                </button>
+            </div>
+        </header>
+
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-indigo-50/20 px-4 md:px-6 py-4">
+            <div class="w-full space-y-5">
+                
+                <!-- 4-Stage Visual Progress Bar -->
+                <div class="bg-white rounded-2xl border border-purple-100 shadow-sm p-6">
+                    <div class="relative flex items-center justify-between">
+                        <!-- Progress Track Background -->
+                        <div class="absolute left-8 right-8 top-1/2 -translate-y-1/2 h-1.5 bg-slate-100 -z-0"></div>
+                        <!-- Active Progress Track Fill (66%) -->
+                        <div class="absolute left-8 w-2/3 top-1/2 -translate-y-1/2 h-1.5 bg-purple-600 -z-0"></div>
+
+                        <!-- Step 1: Order Placed -->
+                        <div class="flex flex-col items-center text-center relative z-10">
+                            <div class="w-10 h-10 rounded-full bg-purple-600 text-white flex items-center justify-center font-bold text-sm shadow-md">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <p class="text-xs font-bold text-slate-800 mt-2">បានបញ្ជាទិញ</p>
+                            <p class="text-[11px] text-slate-400">16 កញ្ញា - 08:30</p>
+                        </div>
+
+                        <!-- Step 2: Preparing Order -->
+                        <div class="flex flex-col items-center text-center relative z-10">
+                            <div class="w-10 h-10 rounded-full bg-purple-600 text-white flex items-center justify-center font-bold text-sm shadow-md">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <p class="text-xs font-bold text-slate-800 mt-2">រៀបចំទំនិញរួចរាល់</p>
+                            <p class="text-[11px] text-slate-400">16 កញ្ញា - 11:00</p>
+                        </div>
+
+                        <!-- Step 3: Out for Delivery (Active) -->
+                        <div class="flex flex-col items-center text-center relative z-10">
+                            <div class="w-10 h-10 rounded-full bg-purple-600 text-white flex items-center justify-center font-bold text-sm shadow-md ring-4 ring-purple-100 animate-bounce">
+                                <i class="fas fa-truck-fast"></i>
+                            </div>
+                            <p class="text-xs font-bold text-purple-700 mt-2">កំពុងដឹកជញ្ជូន</p>
+                            <p class="text-[11px] text-purple-600 font-semibold">16 កញ្ញា - 14:15</p>
+                        </div>
+
+                        <!-- Step 4: Delivered (Pending) -->
+                        <div class="flex flex-col items-center text-center relative z-10">
+                            <div class="w-10 h-10 rounded-full bg-slate-200 text-slate-500 flex items-center justify-center font-bold text-sm">
+                                <i class="fas fa-box"></i>
+                            </div>
+                            <p class="text-xs font-bold text-slate-400 mt-2">បានប្រគល់ទំនិញ</p>
+                            <p class="text-[11px] text-slate-400">រង់ចាំទទួល</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Driver Details & Delivery Location Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <!-- Driver Profile Card -->
+                    <div class="bg-white rounded-2xl border border-purple-100 shadow-sm p-6 space-y-4">
+                        <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                            <h3 class="text-sm font-bold text-slate-800 flex items-center gap-2">
+                                <i class="fas fa-id-badge text-purple-600"></i> អ្នកដឹកជញ្ជូនរបស់អ្នក
+                            </h3>
+                            <span class="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-xs font-semibold">លើផ្លូវដឹកជញ្ជូន</span>
+                        </div>
+
+                        <div class="flex items-center gap-4">
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-purple-700 to-indigo-600 text-white flex items-center justify-center text-xl font-bold shadow-sm flex-shrink-0">
+                                <i class="fas fa-motorcycle"></i>
+                            </div>
+                            <div class="space-y-0.5">
+                                <h4 class="font-bold text-slate-800 text-[15px]">សុខ ជា (បុគ្គលិកដឹកជញ្ជូន DIGITECHKH)</h4>
+                                <p class="text-xs text-slate-500">មធ្យោបាយ: ម៉ូតូ Honda Dream 125cc (ភ្នំពេញ 1AZ-9988)</p>
+                                <p class="text-xs text-slate-500">បទពិសោធន៍ដឹកជញ្ជូន: 3 ឆ្នាំ (ផ្ទៀងផ្ទាត់រួច)</p>
+                            </div>
+                        </div>
+
+                        <div class="pt-2 flex items-center gap-3">
+                            <a href="tel:012888777" class="flex-1 py-2.5 bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold rounded-xl text-center transition flex items-center justify-center gap-2 shadow-sm">
+                                <i class="fas fa-phone-alt"></i> ទូរស័ព្ទទៅអ្នកដឹក: 012 888 777
+                            </a>
+                            <button onclick="showToast('បានផ្ញើសាររំលឹកទៅកាន់អ្នកដឹក', 'info')" class="px-3.5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium rounded-xl transition">
+                                <i class="fas fa-comment-dots"></i> ផ្ញើសារ
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Destination Address Card -->
+                    <div class="bg-white rounded-2xl border border-purple-100 shadow-sm p-6 space-y-3">
+                        <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                            <h3 class="text-sm font-bold text-slate-800 flex items-center gap-2">
+                                <i class="fas fa-map-location-dot text-purple-600"></i> ទីតាំងប្រគល់ទំនិញ
+                            </h3>
+                            <span class="text-xs text-slate-400">កូដដឹកជញ្ជូន: DLV-9921</span>
+                        </div>
+
+                        <div class="space-y-2 text-xs text-slate-700">
+                            <div>
+                                <span class="text-slate-400 block mb-0.5">អ្នកទទួលទំនិញ:</span>
+                                <p class="font-bold text-slate-800 text-sm">លោក សុខ ជា (ក្រុមហ៊ុន សុខុម ត្រេឌីង ឯ.ក)</p>
+                            </div>
+                            <div>
+                                <span class="text-slate-400 block mb-0.5">អាសយដ្ឋានដឹកជញ្ជូន:</span>
+                                <p class="font-semibold text-slate-800">ផ្ទះលេខ 45 ផ្លូវ 310 សង្កាត់បឹងកេងកង 1 ខណ្ឌបឹងកេងកង រាជធានីភ្នំពេញ</p>
+                            </div>
+                            <div>
+                                <span class="text-slate-400 block mb-0.5">កំណត់សម្គាល់សម្រាប់អ្នកដឹក:</span>
+                                <p class="text-slate-600 italic">សូមទូរស័ព្ទមុនពេលមកដល់ 10 នាទី ដើម្បីឱ្យបុគ្គលិកចុះទៅទទួលនៅជាន់ផ្ទាល់ដី។</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Package Items Details -->
+                <div class="bg-white rounded-2xl border border-purple-100 shadow-sm overflow-hidden">
+                    <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
+                        <h4 class="text-sm font-semibold text-slate-800">បញ្ជីមុខទំនិញក្នុងកញ្ចប់ដឹកជញ្ជូន</h4>
+                        <span class="text-xs text-slate-500">1 កញ្ចប់ (2 គ្រឿង)</span>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm">
+                            <thead class="bg-slate-50 text-slate-500 uppercase text-[11px] font-semibold border-b border-slate-100">
+                                <tr>
+                                    <th class="py-3 px-6">#</th>
+                                    <th class="py-3 px-6">មុខទំនិញ</th>
+                                    <th class="py-3 px-6 text-center">ចំនួន</th>
+                                    <th class="py-3 px-6">លេខកូដសម្គាល់</th>
+                                    <th class="py-3 px-6 text-right">ស្ថានភាពត្រួតពិនិត្យ</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 text-slate-700 font-medium text-xs">
+                                <tr>
+                                    <td class="py-4 px-6 text-slate-400">1</td>
+                                    <td class="py-4 px-6">
+                                        <p class="font-semibold text-slate-800 text-sm">កុំព្យូទ័រយួរដៃ Dell Latitude 5430</p>
+                                        <p class="text-[11px] text-slate-400">Intel Core i5-1245U, 16GB RAM, 512GB SSD</p>
+                                    </td>
+                                    <td class="py-4 px-6 text-center font-bold">2 គ្រឿង</td>
+                                    <td class="py-4 px-6 font-mono text-slate-500">SN-DELL-882194 / SN-DELL-882195</td>
+                                    <td class="py-4 px-6 text-right">
+                                        <span class="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-semibold text-[11px]">បានពិនិត្យ QC រួច</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../scripts/ui-components.js"></script>
+</body>
+</html>

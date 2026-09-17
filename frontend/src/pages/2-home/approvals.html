@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="km">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - ការត្រួតពិនិត្យ និងអនុម័ត</title>
+    <link rel="icon" type="image/png" href="../../assets/favicon.png">
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#24692D",
+                        'primary-light': "#2e7d38",
+                        'primary-dark': "#1b5223",
+                        'btn-navy': "#16255c",
+                        'brand-blue': "#1e3a8a",
+                        secondary: "#f1f5f9",
+                        accent: "#10b981",
+                        danger: "#ef4444",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../styles/custom.css">
+</head>
+
+<body class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+    <!-- Standard DIGITECHKH Sidebar -->
+    <aside class="w-64 bg-[#1b5223] text-white flex flex-col flex-shrink-0 select-none z-20">
+        <!-- Sidebar Brand Container (Exact h-[72px] px-6) -->
+        <div class="h-[72px] px-6 flex items-center gap-3 border-b border-white/10 flex-shrink-0">
+            <div class="w-9 h-9 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center p-1 shadow-sm overflow-hidden flex-shrink-0">
+                <img src="../../assets/logo-mark-transparent.png" alt="DIGITECHKH" class="w-full h-full object-contain">
+            </div>
+            <h1 class="text-xl font-semibold tracking-wider whitespace-nowrap">DIGITECHKH</h1>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="flex-1 overflow-y-auto px-4 py-4 space-y-1 scrollbar-hide text-sm">
+            <!-- ផ្ទាំងគ្រប់គ្រង -->
+            <a href="dashboard.html" data-nav="dashboard"
+                class="nav-item flex items-center p-3 bg-primary text-white shadow-sm font-medium rounded-xl transition-colors whitespace-nowrap">
+                <i class="fas fa-border-all w-6 text-center opacity-80"></i>
+                <span class="ml-3 text-[16px]">ផ្ទាំងគ្រប់គ្រង</span>
+            </a>
+
+            <!-- ការលក់ -->
+            <div>
+                <button id="btn-menu-sell" onclick="toggleMenu('menu-sell')"
+                    class="nav-parent w-full flex items-center justify-between p-3 text-emerald-100 hover:bg-white/10 hover:text-white rounded-xl transition-colors whitespace-nowrap">
+                    <div class="flex items-center">
+                        <i class="fas fa-money-bill w-6 text-center opacity-80"></i>
+                        <span class="ml-3 text-[16px]">ការលក់</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-xs opacity-60 transition-transform duration-200" id="icon-menu-sell"></i>
+                </button>
+                <div id="menu-sell" class="ml-6 pl-3 py-1.5 space-y-1 border-l border-white/20 mt-1 mb-2 hidden text-[15px]">
+                    <a href="../3-sales/1-invoice/invoice.html" data-nav="sell-invoices" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-file-invoice-dollar w-5 text-center mr-2 text-xs opacity-70"></i> វិក្កយបត្រលក់
+                    </a>
+                    <a href="../3-sales/2-quote/quote.html" data-nav="sell-prices" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-file-alt w-5 text-center opacity-70 mr-2 text-xs"></i> តារាងតម្លៃ
+                    </a>
+                    <a href="../3-sales/3-customer/customer.html" data-nav="sell-customers" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-users w-5 text-center opacity-70 mr-2 text-xs"></i> បញ្ជីអតិថិជន
+                    </a>
+                    <a href="../3-sales/4-payment/payment.html" data-nav="sell-receipts" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-credit-card w-5 text-center opacity-70 mr-2 text-xs"></i> បង្កាន់ដៃទូទាត់
+                    </a>
+                </div>
+            </div>
+
+            <!-- ការទិញ -->
+            <div>
+                <button id="btn-menu-buy" onclick="toggleMenu('menu-buy')"
+                    class="nav-parent w-full flex items-center justify-between p-3 text-emerald-100 hover:bg-white/10 hover:text-white rounded-xl transition-colors whitespace-nowrap">
+                    <div class="flex items-center">
+                        <i class="fas fa-cart-shopping w-6 text-center opacity-80"></i>
+                        <span class="ml-3 text-[16px]">ការទិញ</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-xs opacity-60 transition-transform duration-200" id="icon-menu-buy"></i>
+                </button>
+                <div id="menu-buy" class="ml-6 pl-3 py-1.5 space-y-1 border-l border-white/20 mt-1 mb-2 hidden text-[15px]">
+                    <a href="../4-buy/1-bills/bills.html" data-nav="buy-invoices" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-file-invoice w-5 text-center opacity-70 mr-2 text-xs"></i> វិក្កយបត្របញ្ញាទិញ
+                    </a>
+                    <a href="../4-buy/2-suppliers/suppliers.html" data-nav="buy-suppliers" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-truck w-5 text-center opacity-70 mr-2 text-xs"></i> អ្នកផ្គត់ផ្គង់
+                    </a>
+                    <a href="../4-buy/3-disbursement/disbursement.html" data-nav="buy-expenses" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-money-check-alt w-5 text-center opacity-70 mr-2 text-xs"></i> ការទូទាត់ចំណាយ
+                    </a>
+                </div>
+            </div>
+
+            <!-- ស្តុកទំនិញ -->
+            <div>
+                <button id="btn-menu-stock" onclick="toggleMenu('menu-stock')"
+                    class="nav-parent w-full flex items-center justify-between p-3 text-emerald-100 hover:bg-white/10 hover:text-white rounded-xl transition-colors whitespace-nowrap">
+                    <div class="flex items-center">
+                        <i class="fas fa-boxes-stacked w-6 text-center opacity-80"></i>
+                        <span class="ml-3 text-[16px]">ស្តុកទំនិញ</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-xs opacity-60 transition-transform duration-200" id="icon-menu-stock"></i>
+                </button>
+                <div id="menu-stock" class="ml-6 pl-3 py-1.5 space-y-1 border-l border-white/20 mt-1 mb-2 hidden text-[15px]">
+                    <a href="../5-stock/1-balance/balance.html" data-nav="stock-balance" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-box w-5 text-center opacity-70 mr-2 text-xs"></i> តុល្យភាពស្តុក
+                    </a>
+                    <a href="../5-stock/2-catalog/catalog.html" data-nav="stock-catalog" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-list w-5 text-center opacity-70 mr-2 text-xs"></i> កាតាឡុកទំនិញ
+                    </a>
+                    <a href="../5-stock/3-movement/movement.html" data-nav="stock-movements" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-clock-rotate-left w-5 text-center opacity-70 mr-2 text-xs"></i> ចលនាស្តុក
+                    </a>
+                </div>
+            </div>
+
+            <!-- របាយការណ៍ហិរញ្ញវត្ថុ -->
+            <div>
+                <button id="btn-menu-reports" onclick="toggleMenu('menu-reports')"
+                    class="nav-parent w-full flex items-center justify-between p-3 text-emerald-100 hover:bg-white/10 hover:text-white rounded-xl transition-colors whitespace-nowrap">
+                    <div class="flex items-center">
+                        <i class="fas fa-chart-line w-6 text-center opacity-80"></i>
+                        <span class="ml-3 text-[16px]">របាយការណ៍ហិរញ្ញវត្ថុ</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-xs opacity-60 transition-transform duration-200" id="icon-menu-reports"></i>
+                </button>
+                <div id="menu-reports" class="ml-6 pl-3 py-1.5 space-y-1 border-l border-white/20 mt-1 mb-2 hidden text-[15px]">
+                    <a href="../6-reports/1-overview/overview.html" data-nav="reports-overview" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-chart-pie w-5 text-center opacity-70 mr-2 text-xs"></i> របាយការណ៍ទូទៅ
+                    </a>
+                    <a href="../6-reports/2-sales/sales.html" data-nav="reports-sales" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-file-invoice-dollar w-5 text-center opacity-70 mr-2 text-xs"></i> របាយការណ៍លក់
+                    </a>
+                    <a href="../6-reports/3-purchases/purchases.html" data-nav="reports-purchases" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-cart-shopping w-5 text-center opacity-70 mr-2 text-xs"></i> របាយការណ៍ទិញ
+                    </a>
+                    <a href="../6-reports/4-stock/stock.html" data-nav="reports-stock" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-boxes-stacked w-5 text-center opacity-70 mr-2 text-xs"></i> របាយការណ៍ស្តុក
+                    </a>
+                </div>
+            </div>
+
+            <!-- ការកំណត់ប្រព័ន្ធ -->
+            <div>
+                <button id="btn-menu-settings" onclick="toggleMenu('menu-settings')"
+                    class="nav-parent w-full flex items-center justify-between p-3 text-emerald-100 hover:bg-white/10 hover:text-white rounded-xl transition-colors whitespace-nowrap">
+                    <div class="flex items-center">
+                        <i class="fas fa-gear w-6 text-center opacity-80"></i>
+                        <span class="ml-3 text-[16px]">ការកំណត់ប្រព័ន្ធ</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-xs opacity-60 transition-transform duration-200" id="icon-menu-settings"></i>
+                </button>
+                <div id="menu-settings" class="ml-6 pl-3 py-1.5 space-y-1 border-l border-white/20 mt-1 mb-2 hidden text-[15px]">
+                    <a href="../7-settings/1-company/company.html" data-nav="settings-company" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-building w-5 text-center opacity-70 mr-2 text-xs"></i> ព័ត៌មានក្រុមហ៊ុន
+                    </a>
+                    <a href="../7-settings/2-users/users.html" data-nav="settings-users" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-users-gear w-5 text-center opacity-70 mr-2 text-xs"></i> គ្រប់គ្រងអ្នកប្រើ
+                    </a>
+                    <a href="../7-settings/3-tax/tax.html" data-nav="settings-tax" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-coins w-5 text-center opacity-70 mr-2 text-xs"></i> ពន្ធ និងរូបិយប័ណ្ណ
+                    </a>
+                    <a href="../7-settings/4-notifications/notifications.html" data-nav="settings-notifications" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-bell w-5 text-center opacity-70 mr-2 text-xs"></i> ការជូនដំណឹង
+                    </a>
+                    <a href="../7-settings/5-system/system.html" data-nav="settings-system" class="nav-sub-item flex items-center px-3 py-2 text-emerald-100/75 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                        <i class="fas fa-sliders w-5 text-center opacity-70 mr-2 text-xs"></i> ប្រព័ន្ធ និងសុវត្ថិភាព
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="p-4 border-t border-white/10">
+            <a href="../1-login/login.html"
+                class="flex items-center text-[16px] text-emerald-100 hover:text-red-300 transition-colors p-2 rounded-lg hover:bg-primary">
+                <i class="fas fa-sign-out-alt w-6 mr-2"></i> ចាកចេញ
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content Layout -->
+    <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+
+        <!-- Unified Top Header (Exact h-[72px] px-6) -->
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+<div class="flex items-center gap-3">
+                <!-- Standard Back Button -->
+                <a href="dashboard.html"
+                    class="w-10 h-10 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-600 flex items-center justify-center transition border border-slate-200/70"
+                    title="ត្រឡប់ទៅផ្ទាំងគ្រប់គ្រង">
+                    <i class="fas fa-arrow-left text-sm"></i>
+                </a>
+                <div>
+                    <h2 class="text-xl font-semibold text-gray-800 leading-tight">ការត្រួតពិនិត្យ និងអនុម័ត</h2>
+                    <p class="text-xs font-normal text-gray-500 mt-0.5">បញ្ជីសំណើ វិក្កយបត្រ និងប្រតិបត្តិការដែលរង់ចាំការសម្រេចចិត្តពីអ្នកគ្រប់គ្រង</p>
+                </div>
+            </div>
+
+            <!-- Top Actions -->
+            <div class="flex items-center gap-3">
+                <!-- Unified Date Picker -->
+                <div class="relative">
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs text-slate-400 hidden sm:inline">កាលបរិច្ឆេទ:</span>
+                        <button type="button" id="dateRangePickerBtn" onclick="toggleDatePicker(event)"
+                            class="h-9 px-3 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 text-xs rounded-xl flex items-center gap-2 shadow-sm transition-all focus:outline-none cursor-pointer">
+                            <i class="fas fa-calendar-days text-primary text-xs"></i>
+                            <span id="selectedDateLabel" class="font-medium text-slate-800">ខែនេះ</span>
+                            <i class="fas fa-chevron-down text-[10px] text-slate-400 transition-transform duration-200 ml-0.5" id="datePickerChevron"></i>
+                        </button>
+                    </div>
+
+                    <!-- Date Range Popover -->
+                    <div id="datePickerPopover" class="hidden absolute right-0 top-11 bg-white rounded-2xl shadow-2xl border border-slate-200/80 p-4 z-50 w-[480px] bms-date-popover">
+                        <div class="flex gap-4">
+                            <!-- Left: Presets -->
+                            <div class="w-36 flex flex-col gap-1 border-r border-slate-100 pr-3">
+                                <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">ជម្រើសរហ័ស</span>
+                                <button type="button" onclick="selectPreset('today')" class="preset-btn text-left px-2.5 py-1.5 rounded-lg text-xs hover:bg-slate-100 text-slate-600 transition-colors">ថ្ងៃនេះ</button>
+                                <button type="button" onclick="selectPreset('yesterday')" class="preset-btn text-left px-2.5 py-1.5 rounded-lg text-xs hover:bg-slate-100 text-slate-600 transition-colors">ម្សិលមិញ</button>
+                                <button type="button" onclick="selectPreset('thisWeek')" class="preset-btn text-left px-2.5 py-1.5 rounded-lg text-xs hover:bg-slate-100 text-slate-600 transition-colors">សប្តាហ៍នេះ</button>
+                                <button type="button" onclick="selectPreset('lastWeek')" class="preset-btn text-left px-2.5 py-1.5 rounded-lg text-xs hover:bg-slate-100 text-slate-600 transition-colors">សប្តាហ៍មុន</button>
+                                <button type="button" onclick="selectPreset('thisMonth')" class="preset-btn text-left px-2.5 py-1.5 rounded-lg text-xs bg-[#0f2b5c] text-white font-medium transition-colors">ខែនេះ</button>
+                                <button type="button" onclick="selectPreset('lastMonth')" class="preset-btn text-left px-2.5 py-1.5 rounded-lg text-xs hover:bg-slate-100 text-slate-600 transition-colors">ខែមុន</button>
+                                <button type="button" onclick="selectPreset('thisYear')" class="preset-btn text-left px-2.5 py-1.5 rounded-lg text-xs hover:bg-slate-100 text-slate-600 transition-colors">ឆ្នាំនេះ</button>
+                                <button type="button" onclick="selectPreset('last7days')" class="preset-btn text-left px-2.5 py-1.5 rounded-lg text-xs hover:bg-slate-100 text-slate-600 transition-colors">7 ថ្ងៃចុងក្រោយ</button>
+                                <button type="button" onclick="selectPreset('last14days')" class="preset-btn text-left px-2.5 py-1.5 rounded-lg text-xs hover:bg-slate-100 text-slate-600 transition-colors">14 ថ្ងៃចុងក្រោយ</button>
+                                <button type="button" onclick="selectPreset('last30days')" class="preset-btn text-left px-2.5 py-1.5 rounded-lg text-xs hover:bg-slate-100 text-slate-600 transition-colors">30 ថ្ងៃចុងក្រោយ</button>
+                            </div>
+
+                            <!-- Right: Calendar -->
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between mb-3">
+                                    <button type="button" onclick="changeCalendarMonth(-1)" class="w-7 h-7 rounded-lg hover:bg-slate-100 flex items-center justify-center text-slate-500 transition-colors">
+                                        <i class="fas fa-chevron-left text-xs"></i>
+                                    </button>
+                                    <span id="calendarMonthYearLabel" class="text-xs font-semibold text-slate-800">កញ្ញា 2025</span>
+                                    <button type="button" onclick="changeCalendarMonth(1)" class="w-7 h-7 rounded-lg hover:bg-slate-100 flex items-center justify-center text-slate-500 transition-colors">
+                                        <i class="fas fa-chevron-right text-xs"></i>
+                                    </button>
+                                </div>
+
+                                <div class="grid grid-cols-7 gap-1 text-center mb-1">
+                                    <span class="text-[10px] font-semibold text-slate-400">ច</span>
+                                    <span class="text-[10px] font-semibold text-slate-400">អ</span>
+                                    <span class="text-[10px] font-semibold text-slate-400">ព</span>
+                                    <span class="text-[10px] font-semibold text-slate-400">ព្រ</span>
+                                    <span class="text-[10px] font-semibold text-slate-400">សុ</span>
+                                    <span class="text-[10px] font-semibold text-slate-400">ស</span>
+                                    <span class="text-[10px] font-semibold text-slate-400">អា</span>
+                                </div>
+
+                                <div id="calendarDaysGrid" class="grid grid-cols-7 gap-1 text-center text-xs"></div>
+                            </div>
+                        </div>
+
+                        <!-- Popover Footer -->
+                        <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+                            <div id="selectedRangeTag" class="text-xs text-slate-600 font-medium bg-slate-100 px-2.5 py-1 rounded-lg">ខែនេះ</div>
+                            <div class="flex items-center gap-2">
+                                <button type="button" onclick="toggleDatePicker(event)" class="px-3 py-1.5 rounded-xl text-xs text-slate-600 hover:bg-slate-100 transition-colors">បោះបង់</button>
+                                <button type="button" onclick="applyDateRange()" class="px-4 py-1.5 rounded-xl text-xs bg-[#0f2b5c] hover:bg-[#193a73] text-white shadow-sm transition-all">ជ្រើសរើស</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Batch Approve Button -->
+                <button onclick="approveAllPending()" id="btnApproveAll" class="h-9 px-4 bg-primary hover:bg-primary-dark text-white rounded-xl text-xs font-semibold flex items-center gap-2 shadow-sm transition">
+                    <i class="fas fa-check-double text-xs"></i>
+                    <span>អនុម័តទាំងអស់</span>
+                </button>
+            
+                <div class="h-6 w-px bg-slate-200 mx-1"></div>
+
+                <!-- Notification Bell -->
+                <button onclick="toggleNotifications()" class="text-gray-500 hover:text-gray-700 relative p-2.5 rounded-xl hover:bg-slate-100 transition-colors cursor-pointer" title="ការជូនដំណឹង">
+                    <i class="fas fa-bell text-xl"></i>
+                    <span class="absolute top-1.5 right-1.5 flex h-2.5 w-2.5">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500"></span>
+                    </span>
+                </button>
+                
+                <!-- User Profile Avatar Only -->
+                <div class="flex items-center border-l pl-3 md:pl-4">
+                    <button class="relative rounded-full focus:outline-none focus:ring-2 focus:ring-primary/20 cursor-pointer" title="សុខ ចាន់ថន (អ្នកគ្រប់គ្រងកំពូល)">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=128&q=80" alt="សុខ ចាន់ថន" class="h-10 w-10 rounded-full object-cover shadow-sm border border-slate-200" />
+                        <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-2 ring-white"></span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Body Content -->
+        <main class="flex-1 overflow-y-auto p-6 w-full">
+
+            <!-- KPIs Summary -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                <!-- Pending Count -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl flex-shrink-0">
+                        <i class="fas fa-clock-rotate-left"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-500 font-medium">សរុបរង់ចាំពិនិត្យ</p>
+                        <h3 class="text-2xl font-bold text-slate-800" id="kpiPendingCount">5 ប្រតិបត្តិការ</h3>
+                    </div>
+                </div>
+
+                <!-- Sales Invoices -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl flex-shrink-0">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-500 font-medium">វិក្កយបត្រលក់</p>
+                        <h3 class="text-2xl font-bold text-slate-800">3 ច្បាប់ ($16,000)</h3>
+                    </div>
+                </div>
+
+                <!-- Expense Requests -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center text-xl flex-shrink-0">
+                        <i class="fas fa-receipt"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-500 font-medium">សំណើទូទាត់ចំណាយ</p>
+                        <h3 class="text-2xl font-bold text-slate-800">2 ច្បាប់ ($1,250)</h3>
+                    </div>
+                </div>
+
+                <!-- Approved Today -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl flex-shrink-0">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-500 font-medium">អនុម័តរួចថ្ងៃនេះ</p>
+                        <h3 class="text-2xl font-bold text-slate-800">12 ប្រតិបត្តិការ</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filter Toolbar -->
+            <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-100 mb-6 flex flex-wrap items-center justify-between gap-4">
+                <div class="flex flex-wrap items-center gap-3 flex-1 min-w-[280px]">
+                    <!-- Search Input -->
+                    <div class="relative flex-1 max-w-md">
+                        <i class="fas fa-search absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                        <input type="text" id="searchInput" oninput="filterApprovals()" placeholder="ស្វែងរកតាមលេខកូដ ឈ្មោះ ឬព័ត៌មានប្រតិបត្តិការ..."
+                            class="w-full pl-9 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-primary focus:bg-white transition">
+                    </div>
+
+                    <!-- Filter Type Custom Dropdown -->
+                    <div class="relative bms-custom-select" id="typeDropdown">
+                        <button type="button" onclick="toggleCustomSelect('typeDropdown')"
+                            class="h-9 px-3 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-700 flex items-center gap-2 hover:bg-slate-100 transition focus:outline-none">
+                            <span id="selectedTypeLabel">ប្រភេទ៖ ទាំងអស់</span>
+                            <i class="fas fa-chevron-down text-[10px] text-slate-400 bms-custom-select-arrow transition-transform duration-200"></i>
+                        </button>
+                        <div class="bms-custom-select-menu hidden absolute left-0 top-11 bg-white rounded-xl shadow-xl border border-slate-100 py-1.5 w-48 z-50">
+                            <div onclick="selectTypeFilter('all', 'ប្រភេទ៖ ទាំងអស់')" class="px-3 py-2 hover:bg-slate-50 text-xs text-slate-700 cursor-pointer flex items-center justify-between">
+                                <span>ទាំងអស់</span>
+                                <i class="fas fa-check text-primary text-xs"></i>
+                            </div>
+                            <div onclick="selectTypeFilter('invoice', 'ប្រភេទ៖ វិក្កយបត្រលក់')" class="px-3 py-2 hover:bg-slate-50 text-xs text-slate-700 cursor-pointer flex items-center justify-between">
+                                <span>វិក្កយបត្រលក់</span>
+                            </div>
+                            <div onclick="selectTypeFilter('expense', 'ប្រភេទ៖ សំណើចំណាយ')" class="px-3 py-2 hover:bg-slate-50 text-xs text-slate-700 cursor-pointer flex items-center justify-between">
+                                <span>សំណើចំណាយ</span>
+                            </div>
+                            <div onclick="selectTypeFilter('stock', 'ប្រភេទ៖ ចលនាស្តុក')" class="px-3 py-2 hover:bg-slate-50 text-xs text-slate-700 cursor-pointer flex items-center justify-between">
+                                <span>ចលនាស្តុក</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-xs text-slate-500 font-medium">
+                    បង្ហាញ <span id="visibleCount" class="font-bold text-slate-800">5</span> ក្នុងចំណោម 5 សំណើ
+                </div>
+            </div>
+
+            <!-- Approvals Table Container -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm" id="approvalsTable">
+                        <thead class="bg-slate-50/80 text-xs font-semibold text-slate-600 border-b border-slate-100">
+                            <tr>
+                                <th class="py-3.5 px-4 w-12 text-center">#</th>
+                                <th class="py-3.5 px-4">ប្រតិបត្តិការ / សំណើ</th>
+                                <th class="py-3.5 px-4">ប្រភេទ</th>
+                                <th class="py-3.5 px-4">អ្នកស្នើសុំ / ភាគី</th>
+                                <th class="py-3.5 px-4">កាលបរិច្ឆេទ</th>
+                                <th class="py-3.5 px-4 text-right">ទឹកប្រាក់</th>
+                                <th class="py-3.5 px-4 text-center">ស្ថានភាព</th>
+                                <th class="py-3.5 px-4 text-center w-16">សកម្មភាព</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 text-xs" id="approvalRows">
+                            <!-- Row 1: Invoice -->
+                            <tr class="hover:bg-slate-50/70 transition" data-type="invoice" id="row-APP-001">
+                                <td class="py-3.5 px-4 text-center text-slate-400 font-mono">1</td>
+                                <td class="py-3.5 px-4">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-9 h-9 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-sm flex-shrink-0">
+                                            <i class="fas fa-file-invoice"></i>
+                                        </div>
+                                        <div>
+                                            <a href="../3-sales/1-invoice/view-invoice.html?id=INV-893758" class="font-semibold text-slate-800 hover:text-primary transition">វិក្កយបត្រ #893758</a>
+                                            <p class="text-[11px] text-slate-400">ទូទាត់តាម KHQR • ចេញវិក្កយបត្រថ្មី</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="py-3.5 px-4">
+                                    <span class="inline-flex items-center px-2 py-0.5 rounded-lg text-[11px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-200/50">
+                                        វិក្កយបត្រលក់
+                                    </span>
+                                </td>
+                                <td class="py-3.5 px-4">
+                                    <p class="font-medium text-slate-800">ហេង វិច្ឆិកា</p>
+                                    <p class="text-[11px] text-slate-400">អតិថិជន VIP</p>
+                                </td>
+                                <td class="py-3.5 px-4 text-slate-600">
+                                    04/09/2025
+                                </td>
+                                <td class="py-3.5 px-4 text-right font-bold text-slate-800">
+                                    $12,800.00
+                                </td>
+                                <td class="py-3.5 px-4 text-center">
+                                    <span class="status-badge inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-amber-50 text-amber-700 border border-amber-200/60">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
+                                        រង់ចាំពិនិត្យ
+                                    </span>
+                                </td>
+                                <td class="py-3.5 px-4 text-center">
+                                    <button type="button" onclick="openApprovalActionMenu(event, 'APP-001')"
+                                        class="w-8 h-8 rounded-xl hover:bg-slate-100 text-slate-400 hover:text-slate-700 flex items-center justify-center transition mx-auto focus:outline-none cursor-pointer"
+                                        title="សកម្មភាព">
+                                        <i class="fas fa-ellipsis-vertical text-sm"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- Row 2: Expense -->
+                            <tr class="hover:bg-slate-50/70 transition" data-type="expense" id="row-APP-002">
+                                <td class="py-3.5 px-4 text-center text-slate-400 font-mono">2</td>
+                                <td class="py-3.5 px-4">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-9 h-9 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center text-sm flex-shrink-0">
+                                            <i class="fas fa-receipt"></i>
+                                        </div>
+                                        <div>
+                                            <a href="../4-buy/3-disbursement/view-disbursement.html?id=EXP-2025-089" class="font-semibold text-slate-800 hover:text-primary transition">ទិញសម្ភារៈការិយាល័យ</a>
+                                            <p class="text-[11px] text-slate-400">#EXP-2025-089 • វិក្កយបត្រភ្ជាប់</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="py-3.5 px-4">
+                                    <span class="inline-flex items-center px-2 py-0.5 rounded-lg text-[11px] font-medium bg-rose-50 text-rose-700 border border-rose-200/50">
+                                        សំណើចំណាយ
+                                    </span>
+                                </td>
+                                <td class="py-3.5 px-4">
+                                    <p class="font-medium text-slate-800">ចាន់ ស្រីនាត</p>
+                                    <p class="text-[11px] text-slate-400">ផ្នែកទីផ្សារ</p>
+                                </td>
+                                <td class="py-3.5 px-4 text-slate-600">
+                                    04/09/2025
+                                </td>
+                                <td class="py-3.5 px-4 text-right font-bold text-slate-800">
+                                    $350.00
+                                </td>
+                                <td class="py-3.5 px-4 text-center">
+                                    <span class="status-badge inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-amber-50 text-amber-700 border border-amber-200/60">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
+                                        រង់ចាំពិនិត្យ
+                                    </span>
+                                </td>
+                                <td class="py-3.5 px-4 text-center">
+                                    <button type="button" onclick="openApprovalActionMenu(event, 'APP-002')"
+                                        class="w-8 h-8 rounded-xl hover:bg-slate-100 text-slate-400 hover:text-slate-700 flex items-center justify-center transition mx-auto focus:outline-none cursor-pointer"
+                                        title="សកម្មភាព">
+                                        <i class="fas fa-ellipsis-vertical text-sm"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- Row 3: Stock Movement -->
+                            <tr class="hover:bg-slate-50/70 transition" data-type="stock" id="row-APP-003">
+                                <td class="py-3.5 px-4 text-center text-slate-400 font-mono">3</td>
+                                <td class="py-3.5 px-4">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-9 h-9 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-sm flex-shrink-0">
+                                            <i class="fas fa-boxes-stacked"></i>
+                                        </div>
+                                        <div>
+                                            <a href="../5-stock/3-movement/view-movement.html?id=STK-IN-045" class="font-semibold text-slate-800 hover:text-primary transition">នាំចូល MacBook Air M3 (5 គ្រឿង)</a>
+                                            <p class="text-[11px] text-slate-400">#STK-IN-045 • ឃ្លាំងកណ្តាល</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="py-3.5 px-4">
+                                    <span class="inline-flex items-center px-2 py-0.5 rounded-lg text-[11px] font-medium bg-purple-50 text-purple-700 border border-purple-200/50">
+                                        ចលនាស្តុក
+                                    </span>
+                                </td>
+                                <td class="py-3.5 px-4">
+                                    <p class="font-medium text-slate-800">Geek Tech</p>
+                                    <p class="text-[11px] text-slate-400">អ្នកផ្គត់ផ្គង់</p>
+                                </td>
+                                <td class="py-3.5 px-4 text-slate-600">
+                                    04/09/2025
+                                </td>
+                                <td class="py-3.5 px-4 text-right font-bold text-slate-800">
+                                    $5,500.00
+                                </td>
+                                <td class="py-3.5 px-4 text-center">
+                                    <span class="status-badge inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-amber-50 text-amber-700 border border-amber-200/60">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
+                                        រង់ចាំពិនិត្យ
+                                    </span>
+                                </td>
+                                <td class="py-3.5 px-4 text-center">
+                                    <button type="button" onclick="openApprovalActionMenu(event, 'APP-003')"
+                                        class="w-8 h-8 rounded-xl hover:bg-slate-100 text-slate-400 hover:text-slate-700 flex items-center justify-center transition mx-auto focus:outline-none cursor-pointer"
+                                        title="សកម្មភាព">
+                                        <i class="fas fa-ellipsis-vertical text-sm"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- Row 4: Invoice 2 -->
+                            <tr class="hover:bg-slate-50/70 transition" data-type="invoice" id="row-APP-004">
+                                <td class="py-3.5 px-4 text-center text-slate-400 font-mono">4</td>
+                                <td class="py-3.5 px-4">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-9 h-9 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-sm flex-shrink-0">
+                                            <i class="fas fa-file-invoice"></i>
+                                        </div>
+                                        <div>
+                                            <a href="../3-sales/1-invoice/view-invoice.html?id=INV-893760" class="font-semibold text-slate-800 hover:text-primary transition">វិក្កយបត្រ #893760</a>
+                                            <p class="text-[11px] text-slate-400">ផ្ទេរប្រាក់ ABA • ចេញវិក្កយបត្រថ្មី</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="py-3.5 px-4">
+                                    <span class="inline-flex items-center px-2 py-0.5 rounded-lg text-[11px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-200/50">
+                                        វិក្កយបត្រលក់
+                                    </span>
+                                </td>
+                                <td class="py-3.5 px-4">
+                                    <p class="font-medium text-slate-800">សុខ ពិសី</p>
+                                    <p class="text-[11px] text-slate-400">អតិថិជនទូទៅ</p>
+                                </td>
+                                <td class="py-3.5 px-4 text-slate-600">
+                                    03/09/2025
+                                </td>
+                                <td class="py-3.5 px-4 text-right font-bold text-slate-800">
+                                    $3,200.00
+                                </td>
+                                <td class="py-3.5 px-4 text-center">
+                                    <span class="status-badge inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-amber-50 text-amber-700 border border-amber-200/60">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
+                                        រង់ចាំពិនិត្យ
+                                    </span>
+                                </td>
+                                <td class="py-3.5 px-4 text-center">
+                                    <button type="button" onclick="openApprovalActionMenu(event, 'APP-004')"
+                                        class="w-8 h-8 rounded-xl hover:bg-slate-100 text-slate-400 hover:text-slate-700 flex items-center justify-center transition mx-auto focus:outline-none cursor-pointer"
+                                        title="សកម្មភាព">
+                                        <i class="fas fa-ellipsis-vertical text-sm"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- Row 5: Expense 2 -->
+                            <tr class="hover:bg-slate-50/70 transition" data-type="expense" id="row-APP-005">
+                                <td class="py-3.5 px-4 text-center text-slate-400 font-mono">5</td>
+                                <td class="py-3.5 px-4">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-9 h-9 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center text-sm flex-shrink-0">
+                                            <i class="fas fa-receipt"></i>
+                                        </div>
+                                        <div>
+                                            <a href="../4-buy/3-disbursement/view-disbursement.html?id=EXP-2025-090" class="font-semibold text-slate-800 hover:text-primary transition">ថ្លៃដឹកជញ្ជូន និងប្រេងឥន្ធនៈ</a>
+                                            <p class="text-[11px] text-slate-400">#EXP-2025-090 • សំណើបន្ទាន់</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="py-3.5 px-4">
+                                    <span class="inline-flex items-center px-2 py-0.5 rounded-lg text-[11px] font-medium bg-rose-50 text-rose-700 border border-rose-200/50">
+                                        សំណើចំណាយ
+                                    </span>
+                                </td>
+                                <td class="py-3.5 px-4">
+                                    <p class="font-medium text-slate-800">លោក រ៉ាដូ</p>
+                                    <p class="text-[11px] text-slate-400">ផ្នែកដឹកជញ្ជូន</p>
+                                </td>
+                                <td class="py-3.5 px-4 text-slate-600">
+                                    03/09/2025
+                                </td>
+                                <td class="py-3.5 px-4 text-right font-bold text-slate-800">
+                                    $900.00
+                                </td>
+                                <td class="py-3.5 px-4 text-center">
+                                    <span class="status-badge inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-amber-50 text-amber-700 border border-amber-200/60">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
+                                        រង់ចាំពិនិត្យ
+                                    </span>
+                                </td>
+                                <td class="py-3.5 px-4 text-center">
+                                    <button type="button" onclick="openApprovalActionMenu(event, 'APP-005')"
+                                        class="w-8 h-8 rounded-xl hover:bg-slate-100 text-slate-400 hover:text-slate-700 flex items-center justify-center transition mx-auto focus:outline-none cursor-pointer"
+                                        title="សកម្មភាព">
+                                        <i class="fas fa-ellipsis-vertical text-sm"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Floating Row Action Dropdown Menu (`#rowActionDropdown`) -->
+    <div id="rowActionDropdown"
+        class="fixed z-[999] bg-white rounded-2xl shadow-2xl border border-slate-200/80 w-80 py-2 hidden animate-in fade-in zoom-in-95 duration-100 select-none">
+        <!-- Injected dynamically via openApprovalActionMenu -->
+    </div>
+
+    <!-- Custom Select Dropdown Toggle & Page Script -->
+    <script>
+        function toggleCustomSelect(id) {
+            const el = document.getElementById(id);
+            const menu = el.querySelector('.bms-custom-select-menu');
+            const arrow = el.querySelector('.bms-custom-select-arrow');
+            menu.classList.toggle('hidden');
+            if (arrow) arrow.classList.toggle('rotate-180');
+        }
+
+        // Close dropdowns on outside click
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.bms-custom-select')) {
+                document.querySelectorAll('.bms-custom-select-menu').forEach(m => m.classList.add('hidden'));
+                document.querySelectorAll('.bms-custom-select-arrow').forEach(a => a.classList.remove('rotate-180'));
+            }
+            if (!e.target.closest('#datePickerPopover') && !e.target.closest('#dateRangePickerBtn')) {
+                document.getElementById('datePickerPopover')?.classList.add('hidden');
+                document.getElementById('datePickerChevron')?.classList.remove('rotate-180');
+            }
+            if (!e.target.closest('#rowActionDropdown') && !e.target.closest('button[onclick^="openApprovalActionMenu"]')) {
+                closeApprovalActionMenu();
+            }
+        });
+
+        // Filter Type
+        let currentTypeFilter = 'all';
+        function selectTypeFilter(type, label) {
+            currentTypeFilter = type;
+            document.getElementById('selectedTypeLabel').textContent = label;
+            document.querySelectorAll('#typeDropdown .bms-custom-select-menu div').forEach(item => {
+                const check = item.querySelector('i');
+                if (check) check.remove();
+            });
+            event.currentTarget.innerHTML += '<i class="fas fa-check text-primary text-xs"></i>';
+            document.querySelector('#typeDropdown .bms-custom-select-menu').classList.add('hidden');
+            filterApprovals();
+        }
+
+        function filterApprovals() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            const rows = document.querySelectorAll('#approvalRows tr');
+            let visible = 0;
+
+            rows.forEach(row => {
+                const type = row.getAttribute('data-type');
+                const text = row.textContent.toLowerCase();
+                const matchesType = (currentTypeFilter === 'all' || type === currentTypeFilter);
+                const matchesQuery = !query || text.includes(query);
+
+                if (matchesType && matchesQuery) {
+                    row.classList.remove('hidden');
+                    visible++;
+                } else {
+                    row.classList.add('hidden');
+                }
+            });
+
+            document.getElementById('visibleCount').textContent = visible;
+        }
+
+        // Approvals Data Store
+        const APPROVALS_DATA = [
+            {
+                id: 'APP-001',
+                title: 'វិក្កយបត្រ #893758',
+                sub: 'អតិថិជន: ហេង វិច្ឆិកា • $12,800.00',
+                type: 'វិក្កយបត្រលក់',
+                typeClass: 'bg-emerald-50 text-emerald-700 border-emerald-200/50',
+                viewUrl: '../3-sales/1-invoice/view-invoice.html?id=INV-893758',
+                status: 'pending'
+            },
+            {
+                id: 'APP-002',
+                title: 'ទិញសម្ភារៈការិយាល័យ',
+                sub: 'អ្នកស្នើសុំ: ចាន់ ស្រីនាត • $350.00',
+                type: 'សំណើចំណាយ',
+                typeClass: 'bg-rose-50 text-rose-700 border-rose-200/50',
+                viewUrl: '../4-buy/3-disbursement/view-disbursement.html?id=EXP-2025-089',
+                status: 'pending'
+            },
+            {
+                id: 'APP-003',
+                title: 'នាំចូល MacBook Air M3 (5 គ្រឿង)',
+                sub: 'អ្នកផ្គត់ផ្គង់: Geek Tech • $5,500.00',
+                type: 'ចលនាស្តុក',
+                typeClass: 'bg-purple-50 text-purple-700 border-purple-200/50',
+                viewUrl: '../5-stock/3-movement/view-movement.html?id=STK-IN-045',
+                status: 'pending'
+            },
+            {
+                id: 'APP-004',
+                title: 'វិក្កយបត្រ #893760',
+                sub: 'អតិថិជន: សុខ ពិសី • $3,200.00',
+                type: 'វិក្កយបត្រលក់',
+                typeClass: 'bg-emerald-50 text-emerald-700 border-emerald-200/50',
+                viewUrl: '../3-sales/1-invoice/view-invoice.html?id=INV-893760',
+                status: 'pending'
+            },
+            {
+                id: 'APP-005',
+                title: 'ថ្លៃដឹកជញ្ជូន និងប្រេងឥន្ធនៈ',
+                sub: 'អ្នកស្នើសុំ: លោក រ៉ាដូ • $900.00',
+                type: 'សំណើចំណាយ',
+                typeClass: 'bg-rose-50 text-rose-700 border-rose-200/50',
+                viewUrl: '../4-buy/3-disbursement/view-disbursement.html?id=EXP-2025-090',
+                status: 'pending'
+            }
+        ];
+
+        // Floating Row Action Menu for Approvals (`#rowActionDropdown`)
+        function openApprovalActionMenu(e, id) {
+            if (e) {
+                e.stopPropagation();
+                e.preventDefault();
+            }
+            const item = APPROVALS_DATA.find(x => x.id === id);
+            if (!item) return;
+
+            const dropdown = document.getElementById('rowActionDropdown');
+            if (!dropdown) return;
+
+            if (!dropdown.classList.contains('hidden') && dropdown.dataset.currentId === id) {
+                closeApprovalActionMenu();
+                return;
+            }
+            dropdown.dataset.currentId = id;
+
+            let actionsHtml = '';
+            if (item.status === 'pending') {
+                actionsHtml = `
+                    <button type="button" onclick="closeApprovalActionMenu(); approveSingle('${item.id}', '${item.title}')"
+                        class="w-full group px-2.5 py-2 rounded-xl text-left text-emerald-700 hover:bg-emerald-50/80 flex items-center gap-2.5 transition text-xs font-medium cursor-pointer">
+                        <span class="w-7 h-7 rounded-lg bg-emerald-100/80 group-hover:bg-emerald-600 group-hover:text-white text-emerald-600 flex items-center justify-center text-[11px] transition shadow-xs">
+                            <i class="fas fa-check"></i>
+                        </span>
+                        <span class="flex-1">អនុម័តប្រតិបត្តិការ</span>
+                    </button>
+                    <button type="button" onclick="closeApprovalActionMenu(); rejectSingle('${item.id}', '${item.title}')"
+                        class="w-full group px-2.5 py-2 rounded-xl text-left text-rose-700 hover:bg-rose-50/80 flex items-center gap-2.5 transition text-xs font-medium cursor-pointer">
+                        <span class="w-7 h-7 rounded-lg bg-rose-100/80 group-hover:bg-rose-600 group-hover:text-white text-rose-600 flex items-center justify-center text-[11px] transition shadow-xs">
+                            <i class="fas fa-xmark"></i>
+                        </span>
+                        <span class="flex-1">បដិសេធប្រតិបត្តិការ</span>
+                    </button>
+                `;
+            } else if (item.status === 'approved') {
+                actionsHtml = `
+                    <div class="px-2.5 py-2 rounded-xl text-emerald-700 bg-emerald-50/70 flex items-center gap-2.5 text-xs font-medium mx-1 border border-emerald-100">
+                        <span class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center text-[11px]">
+                            <i class="fas fa-circle-check"></i>
+                        </span>
+                        <span class="flex-1">បានអនុម័តរួចរាល់</span>
+                    </div>
+                `;
+            } else if (item.status === 'rejected') {
+                actionsHtml = `
+                    <div class="px-2.5 py-2 rounded-xl text-rose-700 bg-rose-50/70 flex items-center gap-2.5 text-xs font-medium mx-1 border border-rose-100">
+                        <span class="w-7 h-7 rounded-lg bg-rose-100 text-rose-600 flex items-center justify-center text-[11px]">
+                            <i class="fas fa-circle-xmark"></i>
+                        </span>
+                        <span class="flex-1">បានបដិសេធ</span>
+                    </div>
+                `;
+            }
+
+            dropdown.innerHTML = `
+                <div class="px-3.5 py-2.5 mb-1.5 bg-slate-50/90 rounded-xl border border-slate-100 flex items-start justify-between gap-3 mx-1">
+                    <div class="min-w-0 flex-1">
+                        <div class="text-xs font-bold text-slate-800 tracking-tight leading-snug">${item.title}</div>
+                        <div class="text-[11px] text-slate-500 mt-1 leading-normal font-medium whitespace-normal">${item.sub}</div>
+                    </div>
+                    <span class="text-[10px] px-2.5 py-0.5 rounded-lg font-medium ${item.typeClass} border flex-shrink-0 mt-0.5">${item.type}</span>
+                </div>
+                <div class="space-y-0.5 px-1">
+                    ${actionsHtml}
+                    <div class="my-1 border-t border-slate-100"></div>
+                    <a href="${item.viewUrl}"
+                        class="w-full group px-2.5 py-2 rounded-xl text-left text-slate-700 hover:text-primary hover:bg-slate-50 flex items-center gap-2.5 transition text-xs font-medium cursor-pointer">
+                        <span class="w-7 h-7 rounded-lg bg-slate-100 group-hover:bg-primary group-hover:text-white text-slate-500 flex items-center justify-center text-[11px] transition shadow-xs">
+                            <i class="fas fa-file-lines"></i>
+                        </span>
+                        <span class="flex-1">មើលព័ត៌មានលម្អិត</span>
+                    </a>
+                    <button type="button" onclick="closeApprovalActionMenu(); printApprovalDoc('${item.id}')"
+                        class="w-full group px-2.5 py-2 rounded-xl text-left text-slate-700 hover:text-slate-900 hover:bg-slate-50 flex items-center gap-2.5 transition text-xs font-medium cursor-pointer">
+                        <span class="w-7 h-7 rounded-lg bg-slate-100 group-hover:bg-slate-700 group-hover:text-white text-slate-500 flex items-center justify-center text-[11px] transition shadow-xs">
+                            <i class="fas fa-print"></i>
+                        </span>
+                        <span class="flex-1">បោះពុម្ពឯកសារ</span>
+                    </button>
+                </div>
+            `;
+
+            dropdown.classList.remove('hidden');
+
+            const rect = e.currentTarget.getBoundingClientRect();
+            const dropdownWidth = dropdown.offsetWidth || 320;
+            let top = rect.bottom + 6;
+            let left = rect.right - dropdownWidth;
+
+            if (top + dropdown.offsetHeight > window.innerHeight) {
+                top = rect.top - dropdown.offsetHeight - 6;
+            }
+            if (left < 10) left = 10;
+
+            dropdown.style.top = `${top}px`;
+            dropdown.style.left = `${left}px`;
+        }
+
+        function closeApprovalActionMenu() {
+            const dropdown = document.getElementById('rowActionDropdown');
+            if (dropdown) {
+                dropdown.classList.add('hidden');
+                dropdown.dataset.currentId = '';
+            }
+        }
+
+        function printApprovalDoc(id) {
+            const item = APPROVALS_DATA.find(x => x.id === id);
+            if (!item) return;
+            showToast(`កំពុងរៀបចំបោះពុម្ព៖ ${item.title}`, 'info');
+            setTimeout(() => {
+                window.print();
+            }, 400);
+        }
+
+        // Approval Actions
+        let pendingRemaining = 5;
+
+        function approveSingle(rowId, name) {
+            const row = document.getElementById('row-' + rowId);
+            if (!row) return;
+
+            const badge = row.querySelector('.status-badge');
+            if (badge) {
+                badge.className = 'status-badge inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-200/60';
+                badge.innerHTML = '<i class="fas fa-check text-[10px]"></i> បានអនុម័ត';
+            }
+
+            const item = APPROVALS_DATA.find(x => x.id === rowId);
+            if (item) {
+                item.status = 'approved';
+            }
+
+            pendingRemaining = Math.max(0, pendingRemaining - 1);
+            updatePendingDisplay();
+            if (window.BMSActionTracker) {
+                window.BMSActionTracker.record({
+                    type: 'approve',
+                    title: `បានអនុម័តសំណើ៖ ${name}`,
+                    detail: `ប្រតិបត្តិការ #${rowId} ត្រូវបានអនុម័តដោយ សុខ ចាន់ថន`,
+                    badge: 'បានអនុម័ត',
+                    badgeClass: 'bg-emerald-50 text-emerald-700 border border-emerald-200/60'
+                });
+            }
+            showToast(`បានអនុម័ត ${name} ដោយជោគជ័យ`, 'success');
+        }
+
+        function rejectSingle(rowId, name) {
+            showCustomConfirm({
+                title: 'បដិសេធសំណើ',
+                message: `តើអ្នកពិតជាចង់បដិសេធប្រតិបត្តិការ "${name}" មែនទេ?`,
+                okText: 'បដិសេធ',
+                danger: true,
+                onConfirm: () => {
+                    const row = document.getElementById('row-' + rowId);
+                    if (!row) return;
+
+                    const badge = row.querySelector('.status-badge');
+                    if (badge) {
+                        badge.className = 'status-badge inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-rose-50 text-rose-700 border border-rose-200/60';
+                        badge.innerHTML = '<i class="fas fa-xmark text-[10px]"></i> បានបដិសេធ';
+                    }
+
+                    const item = APPROVALS_DATA.find(x => x.id === rowId);
+                    if (item) {
+                        item.status = 'rejected';
+                    }
+
+                    pendingRemaining = Math.max(0, pendingRemaining - 1);
+                    updatePendingDisplay();
+
+                    if (window.BMSActionTracker) {
+                        window.BMSActionTracker.record({
+                            type: 'reject',
+                            title: `បានបដិសេធសំណើ៖ ${name}`,
+                            detail: `ប្រតិបត្តិការ #${rowId} ត្រូវបានបដិសេធដោយ សុខ ចាន់ថន`,
+                            badge: 'បានបដិសេធ',
+                            badgeClass: 'bg-rose-50 text-rose-700 border border-rose-200/60'
+                        });
+                    }
+                    showToast(`បានបដិសេធ ${name} រួចរាល់`, 'error');
+                }
+            });
+        }
+
+        function approveAllPending() {
+            showCustomConfirm({
+                title: 'អនុម័តប្រតិបត្តិការទាំងអស់',
+                message: 'តើអ្នកពិតជាចង់អនុម័តរាល់សំណើ និងប្រតិបត្តិការដែលកំពុងរង់ចាំទាំងអស់មែនទេ?',
+                okText: 'អនុម័តទាំងអស់',
+                danger: false,
+                onConfirm: () => {
+                    document.querySelectorAll('#approvalRows tr').forEach(row => {
+                        const badge = row.querySelector('.status-badge');
+                        if (badge && !badge.textContent.includes('បានបដិសេធ')) {
+                            badge.className = 'status-badge inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-200/60';
+                            badge.innerHTML = '<i class="fas fa-check text-[10px]"></i> បានអនុម័ត';
+                        }
+                    });
+                    APPROVALS_DATA.forEach(item => {
+                        if (item.status === 'pending') {
+                            item.status = 'approved';
+                        }
+                    });
+                    pendingRemaining = 0;
+                    updatePendingDisplay();
+
+                    if (window.BMSActionTracker) {
+                        window.BMSActionTracker.record({
+                            type: 'approve_all',
+                            title: 'បានអនុម័តរាល់ប្រតិបត្តិការទាំងអស់',
+                            detail: 'បានអនុម័ត 5 សំណើដែលកំពុងរង់ចាំក្នុងពេលតែមួយ',
+                            badge: 'អនុម័តទាំងអស់',
+                            badgeClass: 'bg-emerald-50 text-emerald-700 border border-emerald-200/60'
+                        });
+                    }
+                    showToast('បានអនុម័តរាល់ប្រតិបត្តិការទាំងអស់ដោយជោគជ័យ!', 'success');
+                }
+            });
+        }
+
+        function updatePendingDisplay() {
+            const kpi = document.getElementById('kpiPendingCount');
+            if (kpi) kpi.textContent = `${pendingRemaining} ប្រតិបត្តិការ`;
+            const btn = document.getElementById('btnApproveAll');
+            if (btn) {
+                if (pendingRemaining === 0) {
+                    btn.disabled = true;
+                    btn.classList.add('opacity-50', 'cursor-not-allowed');
+                } else {
+                    btn.disabled = false;
+                    btn.classList.remove('opacity-50', 'cursor-not-allowed');
+                }
+            }
+        }
+
+        window.resetApprovalsToDefault = function() {
+            pendingRemaining = 5;
+            APPROVALS_DATA.forEach((item, index) => {
+                item.status = index === 5 ? 'rejected' : 'pending';
+                const row = document.getElementById('row-' + item.id);
+                if (row) {
+                    const badge = row.querySelector('.status-badge');
+                    if (badge) {
+                        if (item.status === 'pending') {
+                            badge.className = 'status-badge inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-amber-50 text-amber-700 border border-amber-200/60';
+                            badge.innerHTML = '<i class="fas fa-hourglass-half text-[10px]"></i> រង់ចាំពិនិត្យ';
+                        } else if (item.status === 'rejected') {
+                            badge.className = 'status-badge inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-rose-50 text-rose-700 border border-rose-200/60';
+                            badge.innerHTML = '<i class="fas fa-xmark text-[10px]"></i> បានបដិសេធ';
+                        }
+                    }
+                }
+            });
+            updatePendingDisplay();
+        };
+
+        window.addEventListener('bmsActionReset', () => {
+            if (typeof window.resetApprovalsToDefault === 'function') {
+                window.resetApprovalsToDefault();
+            }
+        });
+
+
+        // Date Picker Implementation (Standard DIGITECHKH)
+        let currentCalMonth = 8; // September (0-indexed)
+        let currentCalYear = 2025;
+        const khmerMonths = ['មករា', 'កុម្ភៈ', 'មីនា', 'មេសា', 'ឧសភា', 'មិថុនា', 'កក្កដា', 'សីហា', 'កញ្ញា', 'តុលា', 'វិច្ឆិកា', 'ធ្នូ'];
+
+        function toggleDatePicker(e) {
+            if (e) e.stopPropagation();
+            const popover = document.getElementById('datePickerPopover');
+            const chevron = document.getElementById('datePickerChevron');
+            popover.classList.toggle('hidden');
+            chevron.classList.toggle('rotate-180');
+            if (!popover.classList.contains('hidden')) {
+                renderCalendarGrid();
+            }
+        }
+
+        function changeCalendarMonth(delta) {
+            currentCalMonth += delta;
+            if (currentCalMonth > 11) {
+                currentCalMonth = 0;
+                currentCalYear++;
+            } else if (currentCalMonth < 0) {
+                currentCalMonth = 11;
+                currentCalYear--;
+            }
+            renderCalendarGrid();
+        }
+
+        function renderCalendarGrid() {
+            const label = document.getElementById('calendarMonthYearLabel');
+            if (label) label.textContent = `${khmerMonths[currentCalMonth]} ${currentCalYear}`;
+
+            const grid = document.getElementById('calendarDaysGrid');
+            if (!grid) return;
+            grid.innerHTML = '';
+
+            const firstDay = new Date(currentCalYear, currentCalMonth, 1).getDay();
+            const startCol = firstDay === 0 ? 6 : firstDay - 1; // Monday start
+            const daysInMonth = new Date(currentCalYear, currentCalMonth + 1, 0).getDate();
+
+            for (let i = 0; i < startCol; i++) {
+                grid.innerHTML += `<span class="py-1 text-slate-200"></span>`;
+            }
+
+            for (let day = 1; day <= daysInMonth; day++) {
+                const isSelected = (day >= 1 && day <= 30 && currentCalMonth === 8 && currentCalYear === 2025);
+                const isBoundary = (day === 1 || day === 30) && currentCalMonth === 8 && currentCalYear === 2025;
+
+                let cls = 'py-1 rounded-lg hover:bg-slate-100 cursor-pointer transition text-slate-700';
+                if (isBoundary) {
+                    cls = 'py-1 rounded-lg bg-[#0f2b5c] text-white font-bold cursor-pointer';
+                } else if (isSelected) {
+                    cls = 'py-1 bg-slate-100 text-slate-800 cursor-pointer';
+                }
+
+                grid.innerHTML += `<button type="button" onclick="selectDay(${day})" class="${cls}">${day}</button>`;
+            }
+        }
+
+        function selectDay(day) {
+            document.getElementById('selectedRangeTag').textContent = `${day} ${khmerMonths[currentCalMonth]}`;
+        }
+
+        function selectPreset(preset) {
+            document.querySelectorAll('.preset-btn').forEach(btn => {
+                btn.className = 'preset-btn text-left px-2.5 py-1.5 rounded-lg text-xs hover:bg-slate-100 text-slate-600 transition-colors';
+            });
+            event.currentTarget.className = 'preset-btn text-left px-2.5 py-1.5 rounded-lg text-xs bg-[#0f2b5c] text-white font-medium transition-colors';
+            const presetName = event.currentTarget.textContent;
+            document.getElementById('selectedRangeTag').textContent = presetName;
+        }
+
+        function applyDateRange() {
+            const tag = document.getElementById('selectedRangeTag').textContent;
+            document.getElementById('selectedDateLabel').textContent = tag;
+            toggleDatePicker();
+            showToast(`បានអនុវត្តកាលបរិច្ឆេទ៖ ${tag}`, 'success');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCalendarGrid();
+        });
+    </script>
+
+    <!-- Unified Sidebar Script -->
+    <script src="../../scripts/ui-components.js"></script>
+    <script src="../../scripts/sidebar.js"></script>
+</body>
+
+</html>

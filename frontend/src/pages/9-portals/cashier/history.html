@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - ប្រវត្តិលក់ថ្ងៃនេះ (POS History)</title>
+    <link rel="icon" type="image/png" href="../../../assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#065f46",
+                        lime: "#84cc16",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../styles/custom.css">
+</head>
+<body class="bg-slate-100 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <aside class="w-20 lg:w-60 bg-[#065f46] text-white flex flex-col flex-shrink-0 z-20 border-r border-emerald-800">
+        <div class="h-[72px] px-4 lg:px-6 flex items-center justify-between border-b border-white/10 flex-shrink-0">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-lime-400/20 border border-lime-400/30 flex items-center justify-center p-1 shadow-sm overflow-hidden flex-shrink-0">
+                    <img src="../../../assets/logo-mark-transparent.png" alt="DIGITECHKH" class="w-full h-full object-contain">
+                </div>
+                <div class="hidden lg:block">
+                    <h1 class="text-lg font-semibold tracking-wider whitespace-nowrap text-white">DIGITECHKH</h1>
+                    <span class="text-[11px] font-medium text-lime-300 uppercase tracking-wider block">គិតប្រាក់ (POS)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="hidden lg:block px-5 py-3 border-b border-white/5 bg-black/15">
+            <div class="flex items-center justify-between">
+                <span class="text-xs text-emerald-200">តួនាទី:</span>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-lime-500/20 text-lime-200 border border-lime-400/30">
+                    <i class="fas fa-cash-register text-[10px]"></i> អ្នកគិតប្រាក់
+                </span>
+            </div>
+        </div>
+
+        <nav class="flex-1 overflow-y-auto px-2 lg:px-4 py-4 space-y-2 scrollbar-hide text-sm">
+            <a href="dashboard.html" class="flex items-center justify-center lg:justify-start p-3 text-emerald-100 hover:bg-white/10 hover:text-white rounded-xl transition-all" title="ផ្ទាំងគិតប្រាក់">
+                <i class="fas fa-cash-register w-6 text-center text-lime-300 text-lg"></i>
+                <span class="ml-3 text-[15px] hidden lg:inline">ផ្ទាំងគិតប្រាក់</span>
+            </a>
+
+            <a href="history.html" class="flex items-center justify-center lg:justify-start p-3 bg-white/15 text-lime-200 font-medium rounded-xl shadow-sm transition-all border border-white/10" title="ប្រវត្តិការលក់ថ្ងៃនេះ">
+                <i class="fas fa-clock-rotate-left w-6 text-center text-lime-300 text-lg"></i>
+                <span class="ml-3 text-[15px] hidden lg:inline">លក់ថ្ងៃនេះ</span>
+            </a>
+        </nav>
+
+        <div class="p-3 lg:p-4 border-t border-white/10 bg-black/15">
+            <a href="../../1-login/login.html" class="flex items-center justify-center lg:justify-start text-[14px] text-emerald-200 hover:text-rose-300 transition-colors p-2 rounded-lg hover:bg-white/5">
+                <i class="fas fa-arrow-right-from-bracket w-6 mr-0 lg:mr-2 text-center"></i>
+                <span class="hidden lg:inline">ចេញពីវេន</span>
+            </a>
+        </div>
+    </aside>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div>
+                <h2 class="text-xl font-semibold text-gray-800 leading-tight">ប្រវត្តិនៃការលក់ថ្ងៃនេះ (Today's Transactions)</h2>
+                <p class="text-xs font-normal text-gray-500 mt-0.5">ទិន្នន័យក្នុងវេនការងារបច្ចុប្បន្ន (17 កញ្ញា 2026)</p>
+            </div>
+            
+            <div class="flex items-center space-x-3">
+                <a href="dashboard.html" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#065f46] hover:bg-[#044332] text-white font-medium text-xs shadow-sm transition">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>ត្រឡប់ទៅផ្ទាំងគិតប្រាក់</span>
+                </a>
+            </div>
+        </header>
+
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-4">
+            <div class="w-full space-y-4">
+                
+                <!-- Today Summary Cards -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm">
+                        <span class="text-xs font-medium text-slate-500 block">វិក្កយបត្រសរុបថ្ងៃនេះ</span>
+                        <h4 class="text-2xl font-bold text-slate-800 mt-1">18 វិក្កយបត្រ</h4>
+                    </div>
+                    <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm">
+                        <span class="text-xs font-medium text-slate-500 block">សាច់ប្រាក់ក្នុងថតប្រាក់</span>
+                        <h4 class="text-2xl font-bold text-emerald-700 mt-1">$284.50</h4>
+                    </div>
+                    <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm">
+                        <span class="text-xs font-medium text-slate-500 block">ទូទាត់តាម KHQR ធនាគារ</span>
+                        <h4 class="text-2xl font-bold text-blue-700 mt-1">$144.00</h4>
+                    </div>
+                </div>
+
+                <!-- Transactions Table -->
+                <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm">
+                            <thead class="bg-slate-50 text-slate-500 uppercase text-[11px] font-semibold border-b border-slate-100">
+                                <tr>
+                                    <th class="py-3 px-4">ម៉ោង</th>
+                                    <th class="py-3 px-4">លេខវិក្កយបត្រ</th>
+                                    <th class="py-3 px-4">ចំនួនមុខទំនិញ</th>
+                                    <th class="py-3 px-4">វិធីទូទាត់</th>
+                                    <th class="py-3 px-4">ទឹកប្រាក់សរុប</th>
+                                    <th class="py-3 px-4 text-right">សកម្មភាព</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 text-slate-700 font-medium text-xs">
+                                <tr class="hover:bg-slate-50 transition">
+                                    <td class="py-3.5 px-4 text-slate-500">14:22</td>
+                                    <td class="py-3.5 px-4 font-bold text-slate-800">POS-2026-0018</td>
+                                    <td class="py-3.5 px-4">2 មុខ</td>
+                                    <td class="py-3.5 px-4"><span class="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-semibold">សាច់ប្រាក់</span></td>
+                                    <td class="py-3.5 px-4 font-bold text-emerald-700 text-sm">$19.80</td>
+                                    <td class="py-3.5 px-4 text-right">
+                                        <button onclick="showToast('កំពុងបោះពុម្ពវិក្កយបត្រឡើងវិញ...', 'info')" class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium transition inline-flex items-center gap-1">
+                                            <i class="fas fa-print"></i> បោះពុម្ពឡើងវិញ
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-slate-50 transition">
+                                    <td class="py-3.5 px-4 text-slate-500">13:50</td>
+                                    <td class="py-3.5 px-4 font-bold text-slate-800">POS-2026-0017</td>
+                                    <td class="py-3.5 px-4">1 មុខ</td>
+                                    <td class="py-3.5 px-4"><span class="px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 font-semibold">KHQR</span></td>
+                                    <td class="py-3.5 px-4 font-bold text-emerald-700 text-sm">$75.00</td>
+                                    <td class="py-3.5 px-4 text-right">
+                                        <button onclick="showToast('កំពុងបោះពុម្ពវិក្កយបត្រឡើងវិញ...', 'info')" class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium transition inline-flex items-center gap-1">
+                                            <i class="fas fa-print"></i> បោះពុម្ពឡើងវិញ
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../scripts/ui-components.js"></script>
+</body>
+</html>

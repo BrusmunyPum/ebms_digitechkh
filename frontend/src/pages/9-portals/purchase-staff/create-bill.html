@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - បង្កើតការបញ្ជាទិញចូល (Purchase Order)</title>
+    <link rel="icon" type="image/png" href="../../../assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1e3a8a",
+                        accent: "#38bdf8",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../styles/custom.css">
+</head>
+<body class="bg-slate-50 font-sans text-slate-800 text-[16px] flex h-screen overflow-hidden">
+
+    <!-- Purchase Staff Sidebar -->
+    <aside class="w-64 bg-[#1e3a8a] text-white flex flex-col flex-shrink-0 select-none z-20 border-r border-blue-900">
+        <div class="h-[72px] px-6 flex items-center justify-between border-b border-white/10 flex-shrink-0">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-sky-400/20 border border-sky-400/30 flex items-center justify-center p-1 shadow-sm overflow-hidden flex-shrink-0">
+                    <img src="../../../assets/logo-mark-transparent.png" alt="DIGITECHKH" class="w-full h-full object-contain">
+                </div>
+                <div>
+                    <h1 class="text-lg font-semibold tracking-wider whitespace-nowrap text-white">DIGITECHKH</h1>
+                    <span class="text-[11px] font-medium text-sky-200 uppercase tracking-wider block">បុគ្គលិកផ្នែកទិញ</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="px-5 py-3 border-b border-white/5 bg-black/15">
+            <div class="flex items-center justify-between">
+                <span class="text-xs text-sky-200">តួនាទី:</span>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-sky-400/10 text-sky-200 border border-sky-400/20">
+                    <i class="fas fa-cart-shopping text-[10px]"></i> Purchase Staff
+                </span>
+            </div>
+        </div>
+
+        <nav class="flex-1 overflow-y-auto px-4 py-4 space-y-1.5 scrollbar-hide text-sm">
+            <a href="dashboard.html" class="flex items-center p-3 text-sky-100 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-chart-pie w-6 text-center text-sky-300"></i>
+                <span class="ml-3 text-[15px]">ផ្ទាំងគ្រប់គ្រង</span>
+            </a>
+
+            <a href="bills.html" class="flex items-center p-3 bg-white/15 text-white font-medium rounded-xl shadow-sm transition-all whitespace-nowrap border border-white/10">
+                <i class="fas fa-receipt w-6 text-center text-sky-300"></i>
+                <span class="ml-3 text-[15px]">វិក្កយបត្របញ្ជាទិញ</span>
+            </a>
+
+            <a href="suppliers.html" class="flex items-center p-3 text-sky-100 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-truck-field w-6 text-center text-sky-300"></i>
+                <span class="ml-3 text-[15px]">អ្នកផ្គត់ផ្គង់</span>
+            </a>
+
+            <a href="disbursements.html" class="flex items-center p-3 text-sky-100 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-money-bill-transfer w-6 text-center text-sky-300"></i>
+                <span class="ml-3 text-[15px]">ប័ណ្ណចំណាយទូទាត់</span>
+            </a>
+        </nav>
+
+        <div class="p-4 border-t border-white/10 bg-black/10">
+            <a href="../../1-login/login.html" class="flex items-center text-[15px] text-sky-200 hover:text-rose-300 transition-colors p-2 rounded-lg hover:bg-white/5">
+                <i class="fas fa-arrow-right-from-bracket w-6 mr-2"></i> ចាកចេញ
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <!-- Header: h-[72px] seamless -->
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div class="flex items-center gap-4">
+                <a href="bills.html" 
+                   class="w-10 h-10 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-600 flex items-center justify-center transition border border-slate-200/70" 
+                   title="ត្រឡប់ទៅបញ្ជីវិក្កយបត្រទិញ">
+                    <i class="fas fa-arrow-left text-sm"></i>
+                </a>
+                <div>
+                    <h2 class="text-xl font-semibold text-gray-800 leading-tight">បង្កើតការបញ្ជាទិញចូល (Purchase Order)</h2>
+                    <p class="text-xs font-normal text-gray-500 mt-0.5">ចេញប័ណ្ណ PO ទៅកាន់អ្នកផ្គត់ផ្គង់ និងកំណត់ថ្ងៃដឹកចូលស្តុក</p>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-3">
+                <a href="bills.html" class="px-4 py-2.5 rounded-xl border border-slate-200 hover:bg-slate-100 text-slate-700 font-medium text-xs transition">
+                    បោះបង់
+                </a>
+                <button onclick="savePO('draft')" class="px-4 py-2.5 rounded-xl border border-[#1e3a8a] text-[#1e3a8a] hover:bg-sky-50 font-medium text-xs transition">
+                    រក្សាទុកជាព្រាង
+                </button>
+                <button onclick="savePO('send')" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#1e3a8a] hover:bg-[#172554] text-white font-medium text-xs shadow-sm transition">
+                    <i class="fas fa-paper-plane text-sky-400"></i>
+                    <span>បញ្ជូនការបញ្ជាទិញ (PO)</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Form Container -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-6">
+            <div class="w-full space-y-6">
+                
+                <!-- Section 1: Supplier & Order Details -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        <div class="md:col-span-2">
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">អ្នកផ្គត់ផ្គង់ (Supplier) <span class="text-rose-500">*</span></label>
+                            <select class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-[#1e3a8a] transition">
+                                <option>ក្រុមហ៊ុន អាប៊ីស៊ី ត្រេឌីង (កុំព្យូទ័រ និងសម្ភារៈ IT)</option>
+                                <option>ក្រុមហ៊ុន ស៊ីភីយូ ខេមបូឌា (គ្រឿងបន្លាស់កុំព្យូទ័រ)</option>
+                                <option>ដេប៉ូ ក្រដាស និងទឹកថ្នាំ ភ្នំពេញ</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">លេខប័ណ្ណ PO</label>
+                            <input type="text" value="PO-2026-0046" readonly 
+                                class="w-full bg-slate-100 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-600 font-bold outline-none">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">កាលបរិច្ឆេទបញ្ជាទិញ</label>
+                            <input type="text" value="17 កញ្ញា 2026" readonly 
+                                class="w-full bg-slate-100 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-600 font-medium outline-none">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">ឃ្លាំងទទួលទំនិញ <span class="text-rose-500">*</span></label>
+                            <select class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-[#1e3a8a] transition">
+                                <option>ឃ្លាំងកណ្តាល (ភ្នំពេញ)</option>
+                                <option>ឃ្លាំងទួលគោក</option>
+                                <option>ឃ្លាំងសៀមរាប</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">ថ្ងៃរំពឹងទុកទំនិញមកដល់</label>
+                            <input type="date" value="2026-09-22" 
+                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-[#1e3a8a] transition">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">លក្ខខណ្ឌទូទាត់</label>
+                            <select class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-[#1e3a8a] transition">
+                                <option>ទូទាត់ពេលទទួលទំនិញ (COD)</option>
+                                <option selected>ជំពាក់ 30 ថ្ងៃ (Net 30)</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">បុគ្គលិកផ្នែកទិញ</label>
+                            <input type="text" value="គង់ វិចិត្រ" readonly 
+                                class="w-full bg-slate-100 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-600 font-medium outline-none">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2: Items Table -->
+                <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+                    <div class="p-4 border-b border-slate-100 flex items-center justify-between">
+                        <h3 class="font-semibold text-slate-800 text-sm">មុខទំនិញបញ្ជាទិញចូល</h3>
+                        <button class="px-3 py-1.5 rounded-xl bg-sky-50 text-sky-800 hover:bg-sky-100 border border-sky-200 text-xs font-semibold transition inline-flex items-center gap-1.5">
+                            <i class="fas fa-plus text-[10px]"></i> បន្ថែមមុខទំនិញ
+                        </button>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs">
+                            <thead class="bg-slate-50 text-slate-500 uppercase text-[11px] font-semibold border-b border-slate-100">
+                                <tr>
+                                    <th class="py-3 px-4 w-12 text-center">#</th>
+                                    <th class="py-3 px-4">មុខទំនិញ</th>
+                                    <th class="py-3 px-4 w-28 text-center">ចំនួនទិញ</th>
+                                    <th class="py-3 px-4 w-36 text-right">ថ្លៃដើមទិញ ($)</th>
+                                    <th class="py-3 px-4 w-36 text-right">សរុប ($)</th>
+                                    <th class="py-3 px-4 w-16 text-center">លុប</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 text-slate-700 font-medium">
+                                <tr>
+                                    <td class="py-3 px-4 text-center text-slate-400 font-bold">1</td>
+                                    <td class="py-3 px-4 font-semibold text-slate-800">កុំព្យូទ័រ Dell OptiPlex 7010</td>
+                                    <td class="py-3 px-4 text-center font-bold">10 ឈុត</td>
+                                    <td class="py-3 px-4 text-right font-semibold">$520.00</td>
+                                    <td class="py-3 px-4 text-right font-bold text-slate-800 text-sm">$5,200.00</td>
+                                    <td class="py-3 px-4 text-center text-slate-400 hover:text-rose-500 cursor-pointer"><i class="fas fa-trash-can"></i></td>
+                                </tr>
+                                <tr>
+                                    <td class="py-3 px-4 text-center text-slate-400 font-bold">2</td>
+                                    <td class="py-3 px-4 font-semibold text-slate-800">កណ្ដុរឥតខ្សែ Logitech M331</td>
+                                    <td class="py-3 px-4 text-center font-bold">50 គ្រឿង</td>
+                                    <td class="py-3 px-4 text-right font-semibold">$12.50</td>
+                                    <td class="py-3 px-4 text-right font-bold text-slate-800 text-sm">$625.00</td>
+                                    <td class="py-3 px-4 text-center text-slate-400 hover:text-rose-500 cursor-pointer"><i class="fas fa-trash-can"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Section 3: Summary -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm flex flex-col md:flex-row justify-between gap-6">
+                    <div class="flex-1 space-y-3">
+                        <label class="block text-xs font-semibold text-slate-700">សេចក្តីណែនាំដល់អ្នកផ្គត់ផ្គង់ (Delivery Instructions)</label>
+                        <textarea rows="3" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-xs text-slate-800 focus:outline-none focus:border-[#1e3a8a] transition resize-none" placeholder="ឧ. សូមដឹកជញ្ជូននៅម៉ោងធ្វើការ 08:30 - 16:30 និងភ្ជាប់មកជាមួយប័ណ្ណប្រគល់ទំនិញ..."></textarea>
+                    </div>
+
+                    <div class="w-full md:w-80 space-y-2.5 text-xs">
+                        <div class="flex justify-between text-slate-600">
+                            <span>1. សរុបរងមុខទំនិញ:</span>
+                            <span class="font-semibold text-slate-800">$5,825.00</span>
+                        </div>
+                        <div class="flex justify-between text-slate-600">
+                            <span>2. ចូលរួមមុន (Down Payment):</span>
+                            <span class="font-semibold text-slate-800">$0.00</span>
+                        </div>
+                        <div class="flex justify-between text-slate-600">
+                            <span>3. ការបញ្ចុះតម្លៃពីអ្នកផ្គត់ផ្គង់:</span>
+                            <span class="font-semibold text-rose-600">-$0.00</span>
+                        </div>
+                        <div class="flex justify-between text-slate-600">
+                            <span>4. អាករលើតម្លៃបន្ថែម (អតប 10%):</span>
+                            <span class="font-semibold text-slate-800">$582.50</span>
+                        </div>
+                        <div class="flex justify-between pt-3 border-t border-slate-200 text-sm font-bold text-slate-900">
+                            <span>5. ទឹកប្រាក់សរុបចុងក្រោយ:</span>
+                            <span class="text-[#1e3a8a] text-lg font-bold">$6,407.50</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../scripts/ui-components.js"></script>
+    <script>
+        function savePO(type) {
+            if (type === 'send') {
+                showToast('បានបញ្ជូនការបញ្ជាទិញ PO-2026-0046 ទៅកាន់អ្នកផ្គត់ផ្គង់ជោគជ័យ!', 'success');
+            } else {
+                showToast('បានរក្សាទុកជាព្រាង PO រួចរាល់', 'info');
+            }
+            setTimeout(() => {
+                window.location.href = 'bills.html';
+            }, 1200);
+        }
+    </script>
+</body>
+</html>
