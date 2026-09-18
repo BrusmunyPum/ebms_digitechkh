@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>មជ្ឈមណ្ឌលឯកសារប្រព័ន្ធមេ - DIGITECHKH BMS Documentation Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Kantumruy Pro', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0f2b5c',
+                        primaryHover: '#0a1d3f',
+                        accent: '#2563eb',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Kantumruy Pro', sans-serif;
+            color: #334155;
+            background-color: #f8fafc;
+        }
+        ::-webkit-scrollbar { display: none; }
+        * { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- Header -->
+    <header class="bg-primary text-white py-6 px-8 shadow-md">
+        <div class="max-w-6xl mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-3.5">
+                <div class="w-11 h-11 rounded-xl bg-white/10 flex items-center justify-center font-bold text-lg border border-white/15">
+                    DKH
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold tracking-wide">DIGITECHKH BMS</h1>
+                    <p class="text-xs text-slate-300">មជ្ឈមណ្ឌលឯកសារ និងកញ្ចប់ចែកចាយប្រព័ន្ធផ្លូវការ</p>
+                </div>
+            </div>
+            <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-semibold border border-emerald-400/30">
+                <i class="fas fa-shield-halved mr-1"></i> កំណែ 1.0 ផ្លូវការ
+            </span>
+        </div>
+    </header>
+
+    <!-- Main Content Grid -->
+    <main class="max-w-6xl mx-auto w-full px-6 py-12 flex-1">
+        
+        <div class="text-center max-w-2xl mx-auto mb-12">
+            <span class="text-xs uppercase tracking-widest text-accent font-bold px-3 py-1 rounded-md bg-blue-50 border border-blue-200 inline-block mb-3">
+                Master Delivery Suite
+            </span>
+            <h2 class="text-3xl font-extrabold text-slate-900 mb-3">
+                កញ្ចប់ឯកសារប្រព័ន្ធមេ បែងចែកតាមផ្នែក
+            </h2>
+            <p class="text-sm text-slate-600 leading-relaxed">
+                ឯកសារទាំងអស់ត្រូវបានបែងចែកជាផ្នែកៗដាច់ដោយឡែកពីគ្នា ងាយស្រួលបើកអាន រក្សាទុក និងយកទៅប្រើប្រាស់ជាក់ស្តែងជាមួយក្រុមការងារ និងអតិថិជន។
+            </p>
+        </div>
+
+        <!-- Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- Card 1: E-Commerce Digital Showroom (NEW) -->
+            <a href="DIGITECHKH-Ecommerce-Showroom-Website.html" class="p-6 rounded-2xl bg-white border-2 border-pink-500/60 hover:border-pink-600 shadow-sm hover:shadow-xl transition group flex flex-col justify-between relative overflow-hidden">
+                <span class="absolute top-3 right-3 px-2.5 py-0.5 rounded-full bg-pink-100 text-pink-700 font-bold text-[10px]">
+                    ថ្មី · Interactive Store
+                </span>
+                <div>
+                    <div class="w-12 h-12 rounded-xl bg-pink-50 text-pink-600 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-pink-600 transition">
+                        1. បន្ទប់តាំងបង្ហាញទំនិញឌីជីថល
+                    </h3>
+                    <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                        គេហទំព័រតាំងបង្ហាញទំនិញ គ្មានការកាត់កាតស្មុគស្មាញ មានប៊ូតុង «ទាក់ទងអ្នកលក់» ភ្ជាប់ការជជែកផ្ទាល់ ឬ Telegram និងចេញសម្រង់តម្លៃបាគង KHQR 1 ចុច។
+                    </p>
+                </div>
+                <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-pink-600">
+                    <span>បើកមើលគេហទំព័រផ្ទាល់</span>
+                    <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </a>
+
+            <!-- Card 2: Slide Presentation -->
+            <a href="DIGITECHKH-BMS-Executive-Presentation.html" class="p-6 rounded-2xl bg-white border border-slate-200 hover:border-primary shadow-sm hover:shadow-xl transition group flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-chalkboard"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-primary transition">
+                        2. ស្លាយបទបង្ហាញប្រតិបត្តិ (18 ស្លាយ)
+                    </h3>
+                    <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                        ស្លាយបទបង្ហាញអក្សរធំច្បាស់ (24px-32px) រូបតំណាងស្អាត ភស្តុតាងអាជីវកម្ម គុណតម្លៃ ROI និងការបង្ហាញគំរូ 3 នាទី។
+                    </p>
+                </div>
+                <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-primary">
+                    <span>បើកស្លាយបទបង្ហាញ</span>
+                    <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </a>
+
+            <!-- Card 3: Sales Pitch & Client Strategy -->
+            <a href="DIGITECHKH-Sales-Pitch-And-Client-Strategy.html" class="p-6 rounded-2xl bg-white border border-slate-200 hover:border-primary shadow-sm hover:shadow-xl transition group flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 rounded-xl bg-cyan-50 text-cyan-600 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-primary transition">
+                        3. យុទ្ធសាស្ត្រលក់ & ក្បួនសន្ទនា
+                    </h3>
+                    <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                        សៀវភៅណែនាំសម្រាប់អ្នកលក់ ចិត្តសាស្ត្រម្ចាស់ហាងខ្មែរ រូបមន្ត Wow Demo 3 នាទី ក្បួនដោះស្រាយការជំទាស់កំពូលទាំង 5 និងកញ្ចប់តម្លៃ។
+                    </p>
+                </div>
+                <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-primary">
+                    <span>បើកសៀវភៅយុទ្ធសាស្ត្រ</span>
+                    <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </a>
+
+            <!-- Card 4: Architecture & System Scope -->
+            <a href="DIGITECHKH-System-Architecture-Overview.html" class="p-6 rounded-2xl bg-white border border-slate-200 hover:border-primary shadow-sm hover:shadow-xl transition group flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-sitemap"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-primary transition">
+                        4. ស្ថាបត្យកម្ម & វិសាលភាពប្រព័ន្ធ
+                    </h3>
+                    <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                        ស្ថាបត្យកម្ម 4 ស្រទាប់ ម៉ូឌុលស្នូលទាំង 9 ម៉ាទ្រីសសិទ្ធិ 12 តួនាទីដាច់ណាត់គ្មានការលេចធ្លាយ និងលំហូរអាជីវកម្ម 8 វដ្ត។
+                    </p>
+                </div>
+                <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-primary">
+                    <span>បើកមើលស្ថាបត្យកម្ម</span>
+                    <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </a>
+
+            <!-- Card 5: Delivery Checklist & Recommendations -->
+            <a href="DIGITECHKH-Delivery-Checklist-And-Recommendations.html" class="p-6 rounded-2xl bg-white border border-slate-200 hover:border-primary shadow-sm hover:shadow-xl transition group flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-primary transition">
+                        5. បញ្ជីត្រួតពិនិត្យ & អនុសាសន៍
+                    </h3>
+                    <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                        សវនកម្មស្តង់ដារ 100% បញ្ជីត្រួតពិនិត្យ 5 ដំណាក់កាល (D-30, D-7, D-1, D-0, T+30) និងអនុសាសន៍អ្នកជំនាញ 4 ផ្នែក។
+                    </p>
+                </div>
+                <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-primary">
+                    <span>បើកមើលបញ្ជីត្រួតពិនិត្យ</span>
+                    <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </a>
+
+            <!-- Card 6: All-In-One Printable PDF Master Doc -->
+            <a href="DIGITECHKH-BMS-Official-System-Documentation.html" class="p-6 rounded-2xl bg-white border border-slate-200 hover:border-primary shadow-sm hover:shadow-xl transition group flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-primary transition">
+                        6. កញ្ចប់ឯកសារផ្លូវការរួម A4 (All-in-One)
+                    </h3>
+                    <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                        ឯកសារមេពេញលេញ 10 ផ្នែក រួមបញ្ចូលទាំងមាតិកា គម្របផ្លូវការ និងកំណត់ហេតុចុះហត្ថលេខាទទួលយក សម្រាប់បោះពុម្ពជា PDF។
+                    </p>
+                </div>
+                <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-primary">
+                    <span>បើកឯកសារផ្លូវការ A4</span>
+                    <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </a>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-6 px-8 text-center text-xs text-slate-500">
+        <p>រក្សាសិទ្ធិគ្រប់យ៉ាង © 2026 ក្រុមហ៊ុន ឌីជីថេក ខេអេច (DIGITECHKH Co., Ltd.) · ព្រះរាជាណាចក្រកម្ពុជា</p>
+    </footer>
+
+</body>
+</html>

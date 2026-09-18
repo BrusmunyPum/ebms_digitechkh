@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ស្ថាបត្យកម្មប្រព័ន្ធ និងវិសាលភាពស្នូល - DIGITECHKH BMS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Kantumruy Pro', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0f2b5c',
+                        primaryHover: '#0a1d3f',
+                        accent: '#2563eb',
+                    }
+                }
+            }
+        }
+        mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+    </script>
+    <style>
+        body {
+            font-family: 'Kantumruy Pro', sans-serif;
+            color: #334155;
+            background-color: #f1f5f9;
+        }
+        @media print {
+            .no-print { display: none !important; }
+            body { background-color: #ffffff; }
+            .print-page { page-break-after: always; box-shadow: none !important; border: none !important; margin: 0 !important; width: 100% !important; }
+            .avoid-break { page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-primary selection:text-white">
+
+    <!-- Top Control Bar -->
+    <div class="no-print fixed top-0 left-0 right-0 h-14 bg-primary text-white z-50 px-6 flex items-center justify-between shadow-md">
+        <div class="flex items-center gap-3">
+            <a href="DIGITECHKH-Documentation-Hub.html" class="text-white hover:text-cyan-300 transition flex items-center gap-1.5 text-xs font-semibold">
+                <i class="fas fa-arrow-left"></i> ត្រឡប់ទៅមជ្ឈមណ្ឌលឯកសារ
+            </a>
+            <span class="text-white/30">|</span>
+            <span class="font-medium text-xs text-slate-200">ផ្នែកទី 1៖ ស្ថាបត្យកម្មប្រព័ន្ធ និងវិសាលភាពស្នូល</span>
+        </div>
+        <div class="flex items-center gap-3">
+            <button onclick="window.print()" class="px-3.5 py-1.5 bg-white text-primary hover:bg-slate-100 rounded-lg text-xs font-semibold shadow-sm transition flex items-center gap-1.5 cursor-pointer">
+                <i class="fas fa-print"></i> បោះពុម្ព A4
+            </button>
+        </div>
+    </div>
+
+    <!-- Document Container -->
+    <div class="max-w-[920px] mx-auto my-6 sm:my-20 bg-white shadow-xl rounded-2xl overflow-hidden border border-slate-200 print:shadow-none print:border-none print:m-0 print:rounded-none">
+
+        <!-- Header Block -->
+        <div class="p-10 sm:p-14 border-b border-slate-100 bg-slate-50/50">
+            <div class="flex items-center justify-between border-b-2 border-primary pb-4 mb-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-primary text-white flex items-center justify-center font-bold text-base shadow">
+                        DKH
+                    </div>
+                    <div>
+                        <h1 class="text-lg font-bold text-primary">DIGITECHKH BMS</h1>
+                        <p class="text-[11px] text-slate-500 font-medium">Enterprise Software Solutions</p>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <span class="text-xs font-semibold px-3 py-1 rounded-full bg-slate-100 text-slate-700 border border-slate-200">
+                        កូដ៖ DIGI-SPEC-ARCH-2026
+                    </span>
+                    <p class="text-[11px] text-slate-400 mt-1">កាលបរិច្ឆេទ៖ 17 កញ្ញា 2026</p>
+                </div>
+            </div>
+
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-2">
+                ស្ថាបត្យកម្មប្រព័ន្ធ និងវិសាលភាពមុខងារស្នូល
+            </h2>
+            <p class="text-sm text-slate-600 leading-relaxed max-w-2xl">
+                ឯកសារបញ្ជាក់លក្ខណៈបច្ចេកទេសលម្អិតនៃស្ថាបត្យកម្ម 4 ស្រទាប់ ម៉ូឌុលអាជីវកម្មស្នូលទាំង 9 ម៉ាទ្រីសសិទ្ធិ 12 តួនាទី និងវដ្តជីវិតលំហូរអាជីវកម្មតភ្ជាប់គ្នាពេញលេញ។
+            </p>
+        </div>
+
+        <!-- Section 1: Executive Summary & Core Value -->
+        <div class="p-10 sm:p-14 border-b border-slate-100">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="w-8 h-8 rounded-lg bg-primary text-white flex items-center justify-center font-bold text-sm">1</span>
+                <h3 class="text-xl font-bold text-primary">សេចក្តីសង្ខេបប្រតិបត្តិ និងគុណតម្លៃស្នូល</h3>
+            </div>
+            <p class="text-sm text-slate-700 leading-relaxed mb-6">
+                ប្រព័ន្ធ <b>DIGITECHKH Business Management System (BMS)</b> ត្រូវបានសាងសង់ឡើងដើម្បីដោះស្រាយបញ្ហាប្រឈមធំបំផុតរបស់សហគ្រាសនៅកម្ពុជា គឺការបែកខ្ញែកទិន្នន័យ (Data Silos) រវាងផ្នែកលក់ ឃ្លាំងស្តុក និងគណនេយ្យ។ តាមរយៈប្រភពទិន្នន័យរួមតែមួយ (Single Source of Truth) ប្រព័ន្ធធានាបាននូវការទប់ស្កាត់ការលេចធ្លាយប្រាក់ចំណេញ 5% ទៅ 15% ជារៀងរាល់ខែ និងកាត់បន្ថយកំហុសមនុស្សឱ្យនៅសល់ 0%។
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+                <div class="p-4 rounded-xl bg-blue-50/60 border border-blue-200">
+                    <div class="font-bold text-blue-900 mb-1 flex items-center gap-1.5"><i class="fas fa-cubes"></i> ម៉ូឌុលរួមតែមួយ</div>
+                    <p class="text-slate-600">តភ្ជាប់ពីការលក់ POS ឃ្លាំងស្តុក លទ្ធកម្ម រហូតដល់គណនេយ្យទ្វេបញ្ជីស្វ័យប្រវត្តិ។</p>
+                </div>
+                <div class="p-4 rounded-xl bg-emerald-50/60 border border-emerald-200">
+                    <div class="font-bold text-emerald-900 mb-1 flex items-center gap-1.5"><i class="fas fa-shield-halved"></i> សិទ្ធិគ្មានការលេចធ្លាយ</div>
+                    <p class="text-slate-600">បែងចែក 12 តួនាទីដាច់ណាត់ បុគ្គលិកទូទៅមិនអាចលួចមើលថ្លៃដើម ឬរបាយការណ៍ចំណេញខាតឡើយ។</p>
+                </div>
+                <div class="p-4 rounded-xl bg-purple-50/60 border border-purple-200">
+                    <div class="font-bold text-purple-900 mb-1 flex items-center gap-1.5"><i class="fas fa-qrcode"></i> បទដ្ឋានជាតិនៃកម្ពុជា</div>
+                    <p class="text-slate-600">ភាសាខ្មែរសុទ្ធ 100%, បាគង ខេអេចឃ្យូអរ ពីរូបិយប័ណ្ណ, ពន្ធ អតប 10% និងបោះពុម្ព A4 ផ្លូវការ។</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: 4-Tier Enterprise Architecture -->
+        <div class="p-10 sm:p-14 border-b border-slate-100">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="w-8 h-8 rounded-lg bg-primary text-white flex items-center justify-center font-bold text-sm">2</span>
+                <h3 class="text-xl font-bold text-primary">ស្ថាបត្យកម្មប្រព័ន្ធ 4 ស្រទាប់ (4-Tier Enterprise Architecture)</h3>
+            </div>
+            <p class="text-sm text-slate-700 leading-relaxed mb-6">
+                រចនាសម្ព័ន្ធប្រព័ន្ធបែប <b>Modular Monolith / High Availability</b> ធានាបាននូវល្បឿនលឿន និងសមត្ថភាពដំណើរការបន្តទោះបីដាច់សេវាអ៊ីនធឺណិត៖
+            </p>
+
+            <div class="my-6 p-6 bg-slate-50 rounded-2xl border border-slate-200 overflow-x-auto">
+                <div class="mermaid text-center">
+flowchart TB
+    subgraph Layer1 ["ស្រទាប់ទី 1៖ ចំណុចប្រទាក់អ្នកប្រើប្រាស់ (Client UI Layer)"]
+        Web["🖥️ Web App (HTML5 / TailwindCSS / Vanilla JS)"]
+        POS["📱 POS (Offline-First / 80mm Receipt)"]
+        Showroom["🛍️ Digital Showroom & Conversational Hub"]
+        Portals["🌐 Customer & Supplier Portals"]
+    end
+
+    subgraph Layer2 ["ស្រទាប់ទី 2៖ ច្រកទ្វារ & សុវត្ថិភាព (Gateway & Security)"]
+        Nginx["🛡️ Nginx Reverse Proxy / SSL Shield"]
+        Auth["🔐 Multi-Role RBAC Scope Guard"]
+    end
+
+    subgraph Layer3 ["ស្រទាប់ទី 3៖ សេវាកម្មអាជីវកម្មស្នូល (Business Logic Engines)"]
+        SalesSvc["💼 Sales & CRM"]
+        POSSvc["🛒 POS & Shift Engine"]
+        StockSvc["📦 WMS & FIFO Lots"]
+        BuySvc["🚚 Procurement 3-Way Matching"]
+        AccSvc["📊 Double-Entry Accounting"]
+        BotSvc["🤖 Telegram Business Bot"]
+    end
+
+    subgraph Layer4 ["ស្រទាប់ទី 4៖ មូលដ្ឋានទិន្នន័យ (Persistence Layer)"]
+        Postgres[("🐘 Multi-Tenant PostgreSQL")]
+        LocalCache[("⚡ LocalStorage & IndexedDB")]
+    end
+
+    Layer1 --> Layer2
+    Layer2 --> Layer3
+    Layer3 --> Layer4
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: The 9 Core Enterprise Modules -->
+        <div class="p-10 sm:p-14 border-b border-slate-100">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="w-8 h-8 rounded-lg bg-primary text-white flex items-center justify-center font-bold text-sm">3</span>
+                <h3 class="text-xl font-bold text-primary">ម៉ូឌុលមុខងារស្នូលទាំង 9 នៃប្រព័ន្ធ</h3>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+                <div class="p-4 rounded-xl border border-slate-200 bg-slate-50/50">
+                    <div class="font-bold text-primary mb-1 flex items-center gap-1.5"><i class="fas fa-chart-pie text-blue-600"></i> 1. ផ្ទាំងគ្រប់គ្រង & វិភាគទិន្នន័យ</div>
+                    <p class="text-slate-600">សូចនាករ KPI ចំណូល ចំណាយ ចំណេញសុទ្ធ សាច់ប្រាក់ក្នុងដៃពេលជាក់ស្តែង និងក្រាហ្វវិភាគ។</p>
+                </div>
+                <div class="p-4 rounded-xl border border-slate-200 bg-slate-50/50">
+                    <div class="font-bold text-primary mb-1 flex items-center gap-1.5"><i class="fas fa-file-invoice-dollar text-emerald-600"></i> 2. ទំនាក់ទំនងអតិថិជន & ការលក់</div>
+                    <p class="text-slate-600">គ្រប់គ្រងអតិថិជនសក្តានុពល ចេញសម្រង់តម្លៃ វិក្កយបត្រ ពន្ធ អតប 10% និងការចូលរួមមុន។</p>
+                </div>
+                <div class="p-4 rounded-xl border border-slate-200 bg-slate-50/50">
+                    <div class="font-bold text-primary mb-1 flex items-center gap-1.5"><i class="fas fa-cash-register text-amber-600"></i> 3. ច្រកលក់រាយ & គិតលុយ (POS)</div>
+                    <p class="text-slate-600">គិតលុយរហ័ស ដំណើរការក្រៅបណ្តាញពេលដាច់អ៊ីនធឺណិត បង្កើតបាគង KHQR និងបោះពុម្ពវិក្កយបត្រ 80mm។</p>
+                </div>
+                <div class="p-4 rounded-xl border border-slate-200 bg-slate-50/50">
+                    <div class="font-bold text-primary mb-1 flex items-center gap-1.5"><i class="fas fa-truck-ramp-box text-indigo-600"></i> 4. លទ្ធកម្ម & អ្នកផ្គត់ផ្គង់</div>
+                    <p class="text-slate-600">ចេញបញ្ជាទិញចូល (PO) គ្រប់គ្រងវិក្កយបត្រទិញ និងប័ណ្ណចំណាយទូទាត់ជាមួយ 3-Way Matching។</p>
+                </div>
+                <div class="p-4 rounded-xl border border-slate-200 bg-slate-50/50">
+                    <div class="font-bold text-primary mb-1 flex items-center gap-1.5"><i class="fas fa-boxes-stacked text-teal-600"></i> 5. ឃ្លាំង & ស្តុកកម្រិតខ្ពស់ (WMS)</div>
+                    <p class="text-slate-600">ពហុឃ្លាំង ផ្ទេរស្តុកអន្តរសាខា តាមដានឡូតិ៍ និងកាលបរិច្ឆេទផុតកំណត់ FIFO រាប់ស្តុកកែតម្រូវ។</p>
+                </div>
+                <div class="p-4 rounded-xl border border-slate-200 bg-slate-50/50">
+                    <div class="font-bold text-primary mb-1 flex items-center gap-1.5"><i class="fas fa-scale-balanced text-rose-600"></i> 6. គណនេយ្យ & ហិរញ្ញវត្ថុទ្វេបញ្ជី</div>
+                    <p class="text-slate-600">សៀវភៅធំ (GL), Double-Entry Dr/Cr ស្វ័យប្រវត្តិនូវរាល់វិក្កយបត្រ របាយការណ៍ចំណេញខាត (P&L) និងតុល្យការ។</p>
+                </div>
+                <div class="p-4 rounded-xl border border-slate-200 bg-slate-50/50">
+                    <div class="font-bold text-primary mb-1 flex items-center gap-1.5"><i class="fas fa-users-gear text-cyan-600"></i> 7. ធនធានមនុស្ស & បៀវត្សរ៍</div>
+                    <p class="text-slate-600">វត្តមានប្រចាំថ្ងៃ ច្បាប់ឈប់សម្រាក គណនាប្រាក់បៀវត្សរ៍ កម្រៃជើងសារលក់ និងប័ណ្ណបើកប្រាក់ A4។</p>
+                </div>
+                <div class="p-4 rounded-xl border border-slate-200 bg-slate-50/50">
+                    <div class="font-bold text-primary mb-1 flex items-center gap-1.5"><i class="fas fa-gears text-slate-600"></i> 8. ការកំណត់ប្រព័ន្ធ & សវនកម្ម</div>
+                    <p class="text-slate-600">គ្រប់គ្រងក្រុមហ៊ុន/សាខា Multi-Tenant កំណត់ហេតុសវនកម្មមិនអាចលុបបាន (Audit Log) និង Backup។</p>
+                </div>
+                <div class="p-4 rounded-xl border border-slate-200 bg-pink-50/50 sm:col-span-2">
+                    <div class="font-bold text-primary mb-1 flex items-center gap-1.5"><i class="fas fa-store text-pink-600"></i> 9. បន្ទប់តាំងបង្ហាញឌីជីថល & ការលក់តាមការសន្ទនា (Showroom)</div>
+                    <p class="text-slate-600">តាំងបង្ហាញទំនិញអនឡាញគ្មានការកាត់កាតស្មុគស្មាញ មានប៊ូតុង «ទាក់ទងអ្នកលក់» ភ្ជាប់ការជជែកផ្ទាល់ ឬ Telegram និងចេញសម្រង់តម្លៃ 1 ចុច។</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: 12 Roles Matrix -->
+        <div class="p-10 sm:p-14 avoid-break">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="w-8 h-8 rounded-lg bg-primary text-white flex items-center justify-center font-bold text-sm">4</span>
+                <h3 class="text-xl font-bold text-primary">ម៉ាទ្រីសសិទ្ធិ 12 តួនាទីដាច់ណាត់ (Zero-Leakage RBAC)</h3>
+            </div>
+
+            <div class="overflow-x-auto border border-slate-200 rounded-xl text-xs">
+                <table class="w-full text-left text-slate-700">
+                    <thead class="bg-slate-100 text-slate-800 font-semibold border-b border-slate-200">
+                        <tr>
+                            <th class="p-3">តួនាទី</th>
+                            <th class="p-3">វិសាលភាពសិទ្ធិ</th>
+                            <th class="p-3">ទិន្នន័យដែលត្រូវបានការពារ (Zero-Leakage)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200">
+                        <tr>
+                            <td class="p-3 font-bold text-primary">1. ស៊ុបភើរ អភិបាល</td>
+                            <td class="p-3">គ្រប់គ្រងក្រុមហ៊ុនទាំងអស់ បង្កើត Tenant កំណត់កូតា</td>
+                            <td class="p-3 text-slate-500">សិទ្ធិកម្រិតខ្ពស់បំផុតទូទាំងប្រព័ន្ធ</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-bold text-primary">2. អភិបាលក្រុមហ៊ុន</td>
+                            <td class="p-3">គ្រប់គ្រងប្រតិបត្តិការទាំងអស់ក្នុងក្រុមហ៊ុនខ្លួនឯង</td>
+                            <td class="p-3 text-slate-500">មិនអាចមើលឃើញទិន្នន័យក្រុមហ៊ុនដទៃឡើយ</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-bold text-primary">3. អ្នកគ្រប់គ្រងទូទៅ</td>
+                            <td class="p-3">ពិនិត្យអនុម័តវិក្កយបត្រ សម្រង់តម្លៃ ការបញ្ចុះតម្លៃពិសេស</td>
+                            <td class="p-3 text-slate-500">មើលឃើញតែទិន្នន័យផ្នែកដែលខ្លួនគ្រប់គ្រង</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-bold text-primary">4. បុគ្គលិកផ្នែកលក់</td>
+                            <td class="p-3">បង្កើតសម្រង់តម្លៃ វិក្កយបត្រ ជជែកជាមួយអតិថិជន</td>
+                            <td class="p-3 text-red-600 font-medium">លាក់ថ្លៃដើមទិញចូល និងរបាយការណ៍ចំណេញខាត 100%</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-bold text-primary">5. អ្នកគិតប្រាក់ (POS)</td>
+                            <td class="p-3">ស្កេនលក់រាយ បើក/បិទវេនប្រាក់ ចេញវិក្កយបត្រ</td>
+                            <td class="p-3 text-red-600 font-medium">គ្មានសិទ្ធិកែសម្រួលតម្លៃ ឬលុបវិក្កយបត្រឡើយ</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-bold text-primary">6. គណនេយ្យករ</td>
+                            <td class="p-3">ចេញប័ណ្ណចំណាយ ចុះសៀវភៅធំ របាយការណ៍ពន្ធ អតប</td>
+                            <td class="p-3 text-slate-500">សិទ្ធិគ្រប់គ្រងលំហូរសាច់ប្រាក់ និងគណនេយ្យ</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-bold text-primary">7. បុគ្គលិកលទ្ធកម្ម</td>
+                            <td class="p-3">ចេញបញ្ជាទិញ (PO) ផ្ទៀងផ្ទាត់ថ្លៃដើមអ្នកផ្គត់ផ្គង់</td>
+                            <td class="p-3 text-red-600 font-medium">មិនអាចមើលឃើញចំណូលលក់របស់ក្រុមហ៊ុនឡើយ</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-bold text-primary">8. បុគ្គលិកស្តុក/ឃ្លាំង</td>
+                            <td class="p-3">ទទួលទំនិញចូល (GRN) ផ្ទេរស្តុក រាប់ចំនួនទំនិញជាក់ស្តែង</td>
+                            <td class="p-3 text-red-600 font-medium">លាក់តម្លៃទឹកប្រាក់ទាំងអស់ ឃើញតែចំនួនបរិមាណប៉ុណ្ណោះ</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-bold text-primary">9. បុគ្គលិកដឹកជញ្ជូន</td>
+                            <td class="p-3">មើលបញ្ជីត្រូវដឹក ថតរូបភស្តុតាង ហត្ថលេខាទទួល</td>
+                            <td class="p-3 text-red-600 font-medium">គ្មានទិន្នន័យតម្លៃទឹកប្រាក់ ឬព័ត៌មានហិរញ្ញវត្ថុឡើយ</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-bold text-primary">10. បុគ្គលិកធនធានមនុស្ស</td>
+                            <td class="p-3">គ្រប់គ្រងបុគ្គលិក វត្តមាន ច្បាប់ឈប់សម្រាក បើកប្រាក់ខែ</td>
+                            <td class="p-3 text-slate-500">គ្រប់គ្រងតែទិន្នន័យបុគ្គលិកប៉ុណ្ណោះ</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-bold text-primary">11. ច្រកដៃគូផ្គត់ផ្គង់</td>
+                            <td class="p-3">ពិនិត្យការបញ្ជាទិញ (PO) ដាក់វិក្កយបត្រទារប្រាក់ (Bills)</td>
+                            <td class="p-3 text-slate-500">មើលឃើញតែការបញ្ជាទិញពាក់ព័ន្ធខ្លួនឯងប៉ុណ្ណោះ</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-bold text-primary">12. ច្រកអតិថិជន</td>
+                            <td class="p-3">ពិនិត្យវិក្កយបត្រ ស្កេនបាគង KHQR តាមដានការដឹកជញ្ជូន</td>
+                            <td class="p-3 text-slate-500">មើលឃើញតែប្រតិបត្តិការផ្ទាល់ខ្លួនរបស់អតិថិជន</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

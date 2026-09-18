@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>បន្ទប់តាំងបង្ហាញទំនិញឌីជីថល - DIGITECHKH Showroom</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Kantumruy Pro', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0f2b5c',
+                        primaryHover: '#0a1d3f',
+                        accent: '#2563eb',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Kantumruy Pro', sans-serif;
+            color: #334155;
+            background-color: #f8fafc;
+        }
+        /* Hide scrollbars */
+        ::-webkit-scrollbar { display: none; }
+        * { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-primary text-white text-xs py-2 px-6 flex justify-between items-center border-b border-white/10">
+        <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>បន្ទប់តាំងបង្ហាញទំនិញឌីជីថលផ្លូវការ · សាកសួរព័ត៌មាន និងចរចាតម្លៃផ្ទាល់ជាមួយអ្នកលក់</span>
+        </div>
+        <div class="flex items-center gap-4">
+            <span class="hidden sm:inline"><i class="fas fa-phone-volume mr-1 text-emerald-400"></i> ខ្សែទូរស័ព្ទបន្ទាន់៖ 012 345 678</span>
+            <span><i class="fab fa-telegram mr-1 text-cyan-400"></i> តេឡេក្រាម៖ @digitechkh_sales</span>
+        </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm">
+        <div class="w-full px-6 h-[72px] flex items-center justify-between gap-4">
+            <!-- Brand Logo -->
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-primary text-white flex items-center justify-center font-bold text-lg shadow-md">
+                    DKH
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold text-primary leading-tight">DIGITECHKH</h1>
+                    <p class="text-[11px] text-slate-500 font-medium">បន្ទប់តាំងបង្ហាញទំនិញឌីជីថល</p>
+                </div>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="hidden md:flex flex-1 max-w-lg mx-6">
+                <div class="relative w-full">
+                    <input type="text" id="searchInput" onkeyup="filterProducts()" placeholder="ស្វែងរកឈ្មោះទំនិញ, លេខកូដទំនិញ..." 
+                           class="w-full h-11 pl-10 pr-4 rounded-xl bg-slate-50 border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition">
+                    <i class="fas fa-magnifying-glass absolute left-3.5 top-3.5 text-slate-400 text-sm"></i>
+                </div>
+            </div>
+
+            <!-- Header Actions -->
+            <div class="flex items-center gap-3">
+                <button onclick="openGeneralInquiry()" class="h-10 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition flex items-center gap-2 cursor-pointer">
+                    <i class="fas fa-headset text-primary text-sm"></i>
+                    <span>សាកសួរទូទៅ</span>
+                </button>
+                <a href="DIGITECHKH-BMS-Official-System-Documentation.html" class="h-10 px-4 rounded-xl bg-primary hover:bg-primaryHover text-white text-xs font-semibold transition flex items-center gap-2 shadow-sm">
+                    <i class="fas fa-file-lines text-xs"></i>
+                    <span class="hidden sm:inline">ឯកសារប្រព័ន្ធ</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="bg-gradient-to-r from-primary via-[#173a79] to-primary text-white py-10 px-6">
+        <div class="w-full max-w-6xl mx-auto text-center">
+            <span class="px-3.5 py-1 rounded-full bg-white/10 text-cyan-300 text-xs font-semibold border border-white/15 inline-block mb-3">
+                ✨ គ្មានការកាត់កាតស្មុគស្មាញ · ជជែកផ្ទាល់ជាមួយអ្នកលក់មុនសម្រេចចិត្ត
+            </span>
+            <h2 class="text-2xl sm:text-4xl font-extrabold mb-3">
+                បន្ទប់តាំងបង្ហាញទំនិញ និងឧបករណ៍អាជីវកម្មទំនើប
+            </h2>
+            <p class="text-sm sm:text-base text-slate-200 max-w-2xl mx-auto font-light leading-relaxed mb-6">
+                ពិនិត្យមើលលក្ខណៈបច្ចេកទេសទំនិញ តម្លៃ និងស្តុកជាក់ស្តែង រួចចុចប៊ូតុង <b>«ទាក់ទងអ្នកលក់»</b> ដើម្បីទទួលបានសម្រង់តម្លៃពិសេស និងការប្រឹក្សាយោបល់ភ្លាមៗ។
+            </p>
+
+            <!-- Category Filter Pills -->
+            <div class="flex flex-wrap justify-center gap-2">
+                <button onclick="filterCategory('all')" class="category-btn active px-4 py-2 rounded-xl bg-white text-primary text-xs font-semibold shadow-sm transition">
+                    ទំនិញទាំងអស់
+                </button>
+                <button onclick="filterCategory('pos')" class="category-btn px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-semibold transition border border-white/15">
+                    ឧបករណ៍លក់រាយ (POS)
+                </button>
+                <button onclick="filterCategory('hardware')" class="category-btn px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-semibold transition border border-white/15">
+                    កុំព្យូទ័រ & គ្រឿងបន្លាស់
+                </button>
+                <button onclick="filterCategory('office')" class="category-btn px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-semibold transition border border-white/15">
+                    សម្ភារៈការិយាល័យ
+                </button>
+                <button onclick="filterCategory('network')" class="category-btn px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-semibold transition border border-white/15">
+                    ប្រព័ន្ធបណ្តាញ & សន្តិសុខ
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Catalog Section -->
+    <main class="w-full flex-1 py-10 px-6">
+        <div class="w-full max-w-6xl mx-auto">
+            
+            <!-- Section Title -->
+            <div class="flex justify-between items-center mb-6">
+                <div>
+                    <h3 class="text-lg font-bold text-slate-900">មុខទំនិញពេញនិយមប្រចាំខែ</h3>
+                    <p class="text-xs text-slate-500 mt-0.5">ទំនិញមានក្នុងស្តុកជាក់ស្តែង ត្រៀមដឹកជញ្ជូនរហ័ស</p>
+                </div>
+                <div class="text-xs text-slate-500">
+                    បង្ហាញ <span id="productCount" class="font-bold text-primary">6</span> មុខទំនិញ
+                </div>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="productGrid">
+
+                <!-- Product 1 -->
+                <div class="product-card bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition group flex flex-col justify-between" data-category="pos">
+                    <div>
+                        <div class="relative h-48 bg-slate-100 flex items-center justify-center p-6 overflow-hidden">
+                            <div class="w-24 h-24 rounded-2xl bg-blue-500/10 text-blue-600 flex items-center justify-center text-5xl">
+                                <i class="fas fa-cash-register"></i>
+                            </div>
+                            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-700 text-[11px] font-semibold flex items-center gap-1">
+                                <i class="fas fa-circle-check text-[10px]"></i> មានក្នុងស្តុក (24 គ្រឿង)
+                            </span>
+                            <span class="absolute top-3 right-3 px-2 py-0.5 rounded-md bg-slate-800/80 text-white text-[10px] font-mono">
+                                POS-001
+                            </span>
+                        </div>
+                        <div class="p-5">
+                            <div class="text-xs text-slate-400 mb-1">ឧបករណ៍លក់រាយ · Touch POS</div>
+                            <h4 class="text-base font-bold text-slate-800 mb-2 group-hover:text-primary transition">
+                                ម៉ាស៊ីនគិតលុយអេក្រង់ប៉ះ 15.6 អ៊ីញ + ម៉ាស៊ីនព្រីន 80mm
+                            </h4>
+                            <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                                អេក្រង់ភ្លឺច្បាស់ Full HD ដំណើរការលឿន ធន់មិនងាយក្តៅ ភ្ជាប់មកជាមួយម៉ាស៊ីនព្រីនកម្តៅកាត់ក្រដាសស្វ័យប្រវត្តិ។
+                            </p>
+                            <div class="flex items-baseline gap-2 mb-4">
+                                <span class="text-2xl font-black text-primary">$385.00</span>
+                                <span class="text-xs text-slate-400 line-through">$420.00</span>
+                                <span class="text-xs text-emerald-600 font-semibold">(បញ្ចុះតម្លៃ 8%)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0">
+                        <button onclick="openContactModal('POS-001', 'ម៉ាស៊ីនគិតលុយអេក្រង់ប៉ះ 15.6 អ៊ីញ + ម៉ាស៊ីនព្រីន 80mm', '$385.00', 'pos')" 
+                                class="w-full h-11 rounded-xl bg-primary hover:bg-primaryHover text-white text-xs font-semibold transition flex items-center justify-center gap-2 shadow-sm cursor-pointer">
+                            <i class="fas fa-comments text-cyan-300 text-sm"></i>
+                            <span>ទាក់ទងអ្នកលក់ (សួរតម្លៃ / ស្តុក)</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition group flex flex-col justify-between" data-category="pos">
+                    <div>
+                        <div class="relative h-48 bg-slate-100 flex items-center justify-center p-6 overflow-hidden">
+                            <div class="w-24 h-24 rounded-2xl bg-amber-500/10 text-amber-600 flex items-center justify-center text-5xl">
+                                <i class="fas fa-barcode"></i>
+                            </div>
+                            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-700 text-[11px] font-semibold flex items-center gap-1">
+                                <i class="fas fa-circle-check text-[10px]"></i> មានក្នុងស្តុក (80 គ្រឿង)
+                            </span>
+                            <span class="absolute top-3 right-3 px-2 py-0.5 rounded-md bg-slate-800/80 text-white text-[10px] font-mono">
+                                SCN-002
+                            </span>
+                        </div>
+                        <div class="p-5">
+                            <div class="text-xs text-slate-400 mb-1">ឧបករណ៍លក់រាយ · Scanner</div>
+                            <h4 class="text-base font-bold text-slate-800 mb-2 group-hover:text-primary transition">
+                                ម៉ាស៊ីនស្កេនបាកូដឥតខ្សែ 1D/2D QR កម្រិតខ្ពស់
+                            </h4>
+                            <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                                ស្កេនបាកូដបានគ្រប់ប្រភេទ រួមទាំងកូដលើអេក្រង់ទូរស័ព្ទដៃ ចម្ងាយបញ្ជូនសញ្ញា 50 ម៉ែត្រ ថ្មកាន់បាន 3 ថ្ងៃ។
+                            </p>
+                            <div class="flex items-baseline gap-2 mb-4">
+                                <span class="text-2xl font-black text-primary">$45.00</span>
+                                <span class="text-xs text-slate-400 line-through">$55.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0">
+                        <button onclick="openContactModal('SCN-002', 'ម៉ាស៊ីនស្កេនបាកូដឥតខ្សែ 1D/2D QR កម្រិតខ្ពស់', '$45.00', 'scanner')" 
+                                class="w-full h-11 rounded-xl bg-primary hover:bg-primaryHover text-white text-xs font-semibold transition flex items-center justify-center gap-2 shadow-sm cursor-pointer">
+                            <i class="fas fa-comments text-cyan-300 text-sm"></i>
+                            <span>ទាក់ទងអ្នកលក់ (សួរតម្លៃ / ស្តុក)</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition group flex flex-col justify-between" data-category="hardware">
+                    <div>
+                        <div class="relative h-48 bg-slate-100 flex items-center justify-center p-6 overflow-hidden">
+                            <div class="w-24 h-24 rounded-2xl bg-indigo-500/10 text-indigo-600 flex items-center justify-center text-5xl">
+                                <i class="fas fa-print"></i>
+                            </div>
+                            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-700 text-[11px] font-semibold flex items-center gap-1">
+                                <i class="fas fa-circle-check text-[10px]"></i> មានក្នុងស្តុក (35 គ្រឿង)
+                            </span>
+                            <span class="absolute top-3 right-3 px-2 py-0.5 rounded-md bg-slate-800/80 text-white text-[10px] font-mono">
+                                PRT-003
+                            </span>
+                        </div>
+                        <div class="p-5">
+                            <div class="text-xs text-slate-400 mb-1">ឧបករណ៍ព្រីន · Thermal Printer</div>
+                            <h4 class="text-base font-bold text-slate-800 mb-2 group-hover:text-primary transition">
+                                ម៉ាស៊ីនព្រីនវិក្កយបត្រកម្តៅ 80mm ល្បឿនលឿន (USB+LAN)
+                            </h4>
+                            <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                                ល្បឿនបោះពុម្ព 260mm/s ច្បាស់ស្អាត មិនបែកអក្សរខ្មែរ គាំទ្រការតភ្ជាប់បណ្តាញ LAN ព្រីនផ្ទាល់ពីផ្ទះបាយ ឬឃ្លាំង។
+                            </p>
+                            <div class="flex items-baseline gap-2 mb-4">
+                                <span class="text-2xl font-black text-primary">$68.00</span>
+                                <span class="text-xs text-slate-400 line-through">$75.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0">
+                        <button onclick="openContactModal('PRT-003', 'ម៉ាស៊ីនព្រីនវិក្កយបត្រកម្តៅ 80mm ល្បឿនលឿន (USB+LAN)', '$68.00', 'printer')" 
+                                class="w-full h-11 rounded-xl bg-primary hover:bg-primaryHover text-white text-xs font-semibold transition flex items-center justify-center gap-2 shadow-sm cursor-pointer">
+                            <i class="fas fa-comments text-cyan-300 text-sm"></i>
+                            <span>ទាក់ទងអ្នកលក់ (សួរតម្លៃ / ស្តុក)</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition group flex flex-col justify-between" data-category="pos">
+                    <div>
+                        <div class="relative h-48 bg-slate-100 flex items-center justify-center p-6 overflow-hidden">
+                            <div class="w-24 h-24 rounded-2xl bg-teal-500/10 text-teal-600 flex items-center justify-center text-5xl">
+                                <i class="fas fa-box-archive"></i>
+                            </div>
+                            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-700 text-[11px] font-semibold flex items-center gap-1">
+                                <i class="fas fa-circle-check text-[10px]"></i> មានក្នុងស្តុក (50 គ្រឿង)
+                            </span>
+                            <span class="absolute top-3 right-3 px-2 py-0.5 rounded-md bg-slate-800/80 text-white text-[10px] font-mono">
+                                CDR-004
+                            </span>
+                        </div>
+                        <div class="p-5">
+                            <div class="text-xs text-slate-400 mb-1">ឧបករណ៍លក់រាយ · Cash Drawer</div>
+                            <h4 class="text-base font-bold text-slate-800 mb-2 group-hover:text-primary transition">
+                                ថតដាក់ប្រាក់ស្វ័យប្រវត្តិ 5 ប្រឡោះក្រដាសប្រាក់ + 8 ប្រឡោះកាក់
+                            </h4>
+                            <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                                តួដែកក្រាស់ធន់មាំ សោរការពារ 3 ដំណាក់កាល លោតបើកស្វ័យប្រវត្តិនៅពេលម៉ាស៊ីនព្រីនវិក្កយបត្រចេញ។
+                            </p>
+                            <div class="flex items-baseline gap-2 mb-4">
+                                <span class="text-2xl font-black text-primary">$35.00</span>
+                                <span class="text-xs text-slate-400 line-through">$40.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0">
+                        <button onclick="openContactModal('CDR-004', 'ថតដាក់ប្រាក់ស្វ័យប្រវត្តិ 5 ប្រឡោះក្រដាសប្រាក់ + 8 ប្រឡោះកាក់', '$35.00', 'drawer')" 
+                                class="w-full h-11 rounded-xl bg-primary hover:bg-primaryHover text-white text-xs font-semibold transition flex items-center justify-center gap-2 shadow-sm cursor-pointer">
+                            <i class="fas fa-comments text-cyan-300 text-sm"></i>
+                            <span>ទាក់ទងអ្នកលក់ (សួរតម្លៃ / ស្តុក)</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="product-card bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition group flex flex-col justify-between" data-category="hardware">
+                    <div>
+                        <div class="relative h-48 bg-slate-100 flex items-center justify-center p-6 overflow-hidden">
+                            <div class="w-24 h-24 rounded-2xl bg-purple-500/10 text-purple-600 flex items-center justify-center text-5xl">
+                                <i class="fas fa-laptop"></i>
+                            </div>
+                            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-700 text-[11px] font-semibold flex items-center gap-1">
+                                <i class="fas fa-circle-check text-[10px]"></i> មានក្នុងស្តុក (15 គ្រឿង)
+                            </span>
+                            <span class="absolute top-3 right-3 px-2 py-0.5 rounded-md bg-slate-800/80 text-white text-[10px] font-mono">
+                                LAP-005
+                            </span>
+                        </div>
+                        <div class="p-5">
+                            <div class="text-xs text-slate-400 mb-1">កុំព្យូទ័រ · Enterprise Laptop</div>
+                            <h4 class="text-base font-bold text-slate-800 mb-2 group-hover:text-primary transition">
+                                កុំព្យូទ័រយួរដៃសម្រាប់ការិយាល័យ Core i5 / RAM 16GB / SSD 512GB
+                            </h4>
+                            <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                                ស្តើង ស្រាល កម្លាំងខ្លាំង ស័ក្តិសមសម្រាប់ថ្នាក់ដឹកនាំ គណនេយ្យ និងបុគ្គលិកលក់ ថ្មកាន់បាន 8 ម៉ោង។
+                            </p>
+                            <div class="flex items-baseline gap-2 mb-4">
+                                <span class="text-2xl font-black text-primary">$549.00</span>
+                                <span class="text-xs text-slate-400 line-through">$590.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0">
+                        <button onclick="openContactModal('LAP-005', 'កុំព្យូទ័រយួរដៃសម្រាប់ការិយាល័យ Core i5 / RAM 16GB / SSD 512GB', '$549.00', 'laptop')" 
+                                class="w-full h-11 rounded-xl bg-primary hover:bg-primaryHover text-white text-xs font-semibold transition flex items-center justify-center gap-2 shadow-sm cursor-pointer">
+                            <i class="fas fa-comments text-cyan-300 text-sm"></i>
+                            <span>ទាក់ទងអ្នកលក់ (សួរតម្លៃ / ស្តុក)</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="product-card bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition group flex flex-col justify-between" data-category="network">
+                    <div>
+                        <div class="relative h-48 bg-slate-100 flex items-center justify-center p-6 overflow-hidden">
+                            <div class="w-24 h-24 rounded-2xl bg-rose-500/10 text-rose-600 flex items-center justify-center text-5xl">
+                                <i class="fas fa-wifi"></i>
+                            </div>
+                            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-700 text-[11px] font-semibold flex items-center gap-1">
+                                <i class="fas fa-circle-check text-[10px]"></i> មានក្នុងស្តុក (40 គ្រឿង)
+                            </span>
+                            <span class="absolute top-3 right-3 px-2 py-0.5 rounded-md bg-slate-800/80 text-white text-[10px] font-mono">
+                                ROU-006
+                            </span>
+                        </div>
+                        <div class="p-5">
+                            <div class="text-xs text-slate-400 mb-1">បណ្តាញ · Wi-Fi 6 Router</div>
+                            <h4 class="text-base font-bold text-slate-800 mb-2 group-hover:text-primary transition">
+                                រ៉ោតទ័របណ្តាញកម្រិតសហគ្រាស Gigabit Dual-Band Wi-Fi 6
+                            </h4>
+                            <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                                ភ្ជាប់ឧបករណ៍បានរហូតដល់ 128 គ្រឿងក្នុងពេលតែមួយ សេវាខ្លាំង ធានាការតភ្ជាប់ប្រព័ន្ធ POS មិនរអាក់រអួល។
+                            </p>
+                            <div class="flex items-baseline gap-2 mb-4">
+                                <span class="text-2xl font-black text-primary">$89.00</span>
+                                <span class="text-xs text-slate-400 line-through">$99.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0">
+                        <button onclick="openContactModal('ROU-006', 'រ៉ោតទ័របណ្តាញកម្រិតសហគ្រាស Gigabit Dual-Band Wi-Fi 6', '$89.00', 'router')" 
+                                class="w-full h-11 rounded-xl bg-primary hover:bg-primaryHover text-white text-xs font-semibold transition flex items-center justify-center gap-2 shadow-sm cursor-pointer">
+                            <i class="fas fa-comments text-cyan-300 text-sm"></i>
+                            <span>ទាក់ទងអ្នកលក់ (សួរតម្លៃ / ស្តុក)</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-8 px-6 text-center text-xs text-slate-500">
+        <p class="mb-2"><b>ក្រុមហ៊ុន ឌីជីថេក ខេអេច (DIGITECHKH Co., Ltd.)</b> · ដំណោះស្រាយប្រព័ន្ធគ្រប់គ្រងអាជីវកម្មកម្រិតសហគ្រាស</p>
+        <p>រក្សាសិទ្ធិគ្រប់យ៉ាង © 2026 DIGITECHKH · អាសយដ្ឋាន៖ រាជធានីភ្នំពេញ ព្រះរាជាណាចក្រកម្ពុជា</p>
+    </footer>
+
+    <!-- ========================================== -->
+    <!-- CONVERSATIONAL COMMERCE HUB MODAL -->
+    <!-- ========================================== -->
+    <div id="contactModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-3xl max-w-2xl w-full shadow-2xl overflow-hidden border border-slate-100 flex flex-col max-h-[90vh] animate-in fade-in zoom-in-95 duration-200">
+            
+            <!-- Modal Header -->
+            <div class="px-6 py-4 bg-primary text-white flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-cyan-300">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-bold text-white">ទាក់ទងអ្នកលក់ផ្ទាល់ · Conversational Hub</h4>
+                        <p class="text-[11px] text-slate-300">ជ្រើសរើសឆានែលដែលលោកអ្នកពេញចិត្តដើម្បីសាកសួរ ឬចរចាតម្លៃ</p>
+                    </div>
+                </div>
+                <button onclick="closeContactModal()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition cursor-pointer">
+                    <i class="fas fa-xmark text-sm"></i>
+                </button>
+            </div>
+
+            <!-- Product Summary Bar inside Modal -->
+            <div class="px-6 py-3 bg-slate-50 border-b border-slate-200 flex items-center justify-between gap-4">
+                <div class="flex items-center gap-3 overflow-hidden">
+                    <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center text-lg flex-shrink-0" id="modalProductIcon">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <div class="truncate">
+                        <p class="text-xs font-bold text-slate-800 truncate" id="modalProductName">ឈ្មោះទំនិញ</p>
+                        <p class="text-[11px] text-slate-500 font-mono" id="modalProductSku">SKU: POS-001</p>
+                    </div>
+                </div>
+                <div class="text-right flex-shrink-0">
+                    <span class="text-xs text-slate-400 block">តម្លៃយោង</span>
+                    <span class="text-base font-black text-primary" id="modalProductPrice">$0.00</span>
+                </div>
+            </div>
+
+            <!-- Channels Tabs Navigation -->
+            <div class="flex border-b border-slate-200 px-6 bg-white">
+                <button onclick="switchTab('chat')" id="tabBtnChat" class="py-3 px-4 text-xs font-bold border-b-2 border-primary text-primary transition flex items-center gap-2 cursor-pointer">
+                    <i class="fas fa-message"></i>
+                    <span>ជជែកផ្ទាល់លើគេហទំព័រ</span>
+                </button>
+                <button onclick="switchTab('telegram')" id="tabBtnTelegram" class="py-3 px-4 text-xs font-medium border-b-2 border-transparent text-slate-500 hover:text-slate-800 transition flex items-center gap-2 cursor-pointer">
+                    <i class="fab fa-telegram text-cyan-500 text-sm"></i>
+                    <span>តេឡេក្រាម (Telegram)</span>
+                </button>
+                <button onclick="switchTab('phone')" id="tabBtnPhone" class="py-3 px-4 text-xs font-medium border-b-2 border-transparent text-slate-500 hover:text-slate-800 transition flex items-center gap-2 cursor-pointer">
+                    <i class="fas fa-phone-flip text-emerald-500 text-sm"></i>
+                    <span>ទូរស័ព្ទផ្ទាល់</span>
+                </button>
+            </div>
+
+            <!-- Tab Content Area -->
+            <div class="p-6 overflow-y-auto flex-1 bg-slate-50/50">
+
+                <!-- TAB 1: LIVE WEB CHAT -->
+                <div id="tabContentChat" class="space-y-4">
+                    <div class="bg-white rounded-2xl border border-slate-200 p-4 min-h-[220px] flex flex-col justify-between shadow-sm">
+                        <!-- Chat Messages Container -->
+                        <div class="space-y-3 mb-4" id="chatMessages">
+                            <div class="flex items-start gap-2.5">
+                                <div class="w-7 h-7 rounded-full bg-primary text-white flex items-center justify-center text-xs flex-shrink-0">
+                                    <i class="fas fa-user-tie"></i>
+                                </div>
+                                <div class="bg-slate-100 rounded-2xl rounded-tl-none p-3 text-xs text-slate-700 max-w-[85%]">
+                                    <p class="font-bold text-primary text-[11px] mb-0.5">បុគ្គលិកផ្នែកលក់ DIGITECHKH</p>
+                                    <p>ជម្រាបសួរលោក/លោកស្រី! ខ្ញុំបាទឈ្មោះ វិច្ឆិកា ជាទីប្រឹក្សាផ្នែកលក់។ ខ្ញុំបានទទួលព័ត៌មានទំនិញដែលលោកកំពុងចាប់អារម្មណ៍ហើយ។ តើលោកចង់សាកសួរព័ត៌មានបន្ថែម ឬចង់ទទួលបានសម្រង់តម្លៃពិសេសដែរឬទេ?</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Typing Simulation Indicator -->
+                        <div id="typingIndicator" class="hidden text-xs text-slate-400 italic py-1 px-2 flex items-center gap-1.5">
+                            <span class="w-1.5 h-1.5 rounded-full bg-slate-400 animate-bounce"></span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-slate-400 animate-bounce delay-100"></span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-slate-400 animate-bounce delay-200"></span>
+                            <span>បុគ្គលិកលក់កំពុងឆ្លើយតប...</span>
+                        </div>
+
+                        <!-- Chat Input Box -->
+                        <div class="flex gap-2 pt-2 border-t border-slate-100">
+                            <input type="text" id="chatInput" placeholder="សរសេរសំណួររបស់អ្នកនៅទីនេះ..." 
+                                   onkeypress="handleChatKey(event)"
+                                   class="flex-1 h-10 px-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition">
+                            <button onclick="sendChatMessage()" class="h-10 px-4 rounded-xl bg-primary hover:bg-primaryHover text-white text-xs font-semibold transition flex items-center gap-1.5 cursor-pointer">
+                                <span>ផ្ញើ</span>
+                                <i class="fas fa-paper-plane text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between p-3 rounded-xl bg-blue-50 border border-blue-200/60 text-xs text-blue-900">
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-file-invoice text-blue-600"></i>
+                            <span>ចង់បានសម្រង់តម្លៃផ្លូវការជា PDF មានកូដបាគង KHQR ភ្លាមៗ?</span>
+                        </div>
+                        <button onclick="requestInstantQuote()" class="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold text-[11px] transition cursor-pointer">
+                            ស្នើសុំសម្រង់តម្លៃ 1 ចុច
+                        </button>
+                    </div>
+                </div>
+
+                <!-- TAB 2: TELEGRAM DEEP LINK -->
+                <div id="tabContentTelegram" class="hidden space-y-4 text-center py-4">
+                    <div class="w-16 h-16 rounded-full bg-cyan-50 text-cyan-500 flex items-center justify-center text-3xl mx-auto shadow-sm">
+                        <i class="fab fa-telegram"></i>
+                    </div>
+                    <div>
+                        <h5 class="text-base font-bold text-slate-800">ជជែកជាមួយអ្នកលក់តាម Telegram</h5>
+                        <p class="text-xs text-slate-500 max-w-md mx-auto mt-1 leading-relaxed">
+                            ប្រព័ន្ធនឹងបើកកម្មវិធី Telegram ដោយស្វ័យប្រវត្តិ រួមជាមួយសារភ្ជាប់ឈ្មោះទំនិញ និងកូដទំនិញស្រេច ងាយស្រួលសួរនាំភ្លាមៗ។
+                        </p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-slate-100 border border-slate-200 max-w-md mx-auto text-left text-xs font-mono text-slate-600">
+                        💬 <b>សារដែលនឹងត្រូវផ្ញើ៖</b><br>
+                        «សួស្តី! ខ្ញុំចាប់អារម្មណ៍ទំនិញ <span id="tgMsgProduct" class="font-bold text-primary">...</span> តើមានក្នុងស្តុក និងបញ្ចុះតម្លៃបានទេ?»
+                    </div>
+                    <div>
+                        <a id="telegramLinkBtn" href="https://t.me/digitechkh_sales" target="_blank" 
+                           class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#229ED9] hover:bg-[#1e8bc0] text-white text-xs font-bold shadow-md transition cursor-pointer">
+                            <i class="fab fa-telegram text-base"></i>
+                            <span>បើកកម្មវិធី Telegram ជជែកឥឡូវនេះ</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- TAB 3: PHONE HOTLINE -->
+                <div id="tabContentPhone" class="hidden space-y-4 py-4">
+                    <div class="text-center mb-4">
+                        <div class="w-14 h-14 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-2xl mx-auto mb-2">
+                            <i class="fas fa-phone-volume"></i>
+                        </div>
+                        <h5 class="text-base font-bold text-slate-800">ហៅទូរស័ព្ទទៅកាន់ផ្នែកលក់ផ្ទាល់</h5>
+                        <p class="text-xs text-slate-500 mt-0.5">ផ្តល់ការប្រឹក្សា និងឆ្លើយតបភ្លាមៗ 24 ម៉ោង</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-md mx-auto">
+                        <a href="tel:012345678" class="p-4 rounded-xl border border-slate-200 bg-white hover:border-emerald-500 transition flex items-center justify-between group shadow-sm">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs">
+                                    012
+                                </div>
+                                <div>
+                                    <div class="text-xs font-bold text-slate-800 group-hover:text-emerald-600 transition">012 345 678</div>
+                                    <div class="text-[10px] text-slate-400">Cellcard (ផ្នែកលក់កណ្តាល)</div>
+                                </div>
+                            </div>
+                            <i class="fas fa-phone text-xs text-slate-400 group-hover:text-emerald-600 transition"></i>
+                        </a>
+
+                        <a href="tel:098345678" class="p-4 rounded-xl border border-slate-200 bg-white hover:border-emerald-500 transition flex items-center justify-between group shadow-sm">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs">
+                                    098
+                                </div>
+                                <div>
+                                    <div class="text-xs font-bold text-slate-800 group-hover:text-emerald-600 transition">098 345 678</div>
+                                    <div class="text-[10px] text-slate-400">Smart (ផ្នែកបច្ចេកទេស)</div>
+                                </div>
+                            </div>
+                            <i class="fas fa-phone text-xs text-slate-400 group-hover:text-emerald-600 transition"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="px-6 py-3 bg-white border-t border-slate-200 flex items-center justify-between text-xs text-slate-500">
+                <span class="flex items-center gap-1.5">
+                    <i class="fas fa-shield-halved text-emerald-600"></i> សុវត្ថិភាពទិន្នន័យ 100% · គ្មានការកាត់ប្រាក់ដោយគ្មានការយល់ព្រមឡើយ
+                </span>
+                <button onclick="closeContactModal()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold transition cursor-pointer">
+                    បិទផ្ទាំង
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Script Logic -->
+    <script>
+        let currentSelectedProduct = {};
+
+        function filterCategory(cat) {
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('bg-white', 'text-primary', 'shadow-sm');
+                btn.classList.add('bg-white/10', 'text-white');
+            });
+            event.currentTarget.classList.remove('bg-white/10', 'text-white');
+            event.currentTarget.classList.add('bg-white', 'text-primary', 'shadow-sm');
+
+            const cards = document.querySelectorAll('.product-card');
+            let visibleCount = 0;
+            cards.forEach(card => {
+                if (cat === 'all' || card.dataset.category === cat) {
+                    card.style.display = 'flex';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            document.getElementById('productCount').innerText = visibleCount;
+        }
+
+        function filterProducts() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const cards = document.querySelectorAll('.product-card');
+            let visibleCount = 0;
+            cards.forEach(card => {
+                const text = card.innerText.toLowerCase();
+                if (text.includes(query)) {
+                    card.style.display = 'flex';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            document.getElementById('productCount').innerText = visibleCount;
+        }
+
+        function openContactModal(sku, name, price, iconType) {
+            currentSelectedProduct = { sku, name, price, iconType };
+            document.getElementById('modalProductName').innerText = name;
+            document.getElementById('modalProductSku').innerText = 'SKU: ' + sku;
+            document.getElementById('modalProductPrice').innerText = price;
+            document.getElementById('tgMsgProduct').innerText = name + ' (' + sku + ')';
+
+            const modal = document.getElementById('contactModal');
+            modal.classList.remove('hidden');
+
+            // Reset chat messages to welcome message
+            const chatBox = document.getElementById('chatMessages');
+            chatBox.innerHTML = `
+                <div class="flex items-start gap-2.5">
+                    <div class="w-7 h-7 rounded-full bg-primary text-white flex items-center justify-center text-xs flex-shrink-0">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="bg-slate-100 rounded-2xl rounded-tl-none p-3 text-xs text-slate-700 max-w-[85%]">
+                        <p class="font-bold text-primary text-[11px] mb-0.5">បុគ្គលិកផ្នែកលក់ DIGITECHKH</p>
+                        <p>ជម្រាបសួរលោក/លោកស្រី! ខ្ញុំបាទឈ្មោះ វិច្ឆិកា ជាទីប្រឹក្សាផ្នែកលក់។ ខ្ញុំបានទទួលព័ត៌មានទំនិញ <b>${name} (${sku})</b> ដែលលោកកំពុងចាប់អារម្មណ៍ហើយ។ តើលោកចង់សាកសួរព័ត៌មានបន្ថែម ឬចង់ទទួលបានសម្រង់តម្លៃពិសេសដែរឬទេ?</p>
+                    </div>
+                </div>
+            `;
+
+            switchTab('chat');
+        }
+
+        function openGeneralInquiry() {
+            openContactModal('GEN-000', 'ការប្រឹក្សាយោបល់ទូទៅអំពីប្រព័ន្ធ និងឧបករណ៍', 'ឥតគិតថ្លៃ', 'general');
+        }
+
+        function closeContactModal() {
+            document.getElementById('contactModal').classList.add('hidden');
+        }
+
+        function switchTab(tab) {
+            const tabs = ['chat', 'telegram', 'phone'];
+            tabs.forEach(t => {
+                const btn = document.getElementById('tabBtn' + t.charAt(0).toUpperCase() + t.slice(1));
+                const content = document.getElementById('tabContent' + t.charAt(0).toUpperCase() + t.slice(1));
+                if (t === tab) {
+                    btn.classList.add('border-primary', 'text-primary', 'font-bold');
+                    btn.classList.remove('border-transparent', 'text-slate-500');
+                    content.classList.remove('hidden');
+                } else {
+                    btn.classList.remove('border-primary', 'text-primary', 'font-bold');
+                    btn.classList.add('border-transparent', 'text-slate-500');
+                    content.classList.add('hidden');
+                }
+            });
+        }
+
+        function handleChatKey(e) {
+            if (e.key === 'Enter') {
+                sendChatMessage();
+            }
+        }
+
+        function sendChatMessage() {
+            const input = document.getElementById('chatInput');
+            const msg = input.value.trim();
+            if (!msg) return;
+
+            const chatBox = document.getElementById('chatMessages');
+
+            // Customer message bubble
+            chatBox.innerHTML += `
+                <div class="flex items-start justify-end gap-2.5">
+                    <div class="bg-primary text-white rounded-2xl rounded-tr-none p-3 text-xs max-w-[85%]">
+                        <p>${msg}</p>
+                    </div>
+                    <div class="w-7 h-7 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center text-xs flex-shrink-0">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+            `;
+            input.value = '';
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            // Seller auto-reply simulation
+            const indicator = document.getElementById('typingIndicator');
+            indicator.classList.remove('hidden');
+
+            setTimeout(() => {
+                indicator.classList.add('hidden');
+                chatBox.innerHTML += `
+                    <div class="flex items-start gap-2.5">
+                        <div class="w-7 h-7 rounded-full bg-primary text-white flex items-center justify-center text-xs flex-shrink-0">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="bg-slate-100 rounded-2xl rounded-tl-none p-3 text-xs text-slate-700 max-w-[85%]">
+                            <p class="font-bold text-primary text-[11px] mb-0.5">បុគ្គលិកផ្នែកលក់ DIGITECHKH</p>
+                            <p>ចាស/បាទលោក! ចំពោះមុខទំនិញ <b>${currentSelectedProduct.name}</b> នេះ យើងខ្ញុំមានក្នុងស្តុកស្រេច និងអាចរៀបចំដឹកជូនបានភ្លាមៗ។ ប្រសិនបើលោកសម្រេចទិញថ្ងៃនេះ យើងខ្ញុំមានការបញ្ចុះតម្លៃពិសេស 5% បន្ថែមជូន!</p>
+                        </div>
+                    </div>
+                `;
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }, 1200);
+        }
+
+        function requestInstantQuote() {
+            const chatBox = document.getElementById('chatMessages');
+            chatBox.innerHTML += `
+                <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-xs space-y-2">
+                    <div class="flex items-center justify-between border-b border-emerald-200/60 pb-2">
+                        <span class="font-bold text-emerald-900 flex items-center gap-1.5">
+                            <i class="fas fa-file-invoice text-emerald-600"></i> សម្រង់តម្លៃផ្លូវការលេខ៖ QT-2026-0988
+                        </span>
+                        <span class="px-2 py-0.5 rounded bg-emerald-600 text-white font-bold text-[10px]">សុពលភាព 7 ថ្ងៃ</span>
+                    </div>
+                    <div class="text-slate-700">
+                        <p><b>មុខទំនិញ៖</b> ${currentSelectedProduct.name}</p>
+                        <p><b>តម្លៃដើម៖</b> ${currentSelectedProduct.price}</p>
+                        <p><b>បញ្ចុះតម្លៃពិសេស៖</b> -5%</p>
+                        <p class="text-sm font-black text-emerald-700 mt-1">ទឹកប្រាក់ត្រូវទូទាត់៖ ${currentSelectedProduct.price}</p>
+                    </div>
+                    <div class="pt-2 flex items-center justify-between gap-2">
+                        <span class="text-[10px] text-slate-500">ស្កេនទូទាត់តាមបាគង KHQR ពេលទំនិញទៅដល់</span>
+                        <button onclick="alert('បានទាញយកសម្រង់តម្លៃជា PDF រួចរាល់!')" class="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-[11px] font-semibold transition">
+                            <i class="fas fa-download mr-1"></i> ទាញយក PDF
+                        </button>
+                    </div>
+                </div>
+            `;
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+    </script>
+</body>
+</html>

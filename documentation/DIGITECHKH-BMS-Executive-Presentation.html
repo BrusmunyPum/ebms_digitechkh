@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH BMS - បទបង្ហាញរូបភាព និងភស្តុតាងអាជីវកម្មកម្រិតសហគ្រាស (Executive Presentation Deck)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Kantumruy Pro', 'sans-serif'],
+                    },
+                    colors: {
+                        navyDeep: '#060f1e',
+                        navyCard: '#0f203c',
+                        brandBlue: '#2563eb',
+                        brandEmerald: '#10b981',
+                        brandAmber: '#f59e0b',
+                        brandRose: '#f43f5e',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Kantumruy Pro', sans-serif;
+            background-color: #060f1e;
+            color: #f8fafc;
+            overflow: hidden;
+            user-select: none;
+        }
+        .slide {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+            transform: translateY(10px);
+        }
+        .slide.active {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .glow-card {
+            background: rgba(15, 32, 60, 0.75);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+        .glow-card:hover {
+            border-color: rgba(59, 130, 246, 0.5);
+            box-shadow: 0 12px 35px -10px rgba(37, 99, 235, 0.3);
+        }
+        @media print {
+            body {
+                overflow: visible !important;
+                background-color: #ffffff !important;
+                color: #0f172a !important;
+            }
+            .no-print { display: none !important; }
+            .slide {
+                display: flex !important;
+                opacity: 1 !important;
+                transform: none !important;
+                page-break-after: always !important;
+                height: 100vh !important;
+                width: 100vw !important;
+                padding: 3rem !important;
+                box-sizing: border-box !important;
+                background: #ffffff !important;
+                color: #0f172a !important;
+            }
+            .glow-card {
+                background: #f8fafc !important;
+                border: 1.5px solid #cbd5e1 !important;
+                box-shadow: none !important;
+                color: #0f172a !important;
+            }
+        }
+    </style>
+</head>
+<body class="w-screen h-screen flex flex-col justify-between antialiased">
+
+    <!-- Top Real-time Progress Bar -->
+    <div class="no-print fixed top-0 left-0 right-0 h-2 bg-slate-900 z-50">
+        <div id="progressBar" class="h-full bg-gradient-to-r from-blue-500 via-indigo-500 to-amber-400 transition-all duration-300" style="width: 6.25%;"></div>
+    </div>
+
+    <!-- Header Navigation Pill -->
+    <header class="no-print fixed top-3 left-0 right-0 px-8 py-2 flex items-center justify-between z-40">
+        <div class="flex items-center gap-3.5">
+            <div class="w-10 h-10 rounded-xl bg-blue-600/30 border border-blue-400/40 flex items-center justify-center font-bold text-base text-blue-300 shadow-md">
+                <i class="fas fa-cubes"></i>
+            </div>
+            <div>
+                <h1 class="text-sm font-bold text-white tracking-wider">DIGITECHKH BMS</h1>
+                <p class="text-xs text-slate-400">Enterprise Presentation Deck</p>
+            </div>
+        </div>
+        <div class="flex items-center gap-3">
+            <span id="slideBadge" class="text-sm font-bold px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-amber-300">
+                ស្លាយ 1 / 16
+            </span>
+            <button onclick="toggleFullscreen()" class="w-10 h-10 rounded-xl bg-white/10 hover:bg-white/20 text-slate-200 flex items-center justify-center text-sm transition cursor-pointer" title="Fullscreen (F)">
+                <i class="fas fa-expand"></i>
+            </button>
+            <button onclick="window.print()" class="px-4 py-2 bg-white/10 hover:bg-white/20 text-slate-200 rounded-xl text-xs font-semibold transition flex items-center gap-2 cursor-pointer">
+                <i class="fas fa-print text-sm"></i> <span class="hidden sm:inline">PDF</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- MAIN PRESENTATION CONTAINER -->
+    <main class="flex-1 w-full h-full flex items-center justify-center p-6 sm:p-14 relative overflow-hidden">
+
+        <!-- ========================================== -->
+        <!-- SLIDE 1: HERO & CORE VALUE -->
+        <!-- ========================================== -->
+        <div class="slide active w-full max-w-6xl h-full flex-col justify-center items-center text-center">
+            <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-blue-500/15 border border-blue-400/30 text-blue-300 text-sm font-semibold mb-6 animate-pulse">
+                <i class="fas fa-bolt text-amber-400 text-base"></i> បទបង្ហាញផ្លូវការសម្រាប់ក្រុមការងារ និងអតិថិជន
+            </div>
+            <h1 class="text-4xl sm:text-6xl font-black text-white leading-tight mb-5">
+                គ្រប់គ្រងអាជីវកម្មទាំងមូល<br><br>
+                <span class="bg-gradient-to-r from-blue-400 via-indigo-300 to-amber-300 bg-clip-text text-transparent">ក្នុងដៃតែមួយ ឥតខ្ចោះ 100%</span>
+            </h1>
+            <p class="text-xl sm:text-2xl text-slate-300 max-w-3xl mb-10 leading-relaxed font-light">
+                ប្រព័ន្ធរួមតែមួយ <b>ERP + CRM + WMS + POS + Bakong KHQR</b> គ្មានការបាត់បង់ទិន្នន័យ គ្មានការលេចធ្លាយ និងដឹងប្រាក់ចំណេញសុទ្ធពិតប្រាកដ។
+            </p>
+
+            <!-- 4 Big Highlight Metrics (Font 28px - 56px) -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-5 max-w-4xl w-full mb-10">
+                <div class="p-5 rounded-2xl glow-card text-center">
+                    <div class="text-4xl sm:text-6xl font-black text-blue-400 mb-2">+70%</div>
+                    <div class="text-base sm:text-lg font-bold text-slate-200">ល្បឿនប្រតិបត្តិការ</div>
+                </div>
+                <div class="p-5 rounded-2xl glow-card text-center">
+                    <div class="text-4xl sm:text-6xl font-black text-emerald-400 mb-2">0%</div>
+                    <div class="text-base sm:text-lg font-bold text-slate-200">កំហុសទិន្នន័យ</div>
+                </div>
+                <div class="p-5 rounded-2xl glow-card text-center">
+                    <div class="text-4xl sm:text-6xl font-black text-amber-400 mb-2">1 វិនាទី</div>
+                    <div class="text-base sm:text-lg font-bold text-slate-200">Bakong KHQR</div>
+                </div>
+                <div class="p-5 rounded-2xl glow-card text-center">
+                    <div class="text-4xl sm:text-6xl font-black text-purple-400 mb-2">100%</div>
+                    <div class="text-base sm:text-lg font-bold text-slate-200">ភាសាខ្មែរសុទ្ធ</div>
+                </div>
+            </div>
+
+            <div class="text-base text-slate-400 flex items-center gap-2 font-medium">
+                <span class="w-3 h-3 rounded-full bg-emerald-400 animate-ping"></span> គាំទ្រទាំងសហគ្រាស B2B លក់ដុំ និងហាងលក់រាយ B2C
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- SLIDE 2: BEFORE VS AFTER COMPARISON -->
+        <!-- ========================================== -->
+        <div class="slide w-full max-w-6xl h-full flex-col justify-center">
+            <div class="text-sm font-bold tracking-widest text-amber-400 uppercase mb-2">ការប្រៀបធៀបជាក់ស្តែង · Transformation Proof</div>
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-8">
+                តើអាជីវកម្មរបស់អ្នកផ្លាស់ប្តូរយ៉ាងដូចម្តេច?
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- BEFORE -->
+                <div class="p-8 rounded-3xl bg-red-950/25 border-2 border-red-500/40 relative">
+                    <div class="flex items-center gap-3 text-red-400 font-bold text-xl sm:text-2xl mb-6">
+                        <i class="fas fa-circle-xmark text-2xl sm:text-3xl"></i> មុនពេលប្រើប្រព័ន្ធ (Before)
+                    </div>
+                    <div class="space-y-5 text-base sm:text-xl text-slate-200 leading-relaxed">
+                        <div class="flex items-start gap-4">
+                            <span class="w-8 h-8 rounded-xl bg-red-500/20 text-red-400 flex items-center justify-center font-bold flex-shrink-0 text-lg">✕</span>
+                            <p><b>ទិន្នន័យរាយប៉ាយ</b>៖ Excel ផ្សេង, គិតលុយផ្សេង, ឃ្លាំងផ្សេង ចុងខែឈឺក្បាលបូកសរុប។</p>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <span class="w-8 h-8 rounded-xl bg-red-500/20 text-red-400 flex items-center justify-center font-bold flex-shrink-0 text-lg">✕</span>
+                            <p><b>បាត់បង់ស្តុក</b>៖ មិនដឹងទំនិញបាត់ទៅណា មិនដឹងអ្នកណាយក គ្មានកំណត់ហេតុ។</p>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <span class="w-8 h-8 rounded-xl bg-red-500/20 text-red-400 flex items-center justify-center font-bold flex-shrink-0 text-lg">✕</span>
+                            <p><b>លេចធ្លាយព័ត៌មាន</b>៖ បុគ្គលិកលក់ដឹងថ្លៃដើមទិញចូល លួចអតិថិជនទៅរកស៊ីក្រៅ។</p>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <span class="w-8 h-8 rounded-xl bg-red-500/20 text-red-400 flex items-center justify-center font-bold flex-shrink-0 text-lg">✕</span>
+                            <p><b>មិនដឹងចំណេញពិត</b>៖ ឃើញតែលុយហូរចេញចូល តែមិនដឹងខែហ្នឹងចំណេញឬខាត។</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AFTER -->
+                <div class="p-8 rounded-3xl bg-emerald-950/25 border-2 border-emerald-500/40 relative">
+                    <div class="flex items-center gap-3 text-emerald-400 font-bold text-xl sm:text-2xl mb-6">
+                        <i class="fas fa-circle-check text-2xl sm:text-3xl"></i> ក្រោយពេលប្រើ DIGITECHKH BMS (After)
+                    </div>
+                    <div class="space-y-5 text-base sm:text-xl text-slate-100 leading-relaxed">
+                        <div class="flex items-start gap-4">
+                            <span class="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold flex-shrink-0 text-lg">✓</span>
+                            <p><b>ប្រព័ន្ធរួមតែមួយ</b>៖ លក់ ដកស្តុក ចុះបញ្ជីគណនេយ្យ ស្វ័យប្រវត្តិក្នុង 1 វិនាទី។</p>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <span class="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold flex-shrink-0 text-lg">✓</span>
+                            <p><b>ស្តុកតឹងរ៉ឹង 100%</b>៖ ដឹងចំនួនពិតប្រាកដតាមឃ្លាំង ផ្ទេរអន្តរសាខាមានប័ណ្ណត្រឹមត្រូវ។</p>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <span class="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold flex-shrink-0 text-lg">✓</span>
+                            <p><b>Zero-Leakage Security</b>៖ បុគ្គលិកឃើញតែទិន្នន័យខ្លួនឯង មិនអាចលួចមើលថ្លៃដើម។</p>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <span class="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold flex-shrink-0 text-lg">✓</span>
+                            <p><b>ដឹងចំណេញគ្រប់វិនាទី</b>៖ Dashboard បង្ហាញចំណេញសុទ្ធ ចរន្តសាច់ប្រាក់ P&L ច្បាស់ក្រឡែត។</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- SLIDE 3: WHY THE CLIENT NEEDS IT -->
+        <!-- ========================================== -->
+        <div class="slide w-full max-w-6xl h-full flex-col justify-center">
+            <div class="text-sm font-bold tracking-widest text-rose-400 uppercase mb-2">ទស្សនវិស័យអតិថិជន · Why You Need This</div>
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-8">
+                ហេតុអ្វីបានជាម្ចាស់អាជីវកម្មត្រូវការប្រព័ន្ធនេះជាដាច់ខាត?
+            </h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="p-6 rounded-3xl glow-card text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-rose-500/20 text-rose-400 flex items-center justify-center text-3xl mx-auto mb-4">
+                        <i class="fas fa-hand-holding-dollar"></i>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-bold text-white mb-2">ទប់ស្កាត់ការបាត់លុយ</h3>
+                    <p class="text-base sm:text-lg text-slate-300 leading-relaxed">
+                        ទប់ស្កាត់ការកិបកេង ចេញវិក្កយបត្រស្ទួន និងការលក់មិនចូលបញ្ជី។
+                    </p>
+                </div>
+                <div class="p-6 rounded-3xl glow-card text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-3xl mx-auto mb-4">
+                        <i class="fas fa-clock-rotate-left"></i>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-bold text-white mb-2">សន្សំពេល 70%</h3>
+                    <p class="text-base sm:text-lg text-slate-300 leading-relaxed">
+                        បម្លែងពី Quote ទៅ Invoice ក្នុង 1 ចុច មិនបាច់វាយបញ្ចូលឡើងវិញ។
+                    </p>
+                </div>
+                <div class="p-6 rounded-3xl glow-card text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-blue-500/20 text-blue-400 flex items-center justify-center text-3xl mx-auto mb-4">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-bold text-white mb-2">គ្រប់គ្រងពីចម្ងាយ</h3>
+                    <p class="text-base sm:text-lg text-slate-300 leading-relaxed">
+                        នៅទីណាក៏ដឹងចំណូល តាមរយៈ Dashboard និង Telegram Bot ម៉ោង 5 រសៀល។
+                    </p>
+                </div>
+                <div class="p-6 rounded-3xl glow-card text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-3xl mx-auto mb-4">
+                        <i class="fas fa-file-circle-check"></i>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-bold text-white mb-2">អនុលោមភាពពន្ធដារ</h3>
+                    <p class="text-base sm:text-lg text-slate-300 leading-relaxed">
+                        គណនាពន្ធ អតប 10% ត្រឹមត្រូវតាមច្បាប់ ចេញវិក្កយបត្រ A4 ផ្លូវការ។
+                    </p>
+                </div>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-blue-500/15 border border-blue-400/30 text-lg sm:text-xl text-blue-200 text-center font-medium">
+                🎯 <b>សន្និដ្ឋាន</b>៖ ការវិនិយោគលើប្រព័ន្ធនេះ ជា<b>ការទប់ស្កាត់ការខាតបង់រាប់ពាន់ដុល្លារក្នុងមួយខែៗ</b>!
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- SLIDE 4: WHY TAKE THIS SYSTEM FOR SALE -->
+        <!-- ========================================== -->
+        <div class="slide w-full max-w-6xl h-full flex-col justify-center">
+            <div class="text-sm font-bold tracking-widest text-emerald-400 uppercase mb-2">ឱកាសអាជីវកម្ម · Commercial Advantage</div>
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-8">
+                ហេតុអ្វីបានជាយើងគួរយកប្រព័ន្ធនេះទៅលក់លើទីផ្សារ?
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="p-8 rounded-3xl glow-card">
+                    <div class="w-16 h-16 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-3xl mb-4">
+                        <i class="fas fa-arrow-trend-up"></i>
+                    </div>
+                    <div class="text-4xl sm:text-5xl font-black text-white mb-2">500,000+</div>
+                    <div class="text-xl font-bold text-emerald-400 mb-3">ទំហំទីផ្សារ SMEs កម្ពុជា</div>
+                    <p class="text-base sm:text-lg text-slate-300 leading-relaxed">
+                        សហគ្រាសរាប់សែនកំពុងស្វែងរកប្រព័ន្ធគ្រប់គ្រងដែលស្រួលប្រើ ភាសាខ្មែរ និងស្គាល់ Bakong KHQR។
+                    </p>
+                </div>
+
+                <div class="p-8 rounded-3xl glow-card">
+                    <div class="w-16 h-16 rounded-2xl bg-blue-500/20 text-blue-400 flex items-center justify-center text-3xl mb-4">
+                        <i class="fas fa-repeat"></i>
+                    </div>
+                    <div class="text-4xl sm:text-5xl font-black text-white mb-2">SaaS Recurring</div>
+                    <div class="text-xl font-bold text-blue-400 mb-3">ចំណូលប្រចាំខែជាប់រហូត</div>
+                    <p class="text-base sm:text-lg text-slate-300 leading-relaxed">
+                        អតិថិជនបង់ថ្លៃសេវាប្រចាំខែ/ឆ្នាំ (Subscription)។ កាលណាទិន្នន័យរត់លើប្រព័ន្ធហើយ គេនឹងមិនប្តូរចេញឡើយ។
+                    </p>
+                </div>
+
+                <div class="p-8 rounded-3xl glow-card">
+                    <div class="w-16 h-16 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-3xl mb-4">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <div class="text-4xl sm:text-5xl font-black text-white mb-2">Multi-Revenue</div>
+                    <div class="text-xl font-bold text-amber-400 mb-3">ប្រភពចំណូលច្រើនផ្លូវ</div>
+                    <p class="text-base sm:text-lg text-slate-300 leading-relaxed">
+                        ចំណូលពី Software + ថ្លៃ Setup/Training + ថ្លៃលក់ Hardware (ម៉ាស៊ីនស្កេនបាកូដ, ម៉ាស៊ីនព្រីនកម្តៅ)។
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- SLIDE 5: COMPETITIVE BATTLECARD -->
+        <!-- ========================================== -->
+        <div class="slide w-full max-w-6xl h-full flex-col justify-center">
+            <div class="text-sm font-bold tracking-widest text-indigo-400 uppercase mb-2">ការប្រៀបធៀបប្រកួតប្រជែង · Competitive Battlecard</div>
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-6">
+                តើប្រព័ន្ធរបស់យើងល្អដាច់គេយ៉ាងដូចម្តេច?
+            </h2>
+
+            <div class="overflow-hidden rounded-3xl border border-white/15 glow-card text-base sm:text-lg">
+                <table class="w-full text-left">
+                    <thead class="bg-blue-950/60 text-slate-200 border-b border-white/10 text-lg sm:text-xl">
+                        <tr>
+                            <th class="p-4 font-bold">លក្ខណៈពិសេស</th>
+                            <th class="p-4 text-center text-emerald-400 font-black bg-blue-600/25">DIGITECHKH BMS</th>
+                            <th class="p-4 text-center text-slate-400 font-semibold">ប្រព័ន្ធបរទេស (SAP/Odoo)</th>
+                            <th class="p-4 text-center text-slate-400 font-semibold">POS ក្នុងស្រុកទូទៅ</th>
+                            <th class="p-4 text-center text-slate-400 font-semibold">Excel / សៀវភៅ</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/10 text-slate-200">
+                        <tr>
+                            <td class="p-3.5 font-semibold">ភាសាខ្មែរសុទ្ធសាធ 100%</td>
+                            <td class="p-3.5 text-center font-black text-emerald-400 bg-blue-600/10">✓ ពេញលេញ</td>
+                            <td class="p-3.5 text-center text-red-400 font-bold">✕ គ្មាន / បកខុស</td>
+                            <td class="p-3.5 text-center text-amber-400">~ ខ្លះៗ</td>
+                            <td class="p-3.5 text-center text-amber-400">~ វាយដោយដៃ</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3.5 font-semibold">Bakong Dynamic KHQR</td>
+                            <td class="p-3.5 text-center font-black text-emerald-400 bg-blue-600/10">✓ 1 វិនាទី ដឹងភ្លាម</td>
+                            <td class="p-3.5 text-center text-red-400 font-bold">✕ គ្មាន</td>
+                            <td class="p-3.5 text-center text-amber-400">~ Static QR</td>
+                            <td class="p-3.5 text-center text-red-400 font-bold">✕ គ្មាន</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3.5 font-semibold">គណនេយ្យទ្វេបញ្ជី & សៀវភៅធំ GL</td>
+                            <td class="p-3.5 text-center font-black text-emerald-400 bg-blue-600/10">✓ ស្វ័យប្រវត្តិ</td>
+                            <td class="p-3.5 text-center text-emerald-400">✓ មាន តែស្មុគស្មាញ</td>
+                            <td class="p-3.5 text-center text-red-400 font-bold">✕ គ្មានទាល់តែសោះ</td>
+                            <td class="p-3.5 text-center text-red-400 font-bold">✕ គាំងរូបមន្ត</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3.5 font-semibold">លទ្ធកម្ម 3-Way Matching</td>
+                            <td class="p-3.5 text-center font-black text-emerald-400 bg-blue-600/10">✓ PO = GRN = Bill</td>
+                            <td class="p-3.5 text-center text-emerald-400">✓ មាន</td>
+                            <td class="p-3.5 text-center text-red-400 font-bold">✕ គ្មាន</td>
+                            <td class="p-3.5 text-center text-red-400 font-bold">✕ គ្មាន</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3.5 font-semibold">លក់បានទោះបីដាច់ Internet</td>
+                            <td class="p-3.5 text-center font-black text-emerald-400 bg-blue-600/10">✓ Offline POS</td>
+                            <td class="p-3.5 text-center text-red-400 font-bold">✕ ដាច់សេវាគាំង</td>
+                            <td class="p-3.5 text-center text-amber-400">~ ខ្លះមាន ខ្លះអត់</td>
+                            <td class="p-3.5 text-center text-emerald-400">✓ Offline</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3.5 font-semibold">តម្លៃសេវា និងភាពងាយស្រួល</td>
+                            <td class="p-3.5 text-center font-black text-emerald-400 bg-blue-600/10">✓ សមរម្យ រៀន 1 ថ្ងៃ</td>
+                            <td class="p-3.5 text-center text-red-400 font-bold">✕ ថ្លៃរាប់ម៉ឺន$</td>
+                            <td class="p-3.5 text-center text-emerald-400">✓ ថោក តែមុខងារតិច</td>
+                            <td class="p-3.5 text-center text-red-400 font-bold">✕ គ្មានសុវត្ថិភាព</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- SLIDE 6: THE 4 BUSINESS PILLARS (VISUAL) -->
+        <!-- ========================================== -->
+        <div class="slide w-full max-w-6xl h-full flex-col justify-center">
+            <div class="text-sm font-bold tracking-widest text-blue-400 uppercase mb-2">សសរទ្រូងទាំង 4 · The 4 Pillars</div>
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-8">
+                4 ម៉ូឌុលស្នូលតភ្ជាប់គ្នាឥតខ្ចោះ
+            </h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div class="p-6 rounded-3xl glow-card border-l-8 border-blue-500">
+                    <div class="flex items-center gap-4 mb-3">
+                        <div class="w-14 h-14 rounded-2xl bg-blue-500/20 text-blue-400 flex items-center justify-center text-2xl">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">1. ផ្នែកលក់ & CRM</h3>
+                    </div>
+                    <p class="text-lg sm:text-xl text-slate-300 leading-relaxed">
+                        សម្រង់តម្លៃ (Quote) → វិក្កយបត្រ (Invoice) → កាត់ស្តុក → បង្កើតចំណូលស្វ័យប្រវត្តិ។
+                    </p>
+                </div>
+
+                <div class="p-6 rounded-3xl glow-card border-l-8 border-emerald-500">
+                    <div class="flex items-center gap-4 mb-3">
+                        <div class="w-14 h-14 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-2xl">
+                            <i class="fas fa-cash-register"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">2. ច្រកលក់រាយ POS</h3>
+                    </div>
+                    <p class="text-lg sm:text-xl text-slate-300 leading-relaxed">
+                        ស្កេនបាកូដលឿន, បង្ហាញ Bakong KHQR, បោះពុម្ពវិក្កយបត្រ 80mm, បិទវេនលុយ Z-Report។
+                    </p>
+                </div>
+
+                <div class="p-6 rounded-3xl glow-card border-l-8 border-amber-500">
+                    <div class="flex items-center gap-4 mb-3">
+                        <div class="w-14 h-14 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-2xl">
+                            <i class="fas fa-boxes-stacked"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">3. ឃ្លាំងស្តុក WMS</h3>
+                    </div>
+                    <p class="text-lg sm:text-xl text-slate-300 leading-relaxed">
+                        ពហុឃ្លាំង, ផ្ទេរស្តុកអន្តរសាខា, តាមដានឡូតិ៍ និងផុតកំណត់ (FIFO), រាប់ស្តុកកែតម្រូវ។
+                    </p>
+                </div>
+
+                <div class="p-6 rounded-3xl glow-card border-l-8 border-purple-500">
+                    <div class="flex items-center gap-4 mb-3">
+                        <div class="w-14 h-14 rounded-2xl bg-purple-500/20 text-purple-400 flex items-center justify-center text-2xl">
+                            <i class="fas fa-scale-balanced"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">4. គណនេយ្យទ្វេបញ្ជី</h3>
+                    </div>
+                    <p class="text-lg sm:text-xl text-slate-300 leading-relaxed">
+                        សៀវភៅធំ (General Ledger), របាយការណ៍ចំណេញខាត (P&L), តារាងតុល្យការ, និងពន្ធ អតប 10%។
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- SLIDE 7: ZERO-LEAKAGE 12 ROLES -->
+        <!-- ========================================== -->
+        <div class="slide w-full max-w-6xl h-full flex-col justify-center">
+            <div class="text-sm font-bold tracking-widest text-purple-400 uppercase mb-2">សុវត្ថិភាពទិន្នន័យ · Zero-Leakage RBAC</div>
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-6">
+                12 តួនាទីបែងចែកដាច់ណាត់ គ្មានការលេចធ្លាយ
+            </h2>
+
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-base sm:text-lg mb-6">
+                <div class="p-4 rounded-2xl glow-card border border-purple-500/30">
+                    <div class="text-purple-400 font-bold mb-1"><i class="fas fa-crown mr-2"></i>Super Admin</div>
+                    <p class="text-sm text-slate-300">ម្ចាស់ប្រព័ន្ធមេ សកល</p>
+                </div>
+                <div class="p-4 rounded-2xl glow-card border border-blue-500/30">
+                    <div class="text-blue-400 font-bold mb-1"><i class="fas fa-building mr-2"></i>Admin / GM</div>
+                    <p class="text-sm text-slate-300">អភិបាលក្រុមហ៊ុន</p>
+                </div>
+                <div class="p-4 rounded-2xl glow-card border border-emerald-500/30">
+                    <div class="text-emerald-400 font-bold mb-1"><i class="fas fa-briefcase mr-2"></i>Sales Manager</div>
+                    <p class="text-sm text-slate-300">អនុម័តតម្លៃ មិនឃើញថ្លៃដើម</p>
+                </div>
+                <div class="p-4 rounded-2xl glow-card border border-slate-500/30">
+                    <div class="text-slate-300 font-bold mb-1"><i class="fas fa-user mr-2"></i>Sales Exec</div>
+                    <p class="text-sm text-slate-300">ឃើញតែអតិថិជនខ្លួនឯង</p>
+                </div>
+                <div class="p-4 rounded-2xl glow-card border border-amber-500/30">
+                    <div class="text-amber-400 font-bold mb-1"><i class="fas fa-cash-register mr-2"></i>Cashier / POS</div>
+                    <p class="text-sm text-slate-300">គិតលុយ គ្មានសិទ្ធិកែតម្លៃ</p>
+                </div>
+                <div class="p-4 rounded-2xl glow-card border border-indigo-500/30">
+                    <div class="text-indigo-400 font-bold mb-1"><i class="fas fa-truck-ramp-box mr-2"></i>Procurement</div>
+                    <p class="text-sm text-slate-300">បញ្ជាទិញ មិនឃើញចំណូល</p>
+                </div>
+                <div class="p-4 rounded-2xl glow-card border border-teal-500/30">
+                    <div class="text-teal-400 font-bold mb-1"><i class="fas fa-boxes-stacked mr-2"></i>Warehouse Mgr</div>
+                    <p class="text-sm text-slate-300">គ្រប់គ្រងស្តុក មិនឃើញលុយ</p>
+                </div>
+                <div class="p-4 rounded-2xl glow-card border border-rose-500/30">
+                    <div class="text-rose-400 font-bold mb-1"><i class="fas fa-chart-pie mr-2"></i>Chief Accountant</div>
+                    <p class="text-sm text-slate-300">គ្រប់គ្រងហិរញ្ញវត្ថុពេញលេញ</p>
+                </div>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-purple-500/15 border border-purple-400/30 text-lg sm:text-xl text-purple-200 text-center font-medium">
+                🛡️ <b>ភាពស្ងប់ចិត្តរបស់ម្ចាស់អាជីវកម្ម</b>៖ បុគ្គលិកផ្នែកលក់ ឬឃ្លាំង មិនអាចលួចមើលថ្លៃដើមទិញចូល ឬរបាយការណ៍ចំណេញខាតបានដាច់ខាត!
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- SLIDE 8: DIGITAL SHOWROOM & CONVERSATIONAL COMMERCE -->
+        <!-- ========================================== -->
+        <div class="slide w-full max-w-6xl h-full flex-col justify-center">
+            <div class="text-sm font-bold tracking-widest text-pink-400 uppercase mb-2">ពាណិជ្ជកម្មតាមការសន្ទនា · CONVERSATIONAL COMMERCE</div>
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-8">
+                Showroom ឌីជីថល & ការលក់តាមការជជែកផ្ទាល់
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="p-6 rounded-3xl glow-card border-t-8 border-pink-500 text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-pink-500/20 text-pink-400 flex items-center justify-center text-3xl mx-auto mb-4">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">1. Showroom អនឡាញ</h3>
+                    <p class="text-base sm:text-lg text-slate-300 leading-relaxed">
+                        តាំងបង្ហាញទំនិញស្អាតៗ ព័ត៌មានលម្អិត និងស្តុកជាក់ស្តែង ដោយគ្មានការកាត់លុយស្មុគស្មាញឡើយ។
+                    </p>
+                </div>
+
+                <div class="p-6 rounded-3xl glow-card border-t-8 border-blue-500 text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-blue-500/20 text-blue-400 flex items-center justify-center text-3xl mx-auto mb-4">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">2. ប៊ូតុង «ទាក់ទងអ្នកលក់»</h3>
+                    <p class="text-base sm:text-lg text-slate-300 leading-relaxed">
+                        អតិថិជនចុចលើទំនិញ ចូលជជែកជាមួយបុគ្គលិកលក់ភ្លាមៗ តាម Web Chat ឬ Telegram។
+                    </p>
+                </div>
+
+                <div class="p-6 rounded-3xl glow-card border-t-8 border-emerald-500 text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-3xl mx-auto mb-4">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">3. Chat-to-Quote 1 ចុច</h3>
+                    <p class="text-base sm:text-lg text-slate-300 leading-relaxed">
+                        ផ្នែកលក់ចុចចេញ Quote ឬ Invoice Bakong KHQR ផ្ញើជូនអតិថិជនក្នុង Chat នោះផ្ទាល់!
+                    </p>
+                </div>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-pink-500/15 border border-pink-400/30 text-lg sm:text-xl text-pink-200 text-center font-medium">
+                🇰🇭 <b>ត្រូវតាមទម្លាប់ទិញរបស់ជនជាតិខ្មែរ 100%</b>៖ អតិថិជនខ្មែរមិនចូលចិត្តកាត់កាតធនាគារទិញភ្លាមៗទេ គឺចូលចិត្តជជែកសួរនាំអ្នកលក់សិន ទើបសម្រេចចិត្តទិញ!
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- SLIDE 9: QUOTE TO CASH WORKFLOW -->
+        <!-- ========================================== -->
+        <div class="slide w-full max-w-6xl h-full flex-col justify-center">
+            <div class="text-sm font-bold tracking-widest text-emerald-400 uppercase mb-2">លំហូរស្វ័យប្រវត្តិ · Quote-to-Cash Cycle</div>
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-8">
+                ពីសម្រង់តម្លៃ ដល់ការប្រមូលលុយចូលគណនី
+            </h2>
+
+            <div class="grid grid-cols-2 sm:grid-cols-5 gap-4 mb-8 text-center">
+                <div class="p-5 rounded-3xl glow-card">
+                    <div class="w-12 h-12 rounded-2xl bg-blue-500/20 text-blue-400 flex items-center justify-center mx-auto mb-3 text-xl font-bold">1</div>
+                    <div class="text-lg font-bold text-white mb-1">សម្រង់តម្លៃ</div>
+                    <div class="text-sm text-slate-300">Quotation រហ័ស</div>
+                </div>
+                <div class="p-5 rounded-3xl glow-card">
+                    <div class="w-12 h-12 rounded-2xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center mx-auto mb-3 text-xl font-bold">2</div>
+                    <div class="text-lg font-bold text-white mb-1">បញ្ជាទិញ & កក់</div>
+                    <div class="text-sm text-slate-300">Down Payment</div>
+                </div>
+                <div class="p-5 rounded-3xl glow-card">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center mx-auto mb-3 text-xl font-bold">3</div>
+                    <div class="text-lg font-bold text-white mb-1">កាត់ស្តុកដឹក</div>
+                    <div class="text-sm text-slate-300">Delivery Order</div>
+                </div>
+                <div class="p-5 rounded-3xl glow-card">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-3 text-xl font-bold">4</div>
+                    <div class="text-lg font-bold text-white mb-1">វិក្កយបត្រ</div>
+                    <div class="text-sm text-slate-300">Bakong KHQR</div>
+                </div>
+                <div class="p-5 rounded-3xl glow-card">
+                    <div class="w-12 h-12 rounded-2xl bg-purple-500/20 text-purple-400 flex items-center justify-center mx-auto mb-3 text-xl font-bold">5</div>
+                    <div class="text-lg font-bold text-white mb-1">ចុះសៀវភៅធំ</div>
+                    <div class="text-sm text-slate-300">Auto Dr/Cr</div>
+                </div>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-slate-800/90 border border-slate-700 text-lg sm:text-xl text-slate-200 text-center font-medium">
+                ⚡ <b>ចុចតែ 1 ចុច</b>៖ ព័ត៌មានអតិថិជន មុខទំនិញ និងតម្លៃរត់តភ្ជាប់គ្នាដោយស្វ័យប្រវត្តិ គ្មានកំហុសទិន្នន័យ 0%!
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- SLIDE 10: 3-WAY MATCHING (PROCUREMENT) -->
+        <!-- ========================================== -->
+        <div class="slide w-full max-w-6xl h-full flex-col justify-center">
+            <div class="text-sm font-bold tracking-widest text-indigo-400 uppercase mb-2">លទ្ធកម្មតឹងរ៉ឹង · 3-Way Matching</div>
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-8">
+                ការពារការបាត់បង់លុយតាមរយៈ 3-Way Matching
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="p-8 rounded-3xl glow-card border-t-8 border-indigo-500 text-center">
+                    <div class="text-4xl text-indigo-400 mb-3"><i class="fas fa-file-invoice"></i></div>
+                    <h3 class="text-2xl font-bold text-white mb-2">1. ប័ណ្ណបញ្ជាទិញ (PO)</h3>
+                    <p class="text-base sm:text-lg text-slate-300 leading-relaxed">បញ្ជាក់ពីចំនួន និងតម្លៃដែលបានព្រមព្រៀងជាមួយអ្នកផ្គត់ផ្គង់។</p>
+                </div>
+                <div class="p-8 rounded-3xl glow-card border-t-8 border-teal-500 text-center">
+                    <div class="text-4xl text-teal-400 mb-3"><i class="fas fa-truck-ramp-box"></i></div>
+                    <h3 class="text-2xl font-bold text-white mb-2">2. ប័ណ្ណទទួលទំនិញ (GRN)</h3>
+                    <p class="text-base sm:text-lg text-slate-300 leading-relaxed">ឃ្លាំងរាប់ចំនួនជាក់ស្តែង ពិនិត្យគុណភាពមុនចុះហត្ថលេខាទទួល។</p>
+                </div>
+                <div class="p-8 rounded-3xl glow-card border-t-8 border-amber-500 text-center">
+                    <div class="text-4xl text-amber-400 mb-3"><i class="fas fa-file-invoice-dollar"></i></div>
+                    <h3 class="text-2xl font-bold text-white mb-2">3. វិក្កយបត្រទិញ (Bill)</h3>
+                    <p class="text-base sm:text-lg text-slate-300 leading-relaxed">វិក្កយបត្រទារប្រាក់ពីអ្នកផ្គត់ផ្គង់ ត្រូវតែផ្ទៀងផ្ទាត់ស្មើគ្នានឹង GRN។</p>
+                </div>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-emerald-500/15 border border-emerald-400/30 text-lg sm:text-xl text-emerald-200 text-center font-medium">
+                🔒 <b>ប្រព័ន្ធទប់ស្កាត់ការក្លែងបន្លំ</b>៖ បើគ្មានការផ្គូផ្គងត្រូវគ្នា 100% ទេ ប្រព័ន្ធនឹងមិនអនុញ្ញាតឱ្យចេញប័ណ្ណចំណាយទូទាត់ប្រាក់ឡើយ!
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- SLIDE 11: OFFLINE-FIRST POS -->
+        <!-- ========================================== -->
+        <div class="slide w-full max-w-6xl h-full flex-col justify-center">
+            <div class="text-sm font-bold tracking-widest text-amber-400 uppercase mb-2">ច្រកលក់រាយ · Resilient POS</div>
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-8">
+                ច្រកលក់រាយ POS — លក់បានទោះបីដាច់ Internet
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="p-8 rounded-3xl glow-card text-center">
+                    <div class="text-4xl text-amber-400 mb-3"><i class="fas fa-ban"></i></div>
+                    <h3 class="text-2xl font-bold text-white mb-2">ដំណើរការ Offline</h3>
+                    <p class="text-base sm:text-lg text-slate-300 leading-relaxed">ពេលដាច់ Internet នៅតាមហាង អ្នកគិតលុយនៅតែស្កេន និងគិតលុយបានធម្មតា។</p>
+                </div>
+                <div class="p-8 rounded-3xl glow-card text-center">
+                    <div class="text-4xl text-blue-400 mb-3"><i class="fas fa-print"></i></div>
+                    <h3 class="text-2xl font-bold text-white mb-2">ព្រីនកម្តៅ 80mm/58mm</h3>
+                    <p class="text-base sm:text-lg text-slate-300 leading-relaxed">តភ្ជាប់ម៉ាស៊ីនព្រីនបង្កាន់ដៃកម្តៅ និងថតសាច់ប្រាក់បើកស្វ័យប្រវត្តិ។</p>
+                </div>
+                <div class="p-8 rounded-3xl glow-card text-center">
+                    <div class="text-4xl text-emerald-400 mb-3"><i class="fas fa-arrows-rotate"></i></div>
+                    <h3 class="text-2xl font-bold text-white mb-2">Auto-Sync ពេលមានសេវា</h3>
+                    <p class="text-base sm:text-lg text-slate-300 leading-relaxed">ពេល Internet មកវិញ ប្រព័ន្ធធ្វើសមកាលកម្មទិន្នន័យឡើង Cloud ស្វ័យប្រវត្តិ។</p>
+                </div>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-slate-800/90 border border-slate-700 text-lg sm:text-xl text-slate-200 text-center font-medium">
+                ☕ <b>ស័ក្តិសមឥតខ្ចោះ</b>៖ សម្រាប់ហាងទំនិញ, ហាងកាហ្វេ, ហាងលក់គ្រឿងអេឡិចត្រូនិក, ភោជនីយដ្ឋាន និងឱសថស្ថាន។
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- SLIDE 12: BAKONG KHQR -->
+        <!-- ========================================== -->
+        <div class="slide w-full max-w-6xl h-full flex-col justify-center">
+            <div class="text-sm font-bold tracking-widest text-emerald-400 uppercase mb-2">FINTECH INTEGRATION</div>
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-8">
+                Bakong Dynamic KHQR — បង់លុយរហ័សក្នុង 1 វិនាទី
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-6">
+                <div class="p-8 rounded-3xl glow-card border-l-8 border-emerald-500">
+                    <h3 class="text-2xl font-bold text-emerald-400 mb-4">ដំណើរការ Dynamic KHQR៖</h3>
+                    <div class="space-y-4 text-base sm:text-xl text-slate-200 leading-relaxed">
+                        <div class="flex items-start gap-3">
+                            <span class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold flex-shrink-0 text-base">1</span>
+                            <p>ប្រព័ន្ធបង្កើត QR Code មានចំនួនទឹកប្រាក់ជាក់ស្តែង (ដុល្លារ និងរៀល)។</p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold flex-shrink-0 text-base">2</span>
+                            <p>អតិថិជនស្កេនតាម App ធនាគារណាក៏បាន (ABA, Acleda, Wing, Canadia...)។</p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold flex-shrink-0 text-base">3</span>
+                            <p>ប្រព័ន្ធទទួលដំណឹងភ្លាមៗ (Instant Webhook) បញ្ជាក់ថាបានបង់រួចរាល់។</p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold flex-shrink-0 text-base">4</span>
+                            <p>មិនបាច់ថត Screenshot ផ្ញើតាម Telegram ផ្ទៀងផ្ទាត់ដោយដៃទៀតឡើយ!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-8 rounded-3xl bg-gradient-to-br from-emerald-950/40 to-blue-950/40 border border-emerald-500/30 text-center">
+                    <!-- Crisp Offline SVG QR Code Placeholder -->
+                    <div class="w-36 h-36 rounded-2xl bg-white p-3 mx-auto mb-4 shadow-xl flex items-center justify-center">
+                        <svg class="w-full h-full text-slate-900" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M2 2h8v8H2V2zm2 2v4h4V4H4zm10-2h8v8h-8V2zm2 2v4h4V4h-4zM2 14h8v8H2v-8zm2 2v4h4v-4H4zm14 2h2v4h-2v-4zm-4-4h4v2h-4v-2zm2 4h2v2h-2v-2zm2-2h2v2h-2v-2zm-4 4h2v2h-2v-2zM6 6h2v2H6V6zm12 0h2v2h-2V6zM6 18h2v2H6v-2z"/>
+                        </svg>
+                    </div>
+                    <div class="text-xl font-bold text-white mb-2">NBC Bakong Open API Compliant</div>
+                    <p class="text-base text-emerald-300 font-medium">លុយចូលគណនីផ្ទាល់ · គ្មានថ្លៃកាត់កង · ផ្ទៀងផ្ទាត់ស្វ័យប្រវត្តិ</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- SLIDE 13: TELEGRAM BUSINESS BOT -->
+        <!-- ========================================== -->
+        <div class="slide w-full max-w-6xl h-full flex-col justify-center">
+            <div class="text-sm font-bold tracking-widest text-blue-400 uppercase mb-2">ស្វ័យប្រវត្តិកម្មឆ្លាតវៃ · Automation Bot</div>
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-8">
+                Telegram Business Bot — របាយការណ៍ម៉ោង 5 រសៀល
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-6">
+                <div class="space-y-4 text-base sm:text-xl text-slate-200">
+                    <div class="p-5 rounded-2xl glow-card">
+                        <div class="font-bold text-white mb-1"><i class="fas fa-clock text-amber-400 mr-2 text-2xl"></i> របាយការណ៍ម៉ោង 5:00 រសៀល</div>
+                        <p class="text-base text-slate-300">ផ្ញើតួលេខលក់សរុប ចំនួនវិក្កយបត្រ និងសាច់ប្រាក់ប្រមូលបានប្រចាំថ្ងៃ។</p>
+                    </div>
+                    <div class="p-5 rounded-2xl glow-card">
+                        <div class="font-bold text-white mb-1"><i class="fas fa-triangle-exclamation text-rose-400 mr-2 text-2xl"></i> រោទ៍ដំណឹងស្តុកជិតអស់</div>
+                        <p class="text-base text-slate-300">ប្រាប់ភ្លាមៗពេលមុខទំនិញធ្លាក់ចុះដល់ចំណុចបញ្ជាទិញបំពេញស្តុក។</p>
+                    </div>
+                    <div class="p-5 rounded-2xl glow-card">
+                        <div class="font-bold text-white mb-1"><i class="fas fa-check-double text-emerald-400 mr-2 text-2xl"></i> ចុចអនុម័តលើ Telegram</div>
+                        <p class="text-base text-slate-300">ថ្នាក់ដឹកនាំអាចចុច Approve PO ឬវិក្កយបត្រធំៗលើទូរស័ព្ទដៃភ្លាមៗ។</p>
+                    </div>
+                </div>
+
+                <div class="p-6 rounded-3xl bg-[#17212b] border border-blue-500/30 font-sans text-base text-slate-200 shadow-2xl">
+                    <div class="flex items-center gap-3 border-b border-white/10 pb-3 mb-4 text-blue-400 font-bold text-lg">
+                        <i class="fab fa-telegram text-2xl"></i> DIGITECHKH Bot · 5:00 PM
+                    </div>
+                    <div class="space-y-2 text-base text-slate-200 font-mono">
+                        <p class="text-emerald-400 font-bold text-lg">📊 របាយការណ៍លក់ប្រចាំថ្ងៃ (17/09/2026)</p>
+                        <p class="text-slate-500">---------------------------------------</p>
+                        <p>💰 ចំណូលសរុប៖ <b>$3,450.00 / 14,145,000៛</b></p>
+                        <p>🧾 វិក្កយបត្រចេញ៖ <b>48 ច្បាប់</b></p>
+                        <p>🏆 ទំនិញលក់ដាច់៖ <b>កុំព្យូទ័រ Dell (12 គ្រឿង)</b></p>
+                        <p class="text-amber-300">⚠️ ស្តុកជិតអស់៖ <b>ម៉ាស៊ីនព្រីន Canon (សល់ 2 គ្រឿង)</b></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- SLIDE 14: THE 3-MINUTE WOW DEMO PITCH -->
+        <!-- ========================================== -->
+        <div class="slide w-full max-w-6xl h-full flex-col justify-center">
+            <div class="text-sm font-bold tracking-widest text-cyan-400 uppercase mb-2">ក្បួនសន្ទនាទាក់ទាញចិត្ត · 3-Minute Live Demo Pitch</div>
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-8">
+                បង្ហាញគំរូជាក់ស្តែង 3 នាទី បំបែកការស្ទាក់ស្ទើរ
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="p-6 rounded-3xl glow-card border-t-8 border-cyan-500 text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-3xl mx-auto mb-4">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="text-sm font-bold text-cyan-400 mb-1">នាទីទី 1</div>
+                    <h3 class="text-2xl font-bold text-white mb-2">ស្កេនលក់ & បាគង KHQR</h3>
+                    <p class="text-base sm:text-lg text-slate-300 leading-relaxed">
+                        ស្កេនបាកូដទំនិញ ចេញកូដបាគងស្កេនភ្លាមៗ ម៉ាស៊ីនព្រីនវិក្កយបត្រស្អាត គ្មានការភាន់ច្រឡំ។
+                    </p>
+                </div>
+
+                <div class="p-6 rounded-3xl glow-card border-t-8 border-amber-500 text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-3xl mx-auto mb-4">
+                        <i class="fas fa-ban"></i>
+                    </div>
+                    <div class="text-sm font-bold text-amber-400 mb-1">នាទីទី 2</div>
+                    <h3 class="text-2xl font-bold text-white mb-2">ផ្តាច់អ៊ីនធឺណិតផ្ទាល់ភ្នែក</h3>
+                    <p class="text-base sm:text-lg text-slate-300 leading-relaxed">
+                        បិទសេវាអ៊ីនធឺណិតបង្ហាញភ្លាមៗ ប្រព័ន្ធនៅតែលក់បានរលូន 100% គ្មានថ្ងៃគាំងហាងឡើយ។
+                    </p>
+                </div>
+
+                <div class="p-6 rounded-3xl glow-card border-t-8 border-emerald-500 text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-3xl mx-auto mb-4">
+                        <i class="fab fa-telegram"></i>
+                    </div>
+                    <div class="text-sm font-bold text-emerald-400 mb-1">នាទីទី 3</div>
+                    <h3 class="text-2xl font-bold text-white mb-2">ដឹងប្រាក់ចំណេញសុទ្ធពិត</h3>
+                    <p class="text-base sm:text-lg text-slate-300 leading-relaxed">
+                        ឱ្យម្ចាស់ហាងបើកតេឡេក្រាម ឃើញរបាយការណ៍បិទវេន និងប្រាក់ចំណេញសុទ្ធពិតប្រាកដភ្លាមៗ។
+                    </p>
+                </div>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-cyan-500/15 border border-cyan-400/30 text-lg sm:text-xl text-cyan-200 text-center font-medium">
+                🎯 <b>យុទ្ធសាស្ត្រលក់ជោគជ័យ</b>៖ កុំនិយាយទ្រឹស្តីច្រើន ត្រូវបង្ហាញសកម្មភាពជាក់ស្តែង 3 នាទី ដើម្បីឱ្យម្ចាស់អាជីវកម្មឃើញតម្លៃពិតភ្លាមៗ!
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- SLIDE 15: ROI CALCULATION & PRICING -->
+        <!-- ========================================== -->
+        <div class="slide w-full max-w-6xl h-full flex-col justify-center">
+            <div class="text-sm font-bold tracking-widest text-emerald-400 uppercase mb-2">ការគណនាផលចំណេញត្រឡប់មកវិញ · ROI & PRICING PACKAGES</div>
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-8">
+                វិនិយោគត្រឹមពីរបីដុល្លារ សន្សំលុយបានរាប់ពាន់ដុល្លារ
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="p-6 rounded-3xl glow-card border-l-8 border-emerald-500">
+                    <div class="text-4xl text-emerald-400 font-extrabold mb-2">$600 - $1,500</div>
+                    <h3 class="text-xl font-bold text-white mb-2">សន្សំពីការបាត់ស្តុក / ខែ</h3>
+                    <p class="text-base text-slate-300 leading-relaxed">
+                        ទប់ស្កាត់ការលេចធ្លាយស្តុក 3% ទៅ 5% នៃចំណូលសរុបប្រចាំខែតាមរយៈការតាមដាន FIFO និង 3-Way Matching។
+                    </p>
+                </div>
+
+                <div class="p-6 rounded-3xl glow-card border-l-8 border-blue-500">
+                    <div class="text-4xl text-blue-400 font-extrabold mb-2">+2 ម៉ោង / ថ្ងៃ</div>
+                    <h3 class="text-xl font-bold text-white mb-2">សន្សំពេលវេលាគ្រប់គ្រង</h3>
+                    <p class="text-base text-slate-300 leading-relaxed">
+                        កាត់បន្ថយពេលវេលាអង្គុយបូកលេខ និងផ្ទៀងផ្ទាត់សៀវភៅ ម្ចាស់អាជីវកម្មមានពេលពេញលេញពង្រីកសាខាថ្មី។
+                    </p>
+                </div>
+
+                <div class="p-6 rounded-3xl glow-card border-l-8 border-purple-500">
+                    <div class="text-4xl text-purple-400 font-extrabold mb-2">&gt; 500% ROI</div>
+                    <h3 class="text-xl font-bold text-white mb-2">ផលចំណេញត្រឡប់មកវិញ</h3>
+                    <p class="text-base text-slate-300 leading-relaxed">
+                        កញ្ចប់សេវាចាប់ផ្តើមពី $29 ដល់ $69/ខែ ប្រៀបធៀបនឹងផលចំណេញដែលទទួលបាន គឺលើសលប់លើសពី 5 ដង។
+                    </p>
+                </div>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-slate-800/90 border border-slate-700 text-lg sm:text-xl text-slate-200 text-center font-medium">
+                💰 <b>រូបមន្តបិទការលក់</b>៖ «លោកមិនមែនកំពុងចំណាយលុយលើប្រព័ន្ធទេ តែលោកកំពុងយកប្រព័ន្ធទៅទប់លុយដែលកំពុងលេចធ្លាយ!»
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- SLIDE 16: TOP CLIENT QUESTIONS & PROOFS -->
+        <!-- ========================================== -->
+        <div class="slide w-full max-w-6xl h-full flex-col justify-center">
+            <div class="text-sm font-bold tracking-widest text-amber-400 uppercase mb-2">ចម្លើយតបការសង្ស័យ · Client Objections & Solid Proofs</div>
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-6">
+                សំណួរពិបាកៗទាំង 4 ដែលអតិថិជនតែងតែសួរ
+            </h2>
+
+            <div class="space-y-4 text-base sm:text-xl">
+                <div class="p-5 rounded-2xl glow-card">
+                    <div class="font-bold text-amber-400 mb-1 text-lg sm:text-xl">❓ សំណួរ 1៖ «បុគ្គលិកខ្ញុំមិនសូវចេះកុំព្យូទ័រ តើពួកគាត់អាចរៀនចេះប្រើទេ?»</div>
+                    <p class="text-slate-200"><b>💡 ភស្តុតាង</b>៖ UI ជាភាសាខ្មែរសុទ្ធសាធ 100% គ្មានពាក្យបច្ចេកទេសស្មុគស្មាញ ចុចតែ 3 ជំហានចប់ រៀនកន្លះថ្ងៃគឺចេះស្ទាត់។</p>
+                </div>
+                <div class="p-5 rounded-2xl glow-card">
+                    <div class="font-bold text-amber-400 mb-1 text-lg sm:text-xl">❓ សំណួរ 2៖ «បើកុំព្យូទ័រខូច ឬដាច់ភ្លើង តើទិន្នន័យខ្ញុំបាត់បង់ទេ?»</div>
+                    <p class="text-slate-200"><b>💡 ភស្តុតាង</b>៖ ទិន្នន័យនៅលើ Cloud រក្សាទុកស្វ័យប្រវត្តិនាពេលយប់ (Daily Auto Backup) ដូរម៉ាស៊ីនថ្មីចូលប្រើបានភ្លាម។</p>
+                </div>
+                <div class="p-5 rounded-2xl glow-card">
+                    <div class="font-bold text-amber-400 mb-1 text-lg sm:text-xl">❓ សំណួរ 3៖ «បើបុគ្គលិកលក់ឈប់ តើគេអាចលួចទិន្នន័យអតិថិជនទៅបានទេ?»</div>
+                    <p class="text-slate-200"><b>💡 ភស្តុតាង</b>៖ Zero-Leakage Data Scope មិនអនុញ្ញាតឱ្យ Export ទិន្នន័យអតិថិជនជាដុំបានឡើយ ហើយមាន Audit Log តាមដានគ្រប់សកម្មភាព។</p>
+                </div>
+                <div class="p-5 rounded-2xl glow-card">
+                    <div class="font-bold text-amber-400 mb-1 text-lg sm:text-xl">❓ សំណួរ 4៖ «តើប្រព័ន្ធអាចដំណើរការលើសាខាច្រើន (Multi-Branch) បានទេ?»</div>
+                    <p class="text-slate-200"><b>💡 ភស្តុតាង</b>៖ គាំទ្រពហុសាខា 100% សាខានីមួយៗដំណើរការដាច់ដោយឡែកពីគ្នា ឯម្ចាស់ក្រុមហ៊ុនអាចមើលឃើញទិន្នន័យរួមទាំងអស់។</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- SLIDE 17: IMPLEMENTATION ROADMAP -->
+        <!-- ========================================== -->
+        <div class="slide w-full max-w-6xl h-full flex-col justify-center">
+            <div class="text-sm font-bold tracking-widest text-emerald-400 uppercase mb-2">ផែនការអនុវត្ត · Implementation & Rollout</div>
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-8">
+                ដំណើរការដាក់ឱ្យប្រើប្រាស់ 4 សប្តាហ៍
+            </h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-4 gap-5 text-center mb-8">
+                <div class="p-6 rounded-3xl glow-card border-t-8 border-blue-500">
+                    <div class="text-sm font-bold text-blue-400 mb-2">សប្តាហ៍ទី 1</div>
+                    <div class="text-xl sm:text-2xl font-bold text-white mb-2">រៀបចំទិន្នន័យមេ</div>
+                    <p class="text-base text-slate-300">នាំចូលទំនិញ, ស្តុកដំបូង, អតិថិជន និងអ្នកផ្គត់ផ្គង់។</p>
+                </div>
+                <div class="p-6 rounded-3xl glow-card border-t-8 border-indigo-500">
+                    <div class="text-sm font-bold text-indigo-400 mb-2">សប្តាហ៍ទី 2</div>
+                    <div class="text-xl sm:text-2xl font-bold text-white mb-2">បណ្តុះបណ្តាលបុគ្គលិក</div>
+                    <p class="text-base text-slate-300">បណ្តុះបណ្តាលតាមតួនាទីជាក់ស្តែង (លក់, ឃ្លាំង, គណនេយ្យ)។</p>
+                </div>
+                <div class="p-6 rounded-3xl glow-card border-t-8 border-amber-500">
+                    <div class="text-sm font-bold text-amber-400 mb-2">សប្តាហ៍ទី 3</div>
+                    <div class="text-xl sm:text-2xl font-bold text-white mb-2">ដំណើរការសាកល្បង</div>
+                    <p class="text-base text-slate-300">ដំណើរការតេស្ត D-7, D-1, T-90 ធានាគ្មានកំហុសបច្ចេកទេស។</p>
+                </div>
+                <div class="p-6 rounded-3xl glow-card border-t-8 border-emerald-500">
+                    <div class="text-sm font-bold text-emerald-400 mb-2">សប្តាហ៍ទី 4</div>
+                    <div class="text-xl sm:text-2xl font-bold text-white mb-2">Go-Live ផ្លូវការ</div>
+                    <p class="text-base text-slate-300">ដាក់ឱ្យដំណើរការពេញលេញ ជាមួយក្រុមបច្ចេកទេសប្រចាំការ។</p>
+                </div>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-emerald-500/15 border border-emerald-400/30 text-lg sm:text-xl text-emerald-200 text-center font-medium">
+                🤝 <b>ការធានាគុណភាព</b>៖ ក្រុមការងារ DIGITECHKH នៅក្បែរលោកអ្នកជានិច្ច ដើម្បីធានាថាប្រព័ន្ធដំណើរការរលូន 100%។
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- SLIDE 18: CLOSING & CALL TO ACTION -->
+        <!-- ========================================== -->
+        <div class="slide w-full max-w-6xl h-full flex-col justify-center items-center text-center">
+            <div class="w-20 h-20 rounded-3xl bg-gradient-to-tr from-blue-600 to-indigo-500 text-white flex items-center justify-center text-4xl shadow-2xl mb-6">
+                <i class="fas fa-rocket"></i>
+            </div>
+            <h2 class="text-4xl sm:text-6xl font-black text-white mb-5">
+                ត្រៀមខ្លួនធ្វើបរិវត្តកម្មឌីជីថល?
+            </h2>
+            <p class="text-xl sm:text-2xl text-slate-300 max-w-2xl mb-10 leading-relaxed font-light">
+                DIGITECHKH BMS គឺជាដៃគូបច្ចេកវិទ្យាដ៏រឹងមាំ ដែលជួយឱ្យអាជីវកម្មរបស់អ្នករីកចម្រើនយ៉ាងឆាប់រហ័ស និងមាននិរន្តរភាព។
+            </p>
+
+            <div class="p-6 rounded-3xl glow-card max-w-lg w-full text-base sm:text-xl text-slate-200 space-y-2.5 mb-10">
+                <p><b>ក្រុមហ៊ុន៖</b> DIGITECHKH Co., Ltd.</p>
+                <p><b>គម្រោង៖</b> Business Management System (BMS)</p>
+                <p><b>ទំនាក់ទំនង៖</b> info@digitechkh.com · 012 345 678</p>
+            </div>
+
+            <div class="text-base text-slate-400 font-medium">
+                សូមអរគុណយ៉ាងជ្រាលជ្រៅ! រីករាយនឹងឆ្លើយតបរាល់សំណួរ និងពិភាក្សាបន្ត។
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Bottom Navigation Footer Bar -->
+    <footer class="no-print fixed bottom-3 left-0 right-0 px-8 flex items-center justify-between z-40">
+        <div class="text-xs text-slate-400 hidden sm:inline">
+            ចុចសញ្ញាព្រួញ <kbd class="px-2 py-0.5 bg-white/10 rounded border border-white/15 text-slate-200 font-mono">←</kbd> <kbd class="px-2 py-0.5 bg-white/10 rounded border border-white/15 text-slate-200 font-mono">→</kbd> ឬ Spacebar ដើម្បីប្តូរស្លាយ · ចុច <kbd class="px-2 py-0.5 bg-white/10 rounded border border-white/15 text-slate-200 font-mono">F</kbd> ពង្រីកពេញអេក្រង់
+        </div>
+        <div class="flex items-center gap-3 mx-auto sm:mx-0">
+            <button onclick="prevSlide()" class="px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-sm font-semibold backdrop-blur-md border border-white/15 transition flex items-center gap-2 cursor-pointer shadow-lg">
+                <i class="fas fa-chevron-left"></i> ថយក្រោយ
+            </button>
+            <button onclick="nextSlide()" class="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold transition flex items-center gap-2 cursor-pointer shadow-lg">
+                បន្ទាប់ <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </footer>
+
+    <!-- Presentation Interactive Logic -->
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        const progressBar = document.getElementById('progressBar');
+        const slideBadge = document.getElementById('slideBadge');
+
+        function updateSlide() {
+            slides.forEach((s, idx) => {
+                s.classList.toggle('active', idx === currentSlide);
+            });
+            const progress = ((currentSlide + 1) / totalSlides) * 100;
+            progressBar.style.width = progress + '%';
+            slideBadge.innerText = 'ស្លាយ ' + (currentSlide + 1) + ' / ' + totalSlides;
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                updateSlide();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlide();
+            }
+        }
+
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(() => {});
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
+        }
+
+        // Keyboard Controls
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+                e.preventDefault();
+                nextSlide();
+            } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+                e.preventDefault();
+                prevSlide();
+            } else if (e.key === 'f' || e.key === 'F') {
+                toggleFullscreen();
+            }
+        });
+
+        // Touch Swipe
+        let startX = 0;
+        document.addEventListener('touchstart', e => { startX = e.changedTouches[0].screenX; }, false);
+        document.addEventListener('touchend', e => {
+            let diffX = e.changedTouches[0].screenX - startX;
+            if (diffX < -50) nextSlide();
+            if (diffX > 50) prevSlide();
+        }, false);
+
+        // Initial trigger
+        updateSlide();
+    </script>
+</body>
+</html>
