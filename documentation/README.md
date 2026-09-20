@@ -58,6 +58,7 @@
 3. [**`role_warehouse_staff.md`**](role_warehouse_staff.md) 👉 *តួនាទី បុគ្គលិកគ្រប់គ្រងស្តុក (Warehouse Staff) — GRN, Movement, Zero Price Leakage*
 4. [**`role_customer_support.md`**](role_customer_support.md) 👉 *តួនាទី ផ្នែកគាំទ្រអតិថិជន (Customer Support) — Ticketing, Tracking, SLA, CSAT*
 5. [**`role_apar_accountant.md`**](role_apar_accountant.md) 👉 *តួនាទី គណនេយ្យករទូទាត់ (AP/AR Accountant) — Inbound AR, Outbound AP, WHT, Voucher*
+6. [**`role_sales_manager.md`**](role_sales_manager.md) 👉 *តួនាទី អ្នកគ្រប់គ្រងផ្នែកលក់ (Sales Manager) — Quotations, Dynamic Pricing, Credit Limits, Approvals, Sales Targets*
 
 ---
 
