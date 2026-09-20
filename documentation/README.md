@@ -1,4 +1,4 @@
-﻿# DIGITECHKH eBMS — មជ្ឈមណ្ឌលឯកសារប្រព័ន្ធកម្រិតសហគ្រាស (Master Documentation)
+# DIGITECHKH eBMS — មជ្ឈមណ្ឌលឯកសារប្រព័ន្ធកម្រិតសហគ្រាស (Master Documentation)
 
 **គម្រោង (Project)**៖ DIGITECHKH Enterprise Business Management System (eBMS)  
 **កំណែប្រែ (Version)**៖ 2.0 (Enterprise Delivery Baseline)  
@@ -46,6 +46,18 @@
    👉 *យុទ្ធសាស្ត្រលក់កម្រិតសហគ្រាស, ការបង្ហាញ 3 នាទីទាក់ចិត្ត, ដោះស្រាយការជំទាស់ និងកញ្ចប់តម្លៃ*
 9. [**`08-ECOMMERCE-DIGITAL-SHOWROOM-SPECIFICATION.md`**](08-ECOMMERCE-DIGITAL-SHOWROOM-SPECIFICATION.md)  
    👉 *លក្ខណៈបច្ចេកទេសនៃគេហទំព័រ Digital Showroom, យន្តការ Chat-to-Quote និងការទូទាត់ KHQR*
+
+---
+
+## 👥 ឯកសារសិក្សាស៊ីជម្រៅតាមតួនាទី (Role Deep-Study Specifications)
+
+ឯកសារសិក្សាស៊ីជម្រៅលម្អិត 100% មុនពេលឈានទៅបង្កើត Prototype៖
+
+1. [**`role_superadmin.md`**](role_superadmin.md) 👉 *តួនាទី ស៊ុបភើរ អភិបាល (Super Admin) — Multi-tenant Root Operator*
+2. [**`role_procurement_manager.md`**](role_procurement_manager.md) 👉 *តួនាទី អ្នកគ្រប់គ្រងលទ្ធកម្ម (Procurement Manager) — PO, Bills, 3-Way Matching*
+3. [**`role_warehouse_staff.md`**](role_warehouse_staff.md) 👉 *តួនាទី បុគ្គលិកគ្រប់គ្រងស្តុក (Warehouse Staff) — GRN, Movement, Zero Price Leakage*
+4. [**`role_customer_support.md`**](role_customer_support.md) 👉 *តួនាទី ផ្នែកគាំទ្រអតិថិជន (Customer Support) — Ticketing, Tracking, SLA, CSAT*
+5. [**`role_apar_accountant.md`**](role_apar_accountant.md) 👉 *តួនាទី គណនេយ្យករទូទាត់ (AP/AR Accountant) — Inbound AR, Outbound AP, WHT, Voucher*
 
 ---
 
