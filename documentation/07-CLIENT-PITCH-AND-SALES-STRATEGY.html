@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="km" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07. យុទ្ធសាស្ត្រលក់ & Wow Demo — ឯកសារបច្ចេកទេស | DIGITECHKH BMS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Kantumruy Pro', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0f2b5c',
+                        primaryHover: '#0a1d3f',
+                        accent: '#2563eb',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Kantumruy Pro', sans-serif;
+            color: #334155;
+            background-color: #f8fafc;
+        }
+        ::-webkit-scrollbar { display: none; }
+        * { -ms-overflow-style: none; scrollbar-width: none; }
+        h1, h2, h3, h4 { color: #0f172a; font-weight: 700; }
+        h1 { font-size: 1.8rem; line-height: 2.35rem; margin-bottom: 1.25rem; }
+        h2 { font-size: 1.35rem; line-height: 1.85rem; margin-top: 2.25rem; margin-bottom: 0.85rem; padding-bottom: 0.5rem; border-bottom: 1px solid #e2e8f0; }
+        h3 { font-size: 1.1rem; line-height: 1.5rem; margin-top: 1.75rem; margin-bottom: 0.5rem; }
+        p { margin-bottom: 0.85rem; line-height: 1.8; font-size: 0.95rem; }
+        ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1rem; font-size: 0.95rem; }
+        ol { list-style-type: decimal; padding-left: 1.5rem; margin-bottom: 1rem; font-size: 0.95rem; }
+        li { margin-bottom: 0.35rem; line-height: 1.7; }
+        hr { border: 0; border-top: 1px solid #e2e8f0; margin: 2rem 0; }
+        @media print {
+            .no-print { display: none !important; }
+            body { background-color: #ffffff; color: #000; }
+            .print-container { max-width: 100% !important; margin: 0 !important; padding: 0 !important; box-shadow: none !important; border: none !important; }
+            table, pre, blockquote, .rounded-xl, .rounded-2xl { page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-primary selection:text-white min-h-screen flex flex-col justify-between">
+
+    <!-- Top Sticky Control Bar -->
+    <header class="no-print fixed top-0 left-0 right-0 h-16 bg-primary text-white z-50 px-4 sm:px-8 flex items-center justify-between shadow-md">
+        <div class="flex items-center gap-3">
+            <a href="index.html" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition flex items-center gap-2 text-xs font-semibold">
+                <i class="fas fa-arrow-left"></i> <span class="hidden sm:inline">មជ្ឈមណ្ឌលឯកសារ</span>
+            </a>
+            <span class="text-white/30 hidden sm:inline">|</span>
+            <div class="flex items-center gap-2">
+                <span class="text-xl">🎯</span>
+                <span class="font-bold text-xs sm:text-sm text-white truncate max-w-[200px] sm:max-w-xs">07. យុទ្ធសាស្ត្រលក់ & Wow Demo</span>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-white/15 text-emerald-300 hidden md:inline">Technical Spec</span>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-2 sm:gap-3">
+            <!-- Tech Doc Switcher -->
+            <div class="relative">
+                <select onchange="window.location.href=this.value" class="h-9 pl-3 pr-8 bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl text-xs font-semibold text-white focus:outline-none focus:bg-[#0a1d3f] transition appearance-none cursor-pointer">
+                    <option value="00-SYSTEM-OVERVIEW-AND-ARCHITECTURE.html" >00. ស្ថាបត្យកម្ម & គំរូទិន្នន័យ</option>
+<option value="01-END-TO-END-SYSTEM-WORKFLOW.html" >01. លំហូរការងារទាំង 8 វដ្ត</option>
+<option value="02-DELIVERY-AUDIT-AND-CHECKLIST.html" >02. បញ្ជីសវនកម្មគុណភាព</option>
+<option value="03-USER-OPERATIONAL-GUIDE.html" >03. សៀវភៅណែនាំប្រតិបត្តិការ</option>
+<option value="04-LEARNINGS-AND-STANDARDS-BENCHMARK.html" >04. មេរៀន និងស្តង់ដារបច្ចេកវិទ្យា</option>
+<option value="05-MASTER-SYSTEM-BLUEPRINT-AND-ENTERPRISE-PLAN.html" >05. ប្លង់មេ & ផែនទីបង្ហាញផ្លូវ</option>
+<option value="06-FULL-SYSTEM-SPECIFICATION-AND-TEAM-GUIDE.html" >06. សេចក្តីបញ្ជាក់លម្អិតប្រព័ន្ធ</option>
+<option value="07-CLIENT-PITCH-AND-SALES-STRATEGY.html" selected>07. យុទ្ធសាស្ត្រលក់ & Wow Demo</option>
+<option value="08-ECOMMERCE-DIGITAL-SHOWROOM-SPECIFICATION.html" >08. លក្ខណៈបច្ចេកទេស Showroom</option>
+                </select>
+                <i class="fas fa-chevron-down absolute right-3 top-3 text-[10px] text-white/60 pointer-events-none"></i>
+            </div>
+
+            <!-- Print Button -->
+            <button onclick="window.print()" class="px-3 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-semibold transition flex items-center gap-1.5 shadow-sm cursor-pointer">
+                <i class="fas fa-print"></i> <span class="hidden sm:inline">បោះពុម្ព A4</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Reading Container -->
+    <div class="pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full flex-1">
+        <div class="flex flex-col lg:flex-row gap-8 items-start">
+
+            <!-- Left Table of Contents Sidebar -->
+            <aside class="no-print lg:w-72 flex-shrink-0 sticky top-24 hidden lg:block bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
+                <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-3">
+                    <span class="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
+                        <i class="fas fa-list-ul text-primary"></i> មាតិកាឯកសារ
+                    </span>
+                    <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-50 text-accent">TOC</span>
+                </div>
+                <div class="space-y-0.5 max-h-[calc(100vh-220px)] overflow-y-auto pr-1 text-xs">
+                    
+                </div>
+                <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
+                    <a href="07-CLIENT-PITCH-AND-SALES-STRATEGY.md" class="w-full py-2 px-3 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-500 text-[11px] font-normal flex items-center justify-between transition border border-slate-200">
+                        <span>មើលឯកសារដើម (.md)</span>
+                        <i class="fas fa-file-code text-[10px]"></i>
+                    </a>
+                </div>
+            </aside>
+
+            <!-- Main Document Body -->
+            <main class="print-container flex-1 bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-12 min-w-0 max-w-4xl mx-auto">
+
+                <!-- Breadcrumb -->
+                <div class="no-print flex items-center gap-2 text-xs text-slate-500 mb-6 flex-wrap pb-4 border-b border-slate-100">
+                    <a href="index.html" class="hover:text-primary transition flex items-center gap-1">
+                        <i class="fas fa-home"></i> មជ្ឈមណ្ឌលឯកសារ
+                    </a>
+                    <span>/</span>
+                    <span class="text-slate-500">ឯកសារបច្ចេកទេស</span>
+                    <span>/</span>
+                    <span class="text-slate-800 font-semibold">យុទ្ធសាស្ត្រលក់ & Wow Demo</span>
+                </div>
+
+                <!-- Document Rendered HTML -->
+                <article class="prose prose-slate max-w-none">
+                    <h1 id="យុទ្ធសាស្ត្រលក់-និងក្បួនសន្ទនាបញ្ចុះបញ្ចូលអតិថិជន" class="scroll-mt-24 group">យុទ្ធសាស្ត្រលក់ និងក្បួនសន្ទនាបញ្ចុះបញ្ចូលអតិថិជន <a href="#យុទ្ធសាស្ត្រលក់-និងក្បួនសន្ទនាបញ្ចុះបញ្ចូលអតិថិជន" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h1>
+<h2 id="digitechkh-business-management-system-bms" class="scroll-mt-24 group">DIGITECHKH Business Management System (BMS) <a href="#digitechkh-business-management-system-bms" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<p>ឯកសារនេះគឺជាសៀវភៅណែនាំយុទ្ធសាស្ត្រលក់ផ្លូវការ សម្រាប់ថ្នាក់ដឹកនាំ ក្រុមការងារលក់ និងទីប្រឹក្សាអាជីវកម្ម ក្នុងការចុះជួប ធ្វើបទបង្ហាញ និងចរចាជាមួយម្ចាស់អាជីវកម្មនៅកម្ពុជា ដើម្បីបិទការលក់ប្រព័ន្ធ DIGITECHKH BMS ប្រកបដោយប្រសិទ្ធភាពខ្ពស់បំផុត។</p>
+<hr>
+<h2 id="1-ការយល់ដឹងពីចិត្តសាស្ត្រ-និងការឈឺចាប់របស់ម្ចាស់អាជីវកម្មនៅកម្ពុជា" class="scroll-mt-24 group">1. ការយល់ដឹងពីចិត្តសាស្ត្រ និងការឈឺចាប់របស់ម្ចាស់អាជីវកម្មនៅកម្ពុជា <a href="#1-ការយល់ដឹងពីចិត្តសាស្ត្រ-និងការឈឺចាប់របស់ម្ចាស់អាជីវកម្មនៅកម្ពុជា" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<p>ដើម្បីលក់ប្រព័ន្ធបានជោគជ័យ អ្នកលក់មិនត្រូវនិយាយតែពីបច្ចេកវិទ្យានោះឡើយ ប៉ុន្តែត្រូវនិយាយចំពី «ការឈឺចាប់» និង «ការព្រួយបារម្ភពិតប្រាកដ» របស់ម្ចាស់អាជីវកម្ម៖</p>
+<h3 id="ការព្រួយបារម្ភកំពូលទាំង-4-របស់ម្ចាស់អាជីវកម្ម៖" class="scroll-mt-24 group">ការព្រួយបារម្ភកំពូលទាំង 4 របស់ម្ចាស់អាជីវកម្ម៖ <a href="#ការព្រួយបារម្ភកំពូលទាំង-4-របស់ម្ចាស់អាជីវកម្ម៖" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<ol>
+<li><strong>ការបារម្ភរឿងបាត់បង់លុយ និងស្តុក</strong>៖ <ul>
+<li>ម្ចាស់អាជីវកម្មភាគច្រើនមិននៅកន្លែងលក់ 24 ម៉ោងទេ។ ពួកគាត់តែងតែសង្ស័យថាបុគ្គលិកអាចលួចលុយ លួចកែវិក្កយបត្រ ឬលួចយកទំនិញចេញពីឃ្លាំង។</li>
+</ul>
+</li>
+<li><strong>ការបារម្ភរឿងភាពស្មុគស្មាញ និងបុគ្គលិកមិនព្រមប្រើ</strong>៖ <ul>
+<li>ធ្លាប់ទិញប្រព័ន្ធបរទេស ឬប្រព័ន្ធស្មុគស្មាញមកប្រើ តែបុគ្គលិកមិនចេះអង់គ្លេស រៀនមិនចេះ ហើយត្អូញត្អែរចង់ឈប់ពីការងារ រហូតដល់ត្រូវបោះបង់ចោលប្រព័ន្ធនោះ។</li>
+</ul>
+</li>
+<li><strong>ការបារម្ភរឿងដាច់អ៊ីនធឺណិត</strong>៖ <ul>
+<li>នៅកម្ពុជា អ៊ីនធឺណិត និងចរន្តអគ្គិសនីអាចដាច់ជាយថាហេតុ។ ប្រសិនបើប្រព័ន្ធគាំងពេលអតិថិជនឈរតម្រង់ជួរចាំទិញ អាជីវកម្មនឹងខាតបង់ធ្ងន់ធ្ងរ។</li>
+</ul>
+</li>
+<li><strong>ការបារម្ភរឿងតម្លៃ និងការចំណាយឥតប្រយោជន៍</strong>៖ <ul>
+<li>មិនចង់បង់លុយប្រចាំខែឥតប្រយោជន៍ ប្រសិនបើមិនឃើញលទ្ធផលជាក់ស្តែងថាជួយសន្សំលុយបានប៉ុន្មាន ឬជួយបង្កើនចំណូលបានកម្រិតណា។</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="2-រូបមន្តបើកកិច្ចសន្ទនាទាក់ទាញចិត្ត" class="scroll-mt-24 group">2. រូបមន្តបើកកិច្ចសន្ទនាទាក់ទាញចិត្ត <a href="#2-រូបមន្តបើកកិច្ចសន្ទនាទាក់ទាញចិត្ត" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<p>នៅពេលជួបម្ចាស់អាជីវកម្មលើកដំបូង សូមកុំចាប់ផ្តើមដោយនិយាយថា «ខ្ញុំមកលក់ប្រព័ន្ធគ្រប់គ្រងអាជីវកម្ម»។ ត្រូវចាប់ផ្តើមដោយការចោទសួរដែលធ្វើឱ្យពួកគាត់ភ្ញាក់ខ្លួន៖</p>
+<div class="my-5 p-4 rounded-xl bg-slate-50 border-l-4 border-[#0f2b5c] text-slate-800 text-xs leading-relaxed shadow-sm">
+<p><strong>ឃ្លាគន្លឹះ៖</strong><br><em>«ជម្រាបសួរលោក/លោកស្រី! តើលោកដឹងទេថា យោងតាមទិន្នន័យស្រាវជ្រាវ អាជីវកម្មលក់រាយ និងចែកចាយនៅកម្ពុជាភាគច្រើន កំពុងបាត់បង់ប្រាក់ចំណេញចន្លោះពី 5% ទៅ 15% ជារៀងរាល់ខែ ដោយសារតែការលេចធ្លាយស្តុក កំហុសនៃការគិតលុយ និងការលួចកែវិក្កយបត្រដោយមិនដឹងខ្លួន? ប្រព័ន្ធ DIGITECHKH ត្រូវបានបង្កើតឡើងដើម្បីទប់ស្កាត់ការលេចធ្លាយនេះឱ្យនៅសល់ 0% និងជួយឱ្យលោកដឹងពីប្រាក់ចំណេញសុទ្ធពិតប្រាកដក្នុងទូរស័ព្ទដៃភ្លាមៗ!»</em></p>
+</div>
+<hr>
+<h2 id="3-ជំហានបង្ហាញគំរូផ្ទាល់រយៈពេល-3-នាទី" class="scroll-mt-24 group">3. ជំហានបង្ហាញគំរូផ្ទាល់រយៈពេល 3 នាទី <a href="#3-ជំហានបង្ហាញគំរូផ្ទាល់រយៈពេល-3-នាទី" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<p>ពេលធ្វើការបង្ហាញគំរូសាកល្បង សូមកុំដើរបង្ហាញគ្រប់ទំព័រនាំឱ្យធុញទ្រាន់។ សូមអនុវត្តតាម 3 ជំហានអស្ចារ្យនេះ៖</p>
+<h3 id="នាទីទី-1៖-បង្ហាញការលក់រហ័ស-និងបាគង-ខេអេចឃ្យូអរ-ឌីណាមិក" class="scroll-mt-24 group">នាទីទី 1៖ បង្ហាញការលក់រហ័ស និងបាគង ខេអេចឃ្យូអរ ឌីណាមិក <a href="#នាទីទី-1៖-បង្ហាញការលក់រហ័ស-និងបាគង-ខេអេចឃ្យូអរ-ឌីណាមិក" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<ul>
+<li>ស្កេនបាកូដទំនិញ 1 មុខ → អេក្រង់បង្ហាញតម្លៃ និងរូបភាពភ្លាមៗ។</li>
+<li>ចុចប៊ូតុងគិតលុយ → កូដស្កេនបាគង ខេអេចឃ្យូអរ បង្ហាញឡើងភ្លាមៗជាមួយចំនួនទឹកប្រាក់សុក្រឹត។</li>
+<li>ពេលស្កេនបង់ប្រាក់ជោគជ័យ → ម៉ាស៊ីនចេញវិក្កយបត្រភ្លាមៗ ហើយស្តុកក្នុងឃ្លាំងកាត់ដោយស្វ័យប្រវត្តិ។</li>
+</ul>
+<h3 id="នាទីទី-2៖-សាកល្បងផ្តាច់អ៊ីនធឺណិតផ្ទាល់ភ្នែក" class="scroll-mt-24 group">នាទីទី 2៖ សាកល្បងផ្តាច់អ៊ីនធឺណិតផ្ទាល់ភ្នែក <a href="#នាទីទី-2៖-សាកល្បងផ្តាច់អ៊ីនធឺណិតផ្ទាល់ភ្នែក" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<ul>
+<li>បិទសេវាអ៊ីនធឺណិត ឬដកខ្សែបណ្តាញចេញនៅចំពោះមុខអតិថិជន។</li>
+<li>ចុចស្កេនលក់ និងចេញវិក្កយបត្របន្តទៀត → ប្រព័ន្ធនៅតែដំណើរការយ៉ាងរលូនឥតទាក់ទាល់។</li>
+<li>បើកអ៊ីនធឺណិតឡើងវិញ → ប្រព័ន្ធធ្វើសមកាលកម្មទិន្នន័យចូលប្រព័ន្ធពពកស្វ័យប្រវត្តិ 100% គ្មានបាត់បង់សូម្បីតែ 1 សេន។</li>
+<li><em>ផលប៉ះពាល់ផ្លូវចិត្ត៖ ម្ចាស់អាជីវកម្មនឹងមានទំនុកចិត្តខ្ពស់បំផុត ព្រោះដឹងថាហាងរបស់គាត់គ្មានថ្ងៃគាំងលក់មិនកើតឡើយ។</em></li>
+</ul>
+<h3 id="នាទីទី-3៖-បង្ហាញដំណឹងប្រាក់ចំណេញសុទ្ធលើតេឡេក្រាម" class="scroll-mt-24 group">នាទីទី 3៖ បង្ហាញដំណឹងប្រាក់ចំណេញសុទ្ធលើតេឡេក្រាម <a href="#នាទីទី-3៖-បង្ហាញដំណឹងប្រាក់ចំណេញសុទ្ធលើតេឡេក្រាម" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<ul>
+<li>ឱ្យម្ចាស់អាជីវកម្មបើកទូរស័ព្ទដៃមើលតេឡេក្រាម។</li>
+<li>ប្រព័ន្ធស្វ័យប្រវត្តិនឹងផ្ញើរបាយការណ៍បិទវេនប្រចាំថ្ងៃភ្លាមៗ ដែលបង្ហាញពី៖<ol>
+<li>ចំណូលសរុបប្រចាំថ្ងៃ</li>
+<li>ថ្លៃដើមទំនិញទិញចូល</li>
+<li>ការចំណាយប្រតិបត្តិការ</li>
+<li><strong>ប្រាក់ចំណេញសុទ្ធពិតប្រាកដដែលនៅសល់ក្នុងដៃ</strong></li>
+</ol>
+</li>
+<li><em>ផលប៉ះពាល់ផ្លូវចិត្ត៖ ម្ចាស់អាជីវកម្មដឹងថា គាត់អាចដើរលេងក្រៅប្រទេស ឬសម្រាកនៅផ្ទះ ក៏នៅតែគ្រប់គ្រងលុយកាក់បាន 100%។</em></li>
+</ul>
+<hr>
+<h2 id="4-ក្បួនដោះស្រាយ-និងវាយបំបែកការជំទាស់កំពូលទាំង-5" class="scroll-mt-24 group">4. ក្បួនដោះស្រាយ និងវាយបំបែកការជំទាស់កំពូលទាំង 5 <a href="#4-ក្បួនដោះស្រាយ-និងវាយបំបែកការជំទាស់កំពូលទាំង-5" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="ការជំទាស់ទី-1៖-ប្រព័ន្ធនេះថ្លៃពេក-ខ្ញុំគ្មានថវិកាទេ" class="scroll-mt-24 group">ការជំទាស់ទី 1៖ «ប្រព័ន្ធនេះថ្លៃពេក ខ្ញុំគ្មានថវិកាទេ!» <a href="#ការជំទាស់ទី-1៖-ប្រព័ន្ធនេះថ្លៃពេក-ខ្ញុំគ្មានថវិកាទេ" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<ul>
+<li><strong>ការឆ្លើយតប៖</strong><br><em>«ខ្ញុំយល់ស្របជាមួយលោក! ការចំណាយលើប្រព័ន្ធថ្មី គឺជាការសម្រេចចិត្តដ៏សំខាន់។ ប៉ុន្តែសូមលោកសាកល្បងគិតមើល ប្រសិនបើអាជីវកម្មរបស់លោកមានចំណូល 20,000 ដុល្លារក្នុងមួយខែ ហើយបាត់បង់ស្តុក ឬលេចធ្លាយត្រឹមតែ 3% នោះលោកកំពុងខាតបង់ប្រាក់ 600 ដុល្លារជារៀងរាល់ខែទៅហើយ! ប្រព័ន្ធ DIGITECHKH ចំណាយត្រឹមតែពីរបីដុល្លារក្នុងមួយថ្ងៃ ប៉ុន្តែជួយទប់ស្កាត់ការខាតបង់ 600 ដុល្លារនោះបាន 100%។ តើលោកជ្រើសរើសខាតបង់ 600 ដុល្លាររៀងរាល់ខែ ឬជ្រើសរើសសន្សំប្រាក់នោះមកវិញ?»</em></li>
+</ul>
+<h3 id="ការជំទាស់ទី-2៖-បុគ្គលិកខ្ញុំចាស់ៗ-មិនសូវចេះបច្ចេកវិទ្យា-ខ្លាចរៀនមិនកើត" class="scroll-mt-24 group">ការជំទាស់ទី 2៖ «បុគ្គលិកខ្ញុំចាស់ៗ មិនសូវចេះបច្ចេកវិទ្យា ខ្លាចរៀនមិនកើត!» <a href="#ការជំទាស់ទី-2៖-បុគ្គលិកខ្ញុំចាស់ៗ-មិនសូវចេះបច្ចេកវិទ្យា-ខ្លាចរៀនមិនកើត" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<ul>
+<li><strong>ការឆ្លើយតប៖</strong><br><em>«នេះជាចំណុចពិសេសបំផុតរបស់ DIGITECHKH! ប្រព័ន្ធនេះរចនាឡើងជាភាសាខ្មែរសុទ្ធសាធ 100% គ្មានពាក្យអង់គ្លេសស្មុគស្មាញឡើយ។ អក្សរធំៗច្បាស់ រូបតំណាងងាយយល់ ហើយប៊ូតុងចុចលក់ដូចទូរស័ព្ទដៃដែលពួកគាត់ប្រើរាល់ថ្ងៃ។ ក្រុមការងារយើងខ្ញុំធានាបណ្តុះបណ្តាលបុគ្គលិករបស់លោកផ្ទាល់ត្រឹមតែ 15 នាទី គឺអាចចាប់ផ្តើមលក់ និងគិតលុយបានយ៉ាងស្ទាត់ជំនាញ!»</em></li>
+</ul>
+<h3 id="ការជំទាស់ទី-3៖-ខ្ញុំប្រើសៀវភៅ-ឬ-excel-ស្រួលហើយ-មិនបាច់ប្រើប្រព័ន្ធទេ" class="scroll-mt-24 group">ការជំទាស់ទី 3៖ «ខ្ញុំប្រើសៀវភៅ ឬ Excel ស្រួលហើយ មិនបាច់ប្រើប្រព័ន្ធទេ!» <a href="#ការជំទាស់ទី-3៖-ខ្ញុំប្រើសៀវភៅ-ឬ-excel-ស្រួលហើយ-មិនបាច់ប្រើប្រព័ន្ធទេ" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<ul>
+<li><strong>ការឆ្លើយតប៖</strong><br><em>«សៀវភៅ និង Excel ពិតជាល្អកាលពីមុន ប៉ុន្តែវាមានចំណុចស្លាប់ 3 ដែលកំពុងបំផ្លាញអាជីវកម្មរបស់លោក៖<br>ទី 1៖ Excel មិនអាចទប់ស្កាត់បុគ្គលិកលួចកែតួលេខបានទេ (គ្មានកំណត់ត្រាសវនកម្ម)។<br>ទី 2៖ Excel មិនអាចគណនាថ្លៃដើមមធ្យមនៃស្តុកស្វ័យប្រវត្តិទេ ធ្វើឱ្យលោកមិនដឹងច្បាស់ថាតើលក់ទំនិញនេះចំណេញ ឬខាត។<br>ទី 3៖ Excel មិនអាចបង្កើតកូដបាគងស្កេនទូទាត់ប្រាក់បានទេ។ ការប្តូរមក DIGITECHKH ជួយសន្សំពេលវេលារបស់លោកបានជាង 2 ម៉ោងក្នុងមួយថ្ងៃ ដែលលោកអាចយកពេលនោះទៅពង្រីកសាខាថ្មីបាន!»</em></li>
+</ul>
+<h3 id="ការជំទាស់ទី-4៖-ចុះបើដាច់ភ្លើង-ឬដាច់សេវាអ៊ីនធឺណិត-តើប្រព័ន្ធគាំងទេ" class="scroll-mt-24 group">ការជំទាស់ទី 4៖ «ចុះបើដាច់ភ្លើង ឬដាច់សេវាអ៊ីនធឺណិត តើប្រព័ន្ធគាំងទេ?» <a href="#ការជំទាស់ទី-4៖-ចុះបើដាច់ភ្លើង-ឬដាច់សេវាអ៊ីនធឺណិត-តើប្រព័ន្ធគាំងទេ" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<ul>
+<li><strong>ការឆ្លើយតប៖</strong><br><em>«លោកមិនបាច់បារម្ភទាល់តែសោះ! DIGITECHKH គាំទ្រការដំណើរការក្រៅបណ្តាញ។ ទោះបីជាដាច់សេវា ឬដាច់ភ្លើង លោកគ្រាន់តែប្រើប្រាស់ថេបប្លេត ឬកុំព្យូទ័រយួរដៃដែលមានថ្ម នោះការលក់នៅតែបន្តចេញវិក្កយបត្រ និងកត់ត្រាទិន្នន័យបានជាធម្មតា។ ពេលមានសេវាវិញ វានឹងរត់ចូលប្រព័ន្ធមេដោយស្វ័យប្រវត្តិ 100%!»</em></li>
+</ul>
+<h3 id="ការជំទាស់ទី-5៖-ខ្ញុំគ្មានពេលបញ្ចូលទំនិញ-និងទិន្នន័យដំបូងទេ-ការងាររវល់ណាស់" class="scroll-mt-24 group">ការជំទាស់ទី 5៖ «ខ្ញុំគ្មានពេលបញ្ចូលទំនិញ និងទិន្នន័យដំបូងទេ ការងាររវល់ណាស់!» <a href="#ការជំទាស់ទី-5៖-ខ្ញុំគ្មានពេលបញ្ចូលទំនិញ-និងទិន្នន័យដំបូងទេ-ការងាររវល់ណាស់" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<ul>
+<li><strong>ការឆ្លើយតប៖</strong><br><em>«លោកមិនចាំបាច់ព្រួយបារម្ភពីរឿងនេះឡើយ! ក្រុមការងារជំនាញរបស់ DIGITECHKH នឹងផ្តល់សេវាផ្ទេរទិន្នន័យពី Excel ឬសៀវភៅចាស់របស់លោក បញ្ចូលទៅក្នុងប្រព័ន្ធ រៀបចំស្តុកទំនិញ និងតេស្តឧបករណ៍ម៉ាស៊ីនព្រីន ព្រមទាំងបាកូដជូនលោកស្រេច 100%។ លោកគ្រាន់តែរង់ចាំមើលរបាយការណ៍លក់ប៉ុណ្ណោះ!»</em></li>
+</ul>
+<hr>
+<h2 id="5-យុទ្ធសាស្ត្របង្ហាញមុខងារបន្ទប់តាំងបង្ហាញឌីជីថល" class="scroll-mt-24 group">5. យុទ្ធសាស្ត្របង្ហាញមុខងារបន្ទប់តាំងបង្ហាញឌីជីថល <a href="#5-យុទ្ធសាស្ត្របង្ហាញមុខងារបន្ទប់តាំងបង្ហាញឌីជីថល" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<p>នៅពេលនិយាយពីការលក់តាមអនឡាញ សូមពន្យល់ពីភាពខុសគ្នារវាងគេហទំព័របរទេស និងវិធីសាស្ត្រខ្មែរ៖</p>
+<ol>
+<li><strong>គេហទំព័របរទេសទូទៅ</strong>៖ បង្ខំឱ្យអតិថិជនចុចកាត់កាតធនាគារ → អតិថិជនខ្មែរជាង 80% បោះបង់ការទិញចោលព្រោះមិនទុកចិត្ត ឬគ្មានកាត។</li>
+<li><strong>បន្ទប់តាំងបង្ហាញឌីជីថល DIGITECHKH</strong>៖ អតិថិជនចុចមើលទំនិញ រួចចុចប៊ូតុង <strong>«ទាក់ទងអ្នកលក់»</strong> → ចូលជជែកតាមតេឡេក្រាម ឬជជែកលើគេហទំព័រភ្លាមៗ។</li>
+<li><strong>ការបិទការលក់ក្នុង 1 ចុច</strong>៖ បុគ្គលិកលក់ជជែកផ្តល់ព័ត៌មាន រួចចុចតែ 1 ប៊ូតុង «បង្កើតសម្រង់តម្លៃ» ឬ «ចេញវិក្កយបត្របាគង» ផ្ញើជូនអតិថិជនក្នុងបន្ទប់ជជែកនោះផ្ទាល់។ អតិថិជនគ្រាន់តែស្កេនបង់ប្រាក់ នោះការបញ្ជាទិញនឹងរត់ចូលឃ្លាំងវេចខ្ចប់ដឹកជញ្ជូនភ្លាមៗ!</li>
+</ol>
+<hr>
+<h2 id="6-រចនាសម្ព័ន្ធកញ្ចប់តម្លៃ-និងការវិនិយោគ" class="scroll-mt-24 group">6. រចនាសម្ព័ន្ធកញ្ចប់តម្លៃ និងការវិនិយោគ <a href="#6-រចនាសម្ព័ន្ធកញ្ចប់តម្លៃ-និងការវិនិយោគ" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<p>ដើម្បីងាយស្រួលក្នុងការសម្រេចចិត្តរបស់អតិថិជន សូមបែងចែកជា 3 កញ្ចប់ច្បាស់លាស់៖</p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th align="left">លក្ខណៈ</th>
+<th align="left">កញ្ចប់ចាប់ផ្តើម (Starter)</th>
+<th align="left">កញ្ចប់រីកចម្រើន (Growth - ពេញនិយមបំផុត)</th>
+<th align="left">កញ្ចប់សហគ្រាស (Enterprise)</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td align="left"><strong>ស័ក្តិសមសម្រាប់</strong></td>
+<td align="left">ហាងលក់រាយតូចៗ 1 សាខា</td>
+<td align="left">អាជីវកម្មលក់ដុំ-រាយ 2-5 សាខា</td>
+<td align="left">ក្រុមហ៊ុនធំ ពហុសាខា និងរោងចក្រ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td align="left"><strong>ចំនួនអ្នកប្រើប្រាស់</strong></td>
+<td align="left">រហូតដល់ 3 នាក់</td>
+<td align="left">រហូតដល់ 10 នាក់</td>
+<td align="left">គ្មានដែនកំណត់</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td align="left"><strong>ចំនួនសាខា &amp; ឃ្លាំង</strong></td>
+<td align="left">1 សាខា / 1 ឃ្លាំង</td>
+<td align="left">ដល់ 5 សាខា / 5 ឃ្លាំង</td>
+<td align="left">ពហុសាខា / ពហុឃ្លាំង</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td align="left"><strong>មុខងាររួមបញ្ចូល</strong></td>
+<td align="left">ច្រកលក់រាយ, ស្តុកមូលដ្ឋាន, បាគង ខេអេចឃ្យូអរ</td>
+<td align="left">ច្រកលក់រាយ, ទំនាក់ទំនងអតិថិជន, ស្តុក FIFO, 3-Way លទ្ធកម្ម, គណនេយ្យ, បន្ទប់តាំងបង្ហាញ Showroom</td>
+<td align="left">គ្រប់មុខងារទាំងអស់ + សិទ្ធិ 12 តួនាទី + ការតភ្ជាប់ប្រព័ន្ធខាងក្រៅ + ការប្តូរតាមតម្រូវការ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td align="left"><strong>ការបម្រើអតិថិជន</strong></td>
+<td align="left">ក្រុមតេឡេក្រាមក្នុងម៉ោងធ្វើការ</td>
+<td align="left">ក្រុមតេឡេក្រាមអាទិភាពខ្ពស់ 7 ថ្ងៃក្នុងមួយសប្តាហ៍</td>
+<td align="left">ទីប្រឹក្សាបច្ចេកវិទ្យាផ្ទាល់ 24 ម៉ោង</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td align="left"><strong>តម្លៃប៉ាន់ស្មាន</strong></td>
+<td align="left">29 ដុល្លារ / ខែ</td>
+<td align="left">69 ដុល្លារ / ខែ</td>
+<td align="left">199 ដុល្លារ / ខែ</td>
+</tr>
+</tbody></table></div>
+<div class="my-5 p-4 rounded-xl bg-slate-50 border-l-4 border-[#0f2b5c] text-slate-800 text-xs leading-relaxed shadow-sm">
+<p><strong>ការផ្តល់ជូនពិសេសជំរុញការបង់ប្រាក់ប្រចាំឆ្នាំ</strong>៖<br><em>«ប្រសិនបើលោកបង់ប្រាក់ជាកញ្ចប់ប្រចាំឆ្នាំ លោកនឹងទទួលបានការបញ្ចុះតម្លៃ 20% (បង់ 10 ខែ ថែមជូន 2 ខែឥតគិតថ្លៃ) ព្រមទាំងឥតគិតថ្លៃសេវាដំឡើង និងបណ្តុះបណ្តាលបុគ្គលិកដល់ទីកន្លែង!»</em></p>
+</div>
+<hr>
+<h2 id="7-បញ្ជីសម្ភារៈត្រៀមមុនពេលចុះជួបអតិថិជន" class="scroll-mt-24 group">7. បញ្ជីសម្ភារៈត្រៀមមុនពេលចុះជួបអតិថិជន <a href="#7-បញ្ជីសម្ភារៈត្រៀមមុនពេលចុះជួបអតិថិជន" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> កុំព្យូទ័រយួរដៃ ឬថេបប្លេតដែលមានថ្មពេញ 100%</li>
+<li><input disabled="" type="checkbox"> ម៉ាស៊ីនស្កេនបាកូដឥតខ្សែ</li>
+<li><input disabled="" type="checkbox"> ម៉ាស៊ីនព្រីនវិក្កយបត្រកម្ដៅចល័ត 80 មីលីម៉ែត្រ</li>
+<li><input disabled="" type="checkbox"> ក្រដាសវិក្កយបត្រគំរូដែលព្រីនចេញពីប្រព័ន្ធរួច (មានឡូហ្គោ ភាសាខ្មែរ និងកូដបាគងច្បាស់ស្អាត)</li>
+<li><input disabled="" type="checkbox"> គណនីសាកល្បងដែលមានទិន្នន័យទំនិញជាក់ស្តែងស្រដៀងគ្នានឹងអាជីវកម្មរបស់អតិថិជន</li>
+<li><input disabled="" type="checkbox"> កូនសៀវភៅ ឬឯកសារបទបង្ហាញផ្លូវការ A4</li>
+</ul>
+<hr>
+<h2 id="8-សង្ខេបពាក្យស្លោកលក់ស្នូល" class="scroll-mt-24 group">8. សង្ខេបពាក្យស្លោកលក់ស្នូល <a href="#8-សង្ខេបពាក្យស្លោកលក់ស្នូល" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<ol>
+<li><strong>«គ្រប់គ្រងច្បាស់លាស់ លុយកាក់មិនបាត់បង់ ស្តុកគង់វង្ស ចំណេញឃើញជាក់ស្តែង!»</strong></li>
+<li><strong>«លក់បានគ្រប់ពេល ទោះបីគ្មានសេវាអ៊ីនធឺណិត!»</strong></li>
+<li><strong>«បង្កើតឡើងសម្រាប់អាជីវកម្មខ្មែរ ងាយយល់ ងាយប្រើ រៀនតែ 15 នាទី!»</strong></li>
+<li><strong>«ដឹងប្រាក់ចំណេញសុទ្ធក្នុងដៃ 24 ម៉ោង គ្រប់ទីកន្លែង!»</strong></li>
+</ol>
+
+                </article>
+
+                <!-- Next / Previous Doc Navigation Bar -->
+                <div class="no-print mt-12 pt-8 border-t border-slate-200 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <a href="06-FULL-SYSTEM-SPECIFICATION-AND-TEAM-GUIDE.html" class="p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-transform flex-shrink-0">
+                            📑
+                        </div>
+                        <div class="min-w-0">
+                            <div class="text-[10px] text-slate-400 font-medium">← ឯកសារមុន</div>
+                            <div class="text-xs font-bold text-slate-800 group-hover:text-primary transition truncate">សេចក្តីបញ្ជាក់លម្អិតប្រព័ន្ធ</div>
+                        </div>
+                    </a>
+
+                    <a href="08-ECOMMERCE-DIGITAL-SHOWROOM-SPECIFICATION.html" class="p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group flex items-center justify-end text-right gap-3">
+                        <div class="min-w-0">
+                            <div class="text-[10px] text-slate-400 font-medium">ឯកសារបន្ទាប់ →</div>
+                            <div class="text-xs font-bold text-slate-800 group-hover:text-primary transition truncate">លក្ខណៈបច្ចេកទេស Showroom</div>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-transform flex-shrink-0">
+                            🛍️
+                        </div>
+                    </a>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="no-print bg-white border-t border-slate-200 py-6 px-8 text-center text-xs text-slate-500">
+        <p>រក្សាសិទ្ធិគ្រប់យ៉ាង © 2026 ក្រុមហ៊ុន ឌីជីថេក ខេអេច (DIGITECHKH Co., Ltd.) · ព្រះរាជាណាចក្រកម្ពុជា</p>
+    </footer>
+
+</body>
+</html>

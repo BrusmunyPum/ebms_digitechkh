@@ -1,0 +1,2131 @@
+<!DOCTYPE html>
+<html lang="km" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>👷 បុគ្គលិកឃ្លាំងទំនិញ (Warehouse Staff) — ការសិក្សាស៊ីជម្រៅ | DIGITECHKH BMS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Kantumruy Pro', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0f2b5c',
+                        primaryHover: '#0a1d3f',
+                        accent: '#2563eb',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Kantumruy Pro', sans-serif;
+            color: #334155;
+            background-color: #f8fafc;
+        }
+        ::-webkit-scrollbar { display: none; }
+        * { -ms-overflow-style: none; scrollbar-width: none; }
+        h1, h2, h3, h4 { color: #0f172a; font-weight: 700; }
+        h1 { font-size: 1.8rem; line-height: 2.35rem; margin-bottom: 1.25rem; }
+        h2 { font-size: 1.35rem; line-height: 1.85rem; margin-top: 2.25rem; margin-bottom: 0.85rem; padding-bottom: 0.5rem; border-bottom: 1px solid #e2e8f0; }
+        h3 { font-size: 1.1rem; line-height: 1.5rem; margin-top: 1.75rem; margin-bottom: 0.5rem; }
+        p { margin-bottom: 0.85rem; line-height: 1.8; font-size: 0.95rem; }
+        ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1rem; font-size: 0.95rem; }
+        ol { list-style-type: decimal; padding-left: 1.5rem; margin-bottom: 1rem; font-size: 0.95rem; }
+        li { margin-bottom: 0.35rem; line-height: 1.7; }
+        hr { border: 0; border-top: 1px solid #e2e8f0; margin: 2rem 0; }
+        @media print {
+            .no-print { display: none !important; }
+            body { background-color: #ffffff; color: #000; }
+            .print-container { max-width: 100% !important; margin: 0 !important; padding: 0 !important; box-shadow: none !important; border: none !important; }
+            table, pre, blockquote, .rounded-xl, .rounded-2xl { page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-primary selection:text-white min-h-screen flex flex-col justify-between">
+
+    <!-- Top Sticky Control Bar -->
+    <header class="no-print fixed top-0 left-0 right-0 h-16 bg-primary text-white z-50 px-4 sm:px-8 flex items-center justify-between shadow-md">
+        <div class="flex items-center gap-3">
+            <a href="index.html" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition flex items-center gap-2 text-xs font-semibold">
+                <i class="fas fa-arrow-left"></i> <span class="hidden sm:inline">មជ្ឈមណ្ឌលឯកសារ</span>
+            </a>
+            <span class="text-white/30 hidden sm:inline">|</span>
+            <div class="flex items-center gap-2">
+                <span class="text-xl">👷</span>
+                <span class="font-bold text-xs sm:text-sm text-white truncate max-w-[200px] sm:max-w-xs">បុគ្គលិកឃ្លាំងទំនិញ</span>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-white/15 text-cyan-200 hidden md:inline">Zero Price</span>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-2 sm:gap-3">
+            <!-- Role Switcher -->
+            <div class="relative">
+                <select onchange="window.location.href=this.value" class="h-9 pl-3 pr-8 bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl text-xs font-semibold text-white focus:outline-none focus:bg-[#0a1d3f] transition appearance-none cursor-pointer">
+                    <option value="role_superadmin.html" >👑 ស៊ុបភើរ អភិបាល (Super Admin)</option>
+<option value="role_procurement_manager.html" >🛒 អ្នកគ្រប់គ្រងលទ្ធកម្ម (Procurement Manager)</option>
+<option value="role_warehouse_staff.html" selected>👷 បុគ្គលិកឃ្លាំងទំនិញ (Warehouse Staff)</option>
+<option value="role_customer_support.html" >🎧 ផ្នែកគាំទ្រអតិថិជន (Customer Support)</option>
+<option value="role_apar_accountant.html" >💰 គណនេយ្យករចំណាយ និងចំណូល (AP/AR Accountant)</option>
+<option value="role_sales_manager.html" >👔 អ្នកគ្រប់គ្រងផ្នែកលក់ (Sales Manager)</option>
+<option value="role_internal_auditor_executive.html" >🔍 សវនករផ្ទៃក្នុង និងថ្នាក់ដឹកនាំ (Internal Auditor / Executive)</option>
+<option value="role_sales_executive.html" >💼 បុគ្គលិកប្រតិបត្តិផ្នែកលក់ (Sales Executive)</option>
+<option value="role_admin_general_manager.html" >🏛️ អភិបាល និងអ្នកចាត់ការទូទៅ (Admin / General Manager)</option>
+<option value="role_warehouse_manager.html" >📦 អ្នកគ្រប់គ្រងឃ្លាំងស្តុក (Warehouse Manager)</option>
+                </select>
+                <i class="fas fa-chevron-down absolute right-3 top-3 text-[10px] text-white/60 pointer-events-none"></i>
+            </div>
+
+            <!-- Interactive Guide Link -->
+            <a href="DIGITECHKH-Roles-And-Permissions-Interactive-Guide.html?role=warehouse_staff" class="px-3 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-semibold transition hidden lg:flex items-center gap-1.5 shadow-sm">
+                <i class="fas fa-table-cells"></i> ផ្ទាំងអន្តរកម្ម & ម៉ាទ្រីស
+            </a>
+
+            <!-- Print Button -->
+            <button onclick="window.print()" class="px-3 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-semibold transition flex items-center gap-1.5 shadow-sm cursor-pointer">
+                <i class="fas fa-print"></i> <span class="hidden sm:inline">បោះពុម្ព A4</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Reading Container -->
+    <div class="pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full flex-1">
+        <div class="flex flex-col lg:flex-row gap-8 items-start">
+
+            <!-- Left Table of Contents Sidebar -->
+            <aside class="no-print lg:w-72 flex-shrink-0 sticky top-24 hidden lg:block bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
+                <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-3">
+                    <span class="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
+                        <i class="fas fa-list-ul text-primary"></i> មាតិកាឯកសារ
+                    </span>
+                    <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-50 text-accent">TOC</span>
+                </div>
+                <div class="space-y-0.5 max-h-[calc(100vh-220px)] overflow-y-auto pr-1 text-xs">
+                    
+                </div>
+                <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
+                    <a href="DIGITECHKH-Roles-And-Permissions-Interactive-Guide.html?role=warehouse_staff" class="w-full py-2 px-3 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-700 text-xs font-medium flex items-center justify-between transition border border-slate-200">
+                        <span>មើលក្នុងផ្ទាំងអន្តរកម្ម</span>
+                        <i class="fas fa-up-right-from-square text-[10px] text-slate-400"></i>
+                    </a>
+                    <a href="role_warehouse_staff.md" class="w-full py-2 px-3 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-500 text-[11px] font-normal flex items-center justify-between transition border border-slate-200">
+                        <span>មើលឯកសារដើម (.md)</span>
+                        <i class="fas fa-file-code text-[10px]"></i>
+                    </a>
+                </div>
+            </aside>
+
+            <!-- Main Document Body -->
+            <main class="print-container flex-1 bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-12 min-w-0 max-w-4xl mx-auto">
+
+                <!-- Breadcrumb -->
+                <div class="no-print flex items-center gap-2 text-xs text-slate-500 mb-6 flex-wrap pb-4 border-b border-slate-100">
+                    <a href="index.html" class="hover:text-primary transition flex items-center gap-1">
+                        <i class="fas fa-home"></i> មជ្ឈមណ្ឌលឯកសារ
+                    </a>
+                    <span>/</span>
+                    <a href="DIGITECHKH-Roles-And-Permissions-Interactive-Guide.html" class="hover:text-primary transition">
+                        តួនាទីទាំង 10
+                    </a>
+                    <span>/</span>
+                    <span class="text-slate-800 font-semibold">បុគ្គលិកឃ្លាំងទំនិញ</span>
+                </div>
+
+                <!-- Document Rendered HTML -->
+                <article class="prose prose-slate max-w-none">
+                    <h2 id="digitechkh-bms-ការសិក្សាស៊ីជម្រៅ-តួនាទី-បុគ្គលិកគ្រប់គ្រងស្តុក-warehouse-staff" class="scroll-mt-24 group">📦 DIGITECHKH BMS — ការសិក្សាស៊ីជម្រៅ: តួនាទី បុគ្គលិកគ្រប់គ្រងស្តុក (Warehouse Staff) <a href="#digitechkh-bms-ការសិក្សាស៊ីជម្រៅ-តួនាទី-បុគ្គលិកគ្រប់គ្រងស្តុក-warehouse-staff" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="my-5 p-4 rounded-xl bg-slate-50 border-l-4 border-[#0f2b5c] text-slate-800 text-xs leading-relaxed shadow-sm">
+<p><strong>ឯកសារ</strong>: <code>role_warehouse_staff.md</code><br><strong>កំណែ</strong>: 1.0<br><strong>កាលបរិច្ឆេទ</strong>: 20 កញ្ញា 2026<br><strong>គោលបំណង</strong>: ការយល់ 100% អំពីតួនាទី Warehouse Staff — រួមមានវិសាលភាពការងារ, Zero Price Leakage Policy, UI Pages ទាំងអស់, Workflow, Stock Logic, ស្ថាបត្យកម្ម, និងអនុសាសន៍ Prototype Planning</p>
+</div>
+<hr>
+<h2 id="ចំណុចចាំបាច់-zero-price-leakage-policy-ច្បាប់-0-ទំហំតម្លៃ" class="scroll-mt-24 group">⚠️ ចំណុចចាំបាច់ — Zero Price Leakage Policy (ច្បាប់ 0 ទំហំតម្លៃ) <a href="#ចំណុចចាំបាច់-zero-price-leakage-policy-ច្បាប់-0-ទំហំតម្លៃ" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<p>នេះជាគោលការណ៍ <strong>Critical</strong> ដ៏សំខាន់ <strong>ខុសពី Role ផ្សេងៗ</strong> ទាំងអស់:</p>
+<div class="my-5 p-4 rounded-xl bg-slate-50 border-l-4 border-[#0f2b5c] text-slate-800 text-xs leading-relaxed shadow-sm">
+<p>🔴 <strong>Warehouse Staff ហាមមើលតម្លៃ 100%</strong> — ទាំង ថ្លៃដើម (Cost Price) និង ថ្លៃលក់ (Selling Price) ។ Warehouse Staff ឃើញ<strong>ចំនួន (Quantity)</strong> ប៉ុណ្ណោះ ។ នេះជា Design Principle មិនមែន UX ឆ្លើយ ។</p>
+</div>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ព័ត៌មាន</th>
+<th align="center">Warehouse Staff ឃើញ?</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ឈ្មោះទំនិញ</td>
+<td align="center">✅</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">SKU / Barcode</td>
+<td align="center">✅</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ចំនួនស្តុក (Qty)</td>
+<td align="center">✅</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ទីតាំងថតស្តុក</td>
+<td align="center">✅</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ថ្ងៃ Expiry (ប្រសិនបើ Tracking)</td>
+<td align="center">✅</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ថ្លៃដើម (Cost Price)</strong></td>
+<td align="center">❌ <strong>ហាម</strong></td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ថ្លៃលក់ (Selling Price)</strong></td>
+<td align="center">❌ <strong>ហាម</strong></td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>តម្លៃស្តុករួម (Total Value)</strong></td>
+<td align="center">❌ <strong>ហាម</strong></td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ចំណេញ / ខាត</strong></td>
+<td align="center">❌ <strong>ហាម</strong></td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="ការយល់-dual-scope-ក្នុង-prototype" class="scroll-mt-24 group">⚠️ ការយល់ Dual Scope ក្នុង Prototype <a href="#ការយល់-dual-scope-ក្នុង-prototype" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ស្រទាប់</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Path</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ប្រើដោយ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Pages</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Admin Module <code>5-stock/</code></strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>pages/5-stock/</code></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Admin/GM ប្រើ (Full CRUD + ឃើញតម្លៃ)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>12 pages</strong></td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Warehouse Portal</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>pages/9-portals/inventory-staff/</code></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Warehouse Staff ប្រើ (No Prices)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>7 pages</strong></td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="តារាងមាតិកា" class="scroll-mt-24 group">តារាងមាតិកា <a href="#តារាងមាតិកា" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<ol>
+<li><a href="#1-%E1%9E%A2%E1%9F%92%E1%9E%9C%E1%9E%B8%E1%9E%87%E1%9E%B6-warehouse-staff">អ្វីជា Warehouse Staff?</a></li>
+<li><a href="#2-%E1%9E%8B%E1%9E%B6%E1%9E%93%E1%9E%B6%E1%9E%93%E1%9E%BB%E1%9E%80%E1%9F%92%E1%9E%9A%E1%9E%98-%E1%9E%93%E1%9E%B7%E1%9E%84%E1%9E%91%E1%9F%86%E1%9E%93%E1%9E%B6%E1%9E%80%E1%9F%8B%E1%9E%91%E1%9F%86%E1%9E%93%E1%9E%84">ឋានានុក្រម និងទំនាក់ទំនង</a></li>
+<li><a href="#3-full-capability-map">Full Capability Map</a></li>
+<li><a href="#4-%E1%9E%91%E1%9F%86%E1%9E%96%E1%9F%90%E1%9E%9A-ui-%E1%9E%96%E1%9F%81%E1%9E%89%E1%9E%9B%E1%9F%81%E1%9E%89">ទំព័រ UI ពេញលេញ (All Pages Blueprint)</a></li>
+<li><a href="#5-%E1%9E%98%E1%9F%89%E1%9E%B6%E1%9E%91%E1%9F%92%E1%9E%9A%E1%9E%B8%E1%9E%9F%E1%9E%9F%E1%9E%B7%E1%9E%91%E1%9F%92%E1%9E%92%E1%9E%B7">ម៉ាទ្រីសសិទ្ធិ (Permission Matrix)</a></li>
+<li><a href="#6-%E1%9E%9C%E1%9E%8A%E1%9F%92%E1%9E%8F%E1%9E%80%E1%9E%B6%E1%9E%9A%E1%9E%84%E1%9E%B6%E1%9E%9A%E1%9E%9F%E1%9F%92%E1%9E%93%E1%9E%BC%E1%9E%9B">វដ្តការងារស្នូល (Core Workflows)</a></li>
+<li><a href="#7-business-logic--stock-operations">Business Logic — Stock Operations</a></li>
+<li><a href="#8-%E1%9E%91%E1%9F%86%E1%9E%93%E1%9E%B6%E1%9E%80%E1%9F%8B%E1%9E%91%E1%9F%86%E1%9E%93%E1%9E%84%E1%9E%87%E1%9E%B6%E1%9E%98%E1%9E%BD%E1%9E%99%E1%9E%8F%E1%9E%BD%E1%9E%93%E1%9E%B6%E1%9E%91%E1%9E%B8%E1%9E%95%E1%9F%92%E1%9E%9F%E1%9F%81%E1%9E%84">ទំនាក់ទំនងជាមួយតួនាទីផ្សេង</a></li>
+<li><a href="#9-data-scope--%E1%9E%83%E1%9E%BE%E1%9E%89%E1%9E%A2%E1%9F%92%E1%9E%9C%E1%9E%B8-%E1%9E%9B%E1%9E%B6%E1%9E%80%E1%9F%8B%E1%9E%A2%E1%9F%92%E1%9E%9C%E1%9E%B8">Data Scope — ឃើញអ្វី? លាក់អ្វី?</a></li>
+<li><a href="#10-kpi-dashboard">KPI Dashboard</a></li>
+<li><a href="#11-%E1%9E%82%E1%9F%86%E1%9E%9A%E1%9E%BC-database-schema">គំរូ Database Schema</a></li>
+<li><a href="#12-stock-control-logic">Stock Control Logic</a></li>
+<li><a href="#13-%E1%9E%A2%E1%9E%93%E1%9E%BB%E1%9E%9F%E1%9E%B6%E1%9E%9F%E1%9E%93%E1%9F%8D-architect--prototype-planning">អនុសាសន៍ Architect + Prototype Planning</a></li>
+<li><a href="#14-faq">FAQ</a></li>
+</ol>
+<hr>
+<h2 id="1-អ្វីជា-warehouse-staff" class="scroll-mt-24 group">1. អ្វីជា Warehouse Staff? <a href="#1-អ្វីជា-warehouse-staff" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="11-និយមន័យ" class="scroll-mt-24 group">1.1 និយមន័យ <a href="#11-និយមន័យ" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p><strong>Warehouse Staff</strong> (បុគ្គលិកគ្រប់គ្រងស្តុក / បុគ្គលិកឃ្លាំង) ជា <strong>អ្នកទទួលខុសត្រូវផ្ទាល់</strong> ចំពោះ <strong>ភាពត្រឹមត្រូវរាល់ ចូល-ចេញ ទំនិញ</strong> ក្នុងឃ្លាំង ។ គាត់/នាង ជា <strong>&quot;The Truth Keeper of Stock&quot;</strong> — ព័ត៌មានស្តុក ទៅ ក្រុមលក់ (Sales), ក្រុមទិញ (Procurement), និង Accountant ទាំងអស់ <strong>ចេញមកពី</strong> Warehouse Staff ។</p>
+<div class="my-5 p-4 rounded-xl bg-blue-50/90 border-l-4 border-blue-500 text-blue-950 text-xs leading-relaxed shadow-sm">
+<p>💡 <strong>ការប្រៀបធៀប</strong>: Warehouse Staff ដូចជា <em>Bank Teller ក្នុងធនាគារ</em> — ដឹងថាប្រាក់ (ទំនិញ) ចូល-ចេញ ចំនួនប៉ុន្មាន ប៉ុន្តែ <strong>ហាមមើលតម្លៃ</strong> ពេញ P&amp;L ។ ហើយ គ្រប់ Movement ត្រូវ Record ចំបាច់ ។</p>
+</div>
+<h3 id="12-ប្រភេទ-warehouse-staff" class="scroll-mt-24 group">1.2 ប្រភេទ Warehouse Staff <a href="#12-ប្រភេទ-warehouse-staff" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p>ក្នុង DIGITECHKH BMS Prototype — <strong>Warehouse Staff</strong> Cover <strong>2 Sub-Roles</strong>:</p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Sub-Role</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ការងារ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Note</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Warehouse Staff (Receiving)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ទទួលទំនិញ + GRN + Count</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ទំនាក់ Procurement</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Warehouse Staff (Dispatch)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ចេញទំនិញ Sales + Pack + Record Outbound</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ទំនាក់ Sales</td>
+</tr>
+</tbody></table></div>
+<div class="my-5 p-4 rounded-xl bg-slate-50 border-l-4 border-[#0f2b5c] text-slate-800 text-xs leading-relaxed shadow-sm">
+<p>ក្នុង Prototype Phase 1 — <strong>Portal ចែករួមគ្នា</strong> ។ Phase 2 អាច Split Portal ។</p>
+</div>
+<h3 id="13-warehouse-staff-ក្នុង-business-ជាក់ស្តែង" class="scroll-mt-24 group">1.3 Warehouse Staff ក្នុង Business ជាក់ស្តែង <a href="#13-warehouse-staff-ក្នុង-business-ជាក់ស្តែង" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ទំហំ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Warehouse Staff ជានរណា</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ខ្នាតតូច</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ម្ចាស់ / Admin ជា Warehouse ខ្លួនឯង</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ខ្នាតមធ្យម</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Storekeeper 1-2 នាក់</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ខ្នាតធំ</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Warehouse Manager + Receiving Staff + Dispatch Staff + Inventory Counter</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="2-ឋានានុក្រម-និងទំនាក់ទំនង" class="scroll-mt-24 group">2. ឋានានុក្រម និងទំនាក់ទំនង <a href="#2-ឋានានុក្រម-និងទំនាក់ទំនង" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>┌─────────────────────────────────────────────┐
+│         👑 SUPER ADMIN (Platform)            │
+└───────────────────┬─────────────────────────┘
+                    │
+┌───────────────────▼─────────────────────────┐
+│      🏢 ADMIN / GM (Company Level)           │
+│   ← Config Reorder Points, Catalog, Prices  │
+└───────────────────┬─────────────────────────┘
+                    │
+         ┌──────────┴──────────┐
+         ▼                     ▼
+┌────────────────┐   ┌─────────────────────────┐
+│  🛒 PROCUREMENT │   │  💼 WAREHOUSE MANAGER   │
+│  (Issues PO)   │   │  (Oversees all stock)   │
+└───────┬────────┘   └──────────┬──────────────┘
+        │                       │
+        │    PO ────────────►   │
+        │                       ▼
+        │            ┌──────────────────────────┐
+        └──────────► │  📦 WAREHOUSE STAFF       │ ← Role នេះ
+                     │  Portal: inventory-staff/ │
+                     │  Scope: Stock Ops Only    │
+                     └──────────┬───────────────┘
+                                │
+              ┌─────────────────┼──────────────────┐
+              ▼                 ▼                   ▼
+    [RECEIVE Goods]      [DISPATCH Goods]     [ADJUST Stock]
+    GRN → Stock ↑        Sales Order → ↓      Physical Count
+</code></pre>
+        </div>
+<p><strong>Warehouse Staff VS Warehouse Manager (ចំណុចខុស)</strong>:</p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ចំណុច</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Warehouse Staff</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Warehouse Manager</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ទទួលទំនិញ + GRN</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">✅ ធ្វើដោយផ្ទាល់</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">✅ Supervise</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ចេញទំនិញ</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">✅ ធ្វើដោយផ្ទាល់</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">✅ Approve ធំ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Adjust Stock</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">⚠️ Input Only</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">✅ Approve Adjustments</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Approve GRN</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">⚠️ Submit</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">✅ Final Confirm</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Catalog Management</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ ហាម</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">✅ (Limited)</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ឃើញ Stock Value</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ ហាម</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ ហាម (Same Rule)</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Report — Dept Level</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">✅ Dept Reports</td>
+</tr>
+</tbody></table></div>
+<div class="my-5 p-4 rounded-xl bg-slate-50 border-l-4 border-[#0f2b5c] text-slate-800 text-xs leading-relaxed shadow-sm">
+<p><strong>ចំណាំ</strong>: ក្នុង Prototype Phase 1 — <strong>Portal ភ្ជាប់ Warehouse Staff + Manager រួម</strong> (<code>inventory-staff/</code>) ។ ឯកសារនេះ Cover <strong>Warehouse Staff</strong> Level ។</p>
+</div>
+<hr>
+<h2 id="3-full-capability-map" class="scroll-mt-24 group">3. Full Capability Map <a href="#3-full-capability-map" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>WAREHOUSE STAFF CAPABILITIES
+│
+├── 📥 RECEIVING (ការទទួលទំនិញ)
+│   ├── [READ]    មើល PO List ដែលហៅ Delivery (Pending Arrival)
+│   ├── [CREATE]  បង្កើត GRN (Goods Receipt Note) ក្រោយរាប់ទំនិញ
+│   ├── [UPDATE]  Record Qty Received per Line Item
+│   ├── [UPDATE]  Mark Rejected Items + មូលហេតុ
+│   └── [UPLOAD]  ភ្ជាប់រូបភាព/ឯកសារ GRN ជា Evidence
+│
+├── 📤 DISPATCH (ការចេញទំនិញ)
+│   ├── [READ]    មើល Sales Orders / Delivery Orders ដែលត្រូវ Pick
+│   ├── [UPDATE]  Confirm Picked Qty (Pick &amp; Pack)
+│   ├── [UPDATE]  Mark as Dispatched (Stock Deduct Auto)
+│   └── [CREATE]  Outbound Movement Record
+│
+├── 🔄 STOCK ADJUSTMENT (ការកែស្តុក)
+│   ├── [CREATE]  ស្នើ Stock Adjustment (Physical Count Variance)
+│   ├── [CREATE]  Record Damaged / Expired / Lost Items
+│   └── [READ]    មើល Adjustment History
+│
+├── 📋 STOCK BALANCE (មើលស្តុក)
+│   ├── [READ]    មើល Current Stock Balance (Qty Only ❌ ហាមមើលតម្លៃ)
+│   ├── [READ]    Filter by Warehouse / Location / Category
+│   └── [READ]    ស្វែងរក Item តាម SKU / Barcode / ឈ្មោះ
+│
+├── 📦 CATALOG (Reference Only)
+│   ├── [READ]    មើល Product Info (Name, SKU, Unit, Category)
+│   └── ❌        ហាម Create/Edit Catalog (Admin ជាអ្នក Manage)
+│
+└── 📊 MOVEMENT LOG (ប្រវត្តិចលនាស្តុក)
+    ├── [READ]    មើល All Stock In / Out Movements
+    ├── [READ]    Filter by Date / Item / Type (IN/OUT/ADJUST)
+    └── [CREATE]  Manual Movement Entry (Special Cases)
+</code></pre>
+        </div>
+<h3 id="31-អ្វីដែល-warehouse-staff-ធ្វើបាន" class="scroll-mt-24 group">3.1 ✅ អ្វីដែល Warehouse Staff ធ្វើបាន <a href="#31-អ្វីដែល-warehouse-staff-ធ្វើបាន" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">#</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">សកម្មភាព</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ហេតុ</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">1</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">រាប់ + Record ទំនិញដែលទទួល (GRN)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Core Duty — Stock In</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">2</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">រាប់ + Record ទំនិញដែលចេញ (Dispatch)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Core Duty — Stock Out</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">3</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Scan Barcode ពេល Count</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Speed + Accuracy</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">4</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ស្នើ Stock Adjustment (ក្រោយ Physical Count)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Variance Reporting</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">5</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Record Damaged / Expired Items</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Quality Control</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">6</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Upload Photo Evidence ក្នុង GRN</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Audit Trail</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">7</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">មើល Stock Balance (Qty Only)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Operational Awareness</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">8</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ស្វែងរក Item by Barcode</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Daily Operation</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">9</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">មើល Movement History</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Traceability</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">10</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ចេញ Movement Record (Manual)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Special Cases</td>
+</tr>
+</tbody></table></div>
+<h3 id="32-អ្វីដែល-warehouse-staff-ហាមធ្វើ" class="scroll-mt-24 group">3.2 ❌ អ្វីដែល Warehouse Staff ហាមធ្វើ <a href="#32-អ្វីដែល-warehouse-staff-ហាមធ្វើ" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">#</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ហាម</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ហេតុ</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">1</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ មើលតម្លៃទំនិញ (Cost/Sell Price)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Zero Price Leakage</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">2</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ មើលតម្លៃស្តុករួម (Total Stock Value)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Zero Price Leakage</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">3</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ Create / Edit Product Catalog</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Admin / Catalog Manager</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">4</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ Approve Own Stock Adjustment</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Warehouse Manager Approves</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">5</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ Delete Stock Records</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Immutable Audit Trail</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">6</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ Access Sales Invoices</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Sales Dept Only</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">7</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ Access Financial Reports</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Accountant Only</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">8</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ Access Customer Data</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Sales / CRM Only</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">9</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ Access HR / Payroll</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">HR Only</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">10</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ Manage Users / Settings</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Admin Only</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="4-ទំព័រ-ui-ពេញលេញ-all-pages-blueprint" class="scroll-mt-24 group">4. ទំព័រ UI ពេញលេញ (All Pages Blueprint) <a href="#4-ទំព័រ-ui-ពេញលេញ-all-pages-blueprint" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="41-admin-module-5-stock-full-crud-ជាមួយ-prices-admingm-ប្រើ" class="scroll-mt-24 group">4.1 Admin Module <code>5-stock/</code> — Full CRUD ជាមួយ Prices (Admin/GM ប្រើ) <a href="#41-admin-module-5-stock-full-crud-ជាមួយ-prices-admingm-ប្រើ" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>5-stock/
+├── 1-balance/
+│   ├── balance.html            ← បញ្ជីតុល្យភាពស្តុក (+ ឃើញ Cost Price)
+│   ├── adjust-balance.html     ← ការប្រែប្រួលតុល្យភាព (Admin Approve)
+│   ├── edit-balance.html       ← កែ Stock Entry (Admin)
+│   └── view-balance.html       ← ព័ត៌មានលម្អិត Stock Item
+├── 2-catalog/
+│   ├── catalog.html            ← បញ្ជីផលិតផលទាំងអស់
+│   ├── create-catalog.html     ← ចុះឈ្មោះ Product ថ្មី
+│   ├── edit-catalog.html       ← កែ Product Info + Prices
+│   └── view-catalog.html       ← Product Profile + Price History
+└── 3-movement/
+    ├── movement.html           ← ប្រវត្តិចលនាស្តុកទាំងអស់
+    ├── create-movement.html    ← ចុះ Manual Movement
+    ├── edit-movement.html      ← កែ Movement (Admin)
+    └── view-movement.html      ← Movement Details
+</code></pre>
+        </div>
+<p><strong>សរុប Admin Module</strong>: <strong>12 ទំព័រ</strong></p>
+<hr>
+<h3 id="42-warehouse-portal-9-portalsinventory-staff-zero-price-view" class="scroll-mt-24 group">4.2 Warehouse Portal <code>9-portals/inventory-staff/</code> — Zero Price View <a href="#42-warehouse-portal-9-portalsinventory-staff-zero-price-view" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>9-portals/inventory-staff/
+├── dashboard.html          ← ផ្ទាំងគ្រប់គ្រងស្តុក (Qty + Alerts)
+├── balance.html            ← ស្តុកបច្ចុប្បន្ន (Qty Only — ❌ ហាមមើលតម្លៃ)
+├── adjust-balance.html     ← ស្នើ Stock Adjustment
+├── catalog.html            ← Catalog Reference (Read Only)
+├── create-catalog.html     ← [ណែនាំ] Quick Add New Item (Minimal Form)
+├── movement.html           ← ប្រវត្តិ Movement
+└── create-movement.html    ← ចុះ Manual Movement Record
+</code></pre>
+        </div>
+<p><strong>សរុប Portal</strong>: <strong>7 ទំព័រ</strong></p>
+<div class="my-5 p-4 rounded-xl bg-slate-50 border-l-4 border-[#0f2b5c] text-slate-800 text-xs leading-relaxed shadow-sm">
+<p><strong>ចំណាំ</strong>: <code>create-catalog.html</code> ក្នុង Portal ជា Simplified Form (ឈ្មោះ, SKU, Unit, Category) ។ ហាម Price Fields ទាំងអស់ — Admin ចូល <code>5-stock/2-catalog/edit-catalog.html</code> ដើម្បីបន្ថែម Prices ។</p>
+</div>
+<hr>
+<h3 id="43-ការពន្យល់-pages-លម្អិត" class="scroll-mt-24 group">4.3 ការពន្យល់ Pages លម្អិត <a href="#43-ការពន្យល់-pages-លម្អិត" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<h4 id="page-1-dashboardhtml-ផ្ទាំងគ្រប់គ្រងស្តុក" class="scroll-mt-24 group">Page 1: <code>dashboard.html</code> — ផ្ទាំងគ្រប់គ្រងស្តុក <a href="#page-1-dashboardhtml-ផ្ទាំងគ្រប់គ្រងស្តុក" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<p><strong>KPI Cards Row</strong> (ចំនួន ប៉ុណ្ណោះ — ❌ ហាមមើលទំហំទឹកប្រាក់)**:</p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Widget</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ទិន្នន័យ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Alert</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">📦 Items ក្នុងស្តុក</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">COUNT(distinct products)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">—</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">⚠️ ស្តុកជិតអស់</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">COUNT(qty ≤ reorder_point)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">🔴 ≥ 1</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">🔴 ស្តុកអស់</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">COUNT(qty = 0)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">🔴 ≥ 1</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">📥 ការទទួលថ្ងៃនេះ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">COUNT(GRN today)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">—</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">📤 ការចេញថ្ងៃនេះ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">COUNT(Dispatch today)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">—</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">🔄 Adjustments Pending</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">COUNT(adj status=pending)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">🟡 ≥ 1</td>
+</tr>
+</tbody></table></div>
+<p><strong>Section ខាងក្រោម</strong>:</p>
+<ul>
+<li>តារាង Items ដែលស្តុកជិតអស់ / អស់ (Alert Table)</li>
+<li>POs ដែលរង់ចាំ Arrival (Incoming PO List)</li>
+<li>Movement ចុងក្រោយ 10 (Recent Activity Feed)</li>
+</ul>
+<hr>
+<h4 id="page-2-balancehtml-ស្តុកបច្ចុប្បន្ន-warehouse-view" class="scroll-mt-24 group">Page 2: <code>balance.html</code> — ស្តុកបច្ចុប្បន្ន (Warehouse View) <a href="#page-2-balancehtml-ស្តុកបច្ចុប្បន្ន-warehouse-view" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<p><strong>ចំណុចសំខាន់</strong>: Portal version <strong>ហាមមានជួរឈរ</strong> Cost Price, Selling Price, Total Value ទាំងស្រុង ។</p>
+<p><strong>ជួរឈរតារាង (Warehouse Staff Version)</strong>:</p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ជួរឈរ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ប្រភេទ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ឧទាហរណ៍</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">#</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Auto</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">1</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ឈ្មោះទំនិញ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Text</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ប្រេងម៉ាស៊ីន 5L</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">SKU</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Code</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">OIL-5L-001</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ប្រភេទ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Badge</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">គ្រឿងប្រើ / ស្ករ / ប្លង់...</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ឯកតា</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Text</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ដប / ប្រអប់ / kg</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ស្តុក</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Number (Bold)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>24</strong></td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Reorder Point</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Number</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">10</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ស្ថានភាព</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Badge</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">🟢 គ្រប់ / 🟡 ជិតអស់ / 🔴 អស់</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ឃ្លាំង</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Text</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ឃ្លាំង A</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">⋮</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Menu</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">មើល, Adjust, Movement</td>
+</tr>
+</tbody></table></div>
+<p><strong>Filters</strong>:</p>
+<ul>
+<li>ស្វែងរកតាមឈ្មោះ / SKU / Barcode</li>
+<li>Filter Status (All / គ្រប់ / ជិតអស់ / អស់)</li>
+<li>Filter Category</li>
+<li>Filter Warehouse</li>
+</ul>
+<p><strong>Admin Version <code>5-stock/1-balance/balance.html</code></strong> (ជួរឈរបន្ថែម):</p>
+<ul>
+<li>✅ ថ្លៃដើម/ឯកតា</li>
+<li>✅ តម្លៃស្តុករួម</li>
+<li>✅ Average Cost</li>
+</ul>
+<hr>
+<h4 id="page-3-adjust-balancehtml-ស្នើ-stock-adjustment" class="scroll-mt-24 group">Page 3: <code>adjust-balance.html</code> — ស្នើ Stock Adjustment <a href="#page-3-adjust-balancehtml-ស្នើ-stock-adjustment" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<p><strong>គោលបំណង</strong>: ក្រោយ Physical Count — Warehouse Staff Records <strong>ភាពខុសគ្នា</strong> រវាង System Qty vs Actual Qty ។</p>
+<p><strong>Form Layout</strong>:</p>
+<p><strong>Section 1 — ជ្រើស Item</strong></p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Field</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ប្រភេទ</th>
+<th align="center">Required</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ចំណាំ</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ស្វែងរកទំនិញ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Search + Dropdown</td>
+<td align="center">✅</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ស្វែង SKU / ឈ្មោះ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ឃ្លាំង</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Custom Dropdown</td>
+<td align="center">✅</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ប្រសិន Multi-Warehouse</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ស្តុកក្នុងប្រព័ន្ធ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Display Only</td>
+<td align="center">—</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">System Qty (Read-only)</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ចំនួនរាប់ពិតប្រាកដ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Number</td>
+<td align="center">✅</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Actual Physical Count</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ភាពខុសគ្នា (Auto)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Display</td>
+<td align="center">—</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Actual - System = ± X</td>
+</tr>
+</tbody></table></div>
+<p><strong>Section 2 — ព័ត៌មានបន្ថែម</strong></p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Field</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ប្រភេទ</th>
+<th align="center">Required</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ចំណាំ</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ប្រភេទ Adjustment</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Custom Dropdown</td>
+<td align="center">✅</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Physical Count / Damaged / Expired / Lost / Found</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">លេខ Ref</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Text</td>
+<td align="center">⚠️</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ផ្ទៀងផ្ទាត់ Ref ការងារ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ចំណាំ / មូលហេតុ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Textarea</td>
+<td align="center">✅</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ទាមទារ — ហាមទុកចោល</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ភ្ជាប់ Evidence</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">File Upload</td>
+<td align="center">⚠️</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">រូបថតការរាប់ / ឯកសារ</td>
+</tr>
+</tbody></table></div>
+<p><strong>Buttons</strong>:</p>
+<ul>
+<li>«ដាក់ស្នើ» → Status = Pending Approval (Warehouse Manager / Admin Approve)</li>
+<li>«រក្សាទុក Draft»</li>
+<li>«បោះបង់»</li>
+</ul>
+<div class="my-5 p-4 rounded-xl bg-amber-50/90 border-l-4 border-amber-500 text-amber-950 text-xs leading-relaxed shadow-sm">
+<p><strong>⚠️ Flow</strong>: Warehouse Staff ដាក់ស្នើ → Warehouse Manager / Admin Approve → Stock Auto-Update ។ Warehouse Staff <strong>ហាម Approve ខ្លួនឯង</strong> ។</p>
+</div>
+<hr>
+<h4 id="page-4-cataloghtml-catalog-reference-read-only" class="scroll-mt-24 group">Page 4: <code>catalog.html</code> — Catalog Reference (Read Only) <a href="#page-4-cataloghtml-catalog-reference-read-only" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<p><strong>Warehouse Staff</strong> ឃើញ Catalog ដើម្បី <strong>Reference ប៉ុណ្ណោះ</strong> — ដឹង SKU, Unit, Category ។</p>
+<p><strong>ជួរឈរ (Warehouse Staff View)</strong>:</p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ជួរឈរ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ឧទាហរណ៍</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ឈ្មោះទំនិញ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ប្រេងម៉ាស៊ីន 5L</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">SKU</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">OIL-5L-001</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Barcode</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">8850123456789</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ប្រភេទ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ប្រេង / ចំណីអាហារ / ឧបករណ៍...</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ឯកតា</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ដប</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">⋮</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">មើល (Read Only)</td>
+</tr>
+</tbody></table></div>
+<p>❌ <strong>ហាមមានជួរ</strong>: ថ្លៃដើម, ថ្លៃលក់, Margin</p>
+<hr>
+<h4 id="page-5-create-cataloghtml-ចុះឈ្មោះ-product-ថ្មី-portal-minimal" class="scroll-mt-24 group">Page 5: <code>create-catalog.html</code> — ចុះឈ្មោះ Product ថ្មី (Portal — Minimal) <a href="#page-5-create-cataloghtml-ចុះឈ្មោះ-product-ថ្មី-portal-minimal" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<p><strong>ចំណាំ</strong>: Portal version = <strong>Minimal Form</strong> — Warehouse Staff ចុះបញ្ជី Item ថ្មី ដែលទទួលដំបូង ។ Admin ចូល <code>5-stock/2-catalog/edit-catalog.html</code> ក្រោយ ដើម្បីបន្ថែម Prices ។</p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Field</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ប្រភេទ</th>
+<th align="center">Required</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ចំណាំ</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ឈ្មោះទំនិញ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Text</td>
+<td align="center">✅</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"></td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ឈ្មោះ (អង់គ្លេស)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Text</td>
+<td align="center">⚠️</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"></td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">SKU / លេខកូដ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Text</td>
+<td align="center">✅</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Manual ឬ Auto-generate</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Barcode</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Text</td>
+<td align="center">⚠️</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Scan Input</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ប្រភេទ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Custom Dropdown</td>
+<td align="center">✅</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Category</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ឯកតា</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Custom Dropdown</td>
+<td align="center">✅</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ដប, ប្រអប់, kg, ដំណ...</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Reorder Point</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Number</td>
+<td align="center">✅</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Min Stock Alert Threshold</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ឃ្លាំងដំបូង</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Custom Dropdown</td>
+<td align="center">✅</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"></td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ចំណុចស្តុកចាប់ផ្តើម</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Number</td>
+<td align="center">✅</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Opening Balance</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ចំណាំ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Textarea</td>
+<td align="center">⚠️</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"></td>
+</tr>
+</tbody></table></div>
+<p>❌ <strong>Fields ហាមមាន</strong>: ថ្លៃដើម, ថ្លៃលក់, Margin %, VAT Rate (Admin Manages these)</p>
+<hr>
+<h4 id="page-6-movementhtml-ប្រវត្តិចលនាស្តុក" class="scroll-mt-24 group">Page 6: <code>movement.html</code> — ប្រវត្តិចលនាស្តុក <a href="#page-6-movementhtml-ប្រវត្តិចលនាស្តុក" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<p><strong>ការ Trace ទំនិញ</strong> — ប្រើ ស្វែងរក Audit Trail ពេលជម្លោះ ។</p>
+<p><strong>ជួរឈរ</strong>:</p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ជួរឈរ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ប្រភេទ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ឧទាហរណ៍</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ថ្ងៃ/ម៉ោង</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">DateTime</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">20 កញ្ញា 2026, 09:30</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ប្រភេទ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Badge</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">📥 ចូល / 📤 ចេញ / 🔄 Adjust</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ទំនិញ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Text</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ប្រេងម៉ាស៊ីន 5L</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Qty ±</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Number</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">+50 / -12 / -2</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">យោង</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Link</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">PO-2026-0045 / INV-2026-0120</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ដោយ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Text</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ហ៊ុន ចន្ថា</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ចំណាំ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Text</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">GRN ពី ហ៊ុន ត្រេឌីង</td>
+</tr>
+</tbody></table></div>
+<p><strong>Filters</strong>:</p>
+<ul>
+<li>ស្វែងរក Item</li>
+<li>Filter Type (IN / OUT / ADJUST / ALL)</li>
+<li>Date Range Picker</li>
+</ul>
+<p>❌ <strong>ហាមមាន</strong>: ជួរ Cost, Value, Amount — Qty ប៉ុណ្ណោះ</p>
+<hr>
+<h4 id="page-7-create-movementhtml-manual-movement-record" class="scroll-mt-24 group">Page 7: <code>create-movement.html</code> — Manual Movement Record <a href="#page-7-create-movementhtml-manual-movement-record" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<p><strong>ប្រើសម្រាប់ Cases ពិសេស</strong> (Internal Transfer, Sample Out, Repair In, ...)</p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Field</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ប្រភេទ</th>
+<th align="center">Required</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ចំណាំ</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ប្រភេទ Movement</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Custom Dropdown</td>
+<td align="center">✅</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ចូល / ចេញ / Transfer / Sample / Return</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ទំនិញ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Search + Select</td>
+<td align="center">✅</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"></td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ចំនួន</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Number</td>
+<td align="center">✅</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"></td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ឃ្លាំងចេញ / ចូល</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Custom Dropdown</td>
+<td align="center">✅</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"></td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ថ្ងៃ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Date</td>
+<td align="center">✅</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Default: Today</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Reference</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Text</td>
+<td align="center">⚠️</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">INV/PO/Manual Ref</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ចំណាំ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Textarea</td>
+<td align="center">✅</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">មូលហេតុ ទាមទារ</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h4 id="admin-key-pages-5-stock-លម្អិត" class="scroll-mt-24 group">Admin Key Pages — <code>5-stock/</code> លម្អិត <a href="#admin-key-pages-5-stock-លម្អិត" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<p><strong><code>adjust-balance.html</code> (Admin)</strong> — Full Approve Interface:</p>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>┌────────────────────────────────────────────────────────┐
+│  Stock Adjustment — ប្រេងម៉ាស៊ីន 5L                   │
+│  ស្នើ​ដោយ: ហ៊ុន ចន្ថា (Warehouse Staff) — 20/09/2026  │
+├──────────────────┬──────────────────┬──────────────────┤
+│  ស្តុកប្រព័ន្ធ    │  ស្តុករាប់ពិត    │  ភាពខុស          │
+│  24 ដប           │  21 ដប           │  -3 ដប ⚠️         │
+├──────────────────┴──────────────────┴──────────────────┤
+│  ប្រភេទ: Physical Count | ចំណាំ: ស្ករ 3 ដបខូច         │
+│  Evidence: [count_photo.jpg]                           │
+├────────────────────────────────────────────────────────┤
+│  Cost Impact: -3 × $8.50 = -$25.50  ← Admin ឃើញ     │
+├────────────────────────────────────────────────────────┤
+│     [✅ អនុម័ត]              [❌ បដិសេធ]              │
+└────────────────────────────────────────────────────────┘
+</code></pre>
+        </div>
+<p><strong><code>view-balance.html</code> (Admin)</strong> — Full Profile ជាមួយ Prices:</p>
+<ul>
+<li>✅ ឃើញ Current Qty, Cost Price, Selling Price</li>
+<li>✅ ឃើញ Average Cost (Weighted Average)</li>
+<li>✅ ឃើញ Total Stock Value = Qty × Avg Cost</li>
+<li>✅ Price History (ប្រវត្តិតម្លៃទិញចូល)</li>
+</ul>
+<hr>
+<h2 id="5-ម៉ាទ្រីសសិទ្ធិ-permission-matrix" class="scroll-mt-24 group">5. ម៉ាទ្រីសសិទ្ធិ (Permission Matrix) <a href="#5-ម៉ាទ្រីសសិទ្ធិ-permission-matrix" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="51-crud-matrix-warehouse-portal" class="scroll-mt-24 group">5.1 CRUD Matrix — Warehouse Portal <a href="#51-crud-matrix-warehouse-portal" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Feature</th>
+<th align="center">CREATE</th>
+<th align="center">READ</th>
+<th align="center">UPDATE</th>
+<th align="center">DELETE</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Stock Balance (Qty)</strong></td>
+<td align="center">⚠️ via GRN/Movement</td>
+<td align="center">✅ Qty Only</td>
+<td align="center">⚠️ via Adjustment</td>
+<td align="center">❌</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Stock Value/Price</strong></td>
+<td align="center">❌ <strong>ហាម</strong></td>
+<td align="center">❌ <strong>ហាម</strong></td>
+<td align="center">❌ <strong>ហាម</strong></td>
+<td align="center">❌</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>GRN (Receiving)</strong></td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+<td align="center">⚠️ Unconfirmed</td>
+<td align="center">❌</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Stock Adjustment</strong></td>
+<td align="center">✅ (Request)</td>
+<td align="center">✅</td>
+<td align="center">⚠️ Pending Only</td>
+<td align="center">❌</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Movement Record</strong></td>
+<td align="center">✅ (Manual)</td>
+<td align="center">✅</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Catalog (View)</strong></td>
+<td align="center">❌ → ⚠️ Minimal</td>
+<td align="center">✅ No Price</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Catalog (Price)</strong></td>
+<td align="center">❌ <strong>ហាម</strong></td>
+<td align="center">❌ <strong>ហាម</strong></td>
+<td align="center">❌ <strong>ហាម</strong></td>
+<td align="center">❌</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Sales Invoices</strong></td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Purchase Orders</strong></td>
+<td align="center">❌</td>
+<td align="center">👁️ Incoming Only</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Financial Data</strong></td>
+<td align="center">❌</td>
+<td align="center">❌ <strong>ហាម</strong></td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>HR / Payroll</strong></td>
+<td align="center">❌</td>
+<td align="center">❌ <strong>ហាម</strong></td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+</tr>
+</tbody></table></div>
+<div class="my-5 p-4 rounded-xl bg-amber-50/90 border-l-4 border-amber-500 text-amber-950 text-xs leading-relaxed shadow-sm">
+<p><strong>Legend</strong>: ✅ Full | ⚠️ Conditional | 👁️ Limited View | ❌ Forbidden</p>
+</div>
+<h3 id="52-module-access-matrix" class="scroll-mt-24 group">5.2 Module Access Matrix <a href="#52-module-access-matrix" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Module</th>
+<th align="center">Warehouse Staff</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ការពន្យល់</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Dashboard</strong></td>
+<td align="center">✅ Stock KPIs</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Qty, Alerts, Movements</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Stock Balance</strong></td>
+<td align="center">✅ Qty Only</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ ហាមមើលតម្លៃ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Stock Catalog</strong></td>
+<td align="center">👁️ Name+SKU+Unit</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ ហាមមើលតម្លៃ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Stock Movement</strong></td>
+<td align="center">✅</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ ហាមមើល Amount</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Adjustment</strong></td>
+<td align="center">✅ Submit Only</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Manager Approves</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Purchase Orders</strong></td>
+<td align="center">👁️ Incoming POs</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ដើម្បី Prepare Receiving</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Sales Orders</strong></td>
+<td align="center">👁️ Dispatch Queue</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ដើម្បីត្រៀម Pick/Pack</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Sales Invoices</strong></td>
+<td align="center">❌</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ហាមទាំងស្រុង</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Accounting</strong></td>
+<td align="center">❌</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ហាមទាំងស្រុង</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>HR</strong></td>
+<td align="center">❌</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ហាមទាំងស្រុង</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Reports</strong></td>
+<td align="center">👁️ Stock Movement</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Own Dept Movement Only</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Settings</strong></td>
+<td align="center">❌</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Admin Only</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="6-វដ្តការងារស្នូល-core-workflows" class="scroll-mt-24 group">6. វដ្តការងារស្នូល (Core Workflows) <a href="#6-វដ្តការងារស្នូល-core-workflows" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="workflow-1-receive-goods-ទទួលទំនិញ-grn-stock-up" class="scroll-mt-24 group">Workflow 1: Receive Goods (ទទួលទំនិញ → GRN → Stock Up) <a href="#workflow-1-receive-goods-ទទួលទំនិញ-grn-stock-up" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>START
+  │
+  ▼
+Supplier ដឹកទំនិញមក
+  │
+  ▼
+Warehouse Staff ចូល dashboard.html
+→ ឃើញ Widget: &quot;POs Expecting Arrival Today: [PO-2026-0045]&quot;
+→ ឬ ចូល balance.html → Filter &quot;Incoming POs&quot;
+  │
+  ▼
+ចុច PO → ពិនិត្យ PO Details:
+  - Supplier: ហ៊ុន ត្រេឌីង
+  - Items: ប្រេងម៉ាស៊ីន 5L × 50 ដប
+  - ថ្ងៃ Expected: 20 កញ្ញា 2026
+  │
+  ▼
+[Physical Action] Warehouse Staff រាប់ + ពិនិត្យ Quality
+  │
+  ▼
+ចូល create-movement.html → GRN Mode
+  │
+  ├── ជ្រើស PO Reference: PO-2026-0045
+  ├── Record per Line Item:
+  │   - ប្រេងម៉ាស៊ីន 5L → Received: 48 ដប (PO: 50) ⚠️
+  │   - Rejected: 2 ដប → Reason: &quot;ដប ប្រេះ&quot;
+  ├── Upload Photo Evidence
+  └── ចំណាំ: &quot;ដប 2 ប្រេះ — បានបង្ហាញ Supplier Driver&quot;
+  │
+  ▼
+ចុច «បញ្ជាក់ GRN»
+  │
+  ├── ប្រព័ន្ធ Create GRN Record (GRN-2026-031)
+  ├── ប្រព័ន្ធ Stock Balance ↑ (+ 48 ដប)
+  ├── ប្រព័ន្ធ Update PO Status = &quot;Partial Received&quot;
+  ├── ប្រព័ន្ធ Notify Procurement: &quot;GRN-031 submitted — 48/50 received&quot;
+  └── Procurement ត្រួតពិនិត្យ 3-Way Match
+  │
+  ▼
+showToast(&quot;GRN ត្រូវបានបញ្ជាក់ — ស្តុកត្រូវបានធ្វើបច្ចុប្បន្នភាព&quot;)
+  │
+  ▼
+END
+</code></pre>
+        </div>
+<hr>
+<h3 id="workflow-2-dispatch-goods-ចេញទំនិញ-sales-order" class="scroll-mt-24 group">Workflow 2: Dispatch Goods (ចេញទំនិញ → Sales Order) <a href="#workflow-2-dispatch-goods-ចេញទំនិញ-sales-order" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>START
+  │
+  ▼
+Sales Staff Confirm Invoice → Sales Order ផ្ញើ Warehouse
+  │
+  ▼
+Warehouse Staff ចូល dashboard.html
+→ ឃើញ Queue: &quot;Dispatch Queue: 3 Orders Pending&quot;
+  │
+  ▼
+ជ្រើស Order: INV-2026-0120
+→ ពិនិត្យ Pick List:
+  - ប្រេងម៉ាស៊ីន 5L × 10 ដប → Location: A-1-3
+  - ទឹកស្ករ 1L × 24 ដំណ → Location: B-2-1
+  │
+  ▼
+[Physical Action] ទៅយកទំនិញ + ពិនិត្យ
+  │
+  ▼
+ចូល create-movement.html → Dispatch Mode
+  - Reference: INV-2026-0120
+  - Confirm ចំនួន Dispatched (អាចតិចជាង ប្រសិន Stock មិនគ្រប់)
+  │
+  ▼
+ចុច «បញ្ជាក់ Dispatch»
+  │
+  ├── ប្រព័ន្ធ Stock Balance ↓ (- Qty Dispatched)
+  ├── ប្រព័ន្ធ Record Outbound Movement
+  └── ប្រព័ន្ធ Notify Sales: &quot;Order INV-0120 dispatched&quot;
+  │
+  ▼
+END
+</code></pre>
+        </div>
+<hr>
+<h3 id="workflow-3-physical-count-stock-adjustment" class="scroll-mt-24 group">Workflow 3: Physical Count + Stock Adjustment <a href="#workflow-3-physical-count-stock-adjustment" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>START (ការ Count ប្រចាំខែ)
+  │
+  ▼
+Admin / Warehouse Manager បញ្ជា Physical Count Day
+  │
+  ▼
+Warehouse Staff បោះ Count Sheet (Print ពី balance.html)
+  │
+  ▼
+[Physical Action] រាប់ Items ម្តងមួយៗ ជាមួយ Count Sheet
+  │
+  ▼
+ក្រោយ Count ចប់ → ចូល adjust-balance.html
+  │
+  ▼
+Per Item ដែល Variance:
+  ├── System Qty: 24 ដប
+  ├── Actual Count: 21 ដប
+  ├── Variance: -3 ដប
+  ├── ប្រភេទ: Physical Count
+  ├── ចំណាំ: &quot;ស្ករ 3 ដបខូច — ពាំនាំ ទ Disposal&quot;
+  └── Upload: count_sheet_photo.jpg
+  │
+  ▼
+ចុច «ដាក់ស្នើ»
+  │
+  ├── Status = &quot;Pending Approval&quot;
+  └── Notification → Warehouse Manager / Admin
+  │
+  ▼
+Admin / Warehouse Manager Review + Approve
+  │
+  ├── ✅ Approve → Stock Balance Auto-Update
+  └── ❌ Reject → Return to Warehouse Staff + Reason
+  │
+  ▼
+END → Stock Balanced ✅
+</code></pre>
+        </div>
+<hr>
+<h3 id="workflow-4-damaged-expired-item-recording" class="scroll-mt-24 group">Workflow 4: Damaged / Expired Item Recording <a href="#workflow-4-damaged-expired-item-recording" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>START
+  │
+  ▼
+Warehouse Staff ស្គាល់ Item ខូច/ផុតអាយុ
+  │
+  ▼
+ចូល adjust-balance.html
+→ ជ្រើស Item
+→ ប្រភេទ: &quot;Damaged&quot; ឬ &quot;Expired&quot;
+→ Qty: ចំនួនដែលខូច
+→ ចំណាំ: &quot;ប្រេងម៉ាស៊ីន 5 ដបរំសៃ — Lot ចេញពី PO-2026-0030&quot;
+→ Upload: damage_photo.jpg
+  │
+  ▼
+ដាក់ស្នើ → Pending Approval
+  │
+  ▼
+Admin Approve → Stock ↓ + Write-off
+  │
+  ▼
+Accountant ឃើញ Write-off ក្នុង Accounting Module
+(Inventory Loss → P&amp;L Impact — Accountant ជាអ្នក Process)
+  │
+  ▼
+END
+</code></pre>
+        </div>
+<hr>
+<h3 id="workflow-5-barcode-scanning-quick-balance-check" class="scroll-mt-24 group">Workflow 5: Barcode Scanning (Quick Balance Check) <a href="#workflow-5-barcode-scanning-quick-balance-check" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>START
+  │
+  ▼
+Warehouse Staff ប្រើ Scanner / Phone Camera
+→ Scan Barcode Item
+  │
+  ▼
+ប្រព័ន្ធ Show:
+┌─────────────────────────────────────┐
+│  ប្រេងម៉ាស៊ីន Shell 5L              │
+│  SKU: OIL-5L-001                   │
+│  ស្តុក: 21 ដប  ← Qty Only          │
+│  ឃ្លាំង: A-1-3                      │
+│  ស្ថានភាព: 🟢 គ្រប់ (Min: 10)       │
+│                                     │
+│  ❌ Cost: [HIDDEN]                  │
+│  ❌ Price: [HIDDEN]                 │
+└─────────────────────────────────────┘
+  │
+  ▼
+Warehouse Staff ឃើញ Info → Action:
+→ [+ Movement] → [Adjust] → [View History]
+  │
+  ▼
+END
+</code></pre>
+        </div>
+<hr>
+<h2 id="7-business-logic-stock-operations" class="scroll-mt-24 group">7. Business Logic — Stock Operations <a href="#7-business-logic-stock-operations" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="71-stock-update-rules-ច្បាប់-update-ស្តុក" class="scroll-mt-24 group">7.1 Stock Update Rules (ច្បាប់ Update ស្តុក) <a href="#71-stock-update-rules-ច្បាប់-update-ស្តុក" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>STOCK BALANCE TRIGGERS:
+
+Stock IN (+):
+  ├── GRN Confirmed (Warehouse confirms receiving)
+  ├── Return from Customer (Sales Return)
+  └── Manual Movement IN (Admin/Manager approved)
+
+Stock OUT (-):
+  ├── Sales Order Dispatched (Warehouse confirms dispatch)
+  ├── Sample Out (Admin approved)
+  └── Manual Movement OUT (Admin/Manager approved)
+
+Stock ADJUST (±):
+  ├── Physical Count Approved (Manager/Admin)
+  ├── Damaged Write-off (Manager/Admin)
+  ├── Expired Write-off (Manager/Admin)
+  └── Stock Found (Manager/Admin)
+</code></pre>
+        </div>
+<h3 id="72-average-cost-calculation-fifo-weighted-average" class="scroll-mt-24 group">7.2 Average Cost Calculation (FIFO / Weighted Average) <a href="#72-average-cost-calculation-fifo-weighted-average" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p><strong>ចំណាំ</strong>: Warehouse Staff <strong>ហាមមើល</strong> ការគណនានេះ — Admin/Accountant ប៉ុណ្ណោះ ។ ប៉ុន្តែ Architect ត្រូវ Design ឱ្យ Correct ។</p>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>Method: Weighted Average Cost (Moving Average)
+
+ឧទាហរណ៍:
+  ស្តុកចូល #1: 50 ដប @ $8.00 = $400.00
+  ស្តុកចូល #2: 30 ដប @ $8.50 = $255.00
+  
+  Average Cost = ($400 + $255) / (50 + 30) = $655 / 80 = $8.19/ដប
+  
+  ពេល ចេញ 20 ដប → Cost of Goods Sold = 20 × $8.19 = $163.75
+
+ចំណុចសំខាន់:
+  → Warehouse Staff ឃើញ: &quot;ចេញ 20 ដប&quot; ប៉ុណ្ណោះ
+  → Accountant ឃើញ: &quot;ចេញ 20 ដប @ $8.19 = $163.75&quot;
+</code></pre>
+        </div>
+<h3 id="73-reorder-point-system" class="scroll-mt-24 group">7.3 Reorder Point System <a href="#73-reorder-point-system" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>Product Configuration (Admin Sets):
+  reorder_point: 10 ដប
+  reorder_qty:   50 ដប  (Suggested Order Amount)
+  
+Alert Trigger:
+  IF current_qty ≤ reorder_point:
+    → Dashboard 🔴 Alert
+    → Telegram Notification → Procurement Manager
+    → Procurement Dashboard: Reorder Alert Widget
+    
+Status Badges:
+  qty &gt; reorder_point * 1.5  → 🟢 គ្រប់
+  reorder_point &lt; qty ≤ reorder_point * 1.5 → 🟡 ជិតអស់
+  qty ≤ reorder_point        → 🔴 ត្រូវ Reorder
+  qty = 0                    → 🔴🔴 អស់ស្រប
+</code></pre>
+        </div>
+<h3 id="74-multi-warehouse-logic-phase-2" class="scroll-mt-24 group">7.4 Multi-Warehouse Logic (Phase 2) <a href="#74-multi-warehouse-logic-phase-2" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>ប្រសិន Multi-Warehouse Enabled:
+
+Product: ប្រេងម៉ាស៊ីន 5L
+  ├── ឃ្លាំង A (ភ្នំពេញ):  15 ដប
+  ├── ឃ្លាំង B (សៀមរាប):   8 ដប
+  └── Total System:        23 ដប
+
+Transfer: ឃ្លាំង A → ឃ្លាំង B
+  → Warehouse A Stock ↓
+  → Warehouse B Stock ↑
+  → Total unchanged (Transfer ≠ Loss/Gain)
+</code></pre>
+        </div>
+<hr>
+<h2 id="8-ទំនាក់ទំនងជាមួយតួនាទីផ្សេង" class="scroll-mt-24 group">8. ទំនាក់ទំនងជាមួយតួនាទីផ្សេង <a href="#8-ទំនាក់ទំនងជាមួយតួនាទីផ្សេង" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>Warehouse Staff
+│
+├── [RECEIVES GOODS FROM] → Supplier (Physical Delivery)
+│   └── Records GRN → Updates Stock
+│
+├── [NOTIFIES] → Procurement Manager
+│   └── GRN ចប់ → Procurement ឃើញ Partial/Full Receipt
+│
+├── [DISPATCHES TO] → Customer / Sales
+│   └── Sales Dispatch Order → Warehouse Pick + Ship
+│
+├── [REQUESTS REORDER FROM] → Procurement Manager
+│   └── &quot;ប្រេងម៉ាស៊ីន ជិតអស់ — ស្នើ PO&quot;
+│
+├── [SUBMITS ADJUSTMENTS TO] → Warehouse Manager / Admin
+│   └── Physical Count Variance → Approval Required
+│
+└── [FEEDS DATA TO] → Accountant (Indirect)
+    └── Stock Movement → COGS Calculation
+    └── Write-offs → P&amp;L Impact
+</code></pre>
+        </div>
+<p><strong>Critical Handoffs</strong>:</p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Handoff</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">From</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">To</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Trigger</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">PO Expected</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Procurement</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Warehouse</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">PO Status = Sent</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">GRN Submitted</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Warehouse</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Procurement</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">3-Way Match Trigger</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Stock Alert</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ប្រព័ន្ធ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Procurement</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">qty ≤ reorder_point</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Dispatch Ready</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Sales</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Warehouse</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Invoice Confirmed</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Adjustment Request</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Warehouse</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Manager/Admin</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Physical Count Done</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Write-off Approved</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Manager/Admin</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Accountant</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">P&amp;L Impact</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="9-data-scope-ឃើញអ្វី-លាក់អ្វី" class="scroll-mt-24 group">9. Data Scope — ឃើញអ្វី? លាក់អ្វី? <a href="#9-data-scope-ឃើញអ្វី-លាក់អ្វី" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>WAREHOUSE STAFF DATA SCOPE
+│
+├── ✅ ឃើញ (CAN SEE):
+│   ├── Stock Balance (Qty, Unit, SKU, Location)
+│   ├── Product Catalog (Name, SKU, Category, Unit)  — ❌ ហាមមើលតម្លៃ
+│   ├── Incoming PO List (Supplier, Expected Date, Items, Qty)
+│   │      — ❌ ហាមមើល PO Amount / Price
+│   ├── Dispatch Orders (Customer Name Hidden or Initials)
+│   ├── Movement History (Qty Changes Only)
+│   ├── Adjustment History (Own Submissions)
+│   └── Reorder Alerts
+│
+└── ❌ ហាមមើល (CANNOT SEE):
+    ├── Any Price / Cost / Selling Price
+    ├── Total Stock Value
+    ├── COGS / Profit Margin
+    ├── PO Total Amount
+    ├── Sales Invoice Amount
+    ├── Customer Contact Information
+    ├── Financial Reports (P&amp;L, Balance Sheet)
+    ├── HR / Payroll
+    └── Other Tenant Data
+</code></pre>
+        </div>
+<hr>
+<h2 id="10-kpi-dashboard" class="scroll-mt-24 group">10. KPI Dashboard <a href="#10-kpi-dashboard" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">#</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Widget</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ការគណនា</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Alert</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">1</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">📦 Items ក្នុងស្តុក</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">COUNT(distinct active products)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">—</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">2</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">🔴 ស្តុកជិតអស់</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">COUNT(qty ≤ reorder_point)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">🔴 ≥ 1</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">3</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">🔴🔴 ស្តុកអស់</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">COUNT(qty = 0)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">🔴 ≥ 1</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">4</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">📥 ការទទួល (ថ្ងៃនេះ)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">COUNT(GRN today)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">—</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">5</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">📤 ការចេញ (ថ្ងៃនេះ)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">COUNT(Dispatch today)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">—</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">6</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">🔄 Adjustments Pending</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">COUNT(adj pending)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">🟡 ≥ 1</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">7</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">⏳ POs Arriving Today</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">COUNT(PO expected_today)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">—</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">8</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">🚚 Dispatch Queue</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">COUNT(orders pending dispatch)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">🔴 ≥ 5</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="11-គំរូ-database-schema" class="scroll-mt-24 group">11. គំរូ Database Schema <a href="#11-គំរូ-database-schema" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>-- Core Tables for Warehouse Staff Scope
+
+-- 1. Products / Catalog
+CREATE TABLE products (
+    id                  UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    tenant_id           UUID REFERENCES tenants(id),
+    sku                 VARCHAR(100) NOT NULL,
+    barcode             VARCHAR(100),
+    name_kh             VARCHAR(255) NOT NULL,
+    name_en             VARCHAR(255),
+    category_id         UUID REFERENCES product_categories(id),
+    unit                VARCHAR(50),       -- ដប, ប្រអប់, kg, pcs
+    unit_per_pack       INTEGER DEFAULT 1, -- ប៉ុន្មាន units ក្នុង 1 pack
+    reorder_point       DECIMAL(10,3) DEFAULT 0,
+    reorder_qty         DECIMAL(10,3) DEFAULT 0,
+    description         TEXT,
+    image_url           TEXT,
+    status              VARCHAR(20) DEFAULT &#39;active&#39;,
+    -- PRICE FIELDS (Admin only — API blocks Warehouse Staff access)
+    cost_price          DECIMAL(15,4),     -- Last purchase cost
+    avg_cost            DECIMAL(15,4),     -- Moving average cost
+    selling_price       DECIMAL(15,4),
+    selling_price_2     DECIMAL(15,4),     -- Wholesale price
+    vat_rate            DECIMAL(5,2) DEFAULT 10,
+    created_by          UUID,
+    created_at          TIMESTAMPTZ DEFAULT NOW(),
+    updated_at          TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 2. Stock Balance (per Warehouse)
+CREATE TABLE stock_balances (
+    id                  UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    tenant_id           UUID REFERENCES tenants(id),
+    product_id          UUID REFERENCES products(id),
+    warehouse_id        UUID REFERENCES warehouses(id),
+    qty_on_hand         DECIMAL(10,3) DEFAULT 0,
+    qty_reserved        DECIMAL(10,3) DEFAULT 0,   -- Reserved for Sales Orders
+    qty_available       DECIMAL(10,3) GENERATED ALWAYS AS (qty_on_hand - qty_reserved) STORED,
+    lot_number          VARCHAR(100),   -- Lot Tracking
+    expiry_date         DATE,           -- Expiry Tracking
+    last_counted_at     TIMESTAMPTZ,
+    updated_at          TIMESTAMPTZ DEFAULT NOW(),
+    UNIQUE(tenant_id, product_id, warehouse_id, lot_number)
+);
+
+-- 3. Stock Movements (Immutable — Append Only)
+CREATE TABLE stock_movements (
+    id                  BIGSERIAL PRIMARY KEY,
+    tenant_id           UUID REFERENCES tenants(id),
+    movement_number     VARCHAR(50),    -- MVT-2026-XXXX
+    product_id          UUID REFERENCES products(id),
+    warehouse_id        UUID REFERENCES warehouses(id),
+    movement_type       VARCHAR(30) NOT NULL,
+        -- grn_in | sales_out | adjustment | transfer_in | transfer_out
+        -- return_in | sample_out | damaged | expired | found | lost
+    qty_change          DECIMAL(10,3) NOT NULL, -- Positive=IN, Negative=OUT
+    qty_before          DECIMAL(10,3),  -- Snapshot before
+    qty_after           DECIMAL(10,3),  -- Snapshot after
+    reference_type      VARCHAR(50),    -- PO / Invoice / GRN / Manual
+    reference_id        UUID,
+    reference_number    VARCHAR(100),   -- PO-2026-0045 / INV-0120
+    -- HIDDEN FROM WAREHOUSE STAFF:
+    unit_cost           DECIMAL(15,4),  -- Cost at time of movement
+    total_cost          DECIMAL(15,4),  -- = qty × unit_cost
+    -- ----
+    lot_number          VARCHAR(100),
+    notes               TEXT,
+    created_by          UUID,
+    created_at          TIMESTAMPTZ DEFAULT NOW()
+    -- NO UPDATE, NO DELETE on this table!
+);
+
+-- 4. Stock Adjustments (Approval Required)
+CREATE TABLE stock_adjustments (
+    id                  UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    tenant_id           UUID REFERENCES tenants(id),
+    adjustment_number   VARCHAR(50),    -- ADJ-2026-XXXX
+    product_id          UUID REFERENCES products(id),
+    warehouse_id        UUID REFERENCES warehouses(id),
+    adjustment_type     VARCHAR(30),
+        -- physical_count | damaged | expired | lost | found
+    qty_system          DECIMAL(10,3),  -- System Qty at time of request
+    qty_actual          DECIMAL(10,3),  -- Warehouse physical count
+    qty_variance        DECIMAL(10,3),  -- = actual - system
+    reason              TEXT NOT NULL,  -- Mandatory explanation
+    evidence_url        TEXT,
+    status              VARCHAR(20) DEFAULT &#39;pending&#39;,
+        -- pending | approved | rejected
+    requested_by        UUID,           -- Warehouse Staff
+    approved_by         UUID,           -- Warehouse Manager / Admin
+    approved_at         TIMESTAMPTZ,
+    rejection_reason    TEXT,
+    created_at          TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 5. Warehouses
+CREATE TABLE warehouses (
+    id                  UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    tenant_id           UUID REFERENCES tenants(id),
+    name                VARCHAR(255) NOT NULL,
+    code                VARCHAR(50),
+    location            TEXT,
+    is_default          BOOLEAN DEFAULT FALSE,
+    status              VARCHAR(20) DEFAULT &#39;active&#39;,
+    created_at          TIMESTAMPTZ DEFAULT NOW()
+);
+</code></pre>
+        </div>
+<hr>
+<h2 id="12-stock-control-logic" class="scroll-mt-24 group">12. Stock Control Logic <a href="#12-stock-control-logic" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="121-api-authorization-price-hiding" class="scroll-mt-24 group">12.1 API Authorization — Price Hiding <a href="#121-api-authorization-price-hiding" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>// Backend Middleware — Applied on all stock API responses
+function applyWarehouseStaffFilter(data, userRole) {
+  if (userRole === &#39;WAREHOUSE_STAFF&#39;) {
+    // Remove price fields from response
+    const HIDDEN_FIELDS = [
+      &#39;cost_price&#39;, &#39;avg_cost&#39;, &#39;selling_price&#39;,
+      &#39;selling_price_2&#39;, &#39;total_cost&#39;, &#39;unit_cost&#39;,
+      &#39;stock_value&#39;, &#39;margin&#39;, &#39;profit&#39;
+    ];
+    
+    return stripFields(data, HIDDEN_FIELDS);
+  }
+  return data;
+}
+
+// Example API Response Difference:
+// Admin gets:    { qty: 24, cost_price: 8.50, total_value: 204.00 }
+// WH Staff gets: { qty: 24 }  ← price fields completely removed
+</code></pre>
+        </div>
+<h3 id="122-adjustment-approval-flow" class="scroll-mt-24 group">12.2 Adjustment Approval Flow <a href="#122-adjustment-approval-flow" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>Status Machine:
+  draft → pending → approved → (movement created)
+                └→ rejected → back to WH Staff
+                
+Rules:
+  - WH Staff: CREATE + Edit (draft/pending)
+  - WH Manager: APPROVE / REJECT (pending only)
+  - Admin: APPROVE / REJECT (any status override)
+  - NOBODY: Delete approved adjustments
+</code></pre>
+        </div>
+<h3 id="123-stock-integrity-rules" class="scroll-mt-24 group">12.3 Stock Integrity Rules <a href="#123-stock-integrity-rules" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>Rule 1: Stock cannot go negative
+  IF qty_on_hand &lt; qty_requested (dispatch)
+  → BLOCK + showToast(&quot;ស្តុកមិនគ្រប់ — ស្តុក: 5, ស្នើ: 10&quot;)
+
+Rule 2: GRN must reference a PO
+  Cannot receive goods without a PO (Phase 1)
+  Exception: Admin can create Manual IN Movement
+
+Rule 3: All movements are immutable
+  stock_movements table: NO UPDATE, NO DELETE triggers
+  
+Rule 4: Adjustment requires approval
+  Stock balance only changes AFTER admin/manager approval
+  
+Rule 5: Movement number is unique and sequential
+  MVT-YYYY-NNNN per tenant per year
+</code></pre>
+        </div>
+<hr>
+<h2 id="13-អនុសាសន៍-architect-prototype-planning" class="scroll-mt-24 group">13. អនុសាសន៍ Architect + Prototype Planning <a href="#13-អនុសាសន៍-architect-prototype-planning" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="131-ណែនាំ-design" class="scroll-mt-24 group">13.1 ណែនាំ Design <a href="#131-ណែនាំ-design" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<h4 id="ណែនាំ-1-api-level-price-hiding-ហាមតែ-cssui" class="scroll-mt-24 group">✅ ណែនាំ 1: API-Level Price Hiding (ហាមតែ CSS/UI) <a href="#ណែនាំ-1-api-level-price-hiding-ហាមតែ-cssui" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<p><strong>ហាម</strong> ប្រើ CSS <code>display:none</code> ដើម្បី Hide Price — Warehouse Staff អាច Inspect Element ។<br>ត្រូវ <strong>Remove Fields ស្រួចស្រួល ពី API Response</strong> — Middleware Level ។</p>
+<h4 id="ណែនាំ-2-barcode-scanner-integration" class="scroll-mt-24 group">✅ ណែនាំ 2: Barcode Scanner Integration <a href="#ណែនាំ-2-barcode-scanner-integration" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<p>Portal Warehouse ត្រូវ Support Input Method ទាំង 2:</p>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>1. Manual Search (Autocomplete Dropdown)
+2. Barcode Scanner (USB HID / Mobile Camera)
+   → Input Field auto-focus on scan
+   → Press Enter → Load Item instantly
+</code></pre>
+        </div>
+<h4 id="ណែនាំ-3-grn-ភ្ជាប់-po-លំដាប់" class="scroll-mt-24 group">✅ ណែនាំ 3: GRN ភ្ជាប់ PO លំដាប់ <a href="#ណែនាំ-3-grn-ភ្ជាប់-po-លំដាប់" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>Receiving Flow (Strict):
+  1. Warehouse Staff ជ្រើស PO Reference
+  2. ប្រព័ន្ធ Load PO Items Auto
+  3. WH Staff Fill Actual Qty Received
+  4. System Highlight Variance Automatically
+  5. WH Staff Add Note + Photo
+  6. Submit → GRN Created → Stock Updated
+</code></pre>
+        </div>
+<h4 id="ណែនាំ-4-physical-count-mode" class="scroll-mt-24 group">✅ ណែនាំ 4: Physical Count Mode <a href="#ណែនាំ-4-physical-count-mode" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>Phase 2 Feature:
+  → Admin Triggers &quot;Count Mode&quot; → Freezes Stock (No IN/OUT)
+  → WH Staff Count + Enter Each Item
+  → System Auto-generates Adjustment Requests
+  → Manager Bulk-Approve
+  → &quot;Count Mode&quot; Unlocked
+</code></pre>
+        </div>
+<h4 id="ណែនាំ-5-movement-number-format" class="scroll-mt-24 group">✅ ណែនាំ 5: Movement Number Format <a href="#ណែនាំ-5-movement-number-format" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>Format: MVT-YYYY-NNNN
+Example: MVT-2026-0001
+
+For GRN Specifically: GRN-YYYY-NNNN  (e.g., GRN-2026-031)
+For Adjustments:      ADJ-YYYY-NNNN  (e.g., ADJ-2026-005)
+For Dispatch:         DSP-YYYY-NNNN  (e.g., DSP-2026-078)
+</code></pre>
+        </div>
+<h4 id="ណែនាំ-6-lot-number-expiry-tracking-phase-2" class="scroll-mt-24 group">✅ ណែនាំ 6: Lot Number + Expiry Tracking (Phase 2) <a href="#ណែនាំ-6-lot-number-expiry-tracking-phase-2" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>Feature Flag: lot_tracking = ON/OFF (per Tenant, configured by Admin)
+
+When ON:
+  → GRN ត្រូវ Record Lot Number + Expiry Date
+  → FIFO / FEFO Stock deduction (First Expiry First Out)
+  → Alert ពេល Expiry ≤ 30 days
+  
+Dashboard Widget (when enabled):
+  🕐 Items Expiring in 30 days: 3 items
+</code></pre>
+        </div>
+<hr>
+<h3 id="132-ផែនការ-prototype-pages" class="scroll-mt-24 group">13.2 ផែនការ Prototype Pages <a href="#132-ផែនការ-prototype-pages" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">#</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Page</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Layer</th>
+<th align="center">Priority</th>
+<th align="center">Complexity</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">1</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>inventory-staff/dashboard.html</code></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Portal</td>
+<td align="center">🔴 HIGH</td>
+<td align="center">Medium</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">2</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>inventory-staff/balance.html</code></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Portal</td>
+<td align="center">🔴 HIGH</td>
+<td align="center">Medium</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">3</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>inventory-staff/movement.html</code></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Portal</td>
+<td align="center">🔴 HIGH</td>
+<td align="center">Low</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">4</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>inventory-staff/create-movement.html</code></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Portal</td>
+<td align="center">🔴 HIGH</td>
+<td align="center">High (GRN+Dispatch)</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">5</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>inventory-staff/adjust-balance.html</code></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Portal</td>
+<td align="center">🟡 MED</td>
+<td align="center">Medium</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">6</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>inventory-staff/catalog.html</code></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Portal</td>
+<td align="center">🟡 MED</td>
+<td align="center">Low</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">7</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>inventory-staff/create-catalog.html</code></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Portal</td>
+<td align="center">🟢 LOW</td>
+<td align="center">Low (Minimal Form)</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">8</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>5-stock/1-balance/balance.html</code></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Admin</td>
+<td align="center">🔴 HIGH</td>
+<td align="center">High (+ Prices)</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">9</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>5-stock/1-balance/adjust-balance.html</code></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Admin</td>
+<td align="center">🔴 HIGH</td>
+<td align="center">High (Approval UI)</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">10</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>5-stock/1-balance/view-balance.html</code></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Admin</td>
+<td align="center">🟡 MED</td>
+<td align="center">Medium</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">11</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>5-stock/2-catalog/catalog.html</code></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Admin</td>
+<td align="center">🔴 HIGH</td>
+<td align="center">Medium</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">12</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>5-stock/2-catalog/create-catalog.html</code></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Admin</td>
+<td align="center">🔴 HIGH</td>
+<td align="center">High (+ Price Fields)</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">13</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>5-stock/2-catalog/view-catalog.html</code></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Admin</td>
+<td align="center">🟡 MED</td>
+<td align="center">Medium</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">14</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>5-stock/3-movement/movement.html</code></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Admin</td>
+<td align="center">🟡 MED</td>
+<td align="center">Medium (+ Amounts)</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">15</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>5-stock/3-movement/view-movement.html</code></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Admin</td>
+<td align="center">🟢 LOW</td>
+<td align="center">Low</td>
+</tr>
+</tbody></table></div>
+<p><strong>ណែនាំ</strong>: ចាប់ → Portal <code>balance.html</code> (No Price) → <code>create-movement.html</code> (GRN) → Admin <code>balance.html</code> (+ Price) → <code>adjust-balance.html</code> (Approval UI) ។</p>
+<hr>
+<h3 id="133-ការ-validate-prototype-before-moving-to-next-role" class="scroll-mt-24 group">13.3 ការ Validate Prototype (Before Moving to Next Role) <a href="#133-ការ-validate-prototype-before-moving-to-next-role" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> <strong>Sidebar</strong> Warehouse Portal — Menu: Dashboard, ស្តុក, ចលនា, ការកែ, Catalog</li>
+<li><input disabled="" type="checkbox"> <strong>Header</strong> <code>h-[72px]</code> ស្មើ Sidebar Header ពិតប្រាកដ</li>
+<li><input disabled="" type="checkbox"> <strong>balance.html Portal</strong> — Table Qty Only (<strong>❌ ហាមមានជួរ Cost/Price</strong>)</li>
+<li><input disabled="" type="checkbox"> <strong>balance.html Admin</strong> — Table + Cost Price + Total Value columns</li>
+<li><input disabled="" type="checkbox"> <strong>create-movement.html</strong> — GRN Mode + Dispatch Mode + Barcode Scan Input</li>
+<li><input disabled="" type="checkbox"> <strong>adjust-balance.html Portal</strong> — Form + Upload Evidence + Pending Flow</li>
+<li><input disabled="" type="checkbox"> <strong>adjust-balance.html Admin</strong> — Approve/Reject UI + Cost Impact visible</li>
+<li><input disabled="" type="checkbox"> <strong>catalog.html Portal</strong> — Read Only (<strong>❌ ហាមមានជួរតម្លៃ</strong>)</li>
+<li><input disabled="" type="checkbox"> <strong>create-catalog.html Admin</strong> — Full Form + Price Fields</li>
+<li><input disabled="" type="checkbox"> <strong>create-catalog.html Portal</strong> — Minimal Form (<strong>❌ ហាមមាន Price Fields</strong>)</li>
+<li><input disabled="" type="checkbox"> <strong>API Price Stripping</strong> — Verify Warehouse Staff API response ❌ cost_price field</li>
+<li><input disabled="" type="checkbox"> <strong>Status Badges</strong> — 🟢 គ្រប់ / 🟡 ជិតអស់ / 🔴 អស់</li>
+<li><input disabled="" type="checkbox"> <strong>Reorder Alert Widget</strong> ── Dashboard</li>
+<li><input disabled="" type="checkbox"> <strong>showToast()</strong> ជំនួស <code>alert()</code></li>
+<li><input disabled="" type="checkbox"> <strong>showCustomConfirm()</strong> ជំនួស <code>confirm()</code></li>
+<li><input disabled="" type="checkbox"> <strong>ប៊ូតុងត្រឡប់ក្រោយ</strong> <code>w-10 h-10 rounded-xl</code> icon-only</li>
+<li><input disabled="" type="checkbox"> <strong>ភាសាខ្មែរ 100%</strong> — UI Labels, Placeholders, Toasts</li>
+<li><input disabled="" type="checkbox"> <strong>លេខអង់គ្លេស 0-9</strong> — ចំនួន, ថ្ងៃ, Qty</li>
+</ul>
+<hr>
+<h2 id="14-faq" class="scroll-mt-24 group">14. FAQ <a href="#14-faq" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<p><strong>Q: Warehouse Staff ទទួលទំនិញ ហើយ Stock Update ស្វ័យប្រវត្តិ ឬ ត្រូវ Approve មុន?</strong><br>A: <strong>ស្វ័យប្រវត្តិភ្លាម</strong> ពេល Warehouse Staff ចុច «បញ្ជាក់ GRN» ។ Stock Balance Update ភ្លាម — ហាមត្រូវ Approve ។ GRN ត្រូវ Approve ក្នុង context ផ្សេង (Procurement 3-Way Match) ។</p>
+<p><strong>Q: Stock Adjustment ស្វ័យប្រវត្តិ ឬ Approve?</strong><br>A: <strong>ទាមទារ Approve</strong> — Stock Adjustment ត្រូវ Warehouse Manager / Admin Approve ។ Warehouse Staff <strong>ដាក់ស្នើ Request ប៉ុណ្ណោះ</strong> ។ ហេតុ: ការ Adjust Stock = Impact Financial (Cost Write-off) — ត្រូវ Check and Approve ។</p>
+<p><strong>Q: ប្រសិន Stock ដែរ ប៉ុន្តែ Warehouse Staff Count ខុស — ត្រូវ Redo?</strong><br>A: <strong>ចាស</strong> — ប្រសិន GRN Submit ហើយ ចង់ Correct → ត្រូវ Submit Adjustment Request ។ ហាម Edit GRN ដែល Submit រួច (Immutable) ។</p>
+<p><strong>Q: Warehouse Staff ឃើញ Customer ឈ្មោះ ពេល Dispatch?</strong><br>A: <strong>គ្រប់ Strategy</strong> — ក្នុង Prototype Phase 1 Warehouse Staff ឃើញ <strong>Order Reference ប៉ុណ្ណោះ</strong> (INV-2026-0120) ។ Customer full name/contact ហាមមើល ។ ប្រសិន ចាំបាច់ — Admin Configure Customer Display Level ។</p>
+<p><strong>Q: Multi-Warehouse — Warehouse Staff A ឃើញ Stock ឃ្លាំង B ទេ?</strong><br>A: <strong>Admin Configure</strong> — Default: Warehouse Staff ឃើញ <strong>ឃ្លាំងខ្លួន ប៉ុណ្ណោះ</strong> ។ Admin អាច Grant Cross-Warehouse Read Access ប្រសិន needed ។</p>
+<p><strong>Q: Expired Item — Warehouse Staff ត្រូវ Dispose ហើយ Record?</strong><br>A: ✅ Warehouse Staff Submit Adjustment (ប្រភេទ: Expired) + Upload Evidence ។ Admin Approve → Stock ↓ ។ Accountant ឃើញ Inventory Loss Entry ក្នុង Accounting Module ។</p>
+<p><strong>Q: ប្រសិនបើ Item ថ្មី ដែលមិនទាន់ Register ក្នុង Catalog ផ្ញើ​ Delivery មក?</strong><br>A: Warehouse Staff ប្រើ <code>create-catalog.html</code> (Portal Minimal Form) ដើម្បី Quick Register ជាមុន ។ Admin ក្រោយ Set Prices ។ ហេតុ: ត្រូវ Record GRN ពិតប្រាកដ ។</p>
+<hr>
+<p><em>ឯកសារនេះតំណាង 100% knowledge base សម្រាប់ Warehouse Staff Role ក្នុង DIGITECHKH BMS</em><br><em>Previous Role: Procurement Manager → <a href="role_procurement_manager.html"><code>role_procurement_manager.md</code></a></em><br><em>Next Role: Customer Support → <a href="role_customer_support.html"><code>role_customer_support.md</code></a></em></p>
+
+                </article>
+
+                <!-- Next / Previous Role Navigation Bar -->
+                <div class="no-print mt-12 pt-8 border-t border-slate-200 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <a href="role_procurement_manager.html" class="p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-transform flex-shrink-0">
+                            🛒
+                        </div>
+                        <div class="min-w-0">
+                            <div class="text-[10px] text-slate-400 font-medium">← តួនាទីមុន</div>
+                            <div class="text-xs font-bold text-slate-800 group-hover:text-primary transition truncate">អ្នកគ្រប់គ្រងលទ្ធកម្ម</div>
+                        </div>
+                    </a>
+
+                    <a href="role_customer_support.html" class="p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group flex items-center justify-end text-right gap-3">
+                        <div class="min-w-0">
+                            <div class="text-[10px] text-slate-400 font-medium">តួនាទីបន្ទាប់ →</div>
+                            <div class="text-xs font-bold text-slate-800 group-hover:text-primary transition truncate">ផ្នែកគាំទ្រអតិថិជន</div>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-transform flex-shrink-0">
+                            🎧
+                        </div>
+                    </a>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="no-print bg-white border-t border-slate-200 py-6 px-8 text-center text-xs text-slate-500">
+        <p>រក្សាសិទ្ធិគ្រប់យ៉ាង © 2026 ក្រុមហ៊ុន ឌីជីថេក ខេអេច (DIGITECHKH Co., Ltd.) · ព្រះរាជាណាចក្រកម្ពុជា</p>
+    </footer>
+
+</body>
+</html>

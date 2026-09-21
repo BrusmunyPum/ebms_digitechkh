@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>មគ្គុទ្ទេសក៍អន្តរកម្មនៃតួនាទី និងសិទ្ធិអំណាច - DIGITECHKH BMS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Kantumruy Pro', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0f2b5c',
+                        primaryHover: '#0a1d3f',
+                        accent: '#2563eb',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Kantumruy Pro', sans-serif;
+            color: #334155;
+            background-color: #f8fafc;
+        }
+        ::-webkit-scrollbar { display: none; }
+        * { -ms-overflow-style: none; scrollbar-width: none; }
+        @media print {
+            .no-print { display: none !important; }
+            body { background-color: #ffffff; }
+            .print-page { page-break-after: always; box-shadow: none !important; border: none !important; margin: 0 !important; width: 100% !important; }
+            .avoid-break { page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-primary selection:text-white min-h-screen flex flex-col justify-between">
+
+    <!-- Top Control Bar -->
+    <div class="no-print fixed top-0 left-0 right-0 h-14 bg-primary text-white z-50 px-6 flex items-center justify-between shadow-md">
+        <div class="flex items-center gap-3">
+            <a href="index.html" class="text-white hover:text-cyan-300 transition flex items-center gap-1.5 text-xs font-semibold">
+                <i class="fas fa-arrow-left"></i> ត្រឡប់ទៅមជ្ឈមណ្ឌលឯកសារ (index.html)
+            </a>
+            <span class="text-white/30">|</span>
+            <span class="font-medium text-xs text-slate-200">មគ្គុទ្ទេសក៍អន្តរកម្ម៖ ការសិក្សាស៊ីជម្រៅលើតួនាទី និងម៉ាទ្រីសសិទ្ធិអំណាចទាំង 10</span>
+        </div>
+        <div class="flex items-center gap-3">
+            <button onclick="switchView('matrix')" id="btnViewMatrix" class="px-3 py-1.5 bg-white/10 hover:bg-white/20 text-white rounded-lg text-xs font-semibold transition flex items-center gap-1.5 cursor-pointer">
+                <i class="fas fa-table-cells"></i> ម៉ាទ្រីសប្រៀបធៀបសិទ្ធិ
+            </button>
+            <button onclick="switchView('roles')" id="btnViewRoles" class="px-3 py-1.5 bg-white text-primary rounded-lg text-xs font-semibold transition flex items-center gap-1.5 cursor-pointer shadow-sm">
+                <i class="fas fa-user-shield"></i> រុករកតាមតួនាទី
+            </button>
+            <button onclick="window.print()" class="px-3.5 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-semibold shadow-sm transition flex items-center gap-1.5 cursor-pointer">
+                <i class="fas fa-print"></i> បោះពុម្ព A4
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Workspace Container -->
+    <div class="pt-20 pb-12 px-4 sm:px-8 max-w-7xl mx-auto w-full flex-1">
+
+        <!-- ================= VIEW 1: ROLE EXPLORER ================= -->
+        <div id="roleExplorerView" class="flex flex-col lg:flex-row gap-8">
+            
+            <!-- Left Role Navigation Bar -->
+            <div class="no-print lg:w-80 flex-shrink-0">
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sticky top-20">
+                    <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-3">
+                        <span class="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
+                            <i class="fas fa-users-gear text-primary"></i> បញ្ជីតួនាទីទាំង 10
+                        </span>
+                        <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-blue-50 text-accent">10 Roles</span>
+                    </div>
+
+                    <!-- Search Input -->
+                    <div class="relative mb-3">
+                        <i class="fas fa-magnifying-glass absolute left-3 top-2.5 text-xs text-slate-400"></i>
+                        <input type="text" id="roleSearchInput" onkeyup="filterRoles()" placeholder="ស្វែងរកតួនាទី..." class="w-full pl-8 pr-3 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-700 placeholder-slate-400 focus:outline-none focus:border-primary focus:bg-white transition">
+                    </div>
+
+                    <!-- Role List Items -->
+                    <div class="space-y-1.5 max-h-[calc(100vh-230px)] overflow-y-auto pr-1" id="roleNavList">
+                        <!-- Items dynamically rendered or static -->
+                        <button onclick="selectRole('superadmin')" id="nav-superadmin" class="role-nav-btn w-full text-left p-2.5 rounded-xl text-xs font-medium flex items-center justify-between transition bg-primary text-white shadow-sm">
+                            <div class="flex items-center gap-2.5">
+                                <span class="text-base">👑</span>
+                                <div>
+                                    <div class="font-bold">Super Admin</div>
+                                    <div class="text-[10px] opacity-80">ស៊ុបភើរ អភិបាល</div>
+                                </div>
+                            </div>
+                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-white/20">Platform</span>
+                        </button>
+
+                        <button onclick="selectRole('procurement_manager')" id="nav-procurement_manager" class="role-nav-btn w-full text-left p-2.5 rounded-xl text-xs font-medium flex items-center justify-between transition hover:bg-slate-100 text-slate-700">
+                            <div class="flex items-center gap-2.5">
+                                <span class="text-base">🛒</span>
+                                <div>
+                                    <div class="font-bold">Procurement Manager</div>
+                                    <div class="text-[10px] text-slate-500">អ្នកគ្រប់គ្រងលទ្ធកម្ម</div>
+                                </div>
+                            </div>
+                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-blue-50 text-blue-700">PO & Bills</span>
+                        </button>
+
+                        <button onclick="selectRole('warehouse_staff')" id="nav-warehouse_staff" class="role-nav-btn w-full text-left p-2.5 rounded-xl text-xs font-medium flex items-center justify-between transition hover:bg-slate-100 text-slate-700">
+                            <div class="flex items-center gap-2.5">
+                                <span class="text-base">👷</span>
+                                <div>
+                                    <div class="font-bold">Warehouse Staff</div>
+                                    <div class="text-[10px] text-slate-500">បុគ្គលិកឃ្លាំង</div>
+                                </div>
+                            </div>
+                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-amber-50 text-amber-700">Zero Price</span>
+                        </button>
+
+                        <button onclick="selectRole('customer_support')" id="nav-customer_support" class="role-nav-btn w-full text-left p-2.5 rounded-xl text-xs font-medium flex items-center justify-between transition hover:bg-slate-100 text-slate-700">
+                            <div class="flex items-center gap-2.5">
+                                <span class="text-base">🎧</span>
+                                <div>
+                                    <div class="font-bold">Customer Support</div>
+                                    <div class="text-[10px] text-slate-500">ផ្នែកគាំទ្រអតិថិជន</div>
+                                </div>
+                            </div>
+                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700">Support</span>
+                        </button>
+
+                        <button onclick="selectRole('apar_accountant')" id="nav-apar_accountant" class="role-nav-btn w-full text-left p-2.5 rounded-xl text-xs font-medium flex items-center justify-between transition hover:bg-slate-100 text-slate-700">
+                            <div class="flex items-center gap-2.5">
+                                <span class="text-base">💰</span>
+                                <div>
+                                    <div class="font-bold">AP/AR Accountant</div>
+                                    <div class="text-[10px] text-slate-500">គណនេយ្យករទូទាត់</div>
+                                </div>
+                            </div>
+                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-green-50 text-green-700">Finance</span>
+                        </button>
+
+                        <button onclick="selectRole('sales_manager')" id="nav-sales_manager" class="role-nav-btn w-full text-left p-2.5 rounded-xl text-xs font-medium flex items-center justify-between transition hover:bg-slate-100 text-slate-700">
+                            <div class="flex items-center gap-2.5">
+                                <span class="text-base">👔</span>
+                                <div>
+                                    <div class="font-bold">Sales Manager</div>
+                                    <div class="text-[10px] text-slate-500">អ្នកគ្រប់គ្រងផ្នែកលក់</div>
+                                </div>
+                            </div>
+                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-indigo-50 text-indigo-700">Sales Lead</span>
+                        </button>
+
+                        <button onclick="selectRole('internal_auditor_executive')" id="nav-internal_auditor_executive" class="role-nav-btn w-full text-left p-2.5 rounded-xl text-xs font-medium flex items-center justify-between transition hover:bg-slate-100 text-slate-700">
+                            <div class="flex items-center gap-2.5">
+                                <span class="text-base">🔍</span>
+                                <div>
+                                    <div class="font-bold">Internal Auditor</div>
+                                    <div class="text-[10px] text-slate-500">សវនករផ្ទៃក្នុង / នាយក</div>
+                                </div>
+                            </div>
+                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-rose-50 text-rose-700">Read-Only</span>
+                        </button>
+
+                        <button onclick="selectRole('sales_executive')" id="nav-sales_executive" class="role-nav-btn w-full text-left p-2.5 rounded-xl text-xs font-medium flex items-center justify-between transition hover:bg-slate-100 text-slate-700">
+                            <div class="flex items-center gap-2.5">
+                                <span class="text-base">💼</span>
+                                <div>
+                                    <div class="font-bold">Sales Executive</div>
+                                    <div class="text-[10px] text-slate-500">បុគ្គលិកផ្នែកលក់</div>
+                                </div>
+                            </div>
+                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-sky-50 text-sky-700">Zero Cost</span>
+                        </button>
+
+                        <button onclick="selectRole('admin_general_manager')" id="nav-admin_general_manager" class="role-nav-btn w-full text-left p-2.5 rounded-xl text-xs font-medium flex items-center justify-between transition hover:bg-slate-100 text-slate-700">
+                            <div class="flex items-center gap-2.5">
+                                <span class="text-base">🏛️</span>
+                                <div>
+                                    <div class="font-bold">General Manager</div>
+                                    <div class="text-[10px] text-slate-500">អភិបាលក្រុមហ៊ុន</div>
+                                </div>
+                            </div>
+                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-slate-100 text-slate-800">Command</span>
+                        </button>
+
+                        <button onclick="selectRole('warehouse_manager')" id="nav-warehouse_manager" class="role-nav-btn w-full text-left p-2.5 rounded-xl text-xs font-medium flex items-center justify-between transition hover:bg-slate-100 text-slate-700">
+                            <div class="flex items-center gap-2.5">
+                                <span class="text-base">📦</span>
+                                <div>
+                                    <div class="font-bold">Warehouse Manager</div>
+                                    <div class="text-[10px] text-slate-500">អ្នកគ្រប់គ្រងឃ្លាំង</div>
+                                </div>
+                            </div>
+                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-orange-50 text-orange-700">Inventory</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Role Dossier Display Area -->
+            <div class="flex-1 bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-10 min-w-0" id="roleDossierContainer">
+                <!-- Content dynamically populated by renderRoleDossier() -->
+            </div>
+
+        </div>
+
+        <!-- ================= VIEW 2: MASTER CROSS-ROLE MATRIX ================= -->
+        <div id="masterMatrixView" class="hidden bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-10">
+            <div class="mb-6 flex items-center justify-between flex-wrap gap-4 pb-4 border-b border-slate-100">
+                <div>
+                    <h3 class="text-xl font-bold text-slate-900">ម៉ាទ្រីសប្រៀបធៀបសិទ្ធិអំណាចគ្រប់តួនាទី (Enterprise Permission Matrix)</h3>
+                    <p class="text-xs text-slate-500 mt-1">ការវិភាគទូលំទូលាយលើសិទ្ធិអំណាចនៃ 10 តួនាទីឆ្លងកាត់មុខងារប្រតិបត្តិការអាជីវកម្មស្នូល</p>
+                </div>
+                <div class="flex items-center gap-2 text-xs font-semibold">
+                    <span class="flex items-center gap-1 text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-lg"><i class="fas fa-check-circle"></i> មានសិទ្ធិពេញលេញ</span>
+                    <span class="flex items-center gap-1 text-amber-600 bg-amber-50 px-2.5 py-1 rounded-lg"><i class="fas fa-triangle-exclamation"></i> មានដែនកំណត់/ពិដាន</span>
+                    <span class="flex items-center gap-1 text-rose-600 bg-rose-50 px-2.5 py-1 rounded-lg"><i class="fas fa-circle-xmark"></i> ហាមដាច់ខាត / លាក់ 100%</span>
+                </div>
+            </div>
+
+            <!-- Matrix Table Responsive Wrapper -->
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs border-collapse border border-slate-200">
+                    <thead class="bg-primary text-white text-[11px] uppercase tracking-wider">
+                        <tr>
+                            <th class="p-3 border border-slate-300 font-semibold">មុខងារប្រតិបត្តិការ និងទិន្នន័យ</th>
+                            <th class="p-2 border border-slate-300 text-center">Super Admin</th>
+                            <th class="p-2 border border-slate-300 text-center">Procure Mgr</th>
+                            <th class="p-2 border border-slate-300 text-center">Whse Staff</th>
+                            <th class="p-2 border border-slate-300 text-center">Cust Support</th>
+                            <th class="p-2 border border-slate-300 text-center">AP/AR Acct</th>
+                            <th class="p-2 border border-slate-300 text-center">Sales Mgr</th>
+                            <th class="p-2 border border-slate-300 text-center">Auditor/Exec</th>
+                            <th class="p-2 border border-slate-300 text-center">Sales Exec</th>
+                            <th class="p-2 border border-slate-300 text-center">General Mgr</th>
+                            <th class="p-2 border border-slate-300 text-center">Whse Mgr</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200 font-medium text-slate-700" id="matrixTableBody">
+                        <!-- Matrix rows rendered by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="no-print bg-white border-t border-slate-200 py-6 px-8 text-center text-xs text-slate-500 mt-12">
+        <p>រក្សាសិទ្ធិគ្រប់យ៉ាង © 2026 ក្រុមហ៊ុន ឌីជីថេក ខេអេច (DIGITECHKH Co., Ltd.) · ព្រះរាជាណាចក្រកម្ពុជា</p>
+    </footer>
+
+    <!-- Interactive Logic Script -->
+    <script>
+        const rolesData = {
+            superadmin: {
+                name: "ស៊ុបភើរ អភិបាល (Super Admin)",
+                roleEn: "Multi-Tenant Root Platform Operator",
+                icon: "👑",
+                badge: "Platform Level",
+                badgeColor: "bg-purple-100 text-purple-700",
+                docLink: "role_superadmin.md",
+                mission: "គ្រប់គ្រងហេដ្ឋារចនាសម្ព័ន្ធ Platform ពហុក្រុមហ៊ុន (Multi-Tenant), បង្កើត Company Tenants, គ្រប់គ្រងកញ្ចប់ជាវ Subscription, និងសុវត្ថិភាព Cloud Database។ ហាមដាច់ខាតលូកដៃក្នុងទិន្នន័យប្រតិបត្តិការផ្ទៃក្នុងរបស់ក្រុមហ៊ុននីមួយៗ។",
+                coreRule: "🛡️ គោលការណ៍មិនលូកដៃក្នុងអាជីវកម្ម (Non-Interference Policy): Super Admin ផ្តល់ហេដ្ឋារចនាសម្ព័ន្ធ និងសុវត្ថិភាពបច្ចេកវិទ្យាព័ត៌មាន ប៉ុន្តែមិនមានសិទ្ធិចេញវិក្កយបត្រ បង្កើត PO ឬកែប្រែទិន្នន័យអាជីវកម្មរបស់ក្រុមហ៊ុនឡើយ។",
+                allowed: [
+                    "បង្កើត និងគ្រប់គ្រង Company Tenants ថ្មី",
+                    "គ្រប់គ្រងកញ្ចប់ជាវប្រចាំខែ/ឆ្នាំ (Subscription & Billing)",
+                    "តាមដាន Server Health, CPU, RAM, Database Backups",
+                    "កំណត់ Security Headers, SSL/TLS, IP Whitelisting",
+                    "ផ្ទៀងផ្ទាត់ System Audit Logs កម្រិតហេដ្ឋារចនាសម្ព័ន្ធ"
+                ],
+                forbidden: [
+                    "❌ ចូលមើល ឬកែប្រែប្រតិបត្តិការអាជីវកម្មរបស់ក្រុមហ៊ុន (Invoices, Bills)",
+                    "❌ មើលឃើញបញ្ជីអតិថិជន និងប្រាក់ចំណេញរបស់ក្រុមហ៊ុន",
+                    "❌ អនុម័តប័ណ្ណចំណាយ ឬការបញ្ជាទិញទំនិញ",
+                    "❌ កែសម្រួលតុល្យភាពស្តុកទំនិញក្នុងឃ្លាំង"
+                ],
+                pages: [
+                    { name: "tenants.html", path: "7-settings/5-system/tenants.html", desc: "គ្រប់គ្រងបញ្ជីក្រុមហ៊ុនទាំងអស់" },
+                    { name: "subscriptions.html", path: "7-settings/5-system/subscriptions.html", desc: "គ្រប់គ្រងអាជ្ញាបណ្ណ និងការបង់ប្រាក់ SaaS" },
+                    { name: "system-logs.html", path: "7-settings/5-system/system-logs.html", desc: "កំណត់ហេតុបច្ចេកវិទ្យាកម្រិត Platform" }
+                ],
+                kpis: [
+                    { label: "ក្រុមហ៊ុនសកម្ម (Active Tenants)", val: "24 Companies", target: "↑ 100% SLA" },
+                    { label: "ដំណើរការរលូន (System Uptime)", val: "99.98%", target: "$\ge$ 99.9%" },
+                    { label: "ចំណូលប្រចាំខែ (Platform MRR)", val: "$3,450.00", target: "↑ 18.5%" }
+                ]
+            },
+            procurement_manager: {
+                name: "អ្នកគ្រប់គ្រងលទ្ធកម្ម (Procurement Manager)",
+                roleEn: "Procurement & Vendor Relationship Master",
+                icon: "🛒",
+                badge: "Procurement",
+                badgeColor: "bg-blue-100 text-blue-700",
+                docLink: "role_procurement_manager.md",
+                mission: "គ្រប់គ្រងខ្សែច្រវាក់ផ្គត់ផ្គង់, ចរចាតម្លៃទិញល្អបំផុត, ចេញការបញ្ជាទិញទំនិញ (PO), គ្រប់គ្រងវិក្កយបត្រអ្នកផ្គត់ផ្គង់ (Vendor Bills), និងត្រួតពិនិត្យការផ្ទៀងផ្ទាត់ 3-Way Matching។",
+                coreRule: "🛡️ គោលការណ៍ផ្ទៀងផ្ទាត់ 3 ច្រក (3-Way Matching Doctrine): គ្មានការបើកប្រាក់ឱ្យអ្នកផ្គត់ផ្គង់ណាអាចអនុម័តបានឡើយ លុះត្រាតែមានការផ្ទៀងផ្ទាត់ត្រូវគ្នារវាង PO របស់ផ្នែកទិញ, GRN របស់ឃ្លាំង, និង Bill របស់អ្នកផ្គត់ផ្គង់។",
+                allowed: [
+                    "បង្កើត និងចេញប័ណ្ណបញ្ជាទិញទំនិញ (Purchase Orders - PO)",
+                    "អនុម័ត PO តូច និងមធ្យម ($\le \$1,000.00$)",
+                    "គ្រប់គ្រងព័ត៌មាន និងចុះកិច្ចសន្យាជាមួយអ្នកផ្គត់ផ្គង់ (Suppliers)",
+                    "ពិនិត្យ និងផ្ទៀងផ្ទាត់ 3-Way Matching រវាង PO, GRN និង Bill",
+                    "ទទួល Purchase Requisition (PR) ពីផ្នែកឃ្លាំង"
+                ],
+                forbidden: [
+                    "❌ អនុម័ត PO ធំៗលើសពី $1,000.00 ដោយគ្មានការយល់ព្រមពី General Manager",
+                    "❌ ទទួលទំនិញរូបវន្តចូលឃ្លាំងដោយផ្ទាល់ (ភារកិច្ចរបស់ Warehouse Staff)",
+                    "❌ អនុម័តប័ណ្ណចំណាយទូទាត់សាច់ប្រាក់ (ភារកិច្ចរបស់ AP Accountant)",
+                    "❌ កែប្រែតុល្យភាពស្តុកទំនិញក្នុងឃ្លាំង"
+                ],
+                pages: [
+                    { name: "bills.html", path: "4-buy/1-bills/bills.html", desc: "បញ្ជីវិក្កយបត្រអ្នកផ្គត់ផ្គង់ និង 3-Way Matching" },
+                    { name: "create-bill.html", path: "4-buy/1-bills/create-bill.html", desc: "បង្កើតវិក្កយបត្រទិញ និងផ្ទៀងផ្ទាត់ GRN" },
+                    { name: "suppliers.html", path: "4-buy/2-suppliers/suppliers.html", desc: "គ្រប់គ្រងអ្នកផ្គត់ផ្គង់ និងកាតាឡុកថ្លៃដើម" }
+                ],
+                kpis: [
+                    { label: "ការសន្សំថ្លៃដើមទិញ (Cost Savings)", val: "6.8%", target: "$\ge$ 5.0%" },
+                    { label: "ភាពត្រូវគ្នានៃ 3-Way Matching", val: "98.4%", target: "$\ge$ 98.0%" },
+                    { label: "ល្បឿនចេញ PO (Cycle Time)", val: "1.2 Days", target: "< 2.0 Days" }
+                ]
+            },
+            warehouse_staff: {
+                name: "បុគ្គលិកគ្រប់គ្រងស្តុក (Warehouse Staff)",
+                roleEn: "Inventory Custodian & Ground Operations",
+                icon: "👷",
+                badge: "Zero Price Leakage",
+                badgeColor: "bg-amber-100 text-amber-700",
+                docLink: "role_warehouse_staff.md",
+                mission: "ទទួលទំនិញចូល (GRN), ស្កេនបាកូដ, លើកដាក់ធ្នើរ Bin/Rack, រៀបចំកញ្ចប់ដឹកជញ្ជូន (Pick & Pack), និងរាប់ស្តុកជាក់ស្តែង (Cycle Count)។",
+                coreRule: "🛡️ គោលការណ៍លាក់តម្លៃ 100% (Zero Price Leakage): បុគ្គលិកឃ្លាំងត្រូវបានលាក់បាំងទាំងតម្លៃលក់ និងថ្លៃដើមទិញ 100% ទាំងលើ UI និង API។ ឃើញត្រឹមតែបរិមាណ (Quantities) និងទីតាំងធ្នើរផ្ទុកប៉ុណ្ណោះ។",
+                allowed: [
+                    "ពិនិត្យរាប់ និងចេញប័ណ្ណទទួលទំនិញចូល (Goods Receipt Note - GRN)",
+                    "ស្កេនបាកូដ SKU និងលើកដាក់លើធ្នើរតាមទីតាំង Bin/Rack",
+                    "រៀបចំកញ្ចប់ទំនិញតាមបញ្ជាលក់ (Pick & Pack)",
+                    "រាប់ស្តុកជាក់ស្តែងតាមសន្លឹកបិទភ្នែក (Blind Cycle Count)",
+                    "ដាក់ស្នើសុំកែតម្រូវស្តុក (Submit Adjustment Request ទៅ Manager)"
+                ],
+                forbidden: [
+                    "❌ មើលឃើញតម្លៃលក់ តម្លៃទិញ ឬប្រាក់ចំណេញរបស់ក្រុមហ៊ុន",
+                    "❌ អនុម័តការកែតម្រូវស្តុកដោយខ្លួនឯង (ត្រូវឱ្យ Manager អនុម័ត)",
+                    "❌ បង្កើត ឬកែប្រែកាតាឡុកទំនិញមេ (Master Catalog)",
+                    "❌ ចេញវិក្កយបត្រលក់ ឬប័ណ្ណចំណាយទូទាត់"
+                ],
+                pages: [
+                    { name: "balance.html", path: "5-stock/1-balance/balance.html", desc: "តារាងចំនួនស្តុក (បង្ហាញតែ Qty គ្មាន Price)" },
+                    { name: "adjust-balance.html", path: "5-stock/1-balance/adjust-balance.html", desc: "ទម្រង់រាប់ស្តុក និងស្នើសុំកែតម្រូវ" },
+                    { name: "movement.html", path: "5-stock/3-movement/movement.html", desc: "កំណត់ហេតុចលនាទំនិញចូល-ចេញរូបវន្ត" }
+                ],
+                kpis: [
+                    { label: "ល្បឿនទទួលទំនិញ GRN", val: "22 នាទី", target: "< 30 នាទី" },
+                    { label: "ភាពត្រឹមត្រូវនៃការរៀបចំកញ្ចប់", val: "99.8%", target: "$\ge$ 99.5%" },
+                    { label: "វិន័យរាប់ស្តុកប្រចាំថ្ងៃ", val: "100%", target: "100%" }
+                ]
+            },
+            customer_support: {
+                name: "ផ្នែកគាំទ្រអតិថិជន (Customer Support)",
+                roleEn: "Customer Care & Service Experience",
+                icon: "🎧",
+                badge: "Support SLA",
+                badgeColor: "bg-emerald-100 text-emerald-700",
+                docLink: "role_customer_support.md",
+                mission: "ទទួល និងដោះស្រាយបញ្ហារបស់អតិថិជន, តាមដានស្ថានភាពដឹកជញ្ជូន, បង្កើតសំបុត្រជំនួយ (Support Tickets), និងធានាការពេញចិត្តរបស់អតិថិជន (CSAT)។",
+                coreRule: "🛡️ គោលការណ៍សេវាកម្មទាន់ពេល (Service SLA Doctrine): រាល់សំបុត្រជំនួយត្រូវតែឆ្លើយតបដំបូងក្នុងរយៈពេល < 15 នាទី និងដោះស្រាយបញ្ចប់ក្នុងរយៈពេល < 24 ម៉ោង។",
+                allowed: [
+                    "បង្កើត និងគ្រប់គ្រងសំបុត្រជំនួយ (Support Tickets)",
+                    "តាមដានស្ថានភាពដឹកជញ្ជូនជាក់ស្តែងរបស់អតិថិជន (Tracking)",
+                    "មើលព័ត៌មានទំនាក់ទំនងអតិថិជន និងប្រវត្តិទិញទំនិញ",
+                    "បញ្ជូនសំបុត្របន្តទៅកាន់ផ្នែកលក់ ឃ្លាំង ឬគណនេយ្យ",
+                    "កត់ត្រាកម្រិតការពេញចិត្តរបស់អតិថិជន (CSAT)"
+                ],
+                forbidden: [
+                    "❌ មើលឃើញថ្លៃដើមទិញពីអ្នកផ្គត់ផ្គង់",
+                    "❌ កែប្រែ ឬលុបវិក្កយបត្រលក់របស់អតិថិជន",
+                    "❌ កែសម្រួលតុល្យភាពស្តុកទំនិញក្នុងឃ្លាំង",
+                    "❌ កែប្រែដែនកំណត់ឥណទានរបស់អតិថិជន"
+                ],
+                pages: [
+                    { name: "tickets.html", path: "8-support/tickets.html", desc: "មជ្ឈមណ្ឌលសំបុត្រជំនួយ និង SLA" },
+                    { name: "order-tracking.html", path: "9-portals/customer/order-tracking.html", desc: "ផ្ទាំងតាមដានស្ថានភាពបញ្ជាទិញ" },
+                    { name: "view-customer.html", path: "3-sales/3-customer/view-customer.html", desc: "ព័ត៌មានទំនាក់ទំនង និងប្រវត្តិអតិថិជន" }
+                ],
+                kpis: [
+                    { label: "ការពេញចិត្តអតិថិជន (CSAT)", val: "4.8 / 5.0", target: "$\ge$ 4.5" },
+                    { label: "ល្បឿនឆ្លើយតបដំបូង (FRT)", val: "8.5 នាទី", target: "< 15 នាទី" },
+                    { label: "អត្រាដោះស្រាយទាន់ SLA", val: "96.2%", target: "$\ge$ 95.0%" }
+                ]
+            },
+            apar_accountant: {
+                name: "គណនេយ្យករទូទាត់ (AP/AR Accountant)",
+                roleEn: "Payable, Receivable & Tax Compliance",
+                icon: "💰",
+                badge: "Finance & Tax",
+                badgeColor: "bg-green-100 text-green-700",
+                docLink: "role_apar_accountant.md",
+                mission: "គ្រប់គ្រងលំហូរសាច់ប្រាក់ចូល-ចេញ, ទារបំណុលអតិថិជន (AR), រៀបចំប័ណ្ណចំណាយទូទាត់ (AP), កាត់ពន្ធកាត់ទុក (WHT 15%/10%), និងប្រកាសពន្ធ អតប 10%។",
+                coreRule: "🛡️ គោលការណ៍អនុលោមភាពសារពើពន្ធ (Tax & Cash Integrity): រាល់ការទូទាត់ត្រូវមានភស្តុតាង និងកាត់ពន្ធកាត់ទុក (WHT) ត្រឹមត្រូវស្របតាមច្បាប់នៃព្រះរាជាណាចក្រកម្ពុជា។",
+                allowed: [
+                    "កត់ត្រាការទទួលប្រាក់ពីអតិថិជន (Customer Payments - AR)",
+                    "បង្កើត និងចុះហត្ថលេខាប័ណ្ណចំណាយទូទាត់ (Disbursement Vouchers - AP)",
+                    "អនុម័តប័ណ្ណចំណាយទូទាត់កម្រិតទាប ($\le \$500.00$)",
+                    "គណនា និងកាត់ពន្ធកាត់ទុក (WHT) និងអាករលើតម្លៃបន្ថែម (អតប 10%)",
+                    "ទាញយករបាយការណ៍បំណុលវ័យចំណាស់ (Aging AR & AP)"
+                ],
+                forbidden: [
+                    "❌ អនុម័តប័ណ្ណចំណាយធំៗលើសពី $500.00 ដោយគ្មាន GM ចុះហត្ថលេខា",
+                    "❌ កែសម្រួលតុល្យភាពស្តុកទំនិញក្នុងឃ្លាំងដោយផ្ទាល់",
+                    "❌ លុបចោលវិក្កយបត្រដែលបានប្រកាសពន្ធរួចហើយ",
+                    "❌ កែប្រែលេខគណនីធនាគាររបស់អ្នកផ្គត់ផ្គង់ដោយគ្មានការអនុញ្ញាត"
+                ],
+                pages: [
+                    { name: "payment.html", path: "3-sales/4-payment/payment.html", desc: "តារាងតាមដានការទទួលប្រាក់ និងបង្កាន់ដៃ" },
+                    { name: "disbursements.html", path: "4-buy/3-disbursement/disbursements.html", desc: "គ្រប់គ្រងប័ណ្ណចំណាយ និងការទូទាត់ AP" },
+                    { name: "create-disbursement.html", path: "4-buy/3-disbursement/create-disbursement.html", desc: "បង្កើតប័ណ្ណចំណាយ និងកាត់ពន្ធ WHT" }
+                ],
+                kpis: [
+                    { label: "អត្រាប្រមូលបំណុលទាន់ពេល", val: "92.4%", target: "$\ge$ 90.0%" },
+                    { label: "ភាពត្រឹមត្រូវនៃពន្ធ អតប & WHT", val: "100%", target: "100%" },
+                    { label: "បំណុលហួសកំណត់ > 60 ថ្ងៃ", val: "$2,140.00", target: "< $3,000" }
+                ]
+            },
+            sales_manager: {
+                name: "អ្នកគ្រប់គ្រងផ្នែកលក់ (Sales Manager)",
+                roleEn: "Revenue Strategy & Commercial Governance",
+                icon: "👔",
+                badge: "Sales Command",
+                badgeColor: "bg-indigo-100 text-indigo-700",
+                docLink: "role_sales_manager.md",
+                mission: "ដឹកនាំក្រុមលក់, កំណត់កូតាលក់, អនុម័តការបញ្ចុះតម្លៃពិសេស (5% ដល់ 10%), កំណត់ពិដានឥណទានអតិថិជន (Credit Limits), និងតាមដានសមិទ្ធផលប្រចាំខែ។",
+                coreRule: "🛡️ គោលការណ៍ការពារផលចំណេញ (Margin Protection Doctrine): ធានាថារាល់ការលក់ទាំងអស់ផ្តល់ផលចំណេញខ្ពស់បំផុត និងទប់ស្កាត់ការលក់ជំពាក់ដែលប្រឈមនឹងហានិភ័យបំណុលវន់ករ។",
+                allowed: [
+                    "អនុម័តការបញ្ចុះតម្លៃពិសេសកម្រិតមធ្យម (> 5% ដល់ 10%)",
+                    "កំណត់ និងកែប្រែពិដានឥណទានរបស់អតិថិជន (Credit Limits)",
+                    "បែងចែក Lead និងកូតាលក់ជូនបុគ្គលិកក្រោមឱវាទ",
+                    "ពិនិត្យ និងអនុម័តសម្រង់តម្លៃរបស់ក្រុមការងារ",
+                    "មើលរបាយការណ៍លក់ និងកម្រៃជើងសាររបស់ក្រុមទាំងមូល"
+                ],
+                forbidden: [
+                    "❌ អនុម័តការបញ្ចុះតម្លៃពិសេសលើសពី 10% ដោយគ្មានការអនុញ្ញាតពី GM",
+                    "❌ មើលឃើញថ្លៃដើមទិញពិតប្រាកដពីអ្នកផ្គត់ផ្គង់ (ឃើញតែតម្លៃពិដាន Floor Price)",
+                    "❌ កែសម្រួលតុល្យភាពស្តុកទំនិញក្នុងឃ្លាំង",
+                    "❌ កត់ត្រាការទទួលប្រាក់ផ្ទាល់ក្នុងប្រព័ន្ធ (ភារកិច្ចរបស់ AP/AR)"
+                ],
+                pages: [
+                    { name: "dashboard.html", path: "9-portals/manager/dashboard.html", desc: "ផ្ទាំងបញ្ជាការដ្ឋានលក់ និងតាមដានកូតា" },
+                    { name: "approvals.html", path: "9-portals/manager/approvals.html", desc: "ជួររង់ចាំអនុម័តសម្រង់តម្លៃ និងបំណុល" },
+                    { name: "view-approval.html", path: "9-portals/manager/view-approval.html", desc: "ពិនិត្យលម្អិត និងចុចអនុម័តការបញ្ចុះតម្លៃ" }
+                ],
+                kpis: [
+                    { label: "ចំណូលលក់រួមខែនេះ", val: "$68,450.00", target: "$75,000.00" },
+                    { label: "អត្រាបម្លែងជោគជ័យ (Win Rate)", val: "71.2%", target: "$\ge$ 65.0%" },
+                    { label: "ផលចំណេញដុលជាមធ្យម", val: "24.5%", target: "$\ge$ 22.0%" }
+                ]
+            },
+            internal_auditor_executive: {
+                name: "សវនករផ្ទៃក្នុង / នាយកប្រតិបត្តិ (Internal Auditor / Executive)",
+                roleEn: "Independent Oversight & Forensics",
+                icon: "🔍",
+                badge: "100% Read-Only",
+                badgeColor: "bg-rose-100 text-rose-700",
+                docLink: "role_internal_auditor_executive.md",
+                mission: "ត្រួតពិនិត្យអព្យាក្រឹត 100% លើគ្រប់ម៉ូឌុលទាំងអស់, ស៊ើបអង្កេតប្រតិបត្តិការមិនប្រក្រតី (Forensics), ផ្ទៀងផ្ទាត់អនុលោមភាព Segregation of Duties (SoD), និងទប់ស្កាត់ការក្លែងបន្លំ (Anti-Fraud)។",
+                coreRule: "🛡️ គោលការណ៍សិទ្ធិមើលតែមួយមុខ (Strict Read-Only Doctrine): សវនករមានសិទ្ធិមើលឃើញទិន្នន័យគ្រប់ជ្រុងជ្រោយ 100% ប៉ុន្តែគ្មានសិទ្ធិបង្កើត កែប្រែ ឬលុបទិន្នន័យប្រតិបត្តិការអាជីវកម្មឡើយ ដើម្បីរក្សាភាពឯករាជ្យនៃសវនកម្ម។",
+                allowed: [
+                    "មើលឃើញរបាយការណ៍ហិរញ្ញវត្ថុទាំងអស់ 100% (P&L, Balance Sheet, Cash)",
+                    "ពិនិត្យកំណត់ហេតុសវនកម្មសកល (Global Immutable Audit Trails)",
+                    "ស៊ើបអង្កេតប្រវត្តិប្រតិបត្តិការតាមលេខកូដ (Traceability & Diff Viewer)",
+                    "ពិនិត្យការរំលោភលើការបែងចែកភារកិច្ច (SoD Exceptions)",
+                    "ទាញយក និងបោះពុម្ពរបាយការណ៍សវនកម្មផ្លូវការជូនក្រុមប្រឹក្សាភិបាល"
+                ],
+                forbidden: [
+                    "❌ បង្កើត កែប្រែ ឬលុបវិក្កយបត្រ បញ្ជាទិញ ឬប័ណ្ណចំណាយ",
+                    "❌ ចុះហត្ថលេខាអនុម័តលើសាច់ប្រាក់ ឬទំនិញក្នុងស្តុក",
+                    "❌ កែប្រែតួលេខគណនេយ្យ ឬតុល្យភាពស្តុកទំនិញ",
+                    "❌ លុបចោលកំណត់ហេតុសវនកម្ម (Audit Trails ជា Immutable Log)"
+                ],
+                pages: [
+                    { name: "audit-logs.html", path: "7-settings/5-system/audit-logs.html", desc: "កំណត់ហេតុសវនកម្មសកល (Audit Trails Explorer)" },
+                    { name: "internal-controls.html", path: "6-reports/internal-controls.html", desc: "ផ្ទាំងតាមដានការបំពានច្បាប់ SoD & Exceptions" },
+                    { name: "view-audit-detail.html", path: "9-portals/manager/view-approval.html", desc: "ព័ត៌មានលម្អិតស៊ើបអង្កេត Before vs After" }
+                ],
+                kpis: [
+                    { label: "ភាពមិនប្រក្រតីដែលមិនទាន់ដោះស្រាយ", val: "0 ករណី", target: "= 0" },
+                    { label: "អត្រាអនុលោមភាព SoD", val: "100%", target: "100%" },
+                    { label: "ភាពត្រឹមត្រូវនៃសវនកម្មស្តុក", val: "99.4%", target: "$\ge$ 99.0%" }
+                ]
+            },
+            sales_executive: {
+                name: "បុគ្គលិកផ្នែកលក់ (Sales Executive)",
+                roleEn: "Frontline Sales & Deal Closer",
+                icon: "💼",
+                badge: "Zero Cost Leakage",
+                badgeColor: "bg-sky-100 text-sky-700",
+                docLink: "role_sales_executive.md",
+                mission: "ស្វែងរកអតិថិជន, ចរចាតម្លៃ, បង្កើតសម្រង់តម្លៃ (Quote), បម្លែងជាវិក្កយបត្រ (Invoice), ថែទាំអតិថិជន, និងតាមដានការប្រមូលប្រាក់ដើម្បីបើកកម្រៃជើងសារ (Commission)។",
+                coreRule: "🛡️ គោលការណ៍លាក់ការសម្ងាត់ថ្លៃដើម (Zero Purchase Cost Leakage): បុគ្គលិកផ្នែកលក់ត្រូវបានលាក់ថ្លៃដើមទិញពីអ្នកផ្គត់ផ្គង់ 100%។ មើលឃើញតែតម្លៃលក់មូលដ្ឋាន តម្លៃតាមកម្រិតអតិថិជន និងតម្លៃពិដានបាត (Floor Price) ប៉ុណ្ណោះ។",
+                allowed: [
+                    "បង្កើត និងកែសម្រួលសម្រង់តម្លៃ (Quotations)",
+                    "បម្លែងសម្រង់តម្លៃជាវិក្កយបត្រលក់ត្រឹមតែ 1 ចុច (Convert to Invoice)",
+                    "បង្កើត និងគ្រប់គ្រងទិន្នន័យអតិថិជនថ្មី (Customer Onboarding)",
+                    "ពិនិត្យចំនួនស្តុកនៅទំនេរដែលអាចលក់បាន (Available Qty)",
+                    "ស្នើសុំការអនុម័តបញ្ចុះតម្លៃពិសេសលើសពី 5% ទៅកាន់ Sales Manager"
+                ],
+                forbidden: [
+                    "❌ មើលឃើញថ្លៃដើមទិញពីអ្នកផ្គត់ផ្គង់ (Purchase Cost / COGS)",
+                    "❌ លក់ទាបជាងតម្លៃពិដានបាត (Floor Price) ដោយគ្មានការអនុញ្ញាត",
+                    "❌ កែប្រែ ឬដំឡើងពិដានឥណទានអតិថិជន (Credit Limit)",
+                    "❌ កត់ត្រាការទទួលប្រាក់ពីអតិថិជន (ភារកិច្ចរបស់ AP/AR ឬ Cashier)"
+                ],
+                pages: [
+                    { name: "dashboard.html", path: "9-portals/sales-staff/dashboard.html", desc: "ផ្ទាំងសមិទ្ធផលផ្ទាល់ខ្លួន, កូតាលក់ និង Leads" },
+                    { name: "create-quote.html", path: "3-sales/2-quote/create-quote.html", desc: "បង្កើតសម្រង់តម្លៃ និងតម្លៃឌីណាមិក" },
+                    { name: "view-quote.html", path: "3-sales/2-quote/view-quote.html", desc: "បង្ហាញ Quote, បាគង KHQR និងប៊ូតុង Convert" }
+                ],
+                kpis: [
+                    { label: "សម្រេចកូតាលក់ខែនេះ", val: "73.8%", target: "$\ge$ 100%" },
+                    { label: "កម្រៃជើងសារប៉ាន់ស្មាន", val: "$553.50", target: "3% Rate" },
+                    { label: "អត្រាបម្លែងជោគជ័យ", val: "68.4%", target: "$\ge$ 65.0%" }
+                ]
+            },
+            admin_general_manager: {
+                name: "អភិបាលក្រុមហ៊ុន / អ្នកគ្រប់គ្រងទូទៅ (Admin / General Manager)",
+                roleEn: "Chief Operating Officer & Ultimate Sign-off",
+                icon: "🏛️",
+                badge: "Supreme Tenant Command",
+                badgeColor: "bg-slate-200 text-slate-800",
+                docLink: "role_admin_general_manager.md",
+                mission: "ដឹកនាំប្រតិបត្តិការអាជីវកម្មប្រចាំថ្ងៃរបស់ក្រុមហ៊ុន, តភ្ជាប់គ្រប់ផ្នែក, អនុម័តរាល់ប្រតិបត្តិការដែលមានហានិភ័យហិរញ្ញវត្ថុខ្ពស់, គ្រប់គ្រងគណនីបុគ្គលិក, និងចាក់សោរគ្រាហិរញ្ញវត្ថុ (Period Lock)។",
+                coreRule: "🏛️ គោលការណ៍អភិបាលកិច្ចកំពូលនៃក្រុមហ៊ុន (Supreme Tenant Command): GM មានសិទ្ធិប្រតិបត្តិការពេញលេញ 100% (Full CRUD) លើក្រុមហ៊ុនរបស់ខ្លួន ប៉ុន្តែត្រូវបានចាក់សោរមិនឱ្យលូកដៃទៅក្រុមហ៊ុនដទៃឡើយ (Multi-Tenant Isolation)។",
+                allowed: [
+                    "អនុម័តការបញ្ជាទិញទំនិញធំៗ (PO > $1,000.00)",
+                    "អនុម័តប័ណ្ណចំណាយទូទាត់ធំៗ (Disbursements > $500.00)",
+                    "អនុម័តការបញ្ចុះតម្លៃពិសេសកម្រិតខ្ពស់ (> 10% ដល់ 20%)",
+                    "អនុម័តការលើកលែងពិដានឥណទាន (Credit Limit Overrides)",
+                    "គ្រប់គ្រងគណនី និងសិទ្ធិបុគ្គលិកក្នុងក្រុមហ៊ុន (User Provisioning)",
+                    "ចាក់សោរ ឬដោះសោរគ្រាគណនេយ្យប្រចាំខែ/ឆ្នាំ (Financial Period Lock)"
+                ],
+                forbidden: [
+                    "❌ ចូលមើល ឬកែប្រែទិន្នន័យរបស់ក្រុមហ៊ុនផ្សេង (Multi-Tenant Isolation)",
+                    "❌ កែប្រែ ឬលុបកំណត់ហេតុសវនកម្ម (Audit Trails ជា Immutable Log)",
+                    "❌ កែប្រែប្រព័ន្ធកូដ ឬ Cloud Server Database (សិទ្ធិរបស់ Super Admin)",
+                    "❌ អនុម័តប័ណ្ណចំណាយឱ្យខ្លួនឯងដោយគ្មានសាក្សី (Dual-Control Rule)"
+                ],
+                pages: [
+                    { name: "dashboard.html", path: "2-home/dashboard.html", desc: "ផ្ទាំងបញ្ជាការដ្ឋានប្រតិបត្តិការរួម (Executive Cockpit)" },
+                    { name: "approvals.html", path: "2-home/approvals.html", desc: "មជ្ឈមណ្ឌលប្រមូលផ្តុំរាល់សំណើអនុម័ត" },
+                    { name: "users.html", path: "7-settings/2-users/users.html", desc: "គ្រប់គ្រងគណនី និងចាត់តាំងតួនាទីបុគ្គលិក" },
+                    { name: "system.html", path: "7-settings/5-system/system.html", desc: "កំណត់អត្រាប្តូរប្រាក់ NBC និងចាក់សោរ Period" }
+                ],
+                kpis: [
+                    { label: "ផលចំណេញសុទ្ធ (Net Profit)", val: "$14,370.00 (21%)", target: "$\ge$ 20.0%" },
+                    { label: "សាច់ប្រាក់ទ្រទ្រង់ (Cash Runway)", val: "4.2 ខែ", target: "$\ge$ 3.0 ខែ" },
+                    { label: "ល្បឿនដោះស្រាយការអនុម័ត", val: "2.4 ម៉ោង", target: "< 4.0 ម៉ោង" }
+                ]
+            },
+            warehouse_manager: {
+                name: "អ្នកគ្រប់គ្រងឃ្លាំងស្តុក (Warehouse Manager)",
+                roleEn: "Supreme Inventory Asset Custodian",
+                icon: "📦",
+                badge: "Inventory Custodian",
+                badgeColor: "bg-orange-100 text-orange-700",
+                docLink: "role_warehouse_manager.md",
+                mission: "គ្រប់គ្រងទ្រព្យសកម្មស្តុកគ្រប់ឃ្លាំង, អនុម័តប័ណ្ណទទួលទំនិញ (GRN), អនុម័តការកែតម្រូវស្តុក ($\le \$200$), កំណត់ Reorder Point, និងគ្រប់គ្រងកាតាឡុកទំនិញ។",
+                coreRule: "🛡️ គោលការណ៍ការពារការបែកធ្លាយតម្លៃលក់ (Zero Selling Price Leakage): អ្នកគ្រប់គ្រងឃ្លាំងត្រូវបានលាក់តម្លៃលក់ជូនអតិថិជន និងផលចំណេញពាណិជ្ជកម្ម 100%។ មើលឃើញតែចំនួនទំនិញ និងថ្លៃដើមមធ្យម (MAC) សម្រាប់គណនាតម្លៃស្តុកប៉ុណ្ណោះ។",
+                allowed: [
+                    "អនុម័តប័ណ្ណទទួលទំនិញចូលផ្លូវការ (GRN Approval)",
+                    "អនុម័តការកែតម្រូវស្តុកក្រោយរាប់ Cycle Count ($\le \$200.00$)",
+                    "គ្រប់គ្រងកាតាឡុកទំនិញមេ (Master Product Catalog) និងបាកូដ SKU",
+                    "កំណត់ចំណុចត្រូវបញ្ជាទិញបន្ថែម (Reorder Point) និងស្តុកសុវត្ថិភាព",
+                    "អនុម័តប័ណ្ណផ្ទេរទំនិញឆ្លងឃ្លាំង (Inter-Warehouse Transfers)",
+                    "បង្កើតប័ណ្ណបង្វិលទំនិញខូចទៅអ្នកផ្គត់ផ្គង់ (Return to Vendor - RTV)"
+                ],
+                forbidden: [
+                    "❌ មើលឃើញតម្លៃលក់ និងប្រាក់ចំណេញរបស់ក្រុមហ៊ុន (Zero Price Leakage)",
+                    "❌ អនុម័តការកាត់កងទំនិញខូចខាតធំៗលើសពី $200.00 ដោយគ្មាន GM អនុម័ត",
+                    "❌ បង្កើត ឬកែប្រែវិក្កយបត្រលក់ ឬការបញ្ជាទិញទំនិញ PO",
+                    "❌ លុបចោលមុខទំនិញដែលមានប្រវត្តិប្រតិបត្តិការស្តុក"
+                ],
+                pages: [
+                    { name: "balance.html", path: "5-stock/1-balance/balance.html", desc: "តារាងសមតុល្យស្តុកគ្រប់ឃ្លាំង (Multi-Warehouse)" },
+                    { name: "adjust-balance.html", path: "5-stock/1-balance/adjust-balance.html", desc: "ទម្រង់កែតម្រូវស្តុក និងសម្រុះសម្រួលចំនួនរាប់" },
+                    { name: "create-catalog.html", path: "5-stock/2-catalog/create-catalog.html", desc: "បង្កើតមុខទំនិញថ្មី, SKU, Barcode, ROP" },
+                    { name: "create-movement.html", path: "5-stock/3-movement/create-movement.html", desc: "បង្កើតប័ណ្ណផ្ទេរទំនិញឆ្លងឃ្លាំង" }
+                ],
+                kpis: [
+                    { label: "ភាពត្រឹមត្រូវនៃស្តុក (Accuracy)", val: "99.4%", target: "$\ge$ 99.0%" },
+                    { label: "តម្លៃស្តុកសរុប (Valuation)", val: "$184,520.00", target: "MAC Cost" },
+                    { label: "អត្រាដាច់ស្តុក (Stockout Rate)", val: "0.8%", target: "< 1.5%" }
+                ]
+            }
+        };
+
+        const matrixData = [
+            { func: "មើលថ្លៃដើមទិញ (Purchase Cost / COGS)", p: ["❌", "✅", "❌", "❌", "✅", "⚠️ Floor", "✅", "❌", "✅", "✅ MAC"] },
+            { func: "មើលតម្លៃលក់ជូនអតិថិជន (Selling Price)", p: ["❌", "❌", "❌", "✅", "✅", "✅", "✅", "✅", "✅", "❌"] },
+            { func: "បង្កើត/កែប្រែ សម្រង់តម្លៃ (Quotations)", p: ["❌", "❌", "❌", "❌", "❌", "✅ Edit/Appr", "❌ Read", "✅ Create/Edit", "✅ Full", "❌"] },
+            { func: "បង្កើត/កែប្រែ វិក្កយបត្រលក់ (Invoices)", p: ["❌", "❌", "❌", "❌", "✅ View/Pay", "✅ Edit/Appr", "❌ Read", "✅ Create/Conv", "✅ Full", "❌"] },
+            { func: "បង្កើត/ចេញ បញ្ជាទិញទំនិញ (Purchase Orders)", p: ["❌", "✅ Full", "❌", "❌", "✅ View/Match", "❌", "❌ Read", "❌", "✅ Appr > $1k", "❌ PR only"] },
+            { func: "ទទួលទំនិញចូល និងចេញ GRN (Receiving)", p: ["❌", "❌ PO Match", "✅ GRN Count", "❌", "✅ Match", "❌", "❌ Read", "❌", "✅ Oversight", "✅ GRN Appr"] },
+            { func: "អនុម័តប័ណ្ណចំណាយទូទាត់ (Disbursements)", p: ["❌", "❌", "❌", "❌", "✅ $\\le \\$500$", "❌", "❌ Read", "❌", "✅ $> \\$500$", "❌"] },
+            { func: "អនុម័តការបញ្ចុះតម្លៃពិសេស (Discounts)", p: ["❌", "❌", "❌", "❌", "❌", "✅ $\\le 10\\%$", "❌ Read", "⚠️ $\\le 5\\%$", "✅ $> 10\\%$", "❌"] },
+            { func: "លើកលែងពិដានឥណទាន (Credit Limit Override)", p: ["❌", "❌", "❌", "❌", "❌", "⚠️ Set Limit", "❌ Read", "❌", "✅ Override", "❌"] },
+            { func: "អនុម័តការកែតម្រូវស្តុក (Stock Adjustments)", p: ["❌", "❌", "⚠️ Submit", "❌", "✅ Ledger", "❌", "❌ Read", "❌", "✅ $> \\$200$", "✅ $\\le \\$200$"] },
+            { func: "បិទគ្រាគណនេយ្យប្រចាំខែ (Period Lock)", p: ["❌", "❌", "❌", "❌", "⚠️ Prepare", "❌", "❌ Read", "❌", "✅ Lock GM", "❌"] },
+            { func: "គ្រប់គ្រងគណនីបុគ្គលិក (User Management)", p: ["✅ Platform", "❌", "❌", "❌", "❌", "❌", "❌ Read", "❌", "✅ Tenant Roles", "❌"] },
+            { func: "មើលកំណត់ហេតុសវនកម្ម (Audit Trails)", p: ["✅ System", "❌", "❌", "❌", "❌", "❌", "✅ 100% Full", "❌", "✅ Tenant Logs", "❌"] }
+        ];
+
+        let currentRoleKey = 'superadmin';
+
+        function renderRoleDossier(roleKey) {
+            const role = rolesData[roleKey];
+            if (!role) return;
+
+            const container = document.getElementById('roleDossierContainer');
+            
+            let allowedListHtml = role.allowed.map(item => `
+                <li class="flex items-start gap-2.5 text-xs text-slate-700">
+                    <i class="fas fa-check-circle text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                    <span>${item}</span>
+                </li>
+            `).join('');
+
+            let forbiddenListHtml = role.forbidden.map(item => `
+                <li class="flex items-start gap-2.5 text-xs text-slate-700">
+                    <i class="fas fa-circle-xmark text-rose-500 mt-0.5 flex-shrink-0"></i>
+                    <span>${item}</span>
+                </li>
+            `).join('');
+
+            let pagesListHtml = role.pages.map(page => `
+                <div class="p-3 rounded-xl bg-slate-50 border border-slate-200/80 hover:border-primary transition group">
+                    <div class="flex items-center justify-between mb-1">
+                        <span class="font-bold text-xs text-slate-900 group-hover:text-primary transition flex items-center gap-1.5">
+                            <i class="fas fa-file-code text-slate-400"></i> ${page.name}
+                        </span>
+                        <span class="text-[10px] text-slate-400 font-mono">${page.path}</span>
+                    </div>
+                    <p class="text-[11px] text-slate-500">${page.desc}</p>
+                </div>
+            `).join('');
+
+            let kpiListHtml = role.kpis.map(kpi => `
+                <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-center">
+                    <div class="text-[10px] uppercase font-bold text-slate-500 mb-1">${kpi.label}</div>
+                    <div class="text-base font-extrabold text-primary mb-0.5">${kpi.val}</div>
+                    <div class="text-[10px] font-semibold text-emerald-600">${kpi.target}</div>
+                </div>
+            `).join('');
+
+            container.innerHTML = `
+                <!-- Role Header Banner -->
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-slate-100 gap-4 mb-6">
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 rounded-2xl bg-slate-100 border border-slate-200 flex items-center justify-center text-3xl shadow-sm flex-shrink-0">
+                            ${role.icon}
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2 mb-1 flex-wrap">
+                                <h3 class="text-xl font-bold text-slate-900">${role.name}</h3>
+                                <span class="text-[10px] font-bold px-2.5 py-0.5 rounded-full ${role.badgeColor}">${role.badge}</span>
+                            </div>
+                            <p class="text-xs text-slate-500 font-mono">${role.roleEn}</p>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="${role.docLink}" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition border border-slate-200/80">
+                            <i class="fas fa-file-lines text-primary"></i> អានឯកសារពេញលេញ (.md)
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Mission Box -->
+                <div class="mb-6 p-4 rounded-xl bg-blue-50/70 border border-blue-200/80">
+                    <h4 class="text-xs font-bold text-blue-900 mb-1.5 flex items-center gap-1.5">
+                        <i class="fas fa-bullseye text-accent"></i> បេសកកម្មស្នូល (Core Mission)
+                    </h4>
+                    <p class="text-xs text-slate-700 leading-relaxed mb-3">${role.mission}</p>
+                    <div class="p-3 rounded-lg bg-white/90 border border-blue-200 text-xs text-slate-800 leading-relaxed">
+                        ${role.coreRule}
+                    </div>
+                </div>
+
+                <!-- Capabilities 2-Column Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <!-- Allowed -->
+                    <div class="p-5 rounded-xl bg-emerald-50/40 border border-emerald-200">
+                        <h4 class="text-xs font-bold text-emerald-900 mb-3 flex items-center gap-1.5">
+                            <i class="fas fa-circle-check text-emerald-600"></i> សិទ្ធិ និងសកម្មភាពអនុញ្ញាតពេញលេញ
+                        </h4>
+                        <ul class="space-y-2">
+                            ${allowedListHtml}
+                        </ul>
+                    </div>
+
+                    <!-- Forbidden -->
+                    <div class="p-5 rounded-xl bg-rose-50/40 border border-rose-200">
+                        <h4 class="text-xs font-bold text-rose-900 mb-3 flex items-center gap-1.5">
+                            <i class="fas fa-circle-xmark text-rose-600"></i> សកម្មភាពហាមឃាត់ដាច់ខាត (Restrictions)
+                        </h4>
+                        <ul class="space-y-2">
+                            ${forbiddenListHtml}
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- UI Pages Blueprint -->
+                <div class="mb-8">
+                    <h4 class="text-xs font-bold text-slate-800 uppercase tracking-wider mb-3 flex items-center gap-1.5">
+                        <i class="fas fa-laptop-code text-primary"></i> ស្ថាបត្យកម្មទំព័រ UI សំខាន់ៗ (UI Blueprint)
+                    </h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        ${pagesListHtml}
+                    </div>
+                </div>
+
+                <!-- Top KPIs -->
+                <div>
+                    <h4 class="text-xs font-bold text-slate-800 uppercase tracking-wider mb-3 flex items-center gap-1.5">
+                        <i class="fas fa-chart-line text-primary"></i> សូចនាករវាស់វែងសមិទ្ធផល (Key Performance Indicators)
+                    </h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        ${kpiListHtml}
+                    </div>
+                </div>
+            `;
+        }
+
+        function selectRole(roleKey, updateUrl = true) {
+            if (!rolesData[roleKey]) return;
+            currentRoleKey = roleKey;
+            
+            // Update nav buttons styling
+            document.querySelectorAll('.role-nav-btn').forEach(btn => {
+                btn.className = 'role-nav-btn w-full text-left p-2.5 rounded-xl text-xs font-medium flex items-center justify-between transition hover:bg-slate-100 text-slate-700';
+            });
+            const activeBtn = document.getElementById(`nav-${roleKey}`);
+            if (activeBtn) {
+                activeBtn.className = 'role-nav-btn w-full text-left p-2.5 rounded-xl text-xs font-medium flex items-center justify-between transition bg-primary text-white shadow-sm';
+            }
+
+            renderRoleDossier(roleKey);
+
+            if (updateUrl && window.history && window.history.replaceState) {
+                const newUrl = window.location.pathname + '?role=' + roleKey;
+                window.history.replaceState({ role: roleKey }, '', newUrl);
+            }
+        }
+
+        function filterRoles() {
+            const query = document.getElementById('roleSearchInput').value.toLowerCase();
+            document.querySelectorAll('.role-nav-btn').forEach(btn => {
+                const text = btn.innerText.toLowerCase();
+                btn.style.display = text.includes(query) ? 'flex' : 'none';
+            });
+        }
+
+        function switchView(view, updateUrl = true) {
+            const explorer = document.getElementById('roleExplorerView');
+            const matrix = document.getElementById('masterMatrixView');
+            const btnRoles = document.getElementById('btnViewRoles');
+            const btnMatrix = document.getElementById('btnViewMatrix');
+
+            if (view === 'matrix') {
+                explorer.classList.add('hidden');
+                matrix.classList.remove('hidden');
+                btnMatrix.className = 'px-3 py-1.5 bg-white text-primary rounded-lg text-xs font-semibold transition flex items-center gap-1.5 cursor-pointer shadow-sm';
+                btnRoles.className = 'px-3 py-1.5 bg-white/10 hover:bg-white/20 text-white rounded-lg text-xs font-semibold transition flex items-center gap-1.5 cursor-pointer';
+                if (updateUrl && window.history && window.history.replaceState) {
+                    window.history.replaceState({ view: 'matrix' }, '', window.location.pathname + '?view=matrix');
+                }
+            } else {
+                matrix.classList.add('hidden');
+                explorer.classList.remove('hidden');
+                btnRoles.className = 'px-3 py-1.5 bg-white text-primary rounded-lg text-xs font-semibold transition flex items-center gap-1.5 cursor-pointer shadow-sm';
+                btnMatrix.className = 'px-3 py-1.5 bg-white/10 hover:bg-white/20 text-white rounded-lg text-xs font-semibold transition flex items-center gap-1.5 cursor-pointer';
+                if (updateUrl && window.history && window.history.replaceState) {
+                    window.history.replaceState({ role: currentRoleKey }, '', window.location.pathname + '?role=' + currentRoleKey);
+                }
+            }
+        }
+
+        function renderMatrixTable() {
+            const tbody = document.getElementById('matrixTableBody');
+            let html = '';
+            matrixData.forEach((row, idx) => {
+                const bg = idx % 2 === 0 ? 'bg-white' : 'bg-slate-50/50';
+                html += `<tr class="${bg} hover:bg-blue-50/40 transition">`;
+                html += `<td class="p-3 border border-slate-200 font-semibold text-slate-800">${row.func}</td>`;
+                row.p.forEach(val => {
+                    let cellColor = 'text-slate-700';
+                    if (val.includes('✅')) cellColor = 'text-emerald-700 font-semibold bg-emerald-50/30';
+                    else if (val.includes('❌')) cellColor = 'text-rose-600 font-bold bg-rose-50/30';
+                    else if (val.includes('⚠️')) cellColor = 'text-amber-700 font-medium bg-amber-50/30';
+                    html += `<td class="p-2 border border-slate-200 text-center ${cellColor}">${val}</td>`;
+                });
+                html += `</tr>`;
+            });
+            tbody.innerHTML = html;
+        }
+
+        // Initialize on load with deep-link query parameter parsing
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            let roleParam = urlParams.get('role');
+            if (!roleParam && window.location.hash) {
+                roleParam = window.location.hash.replace('#', '');
+            }
+            if (roleParam && rolesData[roleParam]) {
+                currentRoleKey = roleParam;
+            }
+
+            renderMatrixTable();
+
+            const viewParam = urlParams.get('view');
+            if (viewParam === 'matrix') {
+                switchView('matrix', false);
+            } else {
+                selectRole(currentRoleKey, false);
+            }
+        });
+    </script>
+
+</body>
+</html>

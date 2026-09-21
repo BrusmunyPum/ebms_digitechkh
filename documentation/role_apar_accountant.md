@@ -821,4 +821,4 @@ A: តាមច្បាប់សារពើពន្ធនៃព្រះរ�
 
 *ឯកសារនេះតំណាង 100% នៃមូលដ្ឋានចំណេះដឹងសម្រាប់ AP/AR Accountant Role ក្នុង DIGITECHKH BMS*  
 *Previous Role: Customer Support → [`role_customer_support.md`](role_customer_support.md)*  
-*Next Role: Sales Executive → [`role_sales_executive.md`](role_sales_executive.md) | or: Cashier POS → [`role_cashier_pos.md`](role_cashier_pos.md)*
+*Next Role: Sales Manager → [`role_sales_manager.md`](role_sales_manager.md)*

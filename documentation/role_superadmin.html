@@ -1,0 +1,1756 @@
+<!DOCTYPE html>
+<html lang="km" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>👑 ស៊ុបភើរ អភិបាល (Super Admin) — ការសិក្សាស៊ីជម្រៅ | DIGITECHKH BMS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Kantumruy Pro', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0f2b5c',
+                        primaryHover: '#0a1d3f',
+                        accent: '#2563eb',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Kantumruy Pro', sans-serif;
+            color: #334155;
+            background-color: #f8fafc;
+        }
+        ::-webkit-scrollbar { display: none; }
+        * { -ms-overflow-style: none; scrollbar-width: none; }
+        h1, h2, h3, h4 { color: #0f172a; font-weight: 700; }
+        h1 { font-size: 1.8rem; line-height: 2.35rem; margin-bottom: 1.25rem; }
+        h2 { font-size: 1.35rem; line-height: 1.85rem; margin-top: 2.25rem; margin-bottom: 0.85rem; padding-bottom: 0.5rem; border-bottom: 1px solid #e2e8f0; }
+        h3 { font-size: 1.1rem; line-height: 1.5rem; margin-top: 1.75rem; margin-bottom: 0.5rem; }
+        p { margin-bottom: 0.85rem; line-height: 1.8; font-size: 0.95rem; }
+        ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1rem; font-size: 0.95rem; }
+        ol { list-style-type: decimal; padding-left: 1.5rem; margin-bottom: 1rem; font-size: 0.95rem; }
+        li { margin-bottom: 0.35rem; line-height: 1.7; }
+        hr { border: 0; border-top: 1px solid #e2e8f0; margin: 2rem 0; }
+        @media print {
+            .no-print { display: none !important; }
+            body { background-color: #ffffff; color: #000; }
+            .print-container { max-width: 100% !important; margin: 0 !important; padding: 0 !important; box-shadow: none !important; border: none !important; }
+            table, pre, blockquote, .rounded-xl, .rounded-2xl { page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-primary selection:text-white min-h-screen flex flex-col justify-between">
+
+    <!-- Top Sticky Control Bar -->
+    <header class="no-print fixed top-0 left-0 right-0 h-16 bg-primary text-white z-50 px-4 sm:px-8 flex items-center justify-between shadow-md">
+        <div class="flex items-center gap-3">
+            <a href="index.html" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition flex items-center gap-2 text-xs font-semibold">
+                <i class="fas fa-arrow-left"></i> <span class="hidden sm:inline">មជ្ឈមណ្ឌលឯកសារ</span>
+            </a>
+            <span class="text-white/30 hidden sm:inline">|</span>
+            <div class="flex items-center gap-2">
+                <span class="text-xl">👑</span>
+                <span class="font-bold text-xs sm:text-sm text-white truncate max-w-[200px] sm:max-w-xs">ស៊ុបភើរ អភិបាល</span>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-white/15 text-cyan-200 hidden md:inline">Multi-Tenant</span>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-2 sm:gap-3">
+            <!-- Role Switcher -->
+            <div class="relative">
+                <select onchange="window.location.href=this.value" class="h-9 pl-3 pr-8 bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl text-xs font-semibold text-white focus:outline-none focus:bg-[#0a1d3f] transition appearance-none cursor-pointer">
+                    <option value="role_superadmin.html" selected>👑 ស៊ុបភើរ អភិបាល (Super Admin)</option>
+<option value="role_procurement_manager.html" >🛒 អ្នកគ្រប់គ្រងលទ្ធកម្ម (Procurement Manager)</option>
+<option value="role_warehouse_staff.html" >👷 បុគ្គលិកឃ្លាំងទំនិញ (Warehouse Staff)</option>
+<option value="role_customer_support.html" >🎧 ផ្នែកគាំទ្រអតិថិជន (Customer Support)</option>
+<option value="role_apar_accountant.html" >💰 គណនេយ្យករចំណាយ និងចំណូល (AP/AR Accountant)</option>
+<option value="role_sales_manager.html" >👔 អ្នកគ្រប់គ្រងផ្នែកលក់ (Sales Manager)</option>
+<option value="role_internal_auditor_executive.html" >🔍 សវនករផ្ទៃក្នុង និងថ្នាក់ដឹកនាំ (Internal Auditor / Executive)</option>
+<option value="role_sales_executive.html" >💼 បុគ្គលិកប្រតិបត្តិផ្នែកលក់ (Sales Executive)</option>
+<option value="role_admin_general_manager.html" >🏛️ អភិបាល និងអ្នកចាត់ការទូទៅ (Admin / General Manager)</option>
+<option value="role_warehouse_manager.html" >📦 អ្នកគ្រប់គ្រងឃ្លាំងស្តុក (Warehouse Manager)</option>
+                </select>
+                <i class="fas fa-chevron-down absolute right-3 top-3 text-[10px] text-white/60 pointer-events-none"></i>
+            </div>
+
+            <!-- Interactive Guide Link -->
+            <a href="DIGITECHKH-Roles-And-Permissions-Interactive-Guide.html?role=superadmin" class="px-3 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-semibold transition hidden lg:flex items-center gap-1.5 shadow-sm">
+                <i class="fas fa-table-cells"></i> ផ្ទាំងអន្តរកម្ម & ម៉ាទ្រីស
+            </a>
+
+            <!-- Print Button -->
+            <button onclick="window.print()" class="px-3 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-semibold transition flex items-center gap-1.5 shadow-sm cursor-pointer">
+                <i class="fas fa-print"></i> <span class="hidden sm:inline">បោះពុម្ព A4</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Reading Container -->
+    <div class="pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full flex-1">
+        <div class="flex flex-col lg:flex-row gap-8 items-start">
+
+            <!-- Left Table of Contents Sidebar -->
+            <aside class="no-print lg:w-72 flex-shrink-0 sticky top-24 hidden lg:block bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
+                <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-3">
+                    <span class="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
+                        <i class="fas fa-list-ul text-primary"></i> មាតិកាឯកសារ
+                    </span>
+                    <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-50 text-accent">TOC</span>
+                </div>
+                <div class="space-y-0.5 max-h-[calc(100vh-220px)] overflow-y-auto pr-1 text-xs">
+                    <a href="#តារាងមាតិកា-table-of-contents" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="តារាងមាតិកា (Table of Contents)">តារាងមាតិកា (Table of Contents)</a>
+<a href="#1-អ្វីជា-super-admin" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="1. អ្វីជា Super Admin?">1. អ្វីជា Super Admin?</a>
+<a href="#11-និយមន័យ-definition" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="1.1 និយមន័យ (Definition)">1.1 និយមន័យ (Definition)</a>
+<a href="#12-ទំនាក់ទំនងជាមួយ-multi-tenant-architecture" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="1.2 ទំនាក់ទំនងជាមួយ Multi-Tenant Architecture">1.2 ទំនាក់ទំនងជាមួយ Multi-Tenant Architecture</a>
+<a href="#13-super-admin-ជានរណា-who-is-this-person-in-real-life" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="1.3 Super Admin ជានរណា? (Who is this Person in Real Life?)">1.3 Super Admin ជានរណា? (Who is this Person in Real Life?)</a>
+<a href="#2-ឋានានុក្រមក្នុងប្រព័ន្ធ" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="2. ឋានានុក្រមក្នុងប្រព័ន្ធ">2. ឋានានុក្រមក្នុងប្រព័ន្ធ</a>
+<a href="#3-អ្វីដែល-super-admin-ធ្វើបាន-full-capability-map" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="3. អ្វីដែល Super Admin ធ្វើបាន (Full Capability Map)">3. អ្វីដែល Super Admin ធ្វើបាន (Full Capability Map)</a>
+<a href="#31-capability-matrix-ពេញលេញ" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="3.1 Capability Matrix ពេញលេញ">3.1 Capability Matrix ពេញលេញ</a>
+<a href="#32-អ្វីដែល-super-admin-ធ្វើបាន-green-light" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="3.2 អ្វីដែល Super Admin **ធ្វើ**បាន (Green Light ✅)">3.2 អ្វីដែល Super Admin **ធ្វើ**បាន (Green Light ✅)</a>
+<a href="#33-អ្វីដែល-super-admin-ហាមធ្វើ-red-zone" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="3.3 អ្វីដែល Super Admin **ហាម**ធ្វើ (Red Zone ❌)">3.3 អ្វីដែល Super Admin **ហាម**ធ្វើ (Red Zone ❌)</a>
+<a href="#4-ទំព័រ-ui-ទាំង-6-page-by-page-blueprint" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="4. ទំព័រ UI ទាំង 6 (Page-by-Page Blueprint)">4. ទំព័រ UI ទាំង 6 (Page-by-Page Blueprint)</a>
+<a href="#41-dashboardhtml-ផ្ទាំងគ្រប់គ្រងសកល-global-overview" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.1 `dashboard.html` — ផ្ទាំងគ្រប់គ្រងសកល (Global Overview)">4.1 `dashboard.html` — ផ្ទាំងគ្រប់គ្រងសកល (Global Overview)</a>
+<a href="#42-companieshtml-បញ្ជីក្រុមហ៊ុន-tenant-list" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.2 `companies.html` — បញ្ជីក្រុមហ៊ុន (Tenant List)">4.2 `companies.html` — បញ្ជីក្រុមហ៊ុន (Tenant List)</a>
+<a href="#43-create-companyhtml-ចុះឈ្មោះក្រុមហ៊ុនថ្មី" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.3 `create-company.html` — ចុះឈ្មោះក្រុមហ៊ុនថ្មី">4.3 `create-company.html` — ចុះឈ្មោះក្រុមហ៊ុនថ្មី</a>
+<a href="#44-view-companyhtml-ព័ត៌មានលម្អិតក្រុមហ៊ុន" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.4 `view-company.html` — ព័ត៌មានលម្អិតក្រុមហ៊ុន">4.4 `view-company.html` — ព័ត៌មានលម្អិតក្រុមហ៊ុន</a>
+<a href="#45-subscriptionshtml-គ្រប់គ្រង-plans" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.5 `subscriptions.html` — គ្រប់គ្រង Plans">4.5 `subscriptions.html` — គ្រប់គ្រង Plans</a>
+<a href="#46-audit-logshtml-global-audit-log" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.6 `audit-logs.html` — Global Audit Log">4.6 `audit-logs.html` — Global Audit Log</a>
+<a href="#5-ម៉ាទ្រីសសិទ្ធិ-permission-matrix" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="5. ម៉ាទ្រីសសិទ្ធិ (Permission Matrix)">5. ម៉ាទ្រីសសិទ្ធិ (Permission Matrix)</a>
+<a href="#51-full-crud-matrix" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="5.1 Full CRUD Matrix">5.1 Full CRUD Matrix</a>
+<a href="#52-data-scope-ឃើញអ្វី" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="5.2 Data Scope (ឃើញអ្វី?)">5.2 Data Scope (ឃើញអ្វី?)</a>
+<a href="#6-វដ្តការងារស្នូលទាំង-4-core-workflows" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="6. វដ្តការងារស្នូលទាំង 4 (Core Workflows)">6. វដ្តការងារស្នូលទាំង 4 (Core Workflows)</a>
+<a href="#workflow-1-onboard-ក្រុមហ៊ុនថ្មី-new-tenant-onboarding" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 1: Onboard ក្រុមហ៊ុនថ្មី (New Tenant Onboarding)">Workflow 1: Onboard ក្រុមហ៊ុនថ្មី (New Tenant Onboarding)</a>
+<a href="#workflow-2-renew-upgrade-subscription" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 2: Renew / Upgrade Subscription">Workflow 2: Renew / Upgrade Subscription</a>
+<a href="#workflow-3-suspend-tenant-due-to-non-payment" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 3: Suspend Tenant (Due to Non-Payment)">Workflow 3: Suspend Tenant (Due to Non-Payment)</a>
+<a href="#workflow-4-security-incident-response" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 4: Security Incident Response">Workflow 4: Security Incident Response</a>
+<a href="#7-ទំនាក់ទំនងជាមួយតួនាទីផ្សេង-role-interaction-map" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="7. ទំនាក់ទំនងជាមួយតួនាទីផ្សេង (Role Interaction Map)">7. ទំនាក់ទំនងជាមួយតួនាទីផ្សេង (Role Interaction Map)</a>
+<a href="#8-ស្ថាបត្យកម្ម-data-scope-what-data-can-see" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="8. ស្ថាបត្យកម្ម Data Scope (What Data Can See)">8. ស្ថាបត្យកម្ម Data Scope (What Data Can See)</a>
+<a href="#81-database-isolation-architecture" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="8.1 Database Isolation Architecture">8.1 Database Isolation Architecture</a>
+<a href="#82-api-authorization-rules" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="8.2 API Authorization Rules">8.2 API Authorization Rules</a>
+<a href="#9-kpi-និង-dashboard-widgets" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="9. KPI និង Dashboard Widgets">9. KPI និង Dashboard Widgets</a>
+<a href="#10-គំរូ-database-schema" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="10. គំរូ Database Schema">10. គំរូ Database Schema</a>
+<a href="#11-ការការពារសុវត្ថិភាព-security-hardening" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="11. ការការពារសុវត្ថិភាព (Security Hardening)">11. ការការពារសុវត្ថិភាព (Security Hardening)</a>
+<a href="#111-authentication-requirements" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="11.1 Authentication Requirements">11.1 Authentication Requirements</a>
+<a href="#112-authorization-rules" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="11.2 Authorization Rules">11.2 Authorization Rules</a>
+<a href="#113-data-isolation-tenant-separation" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="11.3 Data Isolation (Tenant Separation)">11.3 Data Isolation (Tenant Separation)</a>
+<a href="#12-អនុសាសន៍-architect-prototype-planning" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="12. អនុសាសន៍ Architect + Prototype Planning">12. អនុសាសន៍ Architect + Prototype Planning</a>
+<a href="#121-ចំណុចខ្ញុំណែនាំ-my-recommendations" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="12.1 ចំណុចខ្ញុំណែនាំ (My Recommendations)">12.1 ចំណុចខ្ញុំណែនាំ (My Recommendations)</a>
+<a href="#122-ផែនការ-prototype-pages-prototype-checklist" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="12.2 ផែនការ Prototype Pages (Prototype Checklist)">12.2 ផែនការ Prototype Pages (Prototype Checklist)</a>
+<a href="#123-ការ-validate-prototype-before-moving-to-next-role" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="12.3 ការ Validate Prototype (Before Moving to Next Role)">12.3 ការ Validate Prototype (Before Moving to Next Role)</a>
+<a href="#13-faq" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="13. FAQ">13. FAQ</a>
+                </div>
+                <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
+                    <a href="DIGITECHKH-Roles-And-Permissions-Interactive-Guide.html?role=superadmin" class="w-full py-2 px-3 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-700 text-xs font-medium flex items-center justify-between transition border border-slate-200">
+                        <span>មើលក្នុងផ្ទាំងអន្តរកម្ម</span>
+                        <i class="fas fa-up-right-from-square text-[10px] text-slate-400"></i>
+                    </a>
+                    <a href="role_superadmin.md" class="w-full py-2 px-3 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-500 text-[11px] font-normal flex items-center justify-between transition border border-slate-200">
+                        <span>មើលឯកសារដើម (.md)</span>
+                        <i class="fas fa-file-code text-[10px]"></i>
+                    </a>
+                </div>
+            </aside>
+
+            <!-- Main Document Body -->
+            <main class="print-container flex-1 bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-12 min-w-0 max-w-4xl mx-auto">
+
+                <!-- Breadcrumb -->
+                <div class="no-print flex items-center gap-2 text-xs text-slate-500 mb-6 flex-wrap pb-4 border-b border-slate-100">
+                    <a href="index.html" class="hover:text-primary transition flex items-center gap-1">
+                        <i class="fas fa-home"></i> មជ្ឈមណ្ឌលឯកសារ
+                    </a>
+                    <span>/</span>
+                    <a href="DIGITECHKH-Roles-And-Permissions-Interactive-Guide.html" class="hover:text-primary transition">
+                        តួនាទីទាំង 10
+                    </a>
+                    <span>/</span>
+                    <span class="text-slate-800 font-semibold">ស៊ុបភើរ អភិបាល</span>
+                </div>
+
+                <!-- Document Rendered HTML -->
+                <article class="prose prose-slate max-w-none">
+                    <h1 id="digitechkh-bms-ការសិក្សាស៊ីជម្រៅ-តួនាទី-ស៊ុបភើរ-អភិបាល-super-admin" class="scroll-mt-24 group">👑 DIGITECHKH BMS — ការសិក្សាស៊ីជម្រៅ: តួនាទី ស៊ុបភើរ អភិបាល (Super Admin) <a href="#digitechkh-bms-ការសិក្សាស៊ីជម្រៅ-តួនាទី-ស៊ុបភើរ-អភិបាល-super-admin" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h1>
+<div class="my-5 p-4 rounded-xl bg-slate-50 border-l-4 border-[#0f2b5c] text-slate-800 text-xs leading-relaxed shadow-sm">
+<p><strong>ឯកសារ</strong>: <code>role_superadmin.md</code><br><strong>កំណែ</strong>: 1.0<br><strong>កាលបរិច្ឆេទ</strong>: 20 កញ្ញា 2026<br><strong>គោលបំណង</strong>: ការយល់ 100% អំពីតួនាទី Super Admin មុនពេលចាប់ផ្តើម Prototype — រួមមានអត្តសញ្ញាណ, សិទ្ធិ, UI/UX, ការងារ, ស្ថាបត្យកម្ម, និងអនុសាសន៍ Architect</p>
+</div>
+<hr>
+<h2 id="តារាងមាតិកា-table-of-contents" class="scroll-mt-24 group">តារាងមាតិកា (Table of Contents) <a href="#តារាងមាតិកា-table-of-contents" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<ol>
+<li><a href="#1-%E1%9E%A2%E1%9F%92%E1%9E%9C%E1%9E%B8%E1%9E%87%E1%9E%B6-super-admin">អ្វីជា Super Admin?</a></li>
+<li><a href="#2-%E1%9E%8B%E1%9E%B6%E1%9E%93%E1%9E%B6%E1%9E%93%E1%9E%BB%E1%9E%80%E1%9F%92%E1%9E%9A%E1%9E%98%E1%9E%80%E1%9F%92%E1%9E%93%E1%9E%BB%E1%9E%84%E1%9E%94%E1%9F%92%E1%9E%9A%E1%9E%96%E1%9F%90%E1%9E%93%E1%9F%92%E1%9E%92">ឋានានុក្រមក្នុងប្រព័ន្ធ</a></li>
+<li><a href="#3-%E1%9E%A2%E1%9F%92%E1%9E%9C%E1%9E%B8%E1%9E%8A%E1%9F%82%E1%9E%9B-super-admin-%E1%9E%92%E1%9F%92%E1%9E%9C%E1%9E%BE%E1%9E%94%E1%9E%B6%E1%9E%93">អ្វីដែល Super Admin ធ្វើបាន (Full Capability Map)</a></li>
+<li><a href="#4-%E1%9E%91%E1%9F%86%E1%9E%96%E1%9F%90%E1%9E%9A-ui-%E1%9E%91%E1%9E%B6%E1%9F%86%E1%9E%84-6">ទំព័រ UI ទាំង 6 (Page-by-Page Blueprint)</a></li>
+<li><a href="#5-%E1%9E%98%E1%9F%89%E1%9E%B6%E1%9E%91%E1%9F%92%E1%9E%9A%E1%9E%B8%E1%9E%9F%E1%9E%9F%E1%9E%B7%E1%9E%91%E1%9F%92%E1%9E%92%E1%9E%B7">ម៉ាទ្រីសសិទ្ធិ (Permission Matrix)</a></li>
+<li><a href="#6-%E1%9E%9C%E1%9E%8A%E1%9F%92%E1%9E%8F%E1%9E%80%E1%9E%B6%E1%9E%9A%E1%9E%84%E1%9E%B6%E1%9E%9A%E1%9E%9F%E1%9F%92%E1%9E%93%E1%9E%BC%E1%9E%9B%E1%9E%91%E1%9E%B6%E1%9F%86%E1%9E%84-4">វដ្តការងារស្នូលទាំង 4 (Core Workflows)</a></li>
+<li><a href="#7-%E1%9E%91%E1%9F%86%E1%9E%93%E1%9E%B6%E1%9E%80%E1%9F%8B%E1%9E%91%E1%9F%86%E1%9E%93%E1%9E%84%E1%9E%87%E1%9E%B6%E1%9E%98%E1%9E%BD%E1%9E%99%E1%9E%8F%E1%9E%BD%E1%9E%93%E1%9E%B6%E1%9E%91%E1%9E%B8%E1%9E%95%E1%9F%92%E1%9E%9F%E1%9F%81%E1%9E%84">ទំនាក់ទំនងជាមួយតួនាទីផ្សេង (Role Interaction Map)</a></li>
+<li><a href="#8-%E1%9E%9F%E1%9F%92%E1%9E%90%E1%9E%B6%E1%9E%94%E1%9E%8F%E1%9F%92%E1%9E%99%E1%9E%80%E1%9E%98%E1%9F%92%E1%9E%98-data-scope">ស្ថាបត្យកម្ម Data Scope (What Data Can See)</a></li>
+<li><a href="#9-kpi-%E1%9E%93%E1%9E%B7%E1%9E%84-dashboard-widgets">KPI និង Dashboard Widgets</a></li>
+<li><a href="#10-%E1%9E%82%E1%9F%86%E1%9E%9A%E1%9E%BC-database-schema">គំរូ Database Schema សម្រាប់ Super Admin</a></li>
+<li><a href="#11-%E1%9E%80%E1%9E%B6%E1%9E%9A%E1%9E%80%E1%9E%B6%E1%9E%9A%E1%9E%96%E1%9E%B6%E1%9E%9A%E1%9E%9F%E1%9E%BB%E1%9E%9C%E1%9E%8F%E1%9F%92%E1%9E%90%E1%9E%B7%E1%9E%97%E1%9E%B6%E1%9E%96">ការការពារសុវត្ថិភាព (Security Hardening)</a></li>
+<li><a href="#12-%E1%9E%A2%E1%9E%93%E1%9E%BB%E1%9E%9F%E1%9E%B6%E1%9E%9F%E1%9E%93%E1%9F%8D-architect--prototype-planning">អនុសាសន៍ Architect + Prototype Planning</a></li>
+<li><a href="#13-faq">FAQ — ចម្លើយសំណួរទូទៅ</a></li>
+</ol>
+<hr>
+<h2 id="1-អ្វីជា-super-admin" class="scroll-mt-24 group">1. អ្វីជា Super Admin? <a href="#1-អ្វីជា-super-admin" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="11-និយមន័យ-definition" class="scroll-mt-24 group">1.1 និយមន័យ (Definition) <a href="#11-និយមន័យ-definition" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p><strong>Super Admin</strong> (ស៊ុបភើរ អភិបាល) គឺជា <strong>Root Authority</strong> ខ្ពស់បំផុតក្នុងប្រព័ន្ធ DIGITECHKH BMS ។ គាត់/នាង <strong>មិនមែនជាអ្នកប្រើប្រាស់ប្រចាំថ្ងៃ (Day-to-day User)</strong> ដូចជា Admin ក្រុមហ៊ុន, Sales Staff ឬ Cashier ឡើយ — តែជា <strong>អ្នកដំណើរការ Platform</strong> (Platform Operator) ដែលជារបស់ DIGITECHKH Co., Ltd. ផ្ទាល់ (developer/owner of the SaaS platform)។</p>
+<div class="my-5 p-4 rounded-xl bg-blue-50/90 border-l-4 border-blue-500 text-blue-950 text-xs leading-relaxed shadow-sm">
+<p>💡 <strong>ការប្រៀបធៀប</strong>: Super Admin ដូចជា <strong>Amazon Web Services (AWS) Account Root User</strong> — អ្នកដែលគ្រប់គ្រង Cloud Platform រួម ហើយ Admin/GM របស់ ក្រុមហ៊ុននីមួយៗ ដូចជា Customer AWS Account ម្នាក់ៗ ដែលបាន Onboard ចូលប្រើប្រព័ន្ធ។</p>
+</div>
+<h3 id="12-ទំនាក់ទំនងជាមួយ-multi-tenant-architecture" class="scroll-mt-24 group">1.2 ទំនាក់ទំនងជាមួយ Multi-Tenant Architecture <a href="#12-ទំនាក់ទំនងជាមួយ-multi-tenant-architecture" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p>ប្រព័ន្ធ DIGITECHKH BMS ប្រើប្រាស់ <strong>Multi-Tenant Architecture</strong> ដែលមានន័យថា ក្រុមហ៊ុនអតិថិជន (Tenants) ច្រើននាកដំណើរការប្រព័ន្ធដូចគ្នា ប៉ុន្តែទិន្នន័យ <strong>ដាច់ដោយឡែក 100%</strong> ពីគ្នា:</p>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>Super Admin (Platform Level)
+│
+├── Tenant 1: ហាងទំនិញ ABC Co., Ltd.
+│   ├── Admin (GM ហាង ABC)
+│   ├── Sales Staff 3 នាក់
+│   ├── Cashier 2 នាក់
+│   └── ...
+│
+├── Tenant 2: ក្រុមហ៊ុន XYZ Import-Export
+│   ├── Admin (GM XYZ)
+│   ├── Procurement Staff 2 នាក់
+│   └── ...
+│
+└── Tenant N: ...
+</code></pre>
+        </div>
+<p><strong>Super Admin</strong> ឃើញ Tenant ទាំងអស់ ប៉ុន្តែ <strong>Admin ក្រុមហ៊ុន A</strong> ឃើញតែ Tenant A ប៉ុណ្ណោះ — ហើយ <strong>Admin ក្រុមហ៊ុន B</strong> ឃើញតែ Tenant B ។</p>
+<h3 id="13-super-admin-ជានរណា-who-is-this-person-in-real-life" class="scroll-mt-24 group">1.3 Super Admin ជានរណា? (Who is this Person in Real Life?) <a href="#13-super-admin-ជានរណា-who-is-this-person-in-real-life" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p>ក្នុងតំណាក់កាល Prototype/MVP ២ ស្ថានភាពសម្រាប់ Super Admin:</p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ស្ថានភាព</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Super Admin ជានរណា</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ករណីប្រើប្រាស់</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ករណី A</strong> (SaaS)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Developer / Owner of DIGITECHKH</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">អតិថិជនច្រើននាក់ជាវប្រើប្រាស់ Platform</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ករណី B</strong> (Custom Deployment)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">IT Administrator ម្ចាស់</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ក្រុមហ៊ុនតែ 1 ។ Super Admin = System IT</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="2-ឋានានុក្រមក្នុងប្រព័ន្ធ" class="scroll-mt-24 group">2. ឋានានុក្រមក្នុងប្រព័ន្ធ <a href="#2-ឋានានុក្រមក្នុងប្រព័ន្ធ" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>┌─────────────────────────────────────┐
+│        👑 SUPER ADMIN               │ ← Platform Owner (DIGITECHKH)
+│   (Global / Multi-Tenant Scope)     │   Root Access — គ្មានដែនកំណត់
+└───────────────┬─────────────────────┘
+                │ Onboards / Manages
+                ▼
+┌─────────────────────────────────────┐
+│    🏢 ADMIN / GM (Tenant Level)     │ ← ម្ចាស់ / អ្នកគ្រប់គ្រងក្រុមហ៊ុន
+│   (Company-wide Scope Only)         │   Full permissions ក្នុង Tenant ខ្លួន
+└───────────────┬─────────────────────┘
+                │ Manages
+        ┌───────┼───────────────┐
+        ▼       ▼               ▼
+   Sales    Warehouse      Accountant
+   Staff      Staff         Staff...
+</code></pre>
+        </div>
+<p><strong>Super Admin VS Admin:</strong></p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ចំណុច</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Super Admin</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Admin/GM</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ចំនួន Tenants ដែលមើលឃើញ</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ទាំងអស់ (N Tenants)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">1 Tenant ប៉ុណ្ណោះ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>កំណត់ Subscription/Quota</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">✅ ចាស</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ ទេ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Suspend/Delete Tenant</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">✅ ចាស</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ ទេ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Global Audit Log</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">✅ ទាំងអស់</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ Tenant ខ្លួន</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>System Config</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">✅ Platform Level</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">⚠️ Company Level</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ចូលមើលប្រតិបត្តិការ (Invoice/PO)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">👁️ Read-Only (Audit)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">✅ Full CRUD</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ធ្វើ Business Transaction</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ ហាម</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">✅ ចាស</td>
+</tr>
+</tbody></table></div>
+<div class="my-5 p-4 rounded-xl bg-amber-50/90 border-l-4 border-amber-500 text-amber-950 text-xs leading-relaxed shadow-sm">
+<p>⚠️ <strong>ចំណុចសំខាន់</strong>: Super Admin <strong>ហាមដាច់ខាតធ្វើ Business Transactions</strong> (បង្កើត Invoice, PO, Payroll ជាដើម) ។ Super Admin ធ្វើការ <strong>Platform Operations Only</strong>។ នេះជា Design Principle ដ៏សំខាន់!</p>
+</div>
+<hr>
+<h2 id="3-អ្វីដែល-super-admin-ធ្វើបាន-full-capability-map" class="scroll-mt-24 group">3. អ្វីដែល Super Admin ធ្វើបាន (Full Capability Map) <a href="#3-អ្វីដែល-super-admin-ធ្វើបាន-full-capability-map" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="31-capability-matrix-ពេញលេញ" class="scroll-mt-24 group">3.1 Capability Matrix ពេញលេញ <a href="#31-capability-matrix-ពេញលេញ" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>SUPER ADMIN CAPABILITIES
+│
+├── 🏢 COMPANY MANAGEMENT
+│   ├── [CREATE] ចុះឈ្មោះ Tenant / ក្រុមហ៊ុនថ្មី (Onboarding)
+│   ├── [READ]   មើលបញ្ជីក្រុមហ៊ុនទាំងអស់
+│   ├── [UPDATE] កែប្រែព័ត៌មានក្រុមហ៊ុន (ឈ្មោះ, ទំនាក់ទំនង, Logo)
+│   ├── [UPDATE] Activate / Deactivate Tenant
+│   └── [DELETE] លុប Tenant (Soft Delete + Archive Data)
+│
+├── 📦 SUBSCRIPTION &amp; PLAN MANAGEMENT
+│   ├── [READ]   មើលបញ្ជី Subscription Plans ទាំងអស់
+│   ├── [UPDATE] ផ្លាស់ប្តូរ Plan របស់ Tenant (Upgrade/Downgrade)
+│   ├── [UPDATE] កំណត់ User Quota (Max Users per Tenant)
+│   ├── [UPDATE] កំណត់ Feature Flags (Enable/Disable features per Tenant)
+│   ├── [UPDATE] ចូរសុពលភាព Subscription (Renewal Date, Grace Period)
+│   └── [UPDATE] ផ្ញើ Renewal Reminder ស្វ័យប្រវត្តិ
+│
+├── 📋 AUDIT LOG &amp; MONITORING
+│   ├── [READ]   Global Audit Log (What, Who, When, IP — ទ្រើស Tenant ណាក៏បាន)
+│   ├── [READ]   System Activity Dashboard (Login History, Failed Attempts)
+│   ├── [READ]   Error Log &amp; System Health Metrics
+│   └── [EXPORT] ទាញ Audit Log ជា CSV / PDF
+│
+├── ⚙️ SYSTEM CONFIGURATION
+│   ├── [UPDATE] Global System Settings (Maintenance Mode, Version Info)
+│   ├── [UPDATE] Default VAT Rate, Default Currency
+│   ├── [UPDATE] Email/Telegram Notification Templates
+│   └── [UPDATE] Backup Schedule Configuration
+│
+└── 🔐 SECURITY OVERSIGHT
+    ├── [READ]   មើល Failed Login Attempts (All Tenants)
+    ├── [UPDATE] Force Reset Password (Any User, Any Tenant)
+    ├── [UPDATE] Lock / Unlock User Account
+    └── [READ]   Active Sessions Monitor
+</code></pre>
+        </div>
+<h3 id="32-អ្វីដែល-super-admin-ធ្វើបាន-green-light" class="scroll-mt-24 group">3.2 អ្វីដែល Super Admin <strong>ធ្វើ</strong>បាន (Green Light ✅) <a href="#32-អ្វីដែល-super-admin-ធ្វើបាន-green-light" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">#</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">សកម្មភាព</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ហេតុ</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">1</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Onboard ក្រុមហ៊ុនថ្មីចូលប្រព័ន្ធ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Platform Business</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">2</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ជ្រើសរើស Subscription Plan</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Revenue Management</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">3</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Suspend Tenant ដែលមិនបង់</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Enforcement</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">4</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">មើល Global Audit Log</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Security &amp; Compliance</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">5</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Reset Password User ណាមួយ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Emergency Support</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">6</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Lock User ណាមួយ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Security Incident Response</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">7</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Export Audit Data ផ្ញើ Auditor</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Compliance Report</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">8</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Enable/Disable Feature per Tenant</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Subscription Control</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">9</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Monitor System Health</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Platform Operations</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">10</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Configure Backup Schedule</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Data Safety</td>
+</tr>
+</tbody></table></div>
+<h3 id="33-អ្វីដែល-super-admin-ហាមធ្វើ-red-zone" class="scroll-mt-24 group">3.3 អ្វីដែល Super Admin <strong>ហាម</strong>ធ្វើ (Red Zone ❌) <a href="#33-អ្វីដែល-super-admin-ហាមធ្វើ-red-zone" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">#</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ហាម</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ហេតុ</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">1</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ បង្កើត Invoice / Quote</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Super Admin ≠ Salesperson</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">2</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ ធ្វើ Stock Adjustment</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Super Admin ≠ Warehouse Staff</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">3</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ បង្កើត Payroll</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Super Admin ≠ HR</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">4</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ ចូល POS Dashboard</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Super Admin ≠ Cashier</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">5</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ Edit Invoice/PO ក្រុមហ៊ុន</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Avoid Conflict of Interest</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">6</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ Delete Business Data</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Data Protection Policy</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">7</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ Access Financial Reports</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Tenant Privacy</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">8</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ ចូល Customer Data ដោយផ្ទាល់</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">GDPR / Privacy</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="4-ទំព័រ-ui-ទាំង-6-page-by-page-blueprint" class="scroll-mt-24 group">4. ទំព័រ UI ទាំង 6 (Page-by-Page Blueprint) <a href="#4-ទំព័រ-ui-ទាំង-6-page-by-page-blueprint" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<p>ក្នុង Prototype បច្ចុប្បន្ន Super Admin Portal (path: <code>8-super-admin/</code>) មាន <strong>6 ទំព័រ</strong>:</p>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>8-super-admin/
+├── dashboard.html
+├── 1-companies/
+│   ├── companies.html
+│   ├── create-company.html
+│   ├── edit-company.html          ← [+ បន្ថែម] ទម្រង់កែប្រែព័ត៌មានក្រុមហ៊ុន
+│   └── view-company.html
+├── 2-subscriptions/
+│   └── subscriptions.html
+└── 4-audit-logs/
+    └── audit-logs.html
+</code></pre>
+        </div>
+<div class="my-5 p-4 rounded-xl bg-slate-50 border-l-4 border-[#0f2b5c] text-slate-800 text-xs leading-relaxed shadow-sm">
+<p><strong>ចំណាំ</strong>: ថតលេខ <code>3</code> (settings per tenant) ត្រូវបានបម្រុងទុកសម្រាប់ Phase 2 — <code>3-system-settings/</code></p>
+</div>
+<h3 id="41-dashboardhtml-ផ្ទាំងគ្រប់គ្រងសកល-global-overview" class="scroll-mt-24 group">4.1 <code>dashboard.html</code> — ផ្ទាំងគ្រប់គ្រងសកល (Global Overview) <a href="#41-dashboardhtml-ផ្ទាំងគ្រប់គ្រងសកល-global-overview" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p><strong>គោលបំណង</strong>: ទំព័រដំបូងដែល Super Admin ឃើញ — ផ្ទាំង KPI ចម្រុះ ដែលបង្ហាញ <strong>ស្ថានភាពសុខភាពប្រព័ន្ធទូទៅ</strong>។</p>
+<p><strong>ខ្លឹមសារដែលត្រូវបង្ហាញ</strong>:</p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Section</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Widget</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ទិន្នន័យ</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>KPI Row 1</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">📊 Tenants សកម្ម</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ចំនួនក្រុមហ៊ុនកំពុងប្រើ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>KPI Row 1</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">💰 MRR (Monthly Recurring Revenue)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ចំណូលប្រចាំខែ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>KPI Row 1</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">⚠️ ជាវហួសកាល</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ចំនួន Tenants ហួស Renewal Date</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>KPI Row 1</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">🔴 Tenants ផ្អាកដំណើរការ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Suspended Count</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Table</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Tenants ចុងក្រោយ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">10 ក្រុមហ៊ុនចុងក្រោយ + Status Badge</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Chart</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ក្រាហ្វ Subscriptions ប្រចាំខែ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Growth Chart</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Alert Box</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Renewals ក្នុង 7 ថ្ងៃ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">List of Expiring Soon</td>
+</tr>
+</tbody></table></div>
+<p><strong>ជម្រើស Action Buttons</strong>:</p>
+<ul>
+<li>ប៊ូតុង «+ ចុះឈ្មោះក្រុមហ៊ុនថ្មី» → <code>create-company.html</code></li>
+<li>ប៊ូតុង «មើល Audit Log» → <code>audit-logs.html</code></li>
+</ul>
+<hr>
+<h3 id="42-companieshtml-បញ្ជីក្រុមហ៊ុន-tenant-list" class="scroll-mt-24 group">4.2 <code>companies.html</code> — បញ្ជីក្រុមហ៊ុន (Tenant List) <a href="#42-companieshtml-បញ្ជីក្រុមហ៊ុន-tenant-list" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p><strong>គោលបំណង</strong>: ទំព័រសម្រាប់ Super Admin មើល <strong>ក្រុមហ៊ុន (Tenants) ទាំងអស់</strong> ដែលបានចុះឈ្មោះក្នុងប្រព័ន្ធ ។</p>
+<p><strong>ជួរឈរតារាង (Table Columns)</strong>:</p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ជួរឈរ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ប្រភេទ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ឧទាហរណ៍</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">លេខ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Auto</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">1, 2, 3</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ឈ្មោះក្រុមហ៊ុន</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Text</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ABC Co., Ltd.</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">TIN (ស.ស.អ)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Text</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">K001-9999999</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Plan</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Badge</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Starter / Pro / Enterprise</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ចំនួន Users</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Number</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">5 / 10</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ផុតកំណត់</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Date</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">31 ធ្នូ 2026</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ស្ថានភាព</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Badge</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">🟢 សកម្ម / 🟡 ជិតផុត / 🔴 ផ្អាក</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">សកម្មភាព</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">⋮ Menu</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">មើល, ផ្លាស់ Plan, Suspend, Reset Admin Password</td>
+</tr>
+</tbody></table></div>
+<p><strong>Filters</strong>:</p>
+<ul>
+<li>ស្វែងរកតាមឈ្មោះ</li>
+<li>Filter តាម Status (All / Active / Suspended / Expired)</li>
+<li>Filter តាម Plan Type</li>
+<li>Date Range Picker ជ្រើសរើសតាមកាលបរិច្ឆេទចុះឈ្មោះ</li>
+</ul>
+<p><strong>Action Dropdown (⋮)</strong>:</p>
+<ol>
+<li>👁️ <strong>មើលលម្អិត</strong> → <code>view-company.html?id=...</code></li>
+<li>📦 <strong>ផ្លាស់ Plan</strong> → Inline Plan Change (Custom Dropdown)</li>
+<li>🔴 <strong>ផ្អាកដំណើរការ</strong> → <code>showCustomConfirm()</code> សួរបញ្ជាក់</li>
+<li>🔑 <strong>Reset Password Admin</strong> → ផ្ញើ Reset Email ស្វ័យប្រវត្តិ</li>
+</ol>
+<hr>
+<h3 id="43-create-companyhtml-ចុះឈ្មោះក្រុមហ៊ុនថ្មី" class="scroll-mt-24 group">4.3 <code>create-company.html</code> — ចុះឈ្មោះក្រុមហ៊ុនថ្មី <a href="#43-create-companyhtml-ចុះឈ្មោះក្រុមហ៊ុនថ្មី" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p><strong>គោលបំណង</strong>: Form សម្រាប់ Super Admin Onboard ក្រុមហ៊ុន (Tenant) ថ្មីចូលប្រព័ន្ធ ។</p>
+<p><strong>ទ្រង់ទ្រាយ Form (2 Column Enterprise Layout)</strong>:</p>
+<p><strong>Section 1 — ព័ត៌មានក្រុមហ៊ុន</strong></p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Field</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ប្រភេទ</th>
+<th align="center">Required</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ចំណាំ</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ឈ្មោះក្រុមហ៊ុន (ខ្មែរ)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Text</td>
+<td align="center">✅</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ដូចក្នុង វិញ្ញាបនបត្រចុះបញ្ជីក្រុមហ៊ុន</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ឈ្មោះក្រុមហ៊ុន (អង់គ្លេស)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Text</td>
+<td align="center">✅</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"></td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">លេខ TIN ពន្ធដារ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Text</td>
+<td align="center">✅</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Format: 9-10 ខ្ទង់ (ឧ. 1001234567) ស្រប GDT</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ទំនាក់ទំនងអ្នកទទួលខុសត្រូវ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Text</td>
+<td align="center">✅</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ឈ្មោះ Admin ម្ចាស់</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Email Admin</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Email</td>
+<td align="center">✅</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Login email ដំបូង</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Phone</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Text</td>
+<td align="center">✅</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"></td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ទីតាំង / អាសយដ្ឋាន</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Textarea</td>
+<td align="center">⚠️</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"></td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Logo ក្រុមហ៊ុន</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">File Upload</td>
+<td align="center">⚠️</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">PNG / JPG ≤ 2MB</td>
+</tr>
+</tbody></table></div>
+<p><strong>Section 2 — ការកំណត់ Subscription</strong></p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Field</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ប្រភេទ</th>
+<th align="center">Required</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ជម្រើស</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Subscription Plan</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Custom Dropdown</td>
+<td align="center">✅</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Starter / Pro / Enterprise</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ចំនួន User អតិបរមា</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Number</td>
+<td align="center">✅</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">5 / 10 / 50 / ∞</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">រូបិយប័ណ្ណគោល</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Custom Dropdown</td>
+<td align="center">✅</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">USD / KHR</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ថ្ងៃចាប់ផ្តើមជាវ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Date Picker</td>
+<td align="center">✅</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Default: Today</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">រយៈពេលជាវ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Custom Dropdown</td>
+<td align="center">✅</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">1 ខែ / 3 ខែ / 6 ខែ / 12 ខែ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ថ្ងៃផុតកំណត់ (Auto)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Display Only</td>
+<td align="center">—</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Calculate auto</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ចំណាំ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Textarea</td>
+<td align="center">⚠️</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Internal Notes</td>
+</tr>
+</tbody></table></div>
+<p><strong>Section 3 — ការកំណត់ Feature</strong></p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Feature</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Toggle</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Default</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ម៉ូឌុល POS (Touch Screen)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">✅/❌</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ON</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ម៉ូឌុល e-Commerce Showroom</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">✅/❌</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">OFF</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ម៉ូឌុល HR &amp; Payroll</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">✅/❌</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ON</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ការជូនដំណឹងតាម Telegram</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">✅/❌</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ON</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Multi-Warehouse</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">✅/❌</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">OFF</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Lot/Expiry Tracking</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">✅/❌</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">OFF</td>
+</tr>
+</tbody></table></div>
+<p><strong>Buttons</strong>:</p>
+<ul>
+<li>«ចុះឈ្មោះ» → Create Tenant + Send Welcome Email to Admin</li>
+<li>«បោះបង់» → Back to <code>companies.html</code></li>
+</ul>
+<hr>
+<h3 id="44-view-companyhtml-ព័ត៌មានលម្អិតក្រុមហ៊ុន" class="scroll-mt-24 group">4.4 <code>view-company.html</code> — ព័ត៌មានលម្អិតក្រុមហ៊ុន <a href="#44-view-companyhtml-ព័ត៌មានលម្អិតក្រុមហ៊ុន" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p><strong>គោលបំណង</strong>: ទំព័រ Read-Only (+ Limited Edit) ទំព័របង្ហាញពេញ Profile ក្រុមហ៊ុន មួយ ។</p>
+<p><strong>ប្លង់ (3 Sections Layout)</strong>:</p>
+<p><strong>Header Section</strong>: Logo + ឈ្មោះ + TIN + Status Badge + Action Buttons</p>
+<p><strong>Action Buttons</strong> (ក្នុង Header):</p>
+<ul>
+<li>🟢/🔴 «Activate / Suspend»</li>
+<li>🔑 «Reset Admin Password»</li>
+<li>📦 «ផ្លាស់ Plan»</li>
+<li>🖨️ «Print Profile»</li>
+</ul>
+<p><strong>Tab 1 — ព័ត៌មានទូទៅ</strong>:</p>
+<ul>
+<li>ព័ត៌មានក្រុមហ៊ុន (អាចដាក់ Edit inline)</li>
+<li>Subscription Details (Plan, Dates, Quota)</li>
+<li>Feature Flags ដែលបានបើក</li>
+</ul>
+<p><strong>Tab 2 — Audit / Usage Stats</strong>:</p>
+<ul>
+<li>ចំនួន Users សកម្ម vs ចំនួន Quota</li>
+<li>ចំនួន Login ក្នុង 30 ថ្ងៃ</li>
+<li>Last Login Date/Time</li>
+<li>ចំនួន Invoices បង្កើតក្នុងខែ</li>
+<li>Data Storage Used</li>
+</ul>
+<p><strong>Tab 3 — Subscription History</strong>:</p>
+<ul>
+<li>ប្រវត្តិ Plan ផ្លាស់ប្តូរ (table)</li>
+<li>ប្រវត្តិ Renewal (table)</li>
+<li>Timeline Events</li>
+</ul>
+<hr>
+<h3 id="45-subscriptionshtml-គ្រប់គ្រង-plans" class="scroll-mt-24 group">4.5 <code>subscriptions.html</code> — គ្រប់គ្រង Plans <a href="#45-subscriptionshtml-គ្រប់គ្រង-plans" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p><strong>គោលបំណង</strong>: ទំព័រ Overview ដ៏ Comprehensive ខ្ញុំណែនាំ <strong>2 Section</strong>:</p>
+<p><strong>Section A — Plan Definitions</strong> (Super Admin កំណត់ Plans):</p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Plan</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Users</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Features</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Price/Month</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Starter</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">5</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Sales + POS + Stock only</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">$29</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Pro</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">15</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">All features except HR</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">$69</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Enterprise</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Unlimited</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">All features + Priority Support</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">$199</td>
+</tr>
+</tbody></table></div>
+<p><strong>Section B — Active Subscriptions Table</strong>:</p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Column</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Description</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ក្រុមហ៊ុន</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Tenant Name</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Plan</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Badge</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ផ្តើម</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Start Date</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ផុតកំណត់</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Expiry + Status (Countdown)</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ចំណូល/ខែ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Revenue</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Actions</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Renew / Upgrade / Downgrade</td>
+</tr>
+</tbody></table></div>
+<p><strong>KPI Row</strong> (ខ្ញុំណែនាំ):</p>
+<ul>
+<li>💵 MRR Total</li>
+<li>📈 New This Month</li>
+<li>⚠️ Expiring in 7 Days</li>
+<li>💔 Churned This Month</li>
+</ul>
+<hr>
+<h3 id="46-audit-logshtml-global-audit-log" class="scroll-mt-24 group">4.6 <code>audit-logs.html</code> — Global Audit Log <a href="#46-audit-logshtml-global-audit-log" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p><strong>គោលបំណង</strong>: ទំព័រ <strong>Read-Only</strong> ដ៏សំខាន់ — Super Admin មើលចូលទៅ Activity ផ្ទៃក្នុងប្រព័ន្ធទាំងអស់ ។</p>
+<p><strong>ជួរឈរ Audit Table</strong>:</p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ជួរឈរ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ឧទាហរណ៍</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ពេលវេលា</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">20 កញ្ញា 2026, 10:45:32</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ក្រុមហ៊ុន</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ABC Co., Ltd.</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">User</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ហេង សុខ (Sales Staff)</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">IP Address</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">192.168.1.10</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Action</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">DELETE_INVOICE</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Entity</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Invoice #INV-2026-0045</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">លទ្ធផល</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">SUCCESS / FAILED</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ព័ត៌មានបន្ថែម</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Reason: Customer cancel</td>
+</tr>
+</tbody></table></div>
+<p><strong>Filter Options</strong> (Critical for Audit):</p>
+<ul>
+<li>ជ្រើស Tenant</li>
+<li>ជ្រើស Action Type (LOGIN, CREATE, UPDATE, DELETE, EXPORT)</li>
+<li>ជ្រើស User</li>
+<li>Date Range Picker</li>
+<li>IP Address filter</li>
+</ul>
+<p><strong>Important Features</strong>:</p>
+<ul>
+<li>❌ <strong>ហាម Edit / Delete</strong> Audit Logs (Immutable)</li>
+<li>✅ <strong>Export ជា CSV / PDF</strong></li>
+<li>✅ <strong>Highlight</strong> Failed Attempts (Red row)</li>
+<li>✅ <strong>Alert</strong> ពេល Failed Login &gt; 5 ដង</li>
+</ul>
+<hr>
+<h2 id="5-ម៉ាទ្រីសសិទ្ធិ-permission-matrix" class="scroll-mt-24 group">5. ម៉ាទ្រីសសិទ្ធិ (Permission Matrix) <a href="#5-ម៉ាទ្រីសសិទ្ធិ-permission-matrix" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="51-full-crud-matrix" class="scroll-mt-24 group">5.1 Full CRUD Matrix <a href="#51-full-crud-matrix" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Module / Feature</th>
+<th align="center">CREATE</th>
+<th align="center">READ</th>
+<th align="center">UPDATE</th>
+<th align="center">DELETE</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Tenant Profile</strong></td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+<td align="center">⚠️ Soft-Delete</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Subscription Plan</strong></td>
+<td align="center">✅ (Config)</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>User Accounts</strong></td>
+<td align="center">⚠️ Admin Only (Onboard)</td>
+<td align="center">✅ (All)</td>
+<td align="center">✅ (Force Reset PW / Lock)</td>
+<td align="center">❌</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Audit Logs</strong></td>
+<td align="center">—</td>
+<td align="center">✅</td>
+<td align="center">❌ Immutable</td>
+<td align="center">❌ Immutable</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Business Invoices</strong></td>
+<td align="center">❌</td>
+<td align="center">👁️ Audit Only</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Business Inventory</strong></td>
+<td align="center">❌</td>
+<td align="center">👁️ Audit Only</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Financial Reports</strong></td>
+<td align="center">❌</td>
+<td align="center">👁️ Audit Only</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>System Settings</strong></td>
+<td align="center">—</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+<td align="center">—</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Feature Flags</strong></td>
+<td align="center">—</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+<td align="center">—</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Email Templates</strong></td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+</tr>
+</tbody></table></div>
+<div class="my-5 p-4 rounded-xl bg-amber-50/90 border-l-4 border-amber-500 text-amber-950 text-xs leading-relaxed shadow-sm">
+<p><strong>⚠️ Legend</strong>: ✅ Full | ⚠️ Limited/Conditional | 👁️ Read-Only (Audit Stats Only) | ❌ Not Allowed<br><strong>ចំណាំ <code>⚠️ Admin Only (Onboard)</code></strong>: Super Admin Create Initial Admin Account ពេល Onboard ក្រុមហ៊ុនថ្មីតែប៉ុណ្ណោះ — Admin Account ផ្សេងៗ User ទូទៅ ចាំ Admin ក្រុមហ៊ុន Create ខ្លួនឯង</p>
+</div>
+<h3 id="52-data-scope-ឃើញអ្វី" class="scroll-mt-24 group">5.2 Data Scope (ឃើញអ្វី?) <a href="#52-data-scope-ឃើញអ្វី" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>Super Admin CAN SEE:
+✅ Dashboard stats: Total Tenants, MRR, Expiring Subscriptions
+✅ Company list (all tenants) with basic info
+✅ Subscription details per tenant
+✅ Global Audit Log (all actions, all tenants)
+✅ User list per tenant (names, roles, last login)
+✅ System-level error logs and health metrics
+
+Super Admin CANNOT SEE (Tenant Data Privacy):
+❌ Actual Invoice amounts and customer names
+❌ Inventory quantities and cost prices
+❌ Payroll figures and employee salaries
+❌ Financial P&amp;L reports
+❌ Customer contact information
+❌ Supplier pricing contracts
+</code></pre>
+        </div>
+<hr>
+<h2 id="6-វដ្តការងារស្នូលទាំង-4-core-workflows" class="scroll-mt-24 group">6. វដ្តការងារស្នូលទាំង 4 (Core Workflows) <a href="#6-វដ្តការងារស្នូលទាំង-4-core-workflows" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="workflow-1-onboard-ក្រុមហ៊ុនថ្មី-new-tenant-onboarding" class="scroll-mt-24 group">Workflow 1: Onboard ក្រុមហ៊ុនថ្មី (New Tenant Onboarding) <a href="#workflow-1-onboard-ក្រុមហ៊ុនថ្មី-new-tenant-onboarding" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>START
+  │
+  ▼
+Super Admin ទទួលបន្ទុការ (Sign up form / Phone call)
+  │
+  ▼
+ចូល dashboard.html → ចុច «+ ចុះឈ្មោះក្រុមហ៊ុនថ្មី»
+  │
+  ▼
+បំពេញ create-company.html (Company Info + Plan + Features)
+  │
+  ▼
+ចុច «ចុះឈ្មោះ»
+  │
+  ├── ប្រព័ន្ធ Create Tenant in DB (Tenant ID, Isolated Schema)
+  ├── ប្រព័ន្ធ Create Admin Account (Email + Temp Password)
+  ├── ប្រព័ន្ធ ផ្ញើ Welcome Email (Login URL + Temp PW)
+  └── ប្រព័ន្ធ Set Subscription Expiry Date
+  │
+  ▼
+Super Admin ឃើញ showToast(&quot;ក្រុមហ៊ុនថ្មីត្រូវបានចុះឈ្មោះជោគជ័យ&quot;)
+  │
+  ▼
+Admin ក្រុមហ៊ុន ទទួល Email → Login ដំបូង → Change Password
+  │
+  ▼
+END
+</code></pre>
+        </div>
+<hr>
+<h3 id="workflow-2-renew-upgrade-subscription" class="scroll-mt-24 group">Workflow 2: Renew / Upgrade Subscription <a href="#workflow-2-renew-upgrade-subscription" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>START
+  │
+  ▼
+ប្រព័ន្ធ Auto-Alert ពេលហួស 7 ថ្ងៃ (Dashboard Widget + Telegram)
+  │
+  ▼
+Super Admin ចូល subscriptions.html → ជ្រើស Tenant
+  │
+  ▼
+ចុច «ផ្លាស់ Plan» ឬ «Renew»
+  │
+  ├── ជ្រើស Plan ថ្មី (Custom Dropdown)
+  ├── ជ្រើស Duration (1M / 3M / 6M / 12M)
+  └── បញ្ចូល ចំណាំ (Internal Note)
+  │
+  ▼
+ចុច «ធ្វើបច្ចុប្បន្នភាព»
+  │
+  ├── ប្រព័ន្ធ Update Subscription Expiry
+  ├── ប្រព័ន្ធ Update Feature Flags (ប្រសិនបើ Plan ផ្លាស់ប្តូរ)
+  └── ប្រព័ន្ធ Log Action in Audit Log
+  │
+  ▼
+END
+</code></pre>
+        </div>
+<hr>
+<h3 id="workflow-3-suspend-tenant-due-to-non-payment" class="scroll-mt-24 group">Workflow 3: Suspend Tenant (Due to Non-Payment) <a href="#workflow-3-suspend-tenant-due-to-non-payment" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>START
+  │
+  ▼
+ថ្ងៃ Subscription ផ្តាច់ → Grace Period (7 ថ្ងៃ) ចាប់ផ្តើម
+  │
+  ▼
+ប្រព័ន្ធ Auto-Alert ផ្ញើ Email + Telegram ជូន Super Admin
+  │
+  ▼
+Super Admin ចូល view-company.html → ចុច «ផ្អាកដំណើរការ»
+  │
+  ▼
+showCustomConfirm(&quot;តើអ្នកចង់ផ្អាកក្រុមហ៊ុន [ABC] ដែរទេ?&quot;)
+  │
+  ├── YES →
+  │   ├── ប្រព័ន្ធ Set Tenant Status = SUSPENDED
+  │   ├── Users ទាំងអស់ Login ឃើញ &quot;Account Suspended&quot; Page
+  │   ├── API Calls ត្រូវបាន Block ដោយ Middleware
+  │   └── Audit Log: Suspended by Super Admin + Timestamp
+  │
+  └── NO → Cancel
+  │
+  ▼
+END
+</code></pre>
+        </div>
+<hr>
+<h3 id="workflow-4-security-incident-response" class="scroll-mt-24 group">Workflow 4: Security Incident Response <a href="#workflow-4-security-incident-response" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>START
+  │
+  ▼
+ប្រព័ន្ធ Detect Failed Login &gt; 5 ដង ក្នុង 10 នាទី
+  │
+  ▼
+Auto-Alert → Telegram ផ្ញើ: &quot;⚠️ Failed login 6 times - [IP] - [User]&quot;
+  │
+  ▼
+Super Admin ចូល audit-logs.html → Filter by IP / User
+  │
+  ▼
+Super Admin ពិនិត្យ Pattern
+  │
+  ├── Normal (ភ្លេច Password) →
+  │   └── Force Reset Password → ផ្ញើ Reset Email ជូន User
+  │
+  └── Suspicious (ប្រហែល Brute Force Attack) →
+      ├── Lock Account
+      ├── Block IP (Server-level)
+      └── Notify Tenant Admin
+  │
+  ▼
+END
+</code></pre>
+        </div>
+<hr>
+<h2 id="7-ទំនាក់ទំនងជាមួយតួនាទីផ្សេង-role-interaction-map" class="scroll-mt-24 group">7. ទំនាក់ទំនងជាមួយតួនាទីផ្សេង (Role Interaction Map) <a href="#7-ទំនាក់ទំនងជាមួយតួនាទីផ្សេង-role-interaction-map" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>Super Admin
+│
+├── [CREATES] → Admin/GM Account (per Tenant)
+│   └── Admin/GM [CREATES] → All other roles (Sales, Cashier, etc.)
+│
+├── [MONITORS] → All Tenants via Global Dashboard
+│
+├── [RECEIVES ALERTS FROM] → System (Automated)
+│   ├── Subscription Expiry alerts
+│   ├── Failed Login alerts
+│   └── System Error alerts
+│
+├── [CAN FORCE-RESET] → Any User (Any Tenant)
+│
+└── [READS] → All Audit Logs
+    └── Includes: What Admin did, What Sales Staff did, etc.
+</code></pre>
+        </div>
+<p><strong>Super Admin ទំនាក់ទំនង</strong> (ថ្ងៃ to ថ្ងៃ):</p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ទំនាក់ទំនងជាមួយ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ចំណុចប្រទាក់</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Admin/GM ក្រុមហ៊ុន</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Onboard, Plan Change, Support</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">System Monitoring</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Auto Alerts, Error Logs</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Audit Logs</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Cross-Tenant Security Review</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">DIGITECHKH Internal Team</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Feature Deployment, Bug Fix</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="8-ស្ថាបត្យកម្ម-data-scope-what-data-can-see" class="scroll-mt-24 group">8. ស្ថាបត្យកម្ម Data Scope (What Data Can See) <a href="#8-ស្ថាបត្យកម្ម-data-scope-what-data-can-see" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="81-database-isolation-architecture" class="scroll-mt-24 group">8.1 Database Isolation Architecture <a href="#81-database-isolation-architecture" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>-- Multi-Tenant Isolation Design
+-- ការដាច់ Tenant Data ដោយ tenant_id
+
+-- tenants table (Super Admin can access)
+CREATE TABLE tenants (
+    id          UUID PRIMARY KEY,
+    name_kh     VARCHAR(255),
+    name_en     VARCHAR(255),
+    tin_number  VARCHAR(50),
+    status      ENUM(&#39;active&#39;,&#39;suspended&#39;,&#39;expired&#39;),
+    plan        ENUM(&#39;starter&#39;,&#39;pro&#39;,&#39;enterprise&#39;),
+    quota_users INTEGER,
+    created_at  TIMESTAMP,
+    expires_at  TIMESTAMP
+);
+
+-- ក្នុង Business Tables ទាំងអស់ មាន tenant_id
+-- Super Admin ហ្គ Query បាន ប៉ុន្តែ BY DESIGN ក្នុង API
+-- Super Admin endpoint ឃើញ COUNT stats ប៉ុណ្ណោះ មិនមែន raw data
+
+-- Correct API response for Super Admin&#39;s company view:
+{
+  &quot;tenant_id&quot;: &quot;abc-123&quot;,
+  &quot;name_kh&quot;: &quot;ហាង ABC&quot;,
+  &quot;stats&quot;: {
+    &quot;total_users&quot;: 8,
+    &quot;invoices_this_month&quot;: 150,
+    &quot;storage_used_mb&quot;: 230
+  }
+  -- No: customer_names, invoice_amounts, cost_prices
+}
+</code></pre>
+        </div>
+<h3 id="82-api-authorization-rules" class="scroll-mt-24 group">8.2 API Authorization Rules <a href="#82-api-authorization-rules" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>Super Admin JWT Token Contains:
+{
+  &quot;role&quot;: &quot;SUPER_ADMIN&quot;,
+  &quot;tenant_id&quot;: null,  ← Global (not locked to any tenant)
+  &quot;scope&quot;: [&quot;platform:*&quot;]
+}
+
+Admin JWT Token Contains:
+{
+  &quot;role&quot;: &quot;ADMIN&quot;,
+  &quot;tenant_id&quot;: &quot;abc-123&quot;,  ← Locked to Tenant A
+  &quot;scope&quot;: [&quot;company:*&quot;]
+}
+
+Middleware Check:
+if (user.role === &#39;SUPER_ADMIN&#39;) {
+  // Allow platform endpoints: /api/superadmin/*
+  // Block business endpoints: /api/invoices, /api/stock, etc.
+}
+</code></pre>
+        </div>
+<hr>
+<h2 id="9-kpi-និង-dashboard-widgets" class="scroll-mt-24 group">9. KPI និង Dashboard Widgets <a href="#9-kpi-និង-dashboard-widgets" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<p>ខ្ញុំណែនាំ Super Admin Dashboard ត្រូវបង្ហាញ <strong>KPI ចំនួន 8</strong> ទាំងនេះ:</p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">#</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Widget</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ការគណនា</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ការ Update</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">1</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">🏢 Tenants សកម្ម</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">COUNT(tenants WHERE status=&#39;active&#39;)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Real-time</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">2</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">💵 MRR</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">SUM(plan_price) WHERE active</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Monthly</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">3</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">⚠️ ជិតផុតកំណត់</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">COUNT WHERE expires_at ≤ now+7d</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Daily</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">4</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">🔴 ផ្អាក</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">COUNT WHERE status=&#39;suspended&#39;</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Real-time</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">5</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">📈 Tenants ថ្មីខែនេះ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">COUNT WHERE created_at &gt;= month_start</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Monthly</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">6</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">💔 Churned</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">COUNT WHERE suspended_this_month</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Monthly</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">7</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">👥 Total Users</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">SUM(active_users) across all tenants</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Daily</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">8</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">🖥️ System Uptime</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Server health metric</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Real-time</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="10-គំរូ-database-schema" class="scroll-mt-24 group">10. គំរូ Database Schema <a href="#10-គំរូ-database-schema" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>-- Core Tables for Super Admin Scope
+
+-- 1. Tenants (ក្រុមហ៊ុន)
+CREATE TABLE tenants (
+    id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    name_kh         VARCHAR(255) NOT NULL,
+    name_en         VARCHAR(255) NOT NULL,
+    tin_number      VARCHAR(50),
+    logo_url        TEXT,
+    contact_name    VARCHAR(255),
+    contact_email   VARCHAR(255),
+    contact_phone   VARCHAR(50),
+    address         TEXT,
+    status          VARCHAR(20) DEFAULT &#39;active&#39;,
+        -- active | suspended | expired | trial
+    plan            VARCHAR(20) DEFAULT &#39;starter&#39;,
+        -- starter | pro | enterprise
+    quota_users     INTEGER DEFAULT 5,
+    base_currency   VARCHAR(3) DEFAULT &#39;USD&#39;,
+    features        JSONB DEFAULT &#39;{}&#39;,
+        -- {&quot;pos&quot;: true, &quot;hr&quot;: false, &quot;showroom&quot;: false}
+    created_at      TIMESTAMPTZ DEFAULT NOW(),
+    expires_at      TIMESTAMPTZ,
+    suspended_at    TIMESTAMPTZ,
+    suspended_by    UUID REFERENCES super_admins(id),
+    notes           TEXT
+);
+
+-- 2. Subscription History
+CREATE TABLE subscription_logs (
+    id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    tenant_id       UUID REFERENCES tenants(id),
+    changed_by      UUID,   -- super_admin id
+    old_plan        VARCHAR(20),
+    new_plan        VARCHAR(20),
+    old_expires_at  TIMESTAMPTZ,
+    new_expires_at  TIMESTAMPTZ,
+    reason          TEXT,
+    created_at      TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 3. Global Audit Log (Immutable)
+CREATE TABLE global_audit_logs (
+    id              BIGSERIAL PRIMARY KEY,
+    tenant_id       UUID REFERENCES tenants(id),
+    user_id         UUID,
+    user_name       VARCHAR(255),
+    user_role       VARCHAR(50),
+    ip_address      INET,
+    action          VARCHAR(100),
+        -- LOGIN, LOGOUT, CREATE_INVOICE, DELETE_USER, etc.
+    entity_type     VARCHAR(50),
+        -- Invoice, User, Tenant, StockItem
+    entity_id       VARCHAR(255),
+    result          VARCHAR(10) DEFAULT &#39;SUCCESS&#39;,
+        -- SUCCESS | FAILED
+    details         JSONB,
+    created_at      TIMESTAMPTZ DEFAULT NOW()
+);
+-- NOTE: NO UPDATE, NO DELETE triggers on this table!
+
+-- 4. Super Admins
+CREATE TABLE super_admins (
+    id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    name            VARCHAR(255),
+    email           VARCHAR(255) UNIQUE,
+    password_hash   TEXT,
+    last_login_at   TIMESTAMPTZ,
+    is_active       BOOLEAN DEFAULT TRUE
+);
+</code></pre>
+        </div>
+<hr>
+<h2 id="11-ការការពារសុវត្ថិភាព-security-hardening" class="scroll-mt-24 group">11. ការការពារសុវត្ថិភាព (Security Hardening) <a href="#11-ការការពារសុវត្ថិភាព-security-hardening" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="111-authentication-requirements" class="scroll-mt-24 group">11.1 Authentication Requirements <a href="#111-authentication-requirements" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ស្តង់ដារ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Description</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>MFA Mandatory</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Super Admin <strong>ត្រូវ</strong> Enable 2FA (Google Authenticator / Telegram OTP)</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Strong Password</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">≥ 16 characters, uppercase + lowercase + number + symbol</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Session Timeout</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Auto logout ក្រោយ 30 នាទី inactive</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>IP Whitelist</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❗ ណែនាំ — Lock Super Admin login ចំពោះ IP ចំនួនតែ 2-3 ចំណុចប្រទាក់</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Login Audit</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">គ្រប់ Login/Logout ត្រូវ Log ជា Audit Entry</td>
+</tr>
+</tbody></table></div>
+<h3 id="112-authorization-rules" class="scroll-mt-24 group">11.2 Authorization Rules <a href="#112-authorization-rules" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>Rule 1: Super Admin API endpoints (/api/superadmin/*)
+  → Only accessible with role=SUPER_ADMIN token
+  → All other roles receive 403 Forbidden
+
+Rule 2: Business API endpoints (/api/invoices, /api/stock, etc.)
+  → Super Admin role receives 403 Forbidden (even if they try)
+  → Tenant-scoped roles only
+
+Rule 3: Audit Log endpoints
+  → WRITE: System-only (automated) — No human can write
+  → READ: Super Admin only for global, Admin for own tenant
+  → DELETE: NEVER ALLOWED (DB-level trigger)
+</code></pre>
+        </div>
+<h3 id="113-data-isolation-tenant-separation" class="scroll-mt-24 group">11.3 Data Isolation (Tenant Separation) <a href="#113-data-isolation-tenant-separation" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>Every business table has tenant_id:
+
+invoices    → tenant_id FK → tenants.id
+stock_items → tenant_id FK → tenants.id
+employees   → tenant_id FK → tenants.id
+
+API Middleware (for Admin and below):
+WHERE tenant_id = current_user.tenant_id
+
+Super Admin queries (for stats only):
+GROUP BY tenant_id → Aggregate only
+NOT raw business data
+</code></pre>
+        </div>
+<hr>
+<h2 id="12-អនុសាសន៍-architect-prototype-planning" class="scroll-mt-24 group">12. អនុសាសន៍ Architect + Prototype Planning <a href="#12-អនុសាសន៍-architect-prototype-planning" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="121-ចំណុចខ្ញុំណែនាំ-my-recommendations" class="scroll-mt-24 group">12.1 ចំណុចខ្ញុំណែនាំ (My Recommendations) <a href="#121-ចំណុចខ្ញុំណែនាំ-my-recommendations" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<h4 id="ណែនាំ-1-super-admin-business-user-enforce-ចំពោះ-code-level" class="scroll-mt-24 group">✅ ណែនាំ 1: Super Admin ≠ Business User — Enforce ចំពោះ Code Level <a href="#ណែនាំ-1-super-admin-business-user-enforce-ចំពោះ-code-level" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<p>ហាមដាច់ខាតការ Share Business Feature ជាមួយ Super Admin ។ ក្នុង Route Guard:</p>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>// Good:
+const SUPERADMIN_ALLOWED_ROUTES = [
+  &#39;/superadmin/dashboard&#39;,
+  &#39;/superadmin/companies&#39;,
+  &#39;/superadmin/audit-logs&#39;,
+  // ...
+];
+
+// If Super Admin tries to access /invoices → Redirect to /unauthorized
+</code></pre>
+        </div>
+<h4 id="ណែនាំ-2-tenant-status-machine" class="scroll-mt-24 group">✅ ណែនាំ 2: Tenant Status Machine <a href="#ណែនាំ-2-tenant-status-machine" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>trial → active → suspended → expired → archived
+  │         │         │
+  └→ active  └→ active  └→ active (Reactivate)
+</code></pre>
+        </div>
+<p>ប្រើ Enum ជា DB Column មិនមែន Boolean <code>is_active</code> ។</p>
+<h4 id="ណែនាំ-3-soft-delete-tenant-ហាម-hard-delete" class="scroll-mt-24 group">✅ ណែនាំ 3: Soft Delete Tenant (ហាម Hard Delete) <a href="#ណែនាំ-3-soft-delete-tenant-ហាម-hard-delete" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<p>ពេល Tenant «ត្រូវបានលុប» — គ្មានការ DELETE ជា Database ។ ជំនួសដោយ:</p>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>UPDATE tenants SET status=&#39;archived&#39;, archived_at=NOW() WHERE id=...
+</code></pre>
+        </div>
+<p>Data ត្រូវ Retain ≥ 7 ឆ្នាំ (Cambodian accounting law requirement)</p>
+<h4 id="ណែនាំ-4-telegram-alert-for-critical-events" class="scroll-mt-24 group">✅ ណែនាំ 4: Telegram Alert for Critical Events <a href="#ណែនាំ-4-telegram-alert-for-critical-events" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<p>Super Admin Portal គួរ Auto-Alert ដោយ Telegram Bot នៅពេល:</p>
+<ul>
+<li>Tenant Subscription ផ្តាច់ (T-7 days, T-3 days, T-0)</li>
+<li>Login Failed &gt; 5 ដងលើ User ណាមួយ</li>
+<li>System Error (500 errors &gt; threshold)</li>
+<li>Storage Usage &gt; 80%</li>
+</ul>
+<h4 id="ណែនាំ-5-subscription-plans-កំណត់-feature-flags-យ៉ាងប្រុងប្រយ័ត្ន" class="scroll-mt-24 group">✅ ណែនាំ 5: Subscription Plans — កំណត់ Feature Flags យ៉ាងប្រុងប្រយ័ត្ន <a href="#ណែនាំ-5-subscription-plans-កំណត់-feature-flags-យ៉ាងប្រុងប្រយ័ត្ន" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>// plan_config.json
+{
+  &quot;starter&quot;: {
+    &quot;max_users&quot;: 5,
+    &quot;max_invoices_per_month&quot;: 200,
+    &quot;features&quot;: {
+      &quot;pos&quot;: true,
+      &quot;sales&quot;: true,
+      &quot;stock_basic&quot;: true,
+      &quot;hr&quot;: false,
+      &quot;showroom&quot;: false,
+      &quot;multi_warehouse&quot;: false,
+      &quot;api_access&quot;: false
+    }
+  },
+  &quot;pro&quot;: {
+    &quot;max_users&quot;: 15,
+    &quot;max_invoices_per_month&quot;: 1000,
+    &quot;features&quot;: {
+      &quot;pos&quot;: true,
+      &quot;sales&quot;: true,
+      &quot;stock_advanced&quot;: true,
+      &quot;hr&quot;: true,
+      &quot;showroom&quot;: true,
+      &quot;multi_warehouse&quot;: false,
+      &quot;api_access&quot;: false
+    }
+  },
+  &quot;enterprise&quot;: {
+    &quot;max_users&quot;: -1,
+    &quot;max_invoices_per_month&quot;: -1,
+    &quot;features&quot;: { &quot;all&quot;: true }
+  }
+}
+</code></pre>
+        </div>
+<h4 id="ណែនាំ-6-impersonation-feature-advanced-phase-2" class="scroll-mt-24 group">✅ ណែនាំ 6: Impersonation Feature (Advanced — Phase 2) <a href="#ណែនាំ-6-impersonation-feature-advanced-phase-2" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<p><strong>Feature ខ្ញុំណែនាំ</strong> (ដាក់ Phase 2): Super Admin អាច «Impersonate» (ក្លែងខ្លួនជា Admin ក្រុមហ៊ុន) ដើម្បី Troubleshoot បញ្ហា — ប៉ុន្តែ:</p>
+<ul>
+<li>Actions ក្នុង Impersonation mode ត្រូវ <strong>Log ភ្លាម</strong> &quot;Action by SuperAdmin [Name] impersonating [TenantAdmin]&quot;</li>
+<li>Impersonation Session ផ្តាច់ស្វ័យប្រវត្តិ ក្រោយ 15 នាទី</li>
+<li>Impersonation Actions ហាម DELETE/UPDATE Business Data</li>
+</ul>
+<hr>
+<h3 id="122-ផែនការ-prototype-pages-prototype-checklist" class="scroll-mt-24 group">12.2 ផែនការ Prototype Pages (Prototype Checklist) <a href="#122-ផែនការ-prototype-pages-prototype-checklist" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">#</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Page</th>
+<th align="center">Priority</th>
+<th align="center">Complexity</th>
+<th align="center">Status</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">1</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>dashboard.html</code></td>
+<td align="center">🔴 HIGH</td>
+<td align="center">Medium</td>
+<td align="center">⬜</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">2</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>companies.html</code></td>
+<td align="center">🔴 HIGH</td>
+<td align="center">Medium</td>
+<td align="center">⬜</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">3</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>create-company.html</code></td>
+<td align="center">🔴 HIGH</td>
+<td align="center">High</td>
+<td align="center">⬜</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">4</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>view-company.html</code></td>
+<td align="center">🟡 MED</td>
+<td align="center">Medium</td>
+<td align="center">⬜</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">5</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>subscriptions.html</code></td>
+<td align="center">🟡 MED</td>
+<td align="center">Medium</td>
+<td align="center">⬜</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">6</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>audit-logs.html</code></td>
+<td align="center">🟡 MED</td>
+<td align="center">Low-Medium</td>
+<td align="center">⬜</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">7</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>edit-company.html</code></td>
+<td align="center">🟢 LOW</td>
+<td align="center">Low</td>
+<td align="center">⬜</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">➕</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>system-settings.html</code></td>
+<td align="center">🟢 LOW</td>
+<td align="center">Low</td>
+<td align="center">⬜ (Future)</td>
+</tr>
+</tbody></table></div>
+<p><strong>ណែនាំ: ចាប់ផ្តើមពី</strong> → <code>companies.html</code> ដំបូង (Core feature) → <code>create-company.html</code> → <code>dashboard.html</code></p>
+<hr>
+<h3 id="123-ការ-validate-prototype-before-moving-to-next-role" class="scroll-mt-24 group">12.3 ការ Validate Prototype (Before Moving to Next Role) <a href="#123-ការ-validate-prototype-before-moving-to-next-role" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p>Super Admin Prototype ត្រូវ Pass Checklist ទាំងនេះ:</p>
+<ul>
+<li><input disabled="" type="checkbox"> <strong>Sidebar</strong> មាន Logo + «DIGITECHKH» + Menu (Dashboard, ក្រុមហ៊ុន, ជាវ, Audit Log)</li>
+<li><input disabled="" type="checkbox"> <strong>Header</strong> <code>h-[72px]</code> ស្មើ Sidebar Header ពិតប្រាកដ</li>
+<li><input disabled="" type="checkbox"> <strong>companies.html</strong> — Table, Filter, ⋮ Dropdown Action</li>
+<li><input disabled="" type="checkbox"> <strong>create-company.html</strong> — Form 3 Sections, Custom Dropdowns (ហាម native <code>&lt;select&gt;</code>)</li>
+<li><input disabled="" type="checkbox"> <strong>edit-company.html</strong> — Pre-filled Form ដូច create ប៉ុន្តែ Load ទិន្នន័យ Tenant មុន</li>
+<li><input disabled="" type="checkbox"> <strong>view-company.html</strong> — Tabs (ព័ត៌មានទូទៅ, Usage Stats, Subscription History)</li>
+<li><input disabled="" type="checkbox"> <strong>Status Badge</strong> — 3 ពណ៌ (🟢 សកម្ម / 🟡 ជិតផុត / 🔴 ផ្អាក)</li>
+<li><input disabled="" type="checkbox"> <strong>showToast()</strong> — ជំនួស <code>alert()</code></li>
+<li><input disabled="" type="checkbox"> <strong>showCustomConfirm()</strong> — ជំនួស <code>confirm()</code> ពេល Suspend Tenant</li>
+<li><input disabled="" type="checkbox"> <strong>ទំព័រ View</strong> — Full Detail Page (ហាម Modal)</li>
+<li><input disabled="" type="checkbox"> <strong>ប៊ូតុងត្រឡប់ក្រោយ</strong> — <code>w-10 h-10 rounded-xl</code> icon-only</li>
+<li><input disabled="" type="checkbox"> <strong>ភាសាខ្មែរ 100%</strong> — label, placeholder, toast, table header</li>
+<li><input disabled="" type="checkbox"> <strong>លេខអង់គ្លេស 0-9</strong> — All numbers</li>
+</ul>
+<hr>
+<h2 id="13-faq" class="scroll-mt-24 group">13. FAQ <a href="#13-faq" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<p><strong>Q: Super Admin ហ្គចូល Invoice របស់ Tenant A បានទេ?</strong><br>A: <strong>ទេ</strong>ក្នុងការ Design ស្អាត — Super Admin API Endpoints ត្រូវ Block ចំពោះ Business Data endpoints ។ ប្រសិនបើ Super Admin ចាំបាច់ Troubleshoot Invoice មានបញ្ហា គួរ Impersonate Admin ហើយ Log ជានិច្ច ។</p>
+<p><strong>Q: Super Admin ម្នាក់ ឬ ច្រើននាក់?</strong><br>A: Design-wise Super Admin Account <strong>ចំនួននីមួយៗ</strong> ត្រូវបង្កើត ។ DIGITECHKH Internal Team Member ម្នាក់ = Super Admin Account ម្នាក់ — ហាម Share Account!</p>
+<p><strong>Q: Super Admin Dashboard ហ្គ ប្រើ Date Range Picker ដូច Invoice ទេ?</strong><br>A: <strong>ចាស</strong> — ស្តង់ដារ GEMINI.md Rule 3 ត្រូវ Apply ។ Date Range Picker Component ដូចគ្នា 100% ។</p>
+<p><strong>Q: ពេល Tenant ផ្អាក (Suspend) — Users ខ្លះហ្គ Login ឆ្ពោះ?</strong><br>A: <strong>ទេ</strong> — Middleware ត្រូវ Check Tenant Status ។ ប្រសិនបើ <code>tenant.status === &#39;suspended&#39;</code> → Return 403 + Message «ការជាវរបស់ក្រុមហ៊ុនអ្នកត្រូវផ្អាក។ សូមទំនាក់ទំនង DIGITECHKH ។»</p>
+<p><strong>Q: Audit Log ខ្ញុំ Archive ពេលណា?</strong><br>A: ទុក Hot Storage <strong>2 ឆ្នាំ</strong> → Archive ទៅ Cold Storage <strong>7 ឆ្នាំ</strong> → Purge ។ ព្រោះ Cambodia GDT ក្នុង Tax Audit ត្រូវការ 5-7 ឆ្នាំ ។</p>
+<hr>
+<p><em>ឯកសារនេះតំណាង​ 100% knowledge base​ សម្រាប់ Super Admin Role ក្នុង DIGITECHKH BMS Prototype</em><br><em>Next Role: Procurement Manager → <a href="role_procurement_manager.html"><code>role_procurement_manager.md</code></a></em></p>
+
+                </article>
+
+                <!-- Next / Previous Role Navigation Bar -->
+                <div class="no-print mt-12 pt-8 border-t border-slate-200 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <a href="role_warehouse_manager.html" class="p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-transform flex-shrink-0">
+                            📦
+                        </div>
+                        <div class="min-w-0">
+                            <div class="text-[10px] text-slate-400 font-medium">← តួនាទីមុន</div>
+                            <div class="text-xs font-bold text-slate-800 group-hover:text-primary transition truncate">អ្នកគ្រប់គ្រងឃ្លាំងស្តុក</div>
+                        </div>
+                    </a>
+
+                    <a href="role_procurement_manager.html" class="p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group flex items-center justify-end text-right gap-3">
+                        <div class="min-w-0">
+                            <div class="text-[10px] text-slate-400 font-medium">តួនាទីបន្ទាប់ →</div>
+                            <div class="text-xs font-bold text-slate-800 group-hover:text-primary transition truncate">អ្នកគ្រប់គ្រងលទ្ធកម្ម</div>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-transform flex-shrink-0">
+                            🛒
+                        </div>
+                    </a>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="no-print bg-white border-t border-slate-200 py-6 px-8 text-center text-xs text-slate-500">
+        <p>រក្សាសិទ្ធិគ្រប់យ៉ាង © 2026 ក្រុមហ៊ុន ឌីជីថេក ខេអេច (DIGITECHKH Co., Ltd.) · ព្រះរាជាណាចក្រកម្ពុជា</p>
+    </footer>
+
+</body>
+</html>

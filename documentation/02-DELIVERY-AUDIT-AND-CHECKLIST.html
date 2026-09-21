@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="km" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02. បញ្ជីសវនកម្មគុណភាព — ឯកសារបច្ចេកទេស | DIGITECHKH BMS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Kantumruy Pro', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0f2b5c',
+                        primaryHover: '#0a1d3f',
+                        accent: '#2563eb',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Kantumruy Pro', sans-serif;
+            color: #334155;
+            background-color: #f8fafc;
+        }
+        ::-webkit-scrollbar { display: none; }
+        * { -ms-overflow-style: none; scrollbar-width: none; }
+        h1, h2, h3, h4 { color: #0f172a; font-weight: 700; }
+        h1 { font-size: 1.8rem; line-height: 2.35rem; margin-bottom: 1.25rem; }
+        h2 { font-size: 1.35rem; line-height: 1.85rem; margin-top: 2.25rem; margin-bottom: 0.85rem; padding-bottom: 0.5rem; border-bottom: 1px solid #e2e8f0; }
+        h3 { font-size: 1.1rem; line-height: 1.5rem; margin-top: 1.75rem; margin-bottom: 0.5rem; }
+        p { margin-bottom: 0.85rem; line-height: 1.8; font-size: 0.95rem; }
+        ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1rem; font-size: 0.95rem; }
+        ol { list-style-type: decimal; padding-left: 1.5rem; margin-bottom: 1rem; font-size: 0.95rem; }
+        li { margin-bottom: 0.35rem; line-height: 1.7; }
+        hr { border: 0; border-top: 1px solid #e2e8f0; margin: 2rem 0; }
+        @media print {
+            .no-print { display: none !important; }
+            body { background-color: #ffffff; color: #000; }
+            .print-container { max-width: 100% !important; margin: 0 !important; padding: 0 !important; box-shadow: none !important; border: none !important; }
+            table, pre, blockquote, .rounded-xl, .rounded-2xl { page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-primary selection:text-white min-h-screen flex flex-col justify-between">
+
+    <!-- Top Sticky Control Bar -->
+    <header class="no-print fixed top-0 left-0 right-0 h-16 bg-primary text-white z-50 px-4 sm:px-8 flex items-center justify-between shadow-md">
+        <div class="flex items-center gap-3">
+            <a href="index.html" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition flex items-center gap-2 text-xs font-semibold">
+                <i class="fas fa-arrow-left"></i> <span class="hidden sm:inline">មជ្ឈមណ្ឌលឯកសារ</span>
+            </a>
+            <span class="text-white/30 hidden sm:inline">|</span>
+            <div class="flex items-center gap-2">
+                <span class="text-xl">✅</span>
+                <span class="font-bold text-xs sm:text-sm text-white truncate max-w-[200px] sm:max-w-xs">02. បញ្ជីសវនកម្មគុណភាព</span>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-white/15 text-emerald-300 hidden md:inline">Technical Spec</span>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-2 sm:gap-3">
+            <!-- Tech Doc Switcher -->
+            <div class="relative">
+                <select onchange="window.location.href=this.value" class="h-9 pl-3 pr-8 bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl text-xs font-semibold text-white focus:outline-none focus:bg-[#0a1d3f] transition appearance-none cursor-pointer">
+                    <option value="00-SYSTEM-OVERVIEW-AND-ARCHITECTURE.html" >00. ស្ថាបត្យកម្ម & គំរូទិន្នន័យ</option>
+<option value="01-END-TO-END-SYSTEM-WORKFLOW.html" >01. លំហូរការងារទាំង 8 វដ្ត</option>
+<option value="02-DELIVERY-AUDIT-AND-CHECKLIST.html" selected>02. បញ្ជីសវនកម្មគុណភាព</option>
+<option value="03-USER-OPERATIONAL-GUIDE.html" >03. សៀវភៅណែនាំប្រតិបត្តិការ</option>
+<option value="04-LEARNINGS-AND-STANDARDS-BENCHMARK.html" >04. មេរៀន និងស្តង់ដារបច្ចេកវិទ្យា</option>
+<option value="05-MASTER-SYSTEM-BLUEPRINT-AND-ENTERPRISE-PLAN.html" >05. ប្លង់មេ & ផែនទីបង្ហាញផ្លូវ</option>
+<option value="06-FULL-SYSTEM-SPECIFICATION-AND-TEAM-GUIDE.html" >06. សេចក្តីបញ្ជាក់លម្អិតប្រព័ន្ធ</option>
+<option value="07-CLIENT-PITCH-AND-SALES-STRATEGY.html" >07. យុទ្ធសាស្ត្រលក់ & Wow Demo</option>
+<option value="08-ECOMMERCE-DIGITAL-SHOWROOM-SPECIFICATION.html" >08. លក្ខណៈបច្ចេកទេស Showroom</option>
+                </select>
+                <i class="fas fa-chevron-down absolute right-3 top-3 text-[10px] text-white/60 pointer-events-none"></i>
+            </div>
+
+            <!-- Print Button -->
+            <button onclick="window.print()" class="px-3 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-semibold transition flex items-center gap-1.5 shadow-sm cursor-pointer">
+                <i class="fas fa-print"></i> <span class="hidden sm:inline">បោះពុម្ព A4</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Reading Container -->
+    <div class="pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full flex-1">
+        <div class="flex flex-col lg:flex-row gap-8 items-start">
+
+            <!-- Left Table of Contents Sidebar -->
+            <aside class="no-print lg:w-72 flex-shrink-0 sticky top-24 hidden lg:block bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
+                <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-3">
+                    <span class="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
+                        <i class="fas fa-list-ul text-primary"></i> មាតិកាឯកសារ
+                    </span>
+                    <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-50 text-accent">TOC</span>
+                </div>
+                <div class="space-y-0.5 max-h-[calc(100vh-220px)] overflow-y-auto pr-1 text-xs">
+                    
+                </div>
+                <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
+                    <a href="02-DELIVERY-AUDIT-AND-CHECKLIST.md" class="w-full py-2 px-3 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-500 text-[11px] font-normal flex items-center justify-between transition border border-slate-200">
+                        <span>មើលឯកសារដើម (.md)</span>
+                        <i class="fas fa-file-code text-[10px]"></i>
+                    </a>
+                </div>
+            </aside>
+
+            <!-- Main Document Body -->
+            <main class="print-container flex-1 bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-12 min-w-0 max-w-4xl mx-auto">
+
+                <!-- Breadcrumb -->
+                <div class="no-print flex items-center gap-2 text-xs text-slate-500 mb-6 flex-wrap pb-4 border-b border-slate-100">
+                    <a href="index.html" class="hover:text-primary transition flex items-center gap-1">
+                        <i class="fas fa-home"></i> មជ្ឈមណ្ឌលឯកសារ
+                    </a>
+                    <span>/</span>
+                    <span class="text-slate-500">ឯកសារបច្ចេកទេស</span>
+                    <span>/</span>
+                    <span class="text-slate-800 font-semibold">បញ្ជីសវនកម្មគុណភាព</span>
+                </div>
+
+                <!-- Document Rendered HTML -->
+                <article class="prose prose-slate max-w-none">
+                    <h1 id="digitechkh-business-management-system-bms" class="scroll-mt-24 group">DIGITECHKH Business Management System (BMS) <a href="#digitechkh-business-management-system-bms" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h1>
+<h2 id="របាយការណ៍ត្រួតពិនិត្យការប្រគល់-និងតារាងផ្ទៀងផ្ទាត់គ្រប់ទំព័រ-delivery-audit-checklist" class="scroll-mt-24 group">របាយការណ៍ត្រួតពិនិត្យការប្រគល់ និងតារាងផ្ទៀងផ្ទាត់គ្រប់ទំព័រ (Delivery Audit &amp; Checklist) <a href="#របាយការណ៍ត្រួតពិនិត្យការប្រគល់-និងតារាងផ្ទៀងផ្ទាត់គ្រប់ទំព័រ-delivery-audit-checklist" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<ul>
+<li><strong>កំណែប្រែ (Version)</strong>: 1.0</li>
+<li><strong>កាលបរិច្ឆេទ</strong>: 17 កញ្ញា 2026</li>
+<li><strong>ស្ថានភាព</strong>: បានឆ្លងកាត់ការធ្វើតេស្តស្វ័យប្រវត្តិ 0 Broken References (ជោគជ័យ 100%)</li>
+</ul>
+<hr>
+<h2 id="1-តារាងសវនកម្មទំព័រតាមតួនាទីទាំង-12-complete-portal-inventory-audit" class="scroll-mt-24 group">1. តារាងសវនកម្មទំព័រតាមតួនាទីទាំង 12 (Complete Portal Inventory &amp; Audit) <a href="#1-តារាងសវនកម្មទំព័រតាមតួនាទីទាំង-12-complete-portal-inventory-audit" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ល.រ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">តួនាទីអ្នកប្រើប្រាស់</th>
+<th align="center">ចំនួនទំព័រ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">បញ្ជីទំព័រទាំងអស់ (All Pages)</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ស្ថានភាពសកម្មភាព (Actions Status)</th>
+<th align="center">ស្ថានភាពផ្ទៀងផ្ទាត់</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>1</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ស៊ុបភើរ អភិបាល<br/>(Super Admin)</strong></td>
+<td align="center">6</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">1. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/8-super-admin/dashboard.html">dashboard.html</a><br/>2. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/8-super-admin/1-companies/companies.html">companies.html</a><br/>3. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/8-super-admin/1-companies/create-company.html">create-company.html</a><br/>4. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/8-super-admin/1-companies/view-company.html">view-company.html</a><br/>5. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/8-super-admin/2-subscriptions/subscriptions.html">subscriptions.html</a><br/>6. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/8-super-admin/4-audit-logs/audit-logs.html">audit-logs.html</a></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ចុះឈ្មោះក្រុមហ៊ុនថ្មី (Onboard), ជ្រើសរើសកញ្ចប់សេវា, កំណត់កូតា, មើលកំណត់ហេតុសវនកម្មសកល</td>
+<td align="center"><strong>រួចរាល់ 100%</strong></td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>2</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>អ្នកគ្រប់គ្រងទូទៅ<br/>(Admin)</strong></td>
+<td align="center">24+</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">គ្រប់ទំព័រក្នុង <code class="px-1.5 py-0.5 rounded bg-slate-100 text-primary font-mono text-xs border border-slate-200/80">2-home/</code>, <code class="px-1.5 py-0.5 rounded bg-slate-100 text-primary font-mono text-xs border border-slate-200/80">3-sales/</code>, <code class="px-1.5 py-0.5 rounded bg-slate-100 text-primary font-mono text-xs border border-slate-200/80">4-buy/</code>, <code class="px-1.5 py-0.5 rounded bg-slate-100 text-primary font-mono text-xs border border-slate-200/80">5-stock/</code>, <code class="px-1.5 py-0.5 rounded bg-slate-100 text-primary font-mono text-xs border border-slate-200/80">6-reports/</code>, <code class="px-1.5 py-0.5 rounded bg-slate-100 text-primary font-mono text-xs border border-slate-200/80">7-settings/</code></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">សិទ្ធិពេញលេញលើប្រព័ន្ធទាំងមូល</td>
+<td align="center"><strong>រួចរាល់ 100%</strong></td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>3</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>អ្នកគ្រប់គ្រង<br/>(Manager)</strong></td>
+<td align="center">3</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">1. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/9-portals/manager/dashboard.html">dashboard.html</a><br/>2. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/9-portals/manager/approvals.html">approvals.html</a><br/>3. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/9-portals/manager/view-approval.html">view-approval.html</a></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ពិនិត្យលម្អិតមុខទំនិញ អនុម័ត និងបដិសេធវិក្កយបត្រ/បញ្ជាទិញ ជាមួយប្រអប់កត់ត្រាមូលហេតុ</td>
+<td align="center"><strong>រួចរាល់ 100%</strong></td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>4</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>បុគ្គលិកផ្នែកលក់<br/>(Sales Staff)</strong></td>
+<td align="center">7</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">1. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/9-portals/sales-staff/dashboard.html">dashboard.html</a><br/>2. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/9-portals/sales-staff/invoices.html">invoices.html</a><br/>3. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/9-portals/sales-staff/create-invoice.html">create-invoice.html</a><br/>4. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/9-portals/sales-staff/quotes.html">quotes.html</a><br/>5. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/9-portals/sales-staff/create-quote.html">create-quote.html</a><br/>6. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/9-portals/sales-staff/customers.html">customers.html</a><br/>7. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/9-portals/sales-staff/create-customer.html">create-customer.html</a></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">បង្កើតវិក្កយបត្រជាមួយតម្លៃឌីណាមិកតាមកម្រិតអតិថិជន, ចូលរួមមុន, បញ្ចុះតម្លៃពិសេស, បង្កើតសម្រង់តម្លៃ និងអតិថិជន</td>
+<td align="center"><strong>រួចរាល់ 100%</strong></td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>5</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>អ្នកគិតប្រាក់<br/>(Touch POS)</strong></td>
+<td align="center">3</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">1. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/9-portals/cashier/dashboard.html">dashboard.html</a><br/>2. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/9-portals/cashier/history.html">history.html</a><br/>3. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/9-portals/cashier/close-shift.html">close-shift.html</a></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Touch Screen POS, កន្ត្រកទំនិញ, ជាប់សោរវេនថ្ងៃនេះ, ផ្ទៀងផ្ទាត់សាច់ប្រាក់បិទវេន និងបោះពុម្ព X/Z Report</td>
+<td align="center"><strong>រួចរាល់ 100%</strong></td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>6</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>គណនេយ្យករ<br/>(Accountant)</strong></td>
+<td align="center">5</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">1. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/9-portals/accountant/dashboard.html">dashboard.html</a><br/>2. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/9-portals/accountant/payments.html">payments.html</a><br/>3. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/9-portals/accountant/disbursements.html">disbursements.html</a><br/>4. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/9-portals/accountant/create-disbursement.html">create-disbursement.html</a><br/>5. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/9-portals/accountant/view-voucher.html">view-voucher.html</a></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ចេញប័ណ្ណចំណាយទូទាត់, កាត់ពន្ធកាត់ទុក (WHT), បោះពុម្ពប័ណ្ណផ្លូវការ A4 មាន 4 ហត្ថលេខា, របាយការណ៍ពន្ធ អតប</td>
+<td align="center"><strong>រួចរាល់ 100%</strong></td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>7</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>បុគ្គលិកផ្នែកលទ្ធកម្ម<br/>(Purchase Staff)</strong></td>
+<td align="center">5</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">1. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/9-portals/purchase-staff/dashboard.html">dashboard.html</a><br/>2. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/9-portals/purchase-staff/bills.html">bills.html</a><br/>3. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/9-portals/purchase-staff/create-bill.html">create-bill.html</a><br/>4. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/9-portals/purchase-staff/suppliers.html">suppliers.html</a><br/>5. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/9-portals/purchase-staff/create-supplier.html">create-supplier.html</a></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ចេញបញ្ជាទិញចូល (PO), កត់ត្រាថ្លៃដើមទិញ, បង្កើតប្រវត្តិរូបអ្នកផ្គត់ផ្គង់ និងលក្ខខណ្ឌទូទាត់</td>
+<td align="center"><strong>រួចរាល់ 100%</strong></td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>8</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>បុគ្គលិកផ្នែកស្តុកទំនិញ<br/>(Inventory Staff)</strong></td>
+<td align="center">6</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">1. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/9-portals/inventory-staff/dashboard.html">dashboard.html</a><br/>2. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/9-portals/inventory-staff/balance.html">balance.html</a><br/>3. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/9-portals/inventory-staff/adjust-balance.html">adjust-balance.html</a><br/>4. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/9-portals/inventory-staff/catalog.html">catalog.html</a><br/>5. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/9-portals/inventory-staff/create-catalog.html">create-catalog.html</a><br/>6. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/9-portals/inventory-staff/create-movement.html">create-movement.html</a></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">តុល្យភាពស្តុក, កែតម្រូវចំនួនរាប់ជាក់ស្តែង, ចលនាផ្ទេរឃ្លាំង, បន្ថែមទំនិញ SKU ថ្មី (<strong>លាក់តម្លៃ 100%</strong>)</td>
+<td align="center"><strong>រួចរាល់ 100%</strong></td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>9</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>បុគ្គលិកដឹកជញ្ជូន<br/>(Delivery Driver)</strong></td>
+<td align="center">3</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">1. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/9-portals/driver/dashboard.html">dashboard.html</a><br/>2. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/9-portals/driver/my-deliveries.html">my-deliveries.html</a><br/>3. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/9-portals/driver/delivery-detail.html">delivery-detail.html</a></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">បញ្ជីដឹកជញ្ជូន, ប៊ូតុងទូរស័ព្ទចុចខលចេញភ្លាមៗ, ថតរូបភស្តុតាង, ហត្ថលេខាទទួល (<strong>គ្មានតម្លៃទឹកប្រាក់</strong>)</td>
+<td align="center"><strong>រួចរាល់ 100%</strong></td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>10</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>បុគ្គលិកធនធានមនុស្ស<br/>(HR Staff)</strong></td>
+<td align="center">6</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">1. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/9-portals/hr-staff/dashboard.html">dashboard.html</a><br/>2. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/9-portals/hr-staff/employees.html">employees.html</a><br/>3. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/9-portals/hr-staff/create-employee.html">create-employee.html</a><br/>4. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/9-portals/hr-staff/attendance.html">attendance.html</a><br/>5. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/9-portals/hr-staff/payroll.html">payroll.html</a><br/>6. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/9-portals/hr-staff/view-payslip.html">view-payslip.html</a></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ចុះឈ្មោះបុគ្គលិកថ្មី, វត្តមានស្កេនម្រាមដៃ, ច្បាប់ឈប់សម្រាក, បញ្ជីបើកប្រាក់ខែ, ប័ណ្ណបើកប្រាក់ A4 (ប.ស.ស)</td>
+<td align="center"><strong>រួចរាល់ 100%</strong></td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>11</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ច្រករបៀងដៃគូផ្គត់ផ្គង់<br/>(Supplier Portal)</strong></td>
+<td align="center">5</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">1. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/9-portals/supplier/dashboard.html">dashboard.html</a><br/>2. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/9-portals/supplier/my-orders.html">my-orders.html</a><br/>3. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/9-portals/supplier/view-order.html">view-order.html</a><br/>4. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/9-portals/supplier/my-bills.html">my-bills.html</a><br/>5. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/9-portals/supplier/submit-bill.html">submit-bill.html</a></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ពិនិត្យបញ្ជាទិញ (PO), ទទួលយកការកុម្ម៉ង់, ដាក់វិក្កយបត្រភ្ជាប់ PDF/រូបភាព, ព័ត៌មានគណនីធនាគារ</td>
+<td align="center"><strong>រួចរាល់ 100%</strong></td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>12</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ច្រករបៀងអតិថិជន<br/>(Customer Portal)</strong></td>
+<td align="center">5</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">1. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/9-portals/customer/dashboard.html">dashboard.html</a><br/>2. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/9-portals/customer/my-invoices.html">my-invoices.html</a><br/>3. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/9-portals/customer/view-invoice.html">view-invoice.html</a><br/>4. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/9-portals/customer/my-orders.html">my-orders.html</a><br/>5. <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/9-portals/customer/order-tracking.html">order-tracking.html</a></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">វិក្កយបត្រផ្លូវការ, ស្កេន KHQR បាគងឌីណាមិក, តាមដានការដឹកជញ្ជូន 4 ដំណាក់កាលជាមួយប្រវត្តិអ្នកដឹក</td>
+<td align="center"><strong>រួចរាល់ 100%</strong></td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="2-បញ្ជីត្រួតពិនិត្យការអនុលោមតាមស្តង់ដារ-mandatory-standards-checklist" class="scroll-mt-24 group">2. បញ្ជីត្រួតពិនិត្យការអនុលោមតាមស្តង់ដារ (Mandatory Standards Checklist) <a href="#2-បញ្ជីត្រួតពិនិត្យការអនុលោមតាមស្តង់ដារ-mandatory-standards-checklist" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> <strong>ស្តង់ដារភាសាខ្មែរសុទ្ធសាធ 100% (Rule 1)</strong>៖ គ្មានពាក្យអង់គ្លេសលាយឡំ ឬពាក្យក្នុងរង្វង់ក្រចកជាភាសាអង់គ្លេសលើ UI ឡើយ។</li>
+<li><input checked="" disabled="" type="checkbox"> <strong>ស្តង់ដារលេខអង់គ្លេស/អារ៉ាប់ (<code class="px-1.5 py-0.5 rounded bg-slate-100 text-primary font-mono text-xs border border-slate-200/80">0-9</code>) (Rule 1)</strong>៖ រាល់លេខទាំងអស់ (កាលបរិច្ឆេទ, តម្លៃ, លេខកូដ, ចំនួន, លេខទូរស័ព្ទ) ប្រើប្រាស់ <code class="px-1.5 py-0.5 rounded bg-slate-100 text-primary font-mono text-xs border border-slate-200/80">0-9</code> ជានិច្ច។</li>
+<li><input checked="" disabled="" type="checkbox"> <strong>ស្តង់ដារកម្ពស់ក្បាលទំព័រ និង Sidebar (Rule 2)</strong>៖ ទាំងក្បាល Sidebar និង Content Header មានកម្ពស់ថេរ <code class="px-1.5 py-0.5 rounded bg-slate-100 text-primary font-mono text-xs border border-slate-200/80">h-[72px] px-6 flex-shrink-0</code> ដូចគ្នា 100% បន្ទាត់ខណ្ឌរត់ត្រង់ស្មើល្អឥតខ្ចោះ។</li>
+<li><input checked="" disabled="" type="checkbox"> <strong>ស្តង់ដារទំព័រពេញលេញសម្រាប់ Add/Edit/View (Rule 5)</strong>៖ គ្មានការប្រើប្រាស់ Pop-up Modal សម្រាប់ទម្រង់បង្កើតថ្មី ឬមើលលម្អិតឡើយ (ទំព័រទាំងអស់ជា Dedicated Full Page)។</li>
+<li><input checked="" disabled="" type="checkbox"> <strong>ស្តង់ដារប៊ូតុងត្រឡប់ក្រោយរួម (Rule 5)</strong>៖ គ្រប់ទំព័ររងទាំងអស់ប្រើប្រាស់ប៊ូតុងត្រឡប់ក្រោយប្រអប់មូលកោងមានរូបព្រួញតែមួយគត់ <code class="px-1.5 py-0.5 rounded bg-slate-100 text-primary font-mono text-xs border border-slate-200/80">w-10 h-10 rounded-xl bg-slate-50 border border-slate-200/70</code>។</li>
+<li><input checked="" disabled="" type="checkbox"> <strong>ស្តង់ដារគ្មាន Browser Native UI (Rule 6)</strong>៖ គ្មានការប្រើ native <code class="px-1.5 py-0.5 rounded bg-slate-100 text-primary font-mono text-xs border border-slate-200/80">&lt;select&gt;</code>, <code class="px-1.5 py-0.5 rounded bg-slate-100 text-primary font-mono text-xs border border-slate-200/80">alert()</code>, <code class="px-1.5 py-0.5 rounded bg-slate-100 text-primary font-mono text-xs border border-slate-200/80">confirm()</code> ឡើយ។</li>
+<li><input checked="" disabled="" type="checkbox"> <strong>ស្តង់ដារការពារការលេចធ្លាយតម្លៃ (Zero Price Leakage - Rule 10)</strong>៖ បុគ្គលិកស្តុក និងអ្នកដឹកជញ្ជូន មិនឃើញថ្លៃដើម ឬតម្លៃលក់ឡើយ។</li>
+<li><input checked="" disabled="" type="checkbox"> <strong>ស្តង់ដារបោះពុម្ពផ្លូវការ A4 (Rule 12)</strong>៖ វិក្កយបត្រ ប័ណ្ណចំណាយ ប័ណ្ណបើកប្រាក់ខែ គាំទ្រការបោះពុម្ព A4 ស្អាតបរិសុទ្ធ លាក់ UI មិនពាក់ព័ន្ធស្វ័យប្រវត្តិ។</li>
+<li><input checked="" disabled="" type="checkbox"> <strong>ការត្រួតពិនិត្យតំណភ្ជាប់ (Link Verification)</strong>៖ 695 References ត្រូវបានផ្ទៀងផ្ទាត់ដោយស្វ័យប្រវត្តិ → <strong>0 Broken References</strong>។</li>
+</ul>
+<hr>
+<h2 id="3-បញ្ជីត្រួតពិនិត្យការដាក់ឱ្យដំណើរការផ្លូវការ-enterprise-deployment-handover-checklist" class="scroll-mt-24 group">3. បញ្ជីត្រួតពិនិត្យការដាក់ឱ្យដំណើរការផ្លូវការ (Enterprise Deployment &amp; Handover Checklist) <a href="#3-បញ្ជីត្រួតពិនិត្យការដាក់ឱ្យដំណើរការផ្លូវការ-enterprise-deployment-handover-checklist" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="ដំណាក់កាល-d-30៖-ការរៀបចំទិន្នន័យ-និងបរិស្ថានប្រព័ន្ធ-data-migration-setup" class="scroll-mt-24 group">ដំណាក់កាល D-30៖ ការរៀបចំទិន្នន័យ និងបរិស្ថានប្រព័ន្ធ (Data Migration &amp; Setup) <a href="#ដំណាក់កាល-d-30៖-ការរៀបចំទិន្នន័យ-និងបរិស្ថានប្រព័ន្ធ-data-migration-setup" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> ផ្ទេរទិន្នន័យអតិថិជន និងអ្នកផ្គត់ផ្គង់ពីសៀវភៅចាស់ ឬឯកសារចាស់ចូលក្នុងប្រព័ន្ធ</li>
+<li><input disabled="" type="checkbox"> ចុះបញ្ជីមុខទំនិញទាំងអស់ រួមទាំងរូបភាព កូដបាកូដ និងឯកតារាប់</li>
+<li><input disabled="" type="checkbox"> កំណត់សិទ្ធិប្រើប្រាស់ និងបង្កើតគណនីបុគ្គលិកតាមតួនាទីទាំង 12 ដោយគ្មានការជាន់សិទ្ធិ</li>
+<li><input disabled="" type="checkbox"> កំណត់រូបិយប័ណ្ណគោល (ប្រាក់រៀល និងប្រាក់ដុល្លារ) ព្រមទាំងអត្រាប្តូរប្រាក់ផ្លូវការ</li>
+<li><input disabled="" type="checkbox"> កំណត់ពន្ធអាករលើតម្លៃបន្ថែម (អតប 10%) តាមច្បាប់សារពើពន្ធកម្ពុជា</li>
+<li><input disabled="" type="checkbox"> កំណត់ទីតាំងឃ្លាំង និងសាខាទាំងអស់ក្នុងប្រព័ន្ធ</li>
+</ul>
+<h3 id="ដំណាក់កាល-d-7៖-ការធ្វើតេស្តសាកល្បង-និងឧបករណ៍រឹង-hardware-integration-testing" class="scroll-mt-24 group">ដំណាក់កាល D-7៖ ការធ្វើតេស្តសាកល្បង និងឧបករណ៍រឹង (Hardware &amp; Integration Testing) <a href="#ដំណាក់កាល-d-7៖-ការធ្វើតេស្តសាកល្បង-និងឧបករណ៍រឹង-hardware-integration-testing" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> ភ្ជាប់ និងធ្វើតេស្តម៉ាស៊ីនស្កេនបាកូដជាមួយកុំព្យូទ័រ និងថេបប្លេត</li>
+<li><input disabled="" type="checkbox"> ធ្វើតេស្តម៉ាស៊ីនព្រីនវិក្កយបត្រកម្ដៅ 80 មីលីម៉ែត្រ (អក្សរខ្មែរច្បាស់ មិនបែក)</li>
+<li><input disabled="" type="checkbox"> ធ្វើតេស្តការទូទាត់ប្រាក់តាមកូដស្កេនបាគង ខេអេចឃ្យូអរ ឌីណាមិក (ទាំងប្រាក់ដុល្លារ និងរៀល)</li>
+<li><input disabled="" type="checkbox"> ធ្វើតេស្តការលក់ក្រៅបណ្តាញ (ផ្តាច់ខ្សែអ៊ីនធឺណិត និងបិទវ៉ាយហ្វាយ)</li>
+<li><input disabled="" type="checkbox"> ធ្វើតេស្តការផ្ញើសារជូនដំណឹងលក់ និងបិទវេនប្រាក់ស្វ័យប្រវត្តិតាមតេឡេក្រាម</li>
+<li><input disabled="" type="checkbox"> ធ្វើតេស្តការបោះពុម្ពឯកសារផ្លូវការ A4 (វិក្កយបត្រ ប័ណ្ណចំណាយ ប័ណ្ណបើកប្រាក់ខែ)</li>
+</ul>
+<h3 id="ដំណាក់កាល-d-1៖-ការផ្ទៀងផ្ទាត់ចុងក្រោយ-និងការបណ្តុះបណ្តាល-final-readiness-training" class="scroll-mt-24 group">ដំណាក់កាល D-1៖ ការផ្ទៀងផ្ទាត់ចុងក្រោយ និងការបណ្តុះបណ្តាល (Final Readiness &amp; Training) <a href="#ដំណាក់កាល-d-1៖-ការផ្ទៀងផ្ទាត់ចុងក្រោយ-និងការបណ្តុះបណ្តាល-final-readiness-training" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> បណ្តុះបណ្តាលបុគ្គលិកគិតលុយ (POS) អំពីរបៀបបើកវេន គិតលុយ និងបិទវេន (Z-Report)</li>
+<li><input disabled="" type="checkbox"> បណ្តុះបណ្តាលបុគ្គលិកលក់អំពីការបង្កើតសម្រង់តម្លៃ និងវិក្កយបត្រ</li>
+<li><input disabled="" type="checkbox"> បណ្តុះបណ្តាលបុគ្គលិកឃ្លាំងអំពីការទទួលទំនិញចូល និងផ្ទេរស្តុក (លាក់តម្លៃទិញ)</li>
+<li><input disabled="" type="checkbox"> សម្អាតទិន្នន័យតេស្តទាំងអស់ចេញពីប្រព័ន្ធ ដើម្បីចាប់ផ្តើមទិន្នន័យពិតប្រាកដ</li>
+<li><input disabled="" type="checkbox"> បង្កើតច្បាប់ចម្លងបម្រុងទុកមូលដ្ឋានទិន្នន័យដំបូង (Initial Clean Backup)</li>
+<li><input disabled="" type="checkbox"> រាប់ និងផ្ទៀងផ្ទាត់សាច់ប្រាក់ដើមគ្រាក្នុងថតប្រាក់</li>
+</ul>
+<h3 id="ដំណាក់កាល-d-0៖-ថ្ងៃបើកដំណើរការដំបូង-go-live-execution" class="scroll-mt-24 group">ដំណាក់កាល D-0៖ ថ្ងៃបើកដំណើរការដំបូង (Go-Live Execution) <a href="#ដំណាក់កាល-d-0៖-ថ្ងៃបើកដំណើរការដំបូង-go-live-execution" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> ក្រុមការងារបច្ចេកទេសប្រចាំការផ្ទាល់នៅកន្លែងអាជីវកម្មរបស់អតិថិជន</li>
+<li><input disabled="" type="checkbox"> ត្រួតពិនិត្យប្រតិបត្តិការលក់ 5 វិក្កយបត្រដំបូងយ៉ាងម៉ឺងម៉ាត់</li>
+<li><input disabled="" type="checkbox"> ផ្ទៀងផ្ទាត់ការកាត់ស្តុកជាក់ស្តែងក្រោយពេលលក់</li>
+<li><input disabled="" type="checkbox"> ផ្ទៀងផ្ទាត់ការទូទាត់ប្រាក់តាមបាគងចូលគណនីធនាគារពិតប្រាកដ</li>
+<li><input disabled="" type="checkbox"> ត្រួតពិនិត្យការបិទវេនសាច់ប្រាក់ចុងក្រោយ និងផ្ទៀងផ្ទាត់របាយការណ៍បិទវេន Z-Report</li>
+</ul>
+<h3 id="ដំណាក់កាល-t30៖-ការវាយតម្លៃ-និងស្ថិរភាពរយៈពេលវែង-stabilization-audit" class="scroll-mt-24 group">ដំណាក់កាល T+30៖ ការវាយតម្លៃ និងស្ថិរភាពរយៈពេលវែង (Stabilization &amp; Audit) <a href="#ដំណាក់កាល-t30៖-ការវាយតម្លៃ-និងស្ថិរភាពរយៈពេលវែង-stabilization-audit" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> រាប់ស្តុកជាក់ស្តែងធៀបនឹងតួលេខក្នុងប្រព័ន្ធ (Stock Reconciliation)</li>
+<li><input disabled="" type="checkbox"> ត្រួតពិនិត្យរបាយការណ៍ចំណេញខាតប្រចាំខែដំបូងជាមួយម្ចាស់អាជីវកម្ម</li>
+<li><input disabled="" type="checkbox"> វាយតម្លៃកម្រិតនៃការទប់ស្កាត់ការលេចធ្លាយ និងកំហុសទិន្នន័យ</li>
+<li><input disabled="" type="checkbox"> ប្រមូលមតិកែលម្អពីបុគ្គលិក និងរៀបចំការបណ្តុះបណ្តាលបំប៉នបន្ថែម</li>
+</ul>
+<hr>
+<h2 id="4-អនុសាសន៍របស់អ្នកជំនាញ-expert-recommendations" class="scroll-mt-24 group">4. អនុសាសន៍របស់អ្នកជំនាញ (Expert Recommendations) <a href="#4-អនុសាសន៍របស់អ្នកជំនាញ-expert-recommendations" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="1-អនុសាសន៍ផ្នែកស្ថាបត្យកម្មបច្ចេកវិទ្យា-architecture-technology" class="scroll-mt-24 group">1. អនុសាសន៍ផ្នែកស្ថាបត្យកម្មបច្ចេកវិទ្យា (Architecture &amp; Technology) <a href="#1-អនុសាសន៍ផ្នែកស្ថាបត្យកម្មបច្ចេកវិទ្យា-architecture-technology" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<ul>
+<li><strong>ការបម្រុងទុកទិន្នន័យស្វ័យប្រវត្តិ</strong>៖ ត្រូវកំណត់ការចម្លងទិន្នន័យបម្រុងទុកស្វ័យប្រវត្តិយ៉ាងហោចណាស់ 2 ដងក្នុងមួយថ្ងៃ (ពេលថ្ងៃត្រង់ និងពាក់កណ្តាលអធ្រាត្រ) ទៅកាន់ប្រព័ន្ធផ្ទុកទិន្នន័យដាច់ដោយឡែក។</li>
+<li><strong>ការការពារការលេចធ្លាយទិន្នន័យក្រុមហ៊ុន</strong>៖ ត្រូវប្រើប្រាស់លេខកូដសម្គាល់ក្រុមហ៊ុនដាច់ដោយឡែកក្នុងគ្រប់សំណួរទិន្នន័យទាំងអស់ ដើម្បីធានាថាក្រុមហ៊ុននីមួយៗមិនអាចមើលឃើញទិន្នន័យគ្នានោះឡើយ។</li>
+<li><strong>ការរក្សាដំណើរការក្រៅបណ្តាញ</strong>៖ ត្រូវប្រើប្រាស់អង្គចងចាំមូលដ្ឋានក្នុងកម្មវិធីរុករក ដើម្បីផ្ទុកទិន្នន័យមុខទំនិញ និងតម្លៃ សម្រាប់ឱ្យច្រកលក់រាយអាចដំណើរការលក់បានទោះបីដាច់សេវាអ៊ីនធឺណិតរហូតដល់ 72 ម៉ោង។</li>
+</ul>
+<h3 id="2-អនុសាសន៍ផ្នែកអាជីវកម្ម-និងការកំណត់តម្លៃ-commercial-pricing-model" class="scroll-mt-24 group">2. អនុសាសន៍ផ្នែកអាជីវកម្ម និងការកំណត់តម្លៃ (Commercial &amp; Pricing Model) <a href="#2-អនុសាសន៍ផ្នែកអាជីវកម្ម-និងការកំណត់តម្លៃ-commercial-pricing-model" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<ul>
+<li><strong>ការលក់កញ្ចប់ប្រចាំឆ្នាំ</strong>៖ លើកទឹកចិត្តឱ្យអតិថិជនបង់ប្រាក់ជាកញ្ចប់ប្រចាំឆ្នាំ ដោយផ្តល់ការបញ្ចុះតម្លៃ 20% (បង់ 10 ខែ ថែម 2 ខែឥតគិតថ្លៃ) ដើម្បីទទួលបានលំហូរសាច់ប្រាក់មុន និងរក្សាអតិថិជនបានយូរអង្វែង។</li>
+<li><strong>ការផ្គួបជាមួយឧបករណ៍រឹង (Hardware Bundling)</strong>៖ សហការជាមួយក្រុមហ៊ុនផ្គត់ផ្គង់ឧបករណ៍រឹង ដើម្បីលក់កញ្ចប់ពេញលេញ (ម៉ាស៊ីន POS + ម៉ាស៊ីនព្រីន 80 មីលីម៉ែត្រ + ម៉ាស៊ីនស្កេនបាកូដ + ថតលុយ) ជួយឱ្យអតិថិជនមិនបាច់ចំណាយពេលដើរទិញដោយខ្លួនឯង។</li>
+<li><strong>កម្មវិធីណែនាំអតិថិជនបន្ត (Referral Program)</strong>៖ ផ្តល់កម្រៃជើងសារជូនគណនេយ្យករ ទីប្រឹក្សាអាជីវកម្ម ឬអតិថិជនចាស់ ដែលបានណែនាំអាជីវកម្មថ្មីមកប្រើប្រាស់ប្រព័ន្ធ។</li>
+</ul>
+<h3 id="3-អនុសាសន៍ផ្នែកប្រតិបត្តិការ-និងការផ្លាស់ប្តូរ-change-management-training" class="scroll-mt-24 group">3. អនុសាសន៍ផ្នែកប្រតិបត្តិការ និងការផ្លាស់ប្តូរ (Change Management &amp; Training) <a href="#3-អនុសាសន៍ផ្នែកប្រតិបត្តិការ-និងការផ្លាស់ប្តូរ-change-management-training" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<ul>
+<li><strong>ការដាក់ឱ្យប្រើប្រាស់ជាដំណាក់កាល (Phased Rollout)</strong>៖ ជៀសវាងការដាក់ឱ្យប្រើប្រាស់គ្រប់មុខងារទាំងអស់ក្នុងពេលតែមួយ។ ត្រូវអនុវត្តជា 3 ជំហាន៖<ul>
+<li>ជំហានទី 1៖ ច្រកលក់រាយ និងការគ្រប់គ្រងស្តុក</li>
+<li>ជំហានទី 2៖ ការបញ្ជាទិញចូល លទ្ធកម្ម និងវិក្កយបត្រ</li>
+<li>ជំហានទី 3៖ គណនេយ្យទ្វេបញ្ជីពេញលេញ និងបន្ទប់តាំងបង្ហាញឌីជីថល Showroom</li>
+</ul>
+</li>
+<li><strong>ការជ្រើសរើសបុគ្គលិកស្នូល (Internal Champion)</strong>៖ ត្រូវបណ្តុះបណ្តាលបុគ្គលិកដែលមានភាពវៃឆ្លាតម្នាក់ឱ្យក្លាយជាអ្នកជំនាញផ្ទៃក្នុងប្រចាំក្រុមហ៊ុនរបស់អតិថិជន ដើម្បីជួយដោះស្រាយបញ្ហាបន្ទាន់ដល់មិត្តរួមការងារ។</li>
+</ul>
+<h3 id="4-អនុសាសន៍ផ្នែកសន្តិសុខ-និងសវនកម្ម-security-governance" class="scroll-mt-24 group">4. អនុសាសន៍ផ្នែកសន្តិសុខ និងសវនកម្ម (Security &amp; Governance) <a href="#4-អនុសាសន៍ផ្នែកសន្តិសុខ-និងសវនកម្ម-security-governance" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<ul>
+<li><strong>ការហាមដាច់ខាតការប្រើប្រាស់លេខសម្ងាត់រួមគ្នា</strong>៖ បុគ្គលិកម្នាក់ៗត្រូវមានគណនី និងលេខសម្ងាត់ផ្ទាល់ខ្លួនជានិច្ច ដើម្បីងាយស្រួលតាមដានអ្នកទទួលខុសត្រូវ។</li>
+<li><strong>ការគ្រប់គ្រងការបញ្ចុះតម្លៃ និងការលុបវិក្កយបត្រ</strong>៖ រាល់ការបញ្ចុះតម្លៃលើសពីកម្រិតកំណត់ (ឧទាហរណ៍ លើសពី 10%) ឬការលុបវិក្កយបត្រចោល ត្រូវតែតម្រូវឱ្យមានការអនុម័តពីអ្នកគ្រប់គ្រង និងកត់ត្រាក្នុងកំណត់ហេតុសវនកម្មជានិច្ច។</li>
+</ul>
+
+                </article>
+
+                <!-- Next / Previous Doc Navigation Bar -->
+                <div class="no-print mt-12 pt-8 border-t border-slate-200 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <a href="01-END-TO-END-SYSTEM-WORKFLOW.html" class="p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-transform flex-shrink-0">
+                            🔄
+                        </div>
+                        <div class="min-w-0">
+                            <div class="text-[10px] text-slate-400 font-medium">← ឯកសារមុន</div>
+                            <div class="text-xs font-bold text-slate-800 group-hover:text-primary transition truncate">លំហូរការងារទាំង 8 វដ្ត</div>
+                        </div>
+                    </a>
+
+                    <a href="03-USER-OPERATIONAL-GUIDE.html" class="p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group flex items-center justify-end text-right gap-3">
+                        <div class="min-w-0">
+                            <div class="text-[10px] text-slate-400 font-medium">ឯកសារបន្ទាប់ →</div>
+                            <div class="text-xs font-bold text-slate-800 group-hover:text-primary transition truncate">សៀវភៅណែនាំប្រតិបត្តិការ</div>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-transform flex-shrink-0">
+                            📖
+                        </div>
+                    </a>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="no-print bg-white border-t border-slate-200 py-6 px-8 text-center text-xs text-slate-500">
+        <p>រក្សាសិទ្ធិគ្រប់យ៉ាង © 2026 ក្រុមហ៊ុន ឌីជីថេក ខេអេច (DIGITECHKH Co., Ltd.) · ព្រះរាជាណាចក្រកម្ពុជា</p>
+    </footer>
+
+</body>
+</html>

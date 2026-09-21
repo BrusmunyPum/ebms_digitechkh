@@ -21,44 +21,49 @@
 | 5 | [**`DIGITECHKH-System-Architecture-Overview.html`**](DIGITECHKH-System-Architecture-Overview.html) | **ស្ថាបត្យកម្មប្រព័ន្ធ** — ប្លង់ 4 ស្រទាប់, ម៉ាទ្រីសសិទ្ធិ 12 តួនាទី, វិសាលភាព 9 ម៉ូឌុល, ដ្យាក្រាម Mermaid |
 | 6 | [**`DIGITECHKH-Delivery-Checklist-And-Recommendations.html`**](DIGITECHKH-Delivery-Checklist-And-Recommendations.html) | **តារាងត្រួតពិនិត្យការប្រគល់ & អនុសាសន៍** — Checklists 5 ដំណាក់កាល (D-30 ដល់ T+30) រួមជាមួយអនុសាសន៍ 4 សសរស្ដម្ភរបស់អ្នកជំនាញ |
 | 7 | [**`DIGITECHKH-BMS-Official-System-Documentation.html`**](DIGITECHKH-BMS-Official-System-Documentation.html) | **សៀវភៅណែនាំប្រព័ន្ធផ្លូវការកម្រិតបោះពុម្ព** — ប្លង់ A4 ស្អាតបរិសុទ្ធ គ្មាន Header/Sidebar ពេល Print |
+| 8 | [**`DIGITECHKH-Roles-And-Permissions-Interactive-Guide.html`**](DIGITECHKH-Roles-And-Permissions-Interactive-Guide.html) | **មគ្គុទ្ទេសក៍អន្តរកម្មនៃតួនាទី និងសិទ្ធិអំណាច** — រុករកតួនាទីទាំង 10, ម៉ាទ្រីសប្រៀបធៀបសិទ្ធិ, វដ្តការងារ និងបោះពុម្ព A4 |
 
 ---
 
-## 📂 ឯកសារបច្ចេកទេសលម្អិត (Technical Markdown Specifications)
+## 📂 ឯកសារបច្ចេកទេសលម្អិត (Technical Specifications)
 
-ឯកសារលម្អិតទាំង 9 ត្រូវបានរៀបចំតាមលំដាប់លំហូរការងារយ៉ាងច្បាស់លាស់៖
+ឯកសារលម្អិតទាំង 9 ត្រូវបានរៀបចំជាទម្រង់ HTML ងាយស្រួលអានលើគ្រប់ Browser និងទម្រង់ Markdown ដើម៖
 
-1. [**`00-SYSTEM-OVERVIEW-AND-ARCHITECTURE.md`**](00-SYSTEM-OVERVIEW-AND-ARCHITECTURE.md)  
-   👉 *បេសកកម្មប្រព័ន្ធ, ស្ថាបត្យកម្ម 4 ស្រទាប់, គ្រោងបច្ចេកវិទ្យា (Tech Stack), និងគំរូទិន្នន័យ 10 ក្រុម*
-2. [**`01-END-TO-END-SYSTEM-WORKFLOW.md`**](01-END-TO-END-SYSTEM-WORKFLOW.md)  
+1. [**`00-SYSTEM-OVERVIEW-AND-ARCHITECTURE.html`**](00-SYSTEM-OVERVIEW-AND-ARCHITECTURE.html) ([Markdown](00-SYSTEM-OVERVIEW-AND-ARCHITECTURE.md))  
+   👉 *បេសកកម្មប្រព័ន្ធ, ស្ថាបត្យកម្ម 4 ស្រទាប់, គ្រោងបច្ចេកវិទ្យា, និងគំរូទិន្នន័យ 10 ក្រុម*
+2. [**`01-END-TO-END-SYSTEM-WORKFLOW.html`**](01-END-TO-END-SYSTEM-WORKFLOW.html) ([Markdown](01-END-TO-END-SYSTEM-WORKFLOW.md))  
    👉 *លំហូរការងារទាំង 8 វដ្ត (ពីការលក់, លទ្ធកម្ម, ស្តុក, គណនេយ្យ រហូតដល់ការដឹកជញ្ជូន)*
-3. [**`02-DELIVERY-AUDIT-AND-CHECKLIST.md`**](02-DELIVERY-AUDIT-AND-CHECKLIST.md)  
+3. [**`02-DELIVERY-AUDIT-AND-CHECKLIST.html`**](02-DELIVERY-AUDIT-AND-CHECKLIST.html) ([Markdown](02-DELIVERY-AUDIT-AND-CHECKLIST.md))  
    👉 *បញ្ជីសវនកម្មគុណភាព និងការត្រួតពិនិត្យមុន-ក្រោយពេលដាក់ឱ្យដំណើរការ (D-30 ដល់ T+30)*
-4. [**`03-USER-OPERATIONAL-GUIDE.md`**](03-USER-OPERATIONAL-GUIDE.md)  
+4. [**`03-USER-OPERATIONAL-GUIDE.html`**](03-USER-OPERATIONAL-GUIDE.html) ([Markdown](03-USER-OPERATIONAL-GUIDE.md))  
    👉 *សៀវភៅណែនាំប្រតិបត្តិការប្រចាំថ្ងៃសម្រាប់បុគ្គលិកតាមតួនាទីនីមួយៗ*
-5. [**`04-LEARNINGS-AND-STANDARDS-BENCHMARK.md`**](04-LEARNINGS-AND-STANDARDS-BENCHMARK.md)  
+5. [**`04-LEARNINGS-AND-STANDARDS-BENCHMARK.html`**](04-LEARNINGS-AND-STANDARDS-BENCHMARK.html) ([Markdown](04-LEARNINGS-AND-STANDARDS-BENCHMARK.md))  
    👉 *មេរៀន និងស្តង់ដារបច្ចេកវិទ្យាដែលបានដកស្រង់ពីប្រព័ន្ធ CCN, POS និង ClassMaster*
-6. [**`05-MASTER-SYSTEM-BLUEPRINT-AND-ENTERPRISE-PLAN.md`**](05-MASTER-SYSTEM-BLUEPRINT-AND-ENTERPRISE-PLAN.md)  
+6. [**`05-MASTER-SYSTEM-BLUEPRINT-AND-ENTERPRISE-PLAN.html`**](05-MASTER-SYSTEM-BLUEPRINT-AND-ENTERPRISE-PLAN.html) ([Markdown](05-MASTER-SYSTEM-BLUEPRINT-AND-ENTERPRISE-PLAN.md))  
    👉 *ប្លង់មេនៃប្រព័ន្ធ និងផែនទីបង្ហាញផ្លូវ 3 ដំណាក់កាល (POS → Wholesale → Full Finance)*
-7. [**`06-FULL-SYSTEM-SPECIFICATION-AND-TEAM-GUIDE.md`**](06-FULL-SYSTEM-SPECIFICATION-AND-TEAM-GUIDE.md)  
+7. [**`06-FULL-SYSTEM-SPECIFICATION-AND-TEAM-GUIDE.html`**](06-FULL-SYSTEM-SPECIFICATION-AND-TEAM-GUIDE.html) ([Markdown](06-FULL-SYSTEM-SPECIFICATION-AND-TEAM-GUIDE.md))  
    👉 *សេចក្តីបញ្ជាក់លម្អិតនៃប្រព័ន្ធទាំងមូល និងការណែនាំបច្ចេកទេសសម្រាប់ក្រុមការងារ Dev/QA*
-8. [**`07-CLIENT-PITCH-AND-SALES-STRATEGY.md`**](07-CLIENT-PITCH-AND-SALES-STRATEGY.md)  
+8. [**`07-CLIENT-PITCH-AND-SALES-STRATEGY.html`**](07-CLIENT-PITCH-AND-SALES-STRATEGY.html) ([Markdown](07-CLIENT-PITCH-AND-SALES-STRATEGY.md))  
    👉 *យុទ្ធសាស្ត្រលក់កម្រិតសហគ្រាស, ការបង្ហាញ 3 នាទីទាក់ចិត្ត, ដោះស្រាយការជំទាស់ និងកញ្ចប់តម្លៃ*
-9. [**`08-ECOMMERCE-DIGITAL-SHOWROOM-SPECIFICATION.md`**](08-ECOMMERCE-DIGITAL-SHOWROOM-SPECIFICATION.md)  
+9. [**`08-ECOMMERCE-DIGITAL-SHOWROOM-SPECIFICATION.html`**](08-ECOMMERCE-DIGITAL-SHOWROOM-SPECIFICATION.html) ([Markdown](08-ECOMMERCE-DIGITAL-SHOWROOM-SPECIFICATION.md))  
    👉 *លក្ខណៈបច្ចេកទេសនៃគេហទំព័រ Digital Showroom, យន្តការ Chat-to-Quote និងការទូទាត់ KHQR*
 
 ---
 
 ## 👥 ឯកសារសិក្សាស៊ីជម្រៅតាមតួនាទី (Role Deep-Study Specifications)
 
-ឯកសារសិក្សាស៊ីជម្រៅលម្អិត 100% មុនពេលឈានទៅបង្កើត Prototype៖
+ឯកសារសិក្សាស៊ីជម្រៅលម្អិត 100% ជាទម្រង់ HTML រចនាស្អាតបរិសុទ្ធ ងាយស្រួលអានលើ Browser៖
 
-1. [**`role_superadmin.md`**](role_superadmin.md) 👉 *តួនាទី ស៊ុបភើរ អភិបាល (Super Admin) — Multi-tenant Root Operator*
-2. [**`role_procurement_manager.md`**](role_procurement_manager.md) 👉 *តួនាទី អ្នកគ្រប់គ្រងលទ្ធកម្ម (Procurement Manager) — PO, Bills, 3-Way Matching*
-3. [**`role_warehouse_staff.md`**](role_warehouse_staff.md) 👉 *តួនាទី បុគ្គលិកគ្រប់គ្រងស្តុក (Warehouse Staff) — GRN, Movement, Zero Price Leakage*
-4. [**`role_customer_support.md`**](role_customer_support.md) 👉 *តួនាទី ផ្នែកគាំទ្រអតិថិជន (Customer Support) — Ticketing, Tracking, SLA, CSAT*
-5. [**`role_apar_accountant.md`**](role_apar_accountant.md) 👉 *តួនាទី គណនេយ្យករទូទាត់ (AP/AR Accountant) — Inbound AR, Outbound AP, WHT, Voucher*
-6. [**`role_sales_manager.md`**](role_sales_manager.md) 👉 *តួនាទី អ្នកគ្រប់គ្រងផ្នែកលក់ (Sales Manager) — Quotations, Dynamic Pricing, Credit Limits, Approvals, Sales Targets*
+1. [**`role_superadmin.html`**](role_superadmin.html) ([Markdown](role_superadmin.md)) 👉 *តួនាទី ស៊ុបភើរ អភិបាល (Super Admin) — Multi-tenant Root Operator*
+2. [**`role_procurement_manager.html`**](role_procurement_manager.html) ([Markdown](role_procurement_manager.md)) 👉 *តួនាទី អ្នកគ្រប់គ្រងលទ្ធកម្ម (Procurement Manager) — PO, Bills, 3-Way Matching*
+3. [**`role_warehouse_staff.html`**](role_warehouse_staff.html) ([Markdown](role_warehouse_staff.md)) 👉 *តួនាទី បុគ្គលិកគ្រប់គ្រងស្តុក (Warehouse Staff) — GRN, Movement, Zero Price Leakage*
+4. [**`role_customer_support.html`**](role_customer_support.html) ([Markdown](role_customer_support.md)) 👉 *តួនាទី ផ្នែកគាំទ្រអតិថិជន (Customer Support) — Ticketing, Tracking, SLA, CSAT*
+5. [**`role_apar_accountant.html`**](role_apar_accountant.html) ([Markdown](role_apar_accountant.md)) 👉 *តួនាទី គណនេយ្យករទូទាត់ (AP/AR Accountant) — Inbound AR, Outbound AP, WHT, Voucher*
+6. [**`role_sales_manager.html`**](role_sales_manager.html) ([Markdown](role_sales_manager.md)) 👉 *តួនាទី អ្នកគ្រប់គ្រងផ្នែកលក់ (Sales Manager) — Quotations, Dynamic Pricing, Credit Limits, Approvals, Sales Targets*
+7. [**`role_internal_auditor_executive.html`**](role_internal_auditor_executive.html) ([Markdown](role_internal_auditor_executive.md)) 👉 *តួនាទី សវនករផ្ទៃក្នុង / នាយកប្រតិបត្តិ (Internal Auditor / Executive) — 100% Read-Only Audit, Forensics, Anti-Fraud*
+8. [**`role_sales_executive.html`**](role_sales_executive.html) ([Markdown](role_sales_executive.md)) 👉 *តួនាទី បុគ្គលិកផ្នែកលក់ (Sales Executive) — Quotations, Invoices, Tiered Pricing, Zero Cost Leakage*
+9. [**`role_admin_general_manager.html`**](role_admin_general_manager.html) ([Markdown](role_admin_general_manager.md)) 👉 *តួនាទី អភិបាលក្រុមហ៊ុន / អ្នកគ្រប់គ្រងទូទៅ (Admin / General Manager) — Tenant Command, Approvals, Period Lock, User Roles*
+10. [**`role_warehouse_manager.html`**](role_warehouse_manager.html) ([Markdown](role_warehouse_manager.md)) 👉 *តួនាទី អ្នកគ្រប់គ្រងឃ្លាំងស្តុក (Warehouse Manager) — Inventory Valuation, ROP, Stock Adjustments, Zero Selling Price Leakage*
 
 ---
 

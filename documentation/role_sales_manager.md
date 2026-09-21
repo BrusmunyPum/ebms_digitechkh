@@ -642,3 +642,9 @@ CREATE TABLE sales_targets (
 
 #### សំណួរទី 4៖ នៅពេលសម្រង់តម្លៃ (Quote) ត្រូវបានបម្លែងជាវិក្កយបត្រ (Invoice) តើសម្រង់តម្លៃដើមនោះអាចកែប្រែបានទៀតទេ?
 **ចម្លើយ**៖ **មិនអាចកែប្រែបានទៀតឡើយ**។ នៅពេលបម្លែងរួចរាល់ សម្រង់តម្លៃដើមនឹងប្តូរស្ថានភាពទៅជា «បានបម្លែងរួចរាល់ (Converted)» ហើយប្រព័ន្ធនឹងចាក់សោរទិន្នន័យ (Read-Only) ជានិច្ច ដើម្បីរក្សាភស្តុតាងដើមនៃកិច្ចព្រមព្រៀង។
+
+---
+
+*ឯកសារនេះតំណាង 100% នៃមូលដ្ឋានចំណេះដឹងសម្រាប់ Sales Manager Role ក្នុង DIGITECHKH BMS*  
+*Previous Role: AP/AR Accountant → [`role_apar_accountant.md`](role_apar_accountant.md)*  
+*Next Role: Internal Auditor / Executive → [`role_internal_auditor_executive.md`](role_internal_auditor_executive.md)*

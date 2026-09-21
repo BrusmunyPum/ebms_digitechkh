@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="km" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎧 ផ្នែកគាំទ្រអតិថិជន (Customer Support) — ការសិក្សាស៊ីជម្រៅ | DIGITECHKH BMS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Kantumruy Pro', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0f2b5c',
+                        primaryHover: '#0a1d3f',
+                        accent: '#2563eb',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Kantumruy Pro', sans-serif;
+            color: #334155;
+            background-color: #f8fafc;
+        }
+        ::-webkit-scrollbar { display: none; }
+        * { -ms-overflow-style: none; scrollbar-width: none; }
+        h1, h2, h3, h4 { color: #0f172a; font-weight: 700; }
+        h1 { font-size: 1.8rem; line-height: 2.35rem; margin-bottom: 1.25rem; }
+        h2 { font-size: 1.35rem; line-height: 1.85rem; margin-top: 2.25rem; margin-bottom: 0.85rem; padding-bottom: 0.5rem; border-bottom: 1px solid #e2e8f0; }
+        h3 { font-size: 1.1rem; line-height: 1.5rem; margin-top: 1.75rem; margin-bottom: 0.5rem; }
+        p { margin-bottom: 0.85rem; line-height: 1.8; font-size: 0.95rem; }
+        ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1rem; font-size: 0.95rem; }
+        ol { list-style-type: decimal; padding-left: 1.5rem; margin-bottom: 1rem; font-size: 0.95rem; }
+        li { margin-bottom: 0.35rem; line-height: 1.7; }
+        hr { border: 0; border-top: 1px solid #e2e8f0; margin: 2rem 0; }
+        @media print {
+            .no-print { display: none !important; }
+            body { background-color: #ffffff; color: #000; }
+            .print-container { max-width: 100% !important; margin: 0 !important; padding: 0 !important; box-shadow: none !important; border: none !important; }
+            table, pre, blockquote, .rounded-xl, .rounded-2xl { page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-primary selection:text-white min-h-screen flex flex-col justify-between">
+
+    <!-- Top Sticky Control Bar -->
+    <header class="no-print fixed top-0 left-0 right-0 h-16 bg-primary text-white z-50 px-4 sm:px-8 flex items-center justify-between shadow-md">
+        <div class="flex items-center gap-3">
+            <a href="index.html" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition flex items-center gap-2 text-xs font-semibold">
+                <i class="fas fa-arrow-left"></i> <span class="hidden sm:inline">មជ្ឈមណ្ឌលឯកសារ</span>
+            </a>
+            <span class="text-white/30 hidden sm:inline">|</span>
+            <div class="flex items-center gap-2">
+                <span class="text-xl">🎧</span>
+                <span class="font-bold text-xs sm:text-sm text-white truncate max-w-[200px] sm:max-w-xs">ផ្នែកគាំទ្រអតិថិជន</span>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-white/15 text-cyan-200 hidden md:inline">Support</span>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-2 sm:gap-3">
+            <!-- Role Switcher -->
+            <div class="relative">
+                <select onchange="window.location.href=this.value" class="h-9 pl-3 pr-8 bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl text-xs font-semibold text-white focus:outline-none focus:bg-[#0a1d3f] transition appearance-none cursor-pointer">
+                    <option value="role_superadmin.html" >👑 ស៊ុបភើរ អភិបាល (Super Admin)</option>
+<option value="role_procurement_manager.html" >🛒 អ្នកគ្រប់គ្រងលទ្ធកម្ម (Procurement Manager)</option>
+<option value="role_warehouse_staff.html" >👷 បុគ្គលិកឃ្លាំងទំនិញ (Warehouse Staff)</option>
+<option value="role_customer_support.html" selected>🎧 ផ្នែកគាំទ្រអតិថិជន (Customer Support)</option>
+<option value="role_apar_accountant.html" >💰 គណនេយ្យករចំណាយ និងចំណូល (AP/AR Accountant)</option>
+<option value="role_sales_manager.html" >👔 អ្នកគ្រប់គ្រងផ្នែកលក់ (Sales Manager)</option>
+<option value="role_internal_auditor_executive.html" >🔍 សវនករផ្ទៃក្នុង និងថ្នាក់ដឹកនាំ (Internal Auditor / Executive)</option>
+<option value="role_sales_executive.html" >💼 បុគ្គលិកប្រតិបត្តិផ្នែកលក់ (Sales Executive)</option>
+<option value="role_admin_general_manager.html" >🏛️ អភិបាល និងអ្នកចាត់ការទូទៅ (Admin / General Manager)</option>
+<option value="role_warehouse_manager.html" >📦 អ្នកគ្រប់គ្រងឃ្លាំងស្តុក (Warehouse Manager)</option>
+                </select>
+                <i class="fas fa-chevron-down absolute right-3 top-3 text-[10px] text-white/60 pointer-events-none"></i>
+            </div>
+
+            <!-- Interactive Guide Link -->
+            <a href="DIGITECHKH-Roles-And-Permissions-Interactive-Guide.html?role=customer_support" class="px-3 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-semibold transition hidden lg:flex items-center gap-1.5 shadow-sm">
+                <i class="fas fa-table-cells"></i> ផ្ទាំងអន្តរកម្ម & ម៉ាទ្រីស
+            </a>
+
+            <!-- Print Button -->
+            <button onclick="window.print()" class="px-3 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-semibold transition flex items-center gap-1.5 shadow-sm cursor-pointer">
+                <i class="fas fa-print"></i> <span class="hidden sm:inline">បោះពុម្ព A4</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Reading Container -->
+    <div class="pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full flex-1">
+        <div class="flex flex-col lg:flex-row gap-8 items-start">
+
+            <!-- Left Table of Contents Sidebar -->
+            <aside class="no-print lg:w-72 flex-shrink-0 sticky top-24 hidden lg:block bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
+                <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-3">
+                    <span class="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
+                        <i class="fas fa-list-ul text-primary"></i> មាតិកាឯកសារ
+                    </span>
+                    <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-50 text-accent">TOC</span>
+                </div>
+                <div class="space-y-0.5 max-h-[calc(100vh-220px)] overflow-y-auto pr-1 text-xs">
+                    <a href="#ចំណុចចាំបាច់-បេសកកម្មស្នូល-និងព្រំដែនសិទ្ធិ-core-mission-strict-boundaries" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="⚠️ ចំណុចចាំបាច់ — បេសកកម្មស្នូល និងព្រំដែនសិទ្ធិ (Core Mission & Strict Boundaries)">⚠️ ចំណុចចាំបាច់ — បេសកកម្មស្នូល និងព្រំដែនសិទ្ធិ (Core Mission & Strict Boundaries)</a>
+<a href="#តារាងមាតិកា" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="តារាងមាតិកា">តារាងមាតិកា</a>
+<a href="#1-អ្វីជា-customer-support" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="1. អ្វីជា Customer Support?">1. អ្វីជា Customer Support?</a>
+<a href="#11-និយមន័យ-definition" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="1.1 និយមន័យ (Definition)">1.1 និយមន័យ (Definition)</a>
+<a href="#12-តួនាទីក្នុងបរិបទជាក់ស្តែងនៅកម្ពុជា-cambodia-business-context" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="1.2 តួនាទីក្នុងបរិបទជាក់ស្តែងនៅកម្ពុជា (Cambodia Business Context)">1.2 តួនាទីក្នុងបរិបទជាក់ស្តែងនៅកម្ពុជា (Cambodia Business Context)</a>
+<a href="#2-ឋានានុក្រម-និងទំនាក់ទំនង" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="2. ឋានានុក្រម និងទំនាក់ទំនង">2. ឋានានុក្រម និងទំនាក់ទំនង</a>
+<a href="#3-អ្វីដែល-customer-support-ធ្វើបាន-និងហាមធ្វើ-full-capability-map" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="3. អ្វីដែល Customer Support ធ្វើបាន និងហាមធ្វើ (Full Capability Map)">3. អ្វីដែល Customer Support ធ្វើបាន និងហាមធ្វើ (Full Capability Map)</a>
+<a href="#31-អ្វីដែល-customer-support-ធ្វើបាន" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="3.1 ✅ អ្វីដែល Customer Support ធ្វើបាន">3.1 ✅ អ្វីដែល Customer Support ធ្វើបាន</a>
+<a href="#32-អ្វីដែល-customer-support-ហាមធ្វើដាច់ខាត" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="3.2 ❌ អ្វីដែល Customer Support ហាមធ្វើដាច់ខាត">3.2 ❌ អ្វីដែល Customer Support ហាមធ្វើដាច់ខាត</a>
+<a href="#4-ទំព័រ-ui-ពេញលេញ-page-by-page-blueprint" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="4. ទំព័រ UI ពេញលេញ (Page-by-Page Blueprint)">4. ទំព័រ UI ពេញលេញ (Page-by-Page Blueprint)</a>
+<a href="#41-dashboardhtml-ផ្ទាំងគ្រប់គ្រងសេវាអតិថិជន-support-command-center" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.1 `dashboard.html` — ផ្ទាំងគ្រប់គ្រងសេវាអតិថិជន (Support Command Center)">4.1 `dashboard.html` — ផ្ទាំងគ្រប់គ្រងសេវាអតិថិជន (Support Command Center)</a>
+<a href="#42-ticketshtml-បញ្ជីសំបុត្របណ្តឹង-និងសំណើជំនួយ-support-tickets-list" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.2 `tickets.html` — បញ្ជីសំបុត្របណ្តឹង និងសំណើជំនួយ (Support Tickets List)">4.2 `tickets.html` — បញ្ជីសំបុត្របណ្តឹង និងសំណើជំនួយ (Support Tickets List)</a>
+<a href="#43-create-tickethtml-ទម្រង់បង្កើតសំបុត្រថ្មី-dedicated-create-page" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.3 `create-ticket.html` — ទម្រង់បង្កើតសំបុត្រថ្មី (Dedicated Create Page)">4.3 `create-ticket.html` — ទម្រង់បង្កើតសំបុត្រថ្មី (Dedicated Create Page)</a>
+<a href="#44-view-tickethtml-ព័ត៌មានលម្អិត-និងកំណត់ហេតុដោះស្រាយ-ticket-detail-timeline" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.4 `view-ticket.html` — ព័ត៌មានលម្អិត និងកំណត់ហេតុដោះស្រាយ (Ticket Detail & Timeline)">4.4 `view-ticket.html` — ព័ត៌មានលម្អិត និងកំណត់ហេតុដោះស្រាយ (Ticket Detail & Timeline)</a>
+<a href="#45-invoices-lookuphtml-ឧបករណ៍ស្រាវជ្រាវវិក្កយបត្ររហ័ស-quick-invoice-lookup" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.5 `invoices-lookup.html` — ឧបករណ៍ស្រាវជ្រាវវិក្កយបត្ររហ័ស (Quick Invoice Lookup)">4.5 `invoices-lookup.html` — ឧបករណ៍ស្រាវជ្រាវវិក្កយបត្ររហ័ស (Quick Invoice Lookup)</a>
+<a href="#46-delivery-trackinghtml-ផ្ទាំងតាមដានការដឹកជញ្ជូន-delivery-status-center" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.6 `delivery-tracking.html` — ផ្ទាំងតាមដានការដឹកជញ្ជូន (Delivery Status Center)">4.6 `delivery-tracking.html` — ផ្ទាំងតាមដានការដឹកជញ្ជូន (Delivery Status Center)</a>
+<a href="#5-ម៉ាទ្រីសសិទ្ធិ-permission-matrix" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="5. ម៉ាទ្រីសសិទ្ធិ (Permission Matrix)">5. ម៉ាទ្រីសសិទ្ធិ (Permission Matrix)</a>
+<a href="#51-ម៉ាទ្រីស-crud-ពេញលេញសម្រាប់-customer-support" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="5.1 ម៉ាទ្រីស CRUD ពេញលេញសម្រាប់ Customer Support">5.1 ម៉ាទ្រីស CRUD ពេញលេញសម្រាប់ Customer Support</a>
+<a href="#6-វដ្តការងារស្នូលទាំង-5-core-workflows" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="6. វដ្តការងារស្នូលទាំង 5 (Core Workflows)">6. វដ្តការងារស្នូលទាំង 5 (Core Workflows)</a>
+<a href="#workflow-1-ការសាកសួរ-និងតាមដានការដឹកជញ្ជូន-inquiry-delivery-tracking" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 1: ការសាកសួរ និងតាមដានការដឹកជញ្ជូន (Inquiry & Delivery Tracking)">Workflow 1: ការសាកសួរ និងតាមដានការដឹកជញ្ជូន (Inquiry & Delivery Tracking)</a>
+<a href="#workflow-2-ការកត់ត្រា-និងដោះស្រាយបណ្តឹង-ticket-resolution-lifecycle" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 2: ការកត់ត្រា និងដោះស្រាយបណ្តឹង (Ticket Resolution Lifecycle)">Workflow 2: ការកត់ត្រា និងដោះស្រាយបណ្តឹង (Ticket Resolution Lifecycle)</a>
+<a href="#workflow-3-ការសម្របសម្រួលប្តូរទំនិញ-ឬសងប្រាក់-rma-refund-flow" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 3: ការសម្របសម្រួលប្តូរទំនិញ ឬសងប្រាក់ (RMA & Refund Flow)">Workflow 3: ការសម្របសម្រួលប្តូរទំនិញ ឬសងប្រាក់ (RMA & Refund Flow)</a>
+<a href="#workflow-4-ការពិនិត្យវត្តមានស្តុកទំនិញ-stock-availability-check" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 4: ការពិនិត្យវត្តមានស្តុកទំនិញ (Stock Availability Check)">Workflow 4: ការពិនិត្យវត្តមានស្តុកទំនិញ (Stock Availability Check)</a>
+<a href="#workflow-5-ការស្ទង់មតិ-និងវាយតម្លៃការពេញចិត្ត-csat-collection" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 5: ការស្ទង់មតិ និងវាយតម្លៃការពេញចិត្ត (CSAT Collection)">Workflow 5: ការស្ទង់មតិ និងវាយតម្លៃការពេញចិត្ត (CSAT Collection)</a>
+<a href="#7-business-logic-sla-rules" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="7. Business Logic & SLA Rules">7. Business Logic & SLA Rules</a>
+<a href="#71-កម្រិតអាទិភាព-និងស្តង់ដារពេលវេលាដោះស្រាយ-sla-matrix" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="7.1 កម្រិតអាទិភាព និងស្តង់ដារពេលវេលាដោះស្រាយ (SLA Matrix)">7.1 កម្រិតអាទិភាព និងស្តង់ដារពេលវេលាដោះស្រាយ (SLA Matrix)</a>
+<a href="#72-វដ្តជីវិតនៃសំបុត្របណ្តឹង-ticket-status-state-machine" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="7.2 វដ្តជីវិតនៃសំបុត្របណ្តឹង (Ticket Status State Machine)">7.2 វដ្តជីវិតនៃសំបុត្របណ្តឹង (Ticket Status State Machine)</a>
+<a href="#8-ទំនាក់ទំនងជាមួយតួនាទីផ្សេង-role-interaction-map" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="8. ទំនាក់ទំនងជាមួយតួនាទីផ្សេង (Role Interaction Map)">8. ទំនាក់ទំនងជាមួយតួនាទីផ្សេង (Role Interaction Map)</a>
+<a href="#9-data-scope-ឃើញអ្វី-លាក់អ្វី" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="9. Data Scope — ឃើញអ្វី? លាក់អ្វី?">9. Data Scope — ឃើញអ្វី? លាក់អ្វី?</a>
+<a href="#10-kpi-dashboard-សម្រាប់-customer-support" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="10. KPI Dashboard សម្រាប់ Customer Support">10. KPI Dashboard សម្រាប់ Customer Support</a>
+<a href="#11-គំរូ-database-schema" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="11. គំរូ Database Schema">11. គំរូ Database Schema</a>
+<a href="#12-ការការពារឯកជនភាព-និងសុវត្ថិភាពទិន្នន័យ" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="12. ការការពារឯកជនភាព និងសុវត្ថិភាពទិន្នន័យ">12. ការការពារឯកជនភាព និងសុវត្ថិភាពទិន្នន័យ</a>
+<a href="#121-គោលការណ៍ការពារទិន្នន័យអតិថិជន-customer-privacy-protection" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="12.1 គោលការណ៍ការពារទិន្នន័យអតិថិជន (Customer Privacy Protection)">12.1 គោលការណ៍ការពារទិន្នន័យអតិថិជន (Customer Privacy Protection)</a>
+<a href="#13-អនុសាសន៍-architect-prototype-planning" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="13. អនុសាសន៍ Architect + Prototype Planning">13. អនុសាសន៍ Architect + Prototype Planning</a>
+<a href="#131-អនុសាសន៍រចនាប្រព័ន្ធ-architectural-recommendations" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="13.1 អនុសាសន៍រចនាប្រព័ន្ធ (Architectural Recommendations)">13.1 អនុសាសន៍រចនាប្រព័ន្ធ (Architectural Recommendations)</a>
+<a href="#132-បញ្ជីត្រួតពិនិត្យការសាងសង់-prototype-15-point-prototype-checklist" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="13.2 បញ្ជីត្រួតពិនិត្យការសាងសង់ Prototype (15-Point Prototype Checklist)">13.2 បញ្ជីត្រួតពិនិត្យការសាងសង់ Prototype (15-Point Prototype Checklist)</a>
+<a href="#14-faq-សំណួរ-និងចម្លើយទូទៅ" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="14. FAQ — សំណួរ និងចម្លើយទូទៅ">14. FAQ — សំណួរ និងចម្លើយទូទៅ</a>
+                </div>
+                <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
+                    <a href="DIGITECHKH-Roles-And-Permissions-Interactive-Guide.html?role=customer_support" class="w-full py-2 px-3 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-700 text-xs font-medium flex items-center justify-between transition border border-slate-200">
+                        <span>មើលក្នុងផ្ទាំងអន្តរកម្ម</span>
+                        <i class="fas fa-up-right-from-square text-[10px] text-slate-400"></i>
+                    </a>
+                    <a href="role_customer_support.md" class="w-full py-2 px-3 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-500 text-[11px] font-normal flex items-center justify-between transition border border-slate-200">
+                        <span>មើលឯកសារដើម (.md)</span>
+                        <i class="fas fa-file-code text-[10px]"></i>
+                    </a>
+                </div>
+            </aside>
+
+            <!-- Main Document Body -->
+            <main class="print-container flex-1 bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-12 min-w-0 max-w-4xl mx-auto">
+
+                <!-- Breadcrumb -->
+                <div class="no-print flex items-center gap-2 text-xs text-slate-500 mb-6 flex-wrap pb-4 border-b border-slate-100">
+                    <a href="index.html" class="hover:text-primary transition flex items-center gap-1">
+                        <i class="fas fa-home"></i> មជ្ឈមណ្ឌលឯកសារ
+                    </a>
+                    <span>/</span>
+                    <a href="DIGITECHKH-Roles-And-Permissions-Interactive-Guide.html" class="hover:text-primary transition">
+                        តួនាទីទាំង 10
+                    </a>
+                    <span>/</span>
+                    <span class="text-slate-800 font-semibold">ផ្នែកគាំទ្រអតិថិជន</span>
+                </div>
+
+                <!-- Document Rendered HTML -->
+                <article class="prose prose-slate max-w-none">
+                    <h1 id="digitechkh-bms-ការសិក្សាស៊ីជម្រៅ-តួនាទី-ផ្នែកគាំទ្រអតិថិជន-customer-support" class="scroll-mt-24 group">🎧 DIGITECHKH BMS — ការសិក្សាស៊ីជម្រៅ: តួនាទី ផ្នែកគាំទ្រអតិថិជន (Customer Support) <a href="#digitechkh-bms-ការសិក្សាស៊ីជម្រៅ-តួនាទី-ផ្នែកគាំទ្រអតិថិជន-customer-support" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h1>
+<div class="my-5 p-4 rounded-xl bg-slate-50 border-l-4 border-[#0f2b5c] text-slate-800 text-xs leading-relaxed shadow-sm">
+<p><strong>ឯកសារ</strong>: <code>role_customer_support.md</code><br><strong>កំណែ</strong>: 1.0<br><strong>កាលបរិច្ឆេទ</strong>: 20 កញ្ញា 2026<br><strong>គោលបំណង</strong>: ការយល់ 100% អំពីតួនាទី Customer Support (ផ្នែកសេវា និងគាំទ្រអតិថិជន) — រួមមានវិសាលភាពការងារ, សិទ្ធិអំណាច, UI Pages, វដ្តការងារដោះស្រាយបញ្ហា (Ticketing &amp; Inquiry), គោលការណ៍ Zero Data Leakage, ស្ថាបត្យកម្មប្រព័ន្ធ, និងផែនការ Prototype Planning</p>
+</div>
+<hr>
+<h2 id="ចំណុចចាំបាច់-បេសកកម្មស្នូល-និងព្រំដែនសិទ្ធិ-core-mission-strict-boundaries" class="scroll-mt-24 group">⚠️ ចំណុចចាំបាច់ — បេសកកម្មស្នូល និងព្រំដែនសិទ្ធិ (Core Mission &amp; Strict Boundaries) <a href="#ចំណុចចាំបាច់-បេសកកម្មស្នូល-និងព្រំដែនសិទ្ធិ-core-mission-strict-boundaries" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<p>មុនពេលឈានចូលលម្អិត ត្រូវកំណត់ឱ្យច្បាស់នូវគោលការណ៍គ្រឹះនៃតួនាទី <strong>Customer Support</strong>:</p>
+<div class="my-5 p-4 rounded-xl bg-slate-50 border-l-4 border-[#0f2b5c] text-slate-800 text-xs leading-relaxed shadow-sm">
+<p>🛡️ <strong>គោលការណ៍ស្នូល</strong>: Customer Support គឺជា <strong>&quot;ស្ពានការពារ និងដោះស្រាយបញ្ហា&quot;</strong> ជួរមុខជូនអតិថិជន (First-line Defense &amp; Problem Solver)។ គាត់/នាង ត្រូវតែមានព័ត៌មានល្បឿនលឿនក្នុងការឆ្លើយតប (វិក្កយបត្រ, ស្ថានភាពដឹកជញ្ជូន, ចំនួនស្តុក) ប៉ុន្តែ <strong>ហាមដាច់ខាតនូវការកែប្រែទិន្នន័យហិរញ្ញវត្ថុ ឬការលេចធ្លាយថ្លៃដើមអាជីវកម្ម</strong>។</p>
+</div>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ព័ត៌មាន និងសកម្មភាព</th>
+<th align="center">Customer Support អាចធ្វើបាន?</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">មូលហេតុ និងគោលការណ៍</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ស្វែងរកវិក្កយបត្រអតិថិជន</strong></td>
+<td align="center">✅ មើលបាន (Read-Only)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ផ្ទៀងផ្ទាត់ពេលអតិថិជនសួរនាំ ឬផ្ញើស្លីបបង់ប្រាក់</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>តាមដានការដឹកជញ្ជូន (Tracking)</strong></td>
+<td align="center">✅ មើលបាន 4 ដំណាក់កាល</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ផ្តល់ព័ត៌មានថាទំនិញដល់ណា នរណាជាអ្នកដឹក</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ឆែកមើលចំនួនស្តុកទំនិញ</strong></td>
+<td align="center">✅ មើលបានតែចំនួន (Qty Only)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ឆ្លើយអតិថិជនថាមានទំនិញក្នុងស្តុកឬទេ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>បង្កើតបណ្ណដោះស្រាយបញ្ហា (Ticket)</strong></td>
+<td align="center">✅ បង្កើត/កែប្រែ/បិទបញ្ចប់</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">តាមដានបណ្តឹង ការទាមទារ និងការស្នើសុំជំនួយ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ស្នើប្តូរទំនិញខូច/ខុស (RMA)</strong></td>
+<td align="center">⚠️ ដាក់សំណើ (Request Only)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ឃ្លាំង និងប្រធានផ្នែកជាអ្នកពិនិត្យអនុម័ត</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ថ្លៃដើមទិញចូល (Cost Price)</strong></td>
+<td align="center">❌ <strong>ហាមដាច់ខាត</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ការពារការបែកធ្លាយអាថ៌កំបាំងថ្លៃដើម</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ប្រាក់ចំណេញក្រុមហ៊ុន (Margin/Profit)</strong></td>
+<td align="center">❌ <strong>ហាមដាច់ខាត</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ព័ត៌មានសម្ងាត់ថ្នាក់គ្រប់គ្រង</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>បង្កើត ឬលុបវិក្កយបត្រលក់</strong></td>
+<td align="center">❌ <strong>ហាមដាច់ខាត</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ភារកិច្ចផ្តាច់មុខរបស់ផ្នែកលក់ (Sales)</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>កែប្រែតម្លៃលើវិក្កយបត្រ</strong></td>
+<td align="center">❌ <strong>ហាមដាច់ខាត</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ការពារការក្លែងបន្លំហិរញ្ញវត្ថុ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ទូទាត់សាច់ប្រាក់ ឬចេញប័ណ្ណចំណាយ</strong></td>
+<td align="center">❌ <strong>ហាមដាច់ខាត</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ភារកិច្ចផ្តាច់មុខរបស់គណនេយ្យករ (Accountant)</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="តារាងមាតិកា" class="scroll-mt-24 group">តារាងមាតិកា <a href="#តារាងមាតិកា" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<ol>
+<li><a href="#1-%E1%9E%A2%E1%9F%92%E1%9E%9C%E1%9E%B8%E1%9E%87%E1%9E%B6-customer-support">អ្វីជា Customer Support?</a></li>
+<li><a href="#2-%E1%9E%8B%E1%9E%B6%E1%9E%93%E1%9E%B6%E1%9E%93%E1%9E%BB%E1%9E%80%E1%9F%92%E1%9E%9A%E1%9E%98-%E1%9E%93%E1%9E%B7%E1%9E%84%E1%9E%91%E1%9F%86%E1%9E%93%E1%9E%B6%E1%9E%80%E1%9F%8B%E1%9E%91%E1%9F%86%E1%9E%93%E1%9E%84">ឋានានុក្រម និងទំនាក់ទំនង</a></li>
+<li><a href="#3-%E1%9E%A2%E1%9F%92%E1%9E%9C%E1%9E%B8%E1%9E%8A%E1%9F%82%E1%9E%9B-customer-support-%E1%9E%92%E1%9F%92%E1%9E%9C%E1%9E%BE%E1%9E%94%E1%9E%B6%E1%9E%93-%E1%9E%93%E1%9E%B7%E1%9E%84%E1%9E%A0%E1%9E%B6%E1%9E%98%E1%9E%92%E1%9F%92%E1%9E%9C%E1%9E%BE">អ្វីដែល Customer Support ធ្វើបាន និងហាមធ្វើ (Full Capability Map)</a></li>
+<li><a href="#4-%E1%9E%91%E1%9F%86%E1%9E%96%E1%9F%90%E1%9E%9A-ui-%E1%9E%96%E1%9F%81%E1%9E%89%E1%9E%9B%E1%9F%81%E1%9E%89">ទំព័រ UI ពេញលេញ (Page-by-Page Blueprint)</a></li>
+<li><a href="#5-%E1%9E%98%E1%9F%89%E1%9E%B6%E1%9E%91%E1%9F%92%E1%9E%9A%E1%9E%B8%E1%9E%9F%E1%9E%9F%E1%9E%B7%E1%9E%91%E1%9F%92%E1%9E%92%E1%9E%B7">ម៉ាទ្រីសសិទ្ធិ (Permission Matrix)</a></li>
+<li><a href="#6-%E1%9E%9C%E1%9E%8A%E1%9F%92%E1%9E%8F%E1%9E%80%E1%9E%B6%E1%9E%9A%E1%9E%84%E1%9E%B6%E1%9E%9A%E1%9E%9F%E1%9F%92%E1%9E%93%E1%9E%BC%E1%9E%9B%E1%9E%91%E1%9E%B6%E1%9F%86%E1%9E%84-5">វដ្តការងារស្នូលទាំង 5 (Core Workflows)</a></li>
+<li><a href="#7-business-logic--sla-rules">Business Logic &amp; SLA Rules</a></li>
+<li><a href="#8-%E1%9E%91%E1%9F%86%E1%9E%93%E1%9E%B6%E1%9E%80%E1%9F%8B%E1%9E%91%E1%9F%86%E1%9E%93%E1%9E%84%E1%9E%87%E1%9E%B6%E1%9E%98%E1%9E%BD%E1%9E%99%E1%9E%8F%E1%9E%BD%E1%9E%93%E1%9E%B6%E1%9E%91%E1%9E%B8%E1%9E%95%E1%9F%92%E1%9E%9F%E1%9F%81%E1%9E%84">ទំនាក់ទំនងជាមួយតួនាទីផ្សេង (Role Interaction Map)</a></li>
+<li><a href="#9-data-scope--%E1%9E%83%E1%9E%BE%E1%9E%89%E1%9E%A2%E1%9F%92%E1%9E%9C%E1%9E%B8-%E1%9E%9B%E1%9E%B6%E1%9E%80%E1%9F%8B%E1%9E%A2%E1%9F%92%E1%9E%9C%E1%9E%B8">Data Scope — ឃើញអ្វី? លាក់អ្វី?</a></li>
+<li><a href="#10-kpi-dashboard-%E1%9E%9F%E1%9E%98%E1%9F%92%E1%9E%9A%E1%9E%B6%E1%9E%94%E1%9F%8B-customer-support">KPI Dashboard សម្រាប់ Customer Support</a></li>
+<li><a href="#11-%E1%9E%82%E1%9F%86%E1%9E%9A%E1%9E%BC-database-schema">គំរូ Database Schema</a></li>
+<li><a href="#12-%E1%9E%80%E1%9E%B6%E1%9E%9A%E1%9E%80%E1%9E%B6%E1%9E%9A%E1%9E%96%E1%9E%B6%E1%9E%9A%E1%9E%AF%E1%9E%80%E1%9E%87%E1%9E%93%E1%9E%97%E1%9E%B6%E1%9E%96-%E1%9E%93%E1%9E%B7%E1%9E%84%E1%9E%9F%E1%9E%BB%E1%9E%9C%E1%9E%8F%E1%9F%92%E1%9E%90%E1%9E%B7%E1%9E%97%E1%9E%B6%E1%9E%96%E1%9E%91%E1%9E%B7%E1%9E%93%E1%9F%92%E1%9E%93%E1%9E%93%E1%9F%90%E1%9E%99">ការការពារឯកជនភាព និងសុវត្ថិភាពទិន្នន័យ</a></li>
+<li><a href="#13-%E1%9E%A2%E1%9E%93%E1%9E%BB%E1%9E%9F%E1%9E%B6%E1%9E%9F%E1%9E%93%E1%9F%8D-architect--prototype-planning">អនុសាសន៍ Architect + Prototype Planning</a></li>
+<li><a href="#14-faq">FAQ — សំណួរ និងចម្លើយទូទៅ</a></li>
+</ol>
+<hr>
+<h2 id="1-អ្វីជា-customer-support" class="scroll-mt-24 group">1. អ្វីជា Customer Support? <a href="#1-អ្វីជា-customer-support" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="11-និយមន័យ-definition" class="scroll-mt-24 group">1.1 និយមន័យ (Definition) <a href="#11-និយមន័យ-definition" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p><strong>Customer Support</strong> (បុគ្គលិកផ្នែកគាំទ្រអតិថិជន / សេវាអតិថិជន) គឺជា <strong>មុខមាត់ទំនាក់ទំនងជួរមុខ</strong> របស់ក្រុមហ៊ុន ដែលទទួលបន្ទុកផ្ទាល់លើការផ្តល់ព័ត៌មាន ទទួលបណ្តឹង ដោះស្រាយបញ្ហាប្រឈម សម្របសម្រួលការប្តូរទំនិញ និងធានានូវការពេញចិត្តខ្ពស់បំផុតរបស់អតិថិជន (Customer Satisfaction) ក្រោយពេលលក់។</p>
+<div class="my-5 p-4 rounded-xl bg-blue-50/90 border-l-4 border-blue-500 text-blue-950 text-xs leading-relaxed shadow-sm">
+<p>💡 <strong>ការប្រៀបធៀប</strong>: ប្រសិនបើបុគ្គលិកផ្នែកលក់ (Sales) គឺជា <strong>អ្នកប្រមាញ់ (Hunter)</strong> ស្វែងរកអតិថិជន និងបិទការលក់ នោះ Customer Support គឺជា <strong>ទេវតាថែរក្សា (Caregiver)</strong> ដែលធានាថាអតិថិជនទទួលបានទំនិញត្រឹមត្រូវ ពេញចិត្ត និងបន្តទិញម្តងទៀតដោយគ្មានការខកចិត្ត។</p>
+</div>
+<h3 id="12-តួនាទីក្នុងបរិបទជាក់ស្តែងនៅកម្ពុជា-cambodia-business-context" class="scroll-mt-24 group">1.2 តួនាទីក្នុងបរិបទជាក់ស្តែងនៅកម្ពុជា (Cambodia Business Context) <a href="#12-តួនាទីក្នុងបរិបទជាក់ស្តែងនៅកម្ពុជា-cambodia-business-context" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p>នៅក្នុងសហគ្រាស និងអាជីវកម្មនៅកម្ពុជា (SMEs &amp; Enterprises) Customer Support ធ្វើការឆ្លើយតបអតិថិជនតាម 3 ច្រកសំខាន់ៗ:</p>
+<ol>
+<li><strong>Telegram Support Group / Chatbot</strong>: អតិថិជនកម្ពុជា 80% ទំនាក់ទំនងសួរនាំតាម Telegram (ឆែកវិក្កយបត្រ, ផ្ញើស្លីប Bakong, តាមដានអ្នកដឹក)។</li>
+<li><strong>Call Center / ទូរស័ព្ទផ្ទាល់</strong>: ទទួលការតវ៉ា ឬការសាកសួរបន្ទាន់។</li>
+<li><strong>Customer Portal (វិបផតថលអតិថិជន)</strong>: តាមដានសំបុត្របណ្តឹង (Support Tickets) ដែលបានបង្កើតចេញពីប្រព័ន្ធស្វ័យប្រវត្តិ។</li>
+</ol>
+<hr>
+<h2 id="2-ឋានានុក្រម-និងទំនាក់ទំនង" class="scroll-mt-24 group">2. ឋានានុក្រម និងទំនាក់ទំនង <a href="#2-ឋានានុក្រម-និងទំនាក់ទំនង" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>┌───────────────────────────────────────────────┐
+│          👑 SUPER ADMIN (Platform Level)       │
+└──────────────────────┬────────────────────────┘
+                       │
+┌──────────────────────▼────────────────────────┐
+│        🏢 ADMIN / GM (Company Level)          │
+│   ← កំណត់គោលការណ៍សេវា, SLA, ការសងប្រាក់     │
+└──────────────────────┬────────────────────────┘
+                       │
+         ┌─────────────┴─────────────┐
+         ▼                           ▼
+┌──────────────────┐       ┌────────────────────┐
+│ 👔 SALES MANAGER │       │ 🎧 SUPPORT MANAGER │
+└────────┬─────────┘       └─────────┬──────────┘
+         │                           │
+         ▼                           ▼
+┌──────────────────┐       ┌────────────────────┐
+│ 💼 SALES EXEC    │       │ 🎧 CUSTOMER SUPPORT│ ← តួនាទីនេះ
+│ (បង្កើតលក់/Quote)│       │ (ឆ្លើយតប/ដោះស្រាយ) │
+└────────┬─────────┘       └─────────┬──────────┘
+         │                           │
+         │ សម្របសម្រួលបញ្ហា          │ ឆ្លើយតប &amp; ដោះស្រាយ
+         ▼                           ▼
+┌──────────────────┐       ┌────────────────────┐
+│ 🚚 DRIVER / WH   │ ◄───► │ 👥 អតិថិជន (PORTAL)│
+│ (ដឹកជញ្ជូន/ស្តុក) │       │ (Customer Portal)  │
+└──────────────────┘       └────────────────────┘
+</code></pre>
+        </div>
+<p><strong>ការប្រៀបធៀប Customer Support ជាមួយ Sales Executive</strong>:</p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">លក្ខណៈវិនិច្ឆ័យ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Customer Support</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Sales Executive</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>គោលដៅចម្បង</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ដោះស្រាយបញ្ហា រក្សាអតិថិជនចាស់ (Retention)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">បង្កើតការលក់ថ្មី បង្កើនចំណូល (Revenue)</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ការចេញវិក្កយបត្រ</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ ហាមបង្កើត ឬកែប្រែ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">✅ បង្កើត និងកែសម្រួល</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ការមើលវិក្កយបត្រ</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">✅ មើលបានគ្រប់អតិថិជន (ដើម្បីជួយ Support)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">⚠️ មើលបានតែអតិថិជនក្រោមដៃខ្លួន</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ការគ្រប់គ្រង Ticket</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">✅ ពេញលេញ (ទទួល, ដោះស្រាយ, បិទ)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">👁️ មើលឃើញតែបណ្តឹងអតិថិជនខ្លួន</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ការតាមដានការដឹក</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">✅ មើល Live Tracking &amp; ស្ថានភាព Driver</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">👁️ មើលត្រឹមស្ថានភាពរួម</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ការកែសម្រួលតម្លៃ</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ គ្មានសិទ្ធិជាដាច់ខាត</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">⚠️ ដាក់បញ្ចុះតម្លៃតាមគោលការណ៍</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="3-អ្វីដែល-customer-support-ធ្វើបាន-និងហាមធ្វើ-full-capability-map" class="scroll-mt-24 group">3. អ្វីដែល Customer Support ធ្វើបាន និងហាមធ្វើ (Full Capability Map) <a href="#3-អ្វីដែល-customer-support-ធ្វើបាន-និងហាមធ្វើ-full-capability-map" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>CUSTOMER SUPPORT CAPABILITIES
+│
+├── 🎫 TICKET MANAGEMENT (ការគ្រប់គ្រងបណ្ណបណ្តឹង និងសំណើជំនួយ)
+│   ├── [CREATE]  បង្កើត Ticket ថ្មី (ពេលទទួលទូរស័ព្ទ, Telegram ឬ Walk-in)
+│   ├── [READ]    មើលបញ្ជី Ticket ទាំងអស់ (តម្រៀបតាមអាទិភាព និង SLA)
+│   ├── [UPDATE]  កត់ត្រាកំណត់ហេតុដោះស្រាយ (Internal Notes / Public Reply)
+│   ├── [UPDATE]  ប្តូរស្ថានភាព Ticket (Open → In Progress → Resolved → Closed)
+│   └── [ASSIGN]  បញ្ជូនបន្តទៅកាន់ផ្នែកជំនាញ (Escalate to Sales/Warehouse/Tech)
+│
+├── 📄 INVOICE &amp; ORDER LOOKUP (ការស្រាវជ្រាវ និងផ្ទៀងផ្ទាត់ឯកសារ)
+│   ├── [READ]    ស្វែងរកវិក្កយបត្រតាមលេខកូដ, ឈ្មោះអតិថិជន, ឬលេខទូរស័ព្ទ
+│   ├── [READ]    ពិនិត្យស្ថានភាពការបង់ប្រាក់ (មិនទាន់បង់, បង់មួយផ្នែក, បានបង់រួច)
+│   ├── [READ]    ពិនិត្យស្លីបបង់ប្រាក់ KHQR Bakong ដែលអតិថិជនបានភ្ជាប់
+│   └── [EXPORT]  ទាញយក ឬផ្ញើវិក្កយបត្រ PDF ឡើងវិញជូនអតិថិជន (Resend Copy)
+│
+├── 🚚 DELIVERY TRACKING (ការតាមដានការដឹកជញ្ជូនជូនអតិថិជន)
+│   ├── [READ]    មើលស្ថានភាពដឹកជញ្ជូន 4 ដំណាក់កាល
+│   ├── [READ]    មើលព័ត៌មានអ្នកដឹកជញ្ជូន (ឈ្មោះអ្នកបើកបរ, លេខទូរស័ព្ទទំនាក់ទំនង)
+│   ├── [READ]    មើលភស្តុតាងនៃការប្រគល់ទំនិញ (រូបថត ឬហត្ថលេខាទទួល)
+│   └── [NOTIFY]  ផ្ញើដំណឹងបច្ចុប្បន្នភាពការដឹកជញ្ជូនជូនអតិថិជនតាម Telegram
+│
+├── 📦 STOCK AVAILABILITY CHECK (ការពិនិត្យស្តុកទំនិញ)
+│   ├── [READ]    ស្វែងរកចំនួនស្តុកដែលនៅសល់ (Available Quantity Only)
+│   ├── [READ]    ពិនិត្យទីតាំងឃ្លាំងដែលមានទំនិញ
+│   └── ❌        ហាមដាច់ខាតការមើលថ្លៃដើមទិញចូល ឬកែសម្រួលតុល្យភាពស្តុក
+│
+├── 🔄 RETURN &amp; RMA ESCALATION (ការសម្របសម្រួលប្តូរទំនិញខូច ឬខុស)
+│   ├── [CREATE]  បង្កើតសំណើប្តូរទំនិញ (Return Material Authorization - RMA)
+│   ├── [UPLOAD]  ភ្ជាប់រូបថតទំនិញខូច ឬវីដេអូភស្តុតាងពីអតិថិជន
+│   ├── [TRACK]   តាមដានដំណើរការត្រួតពិនិត្យរបស់ឃ្លាំង និងគណនេយ្យ
+│   └── [NOTIFY]  ជូនដំណឹងអតិថិជនពេលសំណើត្រូវបានអនុម័ត
+│
+└── ⭐ CUSTOMER FEEDBACK &amp; SATISFACTION (ការស្ទង់មតិ និងវាយតម្លៃ)
+    ├── [RECORD]  កត់ត្រាពិន្ទុពេញចិត្តរបស់អតិថិជន (CSAT: 1 - 5 ផ្កាយ)
+    ├── [READ]    មើលប្រវត្តិមតិយោបល់របស់អតិថិជនម្នាក់ៗ
+    └── [REPORT]  ទាញរបាយការណ៍សង្ខេបអំពីបញ្ហាដែលកើតឡើងញឹកញាប់បំផុត
+</code></pre>
+        </div>
+<h3 id="31-អ្វីដែល-customer-support-ធ្វើបាន" class="scroll-mt-24 group">3.1 ✅ អ្វីដែល Customer Support ធ្វើបាន <a href="#31-អ្វីដែល-customer-support-ធ្វើបាន" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">#</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">សកម្មភាព</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ផលប្រយោជន៍ចំពោះអាជីវកម្ម</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">1</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ស្វែងរកវិក្កយបត្រ និងការបញ្ជាទិញរហ័ស (&lt; 5 វិនាទី)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ឆ្លើយតបអតិថិជនបានទាន់ចិត្ត មិនឱ្យរង់ចាំយូរ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">2</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">មើលស្ថានភាពដឹកជញ្ជូនផ្ទាល់ (Live Delivery Tracking)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ដោះស្រាយការត្អូញត្អែររឿងដឹកជញ្ជូនយឺត</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">3</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">បង្កើត និងចាត់ចែង Ticket តាមអាទិភាព (Low/Med/High/Urgent)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ការពារការភ្លេច ឬធ្លាយសំណើរបស់អតិថិជន</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">4</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">មើលចំនួនស្តុកជាក់ស្តែង (Quantity Available)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ឆ្លើយតបភ្លាមៗថាទំនិញមានឬអត់ ជៀសវាងខកជើង</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">5</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ផ្ញើឯកសារវិក្កយបត្រ PDF ឬ QR Code បង់ប្រាក់ម្តងទៀត</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ជួយសម្រួលពេលអតិថិជនបាត់បង់ឯកសារ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">6</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">កត់ត្រាសំណើប្តូរទំនិញ (RMA Draft) ភ្ជាប់រូបភាពភស្តុតាង</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ផ្តល់ភស្តុតាងច្បាស់លាស់ដល់ឃ្លាំង និងប្រធាន</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">7</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">បញ្ជូនបញ្ហាស្មុគស្មាញទៅកាន់ផ្នែកជំនាញ (Escalation)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ដោះស្រាយបញ្ហាបច្ចេកទេស ឬបញ្ហាហិរញ្ញវត្ថុទាន់ពេល</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">8</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">កត់ត្រាពិន្ទុវាយតម្លៃ CSAT និងមតិកែលម្អ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">វាស់ស្ទង់គុណភាពសេវាកម្ម និងកែលម្អប្រព័ន្ធ</td>
+</tr>
+</tbody></table></div>
+<h3 id="32-អ្វីដែល-customer-support-ហាមធ្វើដាច់ខាត" class="scroll-mt-24 group">3.2 ❌ អ្វីដែល Customer Support ហាមធ្វើដាច់ខាត <a href="#32-អ្វីដែល-customer-support-ហាមធ្វើដាច់ខាត" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">#</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">សកម្មភាពហាមឃាត់</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ហានិភ័យ និងផលប៉ះពាល់</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">1</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ <strong>កែប្រែ ឬលុបវិក្កយបត្រលក់</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">បំផ្លាញសុច្ចរិតភាពទិន្នន័យគណនេយ្យ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">2</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ <strong>បង្កើតវិក្កយបត្រលក់ថ្មី</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">រំលោភលើដែនសមត្ថកិច្ចផ្នែកលក់ (Sales)</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">3</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ <strong>មើលឃើញថ្លៃដើមទិញចូល (Cost Price)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ការពារ Zero Data Leakage និងអាថ៌កំបាំងក្រុមហ៊ុន</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">4</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ <strong>មើលឃើញប្រាក់ចំណេញ (Margin/Profit)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ព័ត៌មានយុទ្ធសាស្ត្រថ្នាក់ដឹកនាំប៉ុណ្ណោះ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">5</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ <strong>អនុម័តការសងប្រាក់ (Refund Approval)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ភារកិច្ចផ្តាច់មុខរបស់គណនេយ្យករ និង Admin</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">6</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ <strong>កែសម្រួលចំនួនស្តុកក្នុងឃ្លាំង</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ភារកិច្ចផ្តាច់មុខរបស់បុគ្គលិកឃ្លាំង</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">7</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ <strong>មើលឃើញទិន្នន័យប្រាក់ខែបុគ្គលិក (Payroll)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ព័ត៌មានសម្ងាត់ផ្នែកធនធានមនុស្ស</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">8</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ <strong>ទាញយកបញ្ជីឈ្មោះអតិថិជនទាំងមូល (Bulk Export)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ការពារការលួចទិន្នន័យអតិថិជនយកទៅលក់ក្រៅ</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="4-ទំព័រ-ui-ពេញលេញ-page-by-page-blueprint" class="scroll-mt-24 group">4. ទំព័រ UI ពេញលេញ (Page-by-Page Blueprint) <a href="#4-ទំព័រ-ui-ពេញលេញ-page-by-page-blueprint" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<p>Customer Support ដំណើរការលើច្រករបៀងឯកទេស <strong><code>frontend/src/pages/9-portals/customer-support/</code></strong> ដែលមាន <strong>6 ទំព័រគោល</strong>:</p>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>9-portals/customer-support/
+├── dashboard.html             ← ផ្ទាំងគ្រប់គ្រងសង្ខេប សំបុត្របណ្តឹង និង SLA
+├── tickets.html               ← បញ្ជីសំបុត្របណ្តឹង/សំណើជំនួយទាំងអស់
+├── create-ticket.html         ← ទម្រង់បង្កើតសំបុត្រជំនួយថ្មី (Dedicated Page)
+├── view-ticket.html           ← ព័ត៌មានលម្អិត Ticket, កំណត់ហេតុជជែក, និងសកម្មភាព
+├── invoices-lookup.html       ← ឧបករណ៍ស្វែងរកវិក្កយបត្រ និងការបញ្ជាទិញរហ័ស
+└── delivery-tracking.html     ← ផ្ទាំងតាមដានការដឹកជញ្ជូន 4 ដំណាក់កាល
+</code></pre>
+        </div>
+<hr>
+<h3 id="41-dashboardhtml-ផ្ទាំងគ្រប់គ្រងសេវាអតិថិជន-support-command-center" class="scroll-mt-24 group">4.1 <code>dashboard.html</code> — ផ្ទាំងគ្រប់គ្រងសេវាអតិថិជន (Support Command Center) <a href="#41-dashboardhtml-ផ្ទាំងគ្រប់គ្រងសេវាអតិថិជន-support-command-center" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p><strong>គោលបំណង</strong>: បង្ហាញទិដ្ឋភាពរួមភ្លាមៗអំពីស្ថានភាពបណ្តឹង, សំបុត្រដែលត្រូវឆ្លើយតបបន្ទាន់, និងកម្រិតពេញចិត្តរបស់អតិថិជន។</p>
+<p><strong>ជួរកាត KPI (Top Stat Cards)</strong>:</p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ឈ្មោះកាត</th>
+<th align="center">រូបតំណាង</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ការគណនា</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ការកំណត់ពណ៌</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>សំបុត្រកំពុងបើក (Open)</strong></td>
+<td align="center">📥</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">COUNT(tickets WHERE status=&#39;open&#39;)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ផ្ទៃខៀវខ្ចី អក្សរខៀវ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>បន្ទាន់ / ហួសពេល SLA</strong></td>
+<td align="center">🚨</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">COUNT(tickets WHERE sla_due &lt; NOW() AND status != &#39;closed&#39;)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ផ្ទៃក្រហមខ្ចី អក្សរក្រហម</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>កំពុងដំណើរការ (In Progress)</strong></td>
+<td align="center">⚙️</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">COUNT(tickets WHERE status=&#39;in_progress&#39;)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ផ្ទៃលឿងខ្ចី អក្សរលឿង</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ដោះស្រាយរួចថ្ងៃនេះ (Resolved)</strong></td>
+<td align="center">✅</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">COUNT(tickets WHERE status=&#39;resolved&#39; AND resolved_today)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ផ្ទៃបៃតងខ្ចី អក្សរបៃតង</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>កម្រិតពេញចិត្ត (CSAT Score)</strong></td>
+<td align="center">⭐</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">AVG(csat_rating) ក្នុងខែនេះ (ឧ. 4.8 / 5.0)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ផ្ទៃពណ៌ស្វាយខ្ចី</td>
+</tr>
+</tbody></table></div>
+<p><strong>ប្លង់ផ្នែកកណ្តាល និងផ្នែកខាងក្រោម</strong>:</p>
+<ol>
+<li><strong>តារាងសំបុត្រអាទិភាពបន្ទាន់ (Urgent Tickets Queue)</strong>: បង្ហាញ 10 សំបុត្រដែលមានកម្រិត «បន្ទាន់» និងរាប់ថយក្រោយ SLA Countdown Timer។</li>
+<li><strong>តារាងការដឹកជញ្ជូនដែលមានបញ្ហា (Delivery Exceptions)</strong>: បង្ហាញការដឹកជញ្ជូនដែលយឺតជាងពេលកំណត់ ឬអ្នកបើកបរមិនអាចទាក់ទងអតិថិជនបាន។</li>
+<li><strong>របារ Quick Actions</strong>:<ul>
+<li>ប៊ូតុង «+ បង្កើតសំបុត្រថ្មី» → <code>create-ticket.html</code></li>
+<li>ប៊ូតុង «ស្វែងរកវិក្កយបត្ររហ័ស» → <code>invoices-lookup.html</code></li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="42-ticketshtml-បញ្ជីសំបុត្របណ្តឹង-និងសំណើជំនួយ-support-tickets-list" class="scroll-mt-24 group">4.2 <code>tickets.html</code> — បញ្ជីសំបុត្របណ្តឹង និងសំណើជំនួយ (Support Tickets List) <a href="#42-ticketshtml-បញ្ជីសំបុត្របណ្តឹង-និងសំណើជំនួយ-support-tickets-list" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p><strong>គោលបំណង</strong>: តារាងទិន្នន័យមេសម្រាប់គ្រប់គ្រង តម្រៀប និងចម្រាញ់រាល់បណ្តឹង និងសំណើរបស់អតិថិជន។</p>
+<p><strong>ជួរឈរតារាង (Table Columns)</strong>:</p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ជួរឈរ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ប្រភេទ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ឧទាហរណ៍ទិន្នន័យ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ចំណាំ</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>លេខកូដ</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Badge</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>#TCK-2026-0089</code></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ចុចលើលេខកូដដើម្បីបើកមើលលម្អិត</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>អតិថិជន</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Text + Avatar</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ហេង វិច្ឆិកា (012 888 999)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">បង្ហាញឈ្មោះ និងលេខទូរស័ព្ទ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ប្រធានបទ</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Text</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ទំនិញខូចកញ្ចប់វេចខ្ចប់ពេលដឹកជញ្ជូន</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">អក្សរដិតល្មម <code>font-medium</code></td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ប្រភេទបញ្ហា</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Badge</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ដឹកជញ្ជូន / គុណភាព / វិក្កយបត្រ / បច្ចេកទេស</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">បែងចែកតាមពណ៌</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>កម្រិតអាទិភាព</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Badge</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">🔴 បន្ទាន់ / 🟠 ខ្ពស់ / 🟡 មធ្យម / 🟢 ទាប</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ពណ៌តាមកម្រិត</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ស្ថានភាព</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Badge</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">🔵 ថ្មី / 🟡 កំពុងដោះស្រាយ / 🟢 ដោះស្រាយរួច / ⚫ បានបិទ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ស្ថានភាពបច្ចុប្បន្ន</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>កាលកំណត់ SLA</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Countdown</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">⏳ នៅសល់ 45 នាទី</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ប្រែជាពណ៌ក្រហមបើហួសពេល</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>អ្នកទទួលខុសត្រូវ</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Text</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">សុខ ម៉ាលីស (Support)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">បុគ្គលិកដែលកំពុងកាន់ការ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>សកម្មភាព</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">⋮ Menu</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">មើលលម្អិត, ចាត់ចែងបន្ត, បិទបញ្ចប់</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Floating Dropdown</td>
+</tr>
+</tbody></table></div>
+<p><strong>តម្រងស្រាវជ្រាវ (Filters Standard)</strong>:</p>
+<ul>
+<li>ស្វែងរកតាមលេខ Ticket, ឈ្មោះអតិថិជន, លេខទូរស័ព្ទ</li>
+<li>Custom Dropdown: កម្រិតអាទិភាព (ទាំងអស់, បន្ទាន់, ខ្ពស់, មធ្យម, ទាប)</li>
+<li>Custom Dropdown: ស្ថានភាព (ទាំងអស់, ថ្មី, កំពុងដោះស្រាយ, ដោះស្រាយរួច)</li>
+<li>Custom Dropdown: ប្រភេទបញ្ហា (ដឹកជញ្ជូន, គុណភាពទំនិញ, ការទូទាត់, ព័ត៌មានទូទៅ)</li>
+<li>Unified Date Range Picker: កាលបរិច្ឆេទបង្កើតសំបុត្រ</li>
+</ul>
+<hr>
+<h3 id="43-create-tickethtml-ទម្រង់បង្កើតសំបុត្រថ្មី-dedicated-create-page" class="scroll-mt-24 group">4.3 <code>create-ticket.html</code> — ទម្រង់បង្កើតសំបុត្រថ្មី (Dedicated Create Page) <a href="#43-create-tickethtml-ទម្រង់បង្កើតសំបុត្រថ្មី-dedicated-create-page" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-5 p-4 rounded-xl bg-amber-50/90 border-l-4 border-amber-500 text-amber-950 text-xs leading-relaxed shadow-sm">
+<p>⚠️ អនុវត្តតាមច្បាប់ <strong>Rule 5 នៃ GEMINI.md</strong>: ហាមដាច់ខាតការប្រើ Pop-up Modal ។ ត្រូវតែជា Dedicated Full Page ដែលមានប៊ូតុងត្រឡប់ក្រោយស្តង់ដារ <code>w-10 h-10 rounded-xl bg-slate-50 border border-slate-200/70</code> គ្មាន Divider។</p>
+</div>
+<p><strong>ប្លង់ទម្រង់ 2 ជួរឈរ (Enterprise 2-Column Layout)</strong>:</p>
+<h4 id="ជួរឈរទី-1-ព័ត៌មានអតិថិជន-និងឯកសារយោង" class="scroll-mt-24 group">ជួរឈរទី 1: ព័ត៌មានអតិថិជន និងឯកសារយោង <a href="#ជួរឈរទី-1-ព័ត៌មានអតិថិជន-និងឯកសារយោង" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<ul>
+<li><strong>ស្វែងរកអតិថិជន (Search Customer)</strong>: Custom Dropdown Search តាមឈ្មោះ ឬលេខទូរស័ព្ទ។ ពេលជ្រើសរើស វានឹងបង្ហាញប្រអប់ព័ត៌មានសង្ខេប (ប្រភេទអតិថិជន, ទីតាំង, ប្រវត្តិទិញ)។</li>
+<li><strong>វិក្កយបត្រយោង (Related Invoice)</strong>: Custom Dropdown បង្ហាញបញ្ជីវិក្កយបត្រចុងក្រោយរបស់អតិថិជនរូបនោះ (ឧ. <code>#INV-2026-0120 - $450.00</code>)។</li>
+<li><strong>ប័ណ្ណដឹកជញ្ជូនយោង (Related Delivery Order)</strong>: Auto-fill បង្ហាញប័ណ្ណដឹកដែលពាក់ព័ន្ធ។</li>
+<li><strong>ច្រកទំនាក់ទំនងដែលទទួលព័ត៌មាន</strong>: Custom Dropdown (ទូរស័ព្ទផ្ទាល់, Telegram, Customer Portal, មកដល់ទីតាំង)។</li>
+</ul>
+<h4 id="ជួរឈរទី-2-ព័ត៌មានលម្អិតនៃបញ្ហា" class="scroll-mt-24 group">ជួរឈរទី 2: ព័ត៌មានលម្អិតនៃបញ្ហា <a href="#ជួរឈរទី-2-ព័ត៌មានលម្អិតនៃបញ្ហា" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<ul>
+<li><strong>ប្រធានបទសំបុត្រ (Subject)</strong>: ប្រអប់អត្ថបទខ្លី សង្ខេបពីបញ្ហា (ឧ. «អតិថិជនមិនទាន់ទទួលបានទំនិញតាមការសន្យា» មិនលើសពី 100 តួអក្សរ)។</li>
+<li><strong>ប្រភេទបញ្ហា (Category)</strong>: Custom Dropdown (ការដឹកជញ្ជូនយឺត, ទំនិញខូចគុណភាព, ទំនិញខុសការបញ្ជាទិញ, បញ្ហាវិក្កយបត្រ/ទូទាត់, សំណើព័ត៌មានទូទៅ)។</li>
+<li><strong>កម្រិតអាទិភាព (Priority)</strong>: Custom Dropdown (🔴 បន្ទាន់ខ្លាំង, 🟠 ខ្ពស់, 🟡 មធ្យម, 🟢 ធម្មតា)។</li>
+<li><strong>ការបរិយាយលម្អិត (Description)</strong>: ប្រអប់ Textarea ទូលាយសម្រាប់កត់ត្រារាល់សម្តី និងតម្រូវការរបស់អតិថិជន។</li>
+<li><strong>ឯកសារភ្ជាប់ (Attachments)</strong>: ប្រអប់ Upload រូបថតភស្តុតាង (រូបទំនិញខូច, វិក្កយបត្រដៃគូ, ស្លីបផ្ទេរប្រាក់) ទំហំអតិបរមា 5MB ក្នុង 1 ឯកសារ។</li>
+</ul>
+<p><strong>ប៊ូតុងសកម្មភាព (Footer Buttons)</strong>:</p>
+<ul>
+<li>ប៊ូតុង «រក្សាទុក និងចាប់ផ្តើមដោះស្រាយ» (<code>bg-[#0f2b5c] text-white rounded-xl px-5 h-11</code>)</li>
+<li>ប៊ូតុង «បោះបង់» (<code>bg-slate-100 text-slate-600 rounded-xl px-5 h-11</code>)</li>
+</ul>
+<hr>
+<h3 id="44-view-tickethtml-ព័ត៌មានលម្អិត-និងកំណត់ហេតុដោះស្រាយ-ticket-detail-timeline" class="scroll-mt-24 group">4.4 <code>view-ticket.html</code> — ព័ត៌មានលម្អិត និងកំណត់ហេតុដោះស្រាយ (Ticket Detail &amp; Timeline) <a href="#44-view-tickethtml-ព័ត៌មានលម្អិត-និងកំណត់ហេតុដោះស្រាយ-ticket-detail-timeline" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p><strong>ប្លង់ទំព័រ (Header + 2 Column Workspace)</strong>:</p>
+<p><strong>Header</strong>:</p>
+<ul>
+<li>ប៊ូតុងត្រឡប់ក្រោយស្តង់ដារ (<code>w-10 h-10 rounded-xl icon-only</code>)</li>
+<li>លេខកូដ Ticket <code>#TCK-2026-0089</code> + ផ្លាក Status Badge + ផ្លាក Priority Badge</li>
+<li>ប៊ូតុងសកម្មភាពរហ័ស: «ប្តូរស្ថានភាព», «ចាត់ចែងបន្ត (Escalate)», «បិទសំបុត្រ (Close)»</li>
+</ul>
+<p><strong>ជួរឈរខាងឆ្វេង (Activity Stream &amp; Conversation Timeline - 65% ទទឹង)</strong>:</p>
+<ul>
+<li><strong>ប្រអប់បន្ថែមការឆ្លើយតប (Add Reply Box)</strong>:<ul>
+<li>ជម្រើសផ្ទាំង 2: «កំណត់ហេតុផ្ទៃក្នុង (Internal Note)» (បុគ្គលិកមើលឃើញគ្នាឯង) និង «ឆ្លើយតបទៅអតិថិជន (Public Reply)» (អតិថិជនឃើញក្នុង Portal/Telegram)។</li>
+<li>ប្រអប់អត្ថបទ + ប៊ូតុងភ្ជាប់រូបភាព + ប៊ូតុងផ្ញើ។</li>
+</ul>
+</li>
+<li><strong>ខ្សែបន្ទាត់ពេលវេលានៃព្រឹត្តិការណ៍ (Timeline Feed)</strong>:<ul>
+<li>កាលបរិច្ឆេទ និងម៉ោងច្បាស់លាស់រាល់សកម្មភាពនីមួយៗ (បង្កើតពេលណា, នរណាឆ្លើយតប, ប្តូរស្ថានភាពម៉ោងប៉ុន្មាន)។</li>
+<li>សម្គាល់ពណ៌ដាច់ដោយឡែករវាងសារផ្ទៃក្នុង (ផ្ទៃលឿងស្រាល) និងសារជាសាធារណៈ (ផ្ទៃស)។</li>
+</ul>
+</li>
+</ul>
+<p><strong>ជួរឈរខាងស្តាំ (Context Information Sidebar - 35% ទទឹង)</strong>:</p>
+<ul>
+<li><strong>កាតព័ត៌មានអតិថិជន (Customer Card)</strong>: ឈ្មោះ, លេខទូរស័ព្ទ, ក្រុមហ៊ុន, ប្រភេទអតិថិជន, ប្រវត្តិ Ticket កន្លងមក។</li>
+<li><strong>កាតឯកសារយោង (Linked Documents)</strong>: តំណភ្ជាប់ទៅកាន់វិក្កយបត្រ <code>#INV-2026-0120</code> និងប័ណ្ណដឹកជញ្ជូន <code>#DO-2026-0098</code>។</li>
+<li><strong>កាត SLA &amp; Countdown Timer</strong>: ម៉ោងនៅសល់មុនពេលផុតកំណត់ដោះស្រាយ។</li>
+<li><strong>កាតសកម្មភាព RMA (ប្រសិនបើមានសំណើប្តូរទំនិញ)</strong>: បង្ហាញស្ថានភាពពិនិត្យរបស់ឃ្លាំង។</li>
+</ul>
+<hr>
+<h3 id="45-invoices-lookuphtml-ឧបករណ៍ស្រាវជ្រាវវិក្កយបត្ររហ័ស-quick-invoice-lookup" class="scroll-mt-24 group">4.5 <code>invoices-lookup.html</code> — ឧបករណ៍ស្រាវជ្រាវវិក្កយបត្ររហ័ស (Quick Invoice Lookup) <a href="#45-invoices-lookuphtml-ឧបករណ៍ស្រាវជ្រាវវិក្កយបត្ររហ័ស-quick-invoice-lookup" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p><strong>គោលបំណង</strong>: អនុញ្ញាតឱ្យ Customer Support ស្វែងរក និងផ្ទៀងផ្ទាត់វិក្កយបត្រភ្លាមៗនៅពេលអតិថិជនខលមកសួរនាំ ដោយមិនបាច់ចូលទៅកាន់ម៉ូឌុលលក់ដ៏ស្មុគស្មាញ។</p>
+<p><strong>លក្ខណៈពិសេស</strong>:</p>
+<ul>
+<li><strong>របារស្វែងរកឆ្លាតវៃ (Universal Search Bar)</strong>: វាយលេខវិក្កយបត្រ, លេខទូរស័ព្ទអតិថិជន, ឬឈ្មោះអតិថិជន។</li>
+<li><strong>ទិដ្ឋភាពសង្ខេបលទ្ធផល (Quick Result View)</strong>:<ul>
+<li>លេខកូដវិក្កយបត្រ, កាលបរិច្ឆេទចេញ, ទឹកប្រាក់សរុប, ទឹកប្រាក់បានបង់, និងទឹកប្រាក់នៅសល់។</li>
+<li>ស្ថានភាពទូទាត់: 🔴 មិនទាន់បង់, 🟡 បង់មួយផ្នែក, 🟢 បានបង់រួច។</li>
+<li>ស្ថានភាពដឹកជញ្ជូន: 📦 កំពុងរៀបចំ, 🚚 កំពុងដឹក, ✅ បានប្រគល់។</li>
+</ul>
+</li>
+<li><strong>ប៊ូតុងសកម្មភាពរហ័ស</strong>:<ul>
+<li>👁️ «មើលសេចក្តីលម្អិតវិក្កយបត្រ (Read-Only)»</li>
+<li>📤 «ផ្ញើវិក្កយបត្រ PDF ឡើងវិញតាម Telegram»</li>
+<li>🎫 «បង្កើត Ticket ពីវិក្កយបត្រនេះ»</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="46-delivery-trackinghtml-ផ្ទាំងតាមដានការដឹកជញ្ជូន-delivery-status-center" class="scroll-mt-24 group">4.6 <code>delivery-tracking.html</code> — ផ្ទាំងតាមដានការដឹកជញ្ជូន (Delivery Status Center) <a href="#46-delivery-trackinghtml-ផ្ទាំងតាមដានការដឹកជញ្ជូន-delivery-status-center" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p><strong>គោលបំណង</strong>: ដោះស្រាយបញ្ហា «ទំនិញខ្ញុំនៅឯណា?» ដែលជាសំណួរ 70% របស់អតិថិជន។</p>
+<p><strong>ដំណាក់កាលតាមដានទាំង 4 (4-Stage Progress Stepper)</strong>:</p>
+<ol>
+<li><strong>បញ្ជាទិញបានបញ្ជាក់ (Order Confirmed)</strong>: វិក្កយបត្រចេញរួចរាល់។</li>
+<li><strong>កំពុងរៀបចំវេចខ្ចប់ (Packing in Warehouse)</strong>: ឃ្លាំងកំពុងរៀបចំទំនិញតាមបញ្ជី Pick List។</li>
+<li><strong>កំពុងធ្វើដំណើរដឹកជញ្ជូន (Out for Delivery)</strong>: អ្នកបើកបរបានទទួលទំនិញ និងកំពុងធ្វើដំណើរលើផ្លូវ។</li>
+<li><strong>បានប្រគល់ជោគជ័យ (Delivered &amp; Signed)</strong>: អតិថិជនបានទទួល និងចុះហត្ថលេខា/ថតរូប។</li>
+</ol>
+<p><strong>ព័ត៌មានលម្អិតអំពីអ្នកដឹក (Driver Profile Card)</strong>:</p>
+<ul>
+<li>ឈ្មោះអ្នកដឹកជញ្ជូន, រូបថត, លេខទូរស័ព្ទ (អាចចុច Call ចេញបាន)។</li>
+<li>លេខយានយន្ត និងម៉ោងប៉ាន់ស្មានថានឹងទៅដល់ (ETA)។</li>
+<li>ប៊ូតុងផ្ញើសាររំលឹកទៅកាន់អ្នកដឹក ប្រសិនបើយឺតយ៉ាវខុសប្រក្រតី។</li>
+</ul>
+<hr>
+<h2 id="5-ម៉ាទ្រីសសិទ្ធិ-permission-matrix" class="scroll-mt-24 group">5. ម៉ាទ្រីសសិទ្ធិ (Permission Matrix) <a href="#5-ម៉ាទ្រីសសិទ្ធិ-permission-matrix" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="51-ម៉ាទ្រីស-crud-ពេញលេញសម្រាប់-customer-support" class="scroll-mt-24 group">5.1 ម៉ាទ្រីស CRUD ពេញលេញសម្រាប់ Customer Support <a href="#51-ម៉ាទ្រីស-crud-ពេញលេញសម្រាប់-customer-support" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">មុខងារ / ម៉ូឌុល</th>
+<th align="center">CREATE (បង្កើត)</th>
+<th align="center">READ (មើល)</th>
+<th align="center">UPDATE (កែប្រែ)</th>
+<th align="center">DELETE (លុប)</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">កំណត់សម្គាល់</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>សំបុត្របណ្តឹង (Tickets)</strong></td>
+<td align="center">✅ ពេញលេញ</td>
+<td align="center">✅ ទាំងអស់</td>
+<td align="center">✅ ស្ថានភាព/កំណត់ហេតុ</td>
+<td align="center">❌ ហាមដាច់ខាត</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">អាចបិទសំបុត្របាន តែមិនអាចលុបចេញពីប្រព័ន្ធ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>កំណត់ហេតុសន្ទនា (Messages)</strong></td>
+<td align="center">✅ បន្ថែមសារ</td>
+<td align="center">✅ មើលឃើញ</td>
+<td align="center">⚠️ កែក្នុង 5 នាទី</td>
+<td align="center">❌ ហាមលុប</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">រក្សា Audit Trail ច្បាស់លាស់</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>វិក្កយបត្រលក់ (Invoices)</strong></td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+<td align="center">👁️ មើលប៉ុណ្ណោះ</td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">មើលដើម្បីដោះស្រាយ ហាមកែទិន្នន័យ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ប័ណ្ណដឹកជញ្ជូន (Delivery)</strong></td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+<td align="center">👁️ តាមដាន Live</td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ឃើញអ្នកដឹក និងដំណាក់កាល</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>តុល្យភាពស្តុក (Stock Qty)</strong></td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+<td align="center">👁️ ចំនួនប៉ុណ្ណោះ</td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ <strong>ហាមដាច់ខាតមើលថ្លៃដើម (Cost)</strong></td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>សំណើប្តូរទំនិញ (RMA)</strong></td>
+<td align="center">✅ ដាក់សំណើ</td>
+<td align="center">✅ តាមដាន</td>
+<td align="center">⚠️ កែប្រែកំណត់សម្គាល់</td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ឃ្លាំង/Admin ជាអ្នកអនុម័តប្តូរ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ព័ត៌មានអតិថិជន (Customer)</strong></td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+<td align="center">👁️ មើលប្រវត្តិ</td>
+<td align="center">⚠️ កែលេខទូរស័ព្ទ/ទីតាំង</td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ជួយកែអាសយដ្ឋានដឹកពេលអតិថិជនស្នើ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>របាយការណ៍ហិរញ្ញវត្ថុ (P&amp;L)</strong></td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ហាមដាច់ខាត (Accountant Only)</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ការកំណត់ប្រព័ន្ធ (Settings)</strong></td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Admin Only</td>
+</tr>
+</tbody></table></div>
+<div class="my-5 p-4 rounded-xl bg-amber-50/90 border-l-4 border-amber-500 text-amber-950 text-xs leading-relaxed shadow-sm">
+<p><strong>⚠️ Legend</strong>: ✅ Full Access | 👁️ Read-Only | ⚠️ Conditional / Restricted | ❌ Strictly Forbidden</p>
+</div>
+<hr>
+<h2 id="6-វដ្តការងារស្នូលទាំង-5-core-workflows" class="scroll-mt-24 group">6. វដ្តការងារស្នូលទាំង 5 (Core Workflows) <a href="#6-វដ្តការងារស្នូលទាំង-5-core-workflows" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="workflow-1-ការសាកសួរ-និងតាមដានការដឹកជញ្ជូន-inquiry-delivery-tracking" class="scroll-mt-24 group">Workflow 1: ការសាកសួរ និងតាមដានការដឹកជញ្ជូន (Inquiry &amp; Delivery Tracking) <a href="#workflow-1-ការសាកសួរ-និងតាមដានការដឹកជញ្ជូន-inquiry-delivery-tracking" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>[អតិថិជនខល ឬផ្ញើសារ Telegram]
+          │
+          ▼
+Customer Support ចូល `invoices-lookup.html`
+          │
+          ├── វាយលេខទូរស័ព្ទ ឬលេខវិក្កយបត្រ
+          └── ប្រព័ន្ធបង្ហាញព័ត៌មានវិក្កយបត្រ និងប័ណ្ណដឹកជញ្ជូន
+          │
+          ▼
+Support ពិនិត្យទំព័រ `delivery-tracking.html`
+          │
+          ├── ឃើញស្ថានភាព: &quot;កំពុងធ្វើដំណើរដឹកជញ្ជូន&quot;
+          ├── អ្នកដឹក: &quot;ចាន់ សុផល (017 111 222)&quot;
+          └── ម៉ោងរំពឹងទៅដល់: &quot;ម៉ោង 2:30 រសៀល&quot;
+          │
+          ▼
+Support ឆ្លើយតបអតិថិជនភ្លាមៗ + ចុចផ្ញើ Tracking Link ទៅ Telegram របស់គាត់
+          │
+          ▼
+[បញ្ចប់ការសាកសួរជោគជ័យក្នុងរយៈពេលក្រោម 1 នាទី]
+</code></pre>
+        </div>
+<hr>
+<h3 id="workflow-2-ការកត់ត្រា-និងដោះស្រាយបណ្តឹង-ticket-resolution-lifecycle" class="scroll-mt-24 group">Workflow 2: ការកត់ត្រា និងដោះស្រាយបណ្តឹង (Ticket Resolution Lifecycle) <a href="#workflow-2-ការកត់ត្រា-និងដោះស្រាយបណ្តឹង-ticket-resolution-lifecycle" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>START
+  │
+  ▼
+អតិថិជនតវ៉ា: &quot;ទំនិញដែលដឹកមកបែកបាក់ 2 ដប&quot;
+  │
+  ▼
+Support ចូល `create-ticket.html`
+  ├── ជ្រើសរើសឈ្មោះអតិថិជន &amp; វិក្កយបត្រដែលពាក់ព័ន្ធ
+  ├── ប្រភេទបញ្ហា: &quot;គុណភាពទំនិញ&quot; | អាទិភាព: &quot;🔴 បន្ទាន់&quot;
+  ├── ភ្ជាប់រូបថតទំនិញបែកបាក់ដែលអតិថិជនផ្ញើតាម Telegram
+  └── ចុច «បង្កើតសំបុត្រថ្មី»
+  │
+  ▼
+ប្រព័ន្ធ Generate `#TCK-2026-0089` + កំណត់ SLA រយៈពេល 4 ម៉ោង
+  │
+  ▼
+Support បញ្ជូនបន្ត (Escalate) ទៅកាន់ Warehouse Manager តាមប្រព័ន្ធ
+  │
+  ▼
+Warehouse Manager ពិនិត្យភស្តុតាង → យល់ព្រមប្តូរទំនិញថ្មីជូន
+  │
+  ▼
+Support ចូល `view-ticket.html` → បន្ថែមការឆ្លើយតបសាធារណៈជូនអតិថិជន:
+&quot;ក្រុមហ៊ុនបានអនុម័តប្តូរថ្មីជូនលោកអ្នក! អ្នកដឹកនឹងយកទំនិញថ្មីទៅជូននៅម៉ោង 4 រសៀលនេះ&quot;
+  │
+  ▼
+អតិថិជនទទួលបានទំនិញថ្មីពេញចិត្ត → Support ប្តូរ Status: «ដោះស្រាយរួច (Resolved)»
+  │
+  ▼
+ប្រព័ន្ធ Auto-Send សារស្ទង់មតិ CSAT 5 ផ្កាយទៅកាន់អតិថិជន
+  │
+  ▼
+END
+</code></pre>
+        </div>
+<hr>
+<h3 id="workflow-3-ការសម្របសម្រួលប្តូរទំនិញ-ឬសងប្រាក់-rma-refund-flow" class="scroll-mt-24 group">Workflow 3: ការសម្របសម្រួលប្តូរទំនិញ ឬសងប្រាក់ (RMA &amp; Refund Flow) <a href="#workflow-3-ការសម្របសម្រួលប្តូរទំនិញ-ឬសងប្រាក់-rma-refund-flow" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>[អតិថិជនស្នើសុំប្តូរទំនិញ / សងប្រាក់]
+          │
+          ▼
+Customer Support បង្កើតសំណើ RMA ក្នុង Ticket
+          │
+          ├── ភ្ជាប់លេខវិក្កយបត្រដើម
+          ├── បញ្ជាក់មុខទំនិញ និងចំនួនដែលស្នើសុំប្តូរ
+          └── ភ្ជាប់មូលហេតុ និងរូបថតភស្តុតាង
+          │
+          ▼
+សំណើត្រូវបានបញ្ជូនទៅ 2 ផ្នែក:
+          ├── 1. ផ្នែកឃ្លាំង (Warehouse): ត្រួតពិនិត្យ និងទទួលទំនិញខូចចូលមកវិញ
+          └── 2. ផ្នែកគណនេយ្យ (Accounting): ពិនិត្យការចេញ Credit Note ឬសងប្រាក់
+          │
+          ▼
+[លទ្ធផលអនុម័ត]
+          ├── ប្រសិនបើប្តូរទំនិញ: ឃ្លាំងចេញប័ណ្ណដឹកថ្មី
+          └── ប្រសិនបើសងប្រាក់: គណនេយ្យករផ្ញើស្លីបផ្ទេរប្រាក់ Bakong
+          │
+          ▼
+Support ទទួល Notification ពីប្រព័ន្ធ → ជូនដំណឹងបិទបញ្ចប់ជាមួយអតិថិជន
+</code></pre>
+        </div>
+<hr>
+<h3 id="workflow-4-ការពិនិត្យវត្តមានស្តុកទំនិញ-stock-availability-check" class="scroll-mt-24 group">Workflow 4: ការពិនិត្យវត្តមានស្តុកទំនិញ (Stock Availability Check) <a href="#workflow-4-ការពិនិត្យវត្តមានស្តុកទំនិញ-stock-availability-check" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>[អតិថិជនសួរ: &quot;តើហាងមានប្រេងម៉ាស៊ីន 5L នៅសល់ 20 ដបទៀតទេ?&quot;]
+          │
+          ▼
+Support ចូលមើលទំព័រស្តុកក្នុង Portal
+          │
+          ├── វាយ SKU ឬឈ្មោះ: &quot;ប្រេងម៉ាស៊ីន 5L&quot;
+          ├── ប្រព័ន្ធបង្ហាញ: &quot;ស្តុកឃ្លាំង A: 35 ដប (ទំនេរ)&quot;
+          └── ❌ គ្មានព័ត៌មានថ្លៃដើម ឬតម្លៃទិញចូលបង្ហាញឡើយ
+          │
+          ▼
+Support ឆ្លើយតបភ្លាមៗ: &quot;ចាសបង! មានក្នុងស្តុក 35 ដប អាចកុម្ម៉ង់បានភ្លាមៗ&quot;
+          │
+          ▼
+Support អាចចុច «ផ្ទេរទៅកាន់ផ្នែកលក់ (Forward to Sales)» ដើម្បីបិទការលក់ថ្មី
+</code></pre>
+        </div>
+<hr>
+<h3 id="workflow-5-ការស្ទង់មតិ-និងវាយតម្លៃការពេញចិត្ត-csat-collection" class="scroll-mt-24 group">Workflow 5: ការស្ទង់មតិ និងវាយតម្លៃការពេញចិត្ត (CSAT Collection) <a href="#workflow-5-ការស្ទង់មតិ-និងវាយតម្លៃការពេញចិត្ត-csat-collection" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>[Ticket ត្រូវបានសម្គាល់ថា «ដោះស្រាយរួច (Resolved)»]
+          │
+          ▼
+ប្រព័ន្ធបញ្ជូនសារស្ទង់មតិដោយស្វ័យប្រវត្តិតាម Telegram / Portal:
+&quot;តើលោកអ្នកពេញចិត្តនឹងសេវាកម្មដោះស្រាយរបស់ DIGITECHKH កម្រិតណា?&quot;
+[⭐ 1] [⭐ 2] [⭐ 3] [⭐ 4] [⭐ 5]
+          │
+          ▼
+អតិថិជនចុចជ្រើសរើស (ឧ. 5 ផ្កាយ + សរសើរ: &quot;ដោះស្រាយលឿនណាស់ អរគុណ!&quot;)
+          │
+          ▼
+ពិន្ទុ និងមតិយោបល់ត្រូវបានកត់ត្រាក្នុង `customer_feedbacks` table
+          │
+          ▼
+Update ចូល Dashboard KPI របស់ Customer Support ភ្លាមៗ
+</code></pre>
+        </div>
+<hr>
+<h2 id="7-business-logic-sla-rules" class="scroll-mt-24 group">7. Business Logic &amp; SLA Rules <a href="#7-business-logic-sla-rules" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="71-កម្រិតអាទិភាព-និងស្តង់ដារពេលវេលាដោះស្រាយ-sla-matrix" class="scroll-mt-24 group">7.1 កម្រិតអាទិភាព និងស្តង់ដារពេលវេលាដោះស្រាយ (SLA Matrix) <a href="#71-កម្រិតអាទិភាព-និងស្តង់ដារពេលវេលាដោះស្រាយ-sla-matrix" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p>ដើម្បីធានាថាគ្មានបណ្តឹងណាមួយត្រូវបានទុកចោល ប្រព័ន្ធត្រូវអនុវត្តច្បាប់កំណត់ពេលដោះស្រាយ (Service Level Agreement - SLA):</p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">កម្រិតអាទិភាព</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">លក្ខខណ្ឌកំណត់</th>
+<th align="center">ពេលឆ្លើយតបដំបូង (First Response)</th>
+<th align="center">ពេលដោះស្រាយបញ្ចប់ (Resolution Target)</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ការបញ្ជូនបន្តពេលយឺត (Escalation Path)</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">🔴 <strong>បន្ទាន់ខ្លាំង (Urgent)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ទំនិញខូចខាតទាំងស្រុង, អតិថិជន VIP, ការដឹកជញ្ជូនខុសកាលបរិច្ឆេទសំខាន់</td>
+<td align="center"><strong>≤ 15 នាទី</strong></td>
+<td align="center"><strong>≤ 2 ម៉ោង</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Alert ទៅកាន់ Support Manager + GM</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">🟠 <strong>ខ្ពស់ (High)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">បាត់បង់ទំនិញមួយផ្នែក, ការទូទាត់ប្រាក់មានបញ្ហាមិនចូល</td>
+<td align="center"><strong>≤ 30 នាទី</strong></td>
+<td align="center"><strong>≤ 4 ម៉ោង</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Alert ទៅកាន់ Support Manager</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">🟡 <strong>មធ្យម (Medium)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">សាកសួរការដឹកជញ្ជូនយឺត, សុំវិក្កយបត្រឡើងវិញ</td>
+<td align="center"><strong>≤ 1 ម៉ោង</strong></td>
+<td align="center"><strong>≤ 8 ម៉ោង</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">រំលឹកបុគ្គលិកទទួលបន្ទុក</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">🟢 <strong>ទាប (Low)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">សាកសួរព័ត៌មានផលិតផលទូទៅ, មតិកែលម្អ</td>
+<td align="center"><strong>≤ 2 ម៉ោង</strong></td>
+<td align="center"><strong>≤ 24 ម៉ោង</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ដោះស្រាយតាមលំដាប់ធម្មតា</td>
+</tr>
+</tbody></table></div>
+<h3 id="72-វដ្តជីវិតនៃសំបុត្របណ្តឹង-ticket-status-state-machine" class="scroll-mt-24 group">7.2 វដ្តជីវិតនៃសំបុត្របណ្តឹង (Ticket Status State Machine) <a href="#72-វដ្តជីវិតនៃសំបុត្របណ្តឹង-ticket-status-state-machine" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>[1. ថ្មី (New)]
+      │
+      ▼ (Support ចុចទទួលកាន់ការងារ)
+[2. កំពុងដោះស្រាយ (In Progress)] ◄─────────────┐
+      │                                        │ (បើអតិថិជនមិនទាន់អស់ចិត្ត)
+      ├──► [រង់ចាំអតិថិជនឆ្លើយតប (Pending Client)] │ Re-open
+      ├──► [រង់ចាំផ្នែកជំនាញ (Pending Internal)]│
+      │                                        │
+      ▼ (ដោះស្រាយបញ្ហារួចរាល់)                   │
+[3. ដោះស្រាយរួច (Resolved)] ───────────────────┘
+      │
+      ▼ (ស្វ័យប្រវត្តិក្នង 48 ម៉ោង ឬអតិថិជន Confirm)
+[4. បានបិទបញ្ចប់ (Closed)]
+</code></pre>
+        </div>
+<hr>
+<h2 id="8-ទំនាក់ទំនងជាមួយតួនាទីផ្សេង-role-interaction-map" class="scroll-mt-24 group">8. ទំនាក់ទំនងជាមួយតួនាទីផ្សេង (Role Interaction Map) <a href="#8-ទំនាក់ទំនងជាមួយតួនាទីផ្សេង-role-interaction-map" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>Customer Support
+│
+├── ◄─── [អតិថិជន (Customer)] ── សាកសួរ, តវ៉ា, បង់ប្រាក់, សុំប្តូរទំនិញ
+│
+├── ──── [Sales Executive] ──── បញ្ជូនអតិថិជនចង់ទិញថ្មី, ស្នើសុំពិនិត្យលក្ខខណ្ឌលក់
+│
+├── ──── [Delivery Driver] ──── តាមដានទីតាំង, រំលឹកការដឹក, ជួយទំនាក់ទំនងអតិថិជន
+│
+├── ──── [Warehouse Staff] ──── សាកសួរចំនួនស្តុកជាក់ស្តែង, បញ្ជូនទំនិញខូចទៅប្តូរ (RMA)
+│
+├── ──── [Accountant] ───────── ផ្ទៀងផ្ទាត់ស្លីបបង់ប្រាក់មិនច្បាស់, ស្នើសុំសងប្រាក់
+│
+└── ──── [Admin / GM] ───────── រាយការណ៍បណ្តឹងធ្ងន់ធ្ងរ, សុំការសម្រេចចិត្តពិសេស
+</code></pre>
+        </div>
+<hr>
+<h2 id="9-data-scope-ឃើញអ្វី-លាក់អ្វី" class="scroll-mt-24 group">9. Data Scope — ឃើញអ្វី? លាក់អ្វី? <a href="#9-data-scope-ឃើញអ្វី-លាក់អ្វី" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>CUSTOMER SUPPORT DATA SCOPE
+│
+├── ✅ ឃើញ (CAN SEE):
+│   ├── ព័ត៌មានអតិថិជន: ឈ្មោះ, ក្រុមហ៊ុន, លេខទូរស័ព្ទ, អាសយដ្ឋានដឹក
+│   ├── វិក្កយបត្រលក់: លេខវិក្កយបត្រ, មុខទំនិញ, តម្លៃលក់, ចំនួនទឹកប្រាក់បង់
+│   ├── ស្ថានភាពដឹកជញ្ជូន: អ្នកដឹក, លេខទូរស័ព្ទអ្នកដឹក, ដំណាក់កាលដឹក
+│   ├── ចំនួនស្តុកទំនិញ: ឈ្មោះទំនិញ, SKU, ចំនួននៅសល់ក្នុងឃ្លាំង (Qty)
+│   ├── សំបុត្របណ្តឹង (Tickets): រាល់បណ្តឹង និងប្រវត្តិដោះស្រាយទាំងអស់
+│   └── មតិយោបល់ និងពិន្ទុ CSAT របស់អតិថិជន
+│
+└── ❌ ហាមដាច់ខាត (CANNOT SEE):
+    ├── ថ្លៃដើមទិញចូលនៃមុខទំនិញនីមួយៗ (Cost Price)
+    ├── ភាគរយប្រាក់ចំណេញ និងចំណេញដុល (Profit Margin / Gross Profit)
+    ├── កិច្ចសន្យា និងតម្លៃទិញពីអ្នកផ្គត់ផ្គង់ (Supplier Purchasing Contracts)
+    ├── របាយការណ៍ហិរញ្ញវត្ថុក្រុមហ៊ុន (P&amp;L, Balance Sheet, Cashflow)
+    ├── បញ្ជីបើកប្រាក់បៀវត្សរ៍ និងប្រាក់ខែបុគ្គលិក (Payroll &amp; Salaries)
+    └── គណនីធនាគារសម្ងាត់របស់ក្រុមហ៊ុន និងសមតុល្យសាច់ប្រាក់
+</code></pre>
+        </div>
+<hr>
+<h2 id="10-kpi-dashboard-សម្រាប់-customer-support" class="scroll-mt-24 group">10. KPI Dashboard សម្រាប់ Customer Support <a href="#10-kpi-dashboard-សម្រាប់-customer-support" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">#</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">រង្វាស់សមិទ្ធកម្ម (KPI Metric)</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">របៀបគណនា</th>
+<th align="center">គោលដៅស្តង់ដារ (Target)</th>
+<th align="center">ពណ៌សម្គាល់</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">1</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ពេលឆ្លើយតបដំបូង (First Response Time)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">មធ្យមភាគរយៈពេលចាប់ពីបង្កើត Ticket ដល់ពេល Support ឆ្លើយតប</td>
+<td align="center"><strong>&lt; 15 នាទី</strong></td>
+<td align="center">🟢 ល្អ / 🔴 យឺត</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">2</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>អត្រាដោះស្រាយទាន់ពេល (SLA Compliance)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">(Tickets ដោះស្រាយទាន់ពេល / Tickets សរុប) × 100%</td>
+<td align="center"><strong>≥ 95%</strong></td>
+<td align="center">🟢 ល្អ / 🟡 មធ្យម</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">3</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ពិន្ទុពេញចិត្តអតិថិជន (CSAT Score)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ពិន្ទុមធ្យមភាគផ្កាយពីអតិថិជន (1 - 5)</td>
+<td align="center"><strong>≥ 4.7 / 5.0</strong></td>
+<td align="center">🟢 ល្អ / 🔴 ត្រូវកែលម្អ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">4</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>អត្រាដោះស្រាយចប់ក្នុងជំហានដំបូង (FCR)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ភាគរយបញ្ហាដែលដោះស្រាយចប់ដោយមិនបាច់ផ្ទេរទៅផ្នែកផ្សេង</td>
+<td align="center"><strong>≥ 70%</strong></td>
+<td align="center">🟢 ល្អ / 🟡 មធ្យម</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">5</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ចំនួនសំបុត្របើកចំហ (Backlog Tickets)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">សំបុត្រដែលនៅសល់មិនទាន់បិទបញ្ចប់គិតត្រឹមចុងសប្តាហ៍</td>
+<td align="center"><strong>&lt; 10 សំបុត្រ</strong></td>
+<td align="center">🟢 ល្អ / 🔴 ស្ទះការងារ</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="11-គំរូ-database-schema" class="scroll-mt-24 group">11. គំរូ Database Schema <a href="#11-គំរូ-database-schema" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>-- គំរូតារាងទិន្នន័យសម្រាប់ Customer Support Module
+
+-- 1. សំបុត្របណ្តឹង និងសំណើជំនួយ (Support Tickets)
+CREATE TABLE support_tickets (
+    id                  UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    tenant_id           UUID REFERENCES tenants(id),
+    ticket_number       VARCHAR(50) UNIQUE NOT NULL, -- TCK-2026-XXXX
+    customer_id         UUID REFERENCES customers(id) NOT NULL,
+    invoice_id          UUID REFERENCES invoices(id),
+    delivery_order_id   UUID REFERENCES delivery_orders(id),
+    subject             VARCHAR(255) NOT NULL,
+    category            VARCHAR(50) NOT NULL,
+        -- delivery | quality | billing | product_info | technical | other
+    priority            VARCHAR(20) DEFAULT &#39;medium&#39;,
+        -- low | medium | high | urgent
+    status              VARCHAR(30) DEFAULT &#39;open&#39;,
+        -- open | in_progress | pending_customer | pending_internal | resolved | closed
+    channel             VARCHAR(30) DEFAULT &#39;telegram&#39;,
+        -- phone | telegram | portal | walk_in | email
+    assigned_to         UUID REFERENCES users(id),
+    created_by          UUID REFERENCES users(id),
+    sla_due_at          TIMESTAMPTZ NOT NULL,
+    first_responded_at  TIMESTAMPTZ,
+    resolved_at         TIMESTAMPTZ,
+    closed_at           TIMESTAMPTZ,
+    created_at          TIMESTAMPTZ DEFAULT NOW(),
+    updated_at          TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 2. កំណត់ហេតុជជែក និងការឆ្លើយតបក្នុង Ticket (Ticket Messages)
+CREATE TABLE ticket_messages (
+    id              BIGSERIAL PRIMARY KEY,
+    ticket_id       UUID REFERENCES support_tickets(id) ON DELETE CASCADE,
+    sender_id       UUID REFERENCES users(id), -- Null បើផ្ញើដោយអតិថិជន
+    sender_type     VARCHAR(20) NOT NULL,      -- agent | customer | system
+    message_type    VARCHAR(20) DEFAULT &#39;public&#39;, -- public | internal_note
+    content         TEXT NOT NULL,
+    attachments     JSONB DEFAULT &#39;[]&#39;,        -- URLs នៃរូបភាព ឬ PDF ភ្ជាប់
+    created_at      TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 3. សំណើប្តូរទំនិញខូច ឬខុស (RMA Requests)
+CREATE TABLE rma_requests (
+    id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    tenant_id       UUID REFERENCES tenants(id),
+    rma_number      VARCHAR(50) UNIQUE NOT NULL, -- RMA-2026-XXXX
+    ticket_id       UUID REFERENCES support_tickets(id),
+    customer_id     UUID REFERENCES customers(id),
+    invoice_id      UUID REFERENCES invoices(id),
+    product_id      UUID REFERENCES products(id),
+    qty_requested   DECIMAL(10,3) NOT NULL,
+    reason          TEXT NOT NULL,
+    condition       VARCHAR(50), -- broken | wrong_item | expired | missing_parts
+    evidence_urls   JSONB DEFAULT &#39;[]&#39;,
+    status          VARCHAR(30) DEFAULT &#39;pending_review&#39;,
+        -- pending_review | approved_exchange | approved_refund | rejected | completed
+    warehouse_approved_by UUID REFERENCES users(id),
+    admin_approved_by     UUID REFERENCES users(id),
+    replacement_order_id  UUID,
+    created_by      UUID REFERENCES users(id),
+    created_at      TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 4. ការស្ទង់មតិ និងពិន្ទុវាយតម្លៃ (Customer Feedbacks / CSAT)
+CREATE TABLE customer_feedbacks (
+    id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    tenant_id       UUID REFERENCES tenants(id),
+    ticket_id       UUID REFERENCES support_tickets(id) UNIQUE,
+    customer_id     UUID REFERENCES customers(id),
+    rating          INTEGER CHECK (rating &gt;= 1 AND rating &lt;= 5), -- 1 ដល់ 5 ផ្កាយ
+    comment         TEXT,
+    resolved_by     UUID REFERENCES users(id),
+    created_at      TIMESTAMPTZ DEFAULT NOW()
+);
+</code></pre>
+        </div>
+<hr>
+<h2 id="12-ការការពារឯកជនភាព-និងសុវត្ថិភាពទិន្នន័យ" class="scroll-mt-24 group">12. ការការពារឯកជនភាព និងសុវត្ថិភាពទិន្នន័យ <a href="#12-ការការពារឯកជនភាព-និងសុវត្ថិភាពទិន្នន័យ" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="121-គោលការណ៍ការពារទិន្នន័យអតិថិជន-customer-privacy-protection" class="scroll-mt-24 group">12.1 គោលការណ៍ការពារទិន្នន័យអតិថិជន (Customer Privacy Protection) <a href="#121-គោលការណ៍ការពារទិន្នន័យអតិថិជន-customer-privacy-protection" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<ol>
+<li><strong>លាក់លេខទូរស័ព្ទមួយផ្នែក (Phone Number Masking)</strong>: នៅលើបញ្ជីទូទៅ បង្ហាញត្រឹម <code>012 888 ***</code> ដើម្បីការពារការលួចទិន្នន័យអតិថិជន។ មានតែពេលចុច Call ឬបើកមើល Ticket ប៉ុណ្ណោះ ទើបបង្ហាញពេញលេញ។</li>
+<li><strong>ហាមដាច់ខាតការទាញទិន្នន័យជាដុំ (Anti-Bulk Scraping)</strong>: Customer Support គ្មានប៊ូតុង «Export All Customers» ឡើយ។</li>
+<li><strong>ការកត់ត្រាកំណត់ហេតុចូលមើល (Access Logging)</strong>: រាល់ការបើកមើលវិក្កយបត្រ ឬទិន្នន័យអតិថិជនត្រូវបាន Log ទុកក្នុង Audit Trail ដើម្បីដឹងថាបុគ្គលិករូបណាបានចូលមើលពេលណា។</li>
+</ol>
+<hr>
+<h2 id="13-អនុសាសន៍-architect-prototype-planning" class="scroll-mt-24 group">13. អនុសាសន៍ Architect + Prototype Planning <a href="#13-អនុសាសន៍-architect-prototype-planning" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="131-អនុសាសន៍រចនាប្រព័ន្ធ-architectural-recommendations" class="scroll-mt-24 group">13.1 អនុសាសន៍រចនាប្រព័ន្ធ (Architectural Recommendations) <a href="#131-អនុសាសន៍រចនាប្រព័ន្ធ-architectural-recommendations" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<h4 id="ណែនាំ-1-telegram-bot-webhook-integration" class="scroll-mt-24 group">✅ ណែនាំ 1: Telegram Bot Webhook Integration <a href="#ណែនាំ-1-telegram-bot-webhook-integration" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<p>នៅកម្ពុជា អតិថិជនចូលចិត្តប្រើ Telegram។ ប្រព័ន្ធគួរភ្ជាប់ Telegram Bot ជាមួយ Ticket System:</p>
+<ul>
+<li>ពេលអតិថិជនផ្ញើសារចូល Telegram Bot របស់ក្រុមហ៊ុន → បង្កើត Ticket ស្វ័យប្រវត្តិ។</li>
+<li>ពេល Support ឆ្លើយតបក្នុង <code>view-ticket.html</code> → សាររត់ចូល Telegram របស់អតិថិជនភ្លាមៗ។</li>
+</ul>
+<h4 id="ណែនាំ-2-canned-responses-ឃ្លាឆ្លើយតបរហ័ស" class="scroll-mt-24 group">✅ ណែនាំ 2: Canned Responses (ឃ្លាឆ្លើយតបរហ័ស) <a href="#ណែនាំ-2-canned-responses-ឃ្លាឆ្លើយតបរហ័ស" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<p>រៀបចំសារគំរូស្តង់ដារដែលប្រើញឹកញាប់ (ឧ. «សូមអរគុណ! ពួកយើងបានទទួលដំណឹងហើយ កំពុងពិនិត្យជូន», «ទំនិញកំពុងស្ថិតលើផ្លូវដឹកជញ្ជូន») ដើម្បីឱ្យ Support អាចចុចជ្រើសរើសឆ្លើយតបបានក្នុងរយៈពេល 2 វិនាទី។</p>
+<h4 id="ណែនាំ-3-one-click-escalation" class="scroll-mt-24 group">✅ ណែនាំ 3: One-Click Escalation <a href="#ណែនាំ-3-one-click-escalation" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<p>ប្រសិនបើអតិថិជនខឹងខ្លាំង ឬទាមទារជួបប្រធាន ត្រូវមានប៊ូតុង «🚨 បញ្ជូនទៅប្រធានផ្នែក (Escalate to Manager)» ដែលនឹងផ្ញើ High-Priority Alert ទៅកាន់ Telegram របស់ Manager ភ្លាមៗ។</p>
+<hr>
+<h3 id="132-បញ្ជីត្រួតពិនិត្យការសាងសង់-prototype-15-point-prototype-checklist" class="scroll-mt-24 group">13.2 បញ្ជីត្រួតពិនិត្យការសាងសង់ Prototype (15-Point Prototype Checklist) <a href="#132-បញ្ជីត្រួតពិនិត្យការសាងសង់-prototype-15-point-prototype-checklist" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p>មុនពេលចាត់ទុកថា Prototype សម្រាប់ Customer Support ត្រឹមត្រូវ 100% ត្រូវផ្ទៀងផ្ទាត់:</p>
+<ul>
+<li><input disabled="" type="checkbox"> <strong>កម្ពស់ Header ស្មើគ្នា</strong>: ទាំង Sidebar Brand និង Content Top Header មានកម្ពស់ <code>h-[72px]</code> ស្មើគ្នាបេះបិទ។</li>
+<li><input disabled="" type="checkbox"> <strong>ភាសាខ្មែរសុទ្ធសាធ 100%</strong>: គ្មានពាក្យអង់គ្លេសលាយឡំលើ UI, ប៊ូតុង, តារាង, ផ្លាក Badge ឬ Toast ឡើយ។</li>
+<li><input disabled="" type="checkbox"> <strong>លេខអង់គ្លេស 0-9</strong>: គ្រប់លេខកូដ (#TCK-2026-0089), កាលបរិច្ឆេទ, ម៉ោង SLA, លេខទូរស័ព្ទ ប្រើលេខអង់គ្លេសជានិច្ច។</li>
+<li><input disabled="" type="checkbox"> <strong>គ្មាន Pop-up Modal</strong>: ទម្រង់បង្កើត <code>create-ticket.html</code> និងមើល <code>view-ticket.html</code> ជាទំព័រពេញលេញ (Dedicated Full Page)។</li>
+<li><input disabled="" type="checkbox"> <strong>ប៊ូតុងត្រឡប់ក្រោយស្តង់ដារ</strong>: ប្រអប់មូលកោង <code>w-10 h-10 rounded-xl bg-slate-50 border border-slate-200/70</code> មានតែរូបព្រួញ។</li>
+<li><input disabled="" type="checkbox"> <strong>គ្មាន Native Select</strong>: ប្រើ Custom Dropdown មាន Stacking Context <code>z-50</code> ត្រឹមត្រូវ។</li>
+<li><input disabled="" type="checkbox"> <strong>ជំនួស Alert / Confirm</strong>: ប្រើប្រាស់ <code>showToast()</code> និង <code>showCustomConfirm()</code>។</li>
+<li><input disabled="" type="checkbox"> <strong>លាក់របាររំកិល</strong>: Globally Hidden Scrollbars ទាំងផ្ដេក និងបញ្ឈរ។</li>
+<li><input disabled="" type="checkbox"> <strong>ប្លង់ពេញទទឹង</strong>: <code>&lt;main class=&quot;w-full&quot;&gt;</code> គ្មានការប្រើ <code>max-w-7xl mx-auto</code>។</li>
+<li><input disabled="" type="checkbox"> <strong>សកម្មភាពតារាង</strong>: ប្រើប៊ូតុង <code>⋮</code> ជាមួយ Floating Action Dropdown Menu។</li>
+<li><input disabled="" type="checkbox"> <strong>Zero Cost Leakage</strong>: គ្មានការបង្ហាញជួរឈរ Cost Price ឬ Margin លើទំព័រណាទាំងអស់។</li>
+<li><input disabled="" type="checkbox"> <strong>ឧបករណ៍ស្វែងរកវិក្កយបត្រ</strong>: ដំណើរការស្វែងរកលឿនតាមលេខទូរស័ព្ទ និងលេខកូដ។</li>
+<li><input disabled="" type="checkbox"> <strong>Progress Stepper 4 ដំណាក់កាល</strong>: បង្ហាញការវិវត្តនៃការដឹកជញ្ជូនច្បាស់លាស់។</li>
+<li><input disabled="" type="checkbox"> <strong>Unified Date Range Picker</strong>: មាន 10 Presets និងប្រតិទិនពីរជួរឈរតាមគំរូ <code>invoice.html</code>។</li>
+<li><input disabled="" type="checkbox"> <strong>ពុម្ពអក្សរ Kantumruy Pro</strong>: កម្រាស់ និងពណ៌អក្សរស្រទន់ <code>text-slate-700</code> មើលទៅមានវិជ្ជាជីវៈកម្រិតខ្ពស់។</li>
+</ul>
+<hr>
+<h2 id="14-faq-សំណួរ-និងចម្លើយទូទៅ" class="scroll-mt-24 group">14. FAQ — សំណួរ និងចម្លើយទូទៅ <a href="#14-faq-សំណួរ-និងចម្លើយទូទៅ" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<p><strong>Q: Customer Support អាចមើលឃើញវិក្កយបត្ររបស់អតិថិជនគ្រប់គ្នាក្នុងក្រុមហ៊ុនដែរទេ?</strong><br>A: <strong>បាទ/ចាស មើលឃើញទាំងអស់</strong> (កម្រិត Read-Only) ព្រោះអតិថិជនអាចខលចូលមកចំ Support ណាក៏ដោយ ដូច្នេះបុគ្គលិកត្រូវតែមានសិទ្ធិស្វែងរកឃើញភ្លាមៗដើម្បីឆ្លើយតប។ ប៉ុន្តែ Support <strong>មិនអាចមើលឃើញរបាយការណ៍សរុបប្រចាំខែ ឬប្រាក់ចំណេញ</strong> របស់ក្រុមហ៊ុនឡើយ។</p>
+<p><strong>Q: ប្រសិនបើអតិថិជនទាមទារសងលុយវិញ តើ Customer Support អាចសងភ្លាមបានទេ?</strong><br>A: <strong>មិនអាចទេ</strong>។ Customer Support អាចត្រឹមតែបង្កើតសំណើ RMA / Refund Request និងភ្ជាប់ភស្តុតាងប៉ុណ្ណោះ។ សំណើនេះត្រូវឆ្លងកាត់ការអនុម័តពី Admin ឬប្រធានផ្នែក ហើយគណនេយ្យករជាអ្នកផ្ទេរប្រាក់ជាក់ស្តែង (Segregation of Duties)។</p>
+<p><strong>Q: Customer Support អាចជួយបង្កើតការកុម្ម៉ង់ទិញជំនួសអតិថិជនបានទេ?</strong><br>A: ក្នុងដំណាក់កាល Prototype Phase 1 — Customer Support <strong>មិនមានសិទ្ធិចេញវិក្កយបត្រទេ</strong> ដើម្បីជៀសវាងការច្រឡំ Commission ជាមួយ Sales។ Support ត្រូវប្រើប៊ូតុង «ផ្ទេរទៅផ្នែកលក់ (Forward to Sales)» ដើម្បីឱ្យ Sales Staff ចេញឯកសារផ្លូវការ។</p>
+<p><strong>Q: តើ SLA Countdown ដំណើរការយ៉ាងដូចម្តេច?</strong><br>A: នៅពេល Ticket បង្កើតឡើង ប្រព័ន្ធគណនា <code>sla_due_at = created_at + SLA_duration</code> (ឧ. 2 ម៉ោង សម្រាប់ High Priority)។ នៅលើ UI វានឹងរាប់ថយក្រោយតាម Real-time។ បើសិននៅសល់ &lt; 30 នាទី វានឹងប្រែជាពណ៌លឿង ហើយបើហួសម៉ោង វានឹងប្រែជាពណ៌ក្រហម និងបន្លឺ Alert ទៅកាន់ប្រធាន។</p>
+<hr>
+<p><em>ឯកសារនេះតំណាង 100% នៃមូលដ្ឋានចំណេះដឹងសម្រាប់ Customer Support Role ក្នុង DIGITECHKH BMS</em><br><em>Previous Role: Warehouse Staff → <a href="role_warehouse_staff.html"><code>role_warehouse_staff.md</code></a></em><br><em>Next Role: AP/AR Accountant → <a href="role_apar_accountant.html"><code>role_apar_accountant.md</code></a></em></p>
+
+                </article>
+
+                <!-- Next / Previous Role Navigation Bar -->
+                <div class="no-print mt-12 pt-8 border-t border-slate-200 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <a href="role_warehouse_staff.html" class="p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-transform flex-shrink-0">
+                            👷
+                        </div>
+                        <div class="min-w-0">
+                            <div class="text-[10px] text-slate-400 font-medium">← តួនាទីមុន</div>
+                            <div class="text-xs font-bold text-slate-800 group-hover:text-primary transition truncate">បុគ្គលិកឃ្លាំងទំនិញ</div>
+                        </div>
+                    </a>
+
+                    <a href="role_apar_accountant.html" class="p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group flex items-center justify-end text-right gap-3">
+                        <div class="min-w-0">
+                            <div class="text-[10px] text-slate-400 font-medium">តួនាទីបន្ទាប់ →</div>
+                            <div class="text-xs font-bold text-slate-800 group-hover:text-primary transition truncate">គណនេយ្យករចំណាយ និងចំណូល</div>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-transform flex-shrink-0">
+                            💰
+                        </div>
+                    </a>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="no-print bg-white border-t border-slate-200 py-6 px-8 text-center text-xs text-slate-500">
+        <p>រក្សាសិទ្ធិគ្រប់យ៉ាង © 2026 ក្រុមហ៊ុន ឌីជីថេក ខេអេច (DIGITECHKH Co., Ltd.) · ព្រះរាជាណាចក្រកម្ពុជា</p>
+    </footer>
+
+</body>
+</html>

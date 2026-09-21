@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html lang="km" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏛️ អភិបាល និងអ្នកចាត់ការទូទៅ (Admin / General Manager) — ការសិក្សាស៊ីជម្រៅ | DIGITECHKH BMS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Kantumruy Pro', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0f2b5c',
+                        primaryHover: '#0a1d3f',
+                        accent: '#2563eb',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Kantumruy Pro', sans-serif;
+            color: #334155;
+            background-color: #f8fafc;
+        }
+        ::-webkit-scrollbar { display: none; }
+        * { -ms-overflow-style: none; scrollbar-width: none; }
+        h1, h2, h3, h4 { color: #0f172a; font-weight: 700; }
+        h1 { font-size: 1.8rem; line-height: 2.35rem; margin-bottom: 1.25rem; }
+        h2 { font-size: 1.35rem; line-height: 1.85rem; margin-top: 2.25rem; margin-bottom: 0.85rem; padding-bottom: 0.5rem; border-bottom: 1px solid #e2e8f0; }
+        h3 { font-size: 1.1rem; line-height: 1.5rem; margin-top: 1.75rem; margin-bottom: 0.5rem; }
+        p { margin-bottom: 0.85rem; line-height: 1.8; font-size: 0.95rem; }
+        ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1rem; font-size: 0.95rem; }
+        ol { list-style-type: decimal; padding-left: 1.5rem; margin-bottom: 1rem; font-size: 0.95rem; }
+        li { margin-bottom: 0.35rem; line-height: 1.7; }
+        hr { border: 0; border-top: 1px solid #e2e8f0; margin: 2rem 0; }
+        @media print {
+            .no-print { display: none !important; }
+            body { background-color: #ffffff; color: #000; }
+            .print-container { max-width: 100% !important; margin: 0 !important; padding: 0 !important; box-shadow: none !important; border: none !important; }
+            table, pre, blockquote, .rounded-xl, .rounded-2xl { page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-primary selection:text-white min-h-screen flex flex-col justify-between">
+
+    <!-- Top Sticky Control Bar -->
+    <header class="no-print fixed top-0 left-0 right-0 h-16 bg-primary text-white z-50 px-4 sm:px-8 flex items-center justify-between shadow-md">
+        <div class="flex items-center gap-3">
+            <a href="index.html" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition flex items-center gap-2 text-xs font-semibold">
+                <i class="fas fa-arrow-left"></i> <span class="hidden sm:inline">មជ្ឈមណ្ឌលឯកសារ</span>
+            </a>
+            <span class="text-white/30 hidden sm:inline">|</span>
+            <div class="flex items-center gap-2">
+                <span class="text-xl">🏛️</span>
+                <span class="font-bold text-xs sm:text-sm text-white truncate max-w-[200px] sm:max-w-xs">អភិបាល និងអ្នកចាត់ការទូទៅ</span>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-white/15 text-cyan-200 hidden md:inline">Command</span>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-2 sm:gap-3">
+            <!-- Role Switcher -->
+            <div class="relative">
+                <select onchange="window.location.href=this.value" class="h-9 pl-3 pr-8 bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl text-xs font-semibold text-white focus:outline-none focus:bg-[#0a1d3f] transition appearance-none cursor-pointer">
+                    <option value="role_superadmin.html" >👑 ស៊ុបភើរ អភិបាល (Super Admin)</option>
+<option value="role_procurement_manager.html" >🛒 អ្នកគ្រប់គ្រងលទ្ធកម្ម (Procurement Manager)</option>
+<option value="role_warehouse_staff.html" >👷 បុគ្គលិកឃ្លាំងទំនិញ (Warehouse Staff)</option>
+<option value="role_customer_support.html" >🎧 ផ្នែកគាំទ្រអតិថិជន (Customer Support)</option>
+<option value="role_apar_accountant.html" >💰 គណនេយ្យករចំណាយ និងចំណូល (AP/AR Accountant)</option>
+<option value="role_sales_manager.html" >👔 អ្នកគ្រប់គ្រងផ្នែកលក់ (Sales Manager)</option>
+<option value="role_internal_auditor_executive.html" >🔍 សវនករផ្ទៃក្នុង និងថ្នាក់ដឹកនាំ (Internal Auditor / Executive)</option>
+<option value="role_sales_executive.html" >💼 បុគ្គលិកប្រតិបត្តិផ្នែកលក់ (Sales Executive)</option>
+<option value="role_admin_general_manager.html" selected>🏛️ អភិបាល និងអ្នកចាត់ការទូទៅ (Admin / General Manager)</option>
+<option value="role_warehouse_manager.html" >📦 អ្នកគ្រប់គ្រងឃ្លាំងស្តុក (Warehouse Manager)</option>
+                </select>
+                <i class="fas fa-chevron-down absolute right-3 top-3 text-[10px] text-white/60 pointer-events-none"></i>
+            </div>
+
+            <!-- Interactive Guide Link -->
+            <a href="DIGITECHKH-Roles-And-Permissions-Interactive-Guide.html?role=admin_general_manager" class="px-3 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-semibold transition hidden lg:flex items-center gap-1.5 shadow-sm">
+                <i class="fas fa-table-cells"></i> ផ្ទាំងអន្តរកម្ម & ម៉ាទ្រីស
+            </a>
+
+            <!-- Print Button -->
+            <button onclick="window.print()" class="px-3 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-semibold transition flex items-center gap-1.5 shadow-sm cursor-pointer">
+                <i class="fas fa-print"></i> <span class="hidden sm:inline">បោះពុម្ព A4</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Reading Container -->
+    <div class="pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full flex-1">
+        <div class="flex flex-col lg:flex-row gap-8 items-start">
+
+            <!-- Left Table of Contents Sidebar -->
+            <aside class="no-print lg:w-72 flex-shrink-0 sticky top-24 hidden lg:block bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
+                <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-3">
+                    <span class="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
+                        <i class="fas fa-list-ul text-primary"></i> មាតិកាឯកសារ
+                    </span>
+                    <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-50 text-accent">TOC</span>
+                </div>
+                <div class="space-y-0.5 max-h-[calc(100vh-220px)] overflow-y-auto pr-1 text-xs">
+                    <a href="#ចំណុចចាំបាច់-បេសកកម្មស្នូល-និងដែនសមត្ថកិច្ចកំពូល-core-mission-supreme-tenant-authority" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="⚠️ ចំណុចចាំបាច់ — បេសកកម្មស្នូល និងដែនសមត្ថកិច្ចកំពូល (Core Mission & Supreme Tenant Authority)">⚠️ ចំណុចចាំបាច់ — បេសកកម្មស្នូល និងដែនសមត្ថកិច្ចកំពូល (Core Mission & Supreme Tenant Authority)</a>
+<a href="#តារាងមាតិកា" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="តារាងមាតិកា">តារាងមាតិកា</a>
+<a href="#1-អ្វីជា-admin-general-manager" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="1. អ្វីជា Admin / General Manager?">1. អ្វីជា Admin / General Manager?</a>
+<a href="#11-និយមន័យ-definition" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="1.1 និយមន័យ (Definition)">1.1 និយមន័យ (Definition)</a>
+<a href="#12-ការប្រៀបធៀបរវាង-super-admin-admin-gm-និង-internal-auditor" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="1.2 ការប្រៀបធៀបរវាង Super Admin, Admin / GM, និង Internal Auditor">1.2 ការប្រៀបធៀបរវាង Super Admin, Admin / GM, និង Internal Auditor</a>
+<a href="#2-ឋានានុក្រមក្នុងប្រព័ន្ធ-និងទំនាក់ទំនងស្ថាប័ន" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="2. ឋានានុក្រមក្នុងប្រព័ន្ធ និងទំនាក់ទំនងស្ថាប័ន">2. ឋានានុក្រមក្នុងប្រព័ន្ធ និងទំនាក់ទំនងស្ថាប័ន</a>
+<a href="#3-អ្វីដែល-admin-gm-ធ្វើបាន-និងហាមធ្វើ-full-capability-map" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="3. អ្វីដែល Admin / GM ធ្វើបាន និងហាមធ្វើ (Full Capability Map)">3. អ្វីដែល Admin / GM ធ្វើបាន និងហាមធ្វើ (Full Capability Map)</a>
+<a href="#31-អ្វីដែល-admin-gm-ធ្វើបានពេញលេញ" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="3.1 ✅ អ្វីដែល Admin / GM ធ្វើបានពេញលេញ">3.1 ✅ អ្វីដែល Admin / GM ធ្វើបានពេញលេញ</a>
+<a href="#32-អ្វីដែល-admin-gm-ហាមធ្វើដាច់ខាត" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="3.2 ❌ អ្វីដែល Admin / GM ហាមធ្វើដាច់ខាត">3.2 ❌ អ្វីដែល Admin / GM ហាមធ្វើដាច់ខាត</a>
+<a href="#4-ស្ថាបត្យកម្មទំព័រ-ui-ពេញលេញ-page-by-page-blueprint" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="4. ស្ថាបត្យកម្មទំព័រ UI ពេញលេញ (Page-by-Page Blueprint)">4. ស្ថាបត្យកម្មទំព័រ UI ពេញលេញ (Page-by-Page Blueprint)</a>
+<a href="#41-2-homedashboardhtml-ផ្ទាំងបញ្ជាការដ្ឋានប្រតិបត្តិការរួម-enterprise-executive-dashboard" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.1 `2-home/dashboard.html` — ផ្ទាំងបញ្ជាការដ្ឋានប្រតិបត្តិការរួម (Enterprise Executive Dashboard)">4.1 `2-home/dashboard.html` — ផ្ទាំងបញ្ជាការដ្ឋានប្រតិបត្តិការរួម (Enterprise Executive Dashboard)</a>
+<a href="#42-2-homeapprovalshtml-9-portalsmanagerapprovalshtml-មជ្ឈមណ្ឌលប្រមូលផ្តុំរាល់សំណើអនុម័ត" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.2 `2-home/approvals.html` & `9-portals/manager/approvals.html` — មជ្ឈមណ្ឌលប្រមូលផ្តុំរាល់សំណើអនុម័ត">4.2 `2-home/approvals.html` & `9-portals/manager/approvals.html` — មជ្ឈមណ្ឌលប្រមូលផ្តុំរាល់សំណើអនុម័ត</a>
+<a href="#43-9-portalsmanagerview-approvalhtml-ទំព័រពិនិត្យលម្អិត-និងចុចអនុម័ត-dedicated-approval-page" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.3 `9-portals/manager/view-approval.html` — ទំព័រពិនិត្យលម្អិត និងចុចអនុម័ត (Dedicated Approval Page)">4.3 `9-portals/manager/view-approval.html` — ទំព័រពិនិត្យលម្អិត និងចុចអនុម័ត (Dedicated Approval Page)</a>
+<a href="#44-frontendsrcpages7-settings2-usersusershtml-គ្រប់គ្រងគណនី-និងសិទ្ធិបុគ្គលិក" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.4 `frontend/src/pages/7-settings/2-users/users.html` — គ្រប់គ្រងគណនី និងសិទ្ធិបុគ្គលិក">4.4 `frontend/src/pages/7-settings/2-users/users.html` — គ្រប់គ្រងគណនី និងសិទ្ធិបុគ្គលិក</a>
+<a href="#45-frontendsrcpages7-settings5-systemsystemhtml-ការកំណត់ប្រព័ន្ធ-និងការបិទគ្រាគណនេយ្យ" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.5 `frontend/src/pages/7-settings/5-system/system.html` — ការកំណត់ប្រព័ន្ធ និងការបិទគ្រាគណនេយ្យ">4.5 `frontend/src/pages/7-settings/5-system/system.html` — ការកំណត់ប្រព័ន្ធ និងការបិទគ្រាគណនេយ្យ</a>
+<a href="#5-ម៉ាទ្រីសសិទ្ធិអំណាចពេញលេញ-permission-matrix" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="5. ម៉ាទ្រីសសិទ្ធិអំណាចពេញលេញ (Permission Matrix)">5. ម៉ាទ្រីសសិទ្ធិអំណាចពេញលេញ (Permission Matrix)</a>
+<a href="#6-វដ្តការងារស្នូលទាំង-6-core-executive-approval-workflows" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="6. វដ្តការងារស្នូលទាំង 6 (Core Executive & Approval Workflows)">6. វដ្តការងារស្នូលទាំង 6 (Core Executive & Approval Workflows)</a>
+<a href="#workflow-1-ការអនុម័តប័ណ្ណចំណាយទូទាត់ប្រាក់ធំៗ-high-value-disbursement-approval" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 1: ការអនុម័តប័ណ្ណចំណាយទូទាត់ប្រាក់ធំៗ (High-Value Disbursement Approval)">Workflow 1: ការអនុម័តប័ណ្ណចំណាយទូទាត់ប្រាក់ធំៗ (High-Value Disbursement Approval)</a>
+<a href="#workflow-2-ការអនុម័តការបញ្ចុះតម្លៃពិសេសកម្រិតខ្ពស់-executive-discount-approval" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 2: ការអនុម័តការបញ្ចុះតម្លៃពិសេសកម្រិតខ្ពស់ (Executive Discount Approval)">Workflow 2: ការអនុម័តការបញ្ចុះតម្លៃពិសេសកម្រិតខ្ពស់ (Executive Discount Approval)</a>
+<a href="#workflow-3-ការអនុម័តលើកលែងពិដានឥណទានអតិថិជន-credit-limit-override-workflow" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 3: ការអនុម័តលើកលែងពិដានឥណទានអតិថិជន (Credit Limit Override Workflow)">Workflow 3: ការអនុម័តលើកលែងពិដានឥណទានអតិថិជន (Credit Limit Override Workflow)</a>
+<a href="#workflow-4-ការគ្រប់គ្រង-និងចាត់តាំងគណនីបុគ្គលិកថ្មី-user-provisioning-role-assignment" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 4: ការគ្រប់គ្រង និងចាត់តាំងគណនីបុគ្គលិកថ្មី (User Provisioning & Role Assignment)">Workflow 4: ការគ្រប់គ្រង និងចាត់តាំងគណនីបុគ្គលិកថ្មី (User Provisioning & Role Assignment)</a>
+<a href="#workflow-5-ការបិទគ្រាគណនេយ្យប្រចាំខែ-monthly-financial-period-closing" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 5: ការបិទគ្រាគណនេយ្យប្រចាំខែ (Monthly Financial Period Closing)">Workflow 5: ការបិទគ្រាគណនេយ្យប្រចាំខែ (Monthly Financial Period Closing)</a>
+<a href="#workflow-6-ការអនុម័តការកាត់កងស្តុកទំនិញខូចខាត-stock-write-off-approval" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 6: ការអនុម័តការកាត់កងស្តុកទំនិញខូចខាត (Stock Write-Off Approval)">Workflow 6: ការអនុម័តការកាត់កងស្តុកទំនិញខូចខាត (Stock Write-Off Approval)</a>
+<a href="#7-តក្កវិជ្ជាអាជីវកម្ម-និងកម្រិតពិដានអនុម័ត-business-logic-approval-thresholds" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="7. តក្កវិជ្ជាអាជីវកម្ម និងកម្រិតពិដានអនុម័ត (Business Logic & Approval Thresholds)">7. តក្កវិជ្ជាអាជីវកម្ម និងកម្រិតពិដានអនុម័ត (Business Logic & Approval Thresholds)</a>
+<a href="#8-ទំនាក់ទំនងឆ្លងផ្នែកជាមួយគ្រប់តួនាទី-comprehensive-cross-role-command-map" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="8. ទំនាក់ទំនងឆ្លងផ្នែកជាមួយគ្រប់តួនាទី (Comprehensive Cross-Role Command Map)">8. ទំនាក់ទំនងឆ្លងផ្នែកជាមួយគ្រប់តួនាទី (Comprehensive Cross-Role Command Map)</a>
+<a href="#9-វិសាលភាពទិន្នន័យ-data-scope-full-360-transparency" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="9. វិសាលភាពទិន្នន័យ (Data Scope — Full 360° Transparency)">9. វិសាលភាពទិន្នន័យ (Data Scope — Full 360° Transparency)</a>
+<a href="#10-ផ្ទាំងបញ្ជាការដ្ឋានប្រតិបត្តិការ-executive-cockpit-strategic-kpis" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="10. ផ្ទាំងបញ្ជាការដ្ឋានប្រតិបត្តិការ (Executive Cockpit & Strategic KPIs)">10. ផ្ទាំងបញ្ជាការដ្ឋានប្រតិបត្តិការ (Executive Cockpit & Strategic KPIs)</a>
+<a href="#11-គំរូរចនាសម្ព័ន្ធទិន្នន័យ-database-schema-blueprint" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="11. គំរូរចនាសម្ព័ន្ធទិន្នន័យ (Database Schema Blueprint)">11. គំរូរចនាសម្ព័ន្ធទិន្នន័យ (Database Schema Blueprint)</a>
+<a href="#12-អភិបាលកិច្ច-និងសុវត្ថិភាពទិន្នន័យ-governance-anti-fraud-controls" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="12. អភិបាលកិច្ច និងសុវត្ថិភាពទិន្នន័យ (Governance & Anti-Fraud Controls)">12. អភិបាលកិច្ច និងសុវត្ថិភាពទិន្នន័យ (Governance & Anti-Fraud Controls)</a>
+<a href="#13-អនុសាសន៍ស្ថាបត្យកម្ម-និងផែនការ-prototype-planning" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="13. អនុសាសន៍ស្ថាបត្យកម្ម និងផែនការ Prototype Planning">13. អនុសាសន៍ស្ថាបត្យកម្ម និងផែនការ Prototype Planning</a>
+<a href="#131-អនុសាសន៍រចនាប្រព័ន្ធ-architectural-recommendations" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="13.1 អនុសាសន៍រចនាប្រព័ន្ធ (Architectural Recommendations)">13.1 អនុសាសន៍រចនាប្រព័ន្ធ (Architectural Recommendations)</a>
+<a href="#132-បញ្ជីត្រួតពិនិត្យការសាងសង់-prototype-15-point-prototype-checklist" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="13.2 បញ្ជីត្រួតពិនិត្យការសាងសង់ Prototype (15-Point Prototype Checklist)">13.2 បញ្ជីត្រួតពិនិត្យការសាងសង់ Prototype (15-Point Prototype Checklist)</a>
+<a href="#14-សំណួរ-និងចម្លើយទូទៅ-faq" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="14. សំណួរ និងចម្លើយទូទៅ (FAQ)">14. សំណួរ និងចម្លើយទូទៅ (FAQ)</a>
+                </div>
+                <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
+                    <a href="DIGITECHKH-Roles-And-Permissions-Interactive-Guide.html?role=admin_general_manager" class="w-full py-2 px-3 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-700 text-xs font-medium flex items-center justify-between transition border border-slate-200">
+                        <span>មើលក្នុងផ្ទាំងអន្តរកម្ម</span>
+                        <i class="fas fa-up-right-from-square text-[10px] text-slate-400"></i>
+                    </a>
+                    <a href="role_admin_general_manager.md" class="w-full py-2 px-3 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-500 text-[11px] font-normal flex items-center justify-between transition border border-slate-200">
+                        <span>មើលឯកសារដើម (.md)</span>
+                        <i class="fas fa-file-code text-[10px]"></i>
+                    </a>
+                </div>
+            </aside>
+
+            <!-- Main Document Body -->
+            <main class="print-container flex-1 bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-12 min-w-0 max-w-4xl mx-auto">
+
+                <!-- Breadcrumb -->
+                <div class="no-print flex items-center gap-2 text-xs text-slate-500 mb-6 flex-wrap pb-4 border-b border-slate-100">
+                    <a href="index.html" class="hover:text-primary transition flex items-center gap-1">
+                        <i class="fas fa-home"></i> មជ្ឈមណ្ឌលឯកសារ
+                    </a>
+                    <span>/</span>
+                    <a href="DIGITECHKH-Roles-And-Permissions-Interactive-Guide.html" class="hover:text-primary transition">
+                        តួនាទីទាំង 10
+                    </a>
+                    <span>/</span>
+                    <span class="text-slate-800 font-semibold">អភិបាល និងអ្នកចាត់ការទូទៅ</span>
+                </div>
+
+                <!-- Document Rendered HTML -->
+                <article class="prose prose-slate max-w-none">
+                    <h1 id="digitechkh-bms-ការសិក្សាស៊ីជម្រៅ-តួនាទី-អភិបាលក្រុមហ៊ុន-អ្នកគ្រប់គ្រងទូទៅ-admin-general-manager" class="scroll-mt-24 group">👑 DIGITECHKH BMS — ការសិក្សាស៊ីជម្រៅ: តួនាទី អភិបាលក្រុមហ៊ុន / អ្នកគ្រប់គ្រងទូទៅ (Admin / General Manager) <a href="#digitechkh-bms-ការសិក្សាស៊ីជម្រៅ-តួនាទី-អភិបាលក្រុមហ៊ុន-អ្នកគ្រប់គ្រងទូទៅ-admin-general-manager" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h1>
+<div class="my-5 p-4 rounded-xl bg-slate-50 border-l-4 border-[#0f2b5c] text-slate-800 text-xs leading-relaxed shadow-sm">
+<p><strong>ឯកសារ</strong>: <code>role_admin_general_manager.md</code><br><strong>កំណែ</strong>: 1.0<br><strong>កាលបរិច្ឆេទ</strong>: 21 កញ្ញា 2026<br><strong>គោលបំណង</strong>: ការយល់ដឹង 100% អំពីតួនាទី អភិបាលក្រុមហ៊ុន / អ្នកគ្រប់គ្រងទូទៅ (Admin / General Manager) មុនពេលឈានទៅរៀបចំគំរូទម្រង់ដើម (Prototype) — រួមមានសិទ្ធិបញ្ជាការដ្ឋានប្រតិបត្តិការកំពូលនៃសហគ្រាស (Supreme Tenant Authority), ឋានានុក្រមអនុម័តជាន់ខ្ពស់, ស្ថាបត្យកម្មទំព័រ UI គ្រប់ម៉ូឌុល, វដ្តការងារស្នូល, តក្កវិជ្ជាកំណត់ដែនសមត្ថកិច្ចហិរញ្ញវត្ថុ, វិសាលភាពទិន្នន័យ 360 ដឺក្រេ, ផ្ទាំងបញ្ជាការដ្ឋានប្រតិបត្តិការ (Executive Cockpit), គំរូរចនាសម្ព័ន្ធទិន្នន័យ Database Schema, និងអនុសាសន៍រៀបចំផែនការលម្អិត។</p>
+</div>
+<hr>
+<h2 id="ចំណុចចាំបាច់-បេសកកម្មស្នូល-និងដែនសមត្ថកិច្ចកំពូល-core-mission-supreme-tenant-authority" class="scroll-mt-24 group">⚠️ ចំណុចចាំបាច់ — បេសកកម្មស្នូល និងដែនសមត្ថកិច្ចកំពូល (Core Mission &amp; Supreme Tenant Authority) <a href="#ចំណុចចាំបាច់-បេសកកម្មស្នូល-និងដែនសមត្ថកិច្ចកំពូល-core-mission-supreme-tenant-authority" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<p>នៅក្នុងស្ថាបត្យកម្មប្រព័ន្ធគ្រប់គ្រងសហគ្រាស DIGITECHKH BMS តួនាទី <strong>Admin / General Manager (អភិបាលក្រុមហ៊ុន / អ្នកគ្រប់គ្រងទូទៅ)</strong> គឺជា <strong>«មេបញ្ជាការកំពូលនៃប្រតិបត្តិការអាជីវកម្មរបស់ក្រុមហ៊ុន» (Chief Operating Officer / Tenant Operational Master)</strong>។</p>
+<div class="my-5 p-4 rounded-xl bg-slate-50 border-l-4 border-[#0f2b5c] text-slate-800 text-xs leading-relaxed shadow-sm">
+<p>🏛️ <strong>គោលការណ៍អភិបាលកិច្ចកំពូលនៃក្រុមហ៊ុន (The Supreme Tenant Command Doctrine)</strong>:<br>Admin / GM គឺជាអ្នកកាន់កាប់សិទ្ធិអំណាចប្រតិបត្តិការពេញលេញ 100% លើគ្រប់ម៉ូឌុលអាជីវកម្មទាំងអស់ (ផ្នែកលក់, លទ្ធកម្ម, ស្តុកឃ្លាំង, ហិរញ្ញវត្ថុ និងគណនេយ្យ, ធនធានមនុស្ស, និងការកំណត់ប្រព័ន្ធរបស់ក្រុមហ៊ុន)។<br>គាត់/នាង គឺជា <strong>«ច្រកទ្វារអនុម័តចុងក្រោយ» (Ultimate Sign-off Gatekeeper)</strong> សម្រាប់រាល់ប្រតិបត្តិការណាដែលមានហានិភ័យហិរញ្ញវត្ថុខ្ពស់, ការលើកលែងគោលការណ៍ (Policy Overrides), និងការបិទគ្រាគណនេយ្យប្រចាំខែ/ប្រចាំឆ្នាំ។</p>
+</div>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">វិសាលភាព និងសកម្មភាព</th>
+<th align="center">សិទ្ធិរបស់ Admin / General Manager</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">មូលហេតុ និងគោលការណ៍អភិបាលកិច្ច</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>មើលឃើញទិន្នន័យហិរញ្ញវត្ថុគ្រប់ជ្រុងជ្រោយ 100%</strong></td>
+<td align="center">✅ មើលឃើញពេញលេញ 100%</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ថ្លៃដើមពិត, ផលចំណេញសុទ្ធ, ស្ថានភាពសាច់ប្រាក់ធនាគារ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>គ្រប់គ្រងសិទ្ធិ និងគណនីបុគ្គលិកក្នុងក្រុមហ៊ុន</strong></td>
+<td align="center">✅ បង្កើត, កែប្រែ, ចាក់សោរ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">កំណត់តួនាទី និងសិទ្ធិចូលប្រើប្រាស់តាមមុខតំណែង</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>អនុម័តការបញ្ជាទិញទំនិញធំៗ (PO &gt; $1,000.00)</strong></td>
+<td align="center">✅ សិទ្ធិអនុម័តកំពូល</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">គ្រប់គ្រងលំហូរសាច់ប្រាក់ចេញ និងការវិនិយោគស្តុក</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>អនុម័តប័ណ្ណចំណាយទូទាត់ធំៗ (Disbursement &gt; $500)</strong></td>
+<td align="center">✅ សិទ្ធិអនុម័តកំពូល</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ផ្ទៀងផ្ទាត់ និងអនុញ្ញាតការបើកសាច់ប្រាក់ពីធនាគារ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>អនុម័តការបញ្ចុះតម្លៃពិសេសកម្រិតខ្ពស់ (&gt; 10% ដល់ 20%)</strong></td>
+<td align="center">✅ សិទ្ធិអនុម័តកំពូល</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">យុទ្ធសាស្ត្រចរចាជាមួយអតិថិជន VIP និងគម្រោងធំៗ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>អនុម័តការលើកលែងពិដានឥណទាន (Credit Override)</strong></td>
+<td align="center">✅ សិទ្ធិអនុម័តកំពូល</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">សម្រេចចិត្តអនុញ្ញាតឱ្យអតិថិជនជំពាក់លើសកម្រិត</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>អនុម័តការកាត់កងទំនិញខូចខាត (Stock Write-off)</strong></td>
+<td align="center">✅ សិទ្ធិអនុម័តកំពូល</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">កត់ត្រាការខាតបង់ទ្រព្យសកម្ម និងទទួលស្គាល់ការបាត់បង់</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>បិទ ឬបើកគ្រាគណនេយ្យ (Financial Period Lock)</strong></td>
+<td align="center">✅ សិទ្ធិអនុម័តកំពូល</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ចាក់សោរទិន្នន័យខែចាស់ការពារការកែប្រែតួលេខសារពើពន្ធ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ចូលមើល ឬកែប្រែទិន្នន័យរបស់ក្រុមហ៊ុនដទៃ (Cross-Tenant)</strong></td>
+<td align="center">❌ <strong>ហាមដាច់ខាត (Strictly Isolated)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ការពារការសម្ងាត់រវាងក្រុមហ៊ុន (សិទ្ធិរបស់ Super Admin)</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>កែសម្រួល Code ប្រព័ន្ធ ឬ Cloud Server Database</strong></td>
+<td align="center">❌ <strong>ហាមដាច់ខាត (Super Admin Only)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">សុវត្ថិភាពហេដ្ឋារចនាសម្ព័ន្ធបច្ចេកវិទ្យាព័ត៌មាន</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>កែប្រែ ឬលុបកំណត់ហេតុសវនកម្ម (Audit Trails)</strong></td>
+<td align="center">❌ <strong>ហាមដាច់ខាត (Immutable Log)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">រក្សាភស្តុតាងសវនកម្មរឹងមាំសម្រាប់សវនករផ្ទៃក្នុង</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="តារាងមាតិកា" class="scroll-mt-24 group">តារាងមាតិកា <a href="#តារាងមាតិកា" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<ol>
+<li><a href="#1-%E1%9E%A2%E1%9F%92%E1%9E%9C%E1%9E%B8%E1%9E%87%E1%9E%B6-admin--general-manager">អ្វីជា Admin / General Manager?</a></li>
+<li><a href="#2-%E1%9E%8B%E1%9E%B6%E1%9E%93%E1%9E%B6%E1%9E%93%E1%9E%BB%E1%9E%80%E1%9F%92%E1%9E%9A%E1%9E%98%E1%9E%80%E1%9F%92%E1%9E%93%E1%9E%BB%E1%9E%84%E1%9E%94%E1%9F%92%E1%9E%9A%E1%9E%96%E1%9F%90%E1%9E%93%E1%9F%92%E1%9E%92-%E1%9E%93%E1%9E%B7%E1%9E%84%E1%9E%91%E1%9F%86%E1%9E%93%E1%9E%B6%E1%9E%80%E1%9F%8B%E1%9E%91%E1%9F%86%E1%9E%93%E1%9E%84%E1%9E%9F%E1%9F%92%E1%9E%90%E1%9E%B6%E1%9E%94%E1%9F%90%E1%9E%93">ឋានានុក្រមក្នុងប្រព័ន្ធ និងទំនាក់ទំនងស្ថាប័ន</a></li>
+<li><a href="#3-%E1%9E%A2%E1%9F%92%E1%9E%9C%E1%9E%B8%E1%9E%8A%E1%9F%82%E1%9E%9B-admin--gm-%E1%9E%92%E1%9F%92%E1%9E%9C%E1%9E%BE%E1%9E%94%E1%9E%B6%E1%9E%93-%E1%9E%93%E1%9E%B7%E1%9E%84%E1%9E%A0%E1%9E%B6%E1%9E%98%E1%9E%92%E1%9F%92%E1%9E%9C%E1%9E%BE">អ្វីដែល Admin / GM ធ្វើបាន និងហាមធ្វើ (Full Capability Map)</a></li>
+<li><a href="#4-%E1%9E%9F%E1%9F%92%E1%9E%90%E1%9E%B6%E1%9E%94%E1%9E%8F%E1%9F%92%E1%9E%99%E1%9E%80%E1%9E%98%E1%9F%92%E1%9E%98%E1%9E%91%E1%9F%86%E1%9E%96%E1%9F%90%E1%9E%9A-ui-%E1%9E%96%E1%9F%81%E1%9E%89%E1%9E%9B%E1%9F%81%E1%9E%89">ស្ថាបត្យកម្មទំព័រ UI ពេញលេញ (Page-by-Page Blueprint)</a></li>
+<li><a href="#5-%E1%9E%98%E1%9F%89%E1%9E%B6%E1%9E%91%E1%9F%92%E1%9E%9A%E1%9E%B8%E1%9E%9F%E1%9E%9F%E1%9E%B7%E1%9E%91%E1%9F%92%E1%9E%92%E1%9E%B7%E1%9E%A2%E1%9F%86%E1%9E%8E%E1%9E%B6%E1%9E%85%E1%9E%96%E1%9F%81%E1%9E%89%E1%9E%9B%E1%9F%81%E1%9E%89">ម៉ាទ្រីសសិទ្ធិអំណាចពេញលេញ (Permission Matrix)</a></li>
+<li><a href="#6-%E1%9E%9C%E1%9E%8A%E1%9F%92%E1%9E%8F%E1%9E%80%E1%9E%B6%E1%9E%9A%E1%9E%84%E1%9E%B6%E1%9E%9A%E1%9E%9F%E1%9F%92%E1%9E%93%E1%9E%BC%E1%9E%9B%E1%9E%91%E1%9E%B6%E1%9F%86%E1%9E%84-6">វដ្តការងារស្នូលទាំង 6 (Core Executive &amp; Approval Workflows)</a></li>
+<li><a href="#7-%E1%9E%8F%E1%9E%80%E1%9F%92%E1%9E%80%E1%9E%9C%E1%9E%B7%E1%9E%87%E1%9F%92%E1%9E%87%E1%9E%B6%E1%9E%A2%E1%9E%B6%E1%9E%87%E1%9E%B8%E1%9E%9C%E1%9E%80%E1%9E%98%E1%9F%92%E1%9E%98-%E1%9E%93%E1%9E%B7%E1%9E%84%E1%9E%80%E1%9E%98%E1%9F%92%E1%9E%9A%E1%9E%B7%E1%9E%8F%E1%9E%96%E1%9E%B7%E1%9E%8A%E1%9E%B6%E1%9E%93%E1%9E%A2%E1%9E%93%E1%9E%BB%E1%9E%98%E1%9F%90%E1%9E%8F">តក្កវិជ្ជាអាជីវកម្ម និងកម្រិតពិដានអនុម័ត (Business Logic &amp; Approval Thresholds)</a></li>
+<li><a href="#8-%E1%9E%91%E1%9F%86%E1%9E%93%E1%9E%B6%E1%9E%80%E1%9F%8B%E1%9E%91%E1%9F%86%E1%9E%93%E1%9E%84%E1%9E%86%E1%9F%92%E1%9E%9B%E1%9E%84%E1%9E%95%E1%9F%92%E1%9E%93%E1%9F%82%E1%9E%80%E1%9E%87%E1%9E%B6%E1%9E%98%E1%9E%BD%E1%9E%99%E1%9E%82%E1%9F%92%E1%9E%9A%E1%9E%94%E1%9F%8B%E1%9E%8F%E1%9E%BD%E1%9E%93%E1%9E%B6%E1%9E%91%E1%9E%B8">ទំនាក់ទំនងឆ្លងផ្នែកជាមួយគ្រប់តួនាទី (Comprehensive Cross-Role Command Map)</a></li>
+<li><a href="#9-%E1%9E%9C%E1%9E%B7%E1%9E%9F%E1%9E%B6%E1%9E%9B%E1%9E%97%E1%9E%B6%E1%9E%96%E1%9E%91%E1%9E%B7%E1%9E%93%E1%9F%92%E1%9E%93%E1%9E%93%E1%9F%90%E1%9E%99-data-scope--full-360-transparency">វិសាលភាពទិន្នន័យ (Data Scope — Full 360° Transparency)</a></li>
+<li><a href="#10-%E1%9E%95%E1%9F%92%E1%9E%91%E1%9E%B6%E1%9F%86%E1%9E%84%E1%9E%94%E1%9E%89%E1%9F%92%E1%9E%87%E1%9E%B6%E1%9E%80%E1%9E%B6%E1%9E%9A%E1%9E%8A%E1%9F%92%E1%9E%8B%E1%9E%B6%E1%9E%93%E1%9E%94%E1%9F%92%E1%9E%9A%E1%9E%8F%E1%9E%B7%E1%9E%94%E1%9E%8F%E1%9F%92%E1%9E%8F%E1%9E%B7%E1%9E%80%E1%9E%B6%E1%9E%9A">ផ្ទាំងបញ្ជាការដ្ឋានប្រតិបត្តិការ (Executive Cockpit &amp; Strategic KPIs)</a></li>
+<li><a href="#11-%E1%9E%82%E1%9F%86%E1%9E%9A%E1%9E%BC%E1%9E%9A%E1%9E%85%E1%9E%93%E1%9E%B6%E1%9E%9F%E1%9E%98%E1%9F%92%E1%9E%96%E1%9F%90%E1%9E%93%E1%9F%92%E1%9E%92%E1%9E%91%E1%9E%B7%E1%9E%93%E1%9F%92%E1%9E%93%E1%9E%93%E1%9F%90%E1%9E%99">គំរូរចនាសម្ព័ន្ធទិន្នន័យ (Database Schema Blueprint)</a></li>
+<li><a href="#12-%E1%9E%A2%E1%9E%97%E1%9E%B7%E1%9E%94%E1%9E%B6%E1%9E%9B%E1%9E%80%E1%9E%B7%E1%9E%85%E1%9F%92%E1%9E%85-%E1%9E%93%E1%9E%B7%E1%9E%84%E1%9E%9F%E1%9E%BB%E1%9E%9C%E1%9E%8F%E1%9F%92%E1%9E%90%E1%9E%B7%E1%9E%97%E1%9E%B6%E1%9E%96%E1%9E%91%E1%9E%B7%E1%9E%93%E1%9F%92%E1%9E%93%E1%9E%93%E1%9F%90%E1%9E%99">អភិបាលកិច្ច និងសុវត្ថិភាពទិន្នន័យ (Governance &amp; Anti-Fraud Controls)</a></li>
+<li><a href="#13-%E1%9E%A2%E1%9E%93%E1%9E%BB%E1%9E%9F%E1%9E%B6%E1%9E%9F%E1%9E%93%E1%9F%8D%E1%9E%9F%E1%9F%92%E1%9E%90%E1%9E%B6%E1%9E%94%E1%9E%8F%E1%9F%92%E1%9E%99%E1%9E%80%E1%9E%98%E1%9F%92%E1%9E%98-%E1%9E%93%E1%9E%B7%E1%9E%84%E1%9E%95%E1%9F%82%E1%9E%93%E1%9E%80%E1%9E%B6%E1%9E%9A-prototype-planning">អនុសាសន៍ស្ថាបត្យកម្ម និងផែនការ Prototype Planning</a></li>
+<li><a href="#14-%E1%9E%9F%E1%9F%86%E1%9E%8E%E1%9E%BD%E1%9E%9A-%E1%9E%93%E1%9E%B7%E1%9E%84%E1%9E%85%E1%9E%98%E1%9F%92%E1%9E%9B%E1%9E%BE%E1%9E%99%E1%9E%91%E1%9E%BC%E1%9E%91%E1%9F%85">សំណួរ និងចម្លើយទូទៅ (FAQ)</a></li>
+</ol>
+<hr>
+<h2 id="1-អ្វីជា-admin-general-manager" class="scroll-mt-24 group">1. អ្វីជា Admin / General Manager? <a href="#1-អ្វីជា-admin-general-manager" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="11-និយមន័យ-definition" class="scroll-mt-24 group">1.1 និយមន័យ (Definition) <a href="#11-និយមន័យ-definition" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p><strong>Admin / General Manager (អភិបាលក្រុមហ៊ុន / អ្នកគ្រប់គ្រងទូទៅ)</strong> គឺជាអ្នកដឹកនាំកំពូលប្រចាំថ្ងៃនៃស្ថាប័នអាជីវកម្ម (Tenant-Level CEO / COO / Managing Director)។ នៅក្នុងប្រព័ន្ធ DIGITECHKH BMS គាត់/នាង មិនត្រឹមតែមានតួនាទីជាអ្នកគ្រប់គ្រងយុទ្ធសាស្ត្រប៉ុណ្ណោះទេ ប៉ុន្តែជា <strong>អ្នកចាត់ចែង និងអនុម័តប្រតិបត្តិការស្នូលទាំងអស់</strong>៖</p>
+<ol>
+<li><strong>អ្នកបញ្ជាការជួរមុខ និងជួរក្រោយ (End-to-End Orchestrator)</strong>: តភ្ជាប់រាល់លំហូរការងាររវាងផ្នែកលក់ (Sales), ផ្នែកលទ្ធកម្ម (Procurement), ឃ្លាំងស្តុក (Warehouse), គណនេយ្យ (Finance), និងធនធានមនុស្ស (HR) ឱ្យដំណើរការស៊ីចង្វាក់គ្នាឥតខ្ចោះ។</li>
+<li><strong>អ្នកកាន់កាប់សិទ្ធិអនុម័តខ្ពស់បំផុត (Highest Authority Sign-off)</strong>: រាល់ការចំណាយប្រាក់ធំៗ, ការបញ្ជាទិញទំនិញលើសកម្រិត, ការបញ្ចុះតម្លៃពិសេសដល់អតិថិជនធំៗ, និងការអនុញ្ញាតឱ្យអតិថិជនជំពាក់ប្រាក់លើសពិដាន ត្រូវតែមានការយល់ព្រមពីគាត់/នាង។</li>
+<li><strong>អ្នកគ្រប់គ្រងធនធាន និងការកំណត់ក្រុមហ៊ុន (Tenant Administrator)</strong>: បង្កើតគណនីបុគ្គលិកថ្មី, កំណត់តួនាទី និងសិទ្ធិ, កំណត់អត្រាពន្ធសារពើពន្ធកម្ពុជា (VAT 10%, WHT), កំណត់គណនីធនាគារ និងអត្រាប្តូរប្រាក់ NBC។</li>
+</ol>
+<h3 id="12-ការប្រៀបធៀបរវាង-super-admin-admin-gm-និង-internal-auditor" class="scroll-mt-24 group">1.2 ការប្រៀបធៀបរវាង Super Admin, Admin / GM, និង Internal Auditor <a href="#12-ការប្រៀបធៀបរវាង-super-admin-admin-gm-និង-internal-auditor" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">លក្ខខណ្ឌប្រៀបធៀប</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Super Admin (អ្នកគ្រប់គ្រងប្រព័ន្ធមេ)</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Admin / GM (អភិបាលក្រុមហ៊ុន)</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Internal Auditor / Exec (សវនករផ្ទៃក្នុង)</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>វិសាលភាពក្រុមហ៊ុន</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">មើលឃើញគ្រប់ក្រុមហ៊ុនទាំងអស់ (Multi-Tenant)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ចាក់សោរត្រឹមក្រុមហ៊ុនរបស់ខ្លួន (Single Tenant)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ចាក់សោរត្រឹមក្រុមហ៊ុនរបស់ខ្លួន (Single Tenant)</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>សិទ្ធិប្រតិបត្តិការ</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">គ្រប់គ្រង Subscription, DB, System Tenants</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Full CRUD ប្រតិបត្តិការអាជីវកម្មទាំងអស់</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Strict Read-Only 100% (គ្មានសិទ្ធិកែ/បង្កើត)</strong></td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>សិទ្ធិអនុម័ត (Approval)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">គ្មានសិទ្ធិលូកដៃក្នុងអាជីវកម្មរបស់ក្រុមហ៊ុនឡើយ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ជាអ្នកចុះហត្ថលេខាអនុម័តចុងក្រោយ</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">គ្មានសិទ្ធិអនុម័តឡើយ (ត្រួតពិនិត្យអព្យាក្រឹត)</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ការកំណត់គណនីបុគ្គលិក</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">បង្កើត Company Tenant និង Root Admin</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">បង្កើត និងចាត់ចែងបុគ្គលិកទាំងអស់ក្នុងក្រុមហ៊ុន</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">គ្មានសិទ្ធិបង្កើត ឬកែប្រែគណនីបុគ្គលិកឡើយ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ការបិទគ្រាគណនេយ្យ</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">គ្មានសិទ្ធិ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ជាអ្នកចុះហត្ថលេខាបិទគ្រាហិរញ្ញវត្ថុផ្លូវការ</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ត្រួតពិនិត្យផ្ទៀងផ្ទាត់ភាពត្រឹមត្រូវនៃតួលេខ</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="2-ឋានានុក្រមក្នុងប្រព័ន្ធ-និងទំនាក់ទំនងស្ថាប័ន" class="scroll-mt-24 group">2. ឋានានុក្រមក្នុងប្រព័ន្ធ និងទំនាក់ទំនងស្ថាប័ន <a href="#2-ឋានានុក្រមក្នុងប្រព័ន្ធ-និងទំនាក់ទំនងស្ថាប័ន" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>┌─────────────────────────────────────────────────────────┐
+│          👑 SUPER ADMIN (Multi-Tenant Platform)         │
+└────────────────────────────┬────────────────────────────┘
+                             │ បង្កើត Tenant &amp; ផ្តល់អាជ្ញាបណ្ណ
+┌────────────────────────────▼────────────────────────────┐
+│      🏛️ BOARD OF DIRECTORS / SHAREHOLDERS (ម្ចាស់ភាគហ៊ុន)   │
+└────────────────────────────┬────────────────────────────┘
+                             │ កំណត់គោលដៅ និងយុទ្ធសាស្ត្រ
+┌────────────────────────────▼────────────────────────────┐
+│         👑 ADMIN / GENERAL MANAGER (អភិបាលក្រុមហ៊ុន)        │
+│          - សិទ្ធិបញ្ជាការដ្ឋាន និងអនុម័តកំពូលនៃក្រុមហ៊ុន        │
+└──────┬─────────────┬─────────────┬─────────────┬────────┘
+       │ ផ្នែកលក់      │ ផ្នែកទិញ     │ ផ្នែកឃ្លាំង    │ ផ្នែកហិរញ្ញវត្ថុ │ ធនធានមនុស្ស
+┌──────▼─────┐ ┌─────▼─────┐ ┌─────▼─────┐ ┌─────▼─────┐ ┌─────▼─────┐
+│ 👔 Sales   │ │ 🛒 Procure │ │ 📦 Whse   │ │ 💰 Chief   │ │ 👥 HR       │
+│   Manager  │ │   Manager │ │   Manager │ │ Accountant│ │   Officer   │
+└────────────┘ └───────────┘ └───────────┘ └───────────┘ └───────────┘
+</code></pre>
+        </div>
+<hr>
+<h2 id="3-អ្វីដែល-admin-gm-ធ្វើបាន-និងហាមធ្វើ-full-capability-map" class="scroll-mt-24 group">3. អ្វីដែល Admin / GM ធ្វើបាន និងហាមធ្វើ (Full Capability Map) <a href="#3-អ្វីដែល-admin-gm-ធ្វើបាន-និងហាមធ្វើ-full-capability-map" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="31-អ្វីដែល-admin-gm-ធ្វើបានពេញលេញ" class="scroll-mt-24 group">3.1 ✅ អ្វីដែល Admin / GM ធ្វើបានពេញលេញ <a href="#31-អ្វីដែល-admin-gm-ធ្វើបានពេញលេញ" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">#</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">សមត្ថភាពស្នូល</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ពិពណ៌នា និងករណីប្រើប្រាស់</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">1</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>អនុម័តសំណើហិរញ្ញវត្ថុ និងប្រតិបត្តិការគ្រប់ប្រភេទ</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">អនុម័ត PO &gt; $1,000, Disbursement &gt; $500, Discount &gt; 10%, Credit Override, Stock Adjustment</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">2</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>បង្កើត កែប្រែ និងពិនិត្យឯកសារគ្រប់ម៉ូឌុល (Full CRUD)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">មានសិទ្ធិចូលទៅកាន់គ្រប់ទំព័រក្នុង <code>3-sales/</code>, <code>4-buy/</code>, <code>5-stock/</code>, <code>6-reports/</code></td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">3</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>គ្រប់គ្រងគណនីបុគ្គលិក និងកំណត់សិទ្ធិ (User Management)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">បង្កើតបុគ្គលិកថ្មី, កំណត់ Role, កំណត់សាខា, ប្តូរលេខកូដសម្ងាត់, និងចាក់សោរគណនីពេលឈប់</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">4</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>គ្រប់គ្រងការកំណត់ក្រុមហ៊ុន (Company Settings)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">កែប្រែឈ្មោះក្រុមហ៊ុន, ឡូហ្គោ, អាសយដ្ឋាន, លេខ VATTIN, គណនីធនាគារ KHQR</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">5</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>កំណត់អត្រាពន្ធ និងអត្រាប្តូរប្រាក់ (Tax &amp; Currency Rates)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">កំណត់ VAT 10%, WHT (15%/10%), និងអត្រាប្តូរប្រាក់ផ្លូវការ USD/KHR</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">6</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>បិទគ្រាគណនេយ្យប្រចាំខែ/ប្រចាំឆ្នាំ (Period Lock)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ចាក់សោរឯកសារហិរញ្ញវត្ថុនៃខែដែលបានរាយការណ៍ពន្ធរួច ការពារការកែប្រែតួលេខ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">7</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>អនុម័តការលុបចោលវិក្កយបត្រជាផ្លូវការ (Void Invoices)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">អនុម័តការលុបវិក្កយបត្រដែលចេញខុស ដោយតម្រូវឱ្យមានកំណត់ត្រាមូលហេតុច្បាស់លាស់</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">8</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>មើលរបាយការណ៍ផលចំណេញ និងសុខភាពហិរញ្ញវត្ថុ 360°</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">P&amp;L, Balance Sheet, Cash Flow, AR/AP Aging, Stock Valuation, Sales Performance</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">9</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>បោះពុម្ព និងទាញយករបាយការណ៍សហគ្រាសកម្រិត A4</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ទាញយក និងបោះពុម្ពរបាយការណ៍ផ្លូវការសម្រាប់ដាក់ជូនក្រុមប្រឹក្សាភិបាល ឬធនាគារ</td>
+</tr>
+</tbody></table></div>
+<h3 id="32-អ្វីដែល-admin-gm-ហាមធ្វើដាច់ខាត" class="scroll-mt-24 group">3.2 ❌ អ្វីដែល Admin / GM ហាមធ្វើដាច់ខាត <a href="#32-អ្វីដែល-admin-gm-ហាមធ្វើដាច់ខាត" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">#</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">សកម្មភាពហាមឃាត់</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ហានិភ័យ និងហេតុផលការពារ</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">1</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ <strong>ចូលមើល ឬកែប្រែទិន្នន័យរបស់ក្រុមហ៊ុនផ្សេងទៀត</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">បំពានលើគោលការណ៍ Multi-Tenant Data Isolation និងច្បាប់រក្សាការសម្ងាត់</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">2</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ <strong>កែប្រែ ឬលុបកំណត់ហេតុសវនកម្ម (Audit Trails)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">កំណត់ហេតុជាប្រវត្តិសាស្ត្ររឹងមាំ (Immutable) ហាមកែប្រែជាដាច់ខាត</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">3</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ <strong>កែប្រែលេខកូដប្រព័ន្ធ ឬរចនាសម្ព័ន្ធ Server Database</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ភារកិច្ចផ្តាច់មុខរបស់ក្រុមបច្ចេកទេស និង Super Admin</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">4</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ <strong>លុបទិន្នន័យគណនីដែលមានប្រតិបត្តិការហិរញ្ញវត្ថុរួចហើយ</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">រក្សាភាពសុចរិតនៃទិន្នន័យគណនេយ្យ និងការផ្ទៀងផ្ទាត់សវនកម្ម</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">5</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ <strong>អនុម័តប័ណ្ណចំណាយទូទាត់ប្រាក់ឱ្យខ្លួនឯងដោយគ្មានសាក្សី</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">គោលការណ៍ Dual-Control: ការបើកលុយធំៗត្រូវមាន Chief Accountant ត្រួតពិនិត្យ</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="4-ស្ថាបត្យកម្មទំព័រ-ui-ពេញលេញ-page-by-page-blueprint" class="scroll-mt-24 group">4. ស្ថាបត្យកម្មទំព័រ UI ពេញលេញ (Page-by-Page Blueprint) <a href="#4-ស្ថាបត្យកម្មទំព័រ-ui-ពេញលេញ-page-by-page-blueprint" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<p>Admin / General Manager មានច្រករបៀងទូលំទូលាយបំផុតនៅក្នុងប្រព័ន្ធ ដោយប្រើប្រាស់ <strong><code>2-home/</code></strong>, <strong><code>9-portals/manager/</code></strong>, និងគ្រប់ម៉ូឌុលសហគ្រាសទាំងអស់៖</p>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>Admin &amp; GM Navigation Space:
+├── 2-home/
+│   ├── dashboard.html          ← ផ្ទាំងបញ្ជាការដ្ឋានប្រតិបត្តិការរួម (Enterprise Executive Dashboard)
+│   └── approvals.html          ← មជ្ឈមណ្ឌលប្រមូលផ្តុំរាល់សំណើអនុម័ត (Global Approval Hub)
+│
+├── 9-portals/manager/
+│   ├── dashboard.html          ← ផ្ទាំងសង្ខេបសមិទ្ធផលសម្រាប់អ្នកគ្រប់គ្រង
+│   ├── approvals.html          ← បញ្ជីរង់ចាំការអនុម័ត (Pending Queue)
+│   ├── view-approval.html      ← ទំព័រពិនិត្យលម្អិត និងចុច «អនុម័ត» / «បដិសេធ» (Dedicated Full Page)
+│   └── reports.html            ← របាយការណ៍សង្ខេបប្រតិបត្តិការ
+│
+├── 3-sales/ (Sales Module)      ← គ្រប់គ្រងវិក្កយបត្រ, សម្រង់តម្លៃ, អតិថិជន, ការទទួលប្រាក់
+├── 4-buy/ (Procurement Module)  ← គ្រប់គ្រងវិក្កយបត្រទិញ, អ្នកផ្គត់ផ្គង់, ប័ណ្ណចំណាយទូទាត់
+├── 5-stock/ (Inventory Module)  ← តុល្យភាពស្តុក, កាតាឡុក, ចលនាស្តុក, ការកែតម្រូវ
+├── 6-reports/ (Reports Module)  ← របាយការណ៍ទូទៅ, លក់, ទិញ, ស្តុក, ហិរញ្ញវត្ថុ
+└── 7-settings/ (Settings Module)
+    ├── 1-company/company.html   ← ព័ត៌មានក្រុមហ៊ុន, ឡូហ្គោ, គណនីធនាគារ, សាខា
+    ├── 2-users/                 ← បញ្ជីបុគ្គលិក, បង្កើតគណនី, កែប្រែសិទ្ធិ (Full CRUD)
+    ├── 3-tax/tax.html           ← កំណត់អត្រាពន្ធ អតប 10%, ពន្ធកាត់ទុក WHT
+    ├── 4-notifications/         ← កំណត់ការជូនដំណឹងតាម Telegram និង Email
+    ├── 5-system/system.html     ← អត្រាប្តូរប្រាក់ NBC, ការបិទគ្រាគណនេយ្យ (Period Lock)
+    └── settings.html            ← មជ្ឈមណ្ឌលការកំណត់រួម
+</code></pre>
+        </div>
+<hr>
+<h3 id="41-2-homedashboardhtml-ផ្ទាំងបញ្ជាការដ្ឋានប្រតិបត្តិការរួម-enterprise-executive-dashboard" class="scroll-mt-24 group">4.1 <code>2-home/dashboard.html</code> — ផ្ទាំងបញ្ជាការដ្ឋានប្រតិបត្តិការរួម (Enterprise Executive Dashboard) <a href="#41-2-homedashboardhtml-ផ្ទាំងបញ្ជាការដ្ឋានប្រតិបត្តិការរួម-enterprise-executive-dashboard" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p><strong>គោលបំណង</strong>: ផ្តល់ទិដ្ឋភាពទូទៅនៃសុខភាពអាជីវកម្ម 360 ដឺក្រេដល់ GM ក្នុងពេលជាក់ស្តែង (Real-Time Enterprise Cockpit)។</p>
+<p><strong>កាត KPI កំពូលទាំង 5 (Top Executive Performance Metrics)</strong>:</p>
+<ol>
+<li><strong>ចំណូលលក់សរុបប្រចាំខែ (MTD Gross Revenue)</strong>: <code>$68,450.00</code> (↑ 14.2% ធៀបនឹងខែមុន)</li>
+<li><strong>ប្រាក់ចំណេញសុទ្ធប៉ាន់ស្មាន (Estimated Net Profit)</strong>: <code>$14,370.00</code> (អត្រាចំណេញ Net Margin 21.0%)</li>
+<li><strong>សមតុល្យសាច់ប្រាក់ និងធនាគារ (Cash &amp; Bank Liquidity)</strong>: <code>$42,180.00</code> (ABA, Canadia, Cash Drawer)</li>
+<li><strong>បំណុលត្រូវទារសរុប (Total Accounts Receivable)</strong>: <code>$18,240.00</code> (ក្នុងនោះជំពាក់ហួសកំណត់ <code>$3,120.00</code>)</li>
+<li><strong>សំណើរង់ចាំការអនុម័តបន្ទាន់ (Actionable Pending Approvals)</strong>: <code>5 សំណើ</code> (ប៊ូតុងចុចលោតទៅ <code>approvals.html</code>)</li>
+</ol>
+<p><strong>ប្លង់កណ្តាល និងបាតទំព័រ</strong>:</p>
+<ul>
+<li><strong>ក្រាហ្វនិន្នាការហិរញ្ញវត្ថុ 12 ខែ (Revenue vs Expense vs Net Profit Chart)</strong>: ក្រាហ្វខ្សែ និងជួរឈរប្រៀបធៀបចំណូល ចំណាយ និងប្រាក់ចំណេញ</li>
+<li><strong>ផ្ទាំងតាមដានលំហូរសាច់ប្រាក់ (Cash Flow Runway Monitor)</strong>: បង្ហាញការប៉ាន់ស្មានចំណាយប្រចាំខែ និងចំនួនខែដែលសាច់ប្រាក់អាចទ្រទ្រង់បាន</li>
+<li><strong>តារាងសង្ខេបសមិទ្ធផលតាមផ្នែក (Cross-Department Performance Matrix)</strong>:<ul>
+<li>ផ្នែកលក់: លក់បាន 78% នៃកូតារួម</li>
+<li>ផ្នែកទិញ: PO កំពុងរង់ចាំទំនិញចូល 3 ឯកសារ</li>
+<li>ផ្នែកឃ្លាំង: ស្តុកជិតអស់ (Low Stock Alert) 12 មុខទំនិញ</li>
+<li>ផ្នែកគណនេយ្យ: វិក្កយបត្រដល់ថ្ងៃត្រូវបើកលុយឱ្យអ្នកផ្គត់ផ្គង់ 4 ឯកសារ</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="42-2-homeapprovalshtml-9-portalsmanagerapprovalshtml-មជ្ឈមណ្ឌលប្រមូលផ្តុំរាល់សំណើអនុម័ត" class="scroll-mt-24 group">4.2 <code>2-home/approvals.html</code> &amp; <code>9-portals/manager/approvals.html</code> — មជ្ឈមណ្ឌលប្រមូលផ្តុំរាល់សំណើអនុម័ត <a href="#42-2-homeapprovalshtml-9-portalsmanagerapprovalshtml-មជ្ឈមណ្ឌលប្រមូលផ្តុំរាល់សំណើអនុម័ត" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p><strong>គោលបំណង</strong>: មជ្ឈមណ្ឌលប្រមូលផ្តុំរាល់សំណើអនុម័តពីគ្រប់ផ្នែកទាំងអស់ ដែលត្រូវការហត្ថលេខាពី General Manager។</p>
+<p><strong>ផ្ទាំងតម្រងបែងចែកប្រភេទសំណើ (Approval Category Tabs)</strong>:</p>
+<ul>
+<li>🟢 <strong>ទាំងអស់ (All Requests)</strong> <code>(12)</code></li>
+<li>🛒 <strong>ការបញ្ជាទិញទំនិញ (Purchase Orders &gt; $1,000)</strong> <code>(3)</code></li>
+<li>💰 <strong>ប័ណ្ណចំណាយទូទាត់ (Disbursements &gt; $500)</strong> <code>(4)</code></li>
+<li>🏷️ <strong>ការបញ្ចុះតម្លៃពិសេស (Special Discounts &gt; 10%)</strong> <code>(2)</code></li>
+<li>💳 <strong>ការលើកលែងពិដានឥណទាន (Credit Limit Overrides)</strong> <code>(2)</code></li>
+<li>📦 <strong>ការកាត់កងទំនិញខូចខាត (Stock Write-offs)</strong> <code>(1)</code></li>
+</ul>
+<p><strong>ជួរឈរតារាងសំណើអនុម័ត (Approval Queue Table)</strong>:</p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ជួរឈរ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ប្រភេទ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ឧទាហរណ៍ទិន្នន័យ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ចំណាំ</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>លេខកូដសំណើ</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Link</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>#APP-2026-0038</code></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ចុចបើកមើលទំព័រ <code>view-approval.html</code></td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ប្រភេទសំណើ</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Badge</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">🔵 ប័ណ្ណចំណាយទូទាត់ / 🟢 បញ្ជាទិញ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">សម្គាល់ប្រភេទការងារ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>អ្នកស្នើសុំ</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Avatar + Name</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ហុង ដារ៉ា (Procurement Staff)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ឈ្មោះ និងផ្នែក</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ឯកសារយោង</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Text</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>#PO-2026-0045</code> (ទិញកុំព្យូទ័រ Dell 10 គ្រឿង)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">បង្ហាញបរិយាយសង្ខេប</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ទឹកប្រាក់ស្នើសុំ</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Number (Bold)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong><code>$4,500.00</code></strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ទឹកប្រាក់ដែលត្រូវអនុម័ត</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>កាលបរិច្ឆេទ</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Date</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">21 កញ្ញា 2026, 10:15</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ម៉ោងស្នើសុំ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ស្ថានភាព</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Badge</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">🟡 «រង់ចាំការអនុម័ត (Pending)»</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ស្ថានភាពបច្ចុប្បន្ន</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>សកម្មភាព</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Actions</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ប៊ូតុង «ពិនិត្យលម្អិត» ឬ <code>⋮</code> Menu</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">បើកទៅកាន់ Dedicated View Page</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h3 id="43-9-portalsmanagerview-approvalhtml-ទំព័រពិនិត្យលម្អិត-និងចុចអនុម័ត-dedicated-approval-page" class="scroll-mt-24 group">4.3 <code>9-portals/manager/view-approval.html</code> — ទំព័រពិនិត្យលម្អិត និងចុចអនុម័ត (Dedicated Approval Page) <a href="#43-9-portalsmanagerview-approvalhtml-ទំព័រពិនិត្យលម្អិត-និងចុចអនុម័ត-dedicated-approval-page" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p><strong>គោលបំណង</strong>: ទំព័រពេញលេញ (Dedicated Full Page គ្មាន Pop-up Modal) សម្រាប់ GM ពិនិត្យភស្តុតាង និងចុចអនុម័ត ឬបដិសេធ។</p>
+<p><strong>សមាសភាគសំខាន់ៗលើទំព័រ</strong>:</p>
+<ol>
+<li><strong>ក្បាលទំព័រ (Header)</strong>:<ul>
+<li>ប៊ូតុងត្រឡប់ក្រោយស្តង់ដារ៖ <code>&lt;a href=&quot;approvals.html&quot; class=&quot;w-10 h-10 rounded-xl bg-slate-50 border border-slate-200/70 flex items-center justify-center&quot;&gt;&lt;i class=&quot;fas fa-arrow-left text-sm&quot;&gt;&lt;/i&gt;&lt;/a&gt;</code></li>
+<li>ចំណងជើង៖ <code>ពិនិត្យសំណើអនុម័ត #APP-2026-0038</code></li>
+<li>ផ្លាកស្ថានភាព៖ 🟡 <code>រង់ចាំការពិនិត្យពីអភិបាលទូទៅ</code></li>
+</ul>
+</li>
+<li><strong>ផ្នែកសង្ខេបព័ត៌មានសំណើ (Approval Dossier)</strong>:<ul>
+<li>មូលហេតុនៃការស្នើសុំ៖ បរិយាយលម្អិតពីបុគ្គលិកស្នើសុំ</li>
+<li>ប្រវត្តិអ្នកស្នើសុំ និងកាលបរិច្ឆេទ</li>
+<li>ការវិភាគផលប៉ះពាល់ហិរញ្ញវត្ថុ (Financial Impact Assessment)</li>
+</ul>
+</li>
+<li><strong>ឯកសារភ្ជាប់ និងតារាងមុខទំនិញ (Attached Supporting Documents)</strong>:<ul>
+<li>បង្ហាញតារាង 3-Way Matching (ករណី PO/Bill)</li>
+<li>វិក្កយបត្រស្កេនភ្ជាប់ជា PDF / រូបភាព</li>
+</ul>
+</li>
+<li><strong>ប្រអប់បញ្ចូលយោបល់ និងសេចក្តីសម្រេច (Executive Decision Box)</strong>:<ul>
+<li>ប្រអប់បញ្ចូល «យោបល់ ឬការណែនាំបន្ថែមរបស់អភិបាលទូទៅ» (Executive Notes)</li>
+<li><strong>ប៊ូតុងពណ៌ក្រហម «បដិសេធសំណើ (Reject)»</strong> → តម្រូវឱ្យបញ្ចូលមូលហេតុបដិសេធ</li>
+<li><strong>ប៊ូតុងពណ៌ខៀវដិត «អនុម័តជាផ្លូវការ (Approve)»</strong> (<code>bg-[#0f2b5c] text-white px-6 py-2.5 rounded-xl font-medium shadow-sm hover:bg-[#163a75]</code>)</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="44-frontendsrcpages7-settings2-usersusershtml-គ្រប់គ្រងគណនី-និងសិទ្ធិបុគ្គលិក" class="scroll-mt-24 group">4.4 <code>frontend/src/pages/7-settings/2-users/users.html</code> — គ្រប់គ្រងគណនី និងសិទ្ធិបុគ្គលិក <a href="#44-frontendsrcpages7-settings2-usersusershtml-គ្រប់គ្រងគណនី-និងសិទ្ធិបុគ្គលិក" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p><strong>គោលបំណង</strong>: ផ្ទាំងគ្រប់គ្រងអ្នកប្រើប្រាស់ក្នុងក្រុមហ៊ុន (User &amp; Role Provisioning Hub)។</p>
+<p><strong>មុខងារស្នូលរបស់ GM</strong>:</p>
+<ul>
+<li>ចុចប៊ូតុង «+ បង្កើតគណនីបុគ្គលិកថ្មី» → បើក <code>create-user.html</code></li>
+<li>ចាត់តាំងតួនាទី (Assign Role): Sales Staff, Sales Manager, Procurement, Warehouse, AP/AR Accountant, Cashier, Driver, HR</li>
+<li>កំណត់សាខាធ្វើការ (Assign Branch): សាខាភ្នំពេញ, សាខាសៀមរាប, ឃ្លាំងកណ្តាល</li>
+<li>ចាក់សោរបណ្តោះអាសន្ន ឬបិទគណនី (Suspend / Deactivate Account) នៅពេលបុគ្គលិកលាឈប់</li>
+</ul>
+<hr>
+<h3 id="45-frontendsrcpages7-settings5-systemsystemhtml-ការកំណត់ប្រព័ន្ធ-និងការបិទគ្រាគណនេយ្យ" class="scroll-mt-24 group">4.5 <code>frontend/src/pages/7-settings/5-system/system.html</code> — ការកំណត់ប្រព័ន្ធ និងការបិទគ្រាគណនេយ្យ <a href="#45-frontendsrcpages7-settings5-systemsystemhtml-ការកំណត់ប្រព័ន្ធ-និងការបិទគ្រាគណនេយ្យ" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p><strong>គោលបំណង</strong>: ការកំណត់កម្រិតរចនាសម្ព័ន្ធប្រតិបត្តិការ និងអភិបាលកិច្ចសារពើពន្ធ។</p>
+<p><strong>ការកំណត់សំខាន់ៗទាំង 3</strong>:</p>
+<ol>
+<li><strong>អត្រាប្តូរប្រាក់ផ្លូវការ (NBC Official Exchange Rate)</strong>:<ul>
+<li>បញ្ចូលអត្រាប្តូរប្រាក់ប្រចាំថ្ងៃពីធនាគារជាតិនៃកម្ពុជា (ឧ. <code>1 USD = 4,100 KHR</code>) សម្រាប់បម្លែងវិក្កយបត្រ និង KHQR។</li>
+</ul>
+</li>
+<li><strong>ការបិទគ្រាគណនេយ្យ (Financial Period Closing &amp; Lock)</strong>:<ul>
+<li>ជ្រើសរើសខែ/ឆ្នាំ (ឧ. <code>សីហា 2026</code>) → ចុចប៊ូតុង «ចាក់សោរគ្រាហិរញ្ញវត្ថុ (Lock Period)»។</li>
+<li>នៅពេលចាក់សោររួច គ្មានបុគ្គលិកណាអាចកែប្រែ បង្កើត ឬលុបវិក្កយបត្រ ប័ណ្ណចំណាយ ឬទិន្នន័យស្តុកក្នុងខែនោះបានទៀតឡើយ។</li>
+</ul>
+</li>
+<li><strong>ការកំណត់ដែនពិដានអនុម័ត (Approval Threshold Configuration)</strong>:<ul>
+<li>កំណត់កម្រិតទឹកប្រាក់ដែលតម្រូវឱ្យ GM អនុម័ត (ឧ. PO &gt; $1,000, Disbursement &gt; $500)។</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="5-ម៉ាទ្រីសសិទ្ធិអំណាចពេញលេញ-permission-matrix" class="scroll-mt-24 group">5. ម៉ាទ្រីសសិទ្ធិអំណាចពេញលេញ (Permission Matrix) <a href="#5-ម៉ាទ្រីសសិទ្ធិអំណាចពេញលេញ-permission-matrix" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ម៉ូឌុល និងផ្នែក</th>
+<th align="center">មើល (View)</th>
+<th align="center">បង្កើត (Create)</th>
+<th align="center">កែប្រែ (Edit)</th>
+<th align="center">អនុម័ត (Approve)</th>
+<th align="center">លុបចោល (Void/Delete)</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ផ្ទាំងគ្រប់គ្រង និង KPI (Dashboard)</strong></td>
+<td align="center">✅ ឃើញ 100%</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>វិក្កយបត្រលក់ (Sales Invoices)</strong></td>
+<td align="center">✅ ឃើញទាំងអស់</td>
+<td align="center">✅ បង្កើតបាន</td>
+<td align="center">✅ កែបាន</td>
+<td align="center">✅ អនុម័តបាន</td>
+<td align="center">✅ អនុម័ត Void បាន</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>សម្រង់តម្លៃ (Quotations)</strong></td>
+<td align="center">✅ ឃើញទាំងអស់</td>
+<td align="center">✅ បង្កើតបាន</td>
+<td align="center">✅ កែបាន</td>
+<td align="center">✅ អនុម័ត Discount</td>
+<td align="center">✅ លុបបាន</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>អតិថិជន និងពិដានបំណុល (Customers)</strong></td>
+<td align="center">✅ ឃើញទាំងអស់</td>
+<td align="center">✅ បង្កើតបាន</td>
+<td align="center">✅ កែបាន</td>
+<td align="center">✅ Override Credit</td>
+<td align="center">❌ ហាមលុបបើមានប្រវត្តិ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>បញ្ជាទិញទំនិញ (Purchase Orders)</strong></td>
+<td align="center">✅ ឃើញទាំងអស់</td>
+<td align="center">✅ បង្កើតបាន</td>
+<td align="center">✅ កែបាន</td>
+<td align="center">✅ អនុម័ត PO ធំៗ</td>
+<td align="center">✅ អនុម័ត Cancel បាន</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ប័ណ្ណចំណាយទូទាត់ (Disbursements)</strong></td>
+<td align="center">✅ ឃើញទាំងអស់</td>
+<td align="center">✅ បង្កើតបាន</td>
+<td align="center">✅ កែបាន</td>
+<td align="center">✅ អនុម័តប្រាក់ធំ</td>
+<td align="center">✅ អនុម័ត Void បាន</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ស្តុកទំនិញ និងថ្លៃដើម (Inventory)</strong></td>
+<td align="center">✅ ឃើញថ្លៃដើម</td>
+<td align="center">✅ បង្កើតបាន</td>
+<td align="center">✅ កែបាន</td>
+<td align="center">✅ អនុម័ត Write-off</td>
+<td align="center">✅ អនុម័ត Cancel បាន</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>របាយការណ៍ហិរញ្ញវត្ថុ (Financials)</strong></td>
+<td align="center">✅ ឃើញ 100%</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">✅ បិទគ្រា Period</td>
+<td align="center">N/A</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>គណនីបុគ្គលិក (User Accounts)</strong></td>
+<td align="center">✅ ឃើញទាំងអស់</td>
+<td align="center">✅ បង្កើតបាន</td>
+<td align="center">✅ កែប្រែសិទ្ធិ</td>
+<td align="center">✅ បើក/បិទគណនី</td>
+<td align="center">✅ Deactivate បាន</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ការកំណត់ក្រុមហ៊ុន និងពន្ធ (Settings)</strong></td>
+<td align="center">✅ ឃើញទាំងអស់</td>
+<td align="center">✅ កំណត់បាន</td>
+<td align="center">✅ កែប្រែបាន</td>
+<td align="center">✅ អនុម័តផ្លូវការ</td>
+<td align="center">❌ ហាមលុប Tenant</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>កំណត់ហេតុសវនកម្ម (Audit Trails)</strong></td>
+<td align="center">✅ មើលឃើញ</td>
+<td align="center">❌ ប្រព័ន្ធធ្វើ</td>
+<td align="center">❌ ហាមកែ</td>
+<td align="center">❌ ហាមលុប</td>
+<td align="center">❌ ហាមលុប (Immutable)</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="6-វដ្តការងារស្នូលទាំង-6-core-executive-approval-workflows" class="scroll-mt-24 group">6. វដ្តការងារស្នូលទាំង 6 (Core Executive &amp; Approval Workflows) <a href="#6-វដ្តការងារស្នូលទាំង-6-core-executive-approval-workflows" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="workflow-1-ការអនុម័តប័ណ្ណចំណាយទូទាត់ប្រាក់ធំៗ-high-value-disbursement-approval" class="scroll-mt-24 group">Workflow 1: ការអនុម័តប័ណ្ណចំណាយទូទាត់ប្រាក់ធំៗ (High-Value Disbursement Approval) <a href="#workflow-1-ការអនុម័តប័ណ្ណចំណាយទូទាត់ប្រាក់ធំៗ-high-value-disbursement-approval" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>START
+  │
+  ▼
+គណនេយ្យករ (AP/AR) រៀបចំប័ណ្ណចំណាយទូទាត់ (Disbursement Voucher) តម្លៃ $3,200.00
+  ├── ថ្លៃទិញស្តុកកុំព្យូទ័រពីអ្នកផ្គត់ផ្គង់
+  └── ភ្ជាប់ជាមួយ PO, GRN និង Vendor Bill (3-Way Matching រួចរាល់)
+  │
+  ▼
+Chief Accountant ត្រួតពិនិត្យ និងចុះហត្ថលេខាជំហានទី 1
+  │
+  ▼
+ដោយសារទឹកប្រាក់ &gt; $500.00 ប្រព័ន្ធបញ្ជូនសំណើទៅកាន់ `approvals.html` របស់ General Manager
+  │
+  ▼
+General Manager បើក `view-approval.html?id=APP-2026-0038`
+  ├── ពិនិត្យឯកសារភ្ជាប់ 3-Way Matching និងវិក្កយបត្រស្កេន
+  ├── ពិនិត្យសមតុល្យសាច់ប្រាក់ធនាគារបច្ចុប្បន្ន (Cash Runway)
+  └── ផ្ទៀងផ្ទាត់ឈ្មោះគណនីធនាគាររបស់អ្នកផ្គត់ផ្គង់
+  │
+  ▼
+[សេចក្តីសម្រេចរបស់ General Manager]
+  ├── [ករណីខ្វះឯកសារ / សង្ស័យ] → ចុច &quot;បដិសេធ&quot; រួចបញ្ចូលមូលហេតុតម្រូវឱ្យគណនេយ្យបំពេញបន្ថែម
+  └── [ករណីត្រឹមត្រូវពេញលេញ]   → ចុច &quot;អនុម័តជាផ្លូវការ (Approve)&quot;
+  │
+  ▼
+ប្រព័ន្ធបង្កើតលេខអនុម័តផ្លូវការ និងបើកសិទ្ធិឱ្យគណនេយ្យករផ្ទេរសាច់ប្រាក់ចេញពីធនាគារបាន
+  │
+  ▼
+END
+</code></pre>
+        </div>
+<hr>
+<h3 id="workflow-2-ការអនុម័តការបញ្ចុះតម្លៃពិសេសកម្រិតខ្ពស់-executive-discount-approval" class="scroll-mt-24 group">Workflow 2: ការអនុម័តការបញ្ចុះតម្លៃពិសេសកម្រិតខ្ពស់ (Executive Discount Approval) <a href="#workflow-2-ការអនុម័តការបញ្ចុះតម្លៃពិសេសកម្រិតខ្ពស់-executive-discount-approval" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>START
+  │
+  ▼
+អតិថិជនគម្រោងធំទាមទារការបញ្ចុះតម្លៃ 15% លើសម្រង់តម្លៃទំហំ $12,000.00
+  │
+  ▼
+Sales Manager បានពិនិត្យរួចហើយ ប៉ុន្តែដោយសារការបញ្ចុះតម្លៃ &gt; 10% (លើសកូតា Sales Manager)
+  └── សំណើត្រូវបានរុញបន្តឡើងមកកាន់ General Manager
+  │
+  ▼
+General Manager បើកពិនិត្យក្នុង `view-approval.html`:
+  ├── ពិនិត្យមើលផលចំណេញដុល (Gross Margin) ក្រោយពេលបញ្ចុះតម្លៃ 15% (នៅសល់ Margin 12%)
+  ├── ពិនិត្យប្រវត្តិទិញ និងសក្តានុពលកិច្ចសន្យារយៈពេលវែងរបស់អតិថិជន
+  └── ពិនិត្យតម្លៃពិដានបាត (Floor Price)
+  │
+  ▼
+[សេចក្តីសម្រេច]
+  ├── [យល់ព្រម] → ចុច &quot;អនុម័ត&quot; → សម្រង់តម្លៃប្តូរស្ថានភាពទៅជា &quot;Approved&quot; ត្រៀមចេញជូនអតិថិជន
+  └── [មិនយល់ព្រម] → ចុច &quot;បដិសេធ&quot; ជាមួយកំណត់សម្គាល់ &quot;អនុញ្ញាតបញ្ចុះតម្លៃត្រឹមតែ 12% ប៉ុណ្ណោះ&quot;
+  │
+  ▼
+END
+</code></pre>
+        </div>
+<hr>
+<h3 id="workflow-3-ការអនុម័តលើកលែងពិដានឥណទានអតិថិជន-credit-limit-override-workflow" class="scroll-mt-24 group">Workflow 3: ការអនុម័តលើកលែងពិដានឥណទានអតិថិជន (Credit Limit Override Workflow) <a href="#workflow-3-ការអនុម័តលើកលែងពិដានឥណទានអតិថិជន-credit-limit-override-workflow" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>START
+  │
+  ▼
+បុគ្គលិកលក់រៀបចំចេញវិក្កយបត្រលក់ជំពាក់ថ្មី $2,500.00 ជូនក្រុមហ៊ុន អង្គរ ត្រេឌីង
+  │
+  ▼
+ប្រព័ន្ធស្វ័យប្រវត្តិចាក់សោរ: អតិថិជនជំពាក់ដល់ពិដាន $5,000.00 រួចហើយ (បូកថ្មី = $7,500.00)
+  │
+  ▼
+Sales Manager ដាក់សំណើសុំ &quot;Credit Override&quot; មកកាន់ General Manager ដោយមានហេតុផល:
+  └── &quot;អតិថិជនបានចេញមូលប្បទានបត្រ (Cheque) រួចរាល់ហើយ កំពុងរង់ចាំថ្ងៃបើកប្រាក់&quot;
+  │
+  ▼
+General Manager ពិនិត្យប្រវត្តិសងប្រាក់ក្នុង `view-customer.html`:
+  ├── អតិថិជនមានប្រវត្តិសងទៀងទាត់ 100% ក្នុងរយៈពេល 1 ឆ្នាំកន្លងមក
+  └── មូលប្បទានបត្រត្រូវបានផ្ទៀងផ្ទាត់ជាមួយធនាគារ
+  │
+  ▼
+General Manager ចុច &quot;អនុម័តលើកលែងបណ្តោះអាសន្ន 15 ថ្ងៃ (Approve Temporary Override)&quot;
+  │
+  ▼
+ប្រព័ន្ធអនុញ្ញាតឱ្យចេញវិក្កយបត្រថ្មីបាន និងកត់ត្រាការលើកលែងនេះក្នុង Audit Trail
+  │
+  ▼
+END
+</code></pre>
+        </div>
+<hr>
+<h3 id="workflow-4-ការគ្រប់គ្រង-និងចាត់តាំងគណនីបុគ្គលិកថ្មី-user-provisioning-role-assignment" class="scroll-mt-24 group">Workflow 4: ការគ្រប់គ្រង និងចាត់តាំងគណនីបុគ្គលិកថ្មី (User Provisioning &amp; Role Assignment) <a href="#workflow-4-ការគ្រប់គ្រង-និងចាត់តាំងគណនីបុគ្គលិកថ្មី-user-provisioning-role-assignment" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>START
+  │
+  ▼
+ក្រុមហ៊ុនជ្រើសរើសបានបុគ្គលិកថ្មី: &quot;ស៊ូ វិបុល&quot; មុខតំណែង &quot;បុគ្គលិកឃ្លាំងស្តុក (Warehouse Staff)&quot;
+  │
+  ▼
+General Manager ចូល `frontend/src/pages/7-settings/2-users/create-user.html`
+  ├── បញ្ចូលឈ្មោះពេញ, អ៊ីមែល, លេខទូរស័ព្ទ, និងលេខសម្គាល់បុគ្គលិក
+  ├── ជ្រើសរើសតួនាទី (Role): &quot;Warehouse Staff&quot;
+  ├── ជ្រើសរើសទីតាំងឃ្លាំង (Warehouse Assignment): &quot;ឃ្លាំងកណ្តាលភ្នំពេញ&quot;
+  └── កំណត់គោលការណ៍សុវត្ថិភាព: តម្រូវឱ្យប្តូរលេខសម្ងាត់ពេល Login លើកដំបូង
+  │
+  ▼
+ប្រព័ន្ធដំណើរការបង្កើតគណនី និងអនុវត្តច្បាប់ការពារទិន្នន័យ (Role Security Enforcement):
+  ├── បិទសិទ្ធិមើលថ្លៃដើមទិញ 100% (Zero Price Leakage)
+  └── បើកសិទ្ធិបង្កើត GRN និងប័ណ្ណផ្ទេរទំនិញ
+  │
+  ▼
+ផ្ញើព័ត៌មាន Login ជូនបុគ្គលិកថ្មីតាមប្រព័ន្ធសុវត្ថិភាព
+  │
+  ▼
+END
+</code></pre>
+        </div>
+<hr>
+<h3 id="workflow-5-ការបិទគ្រាគណនេយ្យប្រចាំខែ-monthly-financial-period-closing" class="scroll-mt-24 group">Workflow 5: ការបិទគ្រាគណនេយ្យប្រចាំខែ (Monthly Financial Period Closing) <a href="#workflow-5-ការបិទគ្រាគណនេយ្យប្រចាំខែ-monthly-financial-period-closing" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>START
+  │
+  ▼
+ថ្ងៃទី 20 នៃខែបន្ទាប់: Chief Accountant បញ្ចប់ការរាយការណ៍ពន្ធប្រចាំខែជូនពន្ធដារ (GDT E-Filing)
+  │
+  ▼
+Chief Accountant រៀបចំរបាយការណ៍បិទបញ្ជីខែចាស់ (Month-End Financial Dossier) ជូន GM
+  │
+  ▼
+General Manager ចូល `frontend/src/pages/7-settings/5-system/system.html`
+  ├── ពិនិត្យតារាងតុល្យការ, របាយការណ៍ចំណេញ-ខាត (P&amp;L), និងតួលេខបង់ពន្ធ អតប 10%
+  ├── ផ្ទៀងផ្ទាត់ថារាល់វិក្កយបត្រទាំងអស់ក្នុងខែនោះត្រូវបានប្រកាសពន្ធត្រឹមត្រូវ
+  └── ជ្រើសរើសខែ &quot;សីហា 2026&quot; → ចុចប៊ូតុង &quot;ចាក់សោរគ្រាហិរញ្ញវត្ថុ (Lock Period)&quot;
+  │
+  ▼
+ប្រព័ន្ធបង្ហាញផ្ទាំងបញ្ជាក់ព្រមាន: &quot;តើលោកអ្នកពិតជាចង់ចាក់សោរគ្រានេះឬទេ? គ្មាននរណាម្នាក់អាចកែប្រែទិន្នន័យបានឡើយ&quot;
+  │
+  ▼
+General Manager ចុចយល់ព្រម
+  │
+  ▼
+ប្រព័ន្ធចាក់សោរទិន្នន័យខែ &quot;សីហា 2026&quot; ទាំងស្រុង (Read-Only State Across All Modules)
+  │
+  ▼
+END
+</code></pre>
+        </div>
+<hr>
+<h3 id="workflow-6-ការអនុម័តការកាត់កងស្តុកទំនិញខូចខាត-stock-write-off-approval" class="scroll-mt-24 group">Workflow 6: ការអនុម័តការកាត់កងស្តុកទំនិញខូចខាត (Stock Write-Off Approval) <a href="#workflow-6-ការអនុម័តការកាត់កងស្តុកទំនិញខូចខាត-stock-write-off-approval" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>START
+  │
+  ▼
+Warehouse Staff រាប់ស្តុកប្រចាំខែ រកឃើញសម្ភារៈអេឡិចត្រូនិកខូចខាតទឹកប្រាក់ $1,800.00
+  │
+  ▼
+Warehouse Manager រៀបចំប័ណ្ណស្នើសុំកាត់កង (Stock Write-Off Request) ជាមួយរូបថតភស្តុតាង
+  │
+  ▼
+សំណើរត់មកកាន់ផ្ទាំង `view-approval.html` របស់ General Manager
+  │
+  ▼
+General Manager ពិនិត្យ:
+  ├── ពិនិត្យកំណត់ហេតុស៊ើបអង្កេតពីមូលហេតុខូចខាត (ទឹកជ្រាប ឬកំហុសបុគ្គលិក)
+  ├── ពិនិត្យការទាមទារសំណងធានារ៉ាប់រង (ប្រសិនបើមាន)
+  └── ពិនិត្យផលប៉ះពាល់លើថ្លៃដើមទំនិញលក់ (COGS Impact)
+  │
+  ▼
+General Manager ចុច &quot;អនុម័តការកាត់កង (Approve Write-off)&quot;
+  │
+  ▼
+ប្រព័ន្ធកាត់បន្ថយចំនួនស្តុក និងកត់ត្រាការខាតបង់ទៅក្នុងគណនីខាតបង់ស្តុក (Inventory Loss Account)
+  │
+  ▼
+END
+</code></pre>
+        </div>
+<hr>
+<h2 id="7-តក្កវិជ្ជាអាជីវកម្ម-និងកម្រិតពិដានអនុម័ត-business-logic-approval-thresholds" class="scroll-mt-24 group">7. តក្កវិជ្ជាអាជីវកម្ម និងកម្រិតពិដានអនុម័ត (Business Logic &amp; Approval Thresholds) <a href="#7-តក្កវិជ្ជាអាជីវកម្ម-និងកម្រិតពិដានអនុម័ត-business-logic-approval-thresholds" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<p>ដើម្បីធានាបាននូវតុល្យភាពរវាង <strong>ល្បឿនប្រតិបត្តិការរហ័ស (Operational Agility)</strong> និង <strong>ការគ្រប់គ្រងហានិភ័យតឹងរ៉ឹង (Risk Governance)</strong> ប្រព័ន្ធបានកំណត់តារាងពិដានអនុម័តជា 3 កម្រិត៖</p>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>┌────────────────────────────────────────────────────────────────────────┐
+│                   🎯 ENTERPRISE APPROVAL THRESHOLD MATRIX              │
+├──────────────────────┬──────────────────────┬──────────────────────────┤
+│ ប្រភេទប្រតិបត្តិការ  │ សិទ្ធិអ្នកគ្រប់គ្រងផ្នែក│ សិទ្ធិអភិបាលទូទៅ (GM)   │
+│                      │ (Department Manager) │ (General Manager Only)   │
+├──────────────────────┼──────────────────────┼──────────────────────────┤
+│ បញ្ជាទិញទំនិញ (PO)   │ $\le \$1,000.00$     │ $&gt; \$1,000.00$           │
+│ ប័ណ្ណចំណាយ (Disburse)│ $\le \$500.00$       │ $&gt; \$500.00$             │
+│ បញ្ចុះតម្លៃ (Discount) │ $\le 10.0\%$         │ $&gt; 10.0\%$ ដល់ $20.0\%$  │
+│ ពិដានបំណុល (Credit)  │ ក្នុងពិដានកំណត់      │ លើសពិដាន (Credit Override)│
+│ កាត់ស្តុក (Write-off) │ $\le \$200.00$       │ $&gt; \$200.00$             │
+│ លុបវិក្កយបត្រ (Void) │ គ្មានសិទ្ធិ          │ មានសិទ្ធិអនុម័ត Void     │
+└──────────────────────┴──────────────────────┴──────────────────────────┘
+</code></pre>
+        </div>
+<hr>
+<h2 id="8-ទំនាក់ទំនងឆ្លងផ្នែកជាមួយគ្រប់តួនាទី-comprehensive-cross-role-command-map" class="scroll-mt-24 group">8. ទំនាក់ទំនងឆ្លងផ្នែកជាមួយគ្រប់តួនាទី (Comprehensive Cross-Role Command Map) <a href="#8-ទំនាក់ទំនងឆ្លងផ្នែកជាមួយគ្រប់តួនាទី-comprehensive-cross-role-command-map" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>┌─────────────────────────────────────────────────────────────────────────┐
+│                    👑 ADMIN / GENERAL MANAGER (អភិបាលក្រុមហ៊ុន)          │
+└────┬──────────────┬──────────────┬──────────────┬──────────────┬────────┘
+     │              │              │              │              │
+     │ 1. អនុម័ត    │ 2. អនុម័ត    │ 3. អនុម័ត    │ 4. បិទគ្រា    │ 5. ត្រួតពិនិត្យ
+     │    ការបញ្ចុះ   │    PO ធំៗ    │    ការកាត់   │    គណនេយ្យ    │    សវនកម្ម
+     │    តម្លៃ &amp; បំណុល│    &amp; អ្នកផ្គត់ │    ស្តុកខូច   │    &amp; បើកលុយ   │    ឯករាជ្យ
+     ▼              ▼              ▼              ▼              ▼
+┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐
+│ 👔 SALES │  │ 🛒 PROC  │  │ 📦 WHSE  │  │ 💰 ACCT  │  │ 🔍 AUDIT │
+│  Manager │  │ Manager  │  │ Manager  │  │  Finance │  │ Auditor  │
+└──────────┘  └──────────┘  └──────────┘  └──────────┘  └──────────┘
+</code></pre>
+        </div>
+<ol>
+<li><strong>ជាមួយ Sales Manager &amp; Sales Executive</strong>:<ul>
+<li>អនុម័តការបញ្ចុះតម្លៃពិសេសកម្រិតខ្ពស់ (&gt; 10%)</li>
+<li>អនុម័តការលើកលែងពិដានឥណទាន (Credit Limit Overrides)</li>
+<li>កំណត់គោលដៅកូតាលក់រួមប្រចាំត្រីមាស និងប្រចាំឆ្នាំ</li>
+</ul>
+</li>
+<li><strong>ជាមួយ Procurement Manager</strong>:<ul>
+<li>អនុម័តការបញ្ជាទិញទំនិញធំៗ (PO &gt; $1,000.00)</li>
+<li>អនុម័តការជ្រើសរើស និងចុះកិច្ចសន្យាជាមួយអ្នកផ្គត់ផ្គង់យុទ្ធសាស្ត្រថ្មី</li>
+</ul>
+</li>
+<li><strong>ជាមួយ Warehouse Manager</strong>:<ul>
+<li>អនុម័តការកាត់កងទំនិញខូចខាត ឬបាត់បង់ (Stock Write-off)</li>
+<li>អនុម័តការផ្ទេរទំនិញខ្នាតធំឆ្លងសាខា</li>
+</ul>
+</li>
+<li><strong>ជាមួយ Chief Accountant &amp; AP/AR Accountant</strong>:<ul>
+<li>ចុះហត្ថលេខាលើប័ណ្ណចំណាយទូទាត់ប្រាក់ធំៗ (Disbursements &gt; $500.00)</li>
+<li>អនុម័តរបាយការណ៍ហិរញ្ញវត្ថុប្រចាំខែ និងការបិទគ្រាគណនេយ្យ (Financial Period Lock)</li>
+<li>ពិនិត្យការអនុលោមភាពពន្ធដារ (GDT Compliance)</li>
+</ul>
+</li>
+<li><strong>ជាមួយ Internal Auditor</strong>:<ul>
+<li>ទទួលរបាយការណ៍ស៊ើបអង្កេតករណីមិនប្រក្រតី (Red Flags Dossier)</li>
+<li>ចាត់វិធានការកែតម្រូវចំពោះការបំពានច្បាប់ត្រួតពិនិត្យផ្ទៃក្នុង</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="9-វិសាលភាពទិន្នន័យ-data-scope-full-360-transparency" class="scroll-mt-24 group">9. វិសាលភាពទិន្នន័យ (Data Scope — Full 360° Transparency) <a href="#9-វិសាលភាពទិន្នន័យ-data-scope-full-360-transparency" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<p>Admin / General Manager គឺជាបុគ្គលតែមួយគត់ក្នុងក្រុមហ៊ុនដែលមាន <strong>សិទ្ធិមើលឃើញទិន្នន័យគ្រប់ជ្រុងជ្រោយ 360 ដឺក្រេ (Full Operational &amp; Financial Visibility)</strong>៖</p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ប្រភេទព័ត៌មាន</th>
+<th align="center">សិទ្ធិមើលឃើញរបស់ GM</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">កម្រិតនៃការការពារ (Security Level)</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ថ្លៃដើមទិញពីអ្នកផ្គត់ផ្គង់ (Purchase Cost / COGS)</strong></td>
+<td align="center">✅ មើលឃើញ 100%</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ដឹងដើម្បីវិភាគប្រាក់ចំណេញ និងចរចា</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>តម្លៃលក់ និងប្រវត្តិនៃការបញ្ចុះតម្លៃទាំងអស់</strong></td>
+<td align="center">✅ មើលឃើញ 100%</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">តាមដានយុទ្ធសាស្ត្រលក់ និងកម្រៃជើងសារ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ប្រាក់ចំណេញដុល និងចំណេញសុទ្ធ (Gross &amp; Net Profit)</strong></td>
+<td align="center">✅ មើលឃើញ 100%</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">វាយតម្លៃសុខភាពអាជីវកម្មពិតប្រាកដ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>សមតុល្យសាច់ប្រាក់ និងគណនីធនាគារទាំងអស់</strong></td>
+<td align="center">✅ មើលឃើញ 100%</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">គ្រប់គ្រងសន្ទនីយភាព និងទុនបង្វិល</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ប្រាក់ខែ និងកម្រៃជើងសាររបស់បុគ្គលិកទាំងអស់</strong></td>
+<td align="center">✅ មើលឃើញ 100%</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">គ្រប់គ្រងចំណាយធនធានមនុស្ស (Payroll)</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>កំណត់ហេតុសវនកម្មរាល់សកម្មភាព (Audit Trails)</strong></td>
+<td align="center">✅ មើលឃើញ 100%</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">តាមដានរាល់សកម្មភាពរបស់បុគ្គលិក</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ទិន្នន័យរបស់ក្រុមហ៊ុនដទៃ (Other Tenants)</strong></td>
+<td align="center">❌ <strong>លាក់ 100%</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Multi-Tenant Isolation (សិទ្ធិ Super Admin)</strong></td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="10-ផ្ទាំងបញ្ជាការដ្ឋានប្រតិបត្តិការ-executive-cockpit-strategic-kpis" class="scroll-mt-24 group">10. ផ្ទាំងបញ្ជាការដ្ឋានប្រតិបត្តិការ (Executive Cockpit &amp; Strategic KPIs) <a href="#10-ផ្ទាំងបញ្ជាការដ្ឋានប្រតិបត្តិការ-executive-cockpit-strategic-kpis" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>┌────────────────────────────────────────────────────────────────────────┐
+│               🏛️ ENTERPRISE EXECUTIVE COCKPIT (ADMIN / GM)             │
+├──────────────────────────┬──────────────────────────┬──────────────────┤
+│ ចំណូលលក់សរុប (Revenue):   │ ចំណេញសុទ្ធ (Net Profit): │ សាច់ប្រាក់ក្នុងដៃ:│
+│ $68,450.00 (↑ 14.2%)     │ $14,370.00 (Margin 21%)  │ $42,180.00       │
+├──────────────────────────┼──────────────────────────┼──────────────────┤
+│ បំណុលត្រូវទារ (Total AR): │ បំណុលត្រូវសង (Total AP): │ សំណើរង់ចាំអនុម័ត:│
+│ $18,240.00 (Overdue: $3k)│ $12,600.00 (Due 7d: $4k) │ 5 សំណើបន្ទាន់ ⚠️  │
+└──────────────────────────┴──────────────────────────┴──────────────────┘
+</code></pre>
+        </div>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">#</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">សូចនាករយុទ្ធសាស្ត្រ (Strategic KPI)</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">រូបមន្តគណនា</th>
+<th align="center">គោលដៅស្តង់ដារ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ការបកស្រាយ</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">1</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>អត្រាចំណេញសុទ្ធ (Net Profit Margin %)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">$(\text{Net Profit} / \text{Revenue}) \times 100$</td>
+<td align="center">$\ge 20%$</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">បង្ហាញពីប្រសិទ្ធភាពគ្រប់គ្រងចំណាយ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">2</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ចរន្តសាច់ប្រាក់ទ្រទ្រង់ (Cash Runway)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">$\text{Cash Balance} / \text{Monthly Burn Rate}$</td>
+<td align="center">$\ge 3$ ខែ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">សុវត្ថិភាពសន្ទនីយភាពអាជីវកម្ម</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">3</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>អត្រាបំណុលវន់ករ (Overdue AR Ratio %)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">$(\text{Overdue AR} / \text{Total AR}) \times 100$</td>
+<td align="center">$&lt; 10%$</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ហានិភ័យបាត់បង់លំហូរសាច់ប្រាក់</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">4</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ល្បឿនបង្វិលស្តុក (Inventory Turnover)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">$\text{COGS} / \text{Average Inventory Value}$</td>
+<td align="center">$\ge 6$ ដង/ឆ្នាំ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ប្រសិទ្ធភាពគ្រប់គ្រងទុនស្តុក</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">5</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ល្បឿនដោះស្រាយការអនុម័ត (Approval SLA)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ពេលវេលាមធ្យមពីពេលស្នើសុំដល់ពេលចុះហត្ថលេខា</td>
+<td align="center">$&lt; 4$ ម៉ោង</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">កុំឱ្យកកស្ទះប្រតិបត្តិការជួរមុខ</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="11-គំរូរចនាសម្ព័ន្ធទិន្នន័យ-database-schema-blueprint" class="scroll-mt-24 group">11. គំរូរចនាសម្ព័ន្ធទិន្នន័យ (Database Schema Blueprint) <a href="#11-គំរូរចនាសម្ព័ន្ធទិន្នន័យ-database-schema-blueprint" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>-- គំរូតារាងទិន្នន័យសម្រាប់ Executive Approval &amp; System Control Module
+
+-- 1. តារាងសំណើអនុម័តសកល (Global Approval Requests Table)
+CREATE TABLE approval_requests (
+    id                  UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    tenant_id           UUID REFERENCES tenants(id) NOT NULL,
+    request_number      VARCHAR(50) UNIQUE NOT NULL, -- APP-2026-0038
+    request_type        VARCHAR(50) NOT NULL, 
+        -- po_approval | disbursement | high_discount | credit_override | stock_writeoff | void_invoice
+    requester_id        UUID REFERENCES users(id) NOT NULL,
+    target_entity_type  VARCHAR(50) NOT NULL, -- purchase_orders, disbursements, quotes, etc.
+    target_entity_id    UUID NOT NULL,
+    target_entity_code  VARCHAR(100), -- PO-2026-0045, QT-2026-0042
+    financial_amount    DECIMAL(15,2) DEFAULT 0.00,
+    discount_pct        DECIMAL(5,2),
+    request_reason      TEXT NOT NULL,
+    status              VARCHAR(30) DEFAULT &#39;pending&#39;, 
+        -- pending | approved | rejected | cancelled
+    approver_id         UUID REFERENCES users(id),
+    decision_notes      TEXT,
+    decided_at          TIMESTAMPTZ,
+    created_at          TIMESTAMPTZ DEFAULT NOW(),
+    updated_at          TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 2. តារាងកត់ត្រាប្រវត្តិអនុម័ត (Approval Audit Trail)
+CREATE TABLE approval_logs (
+    id                  UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    approval_request_id UUID REFERENCES approval_requests(id) ON DELETE CASCADE,
+    action              VARCHAR(30) NOT NULL, -- submitted | reviewed | approved | rejected
+    actor_id            UUID REFERENCES users(id) NOT NULL,
+    actor_role          VARCHAR(50) NOT NULL,
+    comments            TEXT,
+    created_at          TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 3. តារាងបិទគ្រាគណនេយ្យ (Financial Period Locks)
+CREATE TABLE financial_period_locks (
+    id                  UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    tenant_id           UUID REFERENCES tenants(id) NOT NULL,
+    period_year         INT NOT NULL,
+    period_month        INT NOT NULL, -- 1 to 12
+    is_locked           BOOLEAN DEFAULT TRUE,
+    locked_by_user_id   UUID REFERENCES users(id) NOT NULL, -- GM User ID
+    locked_at           TIMESTAMPTZ DEFAULT NOW(),
+    unlock_reason       TEXT,
+    unlocked_at         TIMESTAMPTZ,
+    unlocked_by_user_id UUID REFERENCES users(id),
+    UNIQUE(tenant_id, period_year, period_month)
+);
+
+-- 4. តារាងកំណត់ដែនពិដានអនុម័តរបស់ក្រុមហ៊ុន (Tenant Approval Thresholds)
+CREATE TABLE tenant_approval_thresholds (
+    id                  UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    tenant_id           UUID REFERENCES tenants(id) UNIQUE NOT NULL,
+    po_gm_threshold     DECIMAL(15,2) DEFAULT 1000.00,
+    disbursement_gm_threshold DECIMAL(15,2) DEFAULT 500.00,
+    discount_gm_threshold_pct DECIMAL(5,2) DEFAULT 10.00,
+    writeoff_gm_threshold DECIMAL(15,2) DEFAULT 200.00,
+    updated_by          UUID REFERENCES users(id),
+    updated_at          TIMESTAMPTZ DEFAULT NOW()
+);
+</code></pre>
+        </div>
+<hr>
+<h2 id="12-អភិបាលកិច្ច-និងសុវត្ថិភាពទិន្នន័យ-governance-anti-fraud-controls" class="scroll-mt-24 group">12. អភិបាលកិច្ច និងសុវត្ថិភាពទិន្នន័យ (Governance &amp; Anti-Fraud Controls) <a href="#12-អភិបាលកិច្ច-និងសុវត្ថិភាពទិន្នន័យ-governance-anti-fraud-controls" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<p>ដើម្បីការពារអភិបាលកិច្ចក្រុមហ៊ុន និងបញ្ចៀសការរំលោភអំណាច ប្រព័ន្ធអនុវត្តគោលការណ៍គ្រឹះចំនួន 4៖</p>
+<ol>
+<li><strong>គោលការណ៍ត្រួតពិនិត្យទ្វេភាគី (Dual-Control on Extreme Payouts)</strong>:<ul>
+<li>ចំពោះការបើកសាច់ប្រាក់ធំៗលើសពី <code>$5,000.00</code> ទោះបីជា GM ចុះហត្ថលេខារួចហើយក៏ដោយ ប្រព័ន្ធតម្រូវឱ្យមានការបញ្ជាក់ហត្ថលេខាឌីជីថលបន្ថែមពី <strong>Chief Accountant</strong> ឬ <strong>Board Member</strong> ដើម្បីការពារការកិបកេងសាច់ប្រាក់ឯកតោភាគី។</li>
+</ul>
+</li>
+<li><strong>ភាពមិនអាចកែប្រែកំណត់ហេតុ (Audit Trail Immutability)</strong>:<ul>
+<li>រាល់ពេលដែល GM ចុច «អនុម័ត», «បដិសេធ», «ចាក់សោរគ្រាហិរញ្ញវត្ថុ», ឬ «Override» ប្រព័ន្ធកត់ត្រាក្នុងតារាង <code>global_audit_trails</code> ភ្លាមៗជាមួយ IP Address និង Timestamp ដែលមិនអាចលុបបានឡើយ។</li>
+</ul>
+</li>
+<li><strong>ការទប់ស្កាត់ការកែប្រែទិន្នន័យក្នុងគ្រាចាក់សោរ (Locked Period Immutability Guard)</strong>:<ul>
+<li>នៅពេលខែណាមួយត្រូវបានចាក់សោរ (Period Locked) សូម្បីតែ GM ផ្ទាល់ក៏មិនអាចចុចបង្កើត ឬកែសម្រួលវិក្កយបត្រក្នុងខែនោះបានដែរ។ ប្រសិនបើតម្រូវឱ្យកែប្រែដោយសារសវនកម្ម GM ត្រូវចុច «ស្នើសុំដោះសោរបណ្តោះអាសន្ន» ដោយមានកំណត់ត្រាមូលហេតុច្បាស់លាស់។</li>
+</ul>
+</li>
+<li><strong>ការការពារការបែកធ្លាយទិន្នន័យឆ្លងក្រុមហ៊ុន (Strict Multi-Tenant Isolation)</strong>:<ul>
+<li>គណនី GM ត្រូវបានកំណត់សិទ្ធិយ៉ាងតឹងរ៉ឹងដោយ Row-Level Security (RLS) ត្រឹមតែ <code>tenant_id</code> របស់ខ្លួនប៉ុណ្ណោះ មិនអាចទាញយកទិន្នន័យរបស់ក្រុមហ៊ុនដៃគូ ឬក្រុមហ៊ុនបុត្រសម្ព័ន្ធដទៃឡើយ។</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="13-អនុសាសន៍ស្ថាបត្យកម្ម-និងផែនការ-prototype-planning" class="scroll-mt-24 group">13. អនុសាសន៍ស្ថាបត្យកម្ម និងផែនការ Prototype Planning <a href="#13-អនុសាសន៍ស្ថាបត្យកម្ម-និងផែនការ-prototype-planning" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="131-អនុសាសន៍រចនាប្រព័ន្ធ-architectural-recommendations" class="scroll-mt-24 group">13.1 អនុសាសន៍រចនាប្រព័ន្ធ (Architectural Recommendations) <a href="#131-អនុសាសន៍រចនាប្រព័ន្ធ-architectural-recommendations" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<h4 id="ណែនាំ-1-centralized-actionable-approvals-hub" class="scroll-mt-24 group">✅ ណែនាំ 1: Centralized Actionable Approvals Hub <a href="#ណែនាំ-1-centralized-actionable-approvals-hub" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<p>នៅក្នុងទំព័រ <a href="file:///D:/DATA/Project/ebms_prototype/frontend/src/pages/2-home/approvals.html">approvals.html</a> ត្រូវរៀបចំជា <strong>Tabs បែងចែកតាមប្រភេទការងារ</strong> (PO, ប័ណ្ណចំណាយ, បញ្ចុះតម្លៃ, ពិដានបំណុល) ជាមួយ Badge បង្ហាញចំនួនរង់ចាំភ្លាមៗ ដើម្បីកុំឱ្យ GM ពិបាករុករក។</p>
+<h4 id="ណែនាំ-2-one-click-instant-decision-with-confirmation-toast" class="scroll-mt-24 group">✅ ណែនាំ 2: One-Click Instant Decision with Confirmation Toast <a href="#ណែនាំ-2-one-click-instant-decision-with-confirmation-toast" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<p>នៅក្នុងទំព័រ <a href="file:///D:/DATA/Project/ebms_prototype/frontend/src/pages/9-portals/manager/view-approval.html">view-approval.html</a> ប៊ូតុង «អនុម័ត» និង «បដិសេធ» ត្រូវភ្ជាប់ជាមួយ Custom Confirmation Modal (<code>showCustomConfirm()</code>) ដើម្បីការពារការច្រឡំដៃ ហើយនៅពេលជោគជ័យត្រូវលោត Toast ពណ៌បៃតងស្រស់ស្អាត (<code>showToast(&quot;សំណើត្រូវបានអនុម័តដោយជោគជ័យ!&quot;, &quot;success&quot;)</code>)។</p>
+<h4 id="ណែនាំ-3-real-time-cash-runway-alert" class="scroll-mt-24 group">✅ ណែនាំ 3: Real-Time Cash Runway Alert <a href="#ណែនាំ-3-real-time-cash-runway-alert" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<p>នៅលើ <a href="file:///D:/DATA/Project/ebms_prototype/frontend/src/pages/2-home/dashboard.html">dashboard.html</a> ត្រូវមាន Widget គណនា Cash Runway៖ ប្រសិនបើសាច់ប្រាក់ធនាគារសរុបទាបជាងចំណាយប្រតិបត្តិការ 2 ខែ ត្រូវបង្ហាញ Warning Alert ពណ៌ទឹកក្រូចដើម្បីឱ្យ GM ចាត់វិធានការពន្លឿនការទារបំណុលអតិថិជន។</p>
+<hr>
+<h3 id="132-បញ្ជីត្រួតពិនិត្យការសាងសង់-prototype-15-point-prototype-checklist" class="scroll-mt-24 group">13.2 បញ្ជីត្រួតពិនិត្យការសាងសង់ Prototype (15-Point Prototype Checklist) <a href="#132-បញ្ជីត្រួតពិនិត្យការសាងសង់-prototype-15-point-prototype-checklist" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p>មុនពេលចាត់ទុកថា Prototype សម្រាប់ Admin / General Manager ត្រឹមត្រូវ 100% ត្រូវផ្ទៀងផ្ទាត់៖</p>
+<ul>
+<li><input disabled="" type="checkbox"> <strong>កម្ពស់ Header ស្មើគ្នា</strong>: ទាំង Sidebar Brand និង Content Top Header មានកម្ពស់ <code>h-[72px]</code> ស្មើគ្នាបេះបិទ។</li>
+<li><input disabled="" type="checkbox"> <strong>ភាសាខ្មែរសុទ្ធសាធ 100%</strong>: គ្មានពាក្យអង់គ្លេសលាយឡំលើ UI, ប៊ូតុង, តារាង, ផ្លាក Badge ឬ Toast ឡើយ។</li>
+<li><input disabled="" type="checkbox"> <strong>លេខអង់គ្លេស 0-9</strong>: គ្រប់កាលបរិច្ឆេទ, ភាគរយ, លេខកូដ (#APP-2026-0038, #PO-2026-0045), និងទឹកប្រាក់ ប្រើលេខ <code>0-9</code> ជានិច្ច។</li>
+<li><input disabled="" type="checkbox"> <strong>គ្មាន Pop-up Modal សម្រាប់ View Detail</strong>: ទំព័រ <code>view-approval.html</code> ជាទំព័រពេញលេញ (Dedicated Full Page)។</li>
+<li><input disabled="" type="checkbox"> <strong>ប៊ូតុងត្រឡប់ក្រោយស្តង់ដារ</strong>: ប្រអប់មូលកោង <code>w-10 h-10 rounded-xl bg-slate-50 border border-slate-200/70</code> មានតែរូបព្រួញ។</li>
+<li><input disabled="" type="checkbox"> <strong>គ្មាន Native Select</strong>: ប្រើ Custom Dropdown មាន Stacking Context <code>z-50</code> ត្រឹមត្រូវ។</li>
+<li><input disabled="" type="checkbox"> <strong>ជំនួស Alert / Confirm</strong>: ប្រើប្រាស់ <code>showToast()</code> និង <code>showCustomConfirm()</code>។</li>
+<li><input disabled="" type="checkbox"> <strong>លាក់របាររំកិល</strong>: Globally Hidden Scrollbars ទាំងផ្ដេក និងបញ្ឈរ។</li>
+<li><input disabled="" type="checkbox"> <strong>ប្លង់ពេញទទឹង</strong>: <code>&lt;main class=&quot;w-full&quot;&gt;</code> គ្មានការប្រើ <code>max-w-7xl mx-auto</code>។</li>
+<li><input disabled="" type="checkbox"> <strong>សកម្មភាពតារាង</strong>: ប្រើប៊ូតុង <code>⋮</code> ជាមួយ Floating Action Dropdown Menu។</li>
+<li><input disabled="" type="checkbox"> <strong>Unified Date Range Picker</strong>: មាន 10 Presets និងប្រតិទិនពីរជួរឈរតាមគំរូ <code>invoice.html</code>។</li>
+<li><input disabled="" type="checkbox"> <strong>ការបោះពុម្ព A4 កម្រិតថ្នាក់ដឹកនាំ</strong>: ប្លង់របាយការណ៍ហិរញ្ញវត្ថុផ្លូវការ លាក់ Sidebar/Header ពេល Print។</li>
+<li><input disabled="" type="checkbox"> <strong>ពុម្ពអក្សរ Kantumruy Pro</strong>: កម្រាស់ និងពណ៌អក្សរស្រទន់ <code>text-slate-700</code> មើលទៅមានវិជ្ជាជីវៈកម្រិតខ្ពស់។</li>
+<li><input disabled="" type="checkbox"> <strong>ការគ្រប់គ្រងអ្នកប្រើប្រាស់ពេញលេញ</strong>: ទំព័រ <code>7-settings/2-users/</code> មានទម្រង់ Full CRUD ត្រឹមត្រូវ។</li>
+<li><input disabled="" type="checkbox"> <strong>ការចាក់សោរគ្រាហិរញ្ញវត្ថុ</strong>: ទំព័រ <code>7-settings/5-system/</code> មានយន្តការ Period Lock ដំណើរការបានពិតប្រាកដ។</li>
+</ul>
+<hr>
+<h2 id="14-សំណួរ-និងចម្លើយទូទៅ-faq" class="scroll-mt-24 group">14. សំណួរ និងចម្លើយទូទៅ (FAQ) <a href="#14-សំណួរ-និងចម្លើយទូទៅ-faq" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<p><strong>Q: តើអ្វីជាភាពខុសគ្នាសំខាន់រវាង Admin / General Manager និង Super Admin?</strong><br>A: Super Admin គឺជាអ្នកគ្រប់គ្រងប្រព័ន្ធបច្ចេកវិទ្យាកម្រិត Platform (Multi-Tenant Infrastructure) ដែលមើលការខុសត្រូវលើក្រុមហ៊ុនរាប់សិបនៅក្នុងប្រព័ន្ធ Cloud។ ចំណែក Admin / General Manager គឺជាមេដឹកនាំកំពូលនៃក្រុមហ៊ុនអាជីវកម្មជាក់លាក់មួយ (Single Tenant) ដែលមានសិទ្ធិប្រតិបត្តិការ និងអនុម័តអាជីវកម្មពេញលេញក្នុងក្រុមហ៊ុនរបស់ខ្លួន ប៉ុន្តែមិនអាចលូកដៃទៅកាន់ក្រុមហ៊ុនដទៃបានឡើយ។</p>
+<p><strong>Q: ហេតុអ្វីបានជាត្រូវមានពិដានអនុម័ត (Approval Thresholds) សម្រាប់ GM?</strong><br>A: ប្រសិនបើរាល់ការចំណាយ និងវិក្កយបត្រទាំងអស់ត្រូវរង់ចាំ GM អនុម័ត នោះអាជីវកម្មនឹងកកស្ទះ និងយឺតយ៉ាវយ៉ាងខ្លាំង (Bottleneck)។ ការកំណត់ពិដានអនុញ្ញាតឱ្យ Department Managers (Sales, Procurement, Accounting) សម្រេចចិត្តលើប្រតិបត្តិការតូចៗប្រចាំថ្ងៃ (ឧ. ចំណាយ $\le $500.00$) ហើយទុកតែប្រតិបត្តិការធំៗ ឬមានហានិភ័យខ្ពស់ជូន GM ពិនិត្យប៉ុណ្ណោះ។</p>
+<p><strong>Q: តើ GM អាចលុបវិក្កយបត្រដែលបានប្រកាសពន្ធរួចហើយបានទេ?</strong><br>A: <strong>មិនអាចលុបបានឡើយ</strong>។ ប្រសិនបើខែនោះត្រូវបានចាក់សោរគ្រាហិរញ្ញវត្ថុ (Period Locked) ប្រព័ន្ធនឹងរារាំងមិនឱ្យមានការកែប្រែ ឬលុបជាដាច់ខាត ដើម្បីការពារកុំឱ្យក្រុមហ៊ុនរងការពិន័យពីអគ្គនាយកដ្ឋានពន្ធដារ (GDT)។ ប្រសិនបើមានកំហុសឆ្គង ត្រូវដោះស្រាយតាមរយៈការចេញ <strong>Credit Note</strong> ក្នុងខែបន្ទាប់។</p>
+<p><strong>Q: តើ GM អាចផ្ទេរសិទ្ធិអនុម័តឱ្យអ្នកដទៃបានទេ ពេលទៅបេសកកម្មក្រៅប្រទេស?</strong><br>A: បាន។ ប្រព័ន្ធមានមុខងារ «ផ្ទេរសិទ្ធិអនុម័តបណ្តោះអាសន្ន (Temporary Approval Delegation)» ដែល GM អាចកំណត់ផ្ទេរសិទ្ធិឱ្យ Deputy GM ឬ Chief Accountant ក្នុងចន្លោះកាលបរិច្ឆេទជាក់លាក់មួយ ដោយមានកំណត់ត្រាត្រួតពិនិត្យច្បាស់លាស់។</p>
+<hr>
+<p><em>ឯកសារនេះតំណាង 100% នៃមូលដ្ឋានចំណេះដឹងសម្រាប់ Admin / General Manager Role ក្នុង DIGITECHKH BMS</em><br><em>Previous Role: Sales Executive → <a href="role_sales_executive.html"><code>role_sales_executive.md</code></a></em><br><em>Next Role: Warehouse Manager → <a href="role_warehouse_manager.html"><code>role_warehouse_manager.md</code></a></em></p>
+
+                </article>
+
+                <!-- Next / Previous Role Navigation Bar -->
+                <div class="no-print mt-12 pt-8 border-t border-slate-200 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <a href="role_sales_executive.html" class="p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-transform flex-shrink-0">
+                            💼
+                        </div>
+                        <div class="min-w-0">
+                            <div class="text-[10px] text-slate-400 font-medium">← តួនាទីមុន</div>
+                            <div class="text-xs font-bold text-slate-800 group-hover:text-primary transition truncate">បុគ្គលិកប្រតិបត្តិផ្នែកលក់</div>
+                        </div>
+                    </a>
+
+                    <a href="role_warehouse_manager.html" class="p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group flex items-center justify-end text-right gap-3">
+                        <div class="min-w-0">
+                            <div class="text-[10px] text-slate-400 font-medium">តួនាទីបន្ទាប់ →</div>
+                            <div class="text-xs font-bold text-slate-800 group-hover:text-primary transition truncate">អ្នកគ្រប់គ្រងឃ្លាំងស្តុក</div>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-transform flex-shrink-0">
+                            📦
+                        </div>
+                    </a>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="no-print bg-white border-t border-slate-200 py-6 px-8 text-center text-xs text-slate-500">
+        <p>រក្សាសិទ្ធិគ្រប់យ៉ាង © 2026 ក្រុមហ៊ុន ឌីជីថេក ខេអេច (DIGITECHKH Co., Ltd.) · ព្រះរាជាណាចក្រកម្ពុជា</p>
+    </footer>
+
+</body>
+</html>

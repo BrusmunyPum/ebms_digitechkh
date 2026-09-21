@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="km" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💼 បុគ្គលិកប្រតិបត្តិផ្នែកលក់ (Sales Executive) — ការសិក្សាស៊ីជម្រៅ | DIGITECHKH BMS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Kantumruy Pro', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0f2b5c',
+                        primaryHover: '#0a1d3f',
+                        accent: '#2563eb',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Kantumruy Pro', sans-serif;
+            color: #334155;
+            background-color: #f8fafc;
+        }
+        ::-webkit-scrollbar { display: none; }
+        * { -ms-overflow-style: none; scrollbar-width: none; }
+        h1, h2, h3, h4 { color: #0f172a; font-weight: 700; }
+        h1 { font-size: 1.8rem; line-height: 2.35rem; margin-bottom: 1.25rem; }
+        h2 { font-size: 1.35rem; line-height: 1.85rem; margin-top: 2.25rem; margin-bottom: 0.85rem; padding-bottom: 0.5rem; border-bottom: 1px solid #e2e8f0; }
+        h3 { font-size: 1.1rem; line-height: 1.5rem; margin-top: 1.75rem; margin-bottom: 0.5rem; }
+        p { margin-bottom: 0.85rem; line-height: 1.8; font-size: 0.95rem; }
+        ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1rem; font-size: 0.95rem; }
+        ol { list-style-type: decimal; padding-left: 1.5rem; margin-bottom: 1rem; font-size: 0.95rem; }
+        li { margin-bottom: 0.35rem; line-height: 1.7; }
+        hr { border: 0; border-top: 1px solid #e2e8f0; margin: 2rem 0; }
+        @media print {
+            .no-print { display: none !important; }
+            body { background-color: #ffffff; color: #000; }
+            .print-container { max-width: 100% !important; margin: 0 !important; padding: 0 !important; box-shadow: none !important; border: none !important; }
+            table, pre, blockquote, .rounded-xl, .rounded-2xl { page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-primary selection:text-white min-h-screen flex flex-col justify-between">
+
+    <!-- Top Sticky Control Bar -->
+    <header class="no-print fixed top-0 left-0 right-0 h-16 bg-primary text-white z-50 px-4 sm:px-8 flex items-center justify-between shadow-md">
+        <div class="flex items-center gap-3">
+            <a href="index.html" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition flex items-center gap-2 text-xs font-semibold">
+                <i class="fas fa-arrow-left"></i> <span class="hidden sm:inline">មជ្ឈមណ្ឌលឯកសារ</span>
+            </a>
+            <span class="text-white/30 hidden sm:inline">|</span>
+            <div class="flex items-center gap-2">
+                <span class="text-xl">💼</span>
+                <span class="font-bold text-xs sm:text-sm text-white truncate max-w-[200px] sm:max-w-xs">បុគ្គលិកប្រតិបត្តិផ្នែកលក់</span>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-white/15 text-cyan-200 hidden md:inline">Zero Cost</span>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-2 sm:gap-3">
+            <!-- Role Switcher -->
+            <div class="relative">
+                <select onchange="window.location.href=this.value" class="h-9 pl-3 pr-8 bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl text-xs font-semibold text-white focus:outline-none focus:bg-[#0a1d3f] transition appearance-none cursor-pointer">
+                    <option value="role_superadmin.html" >👑 ស៊ុបភើរ អភិបាល (Super Admin)</option>
+<option value="role_procurement_manager.html" >🛒 អ្នកគ្រប់គ្រងលទ្ធកម្ម (Procurement Manager)</option>
+<option value="role_warehouse_staff.html" >👷 បុគ្គលិកឃ្លាំងទំនិញ (Warehouse Staff)</option>
+<option value="role_customer_support.html" >🎧 ផ្នែកគាំទ្រអតិថិជន (Customer Support)</option>
+<option value="role_apar_accountant.html" >💰 គណនេយ្យករចំណាយ និងចំណូល (AP/AR Accountant)</option>
+<option value="role_sales_manager.html" >👔 អ្នកគ្រប់គ្រងផ្នែកលក់ (Sales Manager)</option>
+<option value="role_internal_auditor_executive.html" >🔍 សវនករផ្ទៃក្នុង និងថ្នាក់ដឹកនាំ (Internal Auditor / Executive)</option>
+<option value="role_sales_executive.html" selected>💼 បុគ្គលិកប្រតិបត្តិផ្នែកលក់ (Sales Executive)</option>
+<option value="role_admin_general_manager.html" >🏛️ អភិបាល និងអ្នកចាត់ការទូទៅ (Admin / General Manager)</option>
+<option value="role_warehouse_manager.html" >📦 អ្នកគ្រប់គ្រងឃ្លាំងស្តុក (Warehouse Manager)</option>
+                </select>
+                <i class="fas fa-chevron-down absolute right-3 top-3 text-[10px] text-white/60 pointer-events-none"></i>
+            </div>
+
+            <!-- Interactive Guide Link -->
+            <a href="DIGITECHKH-Roles-And-Permissions-Interactive-Guide.html?role=sales_executive" class="px-3 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-semibold transition hidden lg:flex items-center gap-1.5 shadow-sm">
+                <i class="fas fa-table-cells"></i> ផ្ទាំងអន្តរកម្ម & ម៉ាទ្រីស
+            </a>
+
+            <!-- Print Button -->
+            <button onclick="window.print()" class="px-3 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-semibold transition flex items-center gap-1.5 shadow-sm cursor-pointer">
+                <i class="fas fa-print"></i> <span class="hidden sm:inline">បោះពុម្ព A4</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Reading Container -->
+    <div class="pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full flex-1">
+        <div class="flex flex-col lg:flex-row gap-8 items-start">
+
+            <!-- Left Table of Contents Sidebar -->
+            <aside class="no-print lg:w-72 flex-shrink-0 sticky top-24 hidden lg:block bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
+                <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-3">
+                    <span class="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
+                        <i class="fas fa-list-ul text-primary"></i> មាតិកាឯកសារ
+                    </span>
+                    <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-50 text-accent">TOC</span>
+                </div>
+                <div class="space-y-0.5 max-h-[calc(100vh-220px)] overflow-y-auto pr-1 text-xs">
+                    <a href="#ចំណុចចាំបាច់-បេសកកម្មស្នូល-និងគោលការណ៍រក្សាការសម្ងាត់ថ្លៃដើម-core-mission-zero-purchase-cost-leakage" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="⚠️ ចំណុចចាំបាច់ — បេសកកម្មស្នូល និងគោលការណ៍រក្សាការសម្ងាត់ថ្លៃដើម (Core Mission & Zero Purchase Cost Leakage)">⚠️ ចំណុចចាំបាច់ — បេសកកម្មស្នូល និងគោលការណ៍រក្សាការសម្ងាត់ថ្លៃដើម (Core Mission & Zero Purchase Cost Leakage)</a>
+<a href="#តារាងមាតិកា" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="តារាងមាតិកា">តារាងមាតិកា</a>
+<a href="#1-អ្វីជា-sales-executive" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="1. អ្វីជា Sales Executive?">1. អ្វីជា Sales Executive?</a>
+<a href="#11-និយមន័យ-definition" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="1.1 និយមន័យ (Definition)">1.1 និយមន័យ (Definition)</a>
+<a href="#12-ភាពខុសគ្នារវាង-sales-manager-និង-sales-executive" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="1.2 ភាពខុសគ្នារវាង Sales Manager និង Sales Executive">1.2 ភាពខុសគ្នារវាង Sales Manager និង Sales Executive</a>
+<a href="#2-ឋានានុក្រមក្នុងប្រព័ន្ធ-និងទំនាក់ទំនងស្ថាប័ន" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="2. ឋានានុក្រមក្នុងប្រព័ន្ធ និងទំនាក់ទំនងស្ថាប័ន">2. ឋានានុក្រមក្នុងប្រព័ន្ធ និងទំនាក់ទំនងស្ថាប័ន</a>
+<a href="#3-អ្វីដែល-sales-executive-ធ្វើបាន-និងហាមធ្វើ-full-capability-map" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="3. អ្វីដែល Sales Executive ធ្វើបាន និងហាមធ្វើ (Full Capability Map)">3. អ្វីដែល Sales Executive ធ្វើបាន និងហាមធ្វើ (Full Capability Map)</a>
+<a href="#31-អ្វីដែល-sales-executive-ធ្វើបានពេញលេញ" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="3.1 ✅ អ្វីដែល Sales Executive ធ្វើបានពេញលេញ">3.1 ✅ អ្វីដែល Sales Executive ធ្វើបានពេញលេញ</a>
+<a href="#32-អ្វីដែល-sales-executive-ហាមធ្វើដាច់ខាត" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="3.2 ❌ អ្វីដែល Sales Executive ហាមធ្វើដាច់ខាត">3.2 ❌ អ្វីដែល Sales Executive ហាមធ្វើដាច់ខាត</a>
+<a href="#4-ស្ថាបត្យកម្មទំព័រ-ui-ពេញលេញ-page-by-page-blueprint" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="4. ស្ថាបត្យកម្មទំព័រ UI ពេញលេញ (Page-by-Page Blueprint)">4. ស្ថាបត្យកម្មទំព័រ UI ពេញលេញ (Page-by-Page Blueprint)</a>
+<a href="#41-9-portalssales-staffdashboardhtml-ផ្ទាំងគ្រប់គ្រងសមិទ្ធផលបុគ្គលិកលក់" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.1 `9-portals/sales-staff/dashboard.html` — ផ្ទាំងគ្រប់គ្រងសមិទ្ធផលបុគ្គលិកលក់">4.1 `9-portals/sales-staff/dashboard.html` — ផ្ទាំងគ្រប់គ្រងសមិទ្ធផលបុគ្គលិកលក់</a>
+<a href="#42-9-portalssales-staffcreate-quotehtml-3-sales2-quotecreate-quotehtml-ទម្រង់បង្កើតសម្រង់តម្លៃ" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.2 `9-portals/sales-staff/create-quote.html` & `3-sales/2-quote/create-quote.html` — ទម្រង់បង្កើតសម្រង់តម្លៃ">4.2 `9-portals/sales-staff/create-quote.html` & `3-sales/2-quote/create-quote.html` — ទម្រង់បង្កើតសម្រង់តម្លៃ</a>
+<a href="#43-3-sales2-quoteview-quotehtml-បង្ហាញព័ត៌មានលម្អិតសម្រង់តម្លៃ-និងការបម្លែង" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.3 `3-sales/2-quote/view-quote.html` — បង្ហាញព័ត៌មានលម្អិតសម្រង់តម្លៃ និងការបម្លែង">4.3 `3-sales/2-quote/view-quote.html` — បង្ហាញព័ត៌មានលម្អិតសម្រង់តម្លៃ និងការបម្លែង</a>
+<a href="#44-3-sales1-invoiceview-invoicehtml-បង្ហាញព័ត៌មានលម្អិតវិក្កយបត្រលក់" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.4 `3-sales/1-invoice/view-invoice.html` — បង្ហាញព័ត៌មានលម្អិតវិក្កយបត្រលក់">4.4 `3-sales/1-invoice/view-invoice.html` — បង្ហាញព័ត៌មានលម្អិតវិក្កយបត្រលក់</a>
+<a href="#45-3-sales3-customerview-customerhtml-ព័ត៌មានលម្អិត-និងប្រវត្តិអតិថិជន" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.5 `3-sales/3-customer/view-customer.html` — ព័ត៌មានលម្អិត និងប្រវត្តិអតិថិជន">4.5 `3-sales/3-customer/view-customer.html` — ព័ត៌មានលម្អិត និងប្រវត្តិអតិថិជន</a>
+<a href="#5-ម៉ាទ្រីសសិទ្ធិអំណាច-permission-matrix" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="5. ម៉ាទ្រីសសិទ្ធិអំណាច (Permission Matrix)">5. ម៉ាទ្រីសសិទ្ធិអំណាច (Permission Matrix)</a>
+<a href="#6-វដ្តការងារស្នូលទាំង-6-core-workflows" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="6. វដ្តការងារស្នូលទាំង 6 (Core Workflows)">6. វដ្តការងារស្នូលទាំង 6 (Core Workflows)</a>
+<a href="#workflow-1-វដ្តពីសម្រង់តម្លៃទៅជាវិក្កយបត្រ-quotation-to-invoice-flow" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 1: វដ្តពីសម្រង់តម្លៃទៅជាវិក្កយបត្រ (Quotation to Invoice Flow)">Workflow 1: វដ្តពីសម្រង់តម្លៃទៅជាវិក្កយបត្រ (Quotation to Invoice Flow)</a>
+<a href="#workflow-2-ការស្នើសុំការអនុម័តបញ្ចុះតម្លៃពិសេស-discount-approval-workflow" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 2: ការស្នើសុំការអនុម័តបញ្ចុះតម្លៃពិសេស (Discount Approval Workflow)">Workflow 2: ការស្នើសុំការអនុម័តបញ្ចុះតម្លៃពិសេស (Discount Approval Workflow)</a>
+<a href="#workflow-3-ការត្រួតពិនិត្យពិដានឥណទានមុនពេលចេញវិក្កយបត្រ-credit-limit-verification" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 3: ការត្រួតពិនិត្យពិដានឥណទានមុនពេលចេញវិក្កយបត្រ (Credit Limit Verification)">Workflow 3: ការត្រួតពិនិត្យពិដានឥណទានមុនពេលចេញវិក្កយបត្រ (Credit Limit Verification)</a>
+<a href="#workflow-4-ការចុះឈ្មោះ-និងចាត់ចំណាត់ថ្នាក់អតិថិជនថ្មី-customer-onboarding-tiering" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 4: ការចុះឈ្មោះ និងចាត់ចំណាត់ថ្នាក់អតិថិជនថ្មី (Customer Onboarding & Tiering)">Workflow 4: ការចុះឈ្មោះ និងចាត់ចំណាត់ថ្នាក់អតិថិជនថ្មី (Customer Onboarding & Tiering)</a>
+<a href="#workflow-5-ការទទួល-lead-ពីគេហទំព័រ-showroom-inbound-showroom-lead-flow" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 5: ការទទួល Lead ពីគេហទំព័រ Showroom (Inbound Showroom Lead Flow)">Workflow 5: ការទទួល Lead ពីគេហទំព័រ Showroom (Inbound Showroom Lead Flow)</a>
+<a href="#workflow-6-ការតាមដានការប្រមូលប្រាក់-និងការទូទាត់កម្រៃជើងសារ-collection-commission-flow" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 6: ការតាមដានការប្រមូលប្រាក់ និងការទូទាត់កម្រៃជើងសារ (Collection & Commission Flow)">Workflow 6: ការតាមដានការប្រមូលប្រាក់ និងការទូទាត់កម្រៃជើងសារ (Collection & Commission Flow)</a>
+<a href="#7-តក្កវិជ្ជាអាជីវកម្ម-និងវិធានគណនាតម្លៃ-business-logic-pricing-rules" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="7. តក្កវិជ្ជាអាជីវកម្ម និងវិធានគណនាតម្លៃ (Business Logic & Pricing Rules)">7. តក្កវិជ្ជាអាជីវកម្ម និងវិធានគណនាតម្លៃ (Business Logic & Pricing Rules)</a>
+<a href="#71-គោលការណ៍តម្លៃឌីណាមិកតាមកម្រិតអតិថិជន-dynamic-tiered-pricing-logic" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="7.1 គោលការណ៍តម្លៃឌីណាមិកតាមកម្រិតអតិថិជន (Dynamic Tiered Pricing Logic)">7.1 គោលការណ៍តម្លៃឌីណាមិកតាមកម្រិតអតិថិជន (Dynamic Tiered Pricing Logic)</a>
+<a href="#72-វិធានគណនាហិរញ្ញវត្ថុស្តង់ដារ-financial-calculation-order" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="7.2 វិធានគណនាហិរញ្ញវត្ថុស្តង់ដារ (Financial Calculation Order)">7.2 វិធានគណនាហិរញ្ញវត្ថុស្តង់ដារ (Financial Calculation Order)</a>
+<a href="#8-ទំនាក់ទំនងឆ្លងផ្នែកជាមួយតួនាទីផ្សេងទៀត-cross-role-interaction-map" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="8. ទំនាក់ទំនងឆ្លងផ្នែកជាមួយតួនាទីផ្សេងទៀត (Cross-Role Interaction Map)">8. ទំនាក់ទំនងឆ្លងផ្នែកជាមួយតួនាទីផ្សេងទៀត (Cross-Role Interaction Map)</a>
+<a href="#9-វិសាលភាពទិន្នន័យ-data-scope-អ្វីដែលឃើញ-និងអ្វីដែលត្រូវលាក់" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="9. វិសាលភាពទិន្នន័យ (Data Scope — អ្វីដែលឃើញ និងអ្វីដែលត្រូវលាក់)">9. វិសាលភាពទិន្នន័យ (Data Scope — អ្វីដែលឃើញ និងអ្វីដែលត្រូវលាក់)</a>
+<a href="#10-ផ្ទាំងគ្រប់គ្រង-និងសូចនាករ-kpi-kpi-dashboard-commission-tracking" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="10. ផ្ទាំងគ្រប់គ្រង និងសូចនាករ KPI (KPI Dashboard & Commission Tracking)">10. ផ្ទាំងគ្រប់គ្រង និងសូចនាករ KPI (KPI Dashboard & Commission Tracking)</a>
+<a href="#11-គំរូរចនាសម្ព័ន្ធទិន្នន័យ-database-schema-blueprint" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="11. គំរូរចនាសម្ព័ន្ធទិន្នន័យ (Database Schema Blueprint)">11. គំរូរចនាសម្ព័ន្ធទិន្នន័យ (Database Schema Blueprint)</a>
+<a href="#12-ការការពារការក្លែងបន្លំ-និងសុវត្ថិភាពទិន្នន័យ-sales-integrity-controls" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="12. ការការពារការក្លែងបន្លំ និងសុវត្ថិភាពទិន្នន័យ (Sales Integrity Controls)">12. ការការពារការក្លែងបន្លំ និងសុវត្ថិភាពទិន្នន័យ (Sales Integrity Controls)</a>
+<a href="#13-អនុសាសន៍ស្ថាបត្យកម្ម-និងផែនការ-prototype-planning" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="13. អនុសាសន៍ស្ថាបត្យកម្ម និងផែនការ Prototype Planning">13. អនុសាសន៍ស្ថាបត្យកម្ម និងផែនការ Prototype Planning</a>
+<a href="#131-អនុសាសន៍រចនាប្រព័ន្ធ-architectural-recommendations" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="13.1 អនុសាសន៍រចនាប្រព័ន្ធ (Architectural Recommendations)">13.1 អនុសាសន៍រចនាប្រព័ន្ធ (Architectural Recommendations)</a>
+<a href="#132-បញ្ជីត្រួតពិនិត្យការសាងសង់-prototype-15-point-prototype-checklist" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="13.2 បញ្ជីត្រួតពិនិត្យការសាងសង់ Prototype (15-Point Prototype Checklist)">13.2 បញ្ជីត្រួតពិនិត្យការសាងសង់ Prototype (15-Point Prototype Checklist)</a>
+<a href="#14-សំណួរ-និងចម្លើយទូទៅ-faq" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="14. សំណួរ និងចម្លើយទូទៅ (FAQ)">14. សំណួរ និងចម្លើយទូទៅ (FAQ)</a>
+                </div>
+                <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
+                    <a href="DIGITECHKH-Roles-And-Permissions-Interactive-Guide.html?role=sales_executive" class="w-full py-2 px-3 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-700 text-xs font-medium flex items-center justify-between transition border border-slate-200">
+                        <span>មើលក្នុងផ្ទាំងអន្តរកម្ម</span>
+                        <i class="fas fa-up-right-from-square text-[10px] text-slate-400"></i>
+                    </a>
+                    <a href="role_sales_executive.md" class="w-full py-2 px-3 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-500 text-[11px] font-normal flex items-center justify-between transition border border-slate-200">
+                        <span>មើលឯកសារដើម (.md)</span>
+                        <i class="fas fa-file-code text-[10px]"></i>
+                    </a>
+                </div>
+            </aside>
+
+            <!-- Main Document Body -->
+            <main class="print-container flex-1 bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-12 min-w-0 max-w-4xl mx-auto">
+
+                <!-- Breadcrumb -->
+                <div class="no-print flex items-center gap-2 text-xs text-slate-500 mb-6 flex-wrap pb-4 border-b border-slate-100">
+                    <a href="index.html" class="hover:text-primary transition flex items-center gap-1">
+                        <i class="fas fa-home"></i> មជ្ឈមណ្ឌលឯកសារ
+                    </a>
+                    <span>/</span>
+                    <a href="DIGITECHKH-Roles-And-Permissions-Interactive-Guide.html" class="hover:text-primary transition">
+                        តួនាទីទាំង 10
+                    </a>
+                    <span>/</span>
+                    <span class="text-slate-800 font-semibold">បុគ្គលិកប្រតិបត្តិផ្នែកលក់</span>
+                </div>
+
+                <!-- Document Rendered HTML -->
+                <article class="prose prose-slate max-w-none">
+                    <h1 id="digitechkh-bms-ការសិក្សាស៊ីជម្រៅ-តួនាទី-បុគ្គលិកផ្នែកលក់-sales-executive-sales-representative" class="scroll-mt-24 group">💼 DIGITECHKH BMS — ការសិក្សាស៊ីជម្រៅ: តួនាទី បុគ្គលិកផ្នែកលក់ (Sales Executive / Sales Representative) <a href="#digitechkh-bms-ការសិក្សាស៊ីជម្រៅ-តួនាទី-បុគ្គលិកផ្នែកលក់-sales-executive-sales-representative" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h1>
+<div class="my-5 p-4 rounded-xl bg-slate-50 border-l-4 border-[#0f2b5c] text-slate-800 text-xs leading-relaxed shadow-sm">
+<p><strong>ឯកសារ</strong>: <code>role_sales_executive.md</code><br><strong>កំណែ</strong>: 1.0<br><strong>កាលបរិច្ឆេទ</strong>: 21 កញ្ញា 2026<br><strong>គោលបំណង</strong>: ការយល់ដឹង 100% អំពីតួនាទី បុគ្គលិកផ្នែកលក់ / តំណាងផ្នែកលក់ (Sales Executive / Representative) មុនពេលឈានទៅរៀបចំគំរូទម្រង់ដើម (Prototype) — រួមមានវិសាលភាពភារកិច្ចជួរមុខ, សិទ្ធិអំណាចពេញលេញ, ព្រំដែនហាមឃាត់, គោលការណ៍លាក់ការសម្ងាត់ថ្លៃដើម (Zero Purchase Cost Leakage), តម្លៃឌីណាមិកតាមអតិថិជន, ស្ថាបត្យកម្មទំព័រ UI, វដ្តការងារស្នូល, តក្កវិជ្ជាអាជីវកម្ម, ទំនាក់ទំនងឆ្លងផ្នែក, វិសាលភាពទិន្នន័យ, សូចនាករ KPI &amp; កម្រៃជើងសារ (Commission), គំរូទិន្នន័យ Database Schema, និងអនុសាសន៍រៀបចំផែនការលម្អិត។</p>
+</div>
+<hr>
+<h2 id="ចំណុចចាំបាច់-បេសកកម្មស្នូល-និងគោលការណ៍រក្សាការសម្ងាត់ថ្លៃដើម-core-mission-zero-purchase-cost-leakage" class="scroll-mt-24 group">⚠️ ចំណុចចាំបាច់ — បេសកកម្មស្នូល និងគោលការណ៍រក្សាការសម្ងាត់ថ្លៃដើម (Core Mission &amp; Zero Purchase Cost Leakage) <a href="#ចំណុចចាំបាច់-បេសកកម្មស្នូល-និងគោលការណ៍រក្សាការសម្ងាត់ថ្លៃដើម-core-mission-zero-purchase-cost-leakage" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<p>នៅក្នុងស្ថាបត្យកម្មប្រព័ន្ធគ្រប់គ្រងសហគ្រាស DIGITECHKH BMS តួនាទី <strong>Sales Executive (បុគ្គលិកផ្នែកលក់)</strong> គឺជា <strong>«កម្លាំងចលករជួរមុខ»</strong> ក្នុងការស្វែងរកអតិថិជន, ចរចាតម្លៃ, ចេញសម្រង់តម្លៃ, បង្កើតវិក្កយបត្រលក់, និងជំរុញការលូតលាស់នៃប្រាក់ចំណូលរបស់ក្រុមហ៊ុន។</p>
+<div class="my-5 p-4 rounded-xl bg-slate-50 border-l-4 border-[#0f2b5c] text-slate-800 text-xs leading-relaxed shadow-sm">
+<p>🛡️ <strong>គោលការណ៍ការពារការបែកធ្លាយថ្លៃដើម (Zero Purchase Cost Leakage Principle)</strong>:<br>បុគ្គលិកផ្នែកលក់ <strong>ត្រូវបានហាមឃាត់ដាច់ខាត 100% មិនឱ្យមើលឃើញថ្លៃដើមទិញពីអ្នកផ្គត់ផ្គង់ (Supplier Purchase Cost / COGS) ឡើយ</strong> (ទាំងនៅលើ UI, តារាងទំនិញ, ឬ API Response)។<br>បុគ្គលិកផ្នែកលក់មើលឃើញត្រឹមតែ៖</p>
+<ol>
+<li><strong>តម្លៃលក់មូលដ្ឋាន (Base Selling Price)</strong>  </li>
+<li><strong>តម្លៃតាមកម្រិតអតិថិជន (Tiered Pricing: រាយ, ដុំ, តំណាងចែកចាយ)</strong>  </li>
+<li><strong>កម្រិតបញ្ចុះតម្លៃអតិបរមាដែលខ្លួនមានសិទ្ធិ (Max Allowed Discount %)</strong>  </li>
+<li><strong>តម្លៃពិដានទាបបំផុតដែលអាចលក់បាន (Floor Price)</strong></li>
+</ol>
+<p><em>មូលហេតុ</em>: ដើម្បីការពារកុំឱ្យបុគ្គលិកលក់ទម្លាក់តម្លៃដល់បាតដៃដែលនាំឱ្យខាតបង់ប្រយោជន៍ក្រុមហ៊ុន និងការពារការបែកធ្លាយការសម្ងាត់អាជីវកម្មរវាងផ្នែកលទ្ធកម្ម និងទីផ្សារខាងក្រៅ។</p>
+</div>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">វិសាលភាព និងសកម្មភាព</th>
+<th align="center">សិទ្ធិរបស់ Sales Executive</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">មូលហេតុ និងគោលការណ៍អាជីវកម្ម</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>បង្កើត និងកែប្រែសម្រង់តម្លៃ (Quotations)</strong></td>
+<td align="center">✅ ធ្វើបានពេញលេញ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">រៀបចំសំណើដេញថ្លៃ និងចរចាជាមួយអតិថិជន</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>បម្លែងសម្រង់តម្លៃជាវិក្កយបត្រ (Convert to Invoice)</strong></td>
+<td align="center">✅ ធ្វើបានភ្លាមៗ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">បង្កើតការបញ្ជាទិញជាផ្លូវការក្រោយអតិថិជនយល់ព្រម</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>បង្កើត និងគ្រប់គ្រងទិន្នន័យអតិថិជនថ្មី (Customers)</strong></td>
+<td align="center">✅ បង្កើត និងកែប្រែបាន</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">កត់ត្រាព័ត៌មានអតិថិជន និងព័ត៌មានទំនាក់ទំនង</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ពិនិត្យចំនួនស្តុកដែលអាចលក់បាន (Available to Sell)</strong></td>
+<td align="center">✅ មើលឃើញតែចំនួន</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ដឹងថាតើមានទំនិញគ្រប់គ្រាន់ក្នុងស្តុកសម្រាប់លក់ឬទេ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ស្នើសុំការអនុម័តបញ្ចុះតម្លៃពិសេស (Discount Request)</strong></td>
+<td align="center">✅ ផ្ញើសំណើទៅកាន់ Manager</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">នៅពេលអតិថិជនទាមទារការបញ្ចុះតម្លៃលើសពីកូតាខ្លួន</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ពិនិត្យសមតុល្យបំណុលអតិថិជន (Outstanding AR)</strong></td>
+<td align="center">✅ មើលឃើញដើម្បីតាមដាន</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ទប់ស្កាត់ការលក់ជំពាក់បន្ថែមដល់អតិថិជនដែលហួសកំណត់</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>មើលថ្លៃដើមទិញពីអ្នកផ្គត់ផ្គង់ (Supplier Cost)</strong></td>
+<td align="center">❌ <strong>ហាមដាច់ខាត (Strictly Hidden)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ការពារការបែកធ្លាយថ្លៃដើម និងប្រាក់ចំណេញក្រុមហ៊ុន</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>កែប្រែដែនកំណត់ឥណទានអតិថិជន (Credit Limit)</strong></td>
+<td align="center">❌ <strong>ហាមដាច់ខាត (Manager Only)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ការពារហានិភ័យបំណុលវន់ករ និងការគ្រប់គ្រងហិរញ្ញវត្ថុ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>លុបចោលវិក្កយបត្រដែលបានចេញជាផ្លូវការ (Void Invoice)</strong></td>
+<td align="center">❌ <strong>ហាមដាច់ខាត (Manager/Admin Only)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">វិក្កយបត្រផ្លូវការមិនអាចលុបដោយឯកតោភាគីបានឡើយ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>កែប្រែ ឬលុបកំណត់ត្រាទូទាត់ប្រាក់ (Payments)</strong></td>
+<td align="center">❌ <strong>ហាមដាច់ខាត (Accountant Only)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ការពារការកិបកេងសាច់ប្រាក់ និងការបែងចែកភារកិច្ច SoD</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="តារាងមាតិកា" class="scroll-mt-24 group">តារាងមាតិកា <a href="#តារាងមាតិកា" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<ol>
+<li><a href="#1-%E1%9E%A2%E1%9F%92%E1%9E%9C%E1%9E%B8%E1%9E%87%E1%9E%B6-sales-executive">អ្វីជា Sales Executive?</a></li>
+<li><a href="#2-%E1%9E%8B%E1%9E%B6%E1%9E%93%E1%9E%B6%E1%9E%93%E1%9E%BB%E1%9E%80%E1%9F%92%E1%9E%9A%E1%9E%98%E1%9E%80%E1%9F%92%E1%9E%93%E1%9E%BB%E1%9E%84%E1%9E%94%E1%9F%92%E1%9E%9A%E1%9E%96%E1%9F%90%E1%9E%93%E1%9F%92%E1%9E%92-%E1%9E%93%E1%9E%B7%E1%9E%84%E1%9E%91%E1%9F%86%E1%9E%93%E1%9E%B6%E1%9E%80%E1%9F%8B%E1%9E%91%E1%9F%86%E1%9E%93%E1%9E%84%E1%9E%9F%E1%9F%92%E1%9E%90%E1%9E%B6%E1%9E%94%E1%9F%90%E1%9E%93">ឋានានុក្រមក្នុងប្រព័ន្ធ និងទំនាក់ទំនងស្ថាប័ន</a></li>
+<li><a href="#3-%E1%9E%A2%E1%9F%92%E1%9E%9C%E1%9E%B8%E1%9E%8A%E1%9F%82%E1%9E%9B-sales-executive-%E1%9E%92%E1%9F%92%E1%9E%9C%E1%9E%BE%E1%9E%94%E1%9E%B6%E1%9E%93-%E1%9E%93%E1%9E%B7%E1%9E%84%E1%9E%A0%E1%9E%B6%E1%9E%98%E1%9E%92%E1%9F%92%E1%9E%9C%E1%9E%BE">អ្វីដែល Sales Executive ធ្វើបាន និងហាមធ្វើ (Full Capability Map)</a></li>
+<li><a href="#4-%E1%9E%9F%E1%9F%92%E1%9E%90%E1%9E%B6%E1%9E%94%E1%9E%8F%E1%9F%92%E1%9E%99%E1%9E%80%E1%9E%98%E1%9F%92%E1%9E%98%E1%9E%91%E1%9F%86%E1%9E%96%E1%9F%90%E1%9E%9A-ui-%E1%9E%96%E1%9F%81%E1%9E%89%E1%9E%9B%E1%9F%81%E1%9E%89">ស្ថាបត្យកម្មទំព័រ UI ពេញលេញ (Page-by-Page Blueprint)</a></li>
+<li><a href="#5-%E1%9E%98%E1%9F%89%E1%9E%B6%E1%9E%91%E1%9F%92%E1%9E%9A%E1%9E%B8%E1%9E%9F%E1%9E%9F%E1%9E%B7%E1%9E%91%E1%9F%92%E1%9E%92%E1%9E%B7%E1%9E%A2%E1%9F%86%E1%9E%8E%E1%9E%B6%E1%9E%85">ម៉ាទ្រីសសិទ្ធិអំណាច (Permission Matrix)</a></li>
+<li><a href="#6-%E1%9E%9C%E1%9E%8A%E1%9F%92%E1%9E%8F%E1%9E%80%E1%9E%B6%E1%9E%9A%E1%9E%84%E1%9E%B6%E1%9E%9A%E1%9E%9F%E1%9F%92%E1%9E%93%E1%9E%BC%E1%9E%9B%E1%9E%91%E1%9E%B6%E1%9F%86%E1%9E%84-6">វដ្តការងារស្នូលទាំង 6 (Core Workflows)</a></li>
+<li><a href="#7-%E1%9E%8F%E1%9E%80%E1%9F%92%E1%9E%80%E1%9E%9C%E1%9E%B7%E1%9E%87%E1%9F%92%E1%9E%87%E1%9E%B6%E1%9E%A2%E1%9E%B6%E1%9E%87%E1%9E%B8%E1%9E%9C%E1%9E%80%E1%9E%98%E1%9F%92%E1%9E%98-%E1%9E%93%E1%9E%B7%E1%9E%84%E1%9E%9C%E1%9E%B7%E1%9E%92%E1%9E%B6%E1%9E%93%E1%9E%82%E1%9E%8E%E1%9E%93%E1%9E%B6%E1%9E%8F%E1%9E%98%E1%9F%92%E1%9E%9B%E1%9F%83">តក្កវិជ្ជាអាជីវកម្ម និងវិធានគណនាតម្លៃ (Business Logic &amp; Pricing Rules)</a></li>
+<li><a href="#8-%E1%9E%91%E1%9F%86%E1%9E%93%E1%9E%B6%E1%9E%80%E1%9F%8B%E1%9E%91%E1%9F%86%E1%9E%93%E1%9E%84%E1%9E%86%E1%9F%92%E1%9E%9B%E1%9E%84%E1%9E%95%E1%9F%92%E1%9E%93%E1%9F%82%E1%9E%80%E1%9E%87%E1%9E%B6%E1%9E%98%E1%9E%BD%E1%9E%99%E1%9E%8F%E1%9E%BD%E1%9E%93%E1%9E%B6%E1%9E%91%E1%9E%B8%E1%9E%95%E1%9F%92%E1%9E%9F%E1%9F%81%E1%9E%84%E1%9E%91%E1%9F%80%E1%9E%8F">ទំនាក់ទំនងឆ្លងផ្នែកជាមួយតួនាទីផ្សេងទៀត (Cross-Role Interaction Map)</a></li>
+<li><a href="#9-%E1%9E%9C%E1%9E%B7%E1%9E%9F%E1%9E%B6%E1%9E%9B%E1%9E%97%E1%9E%B6%E1%9E%96%E1%9E%91%E1%9E%B7%E1%9E%93%E1%9F%92%E1%9E%93%E1%9E%93%E1%9F%90%E1%9E%99-data-scope--%E1%9E%A2%E1%9F%92%E1%9E%9C%E1%9E%B8%E1%9E%8A%E1%9F%82%E1%9E%9B%E1%9E%83%E1%9E%BE%E1%9E%89-%E1%9E%93%E1%9E%B7%E1%9E%84%E1%9E%A2%E1%9F%92%E1%9E%9C%E1%9E%B8%E1%9E%8A%E1%9F%82%E1%9E%9B%E1%9E%8F%E1%9F%92%E1%9E%9A%E1%9E%BC%E1%9E%9C%E1%9E%9B%E1%9E%B6%E1%9E%80%E1%9F%8B">វិសាលភាពទិន្នន័យ (Data Scope — អ្វីដែលឃើញ និងអ្វីដែលត្រូវលាក់)</a></li>
+<li><a href="#10-%E1%9E%95%E1%9F%92%E1%9E%91%E1%9E%B6%E1%9F%86%E1%9E%84%E1%9E%82%E1%9F%92%E1%9E%9A%E1%9E%94%E1%9F%8B%E1%9E%82%E1%9F%92%E1%9E%9A%E1%9E%84-%E1%9E%93%E1%9E%B7%E1%9E%84%E1%9E%9F%E1%9E%BC%E1%9E%85%E1%9E%93%E1%9E%B6%E1%9E%80%E1%9E%9A-kpi">ផ្ទាំងគ្រប់គ្រង និងសូចនាករ KPI (KPI Dashboard &amp; Commission Tracking)</a></li>
+<li><a href="#11-%E1%9E%82%E1%9F%86%E1%9E%9A%E1%9E%BC%E1%9E%9A%E1%9E%85%E1%9E%93%E1%9E%B6%E1%9E%9F%E1%9E%98%E1%9F%92%E1%9E%96%E1%9F%90%E1%9E%93%E1%9F%92%E1%9E%92%E1%9E%91%E1%9E%B7%E1%9E%93%E1%9F%92%E1%9E%93%E1%9E%93%E1%9F%90%E1%9E%99">គំរូរចនាសម្ព័ន្ធទិន្នន័យ (Database Schema Blueprint)</a></li>
+<li><a href="#12-%E1%9E%80%E1%9E%B6%E1%9E%9A%E1%9E%80%E1%9E%B6%E1%9E%9A%E1%9E%96%E1%9E%B6%E1%9E%9A%E1%9E%80%E1%9E%B6%E1%9E%9A%E1%9E%80%E1%9F%92%E1%9E%9B%E1%9F%82%E1%9E%84%E1%9E%94%E1%9E%93%E1%9F%92%E1%9E%9B%E1%9F%86-%E1%9E%93%E1%9E%B7%E1%9E%84%E1%9E%9F%E1%9E%BB%E1%9E%9C%E1%9E%8F%E1%9F%92%E1%9E%90%E1%9E%B7%E1%9E%97%E1%9E%B6%E1%9E%96%E1%9E%91%E1%9E%B7%E1%9E%93%E1%9F%92%E1%9E%93%E1%9E%93%E1%9F%90%E1%9E%99">ការការពារការក្លែងបន្លំ និងសុវត្ថិភាពទិន្នន័យ (Sales Integrity Controls)</a></li>
+<li><a href="#13-%E1%9E%A2%E1%9E%93%E1%9E%BB%E1%9E%9F%E1%9E%B6%E1%9E%9F%E1%9E%93%E1%9F%8D%E1%9E%9F%E1%9F%92%E1%9E%90%E1%9E%B6%E1%9E%94%E1%9E%8F%E1%9F%92%E1%9E%99%E1%9E%80%E1%9E%98%E1%9F%92%E1%9E%98-%E1%9E%93%E1%9E%B7%E1%9E%84%E1%9E%95%E1%9F%82%E1%9E%93%E1%9E%80%E1%9E%B6%E1%9E%9A-prototype-planning">អនុសាសន៍ស្ថាបត្យកម្ម និងផែនការ Prototype Planning</a></li>
+<li><a href="#14-%E1%9E%9F%E1%9F%86%E1%9E%8E%E1%9E%BD%E1%9E%9A-%E1%9E%93%E1%9E%B7%E1%9E%84%E1%9E%85%E1%9E%98%E1%9F%92%E1%9E%9B%E1%9E%BE%E1%9E%99%E1%9E%91%E1%9E%BC%E1%9E%91%E1%9F%85">សំណួរ និងចម្លើយទូទៅ (FAQ)</a></li>
+</ol>
+<hr>
+<h2 id="1-អ្វីជា-sales-executive" class="scroll-mt-24 group">1. អ្វីជា Sales Executive? <a href="#1-អ្វីជា-sales-executive" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="11-និយមន័យ-definition" class="scroll-mt-24 group">1.1 និយមន័យ (Definition) <a href="#11-និយមន័យ-definition" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p><strong>Sales Executive (បុគ្គលិកផ្នែកលក់ / តំណាងផ្នែកលក់)</strong> គឺជាអ្នកជំនាញទទួលបន្ទុកទំនាក់ទំនងជាមួយអតិថិជនផ្ទាល់ ដើម្បីបង្កើតឱកាសលក់ ចរចា និងបិទកិច្ចសន្យាពាណិជ្ជកម្ម។ នៅក្នុងប្រព័ន្ធ DIGITECHKH BMS បុគ្គលិកលក់មានឧបករណ៍ទំនើបក្នុងការ៖</p>
+<ol>
+<li><strong>គ្រប់គ្រងអតិថិជន (CRM &amp; Leads)</strong>: តាមដានតម្រូវការអតិថិជន, ប្រវត្តិទិញទំនិញ, និងកម្រិតចំណាត់ថ្នាក់អតិថិជន (Tiering)។</li>
+<li><strong>ចេញសម្រង់តម្លៃរហ័ស (Rapid Quotation)</strong>: បង្កើត និងផ្ញើ Quotation ដែលគណនាពន្ធ អតប 10% ស្វ័យប្រវត្តិ និងមានកូដ KHQR បាគង សម្រាប់ការកក់ប្រាក់មុន (Down Payment)។</li>
+<li><strong>បម្លែងការលក់ (Order Conversion)</strong>: បម្លែងសម្រង់តម្លៃដែលយល់ព្រមរួច ទៅជាវិក្កយបត្រលក់ (Sales Invoice) ត្រឹមតែ 1 ចុច ដោយមិនចាំបាច់បញ្ចូលទិន្នន័យឡើងវិញ។</li>
+<li><strong>តាមដានការប្រមូលប្រាក់ និងកម្រៃជើងសារ (Collection &amp; Commission)</strong>: ដឹងច្បាស់ថាតើអតិថិជនរបស់ខ្លួនបានបង់ប្រាក់រួចរាល់ឬនៅ និងតាមដានភាគរយកម្រៃជើងសារដែលខ្លួនទទួលបានជាក់ស្តែង។</li>
+</ol>
+<h3 id="12-ភាពខុសគ្នារវាង-sales-manager-និង-sales-executive" class="scroll-mt-24 group">1.2 ភាពខុសគ្នារវាង Sales Manager និង Sales Executive <a href="#12-ភាពខុសគ្នារវាង-sales-manager-និង-sales-executive" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ចំណុចប្រៀបធៀប</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">អ្នកគ្រប់គ្រងផ្នែកលក់ (Sales Manager)</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">បុគ្គលិកផ្នែកលក់ (Sales Executive)</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>វិសាលភាពទិន្នន័យ</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">មើលឃើញទិន្នន័យលក់របស់បុគ្គលិកទាំងអស់ក្នុងក្រុម</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">មើលឃើញតែអតិថិជន និងវិក្កយបត្រដែលខ្លួនទទួលបន្ទុក</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ការបញ្ចុះតម្លៃ</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">មានសិទ្ធិអនុម័តការបញ្ចុះតម្លៃខ្ពស់ (&gt; 10% ដល់ 20%)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">មានសិទ្ធិបញ្ចុះតម្លៃស្វ័យសម្រេចទាប (≤ 5% ឬតាមកម្រិតកំណត់)</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ពិដានឥណទាន</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">កំណត់ និងកែប្រែ Credit Limit របស់អតិថិជនបាន</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">មើលឃើញតែចំនួននៅសល់ គ្មានសិទ្ធិកែប្រែពិដានឡើយ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ការចាត់ចែងការងារ</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">បែងចែក Lead និងអតិថិជនទៅឱ្យបុគ្គលិកក្រោមឱវាទ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ទទួលយក Lead និងធ្វើការតាមដានរហូតដល់បិទការលក់</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ការអនុម័ត</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ពិនិត្យ និងចុច «អនុម័ត» ឬ «បដិសេធ» សំណើលក់</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ផ្ញើសំណើ «ស្នើសុំការអនុម័ត» ទៅកាន់អ្នកគ្រប់គ្រង</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ច្រកប្រើប្រាស់ UI</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>pages/9-portals/manager/</code> &amp; <code>3-sales/</code></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>pages/9-portals/sales-staff/</code> &amp; <code>3-sales/</code></td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="2-ឋានានុក្រមក្នុងប្រព័ន្ធ-និងទំនាក់ទំនងស្ថាប័ន" class="scroll-mt-24 group">2. ឋានានុក្រមក្នុងប្រព័ន្ធ និងទំនាក់ទំនងស្ថាប័ន <a href="#2-ឋានានុក្រមក្នុងប្រព័ន្ធ-និងទំនាក់ទំនងស្ថាប័ន" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>┌─────────────────────────────────────────────────────────┐
+│                    🏢 GENERAL MANAGER                   │
+└────────────────────────────┬────────────────────────────┘
+                             │ យុទ្ធសាស្ត្រ និងគោលដៅរួម
+┌────────────────────────────▼────────────────────────────┐
+│               👔 SALES MANAGER (អ្នកគ្រប់គ្រងផ្នែកលក់)         │
+│          - កំណត់កូតាលក់, អនុម័តការបញ្ចុះតម្លៃ, ពិដានបំណុល         │
+└────────────────────────────┬────────────────────────────┘
+                             │ បែងចែកការងារ និងត្រួតពិនិត្យ
+┌────────────────────────────▼────────────────────────────┐
+│            💼 SALES EXECUTIVE (បុគ្គលិកផ្នែកលក់ជួរមុខ)          │
+│          - ចរចា, បង្កើត Quote, ចេញ Invoice, ថែទាំអតិថិជន         │
+└──────┬─────────────────────┬────────────────────┬───────┘
+       │ បញ្ជូនទំនិញ          │ ទារប្រាក់            │ ដឹកជញ្ជូន
+┌──────▼──────┐       ┌──────▼──────┐      ┌──────▼──────┐
+│  📦 ឃ្លាំង   │       │  💰 គណនេយ្យ  │      │  🚚 ដឹកជញ្ជូន │
+│ (Warehouse) │       │   (AP/AR)   │      │  (Driver)   │
+└─────────────┘       └─────────────┘      └─────────────┘
+</code></pre>
+        </div>
+<hr>
+<h2 id="3-អ្វីដែល-sales-executive-ធ្វើបាន-និងហាមធ្វើ-full-capability-map" class="scroll-mt-24 group">3. អ្វីដែល Sales Executive ធ្វើបាន និងហាមធ្វើ (Full Capability Map) <a href="#3-អ្វីដែល-sales-executive-ធ្វើបាន-និងហាមធ្វើ-full-capability-map" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="31-អ្វីដែល-sales-executive-ធ្វើបានពេញលេញ" class="scroll-mt-24 group">3.1 ✅ អ្វីដែល Sales Executive ធ្វើបានពេញលេញ <a href="#31-អ្វីដែល-sales-executive-ធ្វើបានពេញលេញ" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">#</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">សមត្ថភាពស្នូល</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ពិពណ៌នា និងករណីប្រើប្រាស់</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">1</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>បង្កើតសម្រង់តម្លៃថ្មី (Create Quote)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ជ្រើសរើសអតិថិជន, ជ្រើសមុខទំនិញ, ប្រព័ន្ធទាញតម្លៃតាមកម្រិតអតិថិជនស្វ័យប្រវត្តិ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">2</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>កែសម្រួលសម្រង់តម្លៃព្រាង (Edit Draft Quote)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">កែសម្រួលបរិមាណ, តម្លៃឯកតាក្នុងបន្ទាត់ (Line Price), ចូលរួមមុន (Down Payment)</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">3</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>បម្លែងសម្រង់តម្លៃជាវិក្កយបត្រ (Convert to Invoice)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ចុចតែ 1 ប៊ូតុងដើម្បីបង្កើតវិក្កយបត្រពេញលេញដោយស្វ័យប្រវត្តិ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">4</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>បង្កើតវិក្កយបត្រផ្ទាល់ (Direct Invoice)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ចេញវិក្កយបត្រលក់ផ្ទាល់សម្រាប់អតិថិជនដែលទិញភ្លាមៗដោយមិនចាំបាច់មាន Quote</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">5</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>បង្កើតព័ត៌មានអតិថិជនថ្មី (Create Customer)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">កត់ត្រាឈ្មោះ, លេខទូរស័ព្ទ, ទីតាំងដឹកជញ្ជូន, Telegram, និងជ្រើសរើស Pricing Tier</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">6</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ពិនិត្យស្តុកទំនិញទំនេរ (Check Stock Balance)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ពិនិត្យមើលបរិមាណទំនិញដែលនៅទំនេរពិតប្រាកដ (Available Qty) ក្នុងឃ្លាំង</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">7</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ស្នើសុំការអនុម័តបញ្ចុះតម្លៃ (Request Discount Approval)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">បញ្ចូលមូលហេតុអាជីវកម្ម និងផ្ញើទៅ Sales Manager ពេលបញ្ចុះតម្លៃលើសកូតា</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">8</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>បោះពុម្ពឯកសារ A4 (Print Quote &amp; Invoice)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">បោះពុម្ពសម្រង់តម្លៃ និងវិក្កយបត្រជាទម្រង់ A4 ផ្លូវការដែលមានឡូហ្គោ និង QR កូដ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">9</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ចែករំលែកតំណភ្ជាប់ (Share via Telegram / Link)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ចម្លងតំណភ្ជាប់សម្រង់តម្លៃ ឬទាញយកជា PDF ផ្ញើជូនអតិថិជនតាម Telegram</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">10</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>តាមដានសមិទ្ធផលផ្ទាល់ខ្លួន (Target &amp; Commission)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">មើលតារាង KPI បង្ហាញពីភាគរយសម្រេចគោលដៅប្រចាំខែ និងប្រាក់កម្រៃជើងសារ</td>
+</tr>
+</tbody></table></div>
+<h3 id="32-អ្វីដែល-sales-executive-ហាមធ្វើដាច់ខាត" class="scroll-mt-24 group">3.2 ❌ អ្វីដែល Sales Executive ហាមធ្វើដាច់ខាត <a href="#32-អ្វីដែល-sales-executive-ហាមធ្វើដាច់ខាត" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">#</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">សកម្មភាពហាមឃាត់</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ហានិភ័យ និងហេតុផលការពារ</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">1</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ <strong>មើលឃើញថ្លៃដើមទិញពីអ្នកផ្គត់ផ្គង់ (Purchase Cost / COGS)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">បែកធ្លាយការសម្ងាត់ថ្លៃដើមក្រុមហ៊ុន និងធ្វើឱ្យបាត់បង់អំណាចចរចា</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">2</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ <strong>កែប្រែ ឬដំឡើងពិដានឥណទានអតិថិជន (Credit Limit)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ការពារហានិភ័យអតិថិជនជំពាក់ប្រាក់វន់ករមិនអាចទារបាន</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">3</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ <strong>លុបចោលវិក្កយបត្រដែលបានអនុម័ត (Void Invoice)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">វិក្កយបត្រមានច្បាប់ដើមជាប់ពន្ធដារ មិនអាចលុបដោយគ្មានការអនុម័តពី Manager ឡើយ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">4</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ <strong>កែសម្រួលតុល្យភាពស្តុកទំនិញក្នុងឃ្លាំង (Adjust Stock)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ការពារការបិទបាំងការបាត់បង់ទំនិញ (ភារកិច្ចផ្តាច់មុខរបស់ Warehouse Manager)</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">5</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ <strong>កែប្រែ ឬលុបកំណត់ត្រាប្រាក់ដែលបានបង់ (Payment Records)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ការពារការកិបកេងលុយក្រុមហ៊ុន (ភារកិច្ចផ្តាច់មុខរបស់ AP/AR Accountant)</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">6</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ <strong>បញ្ចុះតម្លៃលើសពី Floor Price ដោយគ្មានការអនុម័ត</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ប្រព័ន្ធចាក់សោរមិនឱ្យ Save ឡើយ ប្រសិនបើតម្លៃលក់ទាបជាង Floor Price</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">7</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ <strong>មើលឃើញកម្រៃជើងសារ ឬប្រាក់ខែរបស់បុគ្គលិកលក់ដទៃ</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">រក្សាការសម្ងាត់ផ្ទៃក្នុង និងសុខដុមរមនាក្នុងក្រុមការងារ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">8</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ <strong>លុបអតិថិជនដែលមានប្រវត្តិប្រតិបត្តិការអាជីវកម្ម</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">រក្សាភាពសុចរិតនៃប្រវត្តិហិរញ្ញវត្ថុ និងសវនកម្ម (Audit Trail)</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="4-ស្ថាបត្យកម្មទំព័រ-ui-ពេញលេញ-page-by-page-blueprint" class="scroll-mt-24 group">4. ស្ថាបត្យកម្មទំព័រ UI ពេញលេញ (Page-by-Page Blueprint) <a href="#4-ស្ថាបត្យកម្មទំព័រ-ui-ពេញលេញ-page-by-page-blueprint" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<p>បុគ្គលិកផ្នែកលក់ដំណើរការលើ <strong>2 ស្រទាប់ចម្បង</strong>៖</p>
+<ol>
+<li><strong><code>frontend/src/pages/9-portals/sales-staff/</code></strong>: ច្រកផ្ទាំងការងារប្រចាំថ្ងៃរបស់បុគ្គលិកលក់ (Fast Frontline Workspace)</li>
+<li><strong><code>frontend/src/pages/3-sales/</code></strong>: ម៉ូឌុលគ្រប់គ្រងលក់កម្រិតសហគ្រាសពេញលេញ (Enterprise Detail Management)</li>
+</ol>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>Sales Staff Workspace Structure:
+├── 9-portals/sales-staff/
+│   ├── dashboard.html          ← ផ្ទាំងសង្ខេបសមិទ្ធផលលក់, គោលដៅប្រចាំខែ, ការងាររង់ចាំ និង Lead ថ្មី
+│   ├── quotes.html             ← បញ្ជីសម្រង់តម្លៃផ្ទាល់ខ្លួន (My Quotations)
+│   ├── create-quote.html       ← ទម្រង់បង្កើតសម្រង់តម្លៃថ្មី (Quick Quote Creation)
+│   ├── invoices.html           ← បញ្ជីវិក្កយបត្រលក់របស់ខ្លួន (My Invoices)
+│   ├── create-invoice.html     ← ទម្រង់បង្កើតវិក្កយបត្រលក់ផ្ទាល់ (Direct Invoice Creation)
+│   ├── customers.html          ← បញ្ជីអតិថិជនក្នុងបន្ទុក (My Customer Portfolio)
+│   ├── create-customer.html    ← ទម្រង់ចុះឈ្មោះអតិថិជនថ្មី (New Customer Registration)
+│   └── payments.html           ← បញ្ជីស្ថានភាពទូទាត់ប្រាក់របស់អតិថិជន (Payment Status Tracking)
+│
+└── 3-sales/ (Enterprise Full-Module Pages)
+    ├── 1-invoice/
+    │   ├── invoice.html        ← តារាងវិក្កយបត្រលក់សហគ្រាស
+    │   ├── create-invoice.html ← ទម្រង់បង្កើតវិក្កយបត្រពេញលេញ
+    │   ├── edit-invoice.html   ← ទម្រង់កែប្រែវិក្កយបត្រព្រាង
+    │   └── view-invoice.html   ← បង្ហាញព័ត៌មានលម្អិតវិក្កយបត្រ និងបោះពុម្ព A4
+    ├── 2-quote/
+    │   ├── quote.html          ← តារាងសម្រង់តម្លៃសហគ្រាស
+    │   ├── create-quote.html   ← ទម្រង់បង្កើតសម្រង់តម្លៃពេញលេញ
+    │   ├── edit-quote.html     ← ទម្រង់កែប្រែសម្រង់តម្លៃព្រាង
+    │   └── view-quote.html     ← បង្ហាញព័ត៌មានលម្អិតសម្រង់តម្លៃ, ប៊ូតុងបម្លែងជា Invoice, បោះពុម្ព A4
+    ├── 3-customer/
+    │   ├── customer.html       ← តារាងបញ្ជីអតិថិជន
+    │   ├── create-customer.html← ទម្រង់បង្កើតអតិថិជន
+    │   ├── edit-customer.html  ← ទម្រង់កែប្រែព័ត៌មានអតិថិជន
+    │   └── view-customer.html  ← ប្រវត្តិទិញទំនិញ, សមតុល្យបំណុល, និងពិដានឥណទាន
+    └── 4-payment/
+        ├── payment.html        ← តារាងតាមដានការទទួលប្រាក់
+        └── view-payment.html   ← បង្កាន់ដៃទទួលប្រាក់ផ្លូវការ (Official Receipt View)
+</code></pre>
+        </div>
+<hr>
+<h3 id="41-9-portalssales-staffdashboardhtml-ផ្ទាំងគ្រប់គ្រងសមិទ្ធផលបុគ្គលិកលក់" class="scroll-mt-24 group">4.1 <code>9-portals/sales-staff/dashboard.html</code> — ផ្ទាំងគ្រប់គ្រងសមិទ្ធផលបុគ្គលិកលក់ <a href="#41-9-portalssales-staffdashboardhtml-ផ្ទាំងគ្រប់គ្រងសមិទ្ធផលបុគ្គលិកលក់" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p><strong>គោលបំណង</strong>: បង្ហាញវឌ្ឍនភាពការងារប្រចាំថ្ងៃ, ភាគរយសម្រេចកូតាលក់, កម្រៃជើងសារប៉ាន់ស្មាន, និងការងារត្រូវតាមដានបន្ទាន់។</p>
+<p><strong>កាត KPI ជួរលើ (Top Sales Metrics)</strong>:</p>
+<ol>
+<li><strong>ការលក់សម្រេចខែនេះ (MTD Sales Achieved)</strong>: <code>$18,450.00</code> (ស្មើនឹង 73.8% នៃកូតា <code>$25,000.00</code>) — របារពណ៌បៃតងរត់បង្ហាញភាគរយ</li>
+<li><strong>កម្រៃជើងសារប៉ាន់ស្មាន (Estimated Commission)</strong>: <code>$553.50</code> (ផ្អែកលើអត្រា 3% នៃវិក្កយបត្រដែលបានប្រមូលប្រាក់រួច)</li>
+<li><strong>សម្រង់តម្លៃរង់ចាំការឆ្លើយតប (Pending Quotes)</strong>: <code>8 សម្រង់</code> (ទឹកប្រាក់សរុប <code>$6,200.00</code>)</li>
+<li><strong>វិក្កយបត្រជំពាក់ហួសកំណត់ (Overdue AR Follow-up)</strong>: <code>3 វិក្កយបត្រ</code> (ទឹកប្រាក់ <code>$1,420.00</code> ត្រូវទូរស័ព្ទទារប្រាក់)</li>
+</ol>
+<p><strong>ប្លង់កណ្តាល និងបាតទំព័រ</strong>:</p>
+<ul>
+<li><strong>ផ្ទាំងការងារត្រូវធ្វើថ្ងៃនេះ (Today&#39;s Action Items)</strong>:<ul>
+<li>📞 ទូរស័ព្ទទៅក្រុមហ៊ុន អង្គរ សឹបផ្លាយ ដើម្បីតាមដានសម្រង់តម្លៃ <code>#QT-2026-0042</code></li>
+<li>⚠️ អតិថិជន ហេង វិច្ឆិកា ជំពាក់ហួសកំណត់ 15 ថ្ងៃ (វិក្កយបត្រ <code>#INV-2026-0088</code>)</li>
+<li>🔔 សំណើសុំបញ្ចុះតម្លៃពិសេសសម្រាប់ <code>#QT-2026-0045</code> ត្រូវបាន Sales Manager អនុម័តរួចរាល់</li>
+</ul>
+</li>
+<li><strong>តារាងសម្រង់តម្លៃថ្មីៗ (Recent Quotes Quick Table)</strong>: បង្ហាញ 5 ជួរចុងក្រោយ មានប៊ូតុងរហ័ស «បម្លែងជាវិក្កយបត្រ»</li>
+<li><strong>របារប៊ូតុងរហ័ស (Quick Actions)</strong>:<ul>
+<li>ប៊ូតុង «បង្កើតសម្រង់តម្លៃថ្មី» (<code>bg-[#0f2b5c] text-white</code>) → បើក <code>create-quote.html</code></li>
+<li>ប៊ូតុង «ចុះឈ្មោះអតិថិជនថ្មី» (<code>bg-slate-50 border</code>) → បើក <code>create-customer.html</code></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="42-9-portalssales-staffcreate-quotehtml-3-sales2-quotecreate-quotehtml-ទម្រង់បង្កើតសម្រង់តម្លៃ" class="scroll-mt-24 group">4.2 <code>9-portals/sales-staff/create-quote.html</code> &amp; <code>3-sales/2-quote/create-quote.html</code> — ទម្រង់បង្កើតសម្រង់តម្លៃ <a href="#42-9-portalssales-staffcreate-quotehtml-3-sales2-quotecreate-quotehtml-ទម្រង់បង្កើតសម្រង់តម្លៃ" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p><strong>គោលបំណង</strong>: បង្កើតសម្រង់តម្លៃជូនអតិថិជនដោយស្វ័យប្រវត្តិកម្មខ្ពស់ មានការគណនាតម្លៃតាមកម្រិតអតិថិជន និងលក្ខខណ្ឌហិរញ្ញវត្ថុត្រឹមត្រូវ។</p>
+<p><strong>ប្លង់ទម្រង់ (Enterprise Form Layout)</strong>:</p>
+<ol>
+<li><p><strong>ក្បាលទំព័រ (Header Section)</strong>:</p>
+<ul>
+<li>ប៊ូតុងត្រឡប់ក្រោយស្តង់ដារ៖ <code>&lt;a href=&quot;quotes.html&quot; class=&quot;w-10 h-10 rounded-xl bg-slate-50 border border-slate-200/70 flex items-center justify-center&quot;&gt;&lt;i class=&quot;fas fa-arrow-left text-sm&quot;&gt;&lt;/i&gt;&lt;/a&gt;</code></li>
+<li>ចំណងជើង៖ <code>បង្កើតសម្រង់តម្លៃថ្មី</code> | អត្ថបទរង៖ <code>រៀបចំសំណើតម្លៃជូនអតិថិជនតាមកម្រិតតម្លៃឌីណាមិក</code></li>
+<li>ប៊ូតុងសកម្មភាព៖ «រក្សាទុកជាព្រាង» និង «ចេញសម្រង់តម្លៃជាផ្លូវការ»</li>
+</ul>
+</li>
+<li><p><strong>ព័ត៌មានទូទៅនៃសម្រង់តម្លៃ (Quotation General Info)</strong>:</p>
+<ul>
+<li><strong>ជ្រើសរើសអតិថិជន (Customer Select)</strong>: Custom Dropdown មានបង្ហាញ Avatar, ឈ្មោះក្រុមហ៊ុន, លេខទូរស័ព្ទ, និងស្លាកកម្រិតតម្លៃ (ឧ. <code>តំណាងចែកចាយ VIP - Discount 12%</code>)</li>
+<li><strong>លេខកូដសម្រង់តម្លៃ</strong>: បង្កើតស្វ័យប្រវត្តិ ឧ. <code>#QT-2026-0051</code></li>
+<li><strong>កាលបរិច្ឆេទចេញ</strong>: កាលបរិច្ឆេទថ្ងៃនេះ (អាចជ្រើសរើសតាម Date Picker)</li>
+<li><strong>សុពលភាពសម្រង់តម្លៃ (Valid Until)</strong>: កំណត់លំនាំដើម 15 ថ្ងៃ ឬ 30 ថ្ងៃ</li>
+<li><strong>លក្ខខណ្ឌទូទាត់ (Payment Terms)</strong>: Custom Dropdown (ទូទាត់ភ្លាមៗ, 15 ថ្ងៃ, 30 ថ្ងៃ)</li>
+</ul>
+</li>
+<li><p><strong>តារាងមុខទំនិញ (Line Items Table)</strong> — <em>អនុលោមតាមស្តង់ដារកាតព្វកិច្ច</em>:</p>
+<ul>
+<li><strong>គ្មានជួរឈរ «បញ្ចុះតម្លៃ» ក្នុងតារាងឡើយ</strong> ដើម្បីរក្សាភាពទូលាយ និងស្អាតភ្នែក។</li>
+<li><strong>ជួរឈរតារាង</strong>:<ol>
+<li>លេខរៀង (<code>#</code>)</li>
+<li>មុខទំនិញ / បរិយាយ (Custom Dropdown រើសមុខទំនិញ + បង្ហាញស្តុកនៅទំនេរ <code>Available: 45</code>)</li>
+<li>ឯកតា (កេស, ប្រអប់, គ្រឿង, កញ្ចប់)</li>
+<li>បរិមាណ (Input Number)</li>
+<li>តម្លៃឯកតា (ទាញចេញពី Pricing Tier របស់អតិថិជនដោយស្វ័យប្រវត្តិ ប៉ុន្តែអនុញ្ញាតឱ្យកែប្រែដោយដៃ)</li>
+<li>សរុបទឹកប្រាក់បន្ទាត់ (<code>បរិមាណ × តម្លៃឯកតា</code>)</li>
+<li>ប៊ូតុងលុបជួរ (<code>🗑️</code>)</li>
+</ol>
+</li>
+<li>ប៊ូតុង «+ បន្ថែមមុខទំនិញ» (<code>border-dashed border-2 text-primary</code>)</li>
+</ul>
+</li>
+<li><p><strong>ផ្នែកសង្ខេបហិរញ្ញវត្ថុ (Financial Summary Standard)</strong> — <em>អនុលោមតាមលំដាប់កាតព្វកិច្ចទាំង 5 ជួរ</em>:</p>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>┌─────────────────────────────────────────────────────────┐
+│ 1. សរុបរងមុខទំនិញ (Subtotal):               $1,200.00   │
+│ 2. ចូលរួមមុន (Down Payment):                  $200.00   │
+│ 3. ការបញ្ចុះតម្លៃពិសេស (Special Discount):      $50.00   │
+│ 4. អាករលើតម្លៃបន្ថែម (អតប 10%):               $115.00   │
+│ ─────────────────────────────────────────────────────── │
+│ 5. ទឹកប្រាក់សរុបចុងក្រោយ (Grand Total):        $1,265.00   │
+│    សមតុល្យត្រូវទូទាត់បង្គ្រប់:                 $1,065.00   │
+└─────────────────────────────────────────────────────────┘
+</code></pre>
+        </div>
+<ul>
+<li><em>ចំណាំលើការបញ្ចុះតម្លៃពិសេស</em>: ប្រសិនបើ Sales Executive បញ្ចូលទឹកប្រាក់បញ្ចុះតម្លៃពិសេស &gt; 5% នៃ Subtotal ប្រព័ន្ធនឹងបង្ហាញប្រអប់ Alert ពណ៌លឿង៖ <code>⚠️ ការបញ្ចុះតម្លៃនេះលើសពីកូតាស្វ័យសម្រេច 5%។ សំណើនេះនឹងត្រូវបញ្ជូនទៅ Sales Manager ដើម្បីអនុម័តមុនពេលចេញផ្លូវការ។</code> រួមជាមួយប្រអប់បញ្ចូល «មូលហេតុនៃការបញ្ចុះតម្លៃ»។</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="43-3-sales2-quoteview-quotehtml-បង្ហាញព័ត៌មានលម្អិតសម្រង់តម្លៃ-និងការបម្លែង" class="scroll-mt-24 group">4.3 <code>3-sales/2-quote/view-quote.html</code> — បង្ហាញព័ត៌មានលម្អិតសម្រង់តម្លៃ និងការបម្លែង <a href="#43-3-sales2-quoteview-quotehtml-បង្ហាញព័ត៌មានលម្អិតសម្រង់តម្លៃ-និងការបម្លែង" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p><strong>គោលបំណង</strong>: បង្ហាញសន្លឹកសម្រង់តម្លៃពេញលេញ, បោះពុម្ពជាក្រដាស A4, ចម្លង Link ផ្ញើ Telegram, និងប៊ូតុងបម្លែងទៅជាវិក្កយបត្រ។</p>
+<p><strong>សមាសភាគសំខាន់ៗ</strong>:</p>
+<ul>
+<li><strong>របារសកម្មភាពកំពូល (Action Bar)</strong>:<ul>
+<li>ផ្លាកស្ថានភាព Badge: 🟢 «បានអនុម័ត (Approved)» / 🟡 «រង់ចាំការអនុម័ត (Pending Approval)» / 🔵 «បានបម្លែងជាវិក្កយបត្រ (Converted)»</li>
+<li>ប៊ូតុង «បោះពុម្ព A4» (<code>window.print()</code>)</li>
+<li>ប៊ូតុង «ផ្ញើតាម Telegram / ចម្លង Link»</li>
+<li>ប៊ូតុង «កែសម្រួល» (ដំណើរការបានតែពេល Quote ស្ថិតក្នុងស្ថានភាព Draft ប៉ុណ្ណោះ)</li>
+<li><strong>ប៊ូតុងលេចធ្លោ «បម្លែងជាវិក្កយបត្រ (Convert to Invoice)»</strong> (<code>bg-emerald-600 hover:bg-emerald-700 text-white font-medium px-4 py-2 rounded-xl shadow-sm</code>)</li>
+</ul>
+</li>
+<li><strong>សន្លឹកសម្រង់តម្លៃផ្លូវការ (Official Quote Sheet Canvas)</strong>:<ul>
+<li>ក្បាលសន្លឹកមានឡូហ្គោ DIGITECHKH, អាសយដ្ឋាន, លេខទូរស័ព្ទ, លេខសម្គាល់អ្នកជាប់ពន្ធ VATTIN</li>
+<li>ព័ត៌មានអតិថិជន (Bill To / Ship To)</li>
+<li>តារាងមុខទំនិញស្អាតបរិសុទ្ធ គ្មានបន្ទាត់បញ្ចុះតម្លៃ</li>
+<li>ផ្នែកសង្ខេបទឹកប្រាក់ 5 ជួរ</li>
+<li><strong>កូដ KHQR បាគង សម្រាប់ការកក់ប្រាក់មុន (Down Payment QR)</strong></li>
+<li>កន្លែងចុះហត្ថលេខា 2 ភាគី (អ្នករៀបចំ និងអតិថិជនយល់ព្រម)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="44-3-sales1-invoiceview-invoicehtml-បង្ហាញព័ត៌មានលម្អិតវិក្កយបត្រលក់" class="scroll-mt-24 group">4.4 <code>3-sales/1-invoice/view-invoice.html</code> — បង្ហាញព័ត៌មានលម្អិតវិក្កយបត្រលក់ <a href="#44-3-sales1-invoiceview-invoicehtml-បង្ហាញព័ត៌មានលម្អិតវិក្កយបត្រលក់" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p><strong>គោលបំណង</strong>: វិក្កយបត្រផ្លូវការដែលបានចេញជូនអតិថិជន បង្ហាញប្រវត្តិទូទាត់ប្រាក់ និងស្ថានភាពដឹកជញ្ជូន។</p>
+<p><strong>សមាសភាគសំខាន់ៗ</strong>:</p>
+<ul>
+<li><strong>របារស្ថានភាពទូទាត់</strong>:<ul>
+<li>🔴 «មិនទាន់ទូទាត់ (Unpaid)»</li>
+<li>🟡 «បានទូទាត់មួយផ្នែក (Partially Paid)» — បង្ហាញប្រាក់បានបង់ និងប្រាក់នៅសល់</li>
+<li>🟢 «បានទូទាត់ពេញលេញ (Paid)»</li>
+</ul>
+</li>
+<li><strong>តំណភ្ជាប់ឯកសារពាក់ព័ន្ធ (Document Trail)</strong>:<ul>
+<li>បង្ហាញលេខយោងសម្រង់តម្លៃដើម <code>#QT-2026-0042</code></li>
+<li>បង្ហាញលេខបញ្ជាដឹកជញ្ជូន (Delivery Order) <code>#DO-2026-0038</code></li>
+</ul>
+</li>
+<li><strong>ប្រវត្តិការទទួលប្រាក់ (Payment History Log)</strong>:<ul>
+<li>កាលបរិច្ឆេទ, វិធីសាស្ត្រ (KHQR Bakong / ផ្ទេរធនាគារ / សាច់ប្រាក់), ចំនួនទឹកប្រាក់, លេខបង្កាន់ដៃ</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="45-3-sales3-customerview-customerhtml-ព័ត៌មានលម្អិត-និងប្រវត្តិអតិថិជន" class="scroll-mt-24 group">4.5 <code>3-sales/3-customer/view-customer.html</code> — ព័ត៌មានលម្អិត និងប្រវត្តិអតិថិជន <a href="#45-3-sales3-customerview-customerhtml-ព័ត៌មានលម្អិត-និងប្រវត្តិអតិថិជន" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p><strong>គោលបំណង</strong>: ផ្តល់ទិដ្ឋភាព 360 ដឺក្រេនៃអតិថិជន ដើម្បីឱ្យបុគ្គលិកលក់ដឹងពីឥរិយាបថទិញ និងស្ថានភាពឥណទាន។</p>
+<p><strong>កាតសង្ខេបហិរញ្ញវត្ថុអតិថិជន (Customer Financial Snapshot)</strong>:</p>
+<ol>
+<li><strong>កម្រិតតម្លៃ (Pricing Tier)</strong>: <code>តំណាងចែកចាយកម្រិត A (Wholesale Tier 1)</code></li>
+<li><strong>ពិដានឥណទាន (Credit Limit)</strong>: <code>$5,000.00</code></li>
+<li><strong>បំណុលបច្ចុប្បន្ន (Current Balance)</strong>: <code>$2,340.00</code></li>
+<li><strong>ឥណទាននៅសល់ដែលអាចទិញបាន (Available Credit)</strong>: <code>$2,660.00</code> (គណនាពី <code>$5,000 - $2,340</code>)</li>
+<li><strong>ស្ថានភាពបំណុល</strong>: 🟢 «ប្រក្រតី (Normal)» ឬ 🔴 «មានវិក្កយបត្រហួសកំណត់ (Overdue &gt; 30 ថ្ងៃ)»</li>
+</ol>
+<hr>
+<h2 id="5-ម៉ាទ្រីសសិទ្ធិអំណាច-permission-matrix" class="scroll-mt-24 group">5. ម៉ាទ្រីសសិទ្ធិអំណាច (Permission Matrix) <a href="#5-ម៉ាទ្រីសសិទ្ធិអំណាច-permission-matrix" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ម៉ូឌុល និងឯកសារ</th>
+<th align="center">មើល (View)</th>
+<th align="center">បង្កើត (Create)</th>
+<th align="center">កែប្រែ (Edit)</th>
+<th align="center">អនុម័ត (Approve)</th>
+<th align="center">លុបចោល (Void/Delete)</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>សម្រង់តម្លៃ (Quotations)</strong></td>
+<td align="center">✅ របស់ខ្លួន និងក្រុម</td>
+<td align="center">✅ បង្កើតបាន</td>
+<td align="center">✅ កែបានពេល Draft</td>
+<td align="center">❌ Manager ទើបអនុម័តបាន</td>
+<td align="center">❌ Manager/Admin</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>វិក្កយបត្រលក់ (Sales Invoices)</strong></td>
+<td align="center">✅ របស់ខ្លួន និងក្រុម</td>
+<td align="center">✅ បង្កើតបាន</td>
+<td align="center">✅ កែបានពេល Draft</td>
+<td align="center">❌ Manager/Admin</td>
+<td align="center">❌ Manager/Admin</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>អតិថិជន (Customers)</strong></td>
+<td align="center">✅ មើលបានទាំងអស់</td>
+<td align="center">✅ បង្កើតថ្មីបាន</td>
+<td align="center">✅ កែព័ត៌មានទូទៅ</td>
+<td align="center">❌ (គ្មាន)</td>
+<td align="center">❌ ហាមដាច់ខាត</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ពិដានឥណទាន (Credit Limit)</strong></td>
+<td align="center">✅ មើលឃើញចំនួន</td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+<td align="center">❌ Manager/Admin</td>
+<td align="center">❌ Manager/Admin</td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ស្តុកទំនិញ (Inventory Stock)</strong></td>
+<td align="center">✅ មើលឃើញតែចំនួន</td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ថ្លៃដើមទិញ (Purchase Cost)</strong></td>
+<td align="center">❌ <strong>លាក់ 100%</strong></td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ការទទួលប្រាក់ (Payments)</strong></td>
+<td align="center">✅ មើលស្ថានភាព</td>
+<td align="center">❌ គណនេយ្យករ</td>
+<td align="center">❌ គណនេយ្យករ</td>
+<td align="center">❌ គណនេយ្យករ</td>
+<td align="center">❌ គណនេយ្យករ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>របាយការណ៍លក់ (Reports)</strong></td>
+<td align="center">✅ មើលតែរបស់ខ្លួន</td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="6-វដ្តការងារស្នូលទាំង-6-core-workflows" class="scroll-mt-24 group">6. វដ្តការងារស្នូលទាំង 6 (Core Workflows) <a href="#6-វដ្តការងារស្នូលទាំង-6-core-workflows" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="workflow-1-វដ្តពីសម្រង់តម្លៃទៅជាវិក្កយបត្រ-quotation-to-invoice-flow" class="scroll-mt-24 group">Workflow 1: វដ្តពីសម្រង់តម្លៃទៅជាវិក្កយបត្រ (Quotation to Invoice Flow) <a href="#workflow-1-វដ្តពីសម្រង់តម្លៃទៅជាវិក្កយបត្រ-quotation-to-invoice-flow" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>START
+  │
+  ▼
+អតិថិជនទាក់ទងមកសាកសួរតម្លៃ (ទូរស័ព្ទ, Telegram, ឬ Showroom Website)
+  │
+  ▼
+Sales Executive ចូល `create-quote.html`
+  ├── ជ្រើសរើសឈ្មោះអតិថិជន (ប្រព័ន្ធទាញ Pricing Tier ស្វ័យប្រវត្តិ)
+  ├── ជ្រើសរើសមុខទំនិញ និងបរិមាណ (ពិនិត្យ Available Stock)
+  └── បញ្ចូលប្រាក់កក់ «ចូលរួមមុន» (Down Payment) ប្រសិនបើមាន
+  │
+  ▼
+[លក្ខខណ្ឌ: តម្លៃលក់សមស្របតាមកូតា?]
+  ├── [បាទ/ចាស: បញ្ចុះតម្លៃ ≤ 5%] → រក្សាទុក និងចេញ Quote ជាផ្លូវការភ្លាមៗ
+  └── [ទេ: បញ្ចុះតម្លៃ &gt; 5%] → ប្រព័ន្ធប្តូរស្ថានភាពជា &quot;Pending Approval&quot; (រង់ចាំ Manager)
+  │
+  ▼
+ផ្ញើ Quote (PDF / Telegram Link) ជូនអតិថិជន
+  │
+  ▼
+អតិថិជនយល់ព្រមទទួលយកសម្រង់តម្លៃ
+  │
+  ▼
+Sales Executive បើក `view-quote.html` → ចុចប៊ូតុង &quot;បម្លែងជាវិក្កយបត្រ (Convert to Invoice)&quot;
+  │
+  ▼
+ប្រព័ន្ធបង្កើតវិក្កយបត្រលក់ (`#INV-xxxx`) ដោយចម្លងទិន្នន័យទាំងអស់ស្វ័យប្រវត្តិ
+  ├── ដកកាត់ប្រាក់កក់ (Down Payment) ចេញពីសមតុល្យត្រូវទូទាត់
+  ├── បញ្ជូនសេចក្តីជូនដំណឹងទៅផ្នែកឃ្លាំងដើម្បីរៀបចំទំនិញ (Pick &amp; Pack)
+  └── ប្តូរស្ថានភាព Quote ទៅជា &quot;Converted&quot; (ចាក់សោរ Read-Only)
+  │
+  ▼
+END
+</code></pre>
+        </div>
+<hr>
+<h3 id="workflow-2-ការស្នើសុំការអនុម័តបញ្ចុះតម្លៃពិសេស-discount-approval-workflow" class="scroll-mt-24 group">Workflow 2: ការស្នើសុំការអនុម័តបញ្ចុះតម្លៃពិសេស (Discount Approval Workflow) <a href="#workflow-2-ការស្នើសុំការអនុម័តបញ្ចុះតម្លៃពិសេស-discount-approval-workflow" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>START
+  │
+  ▼
+អតិថិជនស្នើសុំការបញ្ចុះតម្លៃ 12% លើការបញ្ជាទិញទំហំធំ ($5,000.00)
+  │
+  ▼
+Sales Executive បញ្ចូលការបញ្ចុះតម្លៃក្នុង `create-quote.html`
+  ├── កូតាស្វ័យសម្រេចរបស់បុគ្គលិកលក់: អតិបរមា 5%
+  └── អត្រាស្នើសុំ: 12% (លើសកូតា 7%)
+  │
+  ▼
+ប្រព័ន្ធបង្ហាញផ្ទាំង Alert ពណ៌លឿង និងតម្រូវឱ្យបញ្ចូល &quot;មូលហេតុស្នើសុំ&quot;
+  │
+  ▼
+Sales Executive បញ្ចូល: &quot;អតិថិជនទិញដុំលើកទីមួយ និងសន្យាទិញជាប្រចាំខែ&quot; → ចុច &quot;ផ្ញើស្នើសុំអនុម័ត&quot;
+  │
+  ▼
+ការជូនដំណឹងរត់ទៅកាន់ផ្ទាំងគ្រប់គ្រងរបស់ Sales Manager (`view-approval.html`)
+  │
+  ├── [ករណី Manager បដិសេធ] → Quote ត្រឡប់មកស្ថានភាព &quot;Draft&quot; វិញជាមួយមូលហេតុបដិសេធ
+  └── [ករណី Manager អនុម័ត]  → Quote ប្តូរស្ថានភាពទៅជា &quot;Approved&quot; និងចេញជាផ្លូវការបាន
+  │
+  ▼
+END
+</code></pre>
+        </div>
+<hr>
+<h3 id="workflow-3-ការត្រួតពិនិត្យពិដានឥណទានមុនពេលចេញវិក្កយបត្រ-credit-limit-verification" class="scroll-mt-24 group">Workflow 3: ការត្រួតពិនិត្យពិដានឥណទានមុនពេលចេញវិក្កយបត្រ (Credit Limit Verification) <a href="#workflow-3-ការត្រួតពិនិត្យពិដានឥណទានមុនពេលចេញវិក្កយបត្រ-credit-limit-verification" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>START
+  │
+  ▼
+Sales Executive រៀបចំចេញវិក្កយបត្រលក់ជំពាក់ (Credit Invoice) តម្លៃ $1,500.00
+  │
+  ▼
+ប្រព័ន្ធដំណើរការពិនិត្យស្វ័យប្រវត្តិលើអតិថិជន (Automated Pre-flight Check):
+  ├── ពិដានឥណទាន (Credit Limit): $3,000.00
+  ├── បំណុលចាស់មិនទាន់សង: $2,200.00
+  └── តម្លៃវិក្កយបត្រថ្មី: $1,500.00
+  │
+  ▼
+គណនា: $2,200.00 + $1,500.00 = $3,700.00 (លើសពិដានឥណទាន $700.00!)
+  │
+  ▼
+[ប្រព័ន្ធចាក់សោរមិនឱ្យចេញវិក្កយបត្រភ្លាមៗឡើយ]
+  ├── ជម្រើស 1: ទាមទារឱ្យអតិថិជនបង់លុយយ៉ាងតិច $700.00 លើវិក្កយបត្រចាស់សិន
+  ├── ជម្រើស 2: តម្រូវឱ្យអតិថិជនបង់ជាសាច់ប្រាក់សុទ្ធ / KHQR លើវិក្កយបត្រថ្មីនេះ
+  └── ជម្រើស 3: ចុច &quot;ស្នើសុំលើកលែងពិដានឥណទាន (Request Credit Override)&quot; ទៅកាន់ Sales Manager
+  │
+  ▼
+END
+</code></pre>
+        </div>
+<hr>
+<h3 id="workflow-4-ការចុះឈ្មោះ-និងចាត់ចំណាត់ថ្នាក់អតិថិជនថ្មី-customer-onboarding-tiering" class="scroll-mt-24 group">Workflow 4: ការចុះឈ្មោះ និងចាត់ចំណាត់ថ្នាក់អតិថិជនថ្មី (Customer Onboarding &amp; Tiering) <a href="#workflow-4-ការចុះឈ្មោះ-និងចាត់ចំណាត់ថ្នាក់អតិថិជនថ្មី-customer-onboarding-tiering" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>START
+  │
+  ▼
+Sales Executive ជួបអតិថិជនថ្មី → បើក `create-customer.html`
+  │
+  ▼
+បញ្ចូលព័ត៌មានស្នូល:
+  ├── ឈ្មោះក្រុមហ៊ុន / អាជីវកម្ម (Khmer &amp; English)
+  ├── ឈ្មោះអ្នកទំនាក់ទំនងផ្ទាល់ និងលេខទូរស័ព្ទ (Phone + Telegram)
+  ├── អាសយដ្ឋានដឹកជញ្ជូន និងទីតាំង Google Maps Pin
+  └── លេខសម្គាល់អ្នកជាប់ពន្ធ (VATTIN) ប្រសិនបើជាក្រុមហ៊ុនចុះបញ្ជីពន្ធ
+  │
+  ▼
+ជ្រើសរើសកម្រិតតម្លៃ (Pricing Tier):
+  ├── [អតិថិជនទូទៅ / រាយ (Retail)] → លក់តាមតម្លៃរាយធម្មតា
+  ├── [អតិថិជនដុំ (Wholesale Tier 2)] → បញ្ចុះតម្លៃ 8% លើ Base Price
+  └── [តំណាងចែកចាយធំ (VIP Distributor)] → បញ្ចុះតម្លៃ 15% (ត្រូវមានការបញ្ជាក់ពី Manager)
+  │
+  ▼
+កំណត់លក្ខខណ្ឌទូទាត់លំនាំដើម (Default Terms): ទូទាត់ភ្លាមៗ (Cash on Delivery)
+  │
+  ▼
+ចុច &quot;រក្សាទុកអតិថិជន&quot; → អតិថិជនត្រូវបានភ្ជាប់ជាមួយគណនីរបស់ Sales Executive នោះស្វ័យប្រវត្តិ
+  │
+  ▼
+END
+</code></pre>
+        </div>
+<hr>
+<h3 id="workflow-5-ការទទួល-lead-ពីគេហទំព័រ-showroom-inbound-showroom-lead-flow" class="scroll-mt-24 group">Workflow 5: ការទទួល Lead ពីគេហទំព័រ Showroom (Inbound Showroom Lead Flow) <a href="#workflow-5-ការទទួល-lead-ពីគេហទំព័រ-showroom-inbound-showroom-lead-flow" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>START
+  │
+  ▼
+អតិថិជនចូលមើលគេហទំព័រ Digital Showroom (`DIGITECHKH-Ecommerce-Showroom-Website.html`)
+  │
+  ▼
+អតិថិជនចុច &quot;ទាក់ទងអ្នកលក់&quot; ឬបង្កើតសំណើសុំសម្រង់តម្លៃលើ Web Showroom
+  │
+  ▼
+ប្រព័ន្ធបង្កើត Inbound Sales Lead ក្នុងផ្ទាំង `dashboard.html` របស់ Sales Executive
+  ├── បង្ហាញមុខទំនិញដែលអតិថិជនចាប់អារម្មណ៍
+  └── បង្ហាញលេខទូរស័ព្ទ ឬ Telegram របស់អតិថិជន
+  │
+  ▼
+Sales Executive ចុច &quot;ទទួលយក Lead (Claim Lead)&quot;
+  │
+  ▼
+ទាក់ទងទៅអតិថិជនតាម Telegram ឬទូរស័ព្ទក្នុងរយៈពេល &lt; 15 នាទី
+  │
+  ▼
+ចុចប៊ូតុង &quot;បង្កើតសម្រង់តម្លៃពី Lead (Generate Quote from Lead)&quot;
+  │
+  ▼
+END
+</code></pre>
+        </div>
+<hr>
+<h3 id="workflow-6-ការតាមដានការប្រមូលប្រាក់-និងការទូទាត់កម្រៃជើងសារ-collection-commission-flow" class="scroll-mt-24 group">Workflow 6: ការតាមដានការប្រមូលប្រាក់ និងការទូទាត់កម្រៃជើងសារ (Collection &amp; Commission Flow) <a href="#workflow-6-ការតាមដានការប្រមូលប្រាក់-និងការទូទាត់កម្រៃជើងសារ-collection-commission-flow" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>START
+  │
+  ▼
+វិក្កយបត្រត្រូវបានចេញ និងទំនិញត្រូវបានប្រគល់ជូនអតិថិជនរួចរាល់
+  │
+  ▼
+Sales Executive តាមដានថ្ងៃកំណត់ទូទាត់ (Due Date) ក្នុង `payments.html`
+  │
+  ▼
+នៅថ្ងៃដល់កំណត់ (Due Date - 3 ថ្ងៃ): Sales Executive ផ្ញើសាររំលឹកសុភាពរាបសារតាម Telegram
+  │
+  ▼
+អតិថិជនស្កេន KHQR បាគង ឬផ្ទេរប្រាក់ចូលធនាគារក្រុមហ៊ុន
+  │
+  ▼
+គណនេយ្យករ (AP/AR Accountant) ផ្ទៀងផ្ទាត់ និងចុច &quot;កត់ត្រាការទទួលប្រាក់ (Record Payment)&quot;
+  │
+  ▼
+វិក្កយបត្រប្តូរស្ថានភាពទៅជា &quot;Paid&quot; (បានទូទាត់រួចរាល់)
+  │
+  ▼
+ប្រព័ន្ធគណនាកម្រៃជើងសារ (Sales Commission) ស្វ័យប្រវត្តិជូន Sales Executive:
+  ├── រូបមន្ត: 3% × ទឹកប្រាក់ប្រមូលបានជាក់ស្តែង (មិនរាប់បញ្ចូលពន្ធ អតប)
+  └── បង្ហាញក្នុងតារាងសមិទ្ធផលប្រចាំខែ &quot;Commission Earned: +$36.00&quot;
+  │
+  ▼
+END
+</code></pre>
+        </div>
+<hr>
+<h2 id="7-តក្កវិជ្ជាអាជីវកម្ម-និងវិធានគណនាតម្លៃ-business-logic-pricing-rules" class="scroll-mt-24 group">7. តក្កវិជ្ជាអាជីវកម្ម និងវិធានគណនាតម្លៃ (Business Logic &amp; Pricing Rules) <a href="#7-តក្កវិជ្ជាអាជីវកម្ម-និងវិធានគណនាតម្លៃ-business-logic-pricing-rules" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="71-គោលការណ៍តម្លៃឌីណាមិកតាមកម្រិតអតិថិជន-dynamic-tiered-pricing-logic" class="scroll-mt-24 group">7.1 គោលការណ៍តម្លៃឌីណាមិកតាមកម្រិតអតិថិជន (Dynamic Tiered Pricing Logic) <a href="#71-គោលការណ៍តម្លៃឌីណាមិកតាមកម្រិតអតិថិជន-dynamic-tiered-pricing-logic" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p>តម្លៃលក់នៃមុខទំនិញនីមួយៗ <strong>មិនមែនជាតម្លៃថេររឹងតែមួយឡើយ</strong>។ នៅពេលជ្រើសរើសមុខទំនិញក្នុងសម្រង់តម្លៃ ឬវិក្កយបត្រ ប្រព័ន្ធនឹងទាញយកតម្លៃឯកតាតាមលំដាប់អាទិភាពដូចខាងក្រោម៖</p>
+<ol>
+<li><strong>អាទិភាពទី 1 (កិច្ចសន្យាតម្លៃពិសេស - Contract Price)</strong>: ប្រសិនបើអតិថិជននោះមានកិច្ចសន្យាតម្លៃផ្ទាល់ខ្លួន (Customer-Specific Pricing) នោះប្រព័ន្ធនឹងយកតម្លៃក្នុងកិច្ចសន្យាមុនគេ។</li>
+<li><strong>អាទិភាពទី 2 (កម្រិតអតិថិជន - Tiered Pricing)</strong>:<ul>
+<li><strong>កម្រិតរាយ (Retail Tier)</strong>: តម្លៃលក់មូលដ្ឋាន 100% (Base Price)</li>
+<li><strong>កម្រិតដុំ (Wholesale Tier)</strong>: បញ្ចុះតម្លៃ 8% ពីតម្លៃមូលដ្ឋាន</li>
+<li><strong>តំណាងចែកចាយ VIP (Distributor Tier)</strong>: បញ្ចុះតម្លៃ 15% ពីតម្លៃមូលដ្ឋាន</li>
+</ul>
+</li>
+<li><strong>អាទិភាពទី 3 (តម្លៃលក់មូលដ្ឋាន - Base Catalog Price)</strong>: ករណីអតិថិជនទូទៅដែលគ្មានចំណាត់ថ្នាក់។</li>
+<li><strong>ការកែសម្រួលជាក់ស្តែងលើបន្ទាត់ (Manual Line Override)</strong>: បុគ្គលិកលក់អាចកែសម្រួលតម្លៃឯកតានៅលើបន្ទាត់មុខទំនិញបាន ប៉ុន្តែ <strong>ហាមដាច់ខាតមិនឱ្យទាបជាងតម្លៃពិដានបាត (Floor Price)</strong>។</li>
+</ol>
+<h3 id="72-វិធានគណនាហិរញ្ញវត្ថុស្តង់ដារ-financial-calculation-order" class="scroll-mt-24 group">7.2 វិធានគណនាហិរញ្ញវត្ថុស្តង់ដារ (Financial Calculation Order) <a href="#72-វិធានគណនាហិរញ្ញវត្ថុស្តង់ដារ-financial-calculation-order" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p>អនុលោមតាម <code>GEMINI.md</code> ច្បាប់ទី 13 ការសង្ខេបហិរញ្ញវត្ថុត្រូវតែគណនាតាមលំដាប់លំដោយយ៉ាងម៉ឺងម៉ាត់៖</p>
+<p>$$\text{Subtotal} = \sum (\text{Line Quantity} \times \text{Unit Price})$$</p>
+<p>$$\text{Taxable Amount} = \text{Subtotal} - \text{Special Discount}$$</p>
+<p>$$\text{VAT (10%)} = \text{Taxable Amount} \times 0.10$$</p>
+<p>$$\text{Grand Total} = \text{Taxable Amount} + \text{VAT (10%)}$$</p>
+<p>$$\text{Balance Due} = \text{Grand Total} - \text{Down Payment} - \text{Paid Amount}$$</p>
+<ul>
+<li><strong>ចូលរួមមុន (Down Payment)</strong>: ជាប្រាក់កក់ដែលអតិថិជនបានបង់ទុកមុន មុនពេលទំនិញត្រូវបានដឹកជញ្ជូន។ ប្រាក់នេះត្រូវបានដកចេញពីសមតុល្យដែលត្រូវទូទាត់បង្គ្រប់។</li>
+<li><strong>ការបញ្ចុះតម្លៃពិសេស (Special Discount)</strong>: ជាការបញ្ចុះតម្លៃលើឯកសារសរុប (Document-Level Discount) ដែលតម្រូវឱ្យមានការបញ្ជាក់ច្បាស់លាស់។</li>
+<li><strong>រូបិយប័ណ្ណ</strong>: ប្រព័ន្ធគាំទ្រទាំង <strong>ប្រាក់ដុល្លារអាមេរិក (USD)</strong> និង <strong>ប្រាក់រៀល (KHR)</strong> ដោយផ្អែកលើអត្រាប្តូរប្រាក់ផ្លូវការរបស់ធនាគារជាតិនៃកម្ពុជា (NBC Official Exchange Rate ឧ. <code>1 USD = 4,100 KHR</code>)។</li>
+</ul>
+<hr>
+<h2 id="8-ទំនាក់ទំនងឆ្លងផ្នែកជាមួយតួនាទីផ្សេងទៀត-cross-role-interaction-map" class="scroll-mt-24 group">8. ទំនាក់ទំនងឆ្លងផ្នែកជាមួយតួនាទីផ្សេងទៀត (Cross-Role Interaction Map) <a href="#8-ទំនាក់ទំនងឆ្លងផ្នែកជាមួយតួនាទីផ្សេងទៀត-cross-role-interaction-map" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>┌─────────────────────────────────────────────────────────────────────────┐
+│                    💼 SALES EXECUTIVE (បុគ្គលិកផ្នែកលក់)                     │
+└────┬──────────────┬──────────────┬──────────────┬──────────────┬────────┘
+     │              │              │              │              │
+     │ 1. ស្នើបញ្ចុះ  │ 2. បញ្ជូន    │ 3. ផ្ទៀងផ្ទាត់│ 4. បញ្ជូន     │ 5. ផ្តល់
+     │    តម្លៃពិសេស │    ការបញ្ជា   │    ការទទួល    │    ការដឹក     │    សម្រង់
+     │              │    ទំនិញ     │    ប្រាក់     │    ជញ្ជូន     │    តម្លៃ
+     ▼              ▼              ▼              ▼              ▼
+┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐
+│  👔 MGR   │  │ 📦 WHSE   │  │ 💰 ACCT  │  │ 🚚 DRIVER│  │ 👥 CLIENT│
+│  Manager │  │Warehouse │  │  AP/AR   │  │ Delivery │  │ Customer │
+└──────────┘  └──────────┘  └──────────┘  └──────────┘  └──────────┘
+</code></pre>
+        </div>
+<ol>
+<li><strong>ជាមួយ Sales Manager (អ្នកគ្រប់គ្រងផ្នែកលក់)</strong>:<ul>
+<li>ផ្ញើសំណើអនុម័តការបញ្ចុះតម្លៃលើសពី 5%</li>
+<li>ផ្ញើសំណើលើកលែងពិដានឥណទាន (Credit Override Request)</li>
+<li>ទទួលកូតាលក់ប្រចាំខែ និងការបែងចែក Lead</li>
+</ul>
+</li>
+<li><strong>ជាមួយ Warehouse Staff (បុគ្គលិកឃ្លាំង)</strong>:<ul>
+<li>ពិនិត្យទិន្នន័យស្តុកដែលអាចលក់បាន (Available Stock)</li>
+<li>នៅពេល Invoice ចេញជាផ្លូវការ ប្រព័ន្ធបញ្ជូន Pick List ទៅកាន់ឃ្លាំងស្វ័យប្រវត្តិ</li>
+<li><em>ចំណាំ</em>: បុគ្គលិកឃ្លាំងមិនឃើញតម្លៃលក់ឡើយ ហើយបុគ្គលិកលក់ក៏មិនឃើញថ្លៃដើមទិញដែរ (Mutual Data Isolation)</li>
+</ul>
+</li>
+<li><strong>ជាមួយ AP/AR Accountant (គណនេយ្យករទូទាត់)</strong>:<ul>
+<li>ពិនិត្យស្ថានភាពវិក្កយបត្រដែលអតិថិជនបានបង់រួច ដើម្បីបើកប្រាក់កម្រៃជើងសារ</li>
+<li>សហការក្នុងការទារបំណុលអតិថិជនដែលហួសកាលកំណត់ (Overdue Collections)</li>
+</ul>
+</li>
+<li><strong>ជាមួយ Delivery Driver (អ្នកបើកបរដឹកជញ្ជូន)</strong>:<ul>
+<li>ផ្តល់ទីតាំងដឹកជញ្ជូន, លេខទូរស័ព្ទទំនាក់ទំនង និងកំណត់សម្គាល់ពិសេសរបស់អតិថិជន</li>
+<li>តាមដានស្ថានភាពដឹកជញ្ជូនជាក់ស្តែង (Dispatched → In Transit → Delivered)</li>
+</ul>
+</li>
+<li><strong>ជាមួយ Customer (អតិថិជន)</strong>:<ul>
+<li>ផ្ញើសម្រង់តម្លៃ (Quote) តាម Telegram / WhatsApp / Email</li>
+<li>បង្ហាញកូដ KHQR បាគង សម្រាប់ការទូទាត់ប្រាក់កក់រហ័ស</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="9-វិសាលភាពទិន្នន័យ-data-scope-អ្វីដែលឃើញ-និងអ្វីដែលត្រូវលាក់" class="scroll-mt-24 group">9. វិសាលភាពទិន្នន័យ (Data Scope — អ្វីដែលឃើញ និងអ្វីដែលត្រូវលាក់) <a href="#9-វិសាលភាពទិន្នន័យ-data-scope-អ្វីដែលឃើញ-និងអ្វីដែលត្រូវលាក់" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ប្រភេទព័ត៌មាន</th>
+<th align="center">សិទ្ធិមើលឃើញរបស់ Sales Executive</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">កម្រិតនៃការការពារ (Security Level)</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>តម្លៃលក់មូលដ្ឋាន (Base Selling Price)</strong></td>
+<td align="center">✅ ឃើញ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ព័ត៌មានប្រតិបត្តិការលក់ទូទៅ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>តម្លៃតាមកម្រិតអតិថិជន (Tiered Prices)</strong></td>
+<td align="center">✅ ឃើញ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">បង្ហាញលើទម្រង់សម្រង់តម្លៃ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ស្តុកទំនិញនៅទំនេរ (Available Quantity)</strong></td>
+<td align="center">✅ ឃើញ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ដឹងដើម្បីកុំឱ្យលក់លើសស្តុក</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ថ្លៃដើមទិញពីអ្នកផ្គត់ផ្គង់ (Supplier Cost)</strong></td>
+<td align="center">❌ <strong>លាក់ 100%</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ការសម្ងាត់ខ្ពស់បំផុត (Zero Cost Leakage)</strong></td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ប្រាក់ចំណេញដុលរបស់ក្រុមហ៊ុន (Company Margin)</strong></td>
+<td align="center">❌ <strong>លាក់ 100%</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ការពារការបែកធ្លាយផលចំណេញអាជីវកម្ម</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ពិដានឥណទានអតិថិជន (Customer Credit Limit)</strong></td>
+<td align="center">✅ ឃើញ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">មើលដើម្បីដឹងដែនកំណត់នៃការលក់ជំពាក់</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>វិក្កយបត្ររបស់បុគ្គលិកលក់ដទៃ</strong></td>
+<td align="center">❌ <strong>លាក់</strong> (ឃើញតែរបស់ខ្លួន)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">រក្សាការសម្ងាត់នៃការប្រកួតប្រជែងផ្ទៃក្នុង</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>កម្រៃជើងសារផ្ទាល់ខ្លួន (My Commission)</strong></td>
+<td align="center">✅ ឃើញ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">លើកទឹកចិត្ត និងតម្លាភាពសមិទ្ធផល</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ប្រាក់ខែ និងកម្រៃជើងសាររបស់សហសេវិក</strong></td>
+<td align="center">❌ <strong>លាក់ 100%</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ការសម្ងាត់ធនធានមនុស្ស (HR Confidential)</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="10-ផ្ទាំងគ្រប់គ្រង-និងសូចនាករ-kpi-kpi-dashboard-commission-tracking" class="scroll-mt-24 group">10. ផ្ទាំងគ្រប់គ្រង និងសូចនាករ KPI (KPI Dashboard &amp; Commission Tracking) <a href="#10-ផ្ទាំងគ្រប់គ្រង-និងសូចនាករ-kpi-kpi-dashboard-commission-tracking" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<p>បុគ្គលិកផ្នែកលក់ត្រូវបានវាយតម្លៃសមិទ្ធផលដោយផ្អែកលើ <strong>សូចនាករវាស់វែងសំខាន់ៗទាំង 5 (Top 5 Sales KPIs)</strong>:</p>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>┌────────────────────────────────────────────────────────────────────────┐
+│               🎯 SALES EXECUTIVE MONTHLY PERFORMANCE CARD              │
+├──────────────────────────┬──────────────────────────┬──────────────────┤
+│ កូតាលក់ខែនេះ (Quota):   │ លក់ជាក់ស្តែង (Actual):   │ សម្រេចបាន:       │
+│ $25,000.00               │ $18,450.00               │ 73.8% [███████░░]│
+├──────────────────────────┼──────────────────────────┼──────────────────┤
+│ អត្រាជោគជ័យ (Win Rate): │ កម្រៃជើងសារ (Earned):    │ បំណុលត្រូវតាមទារ: │
+│ 68.4% (13/19 Quotes)     │ $553.50 (Paid Invoices)  │ $1,420.00 (3 inv)│
+└──────────────────────────┴──────────────────────────┴──────────────────┘
+</code></pre>
+        </div>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">#</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">សូចនាករ KPI</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">រូបមន្តគណនា</th>
+<th align="center">គោលដៅស្តង់ដារ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ការលើកទឹកចិត្ត</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">1</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ការលក់សរុបប្រចាំខែ (Monthly Revenue)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">$\sum$ តម្លៃវិក្កយបត្រដែលបានចេញក្នុងខែ</td>
+<td align="center">$\ge $25,000.00$</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ទទួលបានប្រាក់រង្វាន់លើកទឹកចិត្ត</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">2</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>អត្រាបម្លែងជោគជ័យ (Quote Win Rate)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">$(\text{Quotes Converted} / \text{Total Quotes}) \times 100$</td>
+<td align="center">$\ge 65%$</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">វាស់វែងជំនាញចរចា និងបិទការលក់</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">3</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>អត្រាប្រមូលប្រាក់ទាន់ពេល (Collection Rate)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">$(\text{Collected AR} / \text{Total Invoiced}) \times 100$</td>
+<td align="center">$\ge 90%$</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">កម្រៃជើងសារបើកជូនតែលើលុយដែលប្រមូលបាន</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">4</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>អតិថិជនថ្មីប្រចាំខែ (New Customer Acquisition)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ចំនួនអតិថិជនថ្មីដែលបានទិញលើកដំបូង</td>
+<td align="center">$\ge 5$ ក្រុមហ៊ុន</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ពង្រីកមូលដ្ឋានអតិថិជនក្រុមហ៊ុន</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">5</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ល្បឿនឆ្លើយតប Lead (Lead Response Time)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ពេលវេលាចាប់ពី Lead ចូលដល់ពេលទាក់ទងដំបូង</td>
+<td align="center">$&lt; 15$ នាទី</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">បង្កើនឱកាសបិទការលក់លើ Showroom</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="11-គំរូរចនាសម្ព័ន្ធទិន្នន័យ-database-schema-blueprint" class="scroll-mt-24 group">11. គំរូរចនាសម្ព័ន្ធទិន្នន័យ (Database Schema Blueprint) <a href="#11-គំរូរចនាសម្ព័ន្ធទិន្នន័យ-database-schema-blueprint" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>-- គំរូតារាងទិន្នន័យសម្រាប់ Sales Module (Sales Executive Scope)
+
+-- 1. តារាងសម្រង់តម្លៃ (Quotations Master Table)
+CREATE TABLE quotations (
+    id                  UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    tenant_id           UUID REFERENCES tenants(id) NOT NULL,
+    quote_number        VARCHAR(50) UNIQUE NOT NULL, -- QT-2026-0042
+    customer_id         UUID REFERENCES customers(id) NOT NULL,
+    sales_rep_id        UUID REFERENCES users(id) NOT NULL, -- សម្គាល់បុគ្គលិកលក់
+    issue_date          DATE NOT NULL DEFAULT CURRENT_DATE,
+    valid_until         DATE NOT NULL,
+    payment_terms       VARCHAR(50) DEFAULT &#39;cod&#39;, -- cod | net15 | net30
+    subtotal            DECIMAL(15,2) NOT NULL DEFAULT 0.00,
+    down_payment        DECIMAL(15,2) NOT NULL DEFAULT 0.00,
+    special_discount    DECIMAL(15,2) NOT NULL DEFAULT 0.00,
+    discount_reason     TEXT,
+    tax_rate            DECIMAL(5,2) DEFAULT 10.00, -- VAT 10%
+    tax_amount          DECIMAL(15,2) NOT NULL DEFAULT 0.00,
+    grand_total         DECIMAL(15,2) NOT NULL DEFAULT 0.00,
+    balance_due         DECIMAL(15,2) NOT NULL DEFAULT 0.00,
+    status              VARCHAR(30) DEFAULT &#39;draft&#39;, 
+        -- draft | pending_approval | approved | rejected | sent | converted | expired
+    converted_invoice_id UUID REFERENCES invoices(id),
+    converted_at        TIMESTAMPTZ,
+    notes               TEXT,
+    created_at          TIMESTAMPTZ DEFAULT NOW(),
+    updated_at          TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 2. តារាងមុខទំនិញក្នុងសម្រង់តម្លៃ (Quotation Line Items - No Discount Column)
+CREATE TABLE quotation_items (
+    id                  UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    quotation_id        UUID REFERENCES quotations(id) ON DELETE CASCADE,
+    product_id          UUID REFERENCES products(id) NOT NULL,
+    item_description    TEXT NOT NULL,
+    uom                 VARCHAR(50) NOT NULL, -- កេស, ប្រអប់, គ្រឿង
+    quantity            DECIMAL(12,2) NOT NULL CHECK (quantity &gt; 0),
+    unit_price          DECIMAL(15,2) NOT NULL CHECK (unit_price &gt;= 0),
+    line_total          DECIMAL(15,2) GENERATED ALWAYS AS (quantity * unit_price) STORED,
+    created_at          TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 3. តារាងកម្រិតតម្លៃអតិថិជន (Customer Pricing Tiers)
+CREATE TABLE customer_pricing_tiers (
+    id                  UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    tenant_id           UUID REFERENCES tenants(id) NOT NULL,
+    tier_name           VARCHAR(100) NOT NULL, -- រាយ, ដុំ, តំណាងចែកចាយ VIP
+    tier_code           VARCHAR(30) UNIQUE NOT NULL, -- retail | wholesale | vip_distributor
+    discount_pct        DECIMAL(5,2) NOT NULL DEFAULT 0.00, -- 0%, 8%, 15%
+    credit_limit_default DECIMAL(15,2) DEFAULT 0.00,
+    created_at          TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 4. តារាងកម្រៃជើងសារបុគ្គលិកលក់ (Sales Commissions Ledger)
+CREATE TABLE sales_commissions (
+    id                  UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    tenant_id           UUID REFERENCES tenants(id) NOT NULL,
+    sales_rep_id        UUID REFERENCES users(id) NOT NULL,
+    invoice_id          UUID REFERENCES invoices(id) NOT NULL,
+    payment_id          UUID REFERENCES customer_payments(id) NOT NULL,
+    commission_rate_pct DECIMAL(5,2) DEFAULT 3.00, -- 3%
+    eligible_amount     DECIMAL(15,2) NOT NULL, -- ទឹកប្រាក់មិនគិតពន្ធ
+    commission_amount   DECIMAL(15,2) NOT NULL,
+    status              VARCHAR(30) DEFAULT &#39;accrued&#39;, -- accrued | approved | paid
+    paid_in_payroll_id  UUID,
+    created_at          TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 5. សិទ្ធិចូលមើលទិន្នន័យ (Row-Level Security for Sales Rep)
+ALTER TABLE quotations ENABLE ROW LEVEL SECURITY;
+CREATE POLICY sales_rep_own_quotes ON quotations
+    FOR ALL
+    USING (sales_rep_id = auth.uid() OR auth.role() IN (&#39;sales_manager&#39;, &#39;admin&#39;, &#39;superadmin&#39;));
+</code></pre>
+        </div>
+<hr>
+<h2 id="12-ការការពារការក្លែងបន្លំ-និងសុវត្ថិភាពទិន្នន័យ-sales-integrity-controls" class="scroll-mt-24 group">12. ការការពារការក្លែងបន្លំ និងសុវត្ថិភាពទិន្នន័យ (Sales Integrity Controls) <a href="#12-ការការពារការក្លែងបន្លំ-និងសុវត្ថិភាពទិន្នន័យ-sales-integrity-controls" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<p>ដើម្បីការពារហានិភ័យអាជីវកម្ម និងការកិបកេង ប្រព័ន្ធបានដាក់បញ្ចូលនូវយន្តការត្រួតពិនិត្យស្វ័យប្រវត្តិចំនួន 4៖</p>
+<ol>
+<li><strong>ការទប់ស្កាត់ការលក់ក្រោមតម្លៃពិដាន (Floor Price Guard)</strong>:<ul>
+<li>ប្រព័ន្ធចាក់សោរមិនឱ្យ Save សម្រង់តម្លៃឡើយ ប្រសិនបើតម្លៃលក់ឯកតាទាបជាង «តម្លៃពិដានបាត» ដែលកំណត់ដោយក្រុមហ៊ុន ទោះបីជាមានការបញ្ចុះតម្លៃពិសេសក៏ដោយ។</li>
+</ul>
+</li>
+<li><strong>ការទប់ស្កាត់ការកែប្រែវិក្កយបត្រក្រោយពេលចេញ (Post-Issuance Lock)</strong>:<ul>
+<li>នៅពេលវិក្កយបត្រត្រូវបានចេញជាផ្លូវការ (Status = <code>Issued</code> ឬ <code>Approved</code>) បុគ្គលិកលក់មិនអាចកែប្រែចំនួន ឬតម្លៃបានទៀតឡើយ។ រាល់ការកែប្រែតម្រូវឱ្យចេញជា <strong>Credit Note</strong> ឬមានការ Override ពី Admin។</li>
+</ul>
+</li>
+<li><strong>ការបែងចែកភារកិច្ចរវាងការលក់ និងការទទួលលុយ (Segregation of Duties - SoD)</strong>:<ul>
+<li>បុគ្គលិកលក់អាចបង្កើតវិក្កយបត្របាន ប៉ុន្តែ <strong>មិនអាចកត់ត្រាការទទួលប្រាក់ (Receive Payment) ក្នុងប្រព័ន្ធបានឡើយ</strong>។ ការកត់ត្រាការទទួលប្រាក់ជាភារកិច្ចផ្តាច់មុខរបស់ AP/AR Accountant ឬ Cashier បញ្ជរ ដើម្បីការពារការលួចបង្វែរសាច់ប្រាក់។</li>
+</ul>
+</li>
+<li><strong>ការចាក់សោរការលក់ជំពាក់ពេលអតិថិជនមានបំណុលចាស់ (Strict Credit Lockout)</strong>:<ul>
+<li>ប្រសិនបើអតិថិជនមានវិក្កយបត្រហួសកាលកំណត់លើសពី 30 ថ្ងៃ ប្រព័ន្ធនឹងបិទសិទ្ធិមិនឱ្យចេញវិក្កយបត្រជំពាក់ថ្មីដោយស្វ័យប្រវត្តិ រហូតទាល់តែមានការទូទាត់បំណុលចាស់សិន។</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="13-អនុសាសន៍ស្ថាបត្យកម្ម-និងផែនការ-prototype-planning" class="scroll-mt-24 group">13. អនុសាសន៍ស្ថាបត្យកម្ម និងផែនការ Prototype Planning <a href="#13-អនុសាសន៍ស្ថាបត្យកម្ម-និងផែនការ-prototype-planning" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="131-អនុសាសន៍រចនាប្រព័ន្ធ-architectural-recommendations" class="scroll-mt-24 group">13.1 អនុសាសន៍រចនាប្រព័ន្ធ (Architectural Recommendations) <a href="#131-អនុសាសន៍រចនាប្រព័ន្ធ-architectural-recommendations" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<h4 id="ណែនាំ-1-instant-khqr-generation-on-quotation-បាគង-khqr-លើសម្រង់តម្លៃ" class="scroll-mt-24 group">✅ ណែនាំ 1: Instant KHQR Generation on Quotation (បាគង KHQR លើសម្រង់តម្លៃ) <a href="#ណែនាំ-1-instant-khqr-generation-on-quotation-បាគង-khqr-លើសម្រង់តម្លៃ" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<p>នៅក្នុងទំព័រ <a href="file:///D:/DATA/Project/ebms_prototype/frontend/src/pages/3-sales/2-quote/view-quote.html">view-quote.html</a> ត្រូវមានរូបភាពកូដ KHQR បាគង ដែលភ្ជាប់ជាមួយទឹកប្រាក់កក់ «ចូលរួមមុន (Down Payment)» ដោយផ្ទាល់៖</p>
+<ul>
+<li>អតិថិជនគ្រាន់តែស្កេនពី App ធនាគារណាមួយ (ABA, Canadia, Wing, ACLEDA) នោះលុយកក់នឹងរត់ចូលគណនីក្រុមហ៊ុនភ្លាមៗ។</li>
+</ul>
+<h4 id="ណែនាំ-2-fast-one-click-convert-mechanism" class="scroll-mt-24 group">✅ ណែនាំ 2: Fast One-Click Convert Mechanism <a href="#ណែនាំ-2-fast-one-click-convert-mechanism" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<p>ប៊ូតុង «បម្លែងជាវិក្កយបត្រ (Convert to Invoice)» លើ <a href="file:///D:/DATA/Project/ebms_prototype/frontend/src/pages/3-sales/2-quote/view-quote.html">view-quote.html</a> ត្រូវដំណើរការយ៉ាងរលូន ដោយបើកទៅកាន់ <a href="file:///D:/DATA/Project/ebms_prototype/frontend/src/pages/3-sales/1-invoice/create-invoice.html">create-invoice.html</a> ជាមួយ Query Parameter <code>?quote_id=...</code> ហើយបំពេញគ្រប់ទិន្នន័យទាំងអស់ជាមុន (Auto-Prefill) ដោយមិនបាច់វាយឡើងវិញ។</p>
+<h4 id="ណែនាំ-3-dynamic-price-auto-adjustment-via-javascript" class="scroll-mt-24 group">✅ ណែនាំ 3: Dynamic Price Auto-Adjustment via JavaScript <a href="#ណែនាំ-3-dynamic-price-auto-adjustment-via-javascript" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<p>នៅពេលជ្រើសរើស Customer ក្នុងទម្រង់ <code>create-quote.html</code> អនុគមន៍ JavaScript ត្រូវធ្វើបច្ចុប្បន្នភាពកម្រិតតម្លៃនៃគ្រប់បន្ទាត់ទំនិញភ្លាមៗ (Real-Time Re-pricing) ទៅតាម Pricing Tier របស់អតិថិជននោះ។</p>
+<hr>
+<h3 id="132-បញ្ជីត្រួតពិនិត្យការសាងសង់-prototype-15-point-prototype-checklist" class="scroll-mt-24 group">13.2 បញ្ជីត្រួតពិនិត្យការសាងសង់ Prototype (15-Point Prototype Checklist) <a href="#132-បញ្ជីត្រួតពិនិត្យការសាងសង់-prototype-15-point-prototype-checklist" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p>មុនពេលចាត់ទុកថា Prototype សម្រាប់ Sales Executive ត្រឹមត្រូវ 100% ត្រូវផ្ទៀងផ្ទាត់៖</p>
+<ul>
+<li><input disabled="" type="checkbox"> <strong>កម្ពស់ Header ស្មើគ្នា</strong>: ទាំង Sidebar Brand និង Content Top Header មានកម្ពស់ <code>h-[72px]</code> ស្មើគ្នាបេះបិទ។</li>
+<li><input disabled="" type="checkbox"> <strong>ភាសាខ្មែរសុទ្ធសាធ 100%</strong>: គ្មានពាក្យអង់គ្លេសលាយឡំលើ UI, ប៊ូតុង, តារាង, ផ្លាក Badge ឬ Toast ឡើយ។</li>
+<li><input disabled="" type="checkbox"> <strong>លេខអង់គ្លេស 0-9</strong>: គ្រប់លេខកូដ (#QT-2026-0042, #INV-2026-0095), ភាគរយ (10%), ទឹកប្រាក់, កាលបរិច្ឆេទ ប្រើលេខអង់គ្លេសជានិច្ច។</li>
+<li><input disabled="" type="checkbox"> <strong>លាក់ការសម្ងាត់ថ្លៃដើម 100% (Zero Purchase Cost Leakage)</strong>: គ្មានកន្លែងណាលើ UI ឬ Table បង្ហាញថ្លៃដើមទិញឡើយ។</li>
+<li><input disabled="" type="checkbox"> <strong>គ្មាន Pop-up Modal</strong>: ទម្រង់បង្កើតសម្រង់តម្លៃ <code>create-quote.html</code> និងមើលលម្អិត <code>view-quote.html</code> ជាទំព័រពេញលេញ (Dedicated Full Page)។</li>
+<li><input disabled="" type="checkbox"> <strong>ប៊ូតុងត្រឡប់ក្រោយស្តង់ដារ</strong>: ប្រអប់មូលកោង <code>w-10 h-10 rounded-xl bg-slate-50 border border-slate-200/70</code> មានតែរូបព្រួញ។</li>
+<li><input disabled="" type="checkbox"> <strong>គ្មានជួរឈរបញ្ចុះតម្លៃក្នុងតារាងទំនិញ</strong>: រក្សាភាពទូលាយនៃតារាងទំនិញតាមច្បាប់ទី 13។</li>
+<li><input disabled="" type="checkbox"> <strong>ការសង្ខេបហិរញ្ញវត្ថុ 5 ជួរ</strong>: 1. សរុបរង, 2. ចូលរួមមុន, 3. ការបញ្ចុះតម្លៃពិសេស, 4. អតប 10%, 5. ទឹកប្រាក់សរុបចុងក្រោយ។</li>
+<li><input disabled="" type="checkbox"> <strong>គ្មាន Native Select</strong>: ប្រើ Custom Dropdown មាន Stacking Context <code>z-50</code> ត្រឹមត្រូវ។</li>
+<li><input disabled="" type="checkbox"> <strong>ជំនួស Alert / Confirm</strong>: ប្រើប្រាស់ <code>showToast()</code> និង <code>showCustomConfirm()</code>។</li>
+<li><input disabled="" type="checkbox"> <strong>លាក់របាររំកិល</strong>: Globally Hidden Scrollbars ទាំងផ្ដេក និងបញ្ឈរ។</li>
+<li><input disabled="" type="checkbox"> <strong>ប្លង់ពេញទទឹង</strong>: <code>&lt;main class=&quot;w-full&quot;&gt;</code> គ្មានការប្រើ <code>max-w-7xl mx-auto</code>។</li>
+<li><input disabled="" type="checkbox"> <strong>សកម្មភាពតារាង</strong>: ប្រើប៊ូតុង <code>⋮</code> ជាមួយ Floating Action Dropdown Menu។</li>
+<li><input disabled="" type="checkbox"> <strong>Unified Date Range Picker</strong>: មាន 10 Presets និងប្រតិទិនពីរជួរឈរតាមគំរូ <code>invoice.html</code>។</li>
+<li><input disabled="" type="checkbox"> <strong>ការបោះពុម្ព A4 ផ្លូវការ</strong>: ប្លង់សម្រង់តម្លៃ និងវិក្កយបត្រស្អាតបរិសុទ្ធ លាក់ Sidebar/Header ពេល Print។</li>
+</ul>
+<hr>
+<h2 id="14-សំណួរ-និងចម្លើយទូទៅ-faq" class="scroll-mt-24 group">14. សំណួរ និងចម្លើយទូទៅ (FAQ) <a href="#14-សំណួរ-និងចម្លើយទូទៅ-faq" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<p><strong>Q: ហេតុអ្វីបានជាត្រូវលាក់ថ្លៃដើមទិញពីបុគ្គលិកផ្នែកលក់?</strong><br>A: នេះជាគោលការណ៍គ្រឹះនៃពាណិជ្ជកម្មកម្រិតសហគ្រាស (Zero Purchase Cost Leakage)។ ប្រសកាលណាបុគ្គលិកលក់ដឹងថ្លៃដើមទិញ គាត់នឹងមានទំនោរចរចាបញ្ចុះតម្លៃឱ្យអតិថិជនរហូតដល់កៀកនឹងថ្លៃដើមដើម្បីងាយបិទការលក់ ដែលធ្វើឱ្យខាតបង់ប្រាក់ចំណេញរបស់ក្រុមហ៊ុន។ លើសពីនេះ វាក៏ការពារការបែកធ្លាយថ្លៃដើមសម្ងាត់របស់ក្រុមហ៊ុនទៅកាន់ដៃគូប្រកួតប្រជែងផងដែរ។</p>
+<p><strong>Q: ប្រសិនបើអតិថិជនចង់បានការបញ្ចុះតម្លៃលើសពី 5% តើបុគ្គលិកលក់ត្រូវធ្វើដូចម្តេច?</strong><br>A: បុគ្គលិកលក់អាចបញ្ចូលភាគរយដែលអតិថិជនចង់បានក្នុងទម្រង់ <code>create-quote.html</code> រួមជាមួយមូលហេតុអាជីវកម្មច្បាស់លាស់។ ប្រព័ន្ធនឹងរក្សាទុកជាសេចក្តីព្រាង និងបញ្ជូនសំណើទៅកាន់ផ្ទាំង <code>view-approval.html</code> របស់ Sales Manager ដោយស្វ័យប្រវត្តិ។ នៅពេល Manager អនុម័ត បុគ្គលិកលក់អាចទាញយក Quote នោះផ្ញើជូនអតិថិជនបានភ្លាម។</p>
+<p><strong>Q: តើបុគ្គលិកលក់អាចកែសម្រួលវិក្កយបត្រដែលបានបម្លែងចេញពី Quote បានទេ?</strong><br>A: នៅពេលទើបតែបម្លែងថ្មីៗក្នុងទម្រង់ <code>create-invoice.html</code> បុគ្គលិកលក់អាចកែសម្រួលព័ត៌មានដឹកជញ្ជូន ឬចំណាំបន្ថែមបាន។ ប៉ុន្តែនៅពេលបានចុច «ចេញវិក្កយបត្រផ្លូវការ» រួចហើយ វិក្កយបត្រនោះត្រូវបានចាក់សោរ (Locked) មិនអាចកែប្រែដោយឯកតោភាគីបានទៀតឡើយ។</p>
+<p><strong>Q: តើកម្រៃជើងសារ (Commission) របស់បុគ្គលិកលក់ត្រូវបានគណនានៅពេលណា?</strong><br>A: កម្រៃជើងសារមិនត្រូវបានបើកជូននៅពេលចេញវិក្កយបត្រនោះឡើយ។ ប្រព័ន្ធនឹងគណនា និងបញ្ចូលទៅក្នុងតារាងកម្រៃជើងសារដែលត្រូវបើក លុះត្រាតែអតិថិជនបានទូទាត់ប្រាក់ជាក់ស្តែង (Cash / Bakong collected) ចូលមកក្នុងគណនីក្រុមហ៊ុនរួចរាល់ប៉ុណ្ណោះ។</p>
+<hr>
+<p><em>ឯកសារនេះតំណាង 100% នៃមូលដ្ឋានចំណេះដឹងសម្រាប់ Sales Executive Role ក្នុង DIGITECHKH BMS</em><br><em>Previous Role: Internal Auditor / Executive → <a href="role_internal_auditor_executive.html"><code>role_internal_auditor_executive.md</code></a></em><br><em>Next Role: Admin / General Manager → <a href="role_admin_general_manager.html"><code>role_admin_general_manager.md</code></a></em></p>
+
+                </article>
+
+                <!-- Next / Previous Role Navigation Bar -->
+                <div class="no-print mt-12 pt-8 border-t border-slate-200 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <a href="role_internal_auditor_executive.html" class="p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-transform flex-shrink-0">
+                            🔍
+                        </div>
+                        <div class="min-w-0">
+                            <div class="text-[10px] text-slate-400 font-medium">← តួនាទីមុន</div>
+                            <div class="text-xs font-bold text-slate-800 group-hover:text-primary transition truncate">សវនករផ្ទៃក្នុង និងថ្នាក់ដឹកនាំ</div>
+                        </div>
+                    </a>
+
+                    <a href="role_admin_general_manager.html" class="p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group flex items-center justify-end text-right gap-3">
+                        <div class="min-w-0">
+                            <div class="text-[10px] text-slate-400 font-medium">តួនាទីបន្ទាប់ →</div>
+                            <div class="text-xs font-bold text-slate-800 group-hover:text-primary transition truncate">អភិបាល និងអ្នកចាត់ការទូទៅ</div>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-transform flex-shrink-0">
+                            🏛️
+                        </div>
+                    </a>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="no-print bg-white border-t border-slate-200 py-6 px-8 text-center text-xs text-slate-500">
+        <p>រក្សាសិទ្ធិគ្រប់យ៉ាង © 2026 ក្រុមហ៊ុន ឌីជីថេក ខេអេច (DIGITECHKH Co., Ltd.) · ព្រះរាជាណាចក្រកម្ពុជា</p>
+    </footer>
+
+</body>
+</html>

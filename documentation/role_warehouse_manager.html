@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="km" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📦 អ្នកគ្រប់គ្រងឃ្លាំងស្តុក (Warehouse Manager) — ការសិក្សាស៊ីជម្រៅ | DIGITECHKH BMS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Kantumruy Pro', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0f2b5c',
+                        primaryHover: '#0a1d3f',
+                        accent: '#2563eb',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Kantumruy Pro', sans-serif;
+            color: #334155;
+            background-color: #f8fafc;
+        }
+        ::-webkit-scrollbar { display: none; }
+        * { -ms-overflow-style: none; scrollbar-width: none; }
+        h1, h2, h3, h4 { color: #0f172a; font-weight: 700; }
+        h1 { font-size: 1.8rem; line-height: 2.35rem; margin-bottom: 1.25rem; }
+        h2 { font-size: 1.35rem; line-height: 1.85rem; margin-top: 2.25rem; margin-bottom: 0.85rem; padding-bottom: 0.5rem; border-bottom: 1px solid #e2e8f0; }
+        h3 { font-size: 1.1rem; line-height: 1.5rem; margin-top: 1.75rem; margin-bottom: 0.5rem; }
+        p { margin-bottom: 0.85rem; line-height: 1.8; font-size: 0.95rem; }
+        ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1rem; font-size: 0.95rem; }
+        ol { list-style-type: decimal; padding-left: 1.5rem; margin-bottom: 1rem; font-size: 0.95rem; }
+        li { margin-bottom: 0.35rem; line-height: 1.7; }
+        hr { border: 0; border-top: 1px solid #e2e8f0; margin: 2rem 0; }
+        @media print {
+            .no-print { display: none !important; }
+            body { background-color: #ffffff; color: #000; }
+            .print-container { max-width: 100% !important; margin: 0 !important; padding: 0 !important; box-shadow: none !important; border: none !important; }
+            table, pre, blockquote, .rounded-xl, .rounded-2xl { page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-primary selection:text-white min-h-screen flex flex-col justify-between">
+
+    <!-- Top Sticky Control Bar -->
+    <header class="no-print fixed top-0 left-0 right-0 h-16 bg-primary text-white z-50 px-4 sm:px-8 flex items-center justify-between shadow-md">
+        <div class="flex items-center gap-3">
+            <a href="index.html" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition flex items-center gap-2 text-xs font-semibold">
+                <i class="fas fa-arrow-left"></i> <span class="hidden sm:inline">មជ្ឈមណ្ឌលឯកសារ</span>
+            </a>
+            <span class="text-white/30 hidden sm:inline">|</span>
+            <div class="flex items-center gap-2">
+                <span class="text-xl">📦</span>
+                <span class="font-bold text-xs sm:text-sm text-white truncate max-w-[200px] sm:max-w-xs">អ្នកគ្រប់គ្រងឃ្លាំងស្តុក</span>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-white/15 text-cyan-200 hidden md:inline">Inventory</span>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-2 sm:gap-3">
+            <!-- Role Switcher -->
+            <div class="relative">
+                <select onchange="window.location.href=this.value" class="h-9 pl-3 pr-8 bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl text-xs font-semibold text-white focus:outline-none focus:bg-[#0a1d3f] transition appearance-none cursor-pointer">
+                    <option value="role_superadmin.html" >👑 ស៊ុបភើរ អភិបាល (Super Admin)</option>
+<option value="role_procurement_manager.html" >🛒 អ្នកគ្រប់គ្រងលទ្ធកម្ម (Procurement Manager)</option>
+<option value="role_warehouse_staff.html" >👷 បុគ្គលិកឃ្លាំងទំនិញ (Warehouse Staff)</option>
+<option value="role_customer_support.html" >🎧 ផ្នែកគាំទ្រអតិថិជន (Customer Support)</option>
+<option value="role_apar_accountant.html" >💰 គណនេយ្យករចំណាយ និងចំណូល (AP/AR Accountant)</option>
+<option value="role_sales_manager.html" >👔 អ្នកគ្រប់គ្រងផ្នែកលក់ (Sales Manager)</option>
+<option value="role_internal_auditor_executive.html" >🔍 សវនករផ្ទៃក្នុង និងថ្នាក់ដឹកនាំ (Internal Auditor / Executive)</option>
+<option value="role_sales_executive.html" >💼 បុគ្គលិកប្រតិបត្តិផ្នែកលក់ (Sales Executive)</option>
+<option value="role_admin_general_manager.html" >🏛️ អភិបាល និងអ្នកចាត់ការទូទៅ (Admin / General Manager)</option>
+<option value="role_warehouse_manager.html" selected>📦 អ្នកគ្រប់គ្រងឃ្លាំងស្តុក (Warehouse Manager)</option>
+                </select>
+                <i class="fas fa-chevron-down absolute right-3 top-3 text-[10px] text-white/60 pointer-events-none"></i>
+            </div>
+
+            <!-- Interactive Guide Link -->
+            <a href="DIGITECHKH-Roles-And-Permissions-Interactive-Guide.html?role=warehouse_manager" class="px-3 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-semibold transition hidden lg:flex items-center gap-1.5 shadow-sm">
+                <i class="fas fa-table-cells"></i> ផ្ទាំងអន្តរកម្ម & ម៉ាទ្រីស
+            </a>
+
+            <!-- Print Button -->
+            <button onclick="window.print()" class="px-3 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-semibold transition flex items-center gap-1.5 shadow-sm cursor-pointer">
+                <i class="fas fa-print"></i> <span class="hidden sm:inline">បោះពុម្ព A4</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Reading Container -->
+    <div class="pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full flex-1">
+        <div class="flex flex-col lg:flex-row gap-8 items-start">
+
+            <!-- Left Table of Contents Sidebar -->
+            <aside class="no-print lg:w-72 flex-shrink-0 sticky top-24 hidden lg:block bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
+                <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-3">
+                    <span class="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
+                        <i class="fas fa-list-ul text-primary"></i> មាតិកាឯកសារ
+                    </span>
+                    <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-50 text-accent">TOC</span>
+                </div>
+                <div class="space-y-0.5 max-h-[calc(100vh-220px)] overflow-y-auto pr-1 text-xs">
+                    <a href="#ចំណុចចាំបាច់-បេសកកម្មស្នូល-និងការការពារការសម្ងាត់តម្លៃលក់-core-mission-zero-selling-price-leakage" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="⚠️ ចំណុចចាំបាច់ — បេសកកម្មស្នូល និងការការពារការសម្ងាត់តម្លៃលក់ (Core Mission & Zero Selling Price Leakage)">⚠️ ចំណុចចាំបាច់ — បេសកកម្មស្នូល និងការការពារការសម្ងាត់តម្លៃលក់ (Core Mission & Zero Selling Price Leakage)</a>
+<a href="#តារាងមាតិកា" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="តារាងមាតិកា">តារាងមាតិកា</a>
+<a href="#1-អ្វីជា-warehouse-manager" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="1. អ្វីជា Warehouse Manager?">1. អ្វីជា Warehouse Manager?</a>
+<a href="#11-និយមន័យ-definition" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="1.1 និយមន័យ (Definition)">1.1 និយមន័យ (Definition)</a>
+<a href="#12-ភាពខុសគ្នារវាង-warehouse-manager-និង-warehouse-staff" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="1.2 ភាពខុសគ្នារវាង Warehouse Manager និង Warehouse Staff">1.2 ភាពខុសគ្នារវាង Warehouse Manager និង Warehouse Staff</a>
+<a href="#2-ឋានានុក្រមក្នុងប្រព័ន្ធ-និងទំនាក់ទំនងស្ថាប័ន" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="2. ឋានានុក្រមក្នុងប្រព័ន្ធ និងទំនាក់ទំនងស្ថាប័ន">2. ឋានានុក្រមក្នុងប្រព័ន្ធ និងទំនាក់ទំនងស្ថាប័ន</a>
+<a href="#3-អ្វីដែល-warehouse-manager-ធ្វើបាន-និងហាមធ្វើ-full-capability-map" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="3. អ្វីដែល Warehouse Manager ធ្វើបាន និងហាមធ្វើ (Full Capability Map)">3. អ្វីដែល Warehouse Manager ធ្វើបាន និងហាមធ្វើ (Full Capability Map)</a>
+<a href="#31-អ្វីដែល-warehouse-manager-ធ្វើបានពេញលេញ" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="3.1 ✅ អ្វីដែល Warehouse Manager ធ្វើបានពេញលេញ">3.1 ✅ អ្វីដែល Warehouse Manager ធ្វើបានពេញលេញ</a>
+<a href="#32-អ្វីដែល-warehouse-manager-ហាមធ្វើដាច់ខាត" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="3.2 ❌ អ្វីដែល Warehouse Manager ហាមធ្វើដាច់ខាត">3.2 ❌ អ្វីដែល Warehouse Manager ហាមធ្វើដាច់ខាត</a>
+<a href="#4-ស្ថាបត្យកម្មទំព័រ-ui-ពេញលេញ-page-by-page-blueprint" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="4. ស្ថាបត្យកម្មទំព័រ UI ពេញលេញ (Page-by-Page Blueprint)">4. ស្ថាបត្យកម្មទំព័រ UI ពេញលេញ (Page-by-Page Blueprint)</a>
+<a href="#41-5-stock1-balancebalancehtml-តារាងសមតុល្យស្តុកសហគ្រាស" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.1 `5-stock/1-balance/balance.html` — តារាងសមតុល្យស្តុកសហគ្រាស">4.1 `5-stock/1-balance/balance.html` — តារាងសមតុល្យស្តុកសហគ្រាស</a>
+<a href="#42-5-stock1-balanceadjust-balancehtml-ទម្រង់កែតម្រូវស្តុក-cycle-count-adjustment" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.2 `5-stock/1-balance/adjust-balance.html` — ទម្រង់កែតម្រូវស្តុក (Cycle Count Adjustment)">4.2 `5-stock/1-balance/adjust-balance.html` — ទម្រង់កែតម្រូវស្តុក (Cycle Count Adjustment)</a>
+<a href="#43-5-stock2-catalogcreate-cataloghtml-ទម្រង់បង្កើតមុខទំនិញថ្មី" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.3 `5-stock/2-catalog/create-catalog.html` — ទម្រង់បង្កើតមុខទំនិញថ្មី">4.3 `5-stock/2-catalog/create-catalog.html` — ទម្រង់បង្កើតមុខទំនិញថ្មី</a>
+<a href="#44-5-stock3-movementcreate-movementhtml-បង្កើតប័ណ្ណផ្ទេរទំនិញឆ្លងឃ្លាំង-inter-warehouse-transfer" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.4 `5-stock/3-movement/create-movement.html` — បង្កើតប័ណ្ណផ្ទេរទំនិញឆ្លងឃ្លាំង (Inter-Warehouse Transfer)">4.4 `5-stock/3-movement/create-movement.html` — បង្កើតប័ណ្ណផ្ទេរទំនិញឆ្លងឃ្លាំង (Inter-Warehouse Transfer)</a>
+<a href="#5-ម៉ាទ្រីសសិទ្ធិអំណាចពេញលេញ-permission-matrix" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="5. ម៉ាទ្រីសសិទ្ធិអំណាចពេញលេញ (Permission Matrix)">5. ម៉ាទ្រីសសិទ្ធិអំណាចពេញលេញ (Permission Matrix)</a>
+<a href="#6-វដ្តការងារស្នូលទាំង-6-core-warehouse-workflows" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="6. វដ្តការងារស្នូលទាំង 6 (Core Warehouse Workflows)">6. វដ្តការងារស្នូលទាំង 6 (Core Warehouse Workflows)</a>
+<a href="#workflow-1-ការអនុម័តការកែតម្រូវស្តុកក្រោយរាប់ជាក់ស្តែង-cycle-count-reconciliation" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 1: ការអនុម័តការកែតម្រូវស្តុកក្រោយរាប់ជាក់ស្តែង (Cycle Count Reconciliation)">Workflow 1: ការអនុម័តការកែតម្រូវស្តុកក្រោយរាប់ជាក់ស្តែង (Cycle Count Reconciliation)</a>
+<a href="#workflow-2-ការចាត់ចែងកាត់កងទំនិញខូចខាតទំហំធំ-damage-stock-write-off-flow-200" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 2: ការចាត់ចែងកាត់កងទំនិញខូចខាតទំហំធំ (Damage Stock Write-Off Flow > $200)">Workflow 2: ការចាត់ចែងកាត់កងទំនិញខូចខាតទំហំធំ (Damage Stock Write-Off Flow > $200)</a>
+<a href="#workflow-3-ការតាមដានកម្រិតស្តុកជិតអស់-និងការស្នើសុំទិញ-rop-purchase-requisition" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 3: ការតាមដានកម្រិតស្តុកជិតអស់ និងការស្នើសុំទិញ (ROP & Purchase Requisition)">Workflow 3: ការតាមដានកម្រិតស្តុកជិតអស់ និងការស្នើសុំទិញ (ROP & Purchase Requisition)</a>
+<a href="#workflow-4-ការផ្ទេរទំនិញឆ្លងឃ្លាំង-inter-warehouse-transfer-flow" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 4: ការផ្ទេរទំនិញឆ្លងឃ្លាំង (Inter-Warehouse Transfer Flow)">Workflow 4: ការផ្ទេរទំនិញឆ្លងឃ្លាំង (Inter-Warehouse Transfer Flow)</a>
+<a href="#workflow-5-ការបង្កើត-និងគ្រប់គ្រងកាតាឡុកទំនិញថ្មី-product-catalog-onboarding" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 5: ការបង្កើត និងគ្រប់គ្រងកាតាឡុកទំនិញថ្មី (Product Catalog Onboarding)">Workflow 5: ការបង្កើត និងគ្រប់គ្រងកាតាឡុកទំនិញថ្មី (Product Catalog Onboarding)</a>
+<a href="#workflow-6-ការបង្វិលទំនិញខូចត្រឡប់ទៅអ្នកផ្គត់ផ្គង់-return-to-vendor---rtv-flow" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 6: ការបង្វិលទំនិញខូចត្រឡប់ទៅអ្នកផ្គត់ផ្គង់ (Return to Vendor - RTV Flow)">Workflow 6: ការបង្វិលទំនិញខូចត្រឡប់ទៅអ្នកផ្គត់ផ្គង់ (Return to Vendor - RTV Flow)</a>
+<a href="#7-តក្កវិជ្ជាអាជីវកម្ម-និងរូបមន្តគ្រប់គ្រងស្តុក-business-logic-inventory-math" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="7. តក្កវិជ្ជាអាជីវកម្ម និងរូបមន្តគ្រប់គ្រងស្តុក (Business Logic & Inventory Math)">7. តក្កវិជ្ជាអាជីវកម្ម និងរូបមន្តគ្រប់គ្រងស្តុក (Business Logic & Inventory Math)</a>
+<a href="#71-រូបមន្តគណនាថ្លៃដើមមធ្យមនៃស្តុក-weighted-moving-average-cost" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="7.1 រូបមន្តគណនាថ្លៃដើមមធ្យមនៃស្តុក (Weighted Moving Average Cost)">7.1 រូបមន្តគណនាថ្លៃដើមមធ្យមនៃស្តុក (Weighted Moving Average Cost)</a>
+<a href="#72-រូបមន្តចំណុចត្រូវបញ្ជាទិញបន្ថែម-reorder-point-formula" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="7.2 រូបមន្តចំណុចត្រូវបញ្ជាទិញបន្ថែម (Reorder Point Formula)">7.2 រូបមន្តចំណុចត្រូវបញ្ជាទិញបន្ថែម (Reorder Point Formula)</a>
+<a href="#8-ទំនាក់ទំនងឆ្លងផ្នែកជាមួយតួនាទីផ្សេងទៀត-cross-role-interaction-map" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="8. ទំនាក់ទំនងឆ្លងផ្នែកជាមួយតួនាទីផ្សេងទៀត (Cross-Role Interaction Map)">8. ទំនាក់ទំនងឆ្លងផ្នែកជាមួយតួនាទីផ្សេងទៀត (Cross-Role Interaction Map)</a>
+<a href="#9-វិសាលភាពទិន្នន័យ-data-scope-អ្វីដែលឃើញ-និងអ្វីដែលត្រូវលាក់" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="9. វិសាលភាពទិន្នន័យ (Data Scope — អ្វីដែលឃើញ និងអ្វីដែលត្រូវលាក់)">9. វិសាលភាពទិន្នន័យ (Data Scope — អ្វីដែលឃើញ និងអ្វីដែលត្រូវលាក់)</a>
+<a href="#10-ផ្ទាំងគ្រប់គ្រង-និងសូចនាករ-kpi-របស់-warehouse-manager" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="10. ផ្ទាំងគ្រប់គ្រង និងសូចនាករ KPI របស់ Warehouse Manager">10. ផ្ទាំងគ្រប់គ្រង និងសូចនាករ KPI របស់ Warehouse Manager</a>
+<a href="#11-គំរូរចនាសម្ព័ន្ធទិន្នន័យ-database-schema-blueprint" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="11. គំរូរចនាសម្ព័ន្ធទិន្នន័យ (Database Schema Blueprint)">11. គំរូរចនាសម្ព័ន្ធទិន្នន័យ (Database Schema Blueprint)</a>
+<a href="#12-ក្របខ័ណ្ឌការពារការបាត់បង់-និងការកិបកេងស្តុក-anti-theft-shrinkage-controls" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="12. ក្របខ័ណ្ឌការពារការបាត់បង់ និងការកិបកេងស្តុក (Anti-Theft & Shrinkage Controls)">12. ក្របខ័ណ្ឌការពារការបាត់បង់ និងការកិបកេងស្តុក (Anti-Theft & Shrinkage Controls)</a>
+<a href="#13-អនុសាសន៍ស្ថាបត្យកម្ម-និងផែនការ-prototype-planning" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="13. អនុសាសន៍ស្ថាបត្យកម្ម និងផែនការ Prototype Planning">13. អនុសាសន៍ស្ថាបត្យកម្ម និងផែនការ Prototype Planning</a>
+<a href="#131-អនុសាសន៍រចនាប្រព័ន្ធ-architectural-recommendations" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="13.1 អនុសាសន៍រចនាប្រព័ន្ធ (Architectural Recommendations)">13.1 អនុសាសន៍រចនាប្រព័ន្ធ (Architectural Recommendations)</a>
+<a href="#132-បញ្ជីត្រួតពិនិត្យការសាងសង់-prototype-15-point-prototype-checklist" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="13.2 បញ្ជីត្រួតពិនិត្យការសាងសង់ Prototype (15-Point Prototype Checklist)">13.2 បញ្ជីត្រួតពិនិត្យការសាងសង់ Prototype (15-Point Prototype Checklist)</a>
+<a href="#14-សំណួរ-និងចម្លើយទូទៅ-faq" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="14. សំណួរ និងចម្លើយទូទៅ (FAQ)">14. សំណួរ និងចម្លើយទូទៅ (FAQ)</a>
+                </div>
+                <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
+                    <a href="DIGITECHKH-Roles-And-Permissions-Interactive-Guide.html?role=warehouse_manager" class="w-full py-2 px-3 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-700 text-xs font-medium flex items-center justify-between transition border border-slate-200">
+                        <span>មើលក្នុងផ្ទាំងអន្តរកម្ម</span>
+                        <i class="fas fa-up-right-from-square text-[10px] text-slate-400"></i>
+                    </a>
+                    <a href="role_warehouse_manager.md" class="w-full py-2 px-3 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-500 text-[11px] font-normal flex items-center justify-between transition border border-slate-200">
+                        <span>មើលឯកសារដើម (.md)</span>
+                        <i class="fas fa-file-code text-[10px]"></i>
+                    </a>
+                </div>
+            </aside>
+
+            <!-- Main Document Body -->
+            <main class="print-container flex-1 bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-12 min-w-0 max-w-4xl mx-auto">
+
+                <!-- Breadcrumb -->
+                <div class="no-print flex items-center gap-2 text-xs text-slate-500 mb-6 flex-wrap pb-4 border-b border-slate-100">
+                    <a href="index.html" class="hover:text-primary transition flex items-center gap-1">
+                        <i class="fas fa-home"></i> មជ្ឈមណ្ឌលឯកសារ
+                    </a>
+                    <span>/</span>
+                    <a href="DIGITECHKH-Roles-And-Permissions-Interactive-Guide.html" class="hover:text-primary transition">
+                        តួនាទីទាំង 10
+                    </a>
+                    <span>/</span>
+                    <span class="text-slate-800 font-semibold">អ្នកគ្រប់គ្រងឃ្លាំងស្តុក</span>
+                </div>
+
+                <!-- Document Rendered HTML -->
+                <article class="prose prose-slate max-w-none">
+                    <h1 id="digitechkh-bms-ការសិក្សាស៊ីជម្រៅ-តួនាទី-អ្នកគ្រប់គ្រងឃ្លាំងស្តុក-warehouse-manager" class="scroll-mt-24 group">📦 DIGITECHKH BMS — ការសិក្សាស៊ីជម្រៅ: តួនាទី អ្នកគ្រប់គ្រងឃ្លាំងស្តុក (Warehouse Manager) <a href="#digitechkh-bms-ការសិក្សាស៊ីជម្រៅ-តួនាទី-អ្នកគ្រប់គ្រងឃ្លាំងស្តុក-warehouse-manager" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h1>
+<div class="my-5 p-4 rounded-xl bg-slate-50 border-l-4 border-[#0f2b5c] text-slate-800 text-xs leading-relaxed shadow-sm">
+<p><strong>ឯកសារ</strong>: <code>role_warehouse_manager.md</code><br><strong>កំណែ</strong>: 1.0<br><strong>កាលបរិច្ឆេទ</strong>: 21 កញ្ញា 2026<br><strong>គោលបំណង</strong>: ការយល់ដឹង 100% អំពីតួនាទី អ្នកគ្រប់គ្រងឃ្លាំងស្តុក (Warehouse Manager) មុនពេលឈានទៅរៀបចំគំរូទម្រង់ដើម (Prototype) — រួមមានការគ្រប់គ្រងទ្រព្យសកម្មស្តុកកម្រិតសហគ្រាស (Enterprise Inventory Custodianship), ការអនុម័តចលនាស្តុក និងការកែតម្រូវចំនួនរាប់, ការកំណត់ចំណុចត្រូវបញ្ជាទិញបន្ថែម (Reorder Point), ការការពារការបែកធ្លាយតម្លៃលក់ (Zero Selling Price Leakage), ស្ថាបត្យកម្មទំព័រ UI គ្រប់ស្រទាប់, វដ្តការងារស្នូល, តក្កវិជ្ជាគណនាថ្លៃដើមមធ្យម, ទំនាក់ទំនងឆ្លងផ្នែក, ផ្ទាំងគ្រប់គ្រង KPI, គំរូ Database Schema, និងអនុសាសន៍រៀបចំផែនការលម្អិត។</p>
+</div>
+<hr>
+<h2 id="ចំណុចចាំបាច់-បេសកកម្មស្នូល-និងការការពារការសម្ងាត់តម្លៃលក់-core-mission-zero-selling-price-leakage" class="scroll-mt-24 group">⚠️ ចំណុចចាំបាច់ — បេសកកម្មស្នូល និងការការពារការសម្ងាត់តម្លៃលក់ (Core Mission &amp; Zero Selling Price Leakage) <a href="#ចំណុចចាំបាច់-បេសកកម្មស្នូល-និងការការពារការសម្ងាត់តម្លៃលក់-core-mission-zero-selling-price-leakage" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<p>នៅក្នុងស្ថាបត្យកម្មប្រព័ន្ធគ្រប់គ្រងសហគ្រាស DIGITECHKH BMS តួនាទី <strong>Warehouse Manager (អ្នកគ្រប់គ្រងឃ្លាំងស្តុក)</strong> គឺជា <strong>«អាណាព្យាបាលកំពូលនៃទ្រព្យសកម្មទំនិញក្នុងស្តុករបស់ក្រុមហ៊ុន» (Supreme Inventory Asset Custodian)</strong>។</p>
+<div class="my-5 p-4 rounded-xl bg-slate-50 border-l-4 border-[#0f2b5c] text-slate-800 text-xs leading-relaxed shadow-sm">
+<p>🛡️ <strong>គោលការណ៍ការពារការបែកធ្លាយតម្លៃលក់ និងប្រាក់ចំណេញពាណិជ្ជកម្ម (Zero Selling Price Leakage Doctrine)</strong>:<br>ផ្នែកឃ្លាំងគឺជាផ្នែកប្រតិបត្តិការរក្សាទុក និងចរាចរទំនិញរូបវន្ត។ ដូច្នេះ អ្នកគ្រប់គ្រងឃ្លាំងស្តុក <strong>ត្រូវបានប្រព័ន្ធលាក់បាំងតម្លៃលក់ជូនអតិថិជន, ផលចំណេញពាណិជ្ជកម្ម (Profit Margin), និងកិច្ចសន្យាតម្លៃពិសេសរបស់អតិថិជន 100% ជាដាច់ខាត</strong>។<br>អ្នកគ្រប់គ្រងឃ្លាំងស្តុកមើលឃើញត្រឹមតែ៖</p>
+<ol>
+<li><strong>បរិមាណទំនិញជាក់ស្តែង (Physical Quantities)</strong>៖ ចំនួនក្នុងដៃ (On Hand), ចំនួនកក់ទុក (Reserved), ចំនួនទំនេរសម្រាប់លក់ (Available), និងចំនួនកំពុងដឹកចូល (Incoming)</li>
+<li><strong>ថ្លៃដើមមធ្យមនៃស្តុក (Weighted Average Cost / MAC)</strong>៖ សម្រាប់តែគណនាតម្លៃទ្រព្យសកម្មស្តុកសរុប (Stock Valuation) និងការកាត់កងទំនិញខូចខាតប៉ុណ្ណោះ</li>
+<li><strong>ទីតាំងរក្សាទុកក្នុងឃ្លាំង (Warehouse Layout &amp; Bins/Racks)</strong></li>
+<li><strong>ចំណុចត្រូវបញ្ជាទិញបន្ថែម និងស្តុកសុវត្ថិភាព (Reorder Point &amp; Safety Stock)</strong></li>
+</ol>
+<p><em>មូលហេតុ</em>: ដើម្បីការពារការសម្ងាត់ពាណិជ្ជកម្មរបស់ក្រុមហ៊ុន ការពារកុំឱ្យមានការលេចធ្លាយបញ្ជីតម្លៃលក់ទៅកាន់អ្នកផ្គត់ផ្គង់ ឬឈ្មួញខាងក្រៅ និងធានាការបែងចែកភារកិច្ចដាច់ដោយឡែក (Segregation of Duties - SoD) រវាងផ្នែកលក់ និងផ្នែកឃ្លាំង។</p>
+</div>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">វិសាលភាព និងសកម្មភាព</th>
+<th align="center">សិទ្ធិរបស់ Warehouse Manager</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">មូលហេតុ និងគោលការណ៍អភិបាលកិច្ច</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>គ្រប់គ្រង និងអនុម័តប័ណ្ណទទួលទំនិញចូល (GRN Approval)</strong></td>
+<td align="center">✅ ធ្វើបានពេញលេញ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ទទួលស្គាល់ការទទួលទំនិញរូបវន្តចូលក្នុងស្តុកផ្លូវការ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>អនុម័តការកែតម្រូវស្តុក (Approve Stock Adjustments)</strong></td>
+<td align="center">✅ អនុម័តកម្រិត $\le $200$</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">សម្រួលតួលេខស្តុកជាក់ស្តែងក្រោយពេលរាប់ (Cycle Count)</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ស្នើសុំកាត់កងទំនិញខូចខាត (Stock Write-Off Request)</strong></td>
+<td align="center">✅ បង្កើត និងបញ្ជូនទៅ GM</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">កត់ត្រា និងស៊ើបអង្កេតទំនិញខូចខាត ផុតកំណត់ ឬបាត់បង់</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>គ្រប់គ្រងកាតាឡុកទំនិញ និងបាកូដ (Product Catalog)</strong></td>
+<td align="center">✅ បង្កើត និងកែប្រែបាន</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">កំណត់ឈ្មោះ, ប្រភេទ, ឯកតារាប់, បាកូដ, ទីតាំងធ្នើរ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>កំណត់ចំណុចត្រូវបញ្ជាទិញ (Reorder Point &amp; Min/Max)</strong></td>
+<td align="center">✅ កំណត់ និងកែប្រែបាន</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ការពារការដាច់ស្តុក និងបញ្ជូនដំណឹងទៅផ្នែកលទ្ធកម្ម</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>អនុម័តការផ្ទេរទំនិញឆ្លងឃ្លាំង/សាខា (Inter-Warehouse)</strong></td>
+<td align="center">✅ ធ្វើបានពេញលេញ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">គ្រប់គ្រងតុល្យភាពស្តុករវាងឃ្លាំងកណ្តាល និងសាខា</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>គ្រប់គ្រងការបង្វិលទំនិញខូចជូនអ្នកផ្គត់ផ្គង់ (RTV)</strong></td>
+<td align="center">✅ ធ្វើបានពេញលេញ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">បង្កើតប័ណ្ណ Return to Vendor ភ្ជាប់ជាមួយលទ្ធកម្ម</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>មើលតម្លៃលក់ជូនអតិថិជន និងប្រាក់ចំណេញលក់</strong></td>
+<td align="center">❌ <strong>ហាមដាច់ខាត (Zero Leakage)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ការពារការសម្ងាត់ពាណិជ្ជកម្ម និងយុទ្ធសាស្ត្រលក់</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>បង្កើត ឬកែប្រែវិក្កយបត្រលក់ (Sales Invoices)</strong></td>
+<td align="center">❌ <strong>ហាមដាច់ខាត (Sales Only)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ភារកិច្ចផ្តាច់មុខរបស់ផ្នែកលក់</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>បង្កើត ឬកែប្រែការបញ្ជាទិញទំនិញ (Purchase Orders)</strong></td>
+<td align="center">❌ <strong>ហាមដាច់ខាត (Procurement Only)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ផ្នែកឃ្លាំងធ្វើបានត្រឹមតែ PR (Requisition) ប៉ុណ្ណោះ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>អនុម័តការកាត់កងទំនិញខូចខាតទំហំធំ (&gt; $200.00)</strong></td>
+<td align="center">❌ <strong>ទាមទារ GM អនុម័ត</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ការពារការបិទបាំងការបាត់បង់ទ្រព្យសកម្មក្រុមហ៊ុន</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="តារាងមាតិកា" class="scroll-mt-24 group">តារាងមាតិកា <a href="#តារាងមាតិកា" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<ol>
+<li><a href="#1-%E1%9E%A2%E1%9F%92%E1%9E%9C%E1%9E%B8%E1%9E%87%E1%9E%B6-warehouse-manager">អ្វីជា Warehouse Manager?</a></li>
+<li><a href="#2-%E1%9E%8B%E1%9E%B6%E1%9E%93%E1%9E%B6%E1%9E%93%E1%9E%BB%E1%9E%80%E1%9F%92%E1%9E%9A%E1%9E%98%E1%9E%80%E1%9F%92%E1%9E%93%E1%9E%BB%E1%9E%84%E1%9E%94%E1%9F%92%E1%9E%9A%E1%9E%96%E1%9F%90%E1%9E%93%E1%9F%92%E1%9E%92-%E1%9E%93%E1%9E%B7%E1%9E%84%E1%9E%91%E1%9F%86%E1%9E%93%E1%9E%B6%E1%9E%80%E1%9F%8B%E1%9E%91%E1%9F%86%E1%9E%93%E1%9E%84%E1%9E%9F%E1%9F%92%E1%9E%90%E1%9E%B6%E1%9E%94%E1%9F%90%E1%9E%93">ឋានានុក្រមក្នុងប្រព័ន្ធ និងទំនាក់ទំនងស្ថាប័ន</a></li>
+<li><a href="#3-%E1%9E%A2%E1%9F%92%E1%9E%9C%E1%9E%B8%E1%9E%8A%E1%9F%82%E1%9E%9B-warehouse-manager-%E1%9E%92%E1%9F%92%E1%9E%9C%E1%9E%BE%E1%9E%94%E1%9E%B6%E1%9E%93-%E1%9E%93%E1%9E%B7%E1%9E%84%E1%9E%A0%E1%9E%B6%E1%9E%98%E1%9E%92%E1%9F%92%E1%9E%9C%E1%9E%BE">អ្វីដែល Warehouse Manager ធ្វើបាន និងហាមធ្វើ (Full Capability Map)</a></li>
+<li><a href="#4-%E1%9E%9F%E1%9F%92%E1%9E%90%E1%9E%B6%E1%9E%94%E1%9E%8F%E1%9F%92%E1%9E%99%E1%9E%80%E1%9E%98%E1%9F%92%E1%9E%98%E1%9E%91%E1%9F%86%E1%9E%96%E1%9F%90%E1%9E%9A-ui-%E1%9E%96%E1%9F%81%E1%9E%89%E1%9E%9B%E1%9F%81%E1%9E%89">ស្ថាបត្យកម្មទំព័រ UI ពេញលេញ (Page-by-Page Blueprint)</a></li>
+<li><a href="#5-%E1%9E%98%E1%9F%89%E1%9E%B6%E1%9E%91%E1%9F%92%E1%9E%9A%E1%9E%B8%E1%9E%9F%E1%9E%9F%E1%9E%B7%E1%9E%91%E1%9F%92%E1%9E%92%E1%9E%B7%E1%9E%A2%E1%9F%86%E1%9E%8E%E1%9E%B6%E1%9E%85%E1%9E%96%E1%9F%81%E1%9E%89%E1%9E%9B%E1%9F%81%E1%9E%89">ម៉ាទ្រីសសិទ្ធិអំណាចពេញលេញ (Permission Matrix)</a></li>
+<li><a href="#6-%E1%9E%9C%E1%9E%8A%E1%9F%92%E1%9E%8F%E1%9E%80%E1%9E%B6%E1%9E%9A%E1%9E%84%E1%9E%B6%E1%9E%9A%E1%9E%9F%E1%9F%92%E1%9E%93%E1%9E%BC%E1%9E%9B%E1%9E%91%E1%9E%B6%E1%9F%86%E1%9E%84-6">វដ្តការងារស្នូលទាំង 6 (Core Warehouse Workflows)</a></li>
+<li><a href="#7-%E1%9E%8F%E1%9E%80%E1%9F%92%E1%9E%80%E1%9E%9C%E1%9E%B7%E1%9E%87%E1%9F%92%E1%9E%87%E1%9E%B6%E1%9E%A2%E1%9E%B6%E1%9E%87%E1%9E%B8%E1%9E%9C%E1%9E%80%E1%9E%98%E1%9F%92%E1%9E%98-%E1%9E%93%E1%9E%B7%E1%9E%84%E1%9E%9A%E1%9E%BC%E1%9E%94%E1%9E%98%E1%9E%93%E1%9F%92%E1%9E%8F%E1%9E%82%E1%9F%92%E1%9E%9A%E1%9E%94%E1%9F%8B%E1%9E%82%E1%9F%92%E1%9E%9A%E1%9E%84%E1%9E%9F%E1%9F%92%E1%9E%8F%E1%9E%BB%E1%9E%80">តក្កវិជ្ជាអាជីវកម្ម និងរូបមន្តគ្រប់គ្រងស្តុក (Business Logic &amp; Inventory Math)</a></li>
+<li><a href="#8-%E1%9E%91%E1%9F%86%E1%9E%93%E1%9E%B6%E1%9E%80%E1%9F%8B%E1%9E%91%E1%9F%86%E1%9E%93%E1%9E%84%E1%9E%86%E1%9F%92%E1%9E%9B%E1%9E%84%E1%9E%95%E1%9F%92%E1%9E%93%E1%9F%82%E1%9E%80%E1%9E%87%E1%9E%B6%E1%9E%98%E1%9E%BD%E1%9E%99%E1%9E%8F%E1%9E%BD%E1%9E%93%E1%9E%B6%E1%9E%91%E1%9E%B8%E1%9E%95%E1%9F%92%E1%9E%9F%E1%9F%81%E1%9E%84%E1%9E%91%E1%9F%80%E1%9E%8F">ទំនាក់ទំនងឆ្លងផ្នែកជាមួយតួនាទីផ្សេងទៀត (Cross-Role Interaction Map)</a></li>
+<li><a href="#9-%E1%9E%9C%E1%9E%B7%E1%9E%9F%E1%9E%B6%E1%9E%9B%E1%9E%97%E1%9E%B6%E1%9E%96%E1%9E%91%E1%9E%B7%E1%9E%93%E1%9F%92%E1%9E%93%E1%9E%93%E1%9F%90%E1%9E%99-data-scope--%E1%9E%A2%E1%9F%92%E1%9E%9C%E1%9E%B8%E1%9E%8A%E1%9F%82%E1%9E%9B%E1%9E%83%E1%9E%BE%E1%9E%89-%E1%9E%93%E1%9E%B7%E1%9E%84%E1%9E%A2%E1%9F%92%E1%9E%9C%E1%9E%B8%E1%9E%8A%E1%9F%82%E1%9E%9B%E1%9E%8F%E1%9F%92%E1%9E%9A%E1%9E%BC%E1%9E%9C%E1%9E%9B%E1%9E%B6%E1%9E%80%E1%9F%8B">វិសាលភាពទិន្នន័យ (Data Scope — អ្វីដែលឃើញ និងអ្វីដែលត្រូវលាក់)</a></li>
+<li><a href="#10-%E1%9E%95%E1%9F%92%E1%9E%91%E1%9E%B6%E1%9F%86%E1%9E%84%E1%9E%82%E1%9F%92%E1%9E%9A%E1%9E%94%E1%9F%8B%E1%9E%82%E1%9F%92%E1%9E%9A%E1%9E%84-%E1%9E%93%E1%9E%B7%E1%9E%84%E1%9E%9F%E1%9E%BC%E1%9E%85%E1%9E%93%E1%9E%B6%E1%9E%80%E1%9E%9A-kpi-%E1%9E%9A%E1%9E%94%E1%9E%9F%E1%9F%8B-warehouse-manager">ផ្ទាំងគ្រប់គ្រង និងសូចនាករ KPI របស់ Warehouse Manager</a></li>
+<li><a href="#11-%E1%9E%82%E1%9F%86%E1%9E%9A%E1%9E%BC%E1%9E%9A%E1%9E%85%E1%9E%93%E1%9E%B6%E1%9E%9F%E1%9E%98%E1%9F%92%E1%9E%96%E1%9F%90%E1%9E%93%E1%9F%92%E1%9E%92%E1%9E%91%E1%9E%B7%E1%9E%93%E1%9F%92%E1%9E%93%E1%9E%93%E1%9F%90%E1%9E%99">គំរូរចនាសម្ព័ន្ធទិន្នន័យ (Database Schema Blueprint)</a></li>
+<li><a href="#12-%E1%9E%80%E1%9F%92%E1%9E%9A%E1%9E%94%E1%9E%81%E1%9F%90%E1%9E%8E%E1%9F%92%E1%9E%8C%E1%9E%80%E1%9E%B6%E1%9E%9A%E1%9E%96%E1%9E%B6%E1%9E%9A%E1%9E%80%E1%9E%B6%E1%9E%9A%E1%9E%94%E1%9E%B6%E1%9E%8F%E1%9F%8B%E1%9E%94%E1%9E%84%E1%9F%8B-%E1%9E%93%E1%9E%B7%E1%9E%84%E1%9E%80%E1%9E%B6%E1%9E%9A%E1%9E%80%E1%9E%B7%E1%9E%94%E1%9E%80%E1%9F%81%E1%9E%84%E1%9E%9F%E1%9F%92%E1%9E%8F%E1%9E%BB%E1%9E%80">ក្របខ័ណ្ឌការពារការបាត់បង់ និងការកិបកេងស្តុក (Anti-Theft &amp; Shrinkage Controls)</a></li>
+<li><a href="#13-%E1%9E%A2%E1%9E%93%E1%9E%BB%E1%9E%9F%E1%9E%B6%E1%9E%9F%E1%9E%93%E1%9F%8D%E1%9E%9F%E1%9F%92%E1%9E%90%E1%9E%B6%E1%9E%94%E1%9E%8F%E1%9F%92%E1%9E%99%E1%9E%80%E1%9E%98%E1%9F%92%E1%9E%98-%E1%9E%93%E1%9E%B7%E1%9E%84%E1%9E%95%E1%9F%82%E1%9E%93%E1%9E%80%E1%9E%B6%E1%9E%9A-prototype-planning">អនុសាសន៍ស្ថាបត្យកម្ម និងផែនការ Prototype Planning</a></li>
+<li><a href="#14-%E1%9E%9F%E1%9F%86%E1%9E%8E%E1%9E%BD%E1%9E%9A-%E1%9E%93%E1%9E%B7%E1%9E%84%E1%9E%85%E1%9E%98%E1%9F%92%E1%9E%9B%E1%9E%BE%E1%9E%99%E1%9E%91%E1%9E%BC%E1%9E%91%E1%9F%85">សំណួរ និងចម្លើយទូទៅ (FAQ)</a></li>
+</ol>
+<hr>
+<h2 id="1-អ្វីជា-warehouse-manager" class="scroll-mt-24 group">1. អ្វីជា Warehouse Manager? <a href="#1-អ្វីជា-warehouse-manager" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="11-និយមន័យ-definition" class="scroll-mt-24 group">1.1 និយមន័យ (Definition) <a href="#11-និយមន័យ-definition" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p><strong>Warehouse Manager (អ្នកគ្រប់គ្រងឃ្លាំងស្តុក)</strong> គឺជាថ្នាក់ដឹកនាំទទួលបន្ទុកប្រតិបត្តិការឃ្លាំងទំនិញទាំងមូលរបស់ក្រុមហ៊ុន (Central Warehouse &amp; Branch Hubs)។ នៅក្នុងប្រព័ន្ធ DIGITECHKH BMS គាត់/នាង ទទួលខុសត្រូវលើ៖</p>
+<ol>
+<li><strong>ភាពត្រឹមត្រូវនៃទិន្នន័យស្តុក (Inventory Accuracy $\ge 99%$)</strong>: ធានាថាតួលេខទំនិញក្នុងប្រព័ន្ធត្រូវគ្នាបេះបិទជាមួយចំនួនទំនិញរូបវន្តជាក់ស្តែងលើធ្នើរ។</li>
+<li><strong>ការគ្រប់គ្រងលំហូរទំនិញចូល-ចេញ (Inbound &amp; Outbound Logistics Flow)</strong>: ត្រួតពិនិត្យការទទួលទំនិញចូល (GRN), ការរៀបចំទំនិញចេញតាមវិក្កយបត្រ (Picking &amp; Packing), និងការផ្ទេរទំនិញឆ្លងឃ្លាំង។</li>
+<li><strong>ការគ្រប់គ្រងចំណុចទិញបន្ថែម និងស្តុកសុវត្ថិភាព (Reorder Point &amp; Safety Stock)</strong>: តាមដានកម្រិតស្តុកជិតអស់ ដើម្បីបញ្ជូនសំណើសុំទិញ (Purchase Requisition) ទៅកាន់ Procurement Manager ទាន់ពេលវេលា ការពារការដាច់ស្តុក (Stockout)។</li>
+<li><strong>ការត្រួតពិនិត្យ និងកែតម្រូវស្តុក (Cycle Count &amp; Reconciliation)</strong>: រៀបចំកាលវិភាគរាប់ស្តុកប្រចាំសប្តាហ៍/ខែ និងអនុម័តការកែតម្រូវតួលេខស្តុកដែលខុសគ្នាស្រាល។</li>
+</ol>
+<h3 id="12-ភាពខុសគ្នារវាង-warehouse-manager-និង-warehouse-staff" class="scroll-mt-24 group">1.2 ភាពខុសគ្នារវាង Warehouse Manager និង Warehouse Staff <a href="#12-ភាពខុសគ្នារវាង-warehouse-manager-និង-warehouse-staff" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">លក្ខណៈប្រៀបធៀប</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">បុគ្គលិកឃ្លាំង (Warehouse Staff)</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">អ្នកគ្រប់គ្រងឃ្លាំង (Warehouse Manager)</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ភារកិច្ចចម្បង</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">រាប់ទំនិញ, ស្កេនបាកូដ, លើកដាក់ធ្នើរ, រៀបចំកញ្ចប់ដឹក</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">គ្រប់គ្រងផែនការស្តុក, អនុម័តចលនា, កំណត់ ROP, រៀបចំប្លង់ឃ្លាំង</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ការកែតម្រូវស្តុក</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ត្រឹមតែរាប់ និងដាក់ស្នើសុំកែតម្រូវ (Submit Request)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ជាអ្នកចុះហត្ថលេខាអនុម័តការកែតម្រូវ (Approve)</strong></td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ការកាត់កងទំនិញខូច (Write-off)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">រាយការណ៍ និងថតរូបភស្តុតាងខូចខាត</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">រៀបចំសំណើផ្លូវការ ស៊ើបអង្កេត និងដាក់ជូន GM</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>កាតាឡុកទំនិញ (Catalog)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">មើលឃើញតែឈ្មោះ បាកូដ និងទីតាំងធ្នើរ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>បង្កើត និងកែប្រែកាតាឡុកទំនិញ, ប្រភេទ, និងឯកតា</strong></td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ការផ្ទេរទំនិញឆ្លងឃ្លាំង</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">លើកទំនិញឡើងឡាន និងស្កេនបញ្ជូន</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>អនុម័តប័ណ្ណផ្ទេរទំនិញផ្លូវការ (Approve Transfer)</strong></td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ការមើលឃើញថ្លៃដើម (Cost)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ <strong>លាក់ 100% (ឃើញតែចំនួន Quantity)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ឃើញថ្លៃដើមមធ្យម (Weighted Cost) សម្រាប់គណនាតម្លៃស្តុក</strong></td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ការមើលឃើញតម្លៃលក់ (Price)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ <strong>លាក់ 100% (Zero Selling Price Leakage)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ <strong>លាក់ 100% (Zero Selling Price Leakage)</strong></td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="2-ឋានានុក្រមក្នុងប្រព័ន្ធ-និងទំនាក់ទំនងស្ថាប័ន" class="scroll-mt-24 group">2. ឋានានុក្រមក្នុងប្រព័ន្ធ និងទំនាក់ទំនងស្ថាប័ន <a href="#2-ឋានានុក្រមក្នុងប្រព័ន្ធ-និងទំនាក់ទំនងស្ថាប័ន" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>┌─────────────────────────────────────────────────────────┐
+│              👑 ADMIN / GENERAL MANAGER                 │
+└────────────────────────────┬────────────────────────────┘
+                             │ អនុម័តការកាត់កងស្តុកធំៗ &amp; គោលនយោបាយ
+┌────────────────────────────▼────────────────────────────┐
+│          📦 WAREHOUSE MANAGER (អ្នកគ្រប់គ្រងឃ្លាំងស្តុក)       │
+│     - គ្រប់គ្រងស្តុក, អនុម័តចលនា, កំណត់ ROP, កាតាឡុកទំនិញ   │
+└──────┬─────────────────────┬────────────────────┬───────┘
+       │ បញ្ជា និងត្រួតពិនិត្យ   │ សំណើទិញចូល (PR)     │ ដឹកជញ្ជូន
+┌──────▼──────┐       ┌──────▼──────┐      ┌──────▼──────┐
+│  👷 WH Staff │       │  🛒 Procure │      │  🚚 Driver  │
+│  (បុគ្គលិក)  │       │   Manager   │      │  (អ្នកដឹក)  │
+└─────────────┘       └─────────────┘      └─────────────┘
+</code></pre>
+        </div>
+<hr>
+<h2 id="3-អ្វីដែល-warehouse-manager-ធ្វើបាន-និងហាមធ្វើ-full-capability-map" class="scroll-mt-24 group">3. អ្វីដែល Warehouse Manager ធ្វើបាន និងហាមធ្វើ (Full Capability Map) <a href="#3-អ្វីដែល-warehouse-manager-ធ្វើបាន-និងហាមធ្វើ-full-capability-map" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="31-អ្វីដែល-warehouse-manager-ធ្វើបានពេញលេញ" class="scroll-mt-24 group">3.1 ✅ អ្វីដែល Warehouse Manager ធ្វើបានពេញលេញ <a href="#31-អ្វីដែល-warehouse-manager-ធ្វើបានពេញលេញ" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">#</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">សមត្ថភាពស្នូល</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ពិពណ៌នា និងករណីប្រើប្រាស់</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">1</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>អនុម័តប័ណ្ណទទួលទំនិញចូល (GRN Approval)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ផ្ទៀងផ្ទាត់ និងអនុម័តការកើនឡើងចំនួនស្តុកក្រោយបុគ្គលិករាប់ត្រូវ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">2</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>អនុម័តការកែតម្រូវស្តុក (Approve Adjustments)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">អនុម័តប័ណ្ណកែតម្រូវចំនួនរាប់ខុសតិចតួច ($\le $200.00$) ក្រោយ Cycle Count</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">3</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>គ្រប់គ្រងកាតាឡុកទំនិញ (Catalog Management)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">បង្កើតទំនិញថ្មី, កែប្រែឈ្មោះ, កំណត់បាកូដ SKU, ឯកតារាប់, ប្រភេទទំនិញ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">4</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>កំណត់ចំណុចបញ្ជាទិញបន្ថែម (Reorder Point)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">កំណត់កម្រិតទាបបំផុត (Min) និងខ្ពស់បំផុត (Max) ដើម្បីកុំឱ្យដាច់ស្តុក</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">5</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>អនុម័តការផ្ទេរទំនិញឆ្លងឃ្លាំង (Transfer Approval)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">អនុម័តប័ណ្ណផ្ទេរទំនិញរវាងឃ្លាំងកណ្តាល និងសាខាខេត្ត</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">6</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>គ្រប់គ្រងប័ណ្ណបង្វិលទំនិញជូនអ្នកផ្គត់ផ្គង់ (RTV)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">បង្កើតប័ណ្ណ Return to Vendor ពេលទំនិញខូចគុណភាព ឬខុសកិច្ចសន្យា</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">7</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>រៀបចំប្លង់ទីតាំងធ្នើរ (Bin &amp; Rack Management)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">បែងចែកលេខកូដធ្នើរ (Zone-A, Rack-02, Bin-05) ដើម្បីងាយស្រួលរក</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">8</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>មើលរបាយការណ៍តម្លៃស្តុកសរុប (Stock Valuation)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">មើលចំនួនស្តុកគុណនឹងថ្លៃដើមមធ្យម (Weighted Average Cost) តាមឃ្លាំង</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">9</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>បោះពុម្ពបាកូដ និងស្លាកទំនិញ (Print Barcode Labels)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">បោះពុម្ពស្លាកបាកូដ Code-128 / QR Code សម្រាប់បិទលើប្រអប់ទំនិញ</td>
+</tr>
+</tbody></table></div>
+<h3 id="32-អ្វីដែល-warehouse-manager-ហាមធ្វើដាច់ខាត" class="scroll-mt-24 group">3.2 ❌ អ្វីដែល Warehouse Manager ហាមធ្វើដាច់ខាត <a href="#32-អ្វីដែល-warehouse-manager-ហាមធ្វើដាច់ខាត" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">#</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">សកម្មភាពហាមឃាត់</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ហានិភ័យ និងហេតុផលការពារ</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">1</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ <strong>មើលឃើញតម្លៃលក់ និងប្រាក់ចំណេញរបស់ក្រុមហ៊ុន</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ការពារការបែកធ្លាយការសម្ងាត់ពាណិជ្ជកម្ម និងយុទ្ធសាស្ត្រលក់ (ច្បាប់ទី 10)</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">2</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ <strong>បង្កើត ឬកែប្រែវិក្កយបត្រលក់ (Sales Invoices)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">រំលោភលើដែនសមត្ថកិច្ចផ្នែកលក់ និងការបែងចែកភារកិច្ច SoD</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">3</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ <strong>បង្កើត ឬកែប្រែការបញ្ជាទិញទំនិញ (Purchase Orders)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ភារកិច្ចផ្តាច់មុខរបស់ Procurement Manager (ឃ្លាំងធ្វើបានតែ PR)</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">4</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ <strong>អនុម័តការកាត់កងទំនិញខូចខាតធំៗ (&gt; $200.00)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ទាមទារការចុះហត្ថលេខាពី Admin / General Manager ដើម្បីការពារការកិបកេង</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">5</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ <strong>កែសម្រួល ឬលុបកំណត់ហេតុចលនាស្តុក (Stock Ledger)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ប្រវត្តិស្រង់ទំនិញជា Immutable Log ហាមកែប្រែ ឬលុបជាដាច់ខាត</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">6</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ <strong>អនុម័តប័ណ្ណចំណាយទូទាត់សាច់ប្រាក់ (Disbursements)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ភារកិច្ចផ្តាច់មុខរបស់គណនេយ្យករ និងអ្នកគ្រប់គ្រងទូទៅ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">7</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ <strong>លុបចោលមុខទំនិញដែលមានប្រវត្តិប្រតិបត្តិការស្តុក</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">បំផ្លាញភាពសុចរិតនៃប្រវត្តិគណនេយ្យ និងសវនកម្មសារពើពន្ធ</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="4-ស្ថាបត្យកម្មទំព័រ-ui-ពេញលេញ-page-by-page-blueprint" class="scroll-mt-24 group">4. ស្ថាបត្យកម្មទំព័រ UI ពេញលេញ (Page-by-Page Blueprint) <a href="#4-ស្ថាបត្យកម្មទំព័រ-ui-ពេញលេញ-page-by-page-blueprint" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<p>Warehouse Manager ដំណើរការលើ <strong>2 ស្រទាប់ចម្បង</strong>៖</p>
+<ol>
+<li><strong><code>frontend/src/pages/5-stock/</code></strong>: ម៉ូឌុលគ្រប់គ្រងស្តុកកម្រិតសហគ្រាសពេញលេញ (Enterprise Inventory Master)</li>
+<li><strong><code>frontend/src/pages/9-portals/manager/</code></strong>: ច្រកអនុម័តសំណើ និងពិនិត្យរបាយការណ៍សង្ខេប</li>
+</ol>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>Warehouse Manager Navigation Space:
+├── 5-stock/ (Enterprise Inventory Module)
+│   ├── 1-balance/
+│   │   ├── balance.html        ← តារាងសមតុល្យស្តុកសរុប (All Warehouses Stock Grid)
+│   │   ├── adjust-balance.html  ← ទម្រង់ស្នើសុំ និងអនុម័តកែតម្រូវស្តុក (Adjustment Form)
+│   │   ├── edit-balance.html    ← ទម្រង់កែប្រែព័ត៌មានសមតុល្យ
+│   │   └── view-balance.html    ← បង្ហាញព័ត៌មានលម្អិតមុខទំនិញ, ស្តុកតាមឃ្លាំង, និងប្រវត្តិ
+│   ├── 2-catalog/
+│   │   ├── catalog.html        ← បញ្ជីកាតាឡុកទំនិញសហគ្រាស (Master Product Catalog)
+│   │   ├── create-catalog.html  ← ទម្រង់បង្កើតមុខទំនិញថ្មី (New Product Registration)
+│   │   ├── edit-catalog.html    ← ទម្រង់កែប្រែកាតាឡុកទំនិញ
+│   │   └── view-catalog.html    ← បង្ហាញព័ត៌មានលម្អិតទំនិញ, បាកូដ, ទីតាំងធ្នើរ Bin/Rack
+│   └── 3-movement/
+│       ├── movement.html       ← កំណត់ហេតុចលនាស្តុកសកល (Global Stock Ledger / Movements)
+│       ├── create-movement.html ← បង្កើតប័ណ្ណផ្ទេរទំនិញឆ្លងឃ្លាំង (Inter-Warehouse Transfer)
+│       ├── edit-movement.html   ← កែប្រែប័ណ្ណចលនាព្រាង
+│       └── view-movement.html   ← បង្ហាញប័ណ្ណចលនាស្តុកផ្លូវការ និងបោះពុម្ព A4
+│
+├── 6-reports/4-stock/
+│   └── stock.html              ← របាយការណ៍វិភាគស្តុក, តម្លៃស្តុកសរុប, អត្រាបង្វិលស្តុក
+│
+└── 9-portals/manager/
+    ├── dashboard.html          ← ផ្ទាំងសង្ខេបសមិទ្ធផលសម្រាប់អ្នកគ្រប់គ្រង
+    ├── approvals.html          ← ជួររង់ចាំការអនុម័ត (Stock Adjustments &amp; Transfers)
+    └── view-approval.html      ← ពិនិត្យលម្អិត និងចុចអនុម័តការកែតម្រូវស្តុក
+</code></pre>
+        </div>
+<hr>
+<h3 id="41-5-stock1-balancebalancehtml-តារាងសមតុល្យស្តុកសហគ្រាស" class="scroll-mt-24 group">4.1 <code>5-stock/1-balance/balance.html</code> — តារាងសមតុល្យស្តុកសហគ្រាស <a href="#41-5-stock1-balancebalancehtml-តារាងសមតុល្យស្តុកសហគ្រាស" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p><strong>គោលបំណង</strong>: មជ្ឈមណ្ឌលត្រួតពិនិត្យសមតុល្យស្តុកគ្រប់សាខា និងឃ្លាំងទាំងអស់ក្នុងពេលជាក់ស្តែង (Multi-Warehouse Stock Grid)។</p>
+<p><strong>ជួរឈរតារាង (Table Columns)</strong>:</p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ជួរឈរ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ប្រភេទ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ឧទាហរណ៍ទិន្នន័យ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ចំណាំ</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>លេខកូដទំនិញ (SKU)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Code + Image</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>SKU-PRD-0104</code> + រូបថត</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ចុចបើកមើល <code>view-balance.html</code></td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ឈ្មោះមុខទំនិញ</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Text (Bold)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>កុំព្យូទ័រយួរដៃ Dell Vostro 3520</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ឈ្មោះផ្លូវការ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ប្រភេទទំនិញ</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Badge</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">🔵 គ្រឿងអេឡិចត្រូនិច</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Category</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ទីតាំងឃ្លាំង</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Badge</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">🟢 ឃ្លាំងកណ្តាល / 🟡 សាខាសៀមរាប</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Multi-Location</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ចំនួនក្នុងដៃ (On Hand)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Number</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong><code>45 គ្រឿង</code></strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ចំនួនរាប់ជាក់ស្តែង</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ចំនួនកក់ទុក (Reserved)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Number</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>10 គ្រឿង</code></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ជាប់ក្នុងវិក្កយបត្រកំពុងដឹក</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ចំនួនអាចលក់បាន (Available)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Number (Green)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong><code>35 គ្រឿង</code></strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">គណនា: <code>On Hand - Reserved</code></td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>កម្រិតទាបបំផុត (Min/ROP)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Number (Red)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>15 គ្រឿង</code></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ចំណុចត្រូវបញ្ជាទិញបន្ថែម</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ស្ថានភាពស្តុក</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Badge</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">🟢 «គ្រប់គ្រាន់» / 🔴 «ជិតអស់ (Low Stock)»</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ការដាស់តឿនស្វ័យប្រវត្តិ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>សកម្មភាព</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">⋮ Menu</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">កែតម្រូវស្តុក, ផ្ទេរទំនិញ, មើលចលនា</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Floating Action Dropdown</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h3 id="42-5-stock1-balanceadjust-balancehtml-ទម្រង់កែតម្រូវស្តុក-cycle-count-adjustment" class="scroll-mt-24 group">4.2 <code>5-stock/1-balance/adjust-balance.html</code> — ទម្រង់កែតម្រូវស្តុក (Cycle Count Adjustment) <a href="#42-5-stock1-balanceadjust-balancehtml-ទម្រង់កែតម្រូវស្តុក-cycle-count-adjustment" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p><strong>គោលបំណង</strong>: កត់ត្រា និងអនុម័តការកែតម្រូវតួលេខស្តុកជាក់ស្តែង ក្រោយពេលរាប់ស្តុក (Cycle Count) រកឃើញភាពខុសគ្នា។</p>
+<p><strong>ប្លង់ទម្រង់ (Enterprise Layout)</strong>:</p>
+<ol>
+<li><strong>ក្បាលទំព័រ</strong>: ប៊ូតុងត្រឡប់ក្រោយ <code>&lt;a href=&quot;balance.html&quot; class=&quot;w-10 h-10 rounded-xl bg-slate-50 border border-slate-200/70 flex items-center justify-center&quot;&gt;&lt;i class=&quot;fas fa-arrow-left text-sm&quot;&gt;&lt;/i&gt;&lt;/a&gt;</code> និងចំណងជើង <code>កែតម្រូវសមតុល្យស្តុក</code></li>
+<li><strong>ព័ត៌មានទូទៅ</strong>:<ul>
+<li>ជ្រើសរើសឃ្លាំង: Custom Dropdown (ឃ្លាំងកណ្តាលភ្នំពេញ, ឃ្លាំងសាខា 1)</li>
+<li>ប្រភេទនៃការកែតម្រូវ: Custom Dropdown (រាប់ឃើញលើស, រាប់ឃើញខ្វះ, ទំនិញខូចគុណភាព, ទំនិញផុតកំណត់)</li>
+<li>កាលបរិច្ឆេទរាប់: Unified Date Range Picker</li>
+</ul>
+</li>
+<li><strong>តារាងមុខទំនិញកែតម្រូវ</strong>:<ul>
+<li>លេខរៀង (<code>#</code>)</li>
+<li>មុខទំនិញ / SKU (Custom Dropdown រើសមុខទំនិញ)</li>
+<li>ចំនួនក្នុងប្រព័ន្ធ (System Qty): បង្ហាញស្វ័យប្រវត្តិ ឧ. <code>50</code></li>
+<li>ចំនួនរាប់ជាក់ស្តែង (Counted Qty): ប្រអប់បញ្ចូល ឧ. <code>47</code></li>
+<li>ភាពខុសគ្នា (Variance): គណនាស្វ័យប្រវត្តិ <strong><code>-3 គ្រឿង</code></strong> (ពណ៌ក្រហម)</li>
+<li>មូលហេតុនៃការខុសគ្នា: ប្រអប់បញ្ចូល (ឧ. <code>បាក់បែកពេលលើកដាក់ធ្នើរ</code>)</li>
+</ul>
+</li>
+<li><strong>ប៊ូតុងសកម្មភាព</strong>:<ul>
+<li>ប្រសិនបើតម្លៃខុសគ្នាសរុប $\le $200.00$: ប៊ូតុង <strong>«អនុម័តការកែតម្រូវ (Approve Adjustment)»</strong> (សិទ្ធិរបស់ Warehouse Manager)</li>
+<li>ប្រសិនបើតម្លៃខុសគ្នាសរុប $&gt; $200.00$: ប៊ូតុង <strong>«ផ្ញើសំណើទៅកាន់ GM ដើម្បីអនុម័ត (Submit to GM)»</strong></li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="43-5-stock2-catalogcreate-cataloghtml-ទម្រង់បង្កើតមុខទំនិញថ្មី" class="scroll-mt-24 group">4.3 <code>5-stock/2-catalog/create-catalog.html</code> — ទម្រង់បង្កើតមុខទំនិញថ្មី <a href="#43-5-stock2-catalogcreate-cataloghtml-ទម្រង់បង្កើតមុខទំនិញថ្មី" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p><strong>គោលបំណង</strong>: ចុះបញ្ជីផលិតផលថ្មីចូលទៅក្នុងកាតាឡុកមេរបស់ក្រុមហ៊ុន។</p>
+<p><strong>ប្លង់ទម្រង់</strong>:</p>
+<ul>
+<li><strong>ព័ត៌មានមូលដ្ឋាន</strong>:<ul>
+<li>ឈ្មោះមុខទំនិញ (ភាសាខ្មែរ និងអង់គ្លេស)</li>
+<li>លេខកូដទំនិញ (SKU) &amp; លេខបាកូដ (Barcode / EAN-13)</li>
+<li>ប្រភេទទំនិញ (Category): Custom Dropdown (គ្រឿងបន្លាស់, សម្ភារៈការិយាល័យ, ឧបករណ៍បច្ចេកវិទ្យា)</li>
+<li>ឯកតារាប់ (UOM): កេស, ប្រអប់, គ្រឿង, កញ្ចប់, ដប</li>
+</ul>
+</li>
+<li><strong>ការកំណត់ការគ្រប់គ្រងស្តុក (Stock Control Rules)</strong>:<ul>
+<li>ស្តុកសុវត្ថិភាព (Safety Stock): បញ្ចូលចំនួនទាបបំផុត</li>
+<li>ចំណុចត្រូវបញ្ជាទិញបន្ថែម (Reorder Point): បញ្ចូលចំនួន</li>
+<li>ទីតាំងធ្នើរលំនាំដើម (Default Bin/Rack Location): ឧ. <code>A-03-B2</code></li>
+</ul>
+</li>
+<li><strong>រូបថតទំនិញ</strong>: ប្រអប់ទម្លាក់រូបភាព (Image Upload Drag &amp; Drop)</li>
+</ul>
+<hr>
+<h3 id="44-5-stock3-movementcreate-movementhtml-បង្កើតប័ណ្ណផ្ទេរទំនិញឆ្លងឃ្លាំង-inter-warehouse-transfer" class="scroll-mt-24 group">4.4 <code>5-stock/3-movement/create-movement.html</code> — បង្កើតប័ណ្ណផ្ទេរទំនិញឆ្លងឃ្លាំង (Inter-Warehouse Transfer) <a href="#44-5-stock3-movementcreate-movementhtml-បង្កើតប័ណ្ណផ្ទេរទំនិញឆ្លងឃ្លាំង-inter-warehouse-transfer" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p><strong>គោលបំណង</strong>: បង្កើត និងអនុម័តការផ្លាស់ទីទំនិញពីរូបវន្តរវាងឃ្លាំងពីរផ្សេងគ្នា។</p>
+<p><strong>ប្លង់ទម្រង់</strong>:</p>
+<ul>
+<li><strong>ឃ្លាំងដើម (Source Warehouse)</strong>: Custom Dropdown (ឧ. ឃ្លាំងកណ្តាល)</li>
+<li><strong>ឃ្លាំងគោលដៅ (Destination Warehouse)</strong>: Custom Dropdown (ឧ. សាខាសៀមរាប)</li>
+<li><strong>អ្នកទទួលខុសត្រូវដឹកជញ្ជូន</strong>: ជ្រើសរើសឈ្មោះអ្នកបើកបរ (Delivery Driver) ឬក្រុមហ៊ុនដឹកជញ្ជូន</li>
+<li><strong>តារាងមុខទំនិញផ្ទេរ</strong>: ជ្រើសរើសទំនិញ, ពិនិត្យ Available Qty ក្នុងឃ្លាំងដើម, បញ្ចូលចំនួនផ្ទេរ</li>
+<li><strong>ប៊ូតុងសកម្មភាព</strong>: «ចេញប័ណ្ណផ្ទេរជាផ្លូវការ (Issue Transfer Order)» → ប្រព័ន្ធកាត់ស្តុកឃ្លាំងដើមទៅជា «កំពុងផ្ទេរ (In-Transit)» រហូតដល់ឃ្លាំងគោលដៅចុចទទួល។</li>
+</ul>
+<hr>
+<h2 id="5-ម៉ាទ្រីសសិទ្ធិអំណាចពេញលេញ-permission-matrix" class="scroll-mt-24 group">5. ម៉ាទ្រីសសិទ្ធិអំណាចពេញលេញ (Permission Matrix) <a href="#5-ម៉ាទ្រីសសិទ្ធិអំណាចពេញលេញ-permission-matrix" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">មុខងារ និងឯកសារ</th>
+<th align="center">មើល (View)</th>
+<th align="center">បង្កើត (Create)</th>
+<th align="center">កែប្រែ (Edit)</th>
+<th align="center">អនុម័ត (Approve)</th>
+<th align="center">លុបចោល (Void/Delete)</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>សមតុល្យស្តុក (Stock Balance)</strong></td>
+<td align="center">✅ មើលឃើញគ្រប់ឃ្លាំង</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>កាតាឡុកទំនិញ (Product Catalog)</strong></td>
+<td align="center">✅ មើលឃើញទាំងអស់</td>
+<td align="center">✅ បង្កើតបាន</td>
+<td align="center">✅ កែប្រែបាន</td>
+<td align="center">✅ អនុម័ត SKU</td>
+<td align="center">❌ ហាមលុបបើធ្លាប់ប្រើ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ប័ណ្ណទទួលទំនិញ (GRN)</strong></td>
+<td align="center">✅ មើលឃើញទាំងអស់</td>
+<td align="center">✅ បង្កើតបាន</td>
+<td align="center">✅ កែបានពេល Draft</td>
+<td align="center">✅ អនុម័តផ្លូវការ</td>
+<td align="center">❌ ហាមលុប (Void តាមលំដាប់)</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>កែតម្រូវស្តុក ($\le $200.00$)</strong></td>
+<td align="center">✅ មើលឃើញទាំងអស់</td>
+<td align="center">✅ បង្កើតបាន</td>
+<td align="center">✅ កែបាន</td>
+<td align="center">✅ <strong>WH Manager អនុម័ត</strong></td>
+<td align="center">❌ ហាមលុប</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>កាត់ស្តុកខូចខាត ($&gt; $200.00$)</strong></td>
+<td align="center">✅ មើលឃើញទាំងអស់</td>
+<td align="center">✅ បង្កើតបាន</td>
+<td align="center">✅ កែបាន</td>
+<td align="center">❌ <strong>GM ទើបអនុម័តបាន</strong></td>
+<td align="center">❌ ហាមលុប</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ផ្ទេរទំនិញឆ្លងឃ្លាំង (Transfers)</strong></td>
+<td align="center">✅ មើលឃើញទាំងអស់</td>
+<td align="center">✅ បង្កើតបាន</td>
+<td align="center">✅ កែបាន</td>
+<td align="center">✅ អនុម័តផ្លូវការ</td>
+<td align="center">❌ ហាមលុបបើចេញឡាន</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>បង្វិលទំនិញខូច (RTV)</strong></td>
+<td align="center">✅ មើលឃើញទាំងអស់</td>
+<td align="center">✅ បង្កើតបាន</td>
+<td align="center">✅ កែបាន</td>
+<td align="center">✅ អនុម័តផ្លូវការ</td>
+<td align="center">❌ ហាមលុប</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>តម្លៃលក់ជូនអតិថិជន (Selling Price)</strong></td>
+<td align="center">❌ <strong>លាក់ 100%</strong></td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>វិក្កយបត្រលក់ / បញ្ជាទិញ (Invoice/PO)</strong></td>
+<td align="center">✅ មើលតែចំនួនរាប់</td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="6-វដ្តការងារស្នូលទាំង-6-core-warehouse-workflows" class="scroll-mt-24 group">6. វដ្តការងារស្នូលទាំង 6 (Core Warehouse Workflows) <a href="#6-វដ្តការងារស្នូលទាំង-6-core-warehouse-workflows" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="workflow-1-ការអនុម័តការកែតម្រូវស្តុកក្រោយរាប់ជាក់ស្តែង-cycle-count-reconciliation" class="scroll-mt-24 group">Workflow 1: ការអនុម័តការកែតម្រូវស្តុកក្រោយរាប់ជាក់ស្តែង (Cycle Count Reconciliation) <a href="#workflow-1-ការអនុម័តការកែតម្រូវស្តុកក្រោយរាប់ជាក់ស្តែង-cycle-count-reconciliation" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>START
+  │
+  ▼
+Warehouse Staff រាប់ស្តុកប្រចាំសប្តាហ៍លើធ្នើរ A-03
+  ├── ចំនួនក្នុងប្រព័ន្ធ: 100 ឯកតា
+  └── ចំនួនរាប់ជាក់ស្តែង: 98 ឯកតា (បាត់ 2 ឯកតា, តម្លៃសរុប = $40.00)
+  │
+  ▼
+Warehouse Staff បញ្ចូលទិន្នន័យក្នុង `adjust-balance.html` រួចចុច &quot;ដាក់ស្នើសុំកែតម្រូវ&quot;
+  │
+  ▼
+សំណើរត់មកកាន់ផ្ទាំង `approvals.html` របស់ Warehouse Manager
+  │
+  ▼
+Warehouse Manager បើក `view-approval.html`:
+  ├── ពិនិត្យប្រវត្តិចលនាស្តុក 7 ថ្ងៃចុងក្រោយ (ស្វែងរកកំហុសមិនទាន់កាត់ស្តុក)
+  └── ផ្ទៀងផ្ទាត់ថាតម្លៃខុសគ្នា $40.00 ស្ថិតក្នុងពិដានស្វ័យសម្រេច ($\le \$200.00$)
+  │
+  ▼
+[សេចក្តីសម្រេចរបស់ Warehouse Manager]
+  ├── [យល់ព្រម] → ចុច &quot;អនុម័តការកែតម្រូវ (Approve Adjustment)&quot;
+  │     ├── ប្រព័ន្ធកែប្រែចំនួនស្តុក On-Hand ទៅជា 98 ឯកតាស្វ័យប្រវត្តិ
+  │     └── កត់ត្រាចូល Audit Trail និងបញ្ជូនតួលេខទៅគណនេយ្យ
+  └── [សង្ស័យ]  → ចុច &quot;បដិសេធ&quot; និងបញ្ជាឱ្យរាប់ឡើងវិញជាមួយសាក្សី
+  │
+  ▼
+END
+</code></pre>
+        </div>
+<hr>
+<h3 id="workflow-2-ការចាត់ចែងកាត់កងទំនិញខូចខាតទំហំធំ-damage-stock-write-off-flow-200" class="scroll-mt-24 group">Workflow 2: ការចាត់ចែងកាត់កងទំនិញខូចខាតទំហំធំ (Damage Stock Write-Off Flow &gt; $200) <a href="#workflow-2-ការចាត់ចែងកាត់កងទំនិញខូចខាតទំហំធំ-damage-stock-write-off-flow-200" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>START
+  │
+  ▼
+មានឧប្បត្តិហេតុធ្លាក់ធ្នើរខូចខាតម៉ូនីទ័រកុំព្យូទ័រ 10 គ្រឿង (តម្លៃសរុប = $1,200.00)
+  │
+  ▼
+Warehouse Manager ចុះពិនិត្យផ្ទាល់, ថតរូបភស្តុតាង, និងធ្វើកំណត់ហេតុបច្ចេកទេស
+  │
+  ▼
+Warehouse Manager ចូល `adjust-balance.html`:
+  ├── ជ្រើសរើសប្រភេទ: &quot;ទំនិញខូចខាត (Damaged Write-Off)&quot;
+  ├── បញ្ចូលមុខទំនិញ, បរិមាណ 10 គ្រឿង, ភ្ជាប់រូបថត និងកំណត់ហេតុ
+  └── ដោយសារទឹកប្រាក់ $1,200.00 &gt; $200.00 ប្រព័ន្ធប្តូរទៅជា &quot;Pending GM Approval&quot;
+  │
+  ▼
+សំណើរត់ទៅកាន់ផ្ទាំង `view-approval.html` របស់ Admin / General Manager
+  │
+  ▼
+General Manager ពិនិត្យ និងចុច &quot;អនុម័តការកាត់កង (Approve Write-Off)&quot;
+  │
+  ▼
+ប្រព័ន្ធកាត់ស្តុកចេញពី On-Hand ទៅជា &quot;Written Off&quot; និងកត់ត្រាការខាតបង់ទៅក្នុង P&amp;L គណនេយ្យ
+  │
+  ▼
+END
+</code></pre>
+        </div>
+<hr>
+<h3 id="workflow-3-ការតាមដានកម្រិតស្តុកជិតអស់-និងការស្នើសុំទិញ-rop-purchase-requisition" class="scroll-mt-24 group">Workflow 3: ការតាមដានកម្រិតស្តុកជិតអស់ និងការស្នើសុំទិញ (ROP &amp; Purchase Requisition) <a href="#workflow-3-ការតាមដានកម្រិតស្តុកជិតអស់-និងការស្នើសុំទិញ-rop-purchase-requisition" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>START
+  │
+  ▼
+ការលក់ប្រចាំថ្ងៃធ្វើឱ្យទំនិញ &quot;ខ្សែ HDMI 2.0&quot; ធ្លាក់ចុះសល់ 18  sợi
+  │
+  ▼
+ប្រព័ន្ធដំណើរការ Trigger: ចំនួននៅសល់ 18 $\le$ Reorder Point 20!
+  │
+  ▼
+ប្រព័ន្ធបង្ហាញផ្លាកក្រហម 🔴 &quot;ជិតអស់ (Low Stock Alert)&quot; លើ `balance.html` របស់ Warehouse Manager
+  │
+  ▼
+Warehouse Manager ចុចប៊ូតុង &quot;បង្កើតសំណើសុំទិញ (Generate Purchase Requisition - PR)&quot;
+  ├── គណនាចំនួនត្រូវទិញបន្ថែម = Max Stock (100) - Available (18) = 82  sợi
+  └── បញ្ជូន PR ទៅកាន់ផ្ទាំង `purchase-staff/dashboard.html` របស់ Procurement Manager
+  │
+  ▼
+Procurement Manager ទទួលបាន PR → បង្កើត PO ទៅកាន់អ្នកផ្គត់ផ្គង់
+  │
+  ▼
+END
+</code></pre>
+        </div>
+<hr>
+<h3 id="workflow-4-ការផ្ទេរទំនិញឆ្លងឃ្លាំង-inter-warehouse-transfer-flow" class="scroll-mt-24 group">Workflow 4: ការផ្ទេរទំនិញឆ្លងឃ្លាំង (Inter-Warehouse Transfer Flow) <a href="#workflow-4-ការផ្ទេរទំនិញឆ្លងឃ្លាំង-inter-warehouse-transfer-flow" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>START
+  │
+  ▼
+សាខាសៀមរាបស្នើសុំទំនិញ 20 គ្រឿងពីឃ្លាំងកណ្តាលភ្នំពេញ
+  │
+  ▼
+Warehouse Manager ចូល `create-movement.html`
+  ├── ជ្រើសរើសឃ្លាំងដើម: ភ្នំពេញ | ឃ្លាំងគោលដៅ: សៀមរាប
+  ├── ជ្រើសរើសទំនិញ និងបរិមាណ (ពិនិត្យ Available Stock)
+  └── ចុច &quot;ចេញប័ណ្ណផ្ទេរ (Issue Transfer Order #TR-2026-0021)&quot;
+  │
+  ▼
+ឃ្លាំងភ្នំពេញ: បុគ្គលិកវេចខ្ចប់ និងប្រគល់ឱ្យ Delivery Driver
+  ├── ស្តុកភ្នំពេញកាត់បន្ថយភ្លាមៗ
+  └── ស្តុកប្រព័ន្ធកត់ត្រាជាស្ថានភាព &quot;កំពុងដឹកជញ្ជូន (In-Transit: 20 គ្រឿង)&quot;
+  │
+  ▼
+ទំនិញទៅដល់សាខាសៀមរាប → បុគ្គលិកសៀមរាបរាប់ផ្ទៀងផ្ទាត់ និងស្កេនបាកូដទទួល
+  │
+  ▼
+Warehouse Manager សៀមរាបចុច &quot;ទទួលស្គាល់ការទទួលទំនិញ (Confirm Receipt)&quot;
+  │
+  ▼
+ស្តុកសៀមរាបកើនឡើងជាផ្លូវការ និងបិទបញ្ចប់ប័ណ្ណផ្ទេរ #TR-2026-0021
+  │
+  ▼
+END
+</code></pre>
+        </div>
+<hr>
+<h3 id="workflow-5-ការបង្កើត-និងគ្រប់គ្រងកាតាឡុកទំនិញថ្មី-product-catalog-onboarding" class="scroll-mt-24 group">Workflow 5: ការបង្កើត និងគ្រប់គ្រងកាតាឡុកទំនិញថ្មី (Product Catalog Onboarding) <a href="#workflow-5-ការបង្កើត-និងគ្រប់គ្រងកាតាឡុកទំនិញថ្មី-product-catalog-onboarding" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>START
+  │
+  ▼
+ក្រុមហ៊ុននាំចូលផលិតផលម៉ាកថ្មីដែលមិនធ្លាប់មានក្នុងប្រព័ន្ធ
+  │
+  ▼
+Warehouse Manager ចូល `create-catalog.html`
+  ├── បញ្ចូលឈ្មោះផលិតផល (ខ្មែរ &amp; English), SKU, និងស្កេន Barcode ដើមពីរោងចក្រ
+  ├── ជ្រើសរើសប្រភេទទំនិញ (Category) និងឯកតារាប់ (UOM)
+  ├── កំណត់ស្តុកសុវត្ថិភាព (Safety Stock = 10) និង Reorder Point = 25
+  └── កំណត់ទីតាំងធ្នើរផ្ទុក (Default Bin: `WH1-B-04-02`)
+  │
+  ▼
+ចុច &quot;រក្សាទុកកាតាឡុក&quot; → ទំនិញថ្មីត្រូវបានចុះបញ្ជីក្នុងប្រព័ន្ធ
+  │
+  ▼
+ប្រព័ន្ធអនុញ្ញាតឱ្យ Procurement ចេញ PO និងផ្នែកលក់ចេញ Quote សម្រាប់ទំនិញនេះបាន
+  │
+  ▼
+END
+</code></pre>
+        </div>
+<hr>
+<h3 id="workflow-6-ការបង្វិលទំនិញខូចត្រឡប់ទៅអ្នកផ្គត់ផ្គង់-return-to-vendor---rtv-flow" class="scroll-mt-24 group">Workflow 6: ការបង្វិលទំនិញខូចត្រឡប់ទៅអ្នកផ្គត់ផ្គង់ (Return to Vendor - RTV Flow) <a href="#workflow-6-ការបង្វិលទំនិញខូចត្រឡប់ទៅអ្នកផ្គត់ផ្គង់-return-to-vendor---rtv-flow" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>START
+  │
+  ▼
+ពេលបុគ្គលិកឃ្លាំងពិនិត្យទទួលទំនិញ (GRN Inspection) រកឃើញទំនិញខូចពីក្រុមហ៊ុនផលិត 5 គ្រឿង
+  │
+  ▼
+Warehouse Manager បង្កើតប័ណ្ណបង្វិលទំនិញ `create-movement.html` (Movement Type: RTV)
+  ├── ភ្ជាប់លេខ PO និងលេខវិក្កយបត្រដើមរបស់អ្នកផ្គត់ផ្គង់
+  ├── បរិយាយពីមូលហេតុបដិសេធមិនទទួល (រូបថតភស្តុតាងខូចខាត)
+  └── បោះពុម្ពប័ណ្ណបង្វិលទំនិញ RTV Slip កម្រិត A4
+  │
+  ▼
+ប្រគល់ទំនិញឱ្យអ្នកដឹករបស់អ្នកផ្គត់ផ្គង់ត្រឡប់ទៅវិញ
+  │
+  ▼
+ប្រព័ន្ធកាត់ស្តុកចេញ និងជូនដំណឹងទៅ AP/AR Accountant ដើម្បីកាត់កងប្រាក់ (Debit Note)
+  │
+  ▼
+END
+</code></pre>
+        </div>
+<hr>
+<h2 id="7-តក្កវិជ្ជាអាជីវកម្ម-និងរូបមន្តគ្រប់គ្រងស្តុក-business-logic-inventory-math" class="scroll-mt-24 group">7. តក្កវិជ្ជាអាជីវកម្ម និងរូបមន្តគ្រប់គ្រងស្តុក (Business Logic &amp; Inventory Math) <a href="#7-តក្កវិជ្ជាអាជីវកម្ម-និងរូបមន្តគ្រប់គ្រងស្តុក-business-logic-inventory-math" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="71-រូបមន្តគណនាថ្លៃដើមមធ្យមនៃស្តុក-weighted-moving-average-cost" class="scroll-mt-24 group">7.1 រូបមន្តគណនាថ្លៃដើមមធ្យមនៃស្តុក (Weighted Moving Average Cost) <a href="#71-រូបមន្តគណនាថ្លៃដើមមធ្យមនៃស្តុក-weighted-moving-average-cost" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p>ប្រព័ន្ធ DIGITECHKH BMS ប្រើប្រាស់វិធីសាស្ត្រគណនាថ្លៃដើមមធ្យមនៃស្តុក (Moving Average Cost - MAC) រាល់ពេលមានទំនិញថ្មីចូលឃ្លាំង៖</p>
+<p>$$\text{ថ្លៃដើមមធ្យមថ្មី} = \frac{(\text{ចំនួនស្តុកចាស់} \times \text{ថ្លៃដើមមធ្យមចាស់}) + (\text{ចំនួនទិញចូលថ្មី} \times \text{ថ្លៃទិញថ្មី})}{\text{ចំនួនស្តុកចាស់} + \text{ចំនួនទិញចូលថ្មី}}$$</p>
+<p><em>ឧទាហរណ៍ជាក់ស្តែង</em>:  </p>
+<ul>
+<li>ស្តុកចាស់មាន 50 គ្រឿង @ ថ្លៃដើម $10.00 = $500.00  </li>
+<li>ទិញចូលថ្មី 50 គ្រឿង @ ថ្លៃដើម $12.00 = $600.00  </li>
+<li>ថ្លៃដើមមធ្យមថ្មី = $(500 + 600) / (50 + 50) = $11.00 / \text{គ្រឿង}$</li>
+</ul>
+<h3 id="72-រូបមន្តចំណុចត្រូវបញ្ជាទិញបន្ថែម-reorder-point-formula" class="scroll-mt-24 group">7.2 រូបមន្តចំណុចត្រូវបញ្ជាទិញបន្ថែម (Reorder Point Formula) <a href="#72-រូបមន្តចំណុចត្រូវបញ្ជាទិញបន្ថែម-reorder-point-formula" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p>$$\text{Reorder Point (ROP)} = (\text{បរិមាណលក់មធ្យមប្រចាំថ្ងៃ} \times \text{រយៈពេលរង់ចាំទំនិញដឹកមកដល់}) + \text{ស្តុកសុវត្ថិភាព}$$</p>
+<p>$$\text{ROP} = (\text{Daily Usage} \times \text{Lead Time in Days}) + \text{Safety Stock}$$</p>
+<p><em>ឧទាហរណ៍</em>:  </p>
+<ul>
+<li>លក់ដាច់មធ្យម 5 គ្រឿង/ថ្ងៃ  </li>
+<li>រយៈពេលរង់ចាំទំនិញពីរោងចក្រ (Lead Time) = 4 ថ្ងៃ  </li>
+<li>ស្តុកសុវត្ថិភាព (Safety Stock) = 10 គ្រឿង  </li>
+<li>$\text{ROP} = (5 \times 4) + 10 = 30 \text{ គ្រឿង}$  </li>
+<li>នៅពេលចំនួនស្តុកធ្លាក់ចុះដល់ 30 គ្រឿង ប្រព័ន្ធនឹងបន្លឺសំឡេងដាស់តឿន និងរុញ PR ទៅផ្នែកទិញភ្លាមៗ!</li>
+</ul>
+<hr>
+<h2 id="8-ទំនាក់ទំនងឆ្លងផ្នែកជាមួយតួនាទីផ្សេងទៀត-cross-role-interaction-map" class="scroll-mt-24 group">8. ទំនាក់ទំនងឆ្លងផ្នែកជាមួយតួនាទីផ្សេងទៀត (Cross-Role Interaction Map) <a href="#8-ទំនាក់ទំនងឆ្លងផ្នែកជាមួយតួនាទីផ្សេងទៀត-cross-role-interaction-map" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>┌─────────────────────────────────────────────────────────────────────────┐
+│                 📦 WAREHOUSE MANAGER (អ្នកគ្រប់គ្រងឃ្លាំងស្តុក)              │
+└────┬──────────────┬──────────────┬──────────────┬──────────────┬────────┘
+     │              │              │              │              │
+     │ 1. បញ្ជូន PR   │ 2. ជូនដំណឹង  │ 3. ផ្ទៀងផ្ទាត់│ 4. បញ្ជូន     │ 5. ដាក់ស្នើ
+     │    ទិញស្តុកថ្មី  │    ស្តុកទំនេរ  │    តម្លៃស្តុក  │    ទំនិញដឹក    │    Write-off
+     │    &amp; ទទួល GRN │    សម្រាប់លក់ │    &amp; កាត់កង   │    ជញ្ជូន     │    ធំៗ
+     ▼              ▼              ▼              ▼              ▼
+┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐
+│ 🛒 PROC  │  │ 👔 SALES │  │ 💰 ACCT  │  │ 🚚 DRIVER│  │ 👑 GM    │
+│ Procurement│  │  Manager │  │  Finance │  │ Delivery │  │ Executive│
+└──────────┘  └──────────┘  └──────────┘  └──────────┘  └──────────┘
+</code></pre>
+        </div>
+<ol>
+<li><strong>ជាមួយ Procurement Manager</strong>:<ul>
+<li>ផ្ញើសំណើទិញទំនិញ (Purchase Requisition - PR) ពេលស្តុកធ្លាក់ដល់ ROP</li>
+<li>ពិនិត្យទទួលទំនិញចូលតាម PO និងចេញប័ណ្ណទទួលទំនិញ (GRN)</li>
+<li>បង្កើតប័ណ្ណ RTV បង្វិលទំនិញខូចទៅរោងចក្រវិញ</li>
+</ul>
+</li>
+<li><strong>ជាមួយ Sales Manager &amp; Sales Executive</strong>:<ul>
+<li>ផ្តល់ព័ត៌មានចំនួនស្តុកទំនេរពិតប្រាកដ (Available to Sell)</li>
+<li>ទទួលបញ្ជាទំនិញ (Sales Orders) ដើម្បីឱ្យបុគ្គលិករៀបចំវេចខ្ចប់ (Pick &amp; Pack)</li>
+<li><em>ចំណាំ</em>: មិនចែករំលែកថ្លៃដើមទិញជាមួយផ្នែកលក់ឡើយ</li>
+</ul>
+</li>
+<li><strong>ជាមួយ AP/AR Accountant</strong>:<ul>
+<li>ផ្ញើប័ណ្ណ GRN និងប័ណ្ណ RTV ដើម្បីឱ្យគណនេយ្យករទូទាត់ប្រាក់ ឬកាត់កងបំណុល</li>
+<li>ផ្ញើរបាយការណ៍កែតម្រូវស្តុក (Adjustments) ដើម្បីកែសម្រួលតួលេខគណនេយ្យ</li>
+</ul>
+</li>
+<li><strong>ជាមួយ Delivery Driver</strong>:<ul>
+<li>ចេញប័ណ្ណបញ្ជូនទំនិញ (Delivery Order - DO) ភ្ជាប់ជាមួយទីតាំង និងលេខទំនាក់ទំនង</li>
+<li>ផ្ទៀងផ្ទាត់ចំនួនកញ្ចប់ទំនិញមុនពេលលើកឡើងរថយន្ត</li>
+</ul>
+</li>
+<li><strong>ជាមួយ General Manager</strong>:<ul>
+<li>ដាក់សំណើសុំអនុម័តការកាត់កងទំនិញខូចខាតធំៗ (&gt; $200.00)</li>
+<li>រាយការណ៍អំពីអត្រាភាពត្រឹមត្រូវនៃស្តុក និងផែនការពង្រីកឃ្លាំង</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="9-វិសាលភាពទិន្នន័យ-data-scope-អ្វីដែលឃើញ-និងអ្វីដែលត្រូវលាក់" class="scroll-mt-24 group">9. វិសាលភាពទិន្នន័យ (Data Scope — អ្វីដែលឃើញ និងអ្វីដែលត្រូវលាក់) <a href="#9-វិសាលភាពទិន្នន័យ-data-scope-អ្វីដែលឃើញ-និងអ្វីដែលត្រូវលាក់" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ប្រភេទព័ត៌មាន</th>
+<th align="center">សិទ្ធិមើលឃើញរបស់ WH Manager</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">កម្រិតនៃការការពារ (Security Level)</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ចំនួនស្តុកគ្រប់ឃ្លាំង (On-Hand, Reserved, Available)</strong></td>
+<td align="center">✅ មើលឃើញ 100%</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ព័ត៌មានស្នូលនៃប្រតិបត្តិការឃ្លាំង</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ថ្លៃដើមមធ្យមនៃស្តុក (Weighted Average Cost)</strong></td>
+<td align="center">✅ មើលឃើញ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">សម្រាប់គណនាតម្លៃទ្រព្យសកម្មស្តុកសរុប</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ទីតាំងធ្នើរ និងប្លង់ឃ្លាំង (Bins, Racks, Aisles)</strong></td>
+<td align="center">✅ មើលឃើញ 100%</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">រៀបចំសណ្តាប់ធ្នាប់ឃ្លាំង</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>តម្លៃលក់ជូនអតិថិជន (Selling Prices)</strong></td>
+<td align="center">❌ <strong>លាក់ 100%</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ការសម្ងាត់ពាណិជ្ជកម្ម (Zero Leakage)</strong></td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ប្រាក់ចំណេញដុលនៃការលក់ (Sales Margins)</strong></td>
+<td align="center">❌ <strong>លាក់ 100%</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">យុទ្ធសាស្ត្រអាជីវកម្មក្រុមហ៊ុន</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>កម្រិតចំណាត់ថ្នាក់អតិថិជន និងបំណុលអតិថិជន</strong></td>
+<td align="center">❌ <strong>លាក់ 100%</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ព័ត៌មានសម្ងាត់របស់ផ្នែកលក់</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ប្រាក់ខែ និងកម្រៃជើងសាររបស់បុគ្គលិកលក់</strong></td>
+<td align="center">❌ <strong>លាក់ 100%</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ការសម្ងាត់ធនធានមនុស្ស (HR Confidential)</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="10-ផ្ទាំងគ្រប់គ្រង-និងសូចនាករ-kpi-របស់-warehouse-manager" class="scroll-mt-24 group">10. ផ្ទាំងគ្រប់គ្រង និងសូចនាករ KPI របស់ Warehouse Manager <a href="#10-ផ្ទាំងគ្រប់គ្រង-និងសូចនាករ-kpi-របស់-warehouse-manager" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>┌────────────────────────────────────────────────────────────────────────┐
+│             📦 WAREHOUSE MANAGER OPERATIONAL DASHBOARD                 │
+├──────────────────────────┬──────────────────────────┬──────────────────┤
+│ ភាពត្រឹមត្រូវនៃស្តុក:    │ តម្លៃស្តុកសរុប (Value):  │ មុខទំនិញជិតអស់:   │
+│ 99.4% (Target $\ge$ 99%) │ $184,520.00 (Cost Value) │ 8 មុខទំនិញ ⚠️    │
+├──────────────────────────┼──────────────────────────┼──────────────────┤
+│ សំណើកែតម្រូវរង់ចាំ:      │ ប័ណ្ណផ្ទេរកំពុងធ្វើដំណើរ:│ អត្រាកកស្ទះស្តុក: │
+│ 2 សំណើ ($\le \$200)      │ 3 Transfers (In-Transit) │ 2.1% (Dead Stock)│
+└──────────────────────────┴──────────────────────────┴──────────────────┘
+</code></pre>
+        </div>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">#</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">សូចនាករវាស់វែង (KPI Metric)</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">រូបមន្តគណនា</th>
+<th align="center">គោលដៅស្តង់ដារ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ការបកស្រាយ</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">1</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ភាពត្រឹមត្រូវនៃស្តុក (Inventory Accuracy %)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">$(\text{Matched Items} / \text{Total Audited}) \times 100$</td>
+<td align="center">$\ge 99.0%$</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ឆ្លុះបញ្ចាំងពីវិន័យ និងការគ្រប់គ្រងឃ្លាំង</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">2</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>អត្រាដាច់ស្តុក (Stockout Rate %)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">$(\text{Out of Stock Items} / \text{Total Active SKUs}) \times 100$</td>
+<td align="center">$&lt; 1.5%$</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ការពារការបាត់បង់ឱកាសលក់</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">3</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>អត្រាបាត់បង់ទំនិញ (Inventory Shrinkage %)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">$(\text{Loss Value} / \text{Total Inventory Value}) \times 100$</td>
+<td align="center">$\le 0.5%$</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ទប់ស្កាត់ការលួច និងការខូចខាត</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">4</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ល្បឿនរៀបចំកញ្ចប់ដឹក (Order Pick &amp; Pack Time)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ពេលវេលាមធ្យមពីទទួលបញ្ជាដល់ពេលវេចខ្ចប់រួច</td>
+<td align="center">$&lt; 30$ នាទី</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">បង្កើនល្បឿនសេវាកម្មអតិថិជន</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">5</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>អត្រាប្រើប្រាស់ទំហំឃ្លាំង (Space Utilization %)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">$(\text{Occupied Volume} / \text{Total Usable Volume}) \times 100$</td>
+<td align="center">$80% - 85%$</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">បង្កើនប្រសិទ្ធភាពចំណាយថ្លៃជួលឃ្លាំង</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="11-គំរូរចនាសម្ព័ន្ធទិន្នន័យ-database-schema-blueprint" class="scroll-mt-24 group">11. គំរូរចនាសម្ព័ន្ធទិន្នន័យ (Database Schema Blueprint) <a href="#11-គំរូរចនាសម្ព័ន្ធទិន្នន័យ-database-schema-blueprint" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>-- គំរូតារាងទិន្នន័យសម្រាប់ Warehouse &amp; Inventory Management Module
+
+-- 1. តារាងសមតុល្យស្តុកតាមឃ្លាំង (Stock Balances Multi-Location)
+CREATE TABLE stock_balances (
+    id                  UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    tenant_id           UUID REFERENCES tenants(id) NOT NULL,
+    warehouse_id        UUID REFERENCES warehouses(id) NOT NULL,
+    product_id          UUID REFERENCES products(id) NOT NULL,
+    qty_on_hand         DECIMAL(12,2) NOT NULL DEFAULT 0.00,
+    qty_reserved        DECIMAL(12,2) NOT NULL DEFAULT 0.00,
+    qty_available       DECIMAL(12,2) GENERATED ALWAYS AS (qty_on_hand - qty_reserved) STORED,
+    qty_in_transit      DECIMAL(12,2) NOT NULL DEFAULT 0.00,
+    avg_cost            DECIMAL(15,2) NOT NULL DEFAULT 0.00, -- ថ្លៃដើមមធ្យម Moving Average
+    reorder_point       DECIMAL(12,2) DEFAULT 10.00,
+    safety_stock        DECIMAL(12,2) DEFAULT 5.00,
+    bin_location        VARCHAR(50), -- A-03-B2
+    updated_at          TIMESTAMPTZ DEFAULT NOW(),
+    UNIQUE(tenant_id, warehouse_id, product_id)
+);
+
+-- 2. កំណត់ហេតុចលនាស្តុកសកលដែលមិនអាចកែប្រែបាន (Immutable Stock Ledger)
+CREATE TABLE stock_movements (
+    id                  BIGSERIAL PRIMARY KEY,
+    tenant_id           UUID REFERENCES tenants(id) NOT NULL,
+    movement_number     VARCHAR(50) UNIQUE NOT NULL, -- MV-2026-0120
+    movement_type       VARCHAR(30) NOT NULL, 
+        -- grn_in | sales_out | transfer_in | transfer_out | adjust_up | adjust_down | rtv_out | writeoff_out
+    product_id          UUID REFERENCES products(id) NOT NULL,
+    from_warehouse_id   UUID REFERENCES warehouses(id),
+    to_warehouse_id     UUID REFERENCES warehouses(id),
+    quantity            DECIMAL(12,2) NOT NULL CHECK (quantity &gt; 0),
+    unit_cost           DECIMAL(15,2) NOT NULL,
+    reference_document  VARCHAR(100), -- PO-2026-0045, INV-2026-0095, TR-2026-0012
+    created_by_user_id  UUID REFERENCES users(id) NOT NULL,
+    created_at          TIMESTAMPTZ DEFAULT NOW()
+    -- ហាមដាច់ខាត UPDATE ឬ DELETE (Append-Only Log)
+);
+
+-- 3. តារាងប័ណ្ណកែតម្រូវស្តុក (Stock Adjustments &amp; Write-Offs)
+CREATE TABLE stock_adjustments (
+    id                  UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    tenant_id           UUID REFERENCES tenants(id) NOT NULL,
+    adjustment_number   VARCHAR(50) UNIQUE NOT NULL, -- ADJ-2026-0015
+    warehouse_id        UUID REFERENCES warehouses(id) NOT NULL,
+    reason_code         VARCHAR(50) NOT NULL, 
+        -- cycle_count | damaged | expired | shrinkage | data_entry_error
+    total_cost_impact   DECIMAL(15,2) NOT NULL DEFAULT 0.00,
+    status              VARCHAR(30) DEFAULT &#39;pending&#39;, 
+        -- draft | pending_wh_mgr | pending_gm | approved | rejected
+    requester_id        UUID REFERENCES users(id) NOT NULL,
+    approved_by_id      UUID REFERENCES users(id),
+    notes               TEXT,
+    created_at          TIMESTAMPTZ DEFAULT NOW(),
+    decided_at          TIMESTAMPTZ
+);
+</code></pre>
+        </div>
+<hr>
+<h2 id="12-ក្របខ័ណ្ឌការពារការបាត់បង់-និងការកិបកេងស្តុក-anti-theft-shrinkage-controls" class="scroll-mt-24 group">12. ក្របខ័ណ្ឌការពារការបាត់បង់ និងការកិបកេងស្តុក (Anti-Theft &amp; Shrinkage Controls) <a href="#12-ក្របខ័ណ្ឌការពារការបាត់បង់-និងការកិបកេងស្តុក-anti-theft-shrinkage-controls" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<p>ដើម្បីការពារការបាត់បង់ទំនិញរូបវន្ត និងការឃុបឃិត ប្រព័ន្ធបានដាក់បញ្ចូលយន្តការការពារចំនួន 4៖</p>
+<ol>
+<li><strong>ការរាប់ស្តុកបិទភ្នែក (Blind Cycle Counting)</strong>:<ul>
+<li>នៅពេលបញ្ជាឱ្យបុគ្គលិកចុះទៅរាប់ស្តុកលើធ្នើរ សន្លឹករាប់ស្តុក (Count Sheet) <strong>មិនបង្ហាញចំនួនក្នុងប្រព័ន្ធឡើយ (Hidden System Quantity)</strong>។ បុគ្គលិកត្រូវរាប់ចំនួនជាក់ស្តែងមកបញ្ចូល ទើបប្រព័ន្ធធ្វើការប្រៀបធៀប ដើម្បីការពារកុំឱ្យបុគ្គលិកចម្លងតួលេខពីប្រព័ន្ធដោយមិនបានរាប់ពិតប្រាកដ។</li>
+</ul>
+</li>
+<li><strong>ពិដានអនុម័តការកែតម្រូវ (Adjustment Tiered Authorization)</strong>:<ul>
+<li>ការកែតម្រូវតូចតាច ($\le $200.00$): Warehouse Manager មានសិទ្ធិអនុម័ត។</li>
+<li>ការខាតបង់ធំៗ (&gt; $200.00$): ត្រូវតែមានការចុះហត្ថលេខាអនុម័តពី <strong>Admin / General Manager</strong> និងត្រួតពិនិត្យដោយ Internal Auditor។</li>
+</ul>
+</li>
+<li><strong>ការតាមដានចលនាទំនិញដែលមិនអាចលុបបាន (Append-Only Stock Ledger)</strong>:<ul>
+<li>រាល់គ្រាប់ទំនិញដែលចេញ-ចូល ត្រូវបានកត់ត្រាក្នុងតារាង <code>stock_movements</code> ជាប្រវត្តិសាស្ត្រដែលមិនអាចលុប ឬកែប្រែបានឡើយ។ សូម្បីតែ Super Admin ក៏មិនអាចកែតម្រូវដោយគ្មានដានសវនកម្មបានដែរ។</li>
+</ul>
+</li>
+<li><strong>ការត្រួតពិនិត្យទ្វេដងលើការផ្ទេរទំនិញ (Two-Step Transfer Verification)</strong>:<ul>
+<li>ការផ្ទេរទំនិញឆ្លងឃ្លាំងមិនកើនឡើងដោយស្វ័យប្រវត្តិឡើយ។ ឃ្លាំងដើមត្រូវចេញប័ណ្ណ Dispatch ហើយទំនិញស្ថិតក្នុងស្ថានភាព <code>In-Transit</code> រហូតទាល់តែឃ្លាំងគោលដៅស្កេនបាកូដរាប់គ្រប់ចំនួន ទើបប័ណ្ណផ្ទេរត្រូវបានបញ្ចប់។</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="13-អនុសាសន៍ស្ថាបត្យកម្ម-និងផែនការ-prototype-planning" class="scroll-mt-24 group">13. អនុសាសន៍ស្ថាបត្យកម្ម និងផែនការ Prototype Planning <a href="#13-អនុសាសន៍ស្ថាបត្យកម្ម-និងផែនការ-prototype-planning" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="131-អនុសាសន៍រចនាប្រព័ន្ធ-architectural-recommendations" class="scroll-mt-24 group">13.1 អនុសាសន៍រចនាប្រព័ន្ធ (Architectural Recommendations) <a href="#131-អនុសាសន៍រចនាប្រព័ន្ធ-architectural-recommendations" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<h4 id="ណែនាំ-1-multi-location-quick-switcher" class="scroll-mt-24 group">✅ ណែនាំ 1: Multi-Location Quick Switcher <a href="#ណែនាំ-1-multi-location-quick-switcher" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<p>នៅលើទំព័រ <a href="file:///D:/DATA/Project/ebms_prototype/frontend/src/pages/5-stock/1-balance/balance.html">balance.html</a> ត្រូវមាន Custom Dropdown សម្រាប់ជ្រើសរើសទីតាំងឃ្លាំង (<code>ឃ្លាំងទាំងអស់</code>, <code>ឃ្លាំងកណ្តាល</code>, <code>សាខាសៀមរាប</code>) ជាមួយ Stacking Context <code>z-50</code> ដំណើរការបានរលូន 100%។</p>
+<h4 id="ណែនាំ-2-low-stock-warning-pills-1-click-pr" class="scroll-mt-24 group">✅ ណែនាំ 2: Low Stock Warning Pills &amp; 1-Click PR <a href="#ណែនាំ-2-low-stock-warning-pills-1-click-pr" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<p>ចំពោះមុខទំនិញណាដែល <code>Available Qty</code> $\le$ <code>Reorder Point</code> ត្រូវរំលេចផ្លាក Badge ពណ៌ក្រហមដាស់តឿនភ្លាមៗ រួមជាមួយប៊ូតុងរហ័ស <strong>«ស្នើសុំទិញ (PR)»</strong> ក្នុង Floating Dropdown ដើម្បីឱ្យ Warehouse Manager ចុចតែ 1 ដង បញ្ជូនសំណើទៅផ្នែកទិញបានភ្លាម។</p>
+<h4 id="ណែនាំ-3-a4-movement-delivery-order-print-ready" class="scroll-mt-24 group">✅ ណែនាំ 3: A4 Movement &amp; Delivery Order Print Ready <a href="#ណែនាំ-3-a4-movement-delivery-order-print-ready" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<p>ទំព័រ <a href="file:///D:/DATA/Project/ebms_prototype/frontend/src/pages/5-stock/3-movement/view-movement.html">view-movement.html</a> ត្រូវទ្រទ្រង់ការបោះពុម្ព A4 ផ្លូវការ (Enterprise Print) លាក់ Header/Sidebar យ៉ាងស្អាត មានកន្លែងចុះហត្ថលេខា 3 ភាគី៖ អ្នកប្រគល់ (Warehouse), អ្នកដឹក (Driver), និងអ្នកទទួល (Receiver)។</p>
+<hr>
+<h3 id="132-បញ្ជីត្រួតពិនិត្យការសាងសង់-prototype-15-point-prototype-checklist" class="scroll-mt-24 group">13.2 បញ្ជីត្រួតពិនិត្យការសាងសង់ Prototype (15-Point Prototype Checklist) <a href="#132-បញ្ជីត្រួតពិនិត្យការសាងសង់-prototype-15-point-prototype-checklist" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p>មុនពេលចាត់ទុកថា Prototype សម្រាប់ Warehouse Manager ត្រឹមត្រូវ 100% ត្រូវផ្ទៀងផ្ទាត់៖</p>
+<ul>
+<li><input disabled="" type="checkbox"> <strong>កម្ពស់ Header ស្មើគ្នា</strong>: ទាំង Sidebar Brand និង Content Top Header មានកម្ពស់ <code>h-[72px]</code> ស្មើគ្នាបេះបិទ។</li>
+<li><input disabled="" type="checkbox"> <strong>ភាសាខ្មែរសុទ្ធសាធ 100%</strong>: គ្មានពាក្យអង់គ្លេសលាយឡំលើ UI, ប៊ូតុង, តារាង, ផ្លាក Badge ឬ Toast ឡើយ។</li>
+<li><input disabled="" type="checkbox"> <strong>លេខអង់គ្លេស 0-9</strong>: គ្រប់កាលបរិច្ឆេទ, ចំនួនស្តុក, ភាគរយ, លេខកូដ (#MV-2026-0120, #SKU-0104) ប្រើលេខ <code>0-9</code> ជានិច្ច។</li>
+<li><input disabled="" type="checkbox"> <strong>លាក់ការសម្ងាត់តម្លៃលក់ 100% (Zero Selling Price Leakage)</strong>: គ្មានកន្លែងណាបង្ហាញតម្លៃលក់ ឬប្រាក់ចំណេញឡើយ។</li>
+<li><input disabled="" type="checkbox"> <strong>គ្មាន Pop-up Modal សម្រាប់ Add/Edit/View</strong>: សុទ្ធតែជា Dedicated Full Pages (<code>adjust-balance.html</code>, <code>create-catalog.html</code>)។</li>
+<li><input disabled="" type="checkbox"> <strong>ប៊ូតុងត្រឡប់ក្រោយស្តង់ដារ</strong>: ប្រអប់មូលកោង <code>w-10 h-10 rounded-xl bg-slate-50 border border-slate-200/70</code> មានតែរូបព្រួញ។</li>
+<li><input disabled="" type="checkbox"> <strong>គ្មាន Native Select</strong>: ប្រើ Custom Dropdown មាន Stacking Context <code>z-50</code> ត្រឹមត្រូវ។</li>
+<li><input disabled="" type="checkbox"> <strong>ជំនួស Alert / Confirm</strong>: ប្រើប្រាស់ <code>showToast()</code> និង <code>showCustomConfirm()</code>។</li>
+<li><input disabled="" type="checkbox"> <strong>លាក់របាររំកិល</strong>: Globally Hidden Scrollbars ទាំងផ្ដេក និងបញ្ឈរ។</li>
+<li><input disabled="" type="checkbox"> <strong>ប្លង់ពេញទទឹង</strong>: <code>&lt;main class=&quot;w-full&quot;&gt;</code> គ្មានការប្រើ <code>max-w-7xl mx-auto</code>។</li>
+<li><input disabled="" type="checkbox"> <strong>សកម្មភាពតារាង</strong>: ប្រើប៊ូតុង <code>⋮</code> ជាមួយ Floating Action Dropdown Menu។</li>
+<li><input disabled="" type="checkbox"> <strong>Unified Date Range Picker</strong>: មាន 10 Presets និងប្រតិទិនពីរជួរឈរតាមគំរូ <code>invoice.html</code>។</li>
+<li><input disabled="" type="checkbox"> <strong>ការបោះពុម្ព A4 ផ្លូវការ</strong>: ប្លង់ប័ណ្ណចលនាស្តុកស្អាតបរិសុទ្ធ លាក់ Sidebar/Header ពេល Print។</li>
+<li><input disabled="" type="checkbox"> <strong>តារាងសមតុល្យច្បាស់លាស់</strong>: បង្ហាញទាំង On-Hand, Reserved, Available, In-Transit។</li>
+<li><input disabled="" type="checkbox"> <strong>ការផ្ទៀងផ្ទាត់ពិដានកែតម្រូវ</strong>: $\le $200$ អនុម័តដោយ WH Manager; $&gt; $200$ រុញទៅ GM។</li>
+</ul>
+<hr>
+<h2 id="14-សំណួរ-និងចម្លើយទូទៅ-faq" class="scroll-mt-24 group">14. សំណួរ និងចម្លើយទូទៅ (FAQ) <a href="#14-សំណួរ-និងចម្លើយទូទៅ-faq" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<p><strong>Q: ហេតុអ្វីបានជាត្រូវលាក់តម្លៃលក់ពី Warehouse Manager ដែរ បើគាត់ជាអ្នកគ្រប់គ្រង?</strong><br>A: នេះជាគោលការណ៍បែងចែកភារកិច្ច និងសុវត្ថិភាពទិន្នន័យកម្រិតសហគ្រាស (Zero Selling Price Leakage)។ តម្លៃលក់ និងផលចំណេញពាណិជ្ជកម្មជាយុទ្ធសាស្ត្រផ្តាច់មុខរបស់ផ្នែកលក់ និងនាយកប្រតិបត្តិ។ ការលាក់តម្លៃលក់ការពារកុំឱ្យមានការលេចធ្លាយតម្លៃសម្ងាត់ទៅកាន់អ្នកផ្គត់ផ្គង់ខាងក្រៅ ឬដៃគូប្រកួតប្រជែង ព្រមទាំងការពារកុំឱ្យមានការឃុបឃិតទម្លាក់តម្លៃ។</p>
+<p><strong>Q: ប្រសិនបើមានការខូចខាតទំនិញតម្លៃ $500.00 តើ Warehouse Manager អាចចុចអនុម័តកាត់ស្តុកដោយខ្លួនឯងបានទេ?</strong><br>A: <strong>មិនអាចបានឡើយ</strong>។ កម្រិតសមត្ថកិច្ចរបស់ Warehouse Manager គឺអនុម័តការកែតម្រូវត្រឹមតែ $\le $200.00$ ប៉ុណ្ណោះ។ ចំពោះការខាតបង់លើសពី $200.00 ប្រព័ន្ធនឹងតម្រូវឱ្យដាក់សំណើ Write-off ទៅកាន់ <strong>Admin / General Manager</strong> ជាអ្នកចុះហត្ថលេខាអនុម័ត ដើម្បីធានាអភិបាលកិច្ច និងការពារការបិទបាំងការបាត់បង់ទំនិញ។</p>
+<p><strong>Q: តើអ្វីជាភាពខុសគ្នារវាង On-Hand Stock និង Available Stock?</strong><br>A: </p>
+<ul>
+<li><strong>On-Hand Stock</strong>: គឺជាចំនួនទំនិញជាក់ស្តែងទាំងអស់ដែលកំពុងមានវត្តមានរូបវន្តនៅលើធ្នើរឃ្លាំង។</li>
+<li><strong>Available Stock</strong>: គឺជាចំនួនទំនិញដែលនៅទំនេរពិតប្រាកដដែលអាចលក់បាន (Available = On-Hand - Reserved)។ ទំនិញណាដែលត្រូវបានអតិថិជនកក់ក្នុងវិក្កយបត្ររួចហើយ នឹងត្រូវចាត់ចូលជា Reserved Stock មិនអាចលក់ឱ្យអ្នកផ្សេងទៀតបានឡើយ។</li>
+</ul>
+<p><strong>Q: នៅពេលផ្ទេរទំនិញពីឃ្លាំងភ្នំពេញទៅសៀមរាប តើតួលេខស្តុកកើនឡើងនៅសៀមរាបភ្លាមៗទេ?</strong><br>A: <strong>មិនកើនឡើងភ្លាមៗឡើយ</strong>។ នៅពេលទំនិញចេញពីភ្នំពេញ ស្តុកនឹងធ្លាក់ចូលទៅក្នុងស្ថានភាព «កំពុងដឹកជញ្ជូន (In-Transit)»។ លុះត្រាតែបុគ្គលិកឃ្លាំងសៀមរាបរាប់ផ្ទៀងផ្ទាត់ និងចុច «ទទួលស្គាល់ការទទួលទំនិញ» ទើបស្តុកសៀមរាបកើនឡើងជាផ្លូវការ ដើម្បីការពារការបាត់បង់ទំនិញនៅពាក់កណ្តាលផ្លូវ។</p>
+<hr>
+<p><em>ឯកសារនេះតំណាង 100% នៃមូលដ្ឋានចំណេះដឹងសម្រាប់ Warehouse Manager Role ក្នុង DIGITECHKH BMS</em><br><em>Previous Role: Admin / General Manager → <a href="role_admin_general_manager.html"><code>role_admin_general_manager.md</code></a></em><br><em>Next Role: Cashier POS → <a href="role_cashier_pos.html"><code>role_cashier_pos.md</code></a> | or: Delivery Driver → <a href="role_delivery_driver.html"><code>role_delivery_driver.md</code></a></em></p>
+
+                </article>
+
+                <!-- Next / Previous Role Navigation Bar -->
+                <div class="no-print mt-12 pt-8 border-t border-slate-200 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <a href="role_admin_general_manager.html" class="p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-transform flex-shrink-0">
+                            🏛️
+                        </div>
+                        <div class="min-w-0">
+                            <div class="text-[10px] text-slate-400 font-medium">← តួនាទីមុន</div>
+                            <div class="text-xs font-bold text-slate-800 group-hover:text-primary transition truncate">អភិបាល និងអ្នកចាត់ការទូទៅ</div>
+                        </div>
+                    </a>
+
+                    <a href="role_superadmin.html" class="p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group flex items-center justify-end text-right gap-3">
+                        <div class="min-w-0">
+                            <div class="text-[10px] text-slate-400 font-medium">តួនាទីបន្ទាប់ →</div>
+                            <div class="text-xs font-bold text-slate-800 group-hover:text-primary transition truncate">ស៊ុបភើរ អភិបាល</div>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-transform flex-shrink-0">
+                            👑
+                        </div>
+                    </a>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="no-print bg-white border-t border-slate-200 py-6 px-8 text-center text-xs text-slate-500">
+        <p>រក្សាសិទ្ធិគ្រប់យ៉ាង © 2026 ក្រុមហ៊ុន ឌីជីថេក ខេអេច (DIGITECHKH Co., Ltd.) · ព្រះរាជាណាចក្រកម្ពុជា</p>
+    </footer>
+
+</body>
+</html>

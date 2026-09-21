@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="km" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04. មេរៀន និងស្តង់ដារបច្ចេកវិទ្យា — ឯកសារបច្ចេកទេស | DIGITECHKH BMS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Kantumruy Pro', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0f2b5c',
+                        primaryHover: '#0a1d3f',
+                        accent: '#2563eb',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Kantumruy Pro', sans-serif;
+            color: #334155;
+            background-color: #f8fafc;
+        }
+        ::-webkit-scrollbar { display: none; }
+        * { -ms-overflow-style: none; scrollbar-width: none; }
+        h1, h2, h3, h4 { color: #0f172a; font-weight: 700; }
+        h1 { font-size: 1.8rem; line-height: 2.35rem; margin-bottom: 1.25rem; }
+        h2 { font-size: 1.35rem; line-height: 1.85rem; margin-top: 2.25rem; margin-bottom: 0.85rem; padding-bottom: 0.5rem; border-bottom: 1px solid #e2e8f0; }
+        h3 { font-size: 1.1rem; line-height: 1.5rem; margin-top: 1.75rem; margin-bottom: 0.5rem; }
+        p { margin-bottom: 0.85rem; line-height: 1.8; font-size: 0.95rem; }
+        ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1rem; font-size: 0.95rem; }
+        ol { list-style-type: decimal; padding-left: 1.5rem; margin-bottom: 1rem; font-size: 0.95rem; }
+        li { margin-bottom: 0.35rem; line-height: 1.7; }
+        hr { border: 0; border-top: 1px solid #e2e8f0; margin: 2rem 0; }
+        @media print {
+            .no-print { display: none !important; }
+            body { background-color: #ffffff; color: #000; }
+            .print-container { max-width: 100% !important; margin: 0 !important; padding: 0 !important; box-shadow: none !important; border: none !important; }
+            table, pre, blockquote, .rounded-xl, .rounded-2xl { page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-primary selection:text-white min-h-screen flex flex-col justify-between">
+
+    <!-- Top Sticky Control Bar -->
+    <header class="no-print fixed top-0 left-0 right-0 h-16 bg-primary text-white z-50 px-4 sm:px-8 flex items-center justify-between shadow-md">
+        <div class="flex items-center gap-3">
+            <a href="index.html" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition flex items-center gap-2 text-xs font-semibold">
+                <i class="fas fa-arrow-left"></i> <span class="hidden sm:inline">មជ្ឈមណ្ឌលឯកសារ</span>
+            </a>
+            <span class="text-white/30 hidden sm:inline">|</span>
+            <div class="flex items-center gap-2">
+                <span class="text-xl">💡</span>
+                <span class="font-bold text-xs sm:text-sm text-white truncate max-w-[200px] sm:max-w-xs">04. មេរៀន និងស្តង់ដារបច្ចេកវិទ្យា</span>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-white/15 text-emerald-300 hidden md:inline">Technical Spec</span>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-2 sm:gap-3">
+            <!-- Tech Doc Switcher -->
+            <div class="relative">
+                <select onchange="window.location.href=this.value" class="h-9 pl-3 pr-8 bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl text-xs font-semibold text-white focus:outline-none focus:bg-[#0a1d3f] transition appearance-none cursor-pointer">
+                    <option value="00-SYSTEM-OVERVIEW-AND-ARCHITECTURE.html" >00. ស្ថាបត្យកម្ម & គំរូទិន្នន័យ</option>
+<option value="01-END-TO-END-SYSTEM-WORKFLOW.html" >01. លំហូរការងារទាំង 8 វដ្ត</option>
+<option value="02-DELIVERY-AUDIT-AND-CHECKLIST.html" >02. បញ្ជីសវនកម្មគុណភាព</option>
+<option value="03-USER-OPERATIONAL-GUIDE.html" >03. សៀវភៅណែនាំប្រតិបត្តិការ</option>
+<option value="04-LEARNINGS-AND-STANDARDS-BENCHMARK.html" selected>04. មេរៀន និងស្តង់ដារបច្ចេកវិទ្យា</option>
+<option value="05-MASTER-SYSTEM-BLUEPRINT-AND-ENTERPRISE-PLAN.html" >05. ប្លង់មេ & ផែនទីបង្ហាញផ្លូវ</option>
+<option value="06-FULL-SYSTEM-SPECIFICATION-AND-TEAM-GUIDE.html" >06. សេចក្តីបញ្ជាក់លម្អិតប្រព័ន្ធ</option>
+<option value="07-CLIENT-PITCH-AND-SALES-STRATEGY.html" >07. យុទ្ធសាស្ត្រលក់ & Wow Demo</option>
+<option value="08-ECOMMERCE-DIGITAL-SHOWROOM-SPECIFICATION.html" >08. លក្ខណៈបច្ចេកទេស Showroom</option>
+                </select>
+                <i class="fas fa-chevron-down absolute right-3 top-3 text-[10px] text-white/60 pointer-events-none"></i>
+            </div>
+
+            <!-- Print Button -->
+            <button onclick="window.print()" class="px-3 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-semibold transition flex items-center gap-1.5 shadow-sm cursor-pointer">
+                <i class="fas fa-print"></i> <span class="hidden sm:inline">បោះពុម្ព A4</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Reading Container -->
+    <div class="pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full flex-1">
+        <div class="flex flex-col lg:flex-row gap-8 items-start">
+
+            <!-- Left Table of Contents Sidebar -->
+            <aside class="no-print lg:w-72 flex-shrink-0 sticky top-24 hidden lg:block bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
+                <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-3">
+                    <span class="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
+                        <i class="fas fa-list-ul text-primary"></i> មាតិកាឯកសារ
+                    </span>
+                    <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-50 text-accent">TOC</span>
+                </div>
+                <div class="space-y-0.5 max-h-[calc(100vh-220px)] overflow-y-auto pr-1 text-xs">
+                    
+                </div>
+                <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
+                    <a href="04-LEARNINGS-AND-STANDARDS-BENCHMARK.md" class="w-full py-2 px-3 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-500 text-[11px] font-normal flex items-center justify-between transition border border-slate-200">
+                        <span>មើលឯកសារដើម (.md)</span>
+                        <i class="fas fa-file-code text-[10px]"></i>
+                    </a>
+                </div>
+            </aside>
+
+            <!-- Main Document Body -->
+            <main class="print-container flex-1 bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-12 min-w-0 max-w-4xl mx-auto">
+
+                <!-- Breadcrumb -->
+                <div class="no-print flex items-center gap-2 text-xs text-slate-500 mb-6 flex-wrap pb-4 border-b border-slate-100">
+                    <a href="index.html" class="hover:text-primary transition flex items-center gap-1">
+                        <i class="fas fa-home"></i> មជ្ឈមណ្ឌលឯកសារ
+                    </a>
+                    <span>/</span>
+                    <span class="text-slate-500">ឯកសារបច្ចេកទេស</span>
+                    <span>/</span>
+                    <span class="text-slate-800 font-semibold">មេរៀន និងស្តង់ដារបច្ចេកវិទ្យា</span>
+                </div>
+
+                <!-- Document Rendered HTML -->
+                <article class="prose prose-slate max-w-none">
+                    <h1 id="digitechkh-bms---មេរៀនស្រង់ចេញ-និងស្តង់ដារប្រៀបធៀបពីឯកសារយោងទាំង-17-reference-analysis-delivery-benchmark" class="scroll-mt-24 group">DIGITECHKH BMS - មេរៀនស្រង់ចេញ និងស្តង់ដារប្រៀបធៀបពីឯកសារយោងទាំង 17 (Reference Analysis &amp; Delivery Benchmark) <a href="#digitechkh-bms---មេរៀនស្រង់ចេញ-និងស្តង់ដារប្រៀបធៀបពីឯកសារយោងទាំង-17-reference-analysis-delivery-benchmark" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h1>
+<p>ឯកសារនេះចងក្រងនូវការស្រាវជ្រាវ ការអាន និងការវិភាគយ៉ាងស៊ីជម្រៅលើឯកសារគំរូចែកចាយកម្រិតសហគ្រាសទាំង 17 ឯកសារ (PDFs) ដែលស្ថិតក្នុងថត <code class="px-1.5 py-0.5 rounded bg-slate-100 text-primary font-mono text-xs border border-slate-200/80">documentation/</code> (រួមមាន <code class="px-1.5 py-0.5 rounded bg-slate-100 text-primary font-mono text-xs border border-slate-200/80">CCN</code>, <code class="px-1.5 py-0.5 rounded bg-slate-100 text-primary font-mono text-xs border border-slate-200/80">CamCyber POS</code> និង <code class="px-1.5 py-0.5 rounded bg-slate-100 text-primary font-mono text-xs border border-slate-200/80">ClassMaster Delivery Documents V2</code>) ដើម្បីជាមូលដ្ឋានគ្រឹះក្នុងការរៀបចំប្រព័ន្ធ <code class="px-1.5 py-0.5 rounded bg-slate-100 text-primary font-mono text-xs border border-slate-200/80">DIGITECHKH Business Management System (BMS)</code> ឱ្យក្លាយជាប្រព័ន្ធគ្រប់គ្រងអាជីវកម្មកម្រិតកំពូល (Enterprise-Grade Quality)។</p>
+<hr>
+<h2 id="1-សេចក្តីសង្ខេបនៃការវិភាគឯកសារយោងទាំង-17-comprehensive-review-of-17-reference-documents" class="scroll-mt-24 group">1. សេចក្តីសង្ខេបនៃការវិភាគឯកសារយោងទាំង 17 (Comprehensive Review of 17 Reference Documents) <a href="#1-សេចក្តីសង្ខេបនៃការវិភាគឯកសារយោងទាំង-17-comprehensive-review-of-17-reference-documents" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="ក្រុមទី-1៖-គម្រោង-ccn-cambodia-council-of-nurses---គណៈគិលានុបដ្ឋាកកម្ពុជា-4-ឯកសារ" class="scroll-mt-24 group">ក្រុមទី 1៖ គម្រោង CCN (Cambodia Council of Nurses - គណៈគិលានុបដ្ឋាកកម្ពុជា) — 4 ឯកសារ <a href="#ក្រុមទី-1៖-គម្រោង-ccn-cambodia-council-of-nurses---គណៈគិលានុបដ្ឋាកកម្ពុជា-4-ឯកសារ" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<ol>
+<li><strong><code class="px-1.5 py-0.5 rounded bg-slate-100 text-primary font-mono text-xs border border-slate-200/80">1- CCN - Overview - 160725.pdf</code> (7 ទំព័រ)</strong>៖<ul>
+<li>បង្ហាញទិដ្ឋភាពទូទៅនៃប្រព័ន្ធគ្រប់គ្រងសមាជិកភាពគិលានុបដ្ឋាកកម្ពុជា។</li>
+<li>កំណត់តួនាទីស្នូលចំនួន 4៖ សមាជិក (Member), ប្រតិបត្តិករថ្នាក់ខេត្ត (Provincial Operator), ប្រតិបត្តិករថ្នាក់ជាតិ (National Operator), និងអភិបាលប្រព័ន្ធ (System Admin)។</li>
+<li>ម៉ូឌុលស្នូល៖ ការស្នើសុំប័ណ្ណថ្មី/បន្តសុពលភាព, ការផ្ទេរកន្លែងការងារ, និងការគណនាពិន្ទុ CPD តាមរយៈការធ្វើបទបង្ហាញ និងវគ្គបណ្តុះបណ្តាល។</li>
+</ul>
+</li>
+<li><strong><code class="px-1.5 py-0.5 rounded bg-slate-100 text-primary font-mono text-xs border border-slate-200/80">2- CCN - Register and Renew License- 160725.pdf</code> (13 ទំព័រ)</strong>៖<ul>
+<li>លំហូរការងារលម្អិតពីមួយជំហានទៅមួយជំហាន (Step-by-step Lifecycle) សម្រាប់ការចុះឈ្មោះ និងបន្តសុពលភាពអាជ្ញាប័ណ្ណ។</li>
+<li>ដំណាក់កាលអនុម័តពីរថ្នាក់ (Two-tier Verification)៖ សមាជិកដាក់ពាក្យ -&gt; ភ្ជាប់ឯកសារ -&gt; បង់ប្រាក់ -&gt; ប្រតិបត្តិករខេត្តត្រួតពិនិត្យ -&gt; ប្រតិបត្តិករជាតិអនុម័ត -&gt; បោះពុម្ពប័ណ្ណមាន QR Code ផ្ទៀងផ្ទាត់។</li>
+</ul>
+</li>
+<li><strong><code class="px-1.5 py-0.5 rounded bg-slate-100 text-primary font-mono text-xs border border-slate-200/80">3- CCN - Presentation and Training- 140725.pdf</code> (10 ទំព័រ)</strong>៖<ul>
+<li>លំហូរស្នើសុំធ្វើបទបង្ហាញ និងការចុះឈ្មោះចូលរៀនវគ្គបណ្តុះបណ្តាលដើម្បីបង្គ្រប់ពិន្ទុវិជ្ជាជីវៈ (CPD Points)។</li>
+<li>បង្ហាញការភ្ជាប់ឯកសារភស្តុតាង និងការផ្តល់ពិន្ទុដោយស្វ័យប្រវត្តិក្រោយពេលប្រតិបត្តិករអនុម័ត។</li>
+</ul>
+</li>
+<li><strong><code class="px-1.5 py-0.5 rounded bg-slate-100 text-primary font-mono text-xs border border-slate-200/80">4- CCN - Transfer- 140725.pdf</code> (6 ទំព័រ)</strong>៖<ul>
+<li>លំហូរផ្លាស់ប្តូរកន្លែងការងារ ឬមន្ទីរពេទ្យ/គ្លីនិករបស់សមាជិក ព្រមទាំងការផ្ទៀងផ្ទាត់ឯកសារយល់ព្រមពីស្ថាប័នទាំងសងខាង។</li>
+</ul>
+</li>
+</ol>
+<h3 id="ក្រុមទី-2៖-គម្រោង-camcyber-pos-v2-master-class-3-ឯកសារ" class="scroll-mt-24 group">ក្រុមទី 2៖ គម្រោង CamCyber POS V2 &amp; Master Class — 3 ឯកសារ <a href="#ក្រុមទី-2៖-គម្រោង-camcyber-pos-v2-master-class-3-ឯកសារ" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<ol>
+<li><strong><code class="px-1.5 py-0.5 rounded bg-slate-100 text-primary font-mono text-xs border border-slate-200/80">CamCyber POS V2 - Overview - 091024.pdf</code> (12 ទំព័រ)</strong>៖<ul>
+<li>ស្ថាបត្យកម្មអាជីវកម្ម Point of Sale៖ ការលក់រាយរហ័ស, ការចេញវិក្កយបត្រ, ការគ្រប់គ្រងតម្លៃលក់ និងថ្លៃដើមទិញចូល, របាយការណ៍លក់ប្រចាំថ្ងៃ/សប្តាហ៍/ខែ និងមុខទំនិញលក់ដាច់។</li>
+<li>ការកំណត់មុខងារជូនដំណឹងស្វ័យប្រវត្តិ (Notification Automation)៖ ជូនដំណឹងរាល់ការលក់, របាយការណ៍ស្វ័យប្រវត្តិនាវេលាម៉ោង 5 រសៀល និងការជូនដំណឹងពេលស្តុកជិតអស់។</li>
+</ul>
+</li>
+<li><strong><code class="px-1.5 py-0.5 rounded bg-slate-100 text-primary font-mono text-xs border border-slate-200/80">CamCyber POS V2 - Technical - 09192024.pdf</code> (8 ទំព័រ)</strong>៖<ul>
+<li>គ្រោងបច្ចេកវិទ្យាពេញលេញ (Full Tech Stack)៖ PostgreSQL, NestJS API, ExpressJS Service, Angular Web, Flutter Mobile, Docker Containers, NginX Gateway, DigitalOcean, CloudFlare, Let&#39;s Encrypt SSL, Socket.io Real-time, JSReport, Firebase Notifications, Telegram Bot, Mailgun Email, Twilio SMS។</li>
+<li>គ្រោង Database Design, Software Architecture និង Deployment Pipeline។</li>
+</ul>
+</li>
+<li><strong><code class="px-1.5 py-0.5 rounded bg-slate-100 text-primary font-mono text-xs border border-slate-200/80">Software Engineer - Master Class - 04102025.pdf</code> (17 ទំព័រ)</strong>៖<ul>
+<li>បទបង្ហាញពីវិស្វកម្មសូហ្វវែរ ដោយលោក ខួច គឿន (សហស្ថាបនិក CamCyber និងមន្ត្រីបច្ចេកវិទ្យា CDC)។</li>
+<li>ការរៀបចំស្តង់ដារការងារបច្ចេកទេស (SOP), ការធានាគុណភាព (QA), ការវិភាគតម្រូវការអាជីវកម្ម (Business Analysis), និងការបែងចែកតួនាទីជំនាញក្នុងការអភិវឌ្ឍប្រព័ន្ធធំៗ។</li>
+<li>គំរូប្រព័ន្ធធំៗជាក់ស្តែង៖ ប្រព័ន្ធធនធានមនុស្ស CDC (cdcHRM), ប្រព័ន្ធអាហារូបករណ៍សិស្ស-និស្សិត អ.ម.ត, និង E-Commerce/Logistics Platform។</li>
+</ul>
+</li>
+</ol>
+<h3 id="ក្រុមទី-3៖-កញ្ចប់ចែកចាយ-classmaster-delivery-documents-v2-poscar-digital-10-ឯកសារ" class="scroll-mt-24 group">ក្រុមទី 3៖ កញ្ចប់ចែកចាយ ClassMaster Delivery Documents V2 (POSCAR Digital) — 10 ឯកសារ <a href="#ក្រុមទី-3៖-កញ្ចប់ចែកចាយ-classmaster-delivery-documents-v2-poscar-digital-10-ឯកសារ" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<ol>
+<li><strong><code class="px-1.5 py-0.5 rounded bg-slate-100 text-primary font-mono text-xs border border-slate-200/80">00-ClassMaster-delivery-feature-note.pdf</code> (12 ទំព័រ)</strong>៖<ul>
+<li>កំណត់ត្រាចែកចាយមុខងារផ្លូវការ (Release Notes) ចំនួន 36+ មុខងារ ដោយមានប្រអប់ធីកបញ្ជាក់ (Checklist ✅) និងការកត់ត្រាការផ្លាស់ប្តូរ (Change Delta)។</li>
+</ul>
+</li>
+<li><strong><code class="px-1.5 py-0.5 rounded bg-slate-100 text-primary font-mono text-xs border border-slate-200/80">01-ClassMaster-system-architecture.pdf</code> (11 ទំព័រ)</strong>៖<ul>
+<li>ស្ថាបត្យកម្មប្រព័ន្ធកម្រិតសហគ្រាស Offline/LAN-only៖ Master Server, Teacher Board Console (Windows Native), និង Student Agent ព្រមទាំងការធានាសុវត្ថិភាព Local Token Authentication ដោយមិនពឹងផ្អែកលើ Internet។</li>
+</ul>
+</li>
+<li><strong><code class="px-1.5 py-0.5 rounded bg-slate-100 text-primary font-mono text-xs border border-slate-200/80">02-ClassMaster-overview-delivery-km.pdf</code> (38 ទំព័រ)</strong>៖<ul>
+<li>ឯកសារទិដ្ឋភាពទូទៅនៃប្រព័ន្ធជាភាសាខ្មែរផ្លូវការ៖ ការបែងចែកតួនាទីធំៗ 3 (IT Admin, System Admin, Teacher), មុខងារម៉ូឌុលទាំង 9, ព្រំដែនសុវត្ថិភាព និងការអនុវត្តជាក់ស្តែងក្នុងថ្នាក់រៀន។</li>
+</ul>
+</li>
+<li><strong><code class="px-1.5 py-0.5 rounded bg-slate-100 text-primary font-mono text-xs border border-slate-200/80">01-ClassMaster-installation-guide-km.pdf</code> (10 ទំព័រ)</strong>៖<ul>
+<li>មគ្គុទ្ទេសក៍ដំឡើងសម្រាប់បុគ្គលិក IT៖ លក្ខខណ្ឌតម្រូវ (Windows 10/11 64-bit, Intel N100, Subnet តែមួយ), ជំហានដំឡើង Wizard មួយកញ្ចប់រួម (One-installer), និងការត្រួតពិនិត្យបណ្តាញ។</li>
+</ul>
+</li>
+<li><strong><code class="px-1.5 py-0.5 rounded bg-slate-100 text-primary font-mono text-xs border border-slate-200/80">02-ClassMaster-administrator-manual-km.pdf</code> (9 ទំព័រ)</strong>៖<ul>
+<li>សៀវភៅណែនាំអ្នកគ្រប់គ្រង (Admin Manual)៖ ការគ្រប់គ្រងគណនីគ្រូ, សិស្ស, បន្ទប់កុំព្យូទ័រ Lab, ម៉ូឌុលមេរៀន, កំណត់ហេតុសុវត្ថិភាព, ការបម្រុងទុក (Backup/Restore), និងប្រតិទិនថែទាំប្រព័ន្ធ។</li>
+</ul>
+</li>
+<li><strong><code class="px-1.5 py-0.5 rounded bg-slate-100 text-primary font-mono text-xs border border-slate-200/80">03-ClassMaster-teacher-manual-km.pdf</code> (8 ទំព័រ)</strong>៖<ul>
+<li>សៀវភៅណែនាំសម្រាប់គ្រូបង្រៀន៖ 6 ជំហានប្រចាំថ្ងៃ (1. ចាប់ផ្តើមវគ្គ -&gt; 2. ស្រង់វត្តមាន -&gt; 3. តាមដានអេក្រង់ -&gt; 4. ចាក់សោអេក្រង់ -&gt; 5. ចែករំលែកមាតិកា -&gt; 6. បញ្ចប់វគ្គ និងទាញរបាយការណ៍) ព្រមទាំងលេខកូដសង្គ្រោះបន្ទាន់ Master Emergency Unlock PIN។</li>
+</ul>
+</li>
+<li><strong><code class="px-1.5 py-0.5 rounded bg-slate-100 text-primary font-mono text-xs border border-slate-200/80">01-ClassMaster-Training-IT-admin-km.pdf</code> (52 ទំព័រ)</strong>៖<ul>
+<li>ស្លាយបណ្តុះបណ្តាលសម្រាប់ IT Admin៖ ស្ថាបត្យកម្ម 3 ស្រទាប់, ការដំឡើង និងភ្ជាប់បណ្តាញ LAN, ការដោះស្រាយបញ្ហាបច្ចេកទេស (Troubleshooting) និងការស្តារប្រព័ន្ធពេលមានអាសន្ន។</li>
+</ul>
+</li>
+<li><strong><code class="px-1.5 py-0.5 rounded bg-slate-100 text-primary font-mono text-xs border border-slate-200/80">02-ClassMaster-Training-System-Admin-km.pdf</code> (40 ទំព័រ)</strong>៖<ul>
+<li>ស្លាយបណ្តុះបណ្តាលសម្រាប់ System Admin៖ ផ្ទាំងគ្រប់គ្រងមុខងារទាំង 9, ការគ្រប់គ្រងសិទ្ធិ, ការនាំចូលទិន្នន័យជាដុំ (Batch Import), និងរបាយការណ៍ស្ថិតិទូទាំងសាលា។</li>
+</ul>
+</li>
+<li><strong><code class="px-1.5 py-0.5 rounded bg-slate-100 text-primary font-mono text-xs border border-slate-200/80">03-ClassMaster-Training-Teacher-km.pdf</code> (46 ទំព័រ)</strong>៖<ul>
+<li>ស្លាយបណ្តុះបណ្តាលគ្រូបង្រៀន៖ ការគ្រប់គ្រងថ្នាក់រៀនជាក់ស្តែង, ការផ្សាយអេក្រង់បន្តផ្ទាល់ (Live Screen Broadcast), ការដាក់កិច្ចការ, ការស្រង់វត្តមានតាមប្រព័ន្ធ និងការនាំចេញទិន្នន័យ។</li>
+</ul>
+</li>
+<li><strong><code class="px-1.5 py-0.5 rounded bg-slate-100 text-primary font-mono text-xs border border-slate-200/80">05a-ClassMaster-Delivery-Demo-checklist.pdf</code> (8 ទំព័រ)</strong>៖<ul>
+<li>បញ្ជីត្រួតពិនិត្យការបង្ហាញប្រព័ន្ធជាផ្លូវការ (Enterprise Demo Acceptance Checklist) ដែលមានវដ្តត្រួតពិនិត្យ 3 ដំណាក់កាលម៉ឺងម៉ាត់៖ <strong>D-7</strong> (Build Verification), <strong>D-1</strong> (System Freeze), និង <strong>T-90</strong> (90 នាទីមុនការបង្ហាញផ្ទាល់)។ ក្បួនច្បាប់មាស៖ <em>&quot;គ្មានចំណុចណាមួយត្រូវបានគូសធីកដោយការចាំមាត់ឡើយ។ គ្រប់ជួរទាំងអស់ត្រូវតែផ្ទៀងផ្ទាត់លើឧបករណ៍ជាក់ស្តែង និងចុះហត្ថលេខាទទួលស្គាល់&quot; (Nothing is ticked from memory)</em>។</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="2-ស្តង់ដារដែល-digitechkh-bms-ស្រង់យកមកអនុវត្ត-standard-adoptions-into-digitechkh-bms" class="scroll-mt-24 group">2. ស្តង់ដារដែល DIGITECHKH BMS ស្រង់យកមកអនុវត្ត (Standard Adoptions into DIGITECHKH BMS) <a href="#2-ស្តង់ដារដែល-digitechkh-bms-ស្រង់យកមកអនុវត្ត-standard-adoptions-into-digitechkh-bms" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<p>ពីការសិក្សាឯកសារទាំង 17 ខាងលើ យើងបានស្រង់យកស្តង់ដារសំខាន់ៗចំនួន 5 មកអនុវត្តលើ DIGITECHKH BMS៖</p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ល.រ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ស្តង់ដារដែលស្រង់ចេញ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">របៀបអនុវត្តជាក់ស្តែងក្នុង DIGITECHKH BMS</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">1</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Multi-Tier Role-Based Separation (CCN &amp; ClassMaster)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">បែងចែក 12 តួនាទីដាច់ដោយឡែកពីគ្នា 100% តាមរយៈ Zero-Leakage Data Scope និង Dynamic Navigation Sidebar។</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">2</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Full Lifecycle Request &amp; Approval Workflow (CCN)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">រាល់ប្រតិបត្តិការអាជីវកម្មទាំងអស់ត្រូវឆ្លងកាត់វដ្តជីវិតពេញលេញ៖ ស្នើសុំ (Draft) -&gt; ត្រួតពិនិត្យ (Pending) -&gt; អនុម័ត (Approved) -&gt; អនុវត្ត/ទូទាត់ (Fulfilled/Paid) -&gt; បិទបញ្ចប់ (Closed)។</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">3</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Enterprise Dedicated Pages (ClassMaster &amp; CamCyber)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">គ្មានការប្រើប្រាស់ Modal Dialog Pop-up សម្រាប់ Create/Edit/View ឡើយ។ គ្រប់ទម្រង់ទាំងអស់ជា Dedicated Full Page មានប៊ូតុងត្រឡប់ក្រោយស្តង់ដារ និង A4 Enterprise Print Layout។</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">4</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>3-Tier Delivery Verification (D-7, D-1, T-90 Checklist)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ការរៀបចំបញ្ជីត្រួតពិនិត្យប្រព័ន្ធ DIGITECHKH BMS ត្រូវបានចែកជា 3 ដំណាក់កាល (D-7 Code Audit, D-1 Link &amp; Form Freeze, T-90 Pre-Flight Verification)។</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">5</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>100% Strict Pure Khmer &amp; English Numerals (Project Standard)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">រក្សាភាសាខ្មែរសុទ្ធសាធ គ្មានពាក្យអង់គ្លេសលាយឡំលើ UI និងប្រើប្រាស់លេខអង់គ្លេស (<code class="px-1.5 py-0.5 rounded bg-slate-100 text-primary font-mono text-xs border border-slate-200/80">0-9</code>) លើគ្រប់តួលេខទូទាំងប្រព័ន្ធ។</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="3-ផែនការផ្ទៀងផ្ទាត់តួនាទីម្តងមួយៗ-one-role-at-a-time-review-process" class="scroll-mt-24 group">3. ផែនការផ្ទៀងផ្ទាត់តួនាទីម្តងមួយៗ (One-Role-at-a-Time Review Process) <a href="#3-ផែនការផ្ទៀងផ្ទាត់តួនាទីម្តងមួយៗ-one-role-at-a-time-review-process" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<p>ដើម្បីធានាបាននូវគុណភាពកម្រិតខ្ពស់បំផុត និងមិនឱ្យមានការខកខាននូវព័ត៌មានលម្អិតណាមួយ យើងនឹងដំណើរការផ្ទៀងផ្ទាត់ និងកែលម្អប្រព័ន្ធតាមលំដាប់តួនាទីម្តងមួយៗ ដោយមិនប្រញាប់ប្រញាល់ឡើយ។ រាល់ពេលដែលតួនាទីមួយត្រូវបានអ្នកប្រើប្រាស់ត្រួតពិនិត្យ និងបញ្ជាក់យល់ព្រមរួចរាល់ ទើបយើងបោះជំហានទៅកាន់តួនាទីបន្ទាប់៖</p>
+<ol>
+<li><strong>តួនាទីទី 1៖ ស៊ុបភើរ អភិបាល (Super Admin)</strong> ⬅ <em>(កំពុងដំណើរការពិនិត្យ)</em></li>
+<li><strong>តួនាទីទី 2៖ អភិបាលគ្រប់គ្រង (Admin / General Manager)</strong></li>
+<li><strong>តួនាទីទី 3៖ អ្នកគ្រប់គ្រងផ្នែកលក់ (Sales Manager)</strong></li>
+<li><strong>តួនាទីទី 4៖ បុគ្គលិកផ្នែកលក់ (Sales Executive)</strong></li>
+<li><strong>តួនាទីទី 5៖ អ្នកគិតលុយ (Cashier / POS Operator)</strong></li>
+<li><strong>តួនាទីទី 6៖ អ្នកគ្រប់គ្រងលទ្ធកម្ម (Procurement Manager)</strong></li>
+<li><strong>តួនាទីទី 7៖ អ្នកគ្រប់គ្រងស្តុក (Warehouse Manager)</strong></li>
+<li><strong>តួនាទីទី 8៖ បុគ្គលិកទទួល និងវេចខ្ចប់ទំនិញ (Warehouse Staff)</strong></li>
+<li><strong>តួនាទីទី 9៖ ប្រធានគណនេយ្យ (Chief Accountant)</strong></li>
+<li><strong>តួនាទីទី 10៖ គណនេយ្យករទូទាត់ (Accounts Payable / Receivable)</strong></li>
+<li><strong>តួនាទីទី 11៖ នាយកប្រតិបត្តិ (Executive / Auditor)</strong></li>
+<li><strong>តួនាទីទី 12៖ ផ្នែកគាំទ្រអតិថិជន (Customer Support)</strong></li>
+</ol>
+
+                </article>
+
+                <!-- Next / Previous Doc Navigation Bar -->
+                <div class="no-print mt-12 pt-8 border-t border-slate-200 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <a href="03-USER-OPERATIONAL-GUIDE.html" class="p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-transform flex-shrink-0">
+                            📖
+                        </div>
+                        <div class="min-w-0">
+                            <div class="text-[10px] text-slate-400 font-medium">← ឯកសារមុន</div>
+                            <div class="text-xs font-bold text-slate-800 group-hover:text-primary transition truncate">សៀវភៅណែនាំប្រតិបត្តិការ</div>
+                        </div>
+                    </a>
+
+                    <a href="05-MASTER-SYSTEM-BLUEPRINT-AND-ENTERPRISE-PLAN.html" class="p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group flex items-center justify-end text-right gap-3">
+                        <div class="min-w-0">
+                            <div class="text-[10px] text-slate-400 font-medium">ឯកសារបន្ទាប់ →</div>
+                            <div class="text-xs font-bold text-slate-800 group-hover:text-primary transition truncate">ប្លង់មេ & ផែនទីបង្ហាញផ្លូវ</div>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-transform flex-shrink-0">
+                            🗺️
+                        </div>
+                    </a>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="no-print bg-white border-t border-slate-200 py-6 px-8 text-center text-xs text-slate-500">
+        <p>រក្សាសិទ្ធិគ្រប់យ៉ាង © 2026 ក្រុមហ៊ុន ឌីជីថេក ខេអេច (DIGITECHKH Co., Ltd.) · ព្រះរាជាណាចក្រកម្ពុជា</p>
+    </footer>
+
+</body>
+</html>

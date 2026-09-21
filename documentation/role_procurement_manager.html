@@ -1,0 +1,2109 @@
+<!DOCTYPE html>
+<html lang="km" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🛒 អ្នកគ្រប់គ្រងលទ្ធកម្ម (Procurement Manager) — ការសិក្សាស៊ីជម្រៅ | DIGITECHKH BMS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Kantumruy Pro', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0f2b5c',
+                        primaryHover: '#0a1d3f',
+                        accent: '#2563eb',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Kantumruy Pro', sans-serif;
+            color: #334155;
+            background-color: #f8fafc;
+        }
+        ::-webkit-scrollbar { display: none; }
+        * { -ms-overflow-style: none; scrollbar-width: none; }
+        h1, h2, h3, h4 { color: #0f172a; font-weight: 700; }
+        h1 { font-size: 1.8rem; line-height: 2.35rem; margin-bottom: 1.25rem; }
+        h2 { font-size: 1.35rem; line-height: 1.85rem; margin-top: 2.25rem; margin-bottom: 0.85rem; padding-bottom: 0.5rem; border-bottom: 1px solid #e2e8f0; }
+        h3 { font-size: 1.1rem; line-height: 1.5rem; margin-top: 1.75rem; margin-bottom: 0.5rem; }
+        p { margin-bottom: 0.85rem; line-height: 1.8; font-size: 0.95rem; }
+        ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1rem; font-size: 0.95rem; }
+        ol { list-style-type: decimal; padding-left: 1.5rem; margin-bottom: 1rem; font-size: 0.95rem; }
+        li { margin-bottom: 0.35rem; line-height: 1.7; }
+        hr { border: 0; border-top: 1px solid #e2e8f0; margin: 2rem 0; }
+        @media print {
+            .no-print { display: none !important; }
+            body { background-color: #ffffff; color: #000; }
+            .print-container { max-width: 100% !important; margin: 0 !important; padding: 0 !important; box-shadow: none !important; border: none !important; }
+            table, pre, blockquote, .rounded-xl, .rounded-2xl { page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-primary selection:text-white min-h-screen flex flex-col justify-between">
+
+    <!-- Top Sticky Control Bar -->
+    <header class="no-print fixed top-0 left-0 right-0 h-16 bg-primary text-white z-50 px-4 sm:px-8 flex items-center justify-between shadow-md">
+        <div class="flex items-center gap-3">
+            <a href="index.html" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition flex items-center gap-2 text-xs font-semibold">
+                <i class="fas fa-arrow-left"></i> <span class="hidden sm:inline">មជ្ឈមណ្ឌលឯកសារ</span>
+            </a>
+            <span class="text-white/30 hidden sm:inline">|</span>
+            <div class="flex items-center gap-2">
+                <span class="text-xl">🛒</span>
+                <span class="font-bold text-xs sm:text-sm text-white truncate max-w-[200px] sm:max-w-xs">អ្នកគ្រប់គ្រងលទ្ធកម្ម</span>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-white/15 text-cyan-200 hidden md:inline">Procure</span>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-2 sm:gap-3">
+            <!-- Role Switcher -->
+            <div class="relative">
+                <select onchange="window.location.href=this.value" class="h-9 pl-3 pr-8 bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl text-xs font-semibold text-white focus:outline-none focus:bg-[#0a1d3f] transition appearance-none cursor-pointer">
+                    <option value="role_superadmin.html" >👑 ស៊ុបភើរ អភិបាល (Super Admin)</option>
+<option value="role_procurement_manager.html" selected>🛒 អ្នកគ្រប់គ្រងលទ្ធកម្ម (Procurement Manager)</option>
+<option value="role_warehouse_staff.html" >👷 បុគ្គលិកឃ្លាំងទំនិញ (Warehouse Staff)</option>
+<option value="role_customer_support.html" >🎧 ផ្នែកគាំទ្រអតិថិជន (Customer Support)</option>
+<option value="role_apar_accountant.html" >💰 គណនេយ្យករចំណាយ និងចំណូល (AP/AR Accountant)</option>
+<option value="role_sales_manager.html" >👔 អ្នកគ្រប់គ្រងផ្នែកលក់ (Sales Manager)</option>
+<option value="role_internal_auditor_executive.html" >🔍 សវនករផ្ទៃក្នុង និងថ្នាក់ដឹកនាំ (Internal Auditor / Executive)</option>
+<option value="role_sales_executive.html" >💼 បុគ្គលិកប្រតិបត្តិផ្នែកលក់ (Sales Executive)</option>
+<option value="role_admin_general_manager.html" >🏛️ អភិបាល និងអ្នកចាត់ការទូទៅ (Admin / General Manager)</option>
+<option value="role_warehouse_manager.html" >📦 អ្នកគ្រប់គ្រងឃ្លាំងស្តុក (Warehouse Manager)</option>
+                </select>
+                <i class="fas fa-chevron-down absolute right-3 top-3 text-[10px] text-white/60 pointer-events-none"></i>
+            </div>
+
+            <!-- Interactive Guide Link -->
+            <a href="DIGITECHKH-Roles-And-Permissions-Interactive-Guide.html?role=procurement_manager" class="px-3 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-semibold transition hidden lg:flex items-center gap-1.5 shadow-sm">
+                <i class="fas fa-table-cells"></i> ផ្ទាំងអន្តរកម្ម & ម៉ាទ្រីស
+            </a>
+
+            <!-- Print Button -->
+            <button onclick="window.print()" class="px-3 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-semibold transition flex items-center gap-1.5 shadow-sm cursor-pointer">
+                <i class="fas fa-print"></i> <span class="hidden sm:inline">បោះពុម្ព A4</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Reading Container -->
+    <div class="pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full flex-1">
+        <div class="flex flex-col lg:flex-row gap-8 items-start">
+
+            <!-- Left Table of Contents Sidebar -->
+            <aside class="no-print lg:w-72 flex-shrink-0 sticky top-24 hidden lg:block bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
+                <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-3">
+                    <span class="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
+                        <i class="fas fa-list-ul text-primary"></i> មាតិកាឯកសារ
+                    </span>
+                    <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-50 text-accent">TOC</span>
+                </div>
+                <div class="space-y-0.5 max-h-[calc(100vh-220px)] overflow-y-auto pr-1 text-xs">
+                    <a href="#ចំណុចចាំបាច់-ការយល់-dual-scope-ក្នុង-prototype" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="⚠️ ចំណុចចាំបាច់ — ការយល់ Dual Scope ក្នុង Prototype">⚠️ ចំណុចចាំបាច់ — ការយល់ Dual Scope ក្នុង Prototype</a>
+<a href="#តារាងមាតិកា" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="តារាងមាតិកា">តារាងមាតិកា</a>
+<a href="#1-អ្វីជា-procurement-manager" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="1. អ្វីជា Procurement Manager?">1. អ្វីជា Procurement Manager?</a>
+<a href="#11-និយមន័យ" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="1.1 និយមន័យ">1.1 និយមន័យ</a>
+<a href="#12-តួនាទីក្នុង-value-chain" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="1.2 តួនាទីក្នុង Value Chain">1.2 តួនាទីក្នុង Value Chain</a>
+<a href="#13-procurement-manager-ជានរណា-real-world" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="1.3 Procurement Manager ជានរណា? (Real World)">1.3 Procurement Manager ជានរណា? (Real World)</a>
+<a href="#2-ឋានានុក្រម-និងទំនាក់ទំនង" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="2. ឋានានុក្រម និងទំនាក់ទំនង">2. ឋានានុក្រម និងទំនាក់ទំនង</a>
+<a href="#3-full-capability-map" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="3. Full Capability Map">3. Full Capability Map</a>
+<a href="#31-អ្វីដែល-procurement-manager-ធ្វើបាន" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="3.1 ✅ អ្វីដែល Procurement Manager ធ្វើបាន">3.1 ✅ អ្វីដែល Procurement Manager ធ្វើបាន</a>
+<a href="#32-អ្វីដែល-procurement-manager-ហាមធ្វើ" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="3.2 ❌ អ្វីដែល Procurement Manager ហាមធ្វើ">3.2 ❌ អ្វីដែល Procurement Manager ហាមធ្វើ</a>
+<a href="#4-ទំព័រ-ui-ពេញលេញ-all-pages-blueprint" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="4. ទំព័រ UI ពេញលេញ (All Pages Blueprint)">4. ទំព័រ UI ពេញលេញ (All Pages Blueprint)</a>
+<a href="#41-ទំព័រ-admin-module-4-buy-full-crud-admingm-ប្រើ" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.1 ទំព័រ Admin Module `4-buy/` — Full CRUD (Admin/GM ប្រើ)">4.1 ទំព័រ Admin Module `4-buy/` — Full CRUD (Admin/GM ប្រើ)</a>
+<a href="#42-ទំព័រ-procurement-portal-9-portalspurchase-staff-focused-view" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.2 ទំព័រ Procurement Portal `9-portals/purchase-staff/` — Focused View">4.2 ទំព័រ Procurement Portal `9-portals/purchase-staff/` — Focused View</a>
+<a href="#43-ការពន្យល់-pages-លម្អិត" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.3 ការពន្យល់ Pages លម្អិត">4.3 ការពន្យល់ Pages លម្អិត</a>
+<a href="#5-ម៉ាទ្រីសសិទ្ធិ-permission-matrix" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="5. ម៉ាទ្រីសសិទ្ធិ (Permission Matrix)">5. ម៉ាទ្រីសសិទ្ធិ (Permission Matrix)</a>
+<a href="#51-crud-matrix-procurement-portal" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="5.1 CRUD Matrix — Procurement Portal">5.1 CRUD Matrix — Procurement Portal</a>
+<a href="#52-module-access-matrix-dashboard-view" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="5.2 Module Access Matrix (Dashboard View)">5.2 Module Access Matrix (Dashboard View)</a>
+<a href="#6-វដ្តការងារស្នូល-core-workflows" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="6. វដ្តការងារស្នូល (Core Workflows)">6. វដ្តការងារស្នូល (Core Workflows)</a>
+<a href="#workflow-1-purchase-request-po-receive-end-to-end" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 1: Purchase Request → PO → Receive (End-to-End)">Workflow 1: Purchase Request → PO → Receive (End-to-End)</a>
+<a href="#workflow-2-supplier-registration-ចុះឈ្មោះ-supplier-ថ្មី" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 2: Supplier Registration (ចុះឈ្មោះ Supplier ថ្មី)">Workflow 2: Supplier Registration (ចុះឈ្មោះ Supplier ថ្មី)</a>
+<a href="#workflow-3-handling-bill-mismatch-ការដោះស្រាយ-3-way-mismatch" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 3: Handling Bill Mismatch (ការដោះស្រាយ 3-Way Mismatch)">Workflow 3: Handling Bill Mismatch (ការដោះស្រាយ 3-Way Mismatch)</a>
+<a href="#workflow-4-supplier-evaluation-ប្រៀបធៀប-supplier-price" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 4: Supplier Evaluation (ប្រៀបធៀប Supplier Price)">Workflow 4: Supplier Evaluation (ប្រៀបធៀប Supplier Price)</a>
+<a href="#7-business-logic-3-way-matching" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="7. Business Logic — 3-Way Matching">7. Business Logic — 3-Way Matching</a>
+<a href="#71-match-rules" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="7.1 Match Rules">7.1 Match Rules</a>
+<a href="#72-tolerance-policy-ណែនាំ" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="7.2 Tolerance Policy (ណែនាំ)">7.2 Tolerance Policy (ណែនាំ)</a>
+<a href="#8-ទំនាក់ទំនងជាមួយតួនាទីផ្សេង" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="8. ទំនាក់ទំនងជាមួយតួនាទីផ្សេង">8. ទំនាក់ទំនងជាមួយតួនាទីផ្សេង</a>
+<a href="#9-data-scope-ឃើញអ្វី-លាក់អ្វី" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="9. Data Scope — ឃើញអ្វី? លាក់អ្វី?">9. Data Scope — ឃើញអ្វី? លាក់អ្វី?</a>
+<a href="#10-kpi-dashboard" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="10. KPI Dashboard">10. KPI Dashboard</a>
+<a href="#11-គំរូ-database-schema" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="11. គំរូ Database Schema">11. គំរូ Database Schema</a>
+<a href="#12-ការការពារទំនាក់ទំនង-supplier" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="12. ការការពារទំនាក់ទំនង Supplier">12. ការការពារទំនាក់ទំនង Supplier</a>
+<a href="#121-anti-fraud-controls" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="12.1 Anti-Fraud Controls">12.1 Anti-Fraud Controls</a>
+<a href="#122-supplier-blacklist-management" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="12.2 Supplier Blacklist Management">12.2 Supplier Blacklist Management</a>
+<a href="#13-អនុសាសន៍-architect-prototype-planning" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="13. អនុសាសន៍ Architect + Prototype Planning">13. អនុសាសន៍ Architect + Prototype Planning</a>
+<a href="#131-ណែនាំ-design-my-recommendations" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="13.1 ណែនាំ Design (My Recommendations)">13.1 ណែនាំ Design (My Recommendations)</a>
+<a href="#132-ផែនការ-prototype-pages" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="13.2 ផែនការ Prototype Pages">13.2 ផែនការ Prototype Pages</a>
+<a href="#133-ការ-validate-prototype-before-moving-to-next-role" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="13.3 ការ Validate Prototype (Before Moving to Next Role)">13.3 ការ Validate Prototype (Before Moving to Next Role)</a>
+<a href="#14-faq" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="14. FAQ">14. FAQ</a>
+                </div>
+                <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
+                    <a href="DIGITECHKH-Roles-And-Permissions-Interactive-Guide.html?role=procurement_manager" class="w-full py-2 px-3 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-700 text-xs font-medium flex items-center justify-between transition border border-slate-200">
+                        <span>មើលក្នុងផ្ទាំងអន្តរកម្ម</span>
+                        <i class="fas fa-up-right-from-square text-[10px] text-slate-400"></i>
+                    </a>
+                    <a href="role_procurement_manager.md" class="w-full py-2 px-3 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-500 text-[11px] font-normal flex items-center justify-between transition border border-slate-200">
+                        <span>មើលឯកសារដើម (.md)</span>
+                        <i class="fas fa-file-code text-[10px]"></i>
+                    </a>
+                </div>
+            </aside>
+
+            <!-- Main Document Body -->
+            <main class="print-container flex-1 bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-12 min-w-0 max-w-4xl mx-auto">
+
+                <!-- Breadcrumb -->
+                <div class="no-print flex items-center gap-2 text-xs text-slate-500 mb-6 flex-wrap pb-4 border-b border-slate-100">
+                    <a href="index.html" class="hover:text-primary transition flex items-center gap-1">
+                        <i class="fas fa-home"></i> មជ្ឈមណ្ឌលឯកសារ
+                    </a>
+                    <span>/</span>
+                    <a href="DIGITECHKH-Roles-And-Permissions-Interactive-Guide.html" class="hover:text-primary transition">
+                        តួនាទីទាំង 10
+                    </a>
+                    <span>/</span>
+                    <span class="text-slate-800 font-semibold">អ្នកគ្រប់គ្រងលទ្ធកម្ម</span>
+                </div>
+
+                <!-- Document Rendered HTML -->
+                <article class="prose prose-slate max-w-none">
+                    <h1 id="digitechkh-bms-ការសិក្សាស៊ីជម្រៅ-តួនាទី-អ្នកគ្រប់គ្រងលទ្ធកម្ម-procurement-manager" class="scroll-mt-24 group">🛒 DIGITECHKH BMS — ការសិក្សាស៊ីជម្រៅ: តួនាទី អ្នកគ្រប់គ្រងលទ្ធកម្ម (Procurement Manager) <a href="#digitechkh-bms-ការសិក្សាស៊ីជម្រៅ-តួនាទី-អ្នកគ្រប់គ្រងលទ្ធកម្ម-procurement-manager" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h1>
+<div class="my-5 p-4 rounded-xl bg-slate-50 border-l-4 border-[#0f2b5c] text-slate-800 text-xs leading-relaxed shadow-sm">
+<p><strong>ឯកសារ</strong>: <code>role_procurement_manager.md</code><br><strong>កំណែ</strong>: 1.0<br><strong>កាលបរិច្ឆេទ</strong>: 20 កញ្ញា 2026<br><strong>គោលបំណង</strong>: ការយល់ 100% អំពីតួនាទី Procurement Manager — រួមមានវិសាលភាពការងារ, សិទ្ធិ, UI Pages, Workflow, Business Logic, ស្ថាបត្យកម្ម, និងអនុសាសន៍ Prototype Planning</p>
+</div>
+<hr>
+<h2 id="ចំណុចចាំបាច់-ការយល់-dual-scope-ក្នុង-prototype" class="scroll-mt-24 group">⚠️ ចំណុចចាំបាច់ — ការយល់ Dual Scope ក្នុង Prototype <a href="#ចំណុចចាំបាច់-ការយល់-dual-scope-ក្នុង-prototype" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<p>មុនពេលចូលខ្លឹមសារ ត្រូវយល់ <strong>ភាពខុសគ្នា 2 ស្រទាប់</strong> ក្នុង Prototype:</p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ស្រទាប់</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Path</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ប្រើដោយ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Page Count</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Admin Module <code>4-buy/</code></strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>pages/4-buy/</code></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Admin/GM ប្រើ (Full CRUD)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>12 pages</strong></td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Procurement Portal</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>pages/9-portals/purchase-staff/</code></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Procurement Staff/Manager ប្រើ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>6 pages</strong></td>
+</tr>
+</tbody></table></div>
+<div class="my-5 p-4 rounded-xl bg-blue-50/90 border-l-4 border-blue-500 text-blue-950 text-xs leading-relaxed shadow-sm">
+<p>💡 <strong>ការប្រៀបធៀប</strong>: Admin ដូចជា <em>ប្រធានសាខាធំ</em> — ប្រើ Module ពេញ (<code>4-buy/</code>) ។ Procurement Manager/Staff ប្រើ Portal ផ្ទាល់ (<code>purchase-staff/</code>) ដែលជា Focused View ត្រង់ Mission របស់ខ្លួន។</p>
+</div>
+<p>ឯកសារនេះ <strong>Cover ទាំង 2 ស្រទាប់</strong> ។</p>
+<hr>
+<h2 id="តារាងមាតិកា" class="scroll-mt-24 group">តារាងមាតិកា <a href="#តារាងមាតិកា" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<ol>
+<li><a href="#1-%E1%9E%A2%E1%9F%92%E1%9E%9C%E1%9E%B8%E1%9E%87%E1%9E%B6-procurement-manager">អ្វីជា Procurement Manager?</a></li>
+<li><a href="#2-%E1%9E%8B%E1%9E%B6%E1%9E%93%E1%9E%B6%E1%9E%93%E1%9E%BB%E1%9E%80%E1%9F%92%E1%9E%9A%E1%9E%98-%E1%9E%93%E1%9E%B7%E1%9E%84%E1%9E%91%E1%9F%86%E1%9E%93%E1%9E%B6%E1%9E%80%E1%9F%8B%E1%9E%91%E1%9F%86%E1%9E%93%E1%9E%84">ឋានានុក្រម និងទំនាក់ទំនង</a></li>
+<li><a href="#3-full-capability-map">Full Capability Map</a></li>
+<li><a href="#4-%E1%9E%91%E1%9F%86%E1%9E%96%E1%9F%90%E1%9E%9A-ui-%E1%9E%96%E1%9F%81%E1%9E%89%E1%9E%9B%E1%9F%81%E1%9E%89">ទំព័រ UI ពេញលេញ (All Pages Blueprint)</a></li>
+<li><a href="#5-%E1%9E%98%E1%9F%89%E1%9E%B6%E1%9E%91%E1%9F%92%E1%9E%9A%E1%9E%B8%E1%9E%9F%E1%9E%9F%E1%9E%B7%E1%9E%91%E1%9F%92%E1%9E%92%E1%9E%B7">ម៉ាទ្រីសសិទ្ធិ (Permission Matrix)</a></li>
+<li><a href="#6-%E1%9E%9C%E1%9E%8A%E1%9F%92%E1%9E%8F%E1%9E%80%E1%9E%B6%E1%9E%9A%E1%9E%84%E1%9E%B6%E1%9E%9A%E1%9E%9F%E1%9F%92%E1%9E%93%E1%9E%BC%E1%9E%9B">វដ្តការងារស្នូល (Core Workflows)</a></li>
+<li><a href="#7-business-logic--3-way-matching">Business Logic — 3-Way Matching</a></li>
+<li><a href="#8-%E1%9E%91%E1%9F%86%E1%9E%93%E1%9E%B6%E1%9E%80%E1%9F%8B%E1%9E%91%E1%9F%86%E1%9E%93%E1%9E%84%E1%9E%87%E1%9E%B6%E1%9E%98%E1%9E%BD%E1%9E%99%E1%9E%8F%E1%9E%BD%E1%9E%93%E1%9E%B6%E1%9E%91%E1%9E%B8%E1%9E%95%E1%9F%92%E1%9E%9F%E1%9F%81%E1%9E%84">ទំនាក់ទំនងជាមួយតួនាទីផ្សេង</a></li>
+<li><a href="#9-data-scope--%E1%9E%83%E1%9E%BE%E1%9E%89%E1%9E%A2%E1%9F%92%E1%9E%9C%E1%9E%B8-%E1%9E%9B%E1%9E%B6%E1%9E%80%E1%9F%8B%E1%9E%A2%E1%9F%92%E1%9E%9C%E1%9E%B8">Data Scope — ឃើញអ្វី? លាក់អ្វី?</a></li>
+<li><a href="#10-kpi-dashboard">KPI Dashboard</a></li>
+<li><a href="#11-%E1%9E%82%E1%9F%86%E1%9E%9A%E1%9E%BC-database-schema">គំរូ Database Schema</a></li>
+<li><a href="#12-%E1%9E%80%E1%9E%B6%E1%9E%9A%E1%9E%80%E1%9E%B6%E1%9E%9A%E1%9E%96%E1%9E%B6%E1%9E%9A%E1%9E%91%E1%9F%86%E1%9E%93%E1%9E%B6%E1%9E%80%E1%9F%8B%E1%9E%91%E1%9F%86%E1%9E%93%E1%9E%84-supplier">ការការពារទំនាក់ទំនង Supplier</a></li>
+<li><a href="#13-%E1%9E%A2%E1%9E%93%E1%9E%BB%E1%9E%9F%E1%9E%B6%E1%9E%9F%E1%9E%93%E1%9F%8D-architect--prototype-planning">អនុសាសន៍ Architect + Prototype Planning</a></li>
+<li><a href="#14-faq">FAQ</a></li>
+</ol>
+<hr>
+<h2 id="1-អ្វីជា-procurement-manager" class="scroll-mt-24 group">1. អ្វីជា Procurement Manager? <a href="#1-អ្វីជា-procurement-manager" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="11-និយមន័យ" class="scroll-mt-24 group">1.1 និយមន័យ <a href="#11-និយមន័យ" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p><strong>Procurement Manager</strong> (អ្នកគ្រប់គ្រងលទ្ធកម្ម) គឺជា <strong>ច្រករបៀងបញ្ចូលទំនិញ</strong> — អ្នកដែលគ្រប់គ្រង <strong>ដំណើរការទិញទំនិញចូល</strong> ទាំងមូលរបស់ក្រុមហ៊ុន ចាប់ពី ការស្រង់ Supplier → ការចេញ PO → ការទទួលទំនិញ → រហូតដល់ ការបង់ប្រាក់ Supplier ។</p>
+<div class="my-5 p-4 rounded-xl bg-blue-50/90 border-l-4 border-blue-500 text-blue-950 text-xs leading-relaxed shadow-sm">
+<p>💡 <strong>ការប្រៀបធៀប</strong>: Procurement Manager ដូចជា <em>Gate Keeper</em> — ទំនិញទាំងអស់ដែលចូលមកក្នុងក្រុមហ៊ុន <strong>ត្រូវឆ្លងកាត់</strong> Procurement Manager ។ ហើយ Accountant ត្រូវ <strong>ទទួលបំណង</strong> (Bill) ពី Procurement ជានិច្ច ។</p>
+</div>
+<h3 id="12-តួនាទីក្នុង-value-chain" class="scroll-mt-24 group">1.2 តួនាទីក្នុង Value Chain <a href="#12-តួនាទីក្នុង-value-chain" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>SUPPLIER                PROCUREMENT MANAGER              WAREHOUSE            ACCOUNTANT
+   │                           │                              │                    │
+   │   ── Quote/Price ──►       │                              │                    │
+   │                    [Select Supplier]                      │                    │
+   │                    [Issue PO]           ──► PO ──►        │                    │
+   │   ── Deliver Goods ──────────────────────────────►        │                    │
+   │                                              [Receive &amp; Count GRN]             │
+   │   ── Send Invoice ──►      │                              │                    │
+   │                    [3-Way Match: PO+GRN+Bill]             │                    │
+   │                           │ ─────────────────── Approve Disbursement ──►      │
+   │   ◄── Payment ──────────────────────────────────────────────────── [Pay] ──►  │
+</code></pre>
+        </div>
+<h3 id="13-procurement-manager-ជានរណា-real-world" class="scroll-mt-24 group">1.3 Procurement Manager ជានរណា? (Real World) <a href="#13-procurement-manager-ជានរណា-real-world" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ទំហំអាជីវកម្ម</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Procurement Manager ជានរណា</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ខ្នាតតូច (&lt; 5 Staff)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ម្ចាស់ / Admin គ្រប់គ្រងខ្លួនឯង</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ខ្នាតមធ្យម (5-30 Staff)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Procurement Officer ម្នាក់ ឬ 2 នាក់</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ខ្នាតធំ (&gt; 30 Staff)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ប្រធានផ្នែកលទ្ធកម្ម + Team</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="2-ឋានានុក្រម-និងទំនាក់ទំនង" class="scroll-mt-24 group">2. ឋានានុក្រម និងទំនាក់ទំនង <a href="#2-ឋានានុក្រម-និងទំនាក់ទំនង" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>┌─────────────────────────────────────────┐
+│         👑 SUPER ADMIN (Platform)        │
+└───────────────────┬─────────────────────┘
+                    │
+┌───────────────────▼─────────────────────┐
+│      🏢 ADMIN / GM (Company Level)       │
+│   ← ផ្តល់ Budget ♦ អនុម័ត PO ធំ         │
+└───────────────────┬─────────────────────┘
+                    │
+┌───────────────────▼─────────────────────┐
+│  🛒 PROCUREMENT MANAGER / STAFF          │  ← Role នេះ
+│   Portal: purchase-staff/               │
+│   Scope: Purchasing Dept Only           │
+└──────┬────────────────────┬─────────────┘
+       │                    │
+       ▼                    ▼
+┌──────────────┐    ┌───────────────────┐
+│  SUPPLIER    │    │  WAREHOUSE MGR    │
+│  (External)  │    │  (Receives Goods) │
+└──────────────┘    └───────────────────┘
+       │                    │
+       └──────────┬─────────┘
+                  ▼
+        ┌─────────────────┐
+        │   ACCOUNTANT    │
+        │ (Pays Supplier) │
+        └─────────────────┘
+</code></pre>
+        </div>
+<p><strong>Procurement Manager VS Admin (ចំណុចខុស)</strong>:</p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ចំណុច</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Procurement Manager</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Admin/GM</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ជ្រើសរើស Supplier</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">✅ ពេញលេញ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">✅ ពេញលេញ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ចេញ PO</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">✅ ក្នុង Budget</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">✅ + លើ Budget</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ឃើញ Sales Revenue</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ ហាម</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">✅ ពេញលេញ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ឃើញ Profit Margin</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ ហាម</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">✅ ពេញលេញ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ឃើញ Payroll</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ ហាម</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">✅ ពេញលេញ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Approve Disbursement</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">⚠️ ចេញ Request ប៉ុណ្ណោះ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">✅ Final Approve</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Access Financial Reports</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ ហាម</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">✅ ពេញលេញ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Manage Users</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ ហាម</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">✅ ពេញលេញ</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="3-full-capability-map" class="scroll-mt-24 group">3. Full Capability Map <a href="#3-full-capability-map" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>PROCUREMENT MANAGER CAPABILITIES
+│
+├── 📋 PURCHASE ORDERS (PO) — ស្នូលការងារ
+│   ├── [CREATE]  ចេញ PO ថ្មី → ផ្ញើជូន Supplier
+│   ├── [READ]    មើលបញ្ជី PO ទាំងអស់ (Status: Draft/Sent/Partial/Received)
+│   ├── [UPDATE]  កែ PO ក្នុងស្ថានភាព Draft ប៉ុណ្ណោះ
+│   ├── [UPDATE]  Update Status (Mark as Received)
+│   └── [READ]    Print PO ជា PDF / A4 ផ្ញើ Supplier
+│
+├── 🏭 SUPPLIER MANAGEMENT — គ្រប់គ្រងអ្នកផ្គត់ផ្គង់
+│   ├── [CREATE]  ចុះឈ្មោះ Supplier ថ្មី (Profile + Bank Account + Contact)
+│   ├── [READ]    មើលបញ្ជី Supplier ទាំងអស់
+│   ├── [UPDATE]  កែប្រែ Supplier Profile
+│   ├── [READ]    ប្រវត្តិ PO + ប្រវត្តិតម្លៃទិញរបស់ Supplier នីមួយៗ
+│   └── [READ]    Supplier Performance (On-time delivery, Quality)
+│
+├── 📄 BILLS (វិក្កយបត្រទិញចូល) — ទទួលវិក្កយបត្រពី Supplier
+│   ├── [CREATE]  បញ្ចូល Bill ពី Supplier (ភ្ជាប់ PDF Scan)
+│   ├── [READ]    មើលបញ្ជី Bills ទាំងអស់
+│   ├── [READ]    ប្រៀបធៀប Bill vs PO (3-Way Matching Preview)
+│   └── [UPDATE]  ដាក់ស្នើ Bill ឱ្យ Accountant ទូទាត់
+│
+├── 💸 DISBURSEMENT REQUEST — ស្នើសុំចំណាយ
+│   ├── [CREATE]  ចេញ Disbursement Request (សំណើសុំបង់ប្រាក់ Supplier)
+│   ├── [READ]    មើល Status: Pending / Approved / Paid
+│   └── [READ]    ប្រវត្តិ Disbursements ទាំងអស់
+│
+├── 📦 STOCK VIEW (Read-Only — ចំនួន ប៉ុណ្ណោះ)
+│   ├── [READ]    មើលតុល្យភាពស្តុក (Quantity Only — ❌ ហាមមើលតម្លៃ)
+│   └── [READ]    ដឹងថ្នាក់ Reorder Point ហើយទំនិញណាត្រូវ Reorder
+│
+└── 📊 REPORTS (Procurement Only)
+    ├── [READ]    របាយការណ៍ PO ប្រចាំខែ/ត្រីមាស
+    ├── [READ]    ប្រៀបធៀបថ្លៃទិញ Supplier A vs B
+    └── [READ]    Status Bills ដែលហួសកាលទូទាត់
+</code></pre>
+        </div>
+<h3 id="31-អ្វីដែល-procurement-manager-ធ្វើបាន" class="scroll-mt-24 group">3.1 ✅ អ្វីដែល Procurement Manager ធ្វើបាន <a href="#31-អ្វីដែល-procurement-manager-ធ្វើបាន" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">#</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">សកម្មភាព</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ហេតុ</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">1</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ចុះបញ្ជី Supplier ថ្មី + ព័ត៌មានធនាគារ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Core Duty</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">2</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ចេញ Purchase Order (PO)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Core Duty</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">3</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Print PO ជា PDF ផ្ញើ Supplier</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Procurement Operation</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">4</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ទទួល Bill ពី Supplier + Upload PDF</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Bill Processing</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">5</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Verify 3-Way Match (PO + GRN + Bill)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Quality Control</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">6</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ដាក់ Disbursement Request ឱ្យ Accountant</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Payment Trigger</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">7</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">មើល Stock Balance (Qty Only)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Reorder Awareness</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">8</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ប្រៀបធៀប Price History ពី Suppliers</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Negotiation Support</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">9</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Export Procurement Report</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Management Reporting</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">10</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ប្រាស្រ័យជាមួយ Supplier Portal (ទទួល Confirmation)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Supplier Collaboration</td>
+</tr>
+</tbody></table></div>
+<h3 id="32-អ្វីដែល-procurement-manager-ហាមធ្វើ" class="scroll-mt-24 group">3.2 ❌ អ្វីដែល Procurement Manager ហាមធ្វើ <a href="#32-អ្វីដែល-procurement-manager-ហាមធ្វើ" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">#</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ហាម</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ហេតុ</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">1</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ មើល Sales Invoices / Revenue</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Privacy — Sales Dept Separation</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">2</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ មើល Customer Data</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Zero Data Leakage</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">3</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ ធ្វើ Final Payment ដោយខ្លួនឯង</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Accountant ជាអ្នកទូទាត់</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">4</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ ឃើញ Selling Price / Profit Margin</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Data Compartmentalization</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">5</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ ឃើញ Payroll / HR Data</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">HR Dept Separation</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">6</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ Edit Stock Balance</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Warehouse&#39;s Responsibility</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">7</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ Access Financial Reports (P&amp;L)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Accountant Only</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">8</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ Approve Own Disbursement</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Segregation of Duties (SoD)</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">9</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ Delete Posted Bills</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Immutable after posting</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">10</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ Change Supplier Bank Account ក្រោយ Bill ត្រូវបាន Approved</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Anti-Fraud</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="4-ទំព័រ-ui-ពេញលេញ-all-pages-blueprint" class="scroll-mt-24 group">4. ទំព័រ UI ពេញលេញ (All Pages Blueprint) <a href="#4-ទំព័រ-ui-ពេញលេញ-all-pages-blueprint" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="41-ទំព័រ-admin-module-4-buy-full-crud-admingm-ប្រើ" class="scroll-mt-24 group">4.1 ទំព័រ Admin Module <code>4-buy/</code> — Full CRUD (Admin/GM ប្រើ) <a href="#41-ទំព័រ-admin-module-4-buy-full-crud-admingm-ប្រើ" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>4-buy/
+├── 1-bills/
+│   ├── bills.html              ← បញ្ជី Bills ទាំងអស់ (List View)
+│   ├── create-bills.html       ← ទម្រង់បង្កើត Bill ថ្មី
+│   ├── edit-bills.html         ← ទម្រង់កែប្រែ Bill
+│   └── view-bills.html         ← ព័ត៌មានលម្អិត Bill + 3-Way Match Status
+├── 2-suppliers/
+│   ├── suppliers.html          ← បញ្ជី Suppliers ទាំងអស់
+│   ├── create-suppliers.html   ← ចុះឈ្មោះ Supplier ថ្មី
+│   ├── edit-suppliers.html     ← កែប្រែ Supplier Profile
+│   └── view-suppliers.html     ← Profile Supplier លម្អិត + History
+└── 3-disbursement/
+    ├── disbursement.html       ← បញ្ជី Disbursements
+    ├── create-disbursement.html← ចេញ Disbursement Voucher
+    ├── edit-disbursement.html  ← កែ Disbursement (ស្ថានភាព Draft)
+    └── view-disbursement.html  ← ប័ណ្ណចំណាយ A4 + 4 ហត្ថលេខា
+</code></pre>
+        </div>
+<p><strong>សរុប Admin Module</strong>: <strong>12 ទំព័រ</strong></p>
+<hr>
+<h3 id="42-ទំព័រ-procurement-portal-9-portalspurchase-staff-focused-view" class="scroll-mt-24 group">4.2 ទំព័រ Procurement Portal <code>9-portals/purchase-staff/</code> — Focused View <a href="#42-ទំព័រ-procurement-portal-9-portalspurchase-staff-focused-view" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>9-portals/purchase-staff/
+├── dashboard.html          ← ផ្ទាំងគ្រប់គ្រង Procurement
+├── bills.html              ← បញ្ជី Bills (PO ដែលបាន/នៅ Pending)
+├── create-bill.html        ← ចេញ PO / ទទួល Bill ពី Supplier
+├── suppliers.html          ← បញ្ជី Suppliers
+├── create-supplier.html    ← ចុះឈ្មោះ Supplier ថ្មី
+└── disbursements.html      ← មើល Status Disbursements
+</code></pre>
+        </div>
+<p><strong>សរុប Portal</strong>: <strong>6 ទំព័រ</strong></p>
+<hr>
+<h3 id="43-ការពន្យល់-pages-លម្អិត" class="scroll-mt-24 group">4.3 ការពន្យល់ Pages លម្អិត <a href="#43-ការពន្យល់-pages-លម្អិត" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<h4 id="page-1-dashboardhtml-ផ្ទាំងគ្រប់គ្រង-procurement" class="scroll-mt-24 group">Page 1: <code>dashboard.html</code> — ផ្ទាំងគ្រប់គ្រង Procurement <a href="#page-1-dashboardhtml-ផ្ទាំងគ្រប់គ្រង-procurement" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<p><strong>KPI Cards Row</strong>:</p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Widget</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ទិន្នន័យ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ណែនាំ</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">📋 POs ដែលបានចេញ (ខែនេះ)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">COUNT(POs this month)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"></td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">⏳ POs ដែលរង់ចាំ Delivery</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">COUNT(status=&#39;sent&#39;)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">🔴 ប្រសិនបើ &gt; 7 ថ្ងៃ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">📄 Bills ដែលរង់ចាំ Match</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">COUNT(bills pending match)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"></td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">💸 Disbursements រង់ចាំ Approval</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Total amount pending</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"></td>
+</tr>
+</tbody></table></div>
+<p><strong>Section ខាងក្រោម</strong>:</p>
+<ul>
+<li>តារាង PO ចុងក្រោយ 10 (Status Badges: Draft/Sent/Partial/Received/Cancelled)</li>
+<li>Alert Box: Overdue POs (ហួស Delivery Date)</li>
+<li>Alert Box: Bills ដែល Unmatched &gt; 14 ថ្ងៃ</li>
+</ul>
+<hr>
+<h4 id="page-2-billshtml-បញ្ជី-bills-purchase-orders" class="scroll-mt-24 group">Page 2: <code>bills.html</code> — បញ្ជី Bills / Purchase Orders <a href="#page-2-billshtml-បញ្ជី-bills-purchase-orders" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<p><strong>ចំណាំ Design</strong>: ក្នុង Prototype Portal ទំព័រ <code>bills.html</code> = <strong>ដំណើរការ PO + Bill រួមគ្នា</strong> (ព្រោះ PO/Bill ជា lifecycle តែមួយ)</p>
+<p><strong>ជួរឈរតារាង</strong>:</p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ជួរឈរ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ប្រភេទ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ឧទាហរណ៍</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">លេខ PO</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Code</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">PO-2026-0045</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Supplier</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Text + Avatar</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ហ៊ុន ត្រេឌីង</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ថ្ងៃចេញ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Date</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">15 កញ្ញា 2026</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ថ្ងៃ Delivery</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Date</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">22 កញ្ញា 2026</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ទំហំ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Amount</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">$1,250.00</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ស្ថានភាព</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Badge</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Draft / Sent / Received / Matched</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">3-Way</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Icon</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">✅ / ⚠️ / ❌</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">សកម្មភាព</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">⋮</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">មើល, Print PO, Mark Received, Upload Bill</td>
+</tr>
+</tbody></table></div>
+<p><strong>Filters</strong>:</p>
+<ul>
+<li>ស្វែងរកតាម PO Number / Supplier Name</li>
+<li>Filter Status (All / Draft / Sent / Received / Matched / Overdue)</li>
+<li>Date Range Picker (ថ្ងៃចេញ PO)</li>
+<li>Filter by Supplier</li>
+</ul>
+<hr>
+<h4 id="page-3-create-billhtml-ចេញ-po-បញ្ចូល-bill" class="scroll-mt-24 group">Page 3: <code>create-bill.html</code> — ចេញ PO / បញ្ចូល Bill <a href="#page-3-create-billhtml-ចេញ-po-បញ្ចូល-bill" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<p>ទំព័រ <strong>ចម្រុះ</strong> — ដំណើរការ 2 use cases:</p>
+<ul>
+<li><strong>Mode A</strong>: ចេញ Purchase Order ថ្មី</li>
+<li><strong>Mode B</strong>: ទទួល Bill ពី Supplier (ភ្ជាប់ PDF + ផ្ទៀងផ្ទាត់ vs PO)</li>
+</ul>
+<p><strong>Section 1 — ព័ត៌មាន PO ចម្បង</strong></p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Field</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ប្រភេទ</th>
+<th align="center">Required</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ចំណាំ</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">លេខ PO (Auto)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Display</td>
+<td align="center">—</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">PO-YYYY-XXXX</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Supplier</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Custom Dropdown</td>
+<td align="center">✅</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Search + Select ពី Supplier DB</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ថ្ងៃចេញ PO</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Date</td>
+<td align="center">✅</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Default: Today</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ថ្ងៃ Delivery ស្នើ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Date</td>
+<td align="center">✅</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Expected Delivery</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ទីតាំងដឹក</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Text</td>
+<td align="center">✅</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Warehouse Location</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">លក្ខខណ្ឌទូទាត់</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Custom Dropdown</td>
+<td align="center">✅</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">COD / NET-15 / NET-30 / NET-60</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ចំណាំ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Textarea</td>
+<td align="center">⚠️</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Special Instructions for Supplier</td>
+</tr>
+</tbody></table></div>
+<p><strong>Section 2 — តារាងមុខទំនិញ (Line Items Table)</strong></p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Column</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ប្រភេទ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ចំណាំ</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">#</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Auto</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"></td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ឈ្មោះទំនិញ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Dropdown + Search</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ពី Catalog/SKU</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">SKU/Barcode</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Auto-fill</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"></td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ចំនួន (Qty)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Number</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"></td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ឯកតា</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Text</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ប្រអប់, ដប, kg</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ថ្លៃទិញ/ឯកតា</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Number</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>តម្លៃ Supplier ជាក់ស្តែង</strong></td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">VAT (10%)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Auto-calc</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"></td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">សរុប</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Auto-calc</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Qty × Price</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">⊗</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Delete Row</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"></td>
+</tr>
+</tbody></table></div>
+<p><strong>Footer Summary</strong>:</p>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>                         សរុបរង (Subtotal):    $1,000.00
+                    អាករតម្លៃបន្ថែម (10%):      $100.00
+                         ទឹកប្រាក់សរុប:       $1,100.00
+</code></pre>
+        </div>
+<p><strong>Buttons</strong>:</p>
+<ul>
+<li>«រក្សាទុក Draft» → Save as Draft</li>
+<li>«ចេញ PO ផ្លូវការ» → Confirm + Print Preview</li>
+<li>«បោះបង់»</li>
+</ul>
+<hr>
+<h4 id="page-4-suppliershtml-បញ្ជី-suppliers" class="scroll-mt-24 group">Page 4: <code>suppliers.html</code> — បញ្ជី Suppliers <a href="#page-4-suppliershtml-បញ្ជី-suppliers" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<p><strong>ជួរឈរតារាង</strong>:</p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ជួរឈរ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ប្រភេទ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ឧទាហរណ៍</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">#</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Auto</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">1</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ឈ្មោះ Supplier</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Text + Avatar</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ហ៊ុន ត្រេឌីង Co.</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ទំនាក់ទំនង</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Phone</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">012 XXX XXX</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ប្រភេទ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Badge</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Manufacturer / Distributor / Importer</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ប្រទេស</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Flag + Text</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">🇰🇭 កម្ពុជា</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">PO ចុងក្រោយ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Date</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">10 កញ្ញា 2026</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ចំនួន POs</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Number</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">24</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ស្ថានភាព</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Badge</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">🟢 សកម្ម / 🔴 ផ្អាក</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">⋮</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Menu</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">មើល, កែ, ផ្អាក, ប្រវត្តិ PO</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h4 id="page-5-create-supplierhtml-ចុះឈ្មោះ-supplier-ថ្មី" class="scroll-mt-24 group">Page 5: <code>create-supplier.html</code> — ចុះឈ្មោះ Supplier ថ្មី <a href="#page-5-create-supplierhtml-ចុះឈ្មោះ-supplier-ថ្មី" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<p><strong>3 Sections (Enterprise Layout)</strong>:</p>
+<p><strong>Section 1 — ព័ត៌មានក្រុមហ៊ុន Supplier</strong></p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Field</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ប្រភេទ</th>
+<th align="center">Required</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ឈ្មោះ Supplier (ខ្មែរ)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Text</td>
+<td align="center">✅</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ឈ្មោះ Supplier (អង់គ្លេស)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Text</td>
+<td align="center">✅</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ប្រភេទ Supplier</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Custom Dropdown</td>
+<td align="center">✅</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ប្រទេស</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Custom Dropdown</td>
+<td align="center">✅</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">TIN / លេខចុះបញ្ជី</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Text</td>
+<td align="center">⚠️</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">អាសយដ្ឋាន</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Textarea</td>
+<td align="center">✅</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ឯកសារ Supplier</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">File Upload</td>
+<td align="center">⚠️</td>
+</tr>
+</tbody></table></div>
+<p><strong>Section 2 — ព័ត៌មានទំនាក់ទំនង</strong></p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Field</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ប្រភេទ</th>
+<th align="center">Required</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ឈ្មោះអ្នកទំនាក់ទំនង</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Text</td>
+<td align="center">✅</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">លេខទូរស័ព្ទ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Text</td>
+<td align="center">✅</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Email</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Email</td>
+<td align="center">✅</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Telegram / LINE</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Text</td>
+<td align="center">⚠️</td>
+</tr>
+</tbody></table></div>
+<p><strong>Section 3 — ព័ត៌មានធនាគារ + លក្ខខណ្ឌ</strong></p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Field</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ប្រភេទ</th>
+<th align="center">Required</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ចំណាំ</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ធនាគារ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Custom Dropdown</td>
+<td align="center">✅</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ABA, ACLEDA, Canadia…</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">លេខគណនី</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Text</td>
+<td align="center">✅</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"></td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ឈ្មោះម្ចាស់គណនី</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Text</td>
+<td align="center">✅</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ត្រូវស្របនឹង Invoice</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">KHQR ID</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Text</td>
+<td align="center">⚠️</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Bakong Transfer</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">លក្ខខណ្ឌទូទាត់</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Custom Dropdown</td>
+<td align="center">✅</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">COD / NET-15 / NET-30 / NET-60</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ដែនកំណត់ Credit</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Number</td>
+<td align="center">⚠️</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Max Unpaid Amount</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ចំណាំ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Textarea</td>
+<td align="center">⚠️</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Internal Notes</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h4 id="page-6-disbursementshtml-ស្ថានភាព-disbursements" class="scroll-mt-24 group">Page 6: <code>disbursements.html</code> — ស្ថានភាព Disbursements <a href="#page-6-disbursementshtml-ស្ថានភាព-disbursements" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<p><strong>គោលបំណង</strong>: Procurement Manager <strong>មើលប៉ុណ្ណោះ</strong> — Accountant ជាអ្នក Final Approve ។</p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ជួរឈរ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ប្រភេទ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ឧទាហរណ៍</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">លេខ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Code</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">DIS-2026-012</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">PO Reference</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Link</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">PO-2026-0045</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Supplier</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Text</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ហ៊ុន ត្រេឌីង</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ចំនួន</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Amount</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">$1,100.00</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ថ្ងៃស្នើ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Date</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">18 កញ្ញា 2026</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ថ្ងៃ Due</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Date</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">18 តុលា 2026</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ស្ថានភាព</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Badge</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">⏳ រង់ចាំ / ✅ អនុម័ត / 💰 បានបង់</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">⋮</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Menu</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">មើលលម្អិត</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h4 id="pages-admin-full-crud-view-billshtml-key-page" class="scroll-mt-24 group">Pages Admin Full CRUD — <code>view-bills.html</code> (Key Page) <a href="#pages-admin-full-crud-view-billshtml-key-page" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<p>ទំព័រ View Bill ក្នុង <code>4-buy/1-bills/</code> ជាទំព័រ <strong>ស្នូលដ៏សំខាន់</strong> ព្រោះបង្ហាញ <strong>3-Way Matching Status</strong>:</p>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>┌─────────────────────────────────────────────────────────────┐
+│  Bill #BILL-2026-045  │  ⏳ រង់ចាំ Match                    │
+├──────────────────┬──────────────────┬───────────────────────┤
+│  📋 PO-2026-0045 │  📦 GRN-2026-031 │  📄 BILL-2026-045    │
+│  ✅ Confirmed    │  ✅ Received      │  ✅ Uploaded          │
+│                  │                  │                       │
+│  Qty: 100        │  Qty: 98 ⚠️      │  Qty: 100             │
+│  Price: $10/u    │  OK              │  Price: $10/u ✅       │
+│  Total: $1,000   │                  │  Total: $1,000        │
+├──────────────────┴──────────────────┴───────────────────────┤
+│  ⚠️ MISMATCH: Quantity received (98) ≠ PO quantity (100)    │
+│  ការណែនាំ: ផ្ទៀងផ្ទាត់ 2 ឯកតាដែលបាត់ ឬ Deduct ពី Bill     │
+└─────────────────────────────────────────────────────────────┘
+</code></pre>
+        </div>
+<hr>
+<h4 id="view-disbursementhtml-ប័ណ្ណចំណាយ-a4-ផ្លូវការ" class="scroll-mt-24 group"><code>view-disbursement.html</code> — ប័ណ្ណចំណាយ A4 ផ្លូវការ <a href="#view-disbursementhtml-ប័ណ្ណចំណាយ-a4-ផ្លូវការ" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<p>បោះពុម្ព <strong>A4 Enterprise Document</strong> ដែលមាន <strong>4 ហត្ថលេខា</strong>:</p>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>┌─────────────────────────────────────────────────────────────┐
+│                    ប័ណ្ណចំណាយទូទាត់                         │
+│              DIGITECHKH BMS - [ឈ្មោះក្រុមហ៊ុន]              │
+│  លេខ: DIS-2026-012         កាលបរិច្ឆេទ: 20 កញ្ញា 2026       │
+├─────────────────────────────────────────────────────────────┤
+│  អ្នកទទួល: ហ៊ុន ត្រេឌីង Co., Ltd.                           │
+│  គណនី: ABA Bank - 000123456                                 │
+│  មូលហេតុ: ទូទាត់ PO-2026-0045 (ប្រេង + គ្រឿងបន្លាស់)        │
+│  ចំនួន: $1,100.00 (USD មួយពាន់មួយរយដុល្លារ)                 │
+│  WHT (15%): - $150.00                                       │
+│  សុទ្ធ: $950.00                                              │
+├────────────────┬────────────────┬───────────────────────────┤
+│  អ្នករៀបចំ     │  ប្រធានគណនេយ្យ  │ នាយករ + អ្នកទទួល       │
+│  ________________│________________│_________________________  │
+│  [Procurement]   │  [Accountant]  │ [Director] [Supplier]   │
+└─────────────────────────────────────────────────────────────┘
+</code></pre>
+        </div>
+<hr>
+<h2 id="5-ម៉ាទ្រីសសិទ្ធិ-permission-matrix" class="scroll-mt-24 group">5. ម៉ាទ្រីសសិទ្ធិ (Permission Matrix) <a href="#5-ម៉ាទ្រីសសិទ្ធិ-permission-matrix" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="51-crud-matrix-procurement-portal" class="scroll-mt-24 group">5.1 CRUD Matrix — Procurement Portal <a href="#51-crud-matrix-procurement-portal" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Feature / Action</th>
+<th align="center">CREATE</th>
+<th align="center">READ</th>
+<th align="center">UPDATE</th>
+<th align="center">DELETE</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Purchase Orders (PO)</strong></td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+<td align="center">⚠️ Draft Only</td>
+<td align="center">❌ (Cancel Only)</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Supplier Profile</strong></td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+<td align="center">❌ (Deactivate)</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Bills (Vendor Invoice)</strong></td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+<td align="center">⚠️ Unposted Only</td>
+<td align="center">❌</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Disbursement Request</strong></td>
+<td align="center">✅ (Request)</td>
+<td align="center">✅</td>
+<td align="center">⚠️ Pending Only</td>
+<td align="center">❌</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Stock Quantity</strong></td>
+<td align="center">❌</td>
+<td align="center">✅ (Qty Only)</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Stock Price/Cost</strong></td>
+<td align="center">❌</td>
+<td align="center">❌ <strong>ហាម</strong></td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Sales Invoices</strong></td>
+<td align="center">❌</td>
+<td align="center">❌ <strong>ហាម</strong></td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Financial Reports</strong></td>
+<td align="center">❌</td>
+<td align="center">❌ <strong>ហាម</strong></td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>HR / Payroll</strong></td>
+<td align="center">❌</td>
+<td align="center">❌ <strong>ហាម</strong></td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>System Settings</strong></td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+</tr>
+</tbody></table></div>
+<div class="my-5 p-4 rounded-xl bg-amber-50/90 border-l-4 border-amber-500 text-amber-950 text-xs leading-relaxed shadow-sm">
+<p><strong>Legend</strong>: ✅ Full | ⚠️ Conditional | ❌ Forbidden</p>
+</div>
+<h3 id="52-module-access-matrix-dashboard-view" class="scroll-mt-24 group">5.2 Module Access Matrix (Dashboard View) <a href="#52-module-access-matrix-dashboard-view" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Module</th>
+<th align="center">Procurement Manager</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ការពន្យល់</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Dashboard</strong></td>
+<td align="center">✅ Procurement KPIs</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">PO stats, Pending bills, Overdue</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Sales &amp; CRM</strong></td>
+<td align="center">❌</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ហាមទាំងស្រុង</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>POS Cashier</strong></td>
+<td align="center">❌</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ហាមទាំងស្រុង</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Bills / PO</strong></td>
+<td align="center">✅ Full</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Core duty</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Suppliers</strong></td>
+<td align="center">✅ Full</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Core duty</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Disbursements</strong></td>
+<td align="center">✅ Request Only</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Accountant Approves</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Stock Balance</strong></td>
+<td align="center">👁️ Qty Only</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Reorder planning</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Stock Catalog</strong></td>
+<td align="center">👁️ Name + SKU</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Reference only</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Accounting</strong></td>
+<td align="center">❌</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Accountant only</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>HR</strong></td>
+<td align="center">❌</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">HR only</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Reports</strong></td>
+<td align="center">✅ Procurement</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Own dept reports</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Settings</strong></td>
+<td align="center">❌</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Admin only</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="6-វដ្តការងារស្នូល-core-workflows" class="scroll-mt-24 group">6. វដ្តការងារស្នូល (Core Workflows) <a href="#6-វដ្តការងារស្នូល-core-workflows" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="workflow-1-purchase-request-po-receive-end-to-end" class="scroll-mt-24 group">Workflow 1: Purchase Request → PO → Receive (End-to-End) <a href="#workflow-1-purchase-request-po-receive-end-to-end" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>START
+  │
+  ▼
+[Trigger] ស្តុកធ្លាក់ក្រោម Reorder Point
+OR Warehouse Staff ស្នើសុំ PR (Purchase Requisition)
+  │
+  ▼
+Procurement Manager ចូល dashboard.html
+→ ឃើញ Alert: &quot;ទំនិញ [X] ជិតអស់ (Qty: 5 | Min: 10)&quot;
+  │
+  ▼
+ចូល create-bill.html → ជ្រើស Supplier
+  │
+  ├── មើល Price History ពី Supplier ចុងក្រោយ
+  └── ប្រៀបធៀប Suppliers ≥ 2 (ជ្រើស Best Price)
+  │
+  ▼
+បំពេញ PO (Supplier + Items + Qty + Price + Delivery Date)
+→ ចុច «ចេញ PO ផ្លូវការ»
+  │
+  ├── ប្រព័ន្ធ Generate PO Number (PO-YYYY-XXXX)
+  ├── ប្រព័ន្ធ Set Status = &quot;Sent&quot;
+  ├── ប្រព័ន្ធ Print/Export PO PDF → Procurement ផ្ញើ Supplier
+  └── ប្រព័ន្ធ Notify Warehouse: &quot;PO sent, expect delivery by [date]&quot;
+  │
+  ▼
+Supplier Confirms (via Supplier Portal ឬ ទូរស័ព្ទ)
+  │
+  ▼
+[Goods Arrive] Warehouse Staff Count + GRN (Goods Receipt Note)
+  │
+  ▼
+Procurement Manager ចូល bills.html → រក PO នោះ
+→ ចុច «Mark as Received» + Upload GRN Photo/PDF
+  │
+  ▼
+Supplier ផ្ញើ Invoice (Bill) → Procurement Upload ភ្ជាប់ PDF
+→ ប្រព័ន្ធ Run 3-Way Match Auto-Check
+  │
+  ├── ✅ Match 100% → Status = &quot;Matched&quot; → Disbursement Request Auto-Draft
+  └── ⚠️ Mismatch → Alert → Procurement ដោះស្រាយ (ទំនាក់ Supplier)
+  │
+  ▼
+Procurement ចេញ Disbursement Request → ផ្ញើ Accountant
+  │
+  ▼
+Accountant Final Approve → Pay Supplier
+  │
+  ▼
+END
+</code></pre>
+        </div>
+<hr>
+<h3 id="workflow-2-supplier-registration-ចុះឈ្មោះ-supplier-ថ្មី" class="scroll-mt-24 group">Workflow 2: Supplier Registration (ចុះឈ្មោះ Supplier ថ្មី) <a href="#workflow-2-supplier-registration-ចុះឈ្មោះ-supplier-ថ្មី" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>START
+  │
+  ▼
+Procurement Manager ទំនាក់ Supplier ថ្មីប្រទះ
+  │
+  ▼
+ចូល create-supplier.html
+→ បំពេញ ព័ត៌មានក្រុមហ៊ុន + ទំនាក់ + ធនាគារ
+  │
+  ▼
+ចុច «ចុះឈ្មោះ»
+  │
+  ├── ប្រព័ន្ធ Generate Supplier ID
+  ├── ប្រព័ន្ធ Set Status = &quot;Active&quot;
+  ├── Optional: ប្រព័ន្ធ ផ្ញើ Invitation ទៅ Supplier Portal
+  └── Audit Log: &quot;Supplier [X] registered by [User]&quot;
+  │
+  ▼
+showToast(&quot;ព័ត៌មានអ្នកផ្គត់ផ្គង់ត្រូវបានរក្សាទុកជោគជ័យ&quot;)
+  │
+  ▼
+END → Supplier ស្ថិត Status Active → ជ្រើសបាននៅ create-bill.html
+</code></pre>
+        </div>
+<hr>
+<h3 id="workflow-3-handling-bill-mismatch-ការដោះស្រាយ-3-way-mismatch" class="scroll-mt-24 group">Workflow 3: Handling Bill Mismatch (ការដោះស្រាយ 3-Way Mismatch) <a href="#workflow-3-handling-bill-mismatch-ការដោះស្រាយ-3-way-mismatch" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>START
+  │
+  ▼
+ប្រព័ន្ធ Detect Mismatch ក្រោយ Upload Bill:
+  Qty Received: 98 ≠ PO Qty: 100
+  │
+  ▼
+Status = &quot;Mismatch&quot; + Alert ជូន Procurement + Accountant
+  │
+  ▼
+Procurement Manager ចូល view-bills.html
+→ ពិនិត្យ Mismatch Details
+  │
+  ▼
+Option A: ទំនាក់ Supplier → Supplier ឯកភាព Credit Note 2 ឯកតា
+  ├── Procurement Update Bill Amount
+  └── Re-run 3-Way Match → ✅ Match
+
+Option B: GRN ខុស (Warehouse Count Error)
+  ├── Procurement ជូនដំណឹង Warehouse Manager
+  ├── Warehouse Recount + Update GRN
+  └── Re-run 3-Way Match → ✅ Match
+
+Option C: Force Accept (Management Decision)
+  ├── Admin/Manager Override Approve
+  └── Audit Log: &quot;Mismatch overridden by [User] - Reason: [...]&quot;
+  │
+  ▼
+END → Disbursement Request ត្រូវបាន Unblocked
+</code></pre>
+        </div>
+<hr>
+<h3 id="workflow-4-supplier-evaluation-ប្រៀបធៀប-supplier-price" class="scroll-mt-24 group">Workflow 4: Supplier Evaluation (ប្រៀបធៀប Supplier Price) <a href="#workflow-4-supplier-evaluation-ប្រៀបធៀប-supplier-price" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>START
+  │
+  ▼
+Procurement Manager ត្រូវ Restock: &quot;ប្រេងម៉ាស៊ីន 5L x 20 ដប&quot;
+  │
+  ▼
+ចូល suppliers.html → Filter by Product Category
+  │
+  ▼
+មើល Price History Supplier A vs B vs C:
+
+Supplier A (ហ៊ុន ត្រេឌីង):  $8.50/ដប — NET-30
+Supplier B (ABC Import):     $7.80/ដប — COD
+Supplier C (XYZ Logistics):  $8.00/ដប — NET-15 + Free Delivery
+  │
+  ▼
+ជ្រើស Supplier C (Best Value: Price + Credit Term + Delivery)
+  │
+  ▼
+ចេញ PO → Supplier C
+  │
+  ▼
+END → Data ត្រូវ Log ក្នុង Price History → ប្រើជា Reference ខែក្រោយ
+</code></pre>
+        </div>
+<hr>
+<h2 id="7-business-logic-3-way-matching" class="scroll-mt-24 group">7. Business Logic — 3-Way Matching <a href="#7-business-logic-3-way-matching" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<p><strong>3-Way Matching</strong> ជា <strong>Control Mechanism ដ៏សំខាន់</strong> ដើម្បីការពារ:</p>
+<ul>
+<li>ការបង់ប្រាក់ Supplier ហួស (Over-payment)</li>
+<li>ការបង់ប្រាក់ Supplier ដែលមិនបានដឹក (Fraud)</li>
+<li>ការខ្ជះខ្ជាយ ហើយ Duplicate Payments</li>
+</ul>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>Document 1: PO (Purchase Order)
+  └── Ordered: 100 units @ $10 = $1,000
+
+Document 2: GRN (Goods Receipt Note)
+  └── Received: 98 units (counted by Warehouse)
+
+Document 3: BILL (Supplier Invoice)
+  └── Charged: 100 units @ $10 = $1,000
+
+3-WAY MATCH RESULT:
+  PO Qty (100) vs GRN Qty (98) vs BILL Qty (100)
+  ⚠️ GRN ≠ PO → MISMATCH!
+
+  Action Required:
+  → ពន្យល់ 2 units ដែល Missing
+  → ឬ Request Credit Note ពី Supplier
+  → ឬ Charge Back ពី Warehouse
+</code></pre>
+        </div>
+<h3 id="71-match-rules" class="scroll-mt-24 group">7.1 Match Rules <a href="#71-match-rules" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Rule</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Condition</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Action</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">✅ <strong>Full Match</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">PO qty = GRN qty = Bill qty + prices match</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Auto-approve Disbursement Draft</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">⚠️ <strong>Qty Mismatch</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">GRN qty ≠ PO qty ឬ Bill qty</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Alert + Hold — ទំនាក់ Supplier</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">⚠️ <strong>Price Mismatch</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Bill price ≠ PO agreed price</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Alert + Hold — Review Contract</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">🔴 <strong>Major Mismatch</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">± 10% Variance</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Escalate to Admin/Manager</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">✅ <strong>Tolerance Match</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">± 2% Variance</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Auto-approve (within tolerance)</td>
+</tr>
+</tbody></table></div>
+<h3 id="72-tolerance-policy-ណែនាំ" class="scroll-mt-24 group">7.2 Tolerance Policy (ណែនាំ) <a href="#72-tolerance-policy-ណែនាំ" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>Recommended Tolerance Setting (Configurable by Admin):
+- Quantity tolerance: ± 2%  (e.g., order 100, receive 98 = OK)
+- Price tolerance:    ± 1%  (e.g., agreed $10, billed $10.05 = OK)
+- Amount tolerance:   ± $5  (minor rounding differences)
+</code></pre>
+        </div>
+<hr>
+<h2 id="8-ទំនាក់ទំនងជាមួយតួនាទីផ្សេង" class="scroll-mt-24 group">8. ទំនាក់ទំនងជាមួយតួនាទីផ្សេង <a href="#8-ទំនាក់ទំនងជាមួយតួនាទីផ្សេង" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>Procurement Manager
+│
+├── [RECEIVES REQUESTS FROM] → Warehouse Manager / Staff
+│   └── &quot;ស្តុក [X] ជិតអស់ — ស្នើ Reorder&quot;
+│
+├── [SENDS PO TO] → Supplier (via Supplier Portal / Email / Print)
+│
+├── [COORDINATES WITH] → Warehouse Manager
+│   └── GRN Count, Goods Quality Check
+│
+├── [SUBMITS DISBURSEMENT TO] → Accountant
+│   └── Disbursement Request ដែល 3-Way Matched
+│
+├── [REPORTS TO] → Admin / GM
+│   └── Procurement KPIs, Budget Usage, Supplier Performance
+│
+└── [RECEIVES ALERTS FROM] → System (Auto)
+    ├── Reorder Point Alerts
+    ├── Overdue PO Delivery Alerts
+    └── 3-Way Match Mismatch Alerts
+</code></pre>
+        </div>
+<p><strong>ការ Handoff ដ៏សំខាន់ (Critical Handoff Points)</strong>:</p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Handoff</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">From</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">To</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Document</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ស្តុកជិតអស់</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ប្រព័ន្ធ/Warehouse</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Procurement</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Reorder Alert</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">PO ចេញ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Procurement</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Supplier</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Purchase Order PDF</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ទំនិញដល់</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Supplier</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Warehouse</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Goods Receipt Note</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Bill ចូល</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Supplier</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Procurement</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Vendor Invoice</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Match OK</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Procurement</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Accountant</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Disbursement Request</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Payment</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Accountant</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Supplier</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Payment Voucher</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="9-data-scope-ឃើញអ្វី-លាក់អ្វី" class="scroll-mt-24 group">9. Data Scope — ឃើញអ្វី? លាក់អ្វី? <a href="#9-data-scope-ឃើញអ្វី-លាក់អ្វី" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>PROCUREMENT MANAGER DATA SCOPE
+│
+├── ✅ ឃើញ (CAN SEE):
+│   ├── Purchase Orders (ខ្លួនឯងបង្កើត + ទូទៅ Department)
+│   ├── Supplier profiles, contact, bank accounts
+│   ├── Vendor Bills + Attachments
+│   ├── Disbursement Request status
+│   ├── Stock Quantity (quantity only — NO price/cost/value)
+│   ├── Product names + SKU (for ordering reference)
+│   └── Procurement Reports (own dept)
+│
+└── ❌ ហាមមើល (CANNOT SEE):
+    ├── Sales Invoices + Revenue
+    ├── Customer names + contact
+    ├── Selling Prices / Profit Margins
+    ├── Cost Prices shown in Sales context
+    ├── Payroll / Salary data
+    ├── Bank account balances
+    ├── Financial P&amp;L Reports
+    ├── Admin System Settings
+    └── Other Tenant data (Multi-tenant isolation)
+</code></pre>
+        </div>
+<p><strong>Stock View Rule (Zero Price Leakage)</strong>:</p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ទំព័រ Stock</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Procurement Sees</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Procurement ហាមមើល</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Stock Balance</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">✅ Product Name, SKU, Qty, Warehouse</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ Cost Price, Selling Price, Total Value</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Catalog</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">✅ Name, SKU, Description, Category</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ Any prices</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Movement Log</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">✅ In/Out Qty, Dates</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ Values/Amounts</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="10-kpi-dashboard" class="scroll-mt-24 group">10. KPI Dashboard <a href="#10-kpi-dashboard" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">#</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Widget</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ការគណនា</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Alert Condition</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">1</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">📋 POs ចេញ (ខែនេះ)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">COUNT(POs WHERE month=current)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">—</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">2</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">⏳ POs Pending Delivery</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">COUNT(status=&#39;sent&#39;)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">🔴 ប្រសិនបើ &gt; 7 days overdue</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">3</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">📦 POs Received (ខែនេះ)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">COUNT(status=&#39;received&#39;)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">—</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">4</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">✅ 3-Way Matched (ខែនេះ)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">COUNT(status=&#39;matched&#39;)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">—</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">5</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">⚠️ Mismatch Pending</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">COUNT(status=&#39;mismatch&#39;)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">🔴 Any &gt; 0</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">6</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">💸 Disbursements Pending</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">SUM(amount WHERE status=&#39;pending&#39;)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">—</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">7</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">🏭 Active Suppliers</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">COUNT(suppliers WHERE active)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">—</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">8</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">📉 Reorder Alerts</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">COUNT(stock WHERE qty &lt; reorder_point)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">🔴 ≥ 1</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="11-គំរូ-database-schema" class="scroll-mt-24 group">11. គំរូ Database Schema <a href="#11-គំរូ-database-schema" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>-- Core Tables for Procurement Manager Scope
+
+-- 1. Suppliers
+CREATE TABLE suppliers (
+    id                  UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    tenant_id           UUID REFERENCES tenants(id),    -- Multi-tenant isolation
+    name_kh             VARCHAR(255) NOT NULL,
+    name_en             VARCHAR(255),
+    supplier_type       VARCHAR(50),
+        -- manufacturer | distributor | importer | local_trader
+    country             VARCHAR(100) DEFAULT &#39;Cambodia&#39;,
+    tin_number          VARCHAR(50),
+    address             TEXT,
+    contact_name        VARCHAR(255),
+    contact_phone       VARCHAR(50),
+    contact_email       VARCHAR(255),
+    telegram            VARCHAR(100),
+    bank_name           VARCHAR(100),
+    bank_account_number VARCHAR(100),
+    bank_account_name   VARCHAR(255),
+    khqr_id             VARCHAR(100),
+    payment_terms       VARCHAR(20) DEFAULT &#39;COD&#39;,
+        -- COD | NET15 | NET30 | NET60
+    credit_limit        DECIMAL(15,2),
+    status              VARCHAR(20) DEFAULT &#39;active&#39;,
+        -- active | inactive | blacklisted
+    notes               TEXT,
+    created_by          UUID,
+    created_at          TIMESTAMPTZ DEFAULT NOW(),
+    updated_at          TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 2. Purchase Orders (PO)
+CREATE TABLE purchase_orders (
+    id                  UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    tenant_id           UUID REFERENCES tenants(id),
+    po_number           VARCHAR(50) UNIQUE NOT NULL,
+        -- PO-2026-XXXX (Auto-generated)
+    supplier_id         UUID REFERENCES suppliers(id),
+    status              VARCHAR(30) DEFAULT &#39;draft&#39;,
+        -- draft | sent | partial | received | matched | cancelled
+    ordered_at          DATE NOT NULL,
+    expected_delivery   DATE NOT NULL,
+    delivery_location   VARCHAR(255),
+    payment_terms       VARCHAR(20),
+    subtotal            DECIMAL(15,2),
+    vat_amount          DECIMAL(15,2),
+    total_amount        DECIMAL(15,2),
+    notes               TEXT,
+    created_by          UUID,
+    created_at          TIMESTAMPTZ DEFAULT NOW(),
+    updated_at          TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 3. PO Line Items
+CREATE TABLE po_items (
+    id                  UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    po_id               UUID REFERENCES purchase_orders(id),
+    product_id          UUID REFERENCES products(id),
+    sku                 VARCHAR(100),
+    product_name        VARCHAR(255),
+    unit                VARCHAR(50),
+    qty_ordered         DECIMAL(10,3) NOT NULL,
+    qty_received        DECIMAL(10,3) DEFAULT 0,
+    unit_cost           DECIMAL(15,4) NOT NULL,    -- Cost price (Procurement sees this)
+    vat_rate            DECIMAL(5,2) DEFAULT 10,
+    line_total          DECIMAL(15,2)
+);
+
+-- 4. Goods Receipt Notes (GRN)
+CREATE TABLE grn (
+    id                  UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    tenant_id           UUID REFERENCES tenants(id),
+    grn_number          VARCHAR(50) UNIQUE,
+    po_id               UUID REFERENCES purchase_orders(id),
+    received_at         TIMESTAMPTZ DEFAULT NOW(),
+    received_by         UUID,   -- Warehouse Staff
+    notes               TEXT,
+    attachment_url      TEXT    -- Photo evidence
+);
+
+CREATE TABLE grn_items (
+    id                  UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    grn_id              UUID REFERENCES grn(id),
+    po_item_id          UUID REFERENCES po_items(id),
+    qty_received        DECIMAL(10,3) NOT NULL,
+    qty_rejected        DECIMAL(10,3) DEFAULT 0,
+    rejection_reason    TEXT
+);
+
+-- 5. Vendor Bills
+CREATE TABLE vendor_bills (
+    id                  UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    tenant_id           UUID REFERENCES tenants(id),
+    bill_number         VARCHAR(100),   -- Supplier&#39;s own invoice number
+    po_id               UUID REFERENCES purchase_orders(id),
+    supplier_id         UUID REFERENCES suppliers(id),
+    bill_date           DATE,
+    due_date            DATE,
+    subtotal            DECIMAL(15,2),
+    vat_amount          DECIMAL(15,2),
+    wht_amount          DECIMAL(15,2) DEFAULT 0,    -- Withholding Tax
+    total_amount        DECIMAL(15,2),
+    match_status        VARCHAR(20) DEFAULT &#39;pending&#39;,
+        -- pending | matched | mismatch | overridden
+    attachment_url      TEXT,   -- PDF scan of supplier invoice
+    notes               TEXT,
+    created_by          UUID,
+    created_at          TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 6. Disbursement Requests
+CREATE TABLE disbursements (
+    id                  UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    tenant_id           UUID REFERENCES tenants(id),
+    disbursement_number VARCHAR(50) UNIQUE,   -- DIS-2026-XXXX
+    bill_id             UUID REFERENCES vendor_bills(id),
+    supplier_id         UUID REFERENCES suppliers(id),
+    amount_gross        DECIMAL(15,2),
+    wht_rate            DECIMAL(5,2) DEFAULT 0,
+    wht_amount          DECIMAL(15,2) DEFAULT 0,
+    amount_net          DECIMAL(15,2),
+    payment_method      VARCHAR(50),    -- bank_transfer | cash | khqr
+    payment_account     VARCHAR(255),
+    due_date            DATE,
+    status              VARCHAR(30) DEFAULT &#39;pending&#39;,
+        -- pending | approved | paid | cancelled
+    requested_by        UUID,   -- Procurement Manager
+    approved_by         UUID,   -- Accountant / Admin
+    paid_at             TIMESTAMPTZ,
+    notes               TEXT,
+    created_at          TIMESTAMPTZ DEFAULT NOW()
+);
+</code></pre>
+        </div>
+<hr>
+<h2 id="12-ការការពារទំនាក់ទំនង-supplier" class="scroll-mt-24 group">12. ការការពារទំនាក់ទំនង Supplier <a href="#12-ការការពារទំនាក់ទំនង-supplier" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="121-anti-fraud-controls" class="scroll-mt-24 group">12.1 Anti-Fraud Controls <a href="#121-anti-fraud-controls" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Control</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Description</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Implementation</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Supplier Bank Change Lock</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ប្រសិនបើ Supplier ស្នើ Change Bank Account ក្រោយ Bill Approved → ត្រូវ Admin Approve</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Field lock + Admin-only override</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Duplicate Bill Detection</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Block Bill ដែល Bill Number ដូចគ្នាពី Supplier ដូចគ្នា</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Unique constraint DB</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>3-Way Mandatory</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ហាម Disbursement ប្រសិនបើ 3-Way Match មិន Passed</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Workflow gate</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Segregation of Duties</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Procurement Request → Accountant Approves → Different people</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Role enforcement</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>Credit Limit Alert</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ប្រសិនបើ Unpaid Bills &gt; Credit Limit → Alert</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">DB trigger</td>
+</tr>
+</tbody></table></div>
+<h3 id="122-supplier-blacklist-management" class="scroll-mt-24 group">12.2 Supplier Blacklist Management <a href="#122-supplier-blacklist-management" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>Supplier Status Machine:
+active → inactive → blacklisted → (archived)
+  │
+  └── Blacklisted Supplier:
+      - Cannot issue new POs
+      - Alert ជូន Admin
+      - Reason + Audit Log Required
+</code></pre>
+        </div>
+<hr>
+<h2 id="13-អនុសាសន៍-architect-prototype-planning" class="scroll-mt-24 group">13. អនុសាសន៍ Architect + Prototype Planning <a href="#13-អនុសាសន៍-architect-prototype-planning" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="131-ណែនាំ-design-my-recommendations" class="scroll-mt-24 group">13.1 ណែនាំ Design (My Recommendations) <a href="#131-ណែនាំ-design-my-recommendations" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<h4 id="ណែនាំ-1-ភ្ជាប់-procurement-portal-admin-module-ឱ្យ-consistent" class="scroll-mt-24 group">✅ ណែនាំ 1: ភ្ជាប់ Procurement Portal ← → Admin Module ឱ្យ Consistent <a href="#ណែនាំ-1-ភ្ជាប់-procurement-portal-admin-module-ឱ្យ-consistent" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<p>Data ត្រូវ <strong>Share តែមួយ DB</strong> — Procurement Manager ចូល portal ហើយ Admin ចូល <code>4-buy/</code> module — ឃើញ Data ដូចគ្នា ។ ទំព័រ Portal ជា Filtered/Simplified view នៃ data ដូចគ្នានោះ ។</p>
+<h4 id="ណែនាំ-2-po-number-format-ស្តង់ដារ" class="scroll-mt-24 group">✅ ណែនាំ 2: PO Number Format ស្តង់ដារ <a href="#ណែនាំ-2-po-number-format-ស្តង់ដារ" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>Format: PO-YYYY-NNNN
+Example: PO-2026-0001
+
+Generated: ប្រព័ន្ធ Auto-increment per Tenant per Year
+Reset: ចាប់ NNNN=0001 រៀង 1 ម្តងក្នុង 1 ឆ្នាំ
+</code></pre>
+        </div>
+<h4 id="ណែនាំ-3-wht-withholding-tax-ក្នុង-disbursement" class="scroll-mt-24 group">✅ ណែនាំ 3: WHT (Withholding Tax) ក្នុង Disbursement <a href="#ណែនាំ-3-wht-withholding-tax-ក្នុង-disbursement" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<p><strong>Cambodia GDT</strong> ទាមទារ WHT (Withholding Tax / ពន្ធកាត់ទុក) ពេលទូទាត់ Supplier:</p>
+<ul>
+<li><strong>ទំនិញ (Goods)</strong>: 0% WHT</li>
+<li><strong>សេវាកម្ម (Services)</strong>: 15% WHT</li>
+<li><strong>លក់ឡើងវិញ (Resale/Import)</strong>: 0% WHT</li>
+</ul>
+<p>Procurement Manager ត្រូវ <strong>Set WHT Rate</strong> ពេលបង្កើត Disbursement Request ។</p>
+<h4 id="ណែនាំ-4-supplier-portal-integration" class="scroll-mt-24 group">✅ ណែនាំ 4: Supplier Portal Integration <a href="#ណែនាំ-4-supplier-portal-integration" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<p>Procurement Manager ចេញ PO → ប្រព័ន្ធ Auto-Notify ជូន Supplier Portal:</p>
+<ul>
+<li>Supplier Login ពិនិត្យ PO → ចុច «ទទួលយក / បដិសេធ»</li>
+<li>Supplier Upload Invoice / Bill → Procurement Sees instantly</li>
+<li>Tracking Delivery Status</li>
+</ul>
+<h4 id="ណែនាំ-5-price-history-ជា-negotiation-tool" class="scroll-mt-24 group">✅ ណែនាំ 5: Price History ជា Negotiation Tool <a href="#ណែនាំ-5-price-history-ជា-negotiation-tool" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>ពេល Procurement ជ្រើស Supplier ក្នុង create-bill.html:
+→ ប្រព័ន្ធ Show Last 3 Purchase Prices:
+
+  ហ៊ុន ត្រេឌីង - ប្រេងម៉ាស៊ីន 5L
+  ┌──────────────┬──────────────┬──────────┐
+  │ ថ្ងៃទិញ       │ ចំនួន        │ ថ្លៃ/ឯកតា │
+  ├──────────────┼──────────────┼──────────┤
+  │ 15 ក.ញ 2026  │ 20 ដប        │ $8.50    │
+  │ 12 ស.ក 2026  │ 30 ដប        │ $8.20    │
+  │ 05 ម.ច 2026  │ 50 ដប        │ $8.00    │
+  └──────────────┴──────────────┴──────────┘
+  💡 ចំណាំ: ថ្លៃ ↗ ប្រៀបធៀប ៦ ខែ = +6.25%
+</code></pre>
+        </div>
+<h4 id="ណែនាំ-6-reorder-point-alert-system" class="scroll-mt-24 group">✅ ណែនាំ 6: Reorder Point Alert System <a href="#ណែនាំ-6-reorder-point-alert-system" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>Product Table (Admin configures):
+  reorder_point: 10  ← ពេល Stock ≤ 10 → Alert
+  reorder_qty:   50  ← Suggested order quantity
+
+Procurement Dashboard Widget:
+  🔴 ទំនិញ [ប្រេងម៉ាស៊ីន 5L] — ស្តុក: 8 | Reorder Point: 10
+       [+ បង្កើត PO ភ្លាម]  ← Quick Action Button
+</code></pre>
+        </div>
+<hr>
+<h3 id="132-ផែនការ-prototype-pages" class="scroll-mt-24 group">13.2 ផែនការ Prototype Pages <a href="#132-ផែនការ-prototype-pages" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">#</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Page</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Layer</th>
+<th align="center">Priority</th>
+<th align="center">Complexity</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">1</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>purchase-staff/dashboard.html</code></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Portal</td>
+<td align="center">🔴 HIGH</td>
+<td align="center">Medium</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">2</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>purchase-staff/suppliers.html</code></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Portal</td>
+<td align="center">🔴 HIGH</td>
+<td align="center">Medium</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">3</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>purchase-staff/create-supplier.html</code></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Portal</td>
+<td align="center">🔴 HIGH</td>
+<td align="center">High</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">4</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>purchase-staff/bills.html</code></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Portal</td>
+<td align="center">🔴 HIGH</td>
+<td align="center">Medium</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">5</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>purchase-staff/create-bill.html</code></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Portal</td>
+<td align="center">🔴 HIGH</td>
+<td align="center">High</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">6</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>purchase-staff/disbursements.html</code></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Portal</td>
+<td align="center">🟡 MED</td>
+<td align="center">Low</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">7</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>4-buy/1-bills/bills.html</code></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Admin</td>
+<td align="center">🟡 MED</td>
+<td align="center">Medium</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">8</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>4-buy/1-bills/create-bills.html</code></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Admin</td>
+<td align="center">🟡 MED</td>
+<td align="center">High</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">9</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>4-buy/1-bills/view-bills.html</code></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Admin</td>
+<td align="center">🟡 MED</td>
+<td align="center">High (3-Way UI)</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">10</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>4-buy/2-suppliers/suppliers.html</code></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Admin</td>
+<td align="center">🟡 MED</td>
+<td align="center">Medium</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">11</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>4-buy/2-suppliers/view-suppliers.html</code></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Admin</td>
+<td align="center">🟢 LOW</td>
+<td align="center">Medium</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">12</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>4-buy/3-disbursement/disbursement.html</code></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Admin</td>
+<td align="center">🟡 MED</td>
+<td align="center">Medium</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">13</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>4-buy/3-disbursement/view-disbursement.html</code></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Admin</td>
+<td align="center">🔴 HIGH</td>
+<td align="center">High (A4 Print)</td>
+</tr>
+</tbody></table></div>
+<p><strong>ណែនាំ</strong>: ចាប់ផ្តើម → Portal ជ្រើស <code>suppliers.html</code> → <code>create-supplier.html</code> → <code>bills.html</code> → <code>create-bill.html</code> ។ Admin Module ព្រម Deploy ជាមួយ ។</p>
+<hr>
+<h3 id="133-ការ-validate-prototype-before-moving-to-next-role" class="scroll-mt-24 group">13.3 ការ Validate Prototype (Before Moving to Next Role) <a href="#133-ការ-validate-prototype-before-moving-to-next-role" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> <strong>Sidebar</strong> Procurement Portal — Menu: Dashboard, Bills/POs, Suppliers, Disbursements</li>
+<li><input disabled="" type="checkbox"> <strong>Header</strong> <code>h-[72px]</code> ស្មើ Sidebar Header ពិតប្រាកដ</li>
+<li><input disabled="" type="checkbox"> <strong>suppliers.html</strong> — Table + Filter + ⋮ Dropdown</li>
+<li><input disabled="" type="checkbox"> <strong>create-supplier.html</strong> — Form 3 Sections + Custom Dropdowns (ហាម native <code>&lt;select&gt;</code>)</li>
+<li><input disabled="" type="checkbox"> <strong>bills.html</strong> — Table + Status Badges (Draft/Sent/Received/Matched/Mismatch)</li>
+<li><input disabled="" type="checkbox"> <strong>create-bill.html</strong> — Supplier Dropdown + Dynamic Line Items Table + Auto-calc</li>
+<li><input disabled="" type="checkbox"> <strong>3-Way Match UI</strong> (view-bills.html Admin) — Visual 3-Column Comparison</li>
+<li><input disabled="" type="checkbox"> <strong>view-disbursement.html</strong> — A4 Print + 4 ហត្ថលេខា</li>
+<li><input disabled="" type="checkbox"> <strong>Stock View</strong> — Qty Only (ហាមមើលតម្លៃ — Zero Price Leakage)</li>
+<li><input disabled="" type="checkbox"> <strong>showToast()</strong> ជំនួស <code>alert()</code></li>
+<li><input disabled="" type="checkbox"> <strong>showCustomConfirm()</strong> ជំនួស <code>confirm()</code> ពេល Cancel PO</li>
+<li><input disabled="" type="checkbox"> <strong>ប៊ូតុងត្រឡប់ក្រោយ</strong> <code>w-10 h-10 rounded-xl</code> icon-only</li>
+<li><input disabled="" type="checkbox"> <strong>ភាសាខ្មែរ 100%</strong> លើ UI ទាំងអស់</li>
+<li><input disabled="" type="checkbox"> <strong>លេខអង់គ្លេស 0-9</strong> — ចំនួន, ថ្ងៃ, ទឹកប្រាក់</li>
+</ul>
+<hr>
+<h2 id="14-faq" class="scroll-mt-24 group">14. FAQ <a href="#14-faq" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<p><strong>Q: Procurement Manager ចេញ PO ហើយ Admin ត្រូវ Approve PO ទៀតទេ?</strong><br>A: ក្នុង Prototype Phase 1 — <strong>ចេញ PO ផ្ទាល់</strong> (Procurement Manager ចេញបានដោយផ្ទាល់) ។ Phase 2 អាចបន្ថែម Approval Flow: PO ≥ Budget Threshold → ស្នើ Admin Approve ।</p>
+<p><strong>Q: Disbursement — Procurement Manager ចុចបង់ប្រាក់ Supplier ដោយខ្លួនឯងបានទេ?</strong><br>A: <strong>ទេ</strong> — Procurement Manager <strong>ចេញ Disbursement Request ប៉ុណ្ណោះ</strong> ។ Accountant ជា Final Approver + ជា អ្នក Mark as Paid ។ នេះជា <strong>Segregation of Duties</strong> (SoD) — ការបែកការទទួលខុសត្រូវ ដើម្បីការពារការក្លែងបន្លំ ។</p>
+<p><strong>Q: Supplier ណ្ហែ Login ចូល Portal ដោយខ្លួនឯង ហើយ View PO?</strong><br>A: <strong>ចាស</strong> — Supplier Portal (<code>9-portals/supplier/</code>) ជា External Self-Service ។ Supplier ទទួល Invitation Email → Login → View PO → Accept/Reject → Submit Invoice ។</p>
+<p><strong>Q: 3-Way Matching ដំណើរការ Manual ឬ Auto?</strong><br>A: <strong>Semi-Auto</strong> — ប្រព័ន្ធ Auto-Compare PO vs GRN vs Bill ហើយ Show Results ។ ប្រសិនបើ Match → ប្រព័ន្ធ Flag as Matched ស្វ័យប្រវត្តិ ។ ប្រសិនបើ Mismatch → ប្រព័ន្ធ Alert ។ Procurement Manager ជា អ្នក <strong>Final Decision</strong> (Override ឬ ដោះស្រាយ) ។</p>
+<p><strong>Q: WHT (ពន្ធកាត់ទុក) Procurement Manager ត្រូវវាយ Manual ទេ?</strong><br>A: <strong>Manual ជ្រើស Rate</strong> ក្នុង Disbursement Form ។ Admin Configure Default Rates per Supplier Type ។ Accountant Final Verify មុន Approve ។</p>
+<p><strong>Q: ប្រសិន Stock ចូល Warehouse ហើយ ស្តុក Update ស្វ័យប្រវត្តិ?</strong><br>A: <strong>ចាស</strong> — ពេល Warehouse Staff Mark GRN ជា Received → Stock Balance Update ស្វ័យប្រវត្តិ ។ Procurement Manager ឃើញ Qty Updated (ប៉ុន្តែ <strong>ហាមមើលតម្លៃ</strong>) ។</p>
+<hr>
+<p><em>ឯកសារនេះតំណាង 100% knowledge base សម្រាប់ Procurement Manager Role ក្នុង DIGITECHKH BMS</em><br><em>Previous Role: Super Admin → <a href="role_superadmin.html"><code>role_superadmin.md</code></a></em><br><em>Next Role: Warehouse Staff → <a href="role_warehouse_staff.html"><code>role_warehouse_staff.md</code></a></em></p>
+
+                </article>
+
+                <!-- Next / Previous Role Navigation Bar -->
+                <div class="no-print mt-12 pt-8 border-t border-slate-200 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <a href="role_superadmin.html" class="p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-transform flex-shrink-0">
+                            👑
+                        </div>
+                        <div class="min-w-0">
+                            <div class="text-[10px] text-slate-400 font-medium">← តួនាទីមុន</div>
+                            <div class="text-xs font-bold text-slate-800 group-hover:text-primary transition truncate">ស៊ុបភើរ អភិបាល</div>
+                        </div>
+                    </a>
+
+                    <a href="role_warehouse_staff.html" class="p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group flex items-center justify-end text-right gap-3">
+                        <div class="min-w-0">
+                            <div class="text-[10px] text-slate-400 font-medium">តួនាទីបន្ទាប់ →</div>
+                            <div class="text-xs font-bold text-slate-800 group-hover:text-primary transition truncate">បុគ្គលិកឃ្លាំងទំនិញ</div>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-transform flex-shrink-0">
+                            👷
+                        </div>
+                    </a>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="no-print bg-white border-t border-slate-200 py-6 px-8 text-center text-xs text-slate-500">
+        <p>រក្សាសិទ្ធិគ្រប់យ៉ាង © 2026 ក្រុមហ៊ុន ឌីជីថេក ខេអេច (DIGITECHKH Co., Ltd.) · ព្រះរាជាណាចក្រកម្ពុជា</p>
+    </footer>
+
+</body>
+</html>

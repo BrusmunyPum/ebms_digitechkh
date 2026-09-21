@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="km" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05. ប្លង់មេ & ផែនទីបង្ហាញផ្លូវ — ឯកសារបច្ចេកទេស | DIGITECHKH BMS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Kantumruy Pro', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0f2b5c',
+                        primaryHover: '#0a1d3f',
+                        accent: '#2563eb',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Kantumruy Pro', sans-serif;
+            color: #334155;
+            background-color: #f8fafc;
+        }
+        ::-webkit-scrollbar { display: none; }
+        * { -ms-overflow-style: none; scrollbar-width: none; }
+        h1, h2, h3, h4 { color: #0f172a; font-weight: 700; }
+        h1 { font-size: 1.8rem; line-height: 2.35rem; margin-bottom: 1.25rem; }
+        h2 { font-size: 1.35rem; line-height: 1.85rem; margin-top: 2.25rem; margin-bottom: 0.85rem; padding-bottom: 0.5rem; border-bottom: 1px solid #e2e8f0; }
+        h3 { font-size: 1.1rem; line-height: 1.5rem; margin-top: 1.75rem; margin-bottom: 0.5rem; }
+        p { margin-bottom: 0.85rem; line-height: 1.8; font-size: 0.95rem; }
+        ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1rem; font-size: 0.95rem; }
+        ol { list-style-type: decimal; padding-left: 1.5rem; margin-bottom: 1rem; font-size: 0.95rem; }
+        li { margin-bottom: 0.35rem; line-height: 1.7; }
+        hr { border: 0; border-top: 1px solid #e2e8f0; margin: 2rem 0; }
+        @media print {
+            .no-print { display: none !important; }
+            body { background-color: #ffffff; color: #000; }
+            .print-container { max-width: 100% !important; margin: 0 !important; padding: 0 !important; box-shadow: none !important; border: none !important; }
+            table, pre, blockquote, .rounded-xl, .rounded-2xl { page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-primary selection:text-white min-h-screen flex flex-col justify-between">
+
+    <!-- Top Sticky Control Bar -->
+    <header class="no-print fixed top-0 left-0 right-0 h-16 bg-primary text-white z-50 px-4 sm:px-8 flex items-center justify-between shadow-md">
+        <div class="flex items-center gap-3">
+            <a href="index.html" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition flex items-center gap-2 text-xs font-semibold">
+                <i class="fas fa-arrow-left"></i> <span class="hidden sm:inline">មជ្ឈមណ្ឌលឯកសារ</span>
+            </a>
+            <span class="text-white/30 hidden sm:inline">|</span>
+            <div class="flex items-center gap-2">
+                <span class="text-xl">🗺️</span>
+                <span class="font-bold text-xs sm:text-sm text-white truncate max-w-[200px] sm:max-w-xs">05. ប្លង់មេ & ផែនទីបង្ហាញផ្លូវ</span>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-white/15 text-emerald-300 hidden md:inline">Technical Spec</span>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-2 sm:gap-3">
+            <!-- Tech Doc Switcher -->
+            <div class="relative">
+                <select onchange="window.location.href=this.value" class="h-9 pl-3 pr-8 bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl text-xs font-semibold text-white focus:outline-none focus:bg-[#0a1d3f] transition appearance-none cursor-pointer">
+                    <option value="00-SYSTEM-OVERVIEW-AND-ARCHITECTURE.html" >00. ស្ថាបត្យកម្ម & គំរូទិន្នន័យ</option>
+<option value="01-END-TO-END-SYSTEM-WORKFLOW.html" >01. លំហូរការងារទាំង 8 វដ្ត</option>
+<option value="02-DELIVERY-AUDIT-AND-CHECKLIST.html" >02. បញ្ជីសវនកម្មគុណភាព</option>
+<option value="03-USER-OPERATIONAL-GUIDE.html" >03. សៀវភៅណែនាំប្រតិបត្តិការ</option>
+<option value="04-LEARNINGS-AND-STANDARDS-BENCHMARK.html" >04. មេរៀន និងស្តង់ដារបច្ចេកវិទ្យា</option>
+<option value="05-MASTER-SYSTEM-BLUEPRINT-AND-ENTERPRISE-PLAN.html" selected>05. ប្លង់មេ & ផែនទីបង្ហាញផ្លូវ</option>
+<option value="06-FULL-SYSTEM-SPECIFICATION-AND-TEAM-GUIDE.html" >06. សេចក្តីបញ្ជាក់លម្អិតប្រព័ន្ធ</option>
+<option value="07-CLIENT-PITCH-AND-SALES-STRATEGY.html" >07. យុទ្ធសាស្ត្រលក់ & Wow Demo</option>
+<option value="08-ECOMMERCE-DIGITAL-SHOWROOM-SPECIFICATION.html" >08. លក្ខណៈបច្ចេកទេស Showroom</option>
+                </select>
+                <i class="fas fa-chevron-down absolute right-3 top-3 text-[10px] text-white/60 pointer-events-none"></i>
+            </div>
+
+            <!-- Print Button -->
+            <button onclick="window.print()" class="px-3 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-semibold transition flex items-center gap-1.5 shadow-sm cursor-pointer">
+                <i class="fas fa-print"></i> <span class="hidden sm:inline">បោះពុម្ព A4</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Reading Container -->
+    <div class="pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full flex-1">
+        <div class="flex flex-col lg:flex-row gap-8 items-start">
+
+            <!-- Left Table of Contents Sidebar -->
+            <aside class="no-print lg:w-72 flex-shrink-0 sticky top-24 hidden lg:block bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
+                <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-3">
+                    <span class="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
+                        <i class="fas fa-list-ul text-primary"></i> មាតិកាឯកសារ
+                    </span>
+                    <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-50 text-accent">TOC</span>
+                </div>
+                <div class="space-y-0.5 max-h-[calc(100vh-220px)] overflow-y-auto pr-1 text-xs">
+                    
+                </div>
+                <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
+                    <a href="05-MASTER-SYSTEM-BLUEPRINT-AND-ENTERPRISE-PLAN.md" class="w-full py-2 px-3 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-500 text-[11px] font-normal flex items-center justify-between transition border border-slate-200">
+                        <span>មើលឯកសារដើម (.md)</span>
+                        <i class="fas fa-file-code text-[10px]"></i>
+                    </a>
+                </div>
+            </aside>
+
+            <!-- Main Document Body -->
+            <main class="print-container flex-1 bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-12 min-w-0 max-w-4xl mx-auto">
+
+                <!-- Breadcrumb -->
+                <div class="no-print flex items-center gap-2 text-xs text-slate-500 mb-6 flex-wrap pb-4 border-b border-slate-100">
+                    <a href="index.html" class="hover:text-primary transition flex items-center gap-1">
+                        <i class="fas fa-home"></i> មជ្ឈមណ្ឌលឯកសារ
+                    </a>
+                    <span>/</span>
+                    <span class="text-slate-500">ឯកសារបច្ចេកទេស</span>
+                    <span>/</span>
+                    <span class="text-slate-800 font-semibold">ប្លង់មេ & ផែនទីបង្ហាញផ្លូវ</span>
+                </div>
+
+                <!-- Document Rendered HTML -->
+                <article class="prose prose-slate max-w-none">
+                    <h1 id="digitechkh-bms---ប្លង់មេស្ថាបត្យកម្មប្រព័ន្ធពេញលេញ-និងផែនការអាជីវកម្មកម្រិតសហគ្រាស-complete-enterprise-blueprint-system-master-plan" class="scroll-mt-24 group">DIGITECHKH BMS - ប្លង់មេស្ថាបត្យកម្មប្រព័ន្ធពេញលេញ និងផែនការអាជីវកម្មកម្រិតសហគ្រាស (Complete Enterprise Blueprint &amp; System Master Plan) <a href="#digitechkh-bms---ប្លង់មេស្ថាបត្យកម្មប្រព័ន្ធពេញលេញ-និងផែនការអាជីវកម្មកម្រិតសហគ្រាស-complete-enterprise-blueprint-system-master-plan" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h1>
+<p>ឯកសារនេះជាប្លង់មេស្ថាបត្យកម្មប្រព័ន្ធ និងយុទ្ធសាស្ត្រពង្រីកពេញលេញសម្រាប់គម្រោង <strong>DIGITECHKH Business Management System (BMS)</strong> ដោយរួមបញ្ចូលគ្នានូវមុខងារ <strong>ERP</strong>, <strong>CRM</strong>, <strong>WMS</strong>, <strong>POS</strong>, <strong>Accounting &amp; Finance (ទ្វេបញ្ជី)</strong>, <strong>HRM &amp; Payroll</strong>, និង <strong>Fintech / AI Automation</strong> ស្របតាមស្តង់ដារគុណភាពកម្រិតសហគ្រាស (Enterprise-Grade Standards)។</p>
+<hr>
+<h2 id="1-ចក្ខុវិស័យ-និងគោលដៅប្រព័ន្ធ-vision-objectives" class="scroll-mt-24 group">1. ចក្ខុវិស័យ និងគោលដៅប្រព័ន្ធ (Vision &amp; Objectives) <a href="#1-ចក្ខុវិស័យ-និងគោលដៅប្រព័ន្ធ-vision-objectives" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<p>ប្រព័ន្ធ <strong>DIGITECHKH BMS</strong> ត្រូវបានរចនាឡើងដើម្បីក្លាយជា <strong>ប្រព័ន្ធអេកូឡូស៊ីគ្រប់គ្រងអាជីវកម្មឆ្លាតវៃកម្រិតសហគ្រាស (All-in-One Enterprise Business Ecosystem)</strong> ដែលអាចដំណើរការបានទាំងសម្រាប់អាជីវកម្មខ្នាតតូច មធ្យម (SMEs) រហូតដល់សហគ្រាសធំៗដែលមានសាខាច្រើន (Multi-Branch Franchises)៖</p>
+<ol>
+<li><strong>ការតភ្ជាប់ទិន្នន័យគ្មានថ្នេរ (Seamless Data Continuity)</strong>៖ រាល់ប្រតិបត្តិការពីផ្នែកលក់ រាយ/ដុំ ឃ្លាំងស្តុក លទ្ធកម្ម និងគណនេយ្យ ត្រូវរត់តភ្ជាប់គ្នាដោយស្វ័យប្រវត្តិតាមរយៈ Single Source of Truth។</li>
+<li><strong>គ្មានការលេចធ្លាយទិន្នន័យ (Zero Data-Leakage Multi-Role RBAC)</strong>៖ 12 តួនាទីផ្ទៃក្នុង + 2 ច្រករបៀងខាងក្រៅ មើលឃើញ និងអនុវត្តបានតែលើទិន្នន័យដែលស្របតាមសិទ្ធិរបស់ខ្លួនប៉ុណ្ណោះ។</li>
+<li><strong>ស្តង់ដារបទដ្ឋានជាតិកម្ពុជា 100%</strong>៖ ភាសាខ្មែរសុទ្ធសាធលើ UI, ប្រព័ន្ធបង់ប្រាក់ NBC Bakong KHQR (ទាំង USD និង KHR), ពន្ធរដ្ឋ អតប 10%, និងការបោះពុម្ពឯកសារ A4 ផ្លូវការ។</li>
+</ol>
+<hr>
+<h2 id="2-ស្ថាបត្យកម្មប្រព័ន្ធពេញលេញ-system-architecture-topology" class="scroll-mt-24 group">2. ស្ថាបត្យកម្មប្រព័ន្ធពេញលេញ (System Architecture Topology) <a href="#2-ស្ថាបត្យកម្មប្រព័ន្ធពេញលេញ-system-architecture-topology" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>flowchart TB
+    subgraph UI_Layer[&quot;1. ស្រទាប់ចំណុចប្រទាក់អ្នកប្រើប្រាស់ (User Interface Layer)&quot;]
+        Web_App[&quot;Web Application\n(Modular Vanilla JS / TailwindCSS)&quot;]
+        POS_PWA[&quot;Point of Sale PWA\n(Offline-First / ESC/POS Thermal Print)&quot;]
+        Portals[&quot;Portal អតិថិជន &amp; អ្នកផ្គត់ផ្គង់\n(External Self-Service Portals)&quot;]
+    end
+
+    subgraph Gateway_Layer[&quot;2. ស្រទាប់ច្រកទ្វារ &amp; សុវត្ថិភាព (Gateway &amp; Security Layer)&quot;]
+        Nginx[&quot;Nginx Reverse Proxy / SSL Gateway&quot;]
+        Auth_Guard[&quot;JWT / RBAC Security Guard (12 Roles Data Scope)&quot;]
+        Rate_Limiter[&quot;Rate Limiting &amp; DDoS Shield&quot;]
+    end
+
+    subgraph Service_Layer[&quot;3. ស្រទាប់សេវាកម្មស្នូល (Enterprise Core Services / Modular Monolith)&quot;]
+        CRM_Service[&quot;CRM &amp; Sales Service\n(Quotes, Orders, Invoices, Customers)&quot;]
+        POS_Service[&quot;POS &amp; Retail Service\n(Quick Checkout, Shifts, Bakong KHQR)&quot;]
+        WMS_Service[&quot;WMS &amp; Inventory Service\n(Multi-Warehouse, Lots, Barcodes)&quot;]
+        Procure_Service[&quot;Procurement Service\n(Suppliers, POs, Bills, Expenses)&quot;]
+        Finance_Service[&quot;Finance &amp; GL Service\n(Double-Entry, Tax 10%, Financial Statements)&quot;]
+        HRM_Service[&quot;HRM &amp; Payroll Service\n(Attendance, Shifts, Salary Slips)&quot;]
+        Workflow_Engine[&quot;Workflow &amp; Approval Engine\n(Multi-Tier Rules, Escalations)&quot;]
+        Notification_Bus[&quot;Notification Bus\n(Telegram Bot, Push, SMS, Email)&quot;]
+    end
+
+    subgraph Data_Layer[&quot;4. ស្រទាប់ទិន្នន័យ &amp; ឃ្លាំងផ្ទុក (Persistence &amp; Storage Layer)&quot;]
+        Postgres[(PostgreSQL Relational DB\nMulti-Tenant Schema)]
+        Redis[(Redis In-Memory Cache\nSessions &amp; Rate Limits)]
+        Blob_Store[(Document &amp; Attachment Store\nInvoices, Receipts, Contracts)]
+    end
+
+    UI_Layer --&gt; Gateway_Layer
+    Gateway_Layer --&gt; Service_Layer
+    Service_Layer --&gt; Data_Layer
+</code></pre>
+        </div>
+<hr>
+<h2 id="3-ម៉ូឌុលស្នូលទាំង-8-នៃប្រព័ន្ធពេញលេញ-the-8-enterprise-modules" class="scroll-mt-24 group">3. ម៉ូឌុលស្នូលទាំង 8 នៃប្រព័ន្ធពេញលេញ (The 8 Enterprise Modules) <a href="#3-ម៉ូឌុលស្នូលទាំង-8-នៃប្រព័ន្ធពេញលេញ-the-8-enterprise-modules" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="ម៉ូឌុលទី-1៖-ផ្ទាំងគ្រប់គ្រង-វិភាគទិន្នន័យ-executive-dashboard-bi-analytics" class="scroll-mt-24 group">ម៉ូឌុលទី 1៖ ផ្ទាំងគ្រប់គ្រង &amp; វិភាគទិន្នន័យ (Executive Dashboard &amp; BI Analytics) <a href="#ម៉ូឌុលទី-1៖-ផ្ទាំងគ្រប់គ្រង-វិភាគទិន្នន័យ-executive-dashboard-bi-analytics" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<ul>
+<li><strong>មុខងារសំខាន់ៗ</strong>៖<ul>
+<li>KPI ហិរញ្ញវត្ថុពេលជាក់ស្តែង (ចំណូលសរុប, ចំណាយសរុប, ប្រាក់ចំណេញសុទ្ធ, លំហូរសាច់ប្រាក់ Cashflow)</li>
+<li>ក្រាហ្វនិន្នាការលក់ប្រចាំថ្ងៃ/ខែ/ត្រីមាស និងការប្រៀបធៀបកំណើន</li>
+<li>ផ្ទាំងគ្រប់គ្រងរហ័សតាមតួនាទី (Custom Role-specific Widgets)</li>
+<li>ការជូនដំណឹងឆ្លាតវៃ (មុខទំនិញជិតដាច់ស្តុក, វិក្កយបត្រហួសកាលកំណត់, សំណើសុំអនុម័តបន្ទាន់)</li>
+</ul>
+</li>
+</ul>
+<h3 id="ម៉ូឌុលទី-2៖-ទំនាក់ទំនងអតិថិជន-ការលក់-crm-sales-management" class="scroll-mt-24 group">ម៉ូឌុលទី 2៖ ទំនាក់ទំនងអតិថិជន &amp; ការលក់ (CRM &amp; Sales Management) <a href="#ម៉ូឌុលទី-2៖-ទំនាក់ទំនងអតិថិជន-ការលក់-crm-sales-management" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<ul>
+<li><strong>មុខងារសំខាន់ៗ</strong>៖<ul>
+<li><strong>បំពង់លក់ (Sales Pipeline &amp; Leads)</strong>៖ តាមដានតំណាក់កាលអតិថិជនសក្តានុពល (Lead → Qualified → Proposal → Won/Lost)</li>
+<li><strong>សម្រង់តម្លៃ (Quotations)</strong>៖ ចេញសម្រង់តម្លៃរហ័ស បញ្ចូលលក្ខខណ្ឌទូទាត់ ការបញ្ចុះតម្លៃ និងបម្លែងទៅជាវិក្កយបត្រដោយចុច 1 Click</li>
+<li><strong>វិក្កយបត្រលក់ (Invoices)</strong>៖ គណនាពន្ធ អតប 10%, បញ្ចុះតម្លៃពិសេស, ចូលរួមមុន (Down Payment) និងប្រព័ន្ធ QR Code ទូទាត់ Bakong</li>
+<li><strong>គ្រប់គ្រងអតិថិជន (Customer Profiles)</strong>៖ បែងចែកកម្រិត (រាយ, ដុំ, តំណាងចែកចាយ), ប្រវត្តិកិច្ចសន្យា និងប្រវត្តិតម្លៃទិញពីមុន</li>
+</ul>
+</li>
+</ul>
+<h3 id="ម៉ូឌុលទី-3៖-ច្រកលក់រាយ-គិតលុយ-pos---point-of-sale-retail" class="scroll-mt-24 group">ម៉ូឌុលទី 3៖ ច្រកលក់រាយ &amp; គិតលុយ (POS - Point of Sale &amp; Retail) <a href="#ម៉ូឌុលទី-3៖-ច្រកលក់រាយ-គិតលុយ-pos---point-of-sale-retail" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<ul>
+<li><strong>មុខងារសំខាន់ៗ</strong>៖<ul>
+<li>ការគិតលុយរហ័សលើអេក្រង់ Touchscreen / ម៉ាស៊ីនស្កេនបាកូដ</li>
+<li>ដំណើរការបិទ/បើកវេនគិតលុយ (Cashier Shift Management &amp; Cash Drawer Reconciliation)</li>
+<li>បង្កើត Dynamic Bakong KHQR លើអេក្រង់ឱ្យអតិថិជនស្កេនទូទាត់ភ្លាមៗ និងផ្ទៀងផ្ទាត់ជោគជ័យស្វ័យប្រវត្តិ (Instant Webhook)</li>
+<li>បោះពុម្ពវិក្កយបត្រខ្នាតតូច 80mm/58mm លើម៉ាស៊ីនបោះពុម្ពកម្តៅ (ESC/POS Thermal Printer)</li>
+<li>ដំណើរការលក់បានទោះបីដាច់ Internet (Offline Mode) និង Sync មកវិញពេលមានសេវា</li>
+</ul>
+</li>
+</ul>
+<h3 id="ម៉ូឌុលទី-4៖-លទ្ធកម្ម-អ្នកផ្គត់ផ្គង់-procurement-supplier-management" class="scroll-mt-24 group">ម៉ូឌុលទី 4៖ លទ្ធកម្ម &amp; អ្នកផ្គត់ផ្គង់ (Procurement &amp; Supplier Management) <a href="#ម៉ូឌុលទី-4៖-លទ្ធកម្ម-អ្នកផ្គត់ផ្គង់-procurement-supplier-management" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<ul>
+<li><strong>មុខងារសំខាន់ៗ</strong>៖<ul>
+<li><strong>សំណើសុំទិញ (Purchase Requisition - PR)</strong>៖ ផ្នែកឃ្លាំង ឬផ្នែកលក់ស្នើសុំទិញទំនិញបំពេញស្តុក</li>
+<li><strong>ការបញ្ជាទិញ (Purchase Orders - PO)</strong>៖ ប្រធានលទ្ធកម្មត្រួតពិនិត្យ និងចេញប័ណ្ណបញ្ជាទិញផ្លូវការផ្ញើទៅកាន់អ្នកផ្គត់ផ្គង់</li>
+<li><strong>វិក្កយបត្រទិញ &amp; ប័ណ្ណចំណាយ (Bills &amp; Disbursements)</strong>៖ ផ្ទៀងផ្ទាត់ទំនិញចូលជាមួយវិក្កយបត្រទិញ (3-Way Matching: PO vs Receipt vs Bill) និងចេញប័ណ្ណចំណាយទូទាត់</li>
+</ul>
+</li>
+</ul>
+<h3 id="ម៉ូឌុលទី-5៖-ឃ្លាំង-ស្តុកទំនិញកម្រិតខ្ពស់-advanced-warehouse-inventory---wms" class="scroll-mt-24 group">ម៉ូឌុលទី 5៖ ឃ្លាំង &amp; ស្តុកទំនិញកម្រិតខ្ពស់ (Advanced Warehouse &amp; Inventory - WMS) <a href="#ម៉ូឌុលទី-5៖-ឃ្លាំង-ស្តុកទំនិញកម្រិតខ្ពស់-advanced-warehouse-inventory---wms" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<ul>
+<li><strong>មុខងារសំខាន់ៗ</strong>៖<ul>
+<li><strong>ពហុឃ្លាំង &amp; ទីតាំងស្តុក (Multi-Warehouse &amp; Bin Locations)</strong>៖ គ្រប់គ្រងឃ្លាំងធំ ឃ្លាំងរង និងទីតាំងជួរ/ធ្នើរទំនិញ</li>
+<li><strong>ការផ្ទេរស្តុកអន្តរសាខា (Inter-Branch Stock Transfer)</strong>៖ ប័ណ្ណស្នើសុំផ្ទេរ → ប័ណ្ណបញ្ជូនចេញ → ប័ណ្ណទទួលចូល</li>
+<li><strong>ការតាមដានលេខឡូតិ៍ និងកាលបរិច្ឆេទផុតកំណត់ (Batch/Lot &amp; Expiry Tracking)</strong>៖ សម្រាប់ទំនិញឱសថ ចំណីអាហារ និងគ្រឿងអេឡិចត្រូនិក (FIFO/FEFO)</li>
+<li><strong>ការរាប់ស្តុក និងកែសម្រួល (Stock Count &amp; Adjustment)</strong>៖ បិទបញ្ជីរាប់ស្តុកជាក់ស្តែង និងកត់ត្រាការបាត់បង់/ខូចខាត</li>
+</ul>
+</li>
+</ul>
+<h3 id="ម៉ូឌុលទី-6៖-គណនេយ្យ-ហិរញ្ញវត្ថុទ្វេបញ្ជី-accounting-general-ledger-finance" class="scroll-mt-24 group">ម៉ូឌុលទី 6៖ គណនេយ្យ &amp; ហិរញ្ញវត្ថុទ្វេបញ្ជី (Accounting, General Ledger &amp; Finance) <a href="#ម៉ូឌុលទី-6៖-គណនេយ្យ-ហិរញ្ញវត្ថុទ្វេបញ្ជី-accounting-general-ledger-finance" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<ul>
+<li><strong>មុខងារសំខាន់ៗ</strong>៖<ul>
+<li><strong>តារាងគណនី (Chart of Accounts - COA)</strong>៖ ចាត់ថ្នាក់ទ្រព្យសកម្ម បំណុល មូលធន ចំណូល និងចំណាយតាមបទដ្ឋានជាតិ</li>
+<li><strong>សៀវភៅកំណត់ហេតុទូទៅ (General Journal &amp; Ledger)</strong>៖ រាល់វិក្កយបត្រលក់ វិក្កយបត្រទិញ និងការទូទាត់ត្រូវបានបង្កើត Double-entry Dr/Cr ដោយស្វ័យប្រវត្តិ</li>
+<li><strong>របាយការណ៍ហិរញ្ញវត្ថុស្តង់ដារ</strong>៖<ol>
+<li>តារាងតុល្យការ (Balance Sheet)</li>
+<li>របាយការណ៍ចំណេញ-ខាត (Income / Profit &amp; Loss Statement)</li>
+<li>របាយការណ៍លំហូរសាច់ប្រាក់ (Cash Flow Statement)</li>
+<li>តារាងសមតុល្យសាកល្បង (Trial Balance)</li>
+</ol>
+</li>
+<li><strong>ការផ្ទៀងផ្ទាត់ធនាគារ (Bank Reconciliation)</strong>៖ ផ្ទៀងផ្ទាត់របាយការណ៍ធនាគារជាមួយកំណត់ត្រាប្រព័ន្ធ</li>
+</ul>
+</li>
+</ul>
+<h3 id="ម៉ូឌុលទី-7៖-ធនធានមនុស្ស-បៀវត្សរ៍-hrm-payroll-management" class="scroll-mt-24 group">ម៉ូឌុលទី 7៖ ធនធានមនុស្ស &amp; បៀវត្សរ៍ (HRM &amp; Payroll Management) <a href="#ម៉ូឌុលទី-7៖-ធនធានមនុស្ស-បៀវត្សរ៍-hrm-payroll-management" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<ul>
+<li><strong>មុខងារសំខាន់ៗ</strong>៖<ul>
+<li>គ្រប់គ្រងព័ត៌មានបុគ្គលិក កិច្ចសន្យាការងារ និងឯកសារផ្ទាល់ខ្លួន</li>
+<li>ស្រង់វត្តមានប្រចាំថ្ងៃ តាមម៉ាស៊ីនស្កេនមេដៃ/មុខ ឬ QR Code</li>
+<li>ការគ្រប់គ្រងច្បាប់ឈប់សម្រាក (Leave Requests &amp; Approvals)</li>
+<li>គណនាប្រាក់បៀវត្សរ៍ ប្រាក់ថែមម៉ោង ប្រាក់កម្រៃជើងសារលក់ (Sales Commission) និងកាត់កងពន្ធលើប្រាក់បៀវត្សរ៍ ព្រមទាំងចេញប័ណ្ណបើកប្រាក់បៀវត្សរ៍ (Salary Slips)</li>
+</ul>
+</li>
+</ul>
+<h3 id="ម៉ូឌុលទី-8៖-ការកំណត់ប្រព័ន្ធ-សុវត្ថិភាព-សវនកម្ម-administration-multi-tenant" class="scroll-mt-24 group">ម៉ូឌុលទី 8៖ ការកំណត់ប្រព័ន្ធ, សុវត្ថិភាព &amp; សវនកម្ម (Administration &amp; Multi-Tenant) <a href="#ម៉ូឌុលទី-8៖-ការកំណត់ប្រព័ន្ធ-សុវត្ថិភាព-សវនកម្ម-administration-multi-tenant" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<ul>
+<li><strong>មុខងារសំខាន់ៗ</strong>៖<ul>
+<li>គ្រប់គ្រងស្ថាប័នច្រើន (Multi-Company / Multi-Branch)</li>
+<li>ការគ្រប់គ្រងសិទ្ធិជ្រៅដល់កម្រិតវាលទិន្នន័យ (Field-level &amp; Action-level RBAC)</li>
+<li>កំណត់ហេតុសវនកម្មដែលមិនអាចលុបបាន (Immutable Audit Logs - Who did What, When, and IP)</li>
+<li>ការបម្រុងទុកទិន្នន័យស្វ័យប្រវត្តិ និងការស្តារប្រព័ន្ធឡើងវិញ (Automated Backup &amp; Disaster Recovery)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="4-ម៉ាទ្រីសសិទ្ធិអំណាចនៃតួនាទីទាំង-12-ច្រករបៀងទាំង-2-role-permissions-matrix" class="scroll-mt-24 group">4. ម៉ាទ្រីសសិទ្ធិអំណាចនៃតួនាទីទាំង 12 + ច្រករបៀងទាំង 2 (Role &amp; Permissions Matrix) <a href="#4-ម៉ាទ្រីសសិទ្ធិអំណាចនៃតួនាទីទាំង-12-ច្រករបៀងទាំង-2-role-permissions-matrix" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">តួនាទី</th>
+<th align="center">Dashboard</th>
+<th align="center">សម្រង់តម្លៃ/លក់</th>
+<th align="center">វិក្កយបត្រ</th>
+<th align="center">លទ្ធកម្ម/ទិញ</th>
+<th align="center">ឃ្លាំងស្តុក</th>
+<th align="center">គណនេយ្យ</th>
+<th align="center">របាយការណ៍</th>
+<th align="center">ការកំណត់/Admin</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>1. Super Admin</strong></td>
+<td align="center">សកល</td>
+<td align="center">មើល</td>
+<td align="center">មើល</td>
+<td align="center">មើល</td>
+<td align="center">មើល</td>
+<td align="center">មើល</td>
+<td align="center">សកល</td>
+<td align="center">ពេញលេញ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>2. Admin/GM</strong></td>
+<td align="center">ក្រុមហ៊ុន</td>
+<td align="center">ពេញលេញ</td>
+<td align="center">ពេញលេញ</td>
+<td align="center">ពេញលេញ</td>
+<td align="center">ពេញលេញ</td>
+<td align="center">ពេញលេញ</td>
+<td align="center">ពេញលេញ</td>
+<td align="center">កម្រិតស្ថាប័ន</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>3. Sales Manager</strong></td>
+<td align="center">ផ្នែកលក់</td>
+<td align="center">ពេញលេញ</td>
+<td align="center">ពេញលេញ</td>
+<td align="center">គ្មាន</td>
+<td align="center">មើលស្តុក</td>
+<td align="center">គ្មាន</td>
+<td align="center">របាយការណ៍លក់</td>
+<td align="center">គ្មាន</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>4. Sales Executive</strong></td>
+<td align="center">ផ្ទាល់ខ្លួន</td>
+<td align="center">បង្កើត/កែ</td>
+<td align="center">បង្កើត/កែ</td>
+<td align="center">គ្មាន</td>
+<td align="center">មើលស្តុក</td>
+<td align="center">គ្មាន</td>
+<td align="center">របាយការណ៍ផ្ទាល់ខ្លួន</td>
+<td align="center">គ្មាន</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>5. Cashier / POS</strong></td>
+<td align="center">ច្រកលក់រាយ</td>
+<td align="center">គ្មាន</td>
+<td align="center">ចេញវិក្កយបត្ររាយ</td>
+<td align="center">គ្មាន</td>
+<td align="center">មើលស្តុក</td>
+<td align="center">ទទួលប្រាក់</td>
+<td align="center">បិទវេនប្រចាំថ្ងៃ</td>
+<td align="center">គ្មាន</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>6. Procurement Mgr</strong></td>
+<td align="center">ផ្នែកទិញ</td>
+<td align="center">គ្មាន</td>
+<td align="center">គ្មាន</td>
+<td align="center">ពេញលេញ</td>
+<td align="center">មើលស្តុក</td>
+<td align="center">ប័ណ្ណទិញ</td>
+<td align="center">របាយការណ៍ទិញ</td>
+<td align="center">គ្មាន</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>7. Warehouse Mgr</strong></td>
+<td align="center">ផ្នែកស្តុក</td>
+<td align="center">គ្មាន</td>
+<td align="center">គ្មាន</td>
+<td align="center">ទទួលទំនិញ</td>
+<td align="center">ពេញលេញ</td>
+<td align="center">គ្មាន</td>
+<td align="center">របាយការណ៍ស្តុក</td>
+<td align="center">គ្មាន</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>8. Warehouse Staff</strong></td>
+<td align="center">ឃ្លាំង</td>
+<td align="center">គ្មាន</td>
+<td align="center">គ្មាន</td>
+<td align="center">ពិនិត្យចូល</td>
+<td align="center">រាប់/រៀប/វេច</td>
+<td align="center">គ្មាន</td>
+<td align="center">ប័ណ្ណរាប់</td>
+<td align="center">គ្មាន</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>9. Chief Accountant</strong></td>
+<td align="center">ហិរញ្ញវត្ថុ</td>
+<td align="center">មើល</td>
+<td align="center">ផ្ទៀងផ្ទាត់</td>
+<td align="center">ផ្ទៀងផ្ទាត់</td>
+<td align="center">មើលតម្លៃដើម</td>
+<td align="center">ពេញលេញ</td>
+<td align="center">របាយការណ៍ហិរញ្ញវត្ថុ</td>
+<td align="center">ពន្ធ &amp; អត្រាប្តូរ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>10. AP/AR Accountant</strong></td>
+<td align="center">បំណុល/ទារ</td>
+<td align="center">គ្មាន</td>
+<td align="center">តាមដានទារប្រាក់</td>
+<td align="center">តាមដានសងប្រាក់</td>
+<td align="center">គ្មាន</td>
+<td align="center">បង្កាន់ដៃ/ប័ណ្ណចំណាយ</td>
+<td align="center">តារាងបំណុល</td>
+<td align="center">គ្មាន</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>11. Executive/Auditor</strong></td>
+<td align="center">សវនកម្ម</td>
+<td align="center">មើល</td>
+<td align="center">មើល</td>
+<td align="center">មើល</td>
+<td align="center">មើល</td>
+<td align="center">មើល</td>
+<td align="center">ពេញលេញ</td>
+<td align="center">មើលកំណត់ហេតុ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>12. Customer Support</strong></td>
+<td align="center">សេវាអតិថិជន</td>
+<td align="center">គ្មាន</td>
+<td align="center">មើលវិក្កយបត្រ</td>
+<td align="center">គ្មាន</td>
+<td align="center">មើលស្តុក</td>
+<td align="center">គ្មាន</td>
+<td align="center">គ្មាន</td>
+<td align="center">គ្មាន</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>P1. Customer Portal</strong></td>
+<td align="center">វិបផតថល</td>
+<td align="center">ស្នើសុំតម្លៃ</td>
+<td align="center">មើល/ទាញយក/បង់</td>
+<td align="center">គ្មាន</td>
+<td align="center">គ្មាន</td>
+<td align="center">គ្មាន</td>
+<td align="center">គ្មាន</td>
+<td align="center">ព័ត៌មានផ្ទាល់ខ្លួន</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>P2. Supplier Portal</strong></td>
+<td align="center">វិបផតថល</td>
+<td align="center">គ្មាន</td>
+<td align="center">គ្មាន</td>
+<td align="center">ទទួល PO / ដាក់ Bill</td>
+<td align="center">គ្មាន</td>
+<td align="center">គ្មាន</td>
+<td align="center">គ្មាន</td>
+<td align="center">ព័ត៌មានផ្គត់ផ្គង់</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="5-គំនិតច្នៃប្រឌិត-និងបច្ចេកវិទ្យាជាន់ខ្ពស់-advanced-innovation-roadmap" class="scroll-mt-24 group">5. គំនិតច្នៃប្រឌិត និងបច្ចេកវិទ្យាជាន់ខ្ពស់ (Advanced Innovation Roadmap) <a href="#5-គំនិតច្នៃប្រឌិត-និងបច្ចេកវិទ្យាជាន់ខ្ពស់-advanced-innovation-roadmap" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>mindmap
+  root((គំនិតច្នៃប្រឌិតជាន់ខ្ពស់))
+    Fintech &amp; Bakong KHQR
+      បង្កើត Dynamic KHQR មានចំនួនទឹកប្រាក់
+      Webhook បញ្ជាក់ការទូទាត់ភ្លាមៗ 1 វិនាទី
+      គាំទ្រទាំងប្រាក់រៀល និងប្រាក់ដុល្លារ
+    AI Smart Copilot
+      ព្យាករណ៍ការលក់តាមរដូវកាល Sales Forecast
+      គណនាចំណុចបញ្ជាទិញបំពេញស្តុក Auto Reorder Point
+      វិភាគហានិភ័យអតិថិជនជំពាក់មិនសង Churn &amp; Credit Risk
+      ឆ្លើយសំណួររបាយការណ៍ជាភាសាខ្មែរ BI Natural Language
+    Offline-First POS
+      លក់បានទោះបីដាច់ Internet
+      IndexedDB Local Caching
+      ស្វ័យប្រវត្តិកម្ម Sync ពេលមានសេវា
+    Telegram Automation Bot
+      ជូនដំណឹងភ្លាមៗពេលមានការលក់ថ្មី
+      ផ្ញើរបាយការណ៍សង្ខេបស្វ័យប្រវត្តិនាវេលាម៉ោង 5 រសៀល
+      ប៊ូតុងចុចអនុម័ត PO/Invoice លើ Telegram ផ្ទាល់
+    Omnichannel Customer Portal
+      អតិថិជនអាចមើលវិក្កយបត្រ និងស្កេន KHQR បង់ប្រាក់ដោយខ្លួនឯង
+      តាមដានស្ថានភាពដឹកជញ្ជូនទំនិញ
+</code></pre>
+        </div>
+<hr>
+<h2 id="6-ផែនការអនុវត្តជាក់ស្តែង-4-ដំណាក់កាល-implementation-roadmap" class="scroll-mt-24 group">6. ផែនការអនុវត្តជាក់ស្តែង 4 ដំណាក់កាល (Implementation Roadmap) <a href="#6-ផែនការអនុវត្តជាក់ស្តែង-4-ដំណាក់កាល-implementation-roadmap" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="ដំណាក់កាលទី-1៖-គំរូទម្រង់-ui-និងលំហូររុករក-frontend-completeness---សម្រេចបាន-100" class="scroll-mt-24 group">ដំណាក់កាលទី 1៖ គំរូទម្រង់ UI និងលំហូររុករក (Frontend Completeness - សម្រេចបាន 100%) <a href="#ដំណាក់កាលទី-1៖-គំរូទម្រង់-ui-និងលំហូររុករក-frontend-completeness---សម្រេចបាន-100" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<ul>
+<li>បង្កើតទំព័រពេញលេញ 45+ ទំព័រ (តារាង, ទម្រង់បង្កើត, ទម្រង់កែប្រែ, បង្ហាញព័ត៌មានលម្អិត)។</li>
+<li>អនុវត្តស្តង់ដារ <code>72px</code> Header, Unified Date Range Picker, 100% Khmer Language, No Native Modals។</li>
+<li>គ្មាន Broken Links (0 broken links លើ 695 តំណភ្ជាប់)។</li>
+</ul>
+<h3 id="ដំណាក់កាលទី-2៖-ស្ថាបត្យកម្ម-backend-api-database-core-engine" class="scroll-mt-24 group">ដំណាក់កាលទី 2៖ ស្ថាបត្យកម្ម Backend API &amp; Database (Core Engine) <a href="#ដំណាក់កាលទី-2៖-ស្ថាបត្យកម្ម-backend-api-database-core-engine" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<ul>
+<li>រៀបចំ PostgreSQL Database Schema ដោយបែងចែក Multi-Tenant និង Master Data (អតិថិជន, អ្នកផ្គត់ផ្គង់, ផលិតផល, វិក្កយបត្រ, ស្តុក, គណនី)។</li>
+<li>បង្កើត RESTful API / RPC Service តាមបែប Modular Monolith ជាមួយ Node.js/NestJS ឬ Go/Python។</li>
+<li>បំពាក់ប្រព័ន្ធសុវត្ថិភាព JWT Auth, Refresh Token, និង Role Guards រឹងមាំ។</li>
+</ul>
+<h3 id="ដំណាក់កាលទី-3៖-ការតភ្ជាប់ប្រព័ន្ធខាងក្រៅ-integrations-hardware" class="scroll-mt-24 group">ដំណាក់កាលទី 3៖ ការតភ្ជាប់ប្រព័ន្ធខាងក្រៅ (Integrations &amp; Hardware) <a href="#ដំណាក់កាលទី-3៖-ការតភ្ជាប់ប្រព័ន្ធខាងក្រៅ-integrations-hardware" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<ul>
+<li>តភ្ជាប់ NBC Bakong KHQR Open API សម្រាប់ទទួលប្រាក់ស្វ័យប្រវត្តិ។</li>
+<li>តភ្ជាប់ Telegram Bot API សម្រាប់ប្រព័ន្ធជូនដំណឹងបន្ទាន់ និងរបាយការណ៍ល្ងាច។</li>
+<li>រៀបចំ Web-to-Hardware Printing សម្រាប់ម៉ាស៊ីនបោះពុម្ពកម្តៅ ESC/POS និង A4 Enterprise PDF Engine។</li>
+</ul>
+<h3 id="ដំណាក់កាលទី-4៖-ការធានាគុណភាព-និងដាក់ឱ្យប្រើប្រាស់-qa-hardening-deployment" class="scroll-mt-24 group">ដំណាក់កាលទី 4៖ ការធានាគុណភាព និងដាក់ឱ្យប្រើប្រាស់ (QA Hardening &amp; Deployment) <a href="#ដំណាក់កាលទី-4៖-ការធានាគុណភាព-និងដាក់ឱ្យប្រើប្រាស់-qa-hardening-deployment" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<ul>
+<li>អនុវត្តបញ្ជីត្រួតពិនិត្យ 3 ដំណាក់កាលតាមគំរូ ClassMaster៖ <strong>D-7</strong> (Code &amp; DB Audit), <strong>D-1</strong> (System Freeze), <strong>T-90</strong> (Pre-Flight Launch Verification)។</li>
+<li>រៀបចំ Docker Containers, Nginx Reverse Proxy, Cloudflare SSL, និង Automated Nightly Backup។</li>
+<li>ចងក្រងមគ្គុទ្ទេសក៍បណ្តុះបណ្តាលបុគ្គលិកតាមតួនាទីនីមួយៗ។</li>
+</ul>
+
+                </article>
+
+                <!-- Next / Previous Doc Navigation Bar -->
+                <div class="no-print mt-12 pt-8 border-t border-slate-200 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <a href="04-LEARNINGS-AND-STANDARDS-BENCHMARK.html" class="p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-transform flex-shrink-0">
+                            💡
+                        </div>
+                        <div class="min-w-0">
+                            <div class="text-[10px] text-slate-400 font-medium">← ឯកសារមុន</div>
+                            <div class="text-xs font-bold text-slate-800 group-hover:text-primary transition truncate">មេរៀន និងស្តង់ដារបច្ចេកវិទ្យា</div>
+                        </div>
+                    </a>
+
+                    <a href="06-FULL-SYSTEM-SPECIFICATION-AND-TEAM-GUIDE.html" class="p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group flex items-center justify-end text-right gap-3">
+                        <div class="min-w-0">
+                            <div class="text-[10px] text-slate-400 font-medium">ឯកសារបន្ទាប់ →</div>
+                            <div class="text-xs font-bold text-slate-800 group-hover:text-primary transition truncate">សេចក្តីបញ្ជាក់លម្អិតប្រព័ន្ធ</div>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-transform flex-shrink-0">
+                            📑
+                        </div>
+                    </a>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="no-print bg-white border-t border-slate-200 py-6 px-8 text-center text-xs text-slate-500">
+        <p>រក្សាសិទ្ធិគ្រប់យ៉ាង © 2026 ក្រុមហ៊ុន ឌីជីថេក ខេអេច (DIGITECHKH Co., Ltd.) · ព្រះរាជាណាចក្រកម្ពុជា</p>
+    </footer>
+
+</body>
+</html>

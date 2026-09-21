@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="km" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03. សៀវភៅណែនាំប្រតិបត្តិការ — ឯកសារបច្ចេកទេស | DIGITECHKH BMS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Kantumruy Pro', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0f2b5c',
+                        primaryHover: '#0a1d3f',
+                        accent: '#2563eb',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Kantumruy Pro', sans-serif;
+            color: #334155;
+            background-color: #f8fafc;
+        }
+        ::-webkit-scrollbar { display: none; }
+        * { -ms-overflow-style: none; scrollbar-width: none; }
+        h1, h2, h3, h4 { color: #0f172a; font-weight: 700; }
+        h1 { font-size: 1.8rem; line-height: 2.35rem; margin-bottom: 1.25rem; }
+        h2 { font-size: 1.35rem; line-height: 1.85rem; margin-top: 2.25rem; margin-bottom: 0.85rem; padding-bottom: 0.5rem; border-bottom: 1px solid #e2e8f0; }
+        h3 { font-size: 1.1rem; line-height: 1.5rem; margin-top: 1.75rem; margin-bottom: 0.5rem; }
+        p { margin-bottom: 0.85rem; line-height: 1.8; font-size: 0.95rem; }
+        ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1rem; font-size: 0.95rem; }
+        ol { list-style-type: decimal; padding-left: 1.5rem; margin-bottom: 1rem; font-size: 0.95rem; }
+        li { margin-bottom: 0.35rem; line-height: 1.7; }
+        hr { border: 0; border-top: 1px solid #e2e8f0; margin: 2rem 0; }
+        @media print {
+            .no-print { display: none !important; }
+            body { background-color: #ffffff; color: #000; }
+            .print-container { max-width: 100% !important; margin: 0 !important; padding: 0 !important; box-shadow: none !important; border: none !important; }
+            table, pre, blockquote, .rounded-xl, .rounded-2xl { page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-primary selection:text-white min-h-screen flex flex-col justify-between">
+
+    <!-- Top Sticky Control Bar -->
+    <header class="no-print fixed top-0 left-0 right-0 h-16 bg-primary text-white z-50 px-4 sm:px-8 flex items-center justify-between shadow-md">
+        <div class="flex items-center gap-3">
+            <a href="index.html" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition flex items-center gap-2 text-xs font-semibold">
+                <i class="fas fa-arrow-left"></i> <span class="hidden sm:inline">មជ្ឈមណ្ឌលឯកសារ</span>
+            </a>
+            <span class="text-white/30 hidden sm:inline">|</span>
+            <div class="flex items-center gap-2">
+                <span class="text-xl">📖</span>
+                <span class="font-bold text-xs sm:text-sm text-white truncate max-w-[200px] sm:max-w-xs">03. សៀវភៅណែនាំប្រតិបត្តិការ</span>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-white/15 text-emerald-300 hidden md:inline">Technical Spec</span>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-2 sm:gap-3">
+            <!-- Tech Doc Switcher -->
+            <div class="relative">
+                <select onchange="window.location.href=this.value" class="h-9 pl-3 pr-8 bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl text-xs font-semibold text-white focus:outline-none focus:bg-[#0a1d3f] transition appearance-none cursor-pointer">
+                    <option value="00-SYSTEM-OVERVIEW-AND-ARCHITECTURE.html" >00. ស្ថាបត្យកម្ម & គំរូទិន្នន័យ</option>
+<option value="01-END-TO-END-SYSTEM-WORKFLOW.html" >01. លំហូរការងារទាំង 8 វដ្ត</option>
+<option value="02-DELIVERY-AUDIT-AND-CHECKLIST.html" >02. បញ្ជីសវនកម្មគុណភាព</option>
+<option value="03-USER-OPERATIONAL-GUIDE.html" selected>03. សៀវភៅណែនាំប្រតិបត្តិការ</option>
+<option value="04-LEARNINGS-AND-STANDARDS-BENCHMARK.html" >04. មេរៀន និងស្តង់ដារបច្ចេកវិទ្យា</option>
+<option value="05-MASTER-SYSTEM-BLUEPRINT-AND-ENTERPRISE-PLAN.html" >05. ប្លង់មេ & ផែនទីបង្ហាញផ្លូវ</option>
+<option value="06-FULL-SYSTEM-SPECIFICATION-AND-TEAM-GUIDE.html" >06. សេចក្តីបញ្ជាក់លម្អិតប្រព័ន្ធ</option>
+<option value="07-CLIENT-PITCH-AND-SALES-STRATEGY.html" >07. យុទ្ធសាស្ត្រលក់ & Wow Demo</option>
+<option value="08-ECOMMERCE-DIGITAL-SHOWROOM-SPECIFICATION.html" >08. លក្ខណៈបច្ចេកទេស Showroom</option>
+                </select>
+                <i class="fas fa-chevron-down absolute right-3 top-3 text-[10px] text-white/60 pointer-events-none"></i>
+            </div>
+
+            <!-- Print Button -->
+            <button onclick="window.print()" class="px-3 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-semibold transition flex items-center gap-1.5 shadow-sm cursor-pointer">
+                <i class="fas fa-print"></i> <span class="hidden sm:inline">បោះពុម្ព A4</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Reading Container -->
+    <div class="pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full flex-1">
+        <div class="flex flex-col lg:flex-row gap-8 items-start">
+
+            <!-- Left Table of Contents Sidebar -->
+            <aside class="no-print lg:w-72 flex-shrink-0 sticky top-24 hidden lg:block bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
+                <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-3">
+                    <span class="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
+                        <i class="fas fa-list-ul text-primary"></i> មាតិកាឯកសារ
+                    </span>
+                    <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-50 text-accent">TOC</span>
+                </div>
+                <div class="space-y-0.5 max-h-[calc(100vh-220px)] overflow-y-auto pr-1 text-xs">
+                    
+                </div>
+                <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
+                    <a href="03-USER-OPERATIONAL-GUIDE.md" class="w-full py-2 px-3 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-500 text-[11px] font-normal flex items-center justify-between transition border border-slate-200">
+                        <span>មើលឯកសារដើម (.md)</span>
+                        <i class="fas fa-file-code text-[10px]"></i>
+                    </a>
+                </div>
+            </aside>
+
+            <!-- Main Document Body -->
+            <main class="print-container flex-1 bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-12 min-w-0 max-w-4xl mx-auto">
+
+                <!-- Breadcrumb -->
+                <div class="no-print flex items-center gap-2 text-xs text-slate-500 mb-6 flex-wrap pb-4 border-b border-slate-100">
+                    <a href="index.html" class="hover:text-primary transition flex items-center gap-1">
+                        <i class="fas fa-home"></i> មជ្ឈមណ្ឌលឯកសារ
+                    </a>
+                    <span>/</span>
+                    <span class="text-slate-500">ឯកសារបច្ចេកទេស</span>
+                    <span>/</span>
+                    <span class="text-slate-800 font-semibold">សៀវភៅណែនាំប្រតិបត្តិការ</span>
+                </div>
+
+                <!-- Document Rendered HTML -->
+                <article class="prose prose-slate max-w-none">
+                    <h1 id="digitechkh-business-management-system-bms" class="scroll-mt-24 group">DIGITECHKH Business Management System (BMS) <a href="#digitechkh-business-management-system-bms" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h1>
+<h2 id="សៀវភៅណែនាំប្រតិបត្តិការប្រព័ន្ធ-និងផែនការផ្ទៀងផ្ទាត់មួយតួនាទីម្តងៗ-user-operational-guide-step-by-step-roadmap" class="scroll-mt-24 group">សៀវភៅណែនាំប្រតិបត្តិការប្រព័ន្ធ និងផែនការផ្ទៀងផ្ទាត់មួយតួនាទីម្តងៗ (User Operational Guide &amp; Step-by-Step Roadmap) <a href="#សៀវភៅណែនាំប្រតិបត្តិការប្រព័ន្ធ-និងផែនការផ្ទៀងផ្ទាត់មួយតួនាទីម្តងៗ-user-operational-guide-step-by-step-roadmap" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<ul>
+<li><strong>កំណែប្រែ (Version)</strong>: 1.0</li>
+<li><strong>កាលបរិច្ឆេទ</strong>: 17 កញ្ញា 2026</li>
+<li><strong>គោលដៅ</strong>: មគ្គទេសក៍ជាក់ស្តែងសម្រាប់សាកល្បងប្រព័ន្ធ និងផែនការត្រួតពិនិត្យមួយតួនាទីម្តងៗជាមួយអ្នកប្រើប្រាស់</li>
+</ul>
+<hr>
+<h2 id="1-របៀបសាកល្បង-និងរុករកប្រព័ន្ធជាក់ស្តែង-how-to-test-navigate" class="scroll-mt-24 group">1. របៀបសាកល្បង និងរុករកប្រព័ន្ធជាក់ស្តែង (How to Test &amp; Navigate) <a href="#1-របៀបសាកល្បង-និងរុករកប្រព័ន្ធជាក់ស្តែង-how-to-test-navigate" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="ជំហានទី-1៖-ចូលទៅកាន់ទំព័រ-login" class="scroll-mt-24 group">ជំហានទី 1៖ ចូលទៅកាន់ទំព័រ Login <a href="#ជំហានទី-1៖-ចូលទៅកាន់ទំព័រ-login" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<ol>
+<li>បើកឯកសារ <a href="file:///d:/DATA/Project/bms_protoype_v1/frontend/src/pages/1-login/login.html">login.html</a> លើ Google Chrome, Microsoft Edge ឬ Browser ណាមួយ។</li>
+<li>ផ្ទាំង Login បច្ចុប្បន្នមានទម្រង់ស្អាតស្អំ (Clean &amp; Elegant) ជាមួយប្រអប់បញ្ចូលទទេស្អាត។</li>
+<li>នៅពីក្រោមប៊ូតុង <strong>«ចូលប្រព័ន្ធ»</strong> ចុចលើប៊ូតុង <strong>«ជ្រើសរើសតួនាទីសាកល្បង»</strong>។</li>
+</ol>
+<h3 id="ជំហានទី-2៖-ជ្រើសរើសតួនាទីដែលចង់សាកល្បង" class="scroll-mt-24 group">ជំហានទី 2៖ ជ្រើសរើសតួនាទីដែលចង់សាកល្បង <a href="#ជំហានទី-2៖-ជ្រើសរើសតួនាទីដែលចង់សាកល្បង" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<ul>
+<li>ផ្ទាំង Modal នឹងបើកឡើងបង្ហាញជម្រើសទាំង 12 តួនាទីយ៉ាងស្រស់ស្អាត។</li>
+<li>ចុចលើតួនាទីណាមួយ ប្រព័ន្ធនឹងបញ្ជូនអ្នកទៅកាន់ Dashboard ជាក់ស្តែងនៃតួនាទីនោះភ្លាមៗ។</li>
+</ul>
+<h3 id="ជំហានទី-3៖-ការផ្លាស់ប្តូរតួនាទីរហ័ស" class="scroll-mt-24 group">ជំហានទី 3៖ ការផ្លាស់ប្តូរតួនាទីរហ័ស <a href="#ជំហានទី-3៖-ការផ្លាស់ប្តូរតួនាទីរហ័ស" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<ul>
+<li>នៅលើ Sidebar ខាងឆ្វេង (ឬផ្នែកខាងក្រោមនៃ Sidebar ក្នុង Super Admin) មានប៊ូតុងសម្រាប់ត្រឡប់ ឬផ្លាស់ប្តូរតួនាទីសាកល្បងបានគ្រប់ពេលវេលា ដោយមិនចាំបាច់ Log out វិញឡើយ។</li>
+</ul>
+<hr>
+<h2 id="2-ផែនការផ្ទៀងផ្ទាត់លម្អិតមួយតួនាទីម្តងៗ-role-by-role-verification-plan" class="scroll-mt-24 group">2. ផែនការផ្ទៀងផ្ទាត់លម្អិតមួយតួនាទីម្តងៗ (Role-by-Role Verification Plan) <a href="#2-ផែនការផ្ទៀងផ្ទាត់លម្អិតមួយតួនាទីម្តងៗ-role-by-role-verification-plan" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<p>ដើម្បីធានាបាននូវគុណភាពកម្រិតខ្ពស់បំផុត និងកុំឱ្យមានភាពរញ៉េរញ៉ៃ យើងនឹងត្រួតពិនិត្យប្រព័ន្ធ <strong>មួយតួនាទីម្តងៗ (One Role at a Time)</strong> ដោយរង់ចាំការបញ្ជាក់ និងយល់ព្រម (Confirmation) ពីលោកអ្នកលើតួនាទីនីមួយៗ ទើបបន្តទៅកាន់តួនាទីបន្ទាប់៖</p>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>flowchart LR
+    R1[&quot;1. ស៊ុបភើរ អភិបាល&lt;br/&gt;(Super Admin)&quot;] --&gt; R2[&quot;2. អ្នកគ្រប់គ្រងទូទៅ&lt;br/&gt;(Admin)&quot;]
+    R2 --&gt; R3[&quot;3. អ្នកគ្រប់គ្រង&lt;br/&gt;(Manager)&quot;]
+    R3 --&gt; R4[&quot;4. បុគ្គលិកផ្នែកលក់&lt;br/&gt;(Sales Staff)&quot;]
+    R4 --&gt; R5[&quot;5. អ្នកគិតប្រាក់&lt;br/&gt;(Touch POS)&quot;]
+    R5 --&gt; R6[&quot;6. គណនេយ្យករ&lt;br/&gt;(Accountant)&quot;]
+    R6 --&gt; R7[&quot;7. បុគ្គលិកផ្នែកលទ្ធកម្ម&lt;br/&gt;(Purchase Staff)&quot;]
+    R7 --&gt; R8[&quot;8. បុគ្គលិកផ្នែកស្តុក&lt;br/&gt;(Inventory Staff)&quot;]
+    R8 --&gt; R9[&quot;9. បុគ្គលិកដឹកជញ្ជូន&lt;br/&gt;(Delivery Driver)&quot;]
+    R9 --&gt; R10[&quot;10. បុគ្គលិក HR&lt;br/&gt;(HR Staff)&quot;]
+    R10 --&gt; R11[&quot;11. ដៃគូផ្គត់ផ្គង់&lt;br/&gt;(Supplier Portal)&quot;]
+    R11 --&gt; R12[&quot;12. អតិថិជន&lt;br/&gt;(Customer Portal)&quot;]
+</code></pre>
+        </div>
+<h3 id="លំដាប់នៃការផ្ទៀងផ្ទាត់-verification-sequence" class="scroll-mt-24 group">លំដាប់នៃការផ្ទៀងផ្ទាត់ (Verification Sequence): <a href="#លំដាប់នៃការផ្ទៀងផ្ទាត់-verification-sequence" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<ol>
+<li><strong>តួនាទីទី 1៖ ស៊ុបភើរ អភិបាល (Super Admin)</strong> $\leftarrow$ <em>(ត្រៀមចាប់ផ្តើមត្រួតពិនិត្យមុនគេ)</em><ul>
+<li>ពិនិត្យការគ្រប់គ្រង Multi-tenant ក្រុមហ៊ុន, ការ Onboard ក្រុមហ៊ុនថ្មី, កញ្ចប់សេវា Subscription, កូតាគណនី, និងកំណត់ហេតុសវនកម្មសកល។</li>
+</ul>
+</li>
+<li><strong>តួនាទីទី 2៖ អ្នកគ្រប់គ្រងទូទៅ (Admin)</strong><ul>
+<li>ពិនិត្យសិទ្ធិគ្រប់គ្រងអាជីវកម្មពេញលេញ, ការលក់, ការទិញ, ស្តុក, របាយការណ៍ និងការកំណត់។</li>
+</ul>
+</li>
+<li><strong>តួនាទីទី 3៖ អ្នកគ្រប់គ្រង (Manager)</strong><ul>
+<li>ពិនិត្យការអនុម័ត និងបដិសេធវិក្កយបត្រ, សម្រង់តម្លៃ, បញ្ជាទិញចូល, និងមូលហេតុសវនកម្ម។</li>
+</ul>
+</li>
+<li><strong>តួនាទីទី 4៖ បុគ្គលិកផ្នែកលក់ (Sales Staff)</strong><ul>
+<li>ពិនិត្យការបង្កើតវិក្កយបត្រឌីណាមិកតាមកម្រិតអតិថិជន, សម្រង់តម្លៃ, ការគ្រប់គ្រងអតិថិជន និងការលាក់ថ្លៃដើម។</li>
+</ul>
+</li>
+<li><strong>តួនាទីទី 5៖ អ្នកគិតប្រាក់លក់រហ័ស (Cashier Touch POS)</strong><ul>
+<li>ពិនិត្យផ្ទាំង Touch Screen, កន្ត្រកទំនិញ, ប្រវត្តិជាប់សោរវេនថ្ងៃនេះ, និងផ្ទាំងបិទវេនប្រចាំថ្ងៃ (X/Z Report)។</li>
+</ul>
+</li>
+<li><strong>តួនាទីទី 6៖ គណនេយ្យករ (Accountant)</strong><ul>
+<li>ពិនិត្យការចេញប័ណ្ណចំណាយទូទាត់ (Voucher), ការកាត់ពន្ធកាត់ទុក (WHT), ពន្ធ អតប 10%, ប័ណ្ណបោះពុម្ព A4 មាន 4 ហត្ថលេខា។</li>
+</ul>
+</li>
+<li><strong>តួនាទីទី 7៖ បុគ្គលិកផ្នែកលទ្ធកម្ម (Purchase Staff)</strong><ul>
+<li>ពិនិត្យការចេញ PO ទៅកាន់អ្នកផ្គត់ផ្គង់, ការកត់ត្រាថ្លៃដើមទិញ, និងការតាមដានការទូទាត់។</li>
+</ul>
+</li>
+<li><strong>តួនាទីទី 8៖ បុគ្គលិកផ្នែកស្តុកទំនិញ (Inventory Staff)</strong><ul>
+<li>ពិនិត្យតុល្យភាពស្តុក, ការកែតម្រូវចំនួនរាប់ជាក់ស្តែង, ចលនាផ្ទេរទំនិញ, និងការធានា Zero Price Leakage (លាក់តម្លៃ 100%)។</li>
+</ul>
+</li>
+<li><strong>តួនាទីទី 9៖ បុគ្គលិកដឹកជញ្ជូន (Delivery Driver)</strong><ul>
+<li>ពិនិត្យបញ្ជីដឹកជញ្ជូន, ប៊ូតុងទូរស័ព្ទចុចខល, ផ្ទាំងថតរូបភស្តុតាង, ហត្ថលេខាទទួល និងការលាក់តម្លៃទឹកប្រាក់។</li>
+</ul>
+</li>
+<li><strong>តួនាទីទី 10៖ បុគ្គលិកធនធានមនុស្ស និងរដ្ឋបាល (HR Staff)</strong><ul>
+<li>ពិនិត្យការចុះឈ្មោះបុគ្គលិក, វត្តមានស្កេនម្រាមដៃ, ច្បាប់ឈប់សម្រាក, បញ្ជីបើកប្រាក់ខែ, ប័ណ្ណបើកប្រាក់ A4 (ប.ស.ស)។</li>
+</ul>
+</li>
+<li><strong>តួនាទីទី 11៖ ច្រករបៀងដៃគូផ្គត់ផ្គង់ (Supplier Portal)</strong><ul>
+<li>ពិនិត្យការទទួលយកការបញ្ជាទិញ (PO), ការដាក់ស្នើវិក្កយបត្រទូទាត់ និងការភ្ជាប់ឯកសារ។</li>
+</ul>
+</li>
+<li><strong>តួនាទីទី 12៖ ច្រករបៀងអតិថិជន (Customer Portal)</strong><ul>
+<li>ពិនិត្យវិក្កយបត្រ, ការស្កេន KHQR បាគងឌីណាមិក, និងការតាមដានការដឹកជញ្ជូន 4 ដំណាក់កាល។</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="3-ដំបូន្មានសំខាន់ៗសម្រាប់អ្នកទើបបង្កើតប្រព័ន្ធធំលើកដំបូង-advice-for-building-large-systems" class="scroll-mt-24 group">3. ដំបូន្មានសំខាន់ៗសម្រាប់អ្នកទើបបង្កើតប្រព័ន្ធធំលើកដំបូង (Advice for Building Large Systems) <a href="#3-ដំបូន្មានសំខាន់ៗសម្រាប់អ្នកទើបបង្កើតប្រព័ន្ធធំលើកដំបូង-advice-for-building-large-systems" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<ol>
+<li><strong>កុំព្យាយាមធ្វើគ្រប់យ៉ាងក្នុងពេលតែមួយ</strong>:<ul>
+<li>ប្រព័ន្ធធំៗ (ដូចជា Odoo, SAP) ត្រូវបានកសាងឡើងតាមម៉ូឌុល និងជំហានច្បាស់លាស់។</li>
+<li>ត្រូវប្រាកដថាម៉ូឌុលនីមួយៗមានភាពរឹងមាំ គ្មានកំហុស និងបំពេញតម្រូវការជាក់ស្តែងមុននឹងបន្តទៅមុខ។</li>
+</ul>
+</li>
+<li><strong>ផ្តោតលើភាពត្រឹមត្រូវនៃទិន្នន័យ (Data Integrity)</strong>:<ul>
+<li>ឯកសារហិរញ្ញវត្ថុដែលបានអនុម័តរួច (Confirmed) មិនត្រូវលុបចោលឡើយ (ត្រូវប្រើប្រាស់ Void/Cancel ជំនួសវិញ) ដើម្បីរក្សាភាពស្អាតនៃសវនកម្ម។</li>
+<li>តម្លៃទឹកប្រាក់ និងបរិមាណត្រូវគណនាដោយ Server មិនត្រូវទុកចិត្តលើការគណនារបស់ Browser ឡើយ។</li>
+</ul>
+</li>
+<li><strong>សុវត្ថិភាពឯកជនភាព (Data Privacy) គឺជាអាទិភាពចម្បង</strong>:<ul>
+<li>បុគ្គលិកថ្នាក់ប្រតិបត្តិការ (ដូចជា ឃ្លាំង និងអ្នកដឹក) មិនត្រូវដឹងថ្លៃដើម ឬប្រាក់ចំណេញរបស់ក្រុមហ៊ុនឡើយ។ ការអនុវត្ត Zero Price Leakage នៅក្នុងប្រព័ន្ធនេះគឺជាការការពារអាជីវកម្មដ៏រឹងមាំបំផុត។</li>
+</ul>
+</li>
+<li><strong>ការបណ្តុះបណ្តាល និងឯកសារណែនាំ (Documentation &amp; Training)</strong>:<ul>
+<li>ប្រព័ន្ធល្អ គឺប្រព័ន្ធដែលអ្នកប្រើប្រាស់ងាយយល់ និងមានឯកសារច្បាស់លាស់។</li>
+<li>ឯកសារដែលយើងកំពុងរៀបចំនេះ នឹងក្លាយជាគ្រឹះសម្រាប់បណ្តុះបណ្តាលបុគ្គលិក និងដៃគូអាជីវកម្មនៅពេលប្រព័ន្ធដាក់ឱ្យប្រើប្រាស់ជាក់ស្តែង។</li>
+</ul>
+</li>
+</ol>
+
+                </article>
+
+                <!-- Next / Previous Doc Navigation Bar -->
+                <div class="no-print mt-12 pt-8 border-t border-slate-200 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <a href="02-DELIVERY-AUDIT-AND-CHECKLIST.html" class="p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-transform flex-shrink-0">
+                            ✅
+                        </div>
+                        <div class="min-w-0">
+                            <div class="text-[10px] text-slate-400 font-medium">← ឯកសារមុន</div>
+                            <div class="text-xs font-bold text-slate-800 group-hover:text-primary transition truncate">បញ្ជីសវនកម្មគុណភាព</div>
+                        </div>
+                    </a>
+
+                    <a href="04-LEARNINGS-AND-STANDARDS-BENCHMARK.html" class="p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group flex items-center justify-end text-right gap-3">
+                        <div class="min-w-0">
+                            <div class="text-[10px] text-slate-400 font-medium">ឯកសារបន្ទាប់ →</div>
+                            <div class="text-xs font-bold text-slate-800 group-hover:text-primary transition truncate">មេរៀន និងស្តង់ដារបច្ចេកវិទ្យា</div>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-transform flex-shrink-0">
+                            💡
+                        </div>
+                    </a>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="no-print bg-white border-t border-slate-200 py-6 px-8 text-center text-xs text-slate-500">
+        <p>រក្សាសិទ្ធិគ្រប់យ៉ាង © 2026 ក្រុមហ៊ុន ឌីជីថេក ខេអេច (DIGITECHKH Co., Ltd.) · ព្រះរាជាណាចក្រកម្ពុជា</p>
+    </footer>
+
+</body>
+</html>

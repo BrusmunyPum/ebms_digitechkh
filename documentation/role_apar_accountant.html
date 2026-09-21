@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="km" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💰 គណនេយ្យករចំណាយ និងចំណូល (AP/AR Accountant) — ការសិក្សាស៊ីជម្រៅ | DIGITECHKH BMS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Kantumruy Pro', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0f2b5c',
+                        primaryHover: '#0a1d3f',
+                        accent: '#2563eb',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Kantumruy Pro', sans-serif;
+            color: #334155;
+            background-color: #f8fafc;
+        }
+        ::-webkit-scrollbar { display: none; }
+        * { -ms-overflow-style: none; scrollbar-width: none; }
+        h1, h2, h3, h4 { color: #0f172a; font-weight: 700; }
+        h1 { font-size: 1.8rem; line-height: 2.35rem; margin-bottom: 1.25rem; }
+        h2 { font-size: 1.35rem; line-height: 1.85rem; margin-top: 2.25rem; margin-bottom: 0.85rem; padding-bottom: 0.5rem; border-bottom: 1px solid #e2e8f0; }
+        h3 { font-size: 1.1rem; line-height: 1.5rem; margin-top: 1.75rem; margin-bottom: 0.5rem; }
+        p { margin-bottom: 0.85rem; line-height: 1.8; font-size: 0.95rem; }
+        ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1rem; font-size: 0.95rem; }
+        ol { list-style-type: decimal; padding-left: 1.5rem; margin-bottom: 1rem; font-size: 0.95rem; }
+        li { margin-bottom: 0.35rem; line-height: 1.7; }
+        hr { border: 0; border-top: 1px solid #e2e8f0; margin: 2rem 0; }
+        @media print {
+            .no-print { display: none !important; }
+            body { background-color: #ffffff; color: #000; }
+            .print-container { max-width: 100% !important; margin: 0 !important; padding: 0 !important; box-shadow: none !important; border: none !important; }
+            table, pre, blockquote, .rounded-xl, .rounded-2xl { page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-primary selection:text-white min-h-screen flex flex-col justify-between">
+
+    <!-- Top Sticky Control Bar -->
+    <header class="no-print fixed top-0 left-0 right-0 h-16 bg-primary text-white z-50 px-4 sm:px-8 flex items-center justify-between shadow-md">
+        <div class="flex items-center gap-3">
+            <a href="index.html" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition flex items-center gap-2 text-xs font-semibold">
+                <i class="fas fa-arrow-left"></i> <span class="hidden sm:inline">មជ្ឈមណ្ឌលឯកសារ</span>
+            </a>
+            <span class="text-white/30 hidden sm:inline">|</span>
+            <div class="flex items-center gap-2">
+                <span class="text-xl">💰</span>
+                <span class="font-bold text-xs sm:text-sm text-white truncate max-w-[200px] sm:max-w-xs">គណនេយ្យករចំណាយ និងចំណូល</span>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-white/15 text-cyan-200 hidden md:inline">Finance</span>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-2 sm:gap-3">
+            <!-- Role Switcher -->
+            <div class="relative">
+                <select onchange="window.location.href=this.value" class="h-9 pl-3 pr-8 bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl text-xs font-semibold text-white focus:outline-none focus:bg-[#0a1d3f] transition appearance-none cursor-pointer">
+                    <option value="role_superadmin.html" >👑 ស៊ុបភើរ អភិបាល (Super Admin)</option>
+<option value="role_procurement_manager.html" >🛒 អ្នកគ្រប់គ្រងលទ្ធកម្ម (Procurement Manager)</option>
+<option value="role_warehouse_staff.html" >👷 បុគ្គលិកឃ្លាំងទំនិញ (Warehouse Staff)</option>
+<option value="role_customer_support.html" >🎧 ផ្នែកគាំទ្រអតិថិជន (Customer Support)</option>
+<option value="role_apar_accountant.html" selected>💰 គណនេយ្យករចំណាយ និងចំណូល (AP/AR Accountant)</option>
+<option value="role_sales_manager.html" >👔 អ្នកគ្រប់គ្រងផ្នែកលក់ (Sales Manager)</option>
+<option value="role_internal_auditor_executive.html" >🔍 សវនករផ្ទៃក្នុង និងថ្នាក់ដឹកនាំ (Internal Auditor / Executive)</option>
+<option value="role_sales_executive.html" >💼 បុគ្គលិកប្រតិបត្តិផ្នែកលក់ (Sales Executive)</option>
+<option value="role_admin_general_manager.html" >🏛️ អភិបាល និងអ្នកចាត់ការទូទៅ (Admin / General Manager)</option>
+<option value="role_warehouse_manager.html" >📦 អ្នកគ្រប់គ្រងឃ្លាំងស្តុក (Warehouse Manager)</option>
+                </select>
+                <i class="fas fa-chevron-down absolute right-3 top-3 text-[10px] text-white/60 pointer-events-none"></i>
+            </div>
+
+            <!-- Interactive Guide Link -->
+            <a href="DIGITECHKH-Roles-And-Permissions-Interactive-Guide.html?role=apar_accountant" class="px-3 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-semibold transition hidden lg:flex items-center gap-1.5 shadow-sm">
+                <i class="fas fa-table-cells"></i> ផ្ទាំងអន្តរកម្ម & ម៉ាទ្រីស
+            </a>
+
+            <!-- Print Button -->
+            <button onclick="window.print()" class="px-3 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-semibold transition flex items-center gap-1.5 shadow-sm cursor-pointer">
+                <i class="fas fa-print"></i> <span class="hidden sm:inline">បោះពុម្ព A4</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Reading Container -->
+    <div class="pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full flex-1">
+        <div class="flex flex-col lg:flex-row gap-8 items-start">
+
+            <!-- Left Table of Contents Sidebar -->
+            <aside class="no-print lg:w-72 flex-shrink-0 sticky top-24 hidden lg:block bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
+                <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-3">
+                    <span class="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
+                        <i class="fas fa-list-ul text-primary"></i> មាតិកាឯកសារ
+                    </span>
+                    <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-50 text-accent">TOC</span>
+                </div>
+                <div class="space-y-0.5 max-h-[calc(100vh-220px)] overflow-y-auto pr-1 text-xs">
+                    <a href="#ចំណុចចាំបាច់-បេសកកម្មស្នូល-និងការបែងចែកភារកិច្ច-core-mission-segregation-of-duties" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="⚠️ ចំណុចចាំបាច់ — បេសកកម្មស្នូល និងការបែងចែកភារកិច្ច (Core Mission & Segregation of Duties)">⚠️ ចំណុចចាំបាច់ — បេសកកម្មស្នូល និងការបែងចែកភារកិច្ច (Core Mission & Segregation of Duties)</a>
+<a href="#តារាងមាតិកា" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="តារាងមាតិកា">តារាងមាតិកា</a>
+<a href="#1-អ្វីជា-apar-accountant" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="1. អ្វីជា AP/AR Accountant?">1. អ្វីជា AP/AR Accountant?</a>
+<a href="#11-និយមន័យ-definition" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="1.1 និយមន័យ (Definition)">1.1 និយមន័យ (Definition)</a>
+<a href="#12-តួនាទីក្នុងបរិបទអាជីវកម្មកម្ពុជា-cambodian-real-world-context" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="1.2 តួនាទីក្នុងបរិបទអាជីវកម្មកម្ពុជា (Cambodian Real-World Context)">1.2 តួនាទីក្នុងបរិបទអាជីវកម្មកម្ពុជា (Cambodian Real-World Context)</a>
+<a href="#2-ឋានានុក្រម-និងទំនាក់ទំនង" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="2. ឋានានុក្រម និងទំនាក់ទំនង">2. ឋានានុក្រម និងទំនាក់ទំនង</a>
+<a href="#3-អ្វីដែល-apar-accountant-ធ្វើបាន-និងហាមធ្វើ-full-capability-map" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="3. អ្វីដែល AP/AR Accountant ធ្វើបាន និងហាមធ្វើ (Full Capability Map)">3. អ្វីដែល AP/AR Accountant ធ្វើបាន និងហាមធ្វើ (Full Capability Map)</a>
+<a href="#31-អ្វីដែល-apar-accountant-ធ្វើបាន" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="3.1 ✅ អ្វីដែល AP/AR Accountant ធ្វើបាន">3.1 ✅ អ្វីដែល AP/AR Accountant ធ្វើបាន</a>
+<a href="#32-អ្វីដែល-apar-accountant-ហាមធ្វើដាច់ខាត" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="3.2 ❌ អ្វីដែល AP/AR Accountant ហាមធ្វើដាច់ខាត">3.2 ❌ អ្វីដែល AP/AR Accountant ហាមធ្វើដាច់ខាត</a>
+<a href="#4-ទំព័រ-ui-ពេញលេញ-page-by-page-blueprint" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="4. ទំព័រ UI ពេញលេញ (Page-by-Page Blueprint)">4. ទំព័រ UI ពេញលេញ (Page-by-Page Blueprint)</a>
+<a href="#41-dashboardhtml-មជ្ឈមណ្ឌលចរន្តសាច់ប្រាក់ប្រចាំថ្ងៃ-cash-flow-command-center" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.1 `dashboard.html` — មជ្ឈមណ្ឌលចរន្តសាច់ប្រាក់ប្រចាំថ្ងៃ (Cash Flow Command Center)">4.1 `dashboard.html` — មជ្ឈមណ្ឌលចរន្តសាច់ប្រាក់ប្រចាំថ្ងៃ (Cash Flow Command Center)</a>
+<a href="#42-paymentshtml-ការប្រមូលប្រាក់-និងបំណុលត្រូវទារ-accounts-receivable-hub" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.2 `payments.html` — ការប្រមូលប្រាក់ និងបំណុលត្រូវទារ (Accounts Receivable Hub)">4.2 `payments.html` — ការប្រមូលប្រាក់ និងបំណុលត្រូវទារ (Accounts Receivable Hub)</a>
+<a href="#43-disbursementshtml-ការគ្រប់គ្រងបំណុលត្រូវសង-accounts-payable-hub" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.3 `disbursements.html` — ការគ្រប់គ្រងបំណុលត្រូវសង (Accounts Payable Hub)">4.3 `disbursements.html` — ការគ្រប់គ្រងបំណុលត្រូវសង (Accounts Payable Hub)</a>
+<a href="#44-create-disbursementhtml-ទម្រង់បង្កើតប័ណ្ណចំណាយទូទាត់-enterprise-disbursement-form" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.4 `create-disbursement.html` — ទម្រង់បង្កើតប័ណ្ណចំណាយទូទាត់ (Enterprise Disbursement Form)">4.4 `create-disbursement.html` — ទម្រង់បង្កើតប័ណ្ណចំណាយទូទាត់ (Enterprise Disbursement Form)</a>
+<a href="#45-view-voucherhtml-ប័ណ្ណចំណាយទូទាត់កម្រិតសហគ្រាស-a4-official-payment-voucher" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.5 `view-voucher.html` — ប័ណ្ណចំណាយទូទាត់កម្រិតសហគ្រាស A4 (Official Payment Voucher)">4.5 `view-voucher.html` — ប័ណ្ណចំណាយទូទាត់កម្រិតសហគ្រាស A4 (Official Payment Voucher)</a>
+<a href="#46-reportshtml-តារាងវិភាគអាយុបំណុល-និងរបាយការណ៍សាច់ប្រាក់-apar-aging-reports" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.6 `reports.html` — តារាងវិភាគអាយុបំណុល និងរបាយការណ៍សាច់ប្រាក់ (AP/AR Aging Reports)">4.6 `reports.html` — តារាងវិភាគអាយុបំណុល និងរបាយការណ៍សាច់ប្រាក់ (AP/AR Aging Reports)</a>
+<a href="#5-ម៉ាទ្រីសសិទ្ធិ-permission-matrix" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="5. ម៉ាទ្រីសសិទ្ធិ (Permission Matrix)">5. ម៉ាទ្រីសសិទ្ធិ (Permission Matrix)</a>
+<a href="#51-ម៉ាទ្រីស-crud-ពេញលេញសម្រាប់-apar-accountant" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="5.1 ម៉ាទ្រីស CRUD ពេញលេញសម្រាប់ AP/AR Accountant">5.1 ម៉ាទ្រីស CRUD ពេញលេញសម្រាប់ AP/AR Accountant</a>
+<a href="#6-វដ្តការងារស្នូលទាំង-6-core-workflows" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="6. វដ្តការងារស្នូលទាំង 6 (Core Workflows)">6. វដ្តការងារស្នូលទាំង 6 (Core Workflows)</a>
+<a href="#workflow-1-ការប្រមូលប្រាក់-និងចេញបង្កាន់ដៃ-ar-collection-official-receipt" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 1: ការប្រមូលប្រាក់ និងចេញបង្កាន់ដៃ (AR Collection & Official Receipt)">Workflow 1: ការប្រមូលប្រាក់ និងចេញបង្កាន់ដៃ (AR Collection & Official Receipt)</a>
+<a href="#workflow-2-ការបង្កើតប័ណ្ណចំណាយទូទាត់-និងកាត់ពន្ធ-wht-ap-disbursement-wht" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 2: ការបង្កើតប័ណ្ណចំណាយទូទាត់ និងកាត់ពន្ធ WHT (AP Disbursement & WHT)">Workflow 2: ការបង្កើតប័ណ្ណចំណាយទូទាត់ និងកាត់ពន្ធ WHT (AP Disbursement & WHT)</a>
+<a href="#workflow-3-ការផ្ទៀងផ្ទាត់សាច់ប្រាក់បិទវេនបញ្ជរលក់-cashier-shift-reconciliation" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 3: ការផ្ទៀងផ្ទាត់សាច់ប្រាក់បិទវេនបញ្ជរលក់ (Cashier Shift Reconciliation)">Workflow 3: ការផ្ទៀងផ្ទាត់សាច់ប្រាក់បិទវេនបញ្ជរលក់ (Cashier Shift Reconciliation)</a>
+<a href="#workflow-4-ការផ្ទៀងផ្ទាត់របាយការណ៍ធនាគារ-daily-bank-reconciliation" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 4: ការផ្ទៀងផ្ទាត់របាយការណ៍ធនាគារ (Daily Bank Reconciliation)">Workflow 4: ការផ្ទៀងផ្ទាត់របាយការណ៍ធនាគារ (Daily Bank Reconciliation)</a>
+<a href="#workflow-5-ការតាមដាន-និងរំលឹកបំណុលអតិថិជន-ar-aging-dunning-flow" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 5: ការតាមដាន និងរំលឹកបំណុលអតិថិជន (AR Aging & Dunning Flow)">Workflow 5: ការតាមដាន និងរំលឹកបំណុលអតិថិជន (AR Aging & Dunning Flow)</a>
+<a href="#workflow-6-ការគ្រប់គ្រង-និងទូទាត់បេឡាសាច់ប្រាក់តូចតាច-petty-cash-flow" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 6: ការគ្រប់គ្រង និងទូទាត់បេឡាសាច់ប្រាក់តូចតាច (Petty Cash Flow)">Workflow 6: ការគ្រប់គ្រង និងទូទាត់បេឡាសាច់ប្រាក់តូចតាច (Petty Cash Flow)</a>
+<a href="#7-business-logic-accounting-rules" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="7. Business Logic & Accounting Rules">7. Business Logic & Accounting Rules</a>
+<a href="#71-ច្បាប់ពន្ធកាត់ទុកនៃព្រះរាជាណាចក្រកម្ពុជា-cambodia-withholding-tax-rules" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="7.1 ច្បាប់ពន្ធកាត់ទុកនៃព្រះរាជាណាចក្រកម្ពុជា (Cambodia Withholding Tax Rules)">7.1 ច្បាប់ពន្ធកាត់ទុកនៃព្រះរាជាណាចក្រកម្ពុជា (Cambodia Withholding Tax Rules)</a>
+<a href="#72-រូបមន្តគណនាពន្ធកាត់ទុក-calculation-formulas" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="7.2 រូបមន្តគណនាពន្ធកាត់ទុក (Calculation Formulas)">7.2 រូបមន្តគណនាពន្ធកាត់ទុក (Calculation Formulas)</a>
+<a href="#73-ច្បាប់គ្រប់គ្រងអាយុបំណុល-aging-classification-buckets" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="7.3 ច្បាប់គ្រប់គ្រងអាយុបំណុល (Aging Classification Buckets)">7.3 ច្បាប់គ្រប់គ្រងអាយុបំណុល (Aging Classification Buckets)</a>
+<a href="#8-ទំនាក់ទំនងជាមួយតួនាទីផ្សេង-role-interaction-map" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="8. ទំនាក់ទំនងជាមួយតួនាទីផ្សេង (Role Interaction Map)">8. ទំនាក់ទំនងជាមួយតួនាទីផ្សេង (Role Interaction Map)</a>
+<a href="#9-data-scope-ឃើញអ្វី-លាក់អ្វី" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="9. Data Scope — ឃើញអ្វី? លាក់អ្វី?">9. Data Scope — ឃើញអ្វី? លាក់អ្វី?</a>
+<a href="#10-kpi-dashboard-សម្រាប់-apar-accountant" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="10. KPI Dashboard សម្រាប់ AP/AR Accountant">10. KPI Dashboard សម្រាប់ AP/AR Accountant</a>
+<a href="#11-គំរូ-database-schema" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="11. គំរូ Database Schema">11. គំរូ Database Schema</a>
+<a href="#12-ការគ្រប់គ្រងផ្ទៃក្នុង-និងការទប់ស្កាត់ការកិបកេង-anti-fraud-controls" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="12. ការគ្រប់គ្រងផ្ទៃក្នុង និងការទប់ស្កាត់ការកិបកេង (Anti-Fraud Controls)">12. ការគ្រប់គ្រងផ្ទៃក្នុង និងការទប់ស្កាត់ការកិបកេង (Anti-Fraud Controls)</a>
+<a href="#13-អនុសាសន៍-architect-prototype-planning" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="13. អនុសាសន៍ Architect + Prototype Planning">13. អនុសាសន៍ Architect + Prototype Planning</a>
+<a href="#131-អនុសាសន៍រចនាប្រព័ន្ធ-architectural-recommendations" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="13.1 អនុសាសន៍រចនាប្រព័ន្ធ (Architectural Recommendations)">13.1 អនុសាសន៍រចនាប្រព័ន្ធ (Architectural Recommendations)</a>
+<a href="#132-បញ្ជីត្រួតពិនិត្យការសាងសង់-prototype-15-point-prototype-checklist" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="13.2 បញ្ជីត្រួតពិនិត្យការសាងសង់ Prototype (15-Point Prototype Checklist)">13.2 បញ្ជីត្រួតពិនិត្យការសាងសង់ Prototype (15-Point Prototype Checklist)</a>
+<a href="#14-faq-សំណួរ-និងចម្លើយទូទៅ" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="14. FAQ — សំណួរ និងចម្លើយទូទៅ">14. FAQ — សំណួរ និងចម្លើយទូទៅ</a>
+                </div>
+                <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
+                    <a href="DIGITECHKH-Roles-And-Permissions-Interactive-Guide.html?role=apar_accountant" class="w-full py-2 px-3 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-700 text-xs font-medium flex items-center justify-between transition border border-slate-200">
+                        <span>មើលក្នុងផ្ទាំងអន្តរកម្ម</span>
+                        <i class="fas fa-up-right-from-square text-[10px] text-slate-400"></i>
+                    </a>
+                    <a href="role_apar_accountant.md" class="w-full py-2 px-3 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-500 text-[11px] font-normal flex items-center justify-between transition border border-slate-200">
+                        <span>មើលឯកសារដើម (.md)</span>
+                        <i class="fas fa-file-code text-[10px]"></i>
+                    </a>
+                </div>
+            </aside>
+
+            <!-- Main Document Body -->
+            <main class="print-container flex-1 bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-12 min-w-0 max-w-4xl mx-auto">
+
+                <!-- Breadcrumb -->
+                <div class="no-print flex items-center gap-2 text-xs text-slate-500 mb-6 flex-wrap pb-4 border-b border-slate-100">
+                    <a href="index.html" class="hover:text-primary transition flex items-center gap-1">
+                        <i class="fas fa-home"></i> មជ្ឈមណ្ឌលឯកសារ
+                    </a>
+                    <span>/</span>
+                    <a href="DIGITECHKH-Roles-And-Permissions-Interactive-Guide.html" class="hover:text-primary transition">
+                        តួនាទីទាំង 10
+                    </a>
+                    <span>/</span>
+                    <span class="text-slate-800 font-semibold">គណនេយ្យករចំណាយ និងចំណូល</span>
+                </div>
+
+                <!-- Document Rendered HTML -->
+                <article class="prose prose-slate max-w-none">
+                    <h1 id="digitechkh-bms-ការសិក្សាស៊ីជម្រៅ-តួនាទី-គណនេយ្យករទូទាត់-apar-accountant" class="scroll-mt-24 group">💳 DIGITECHKH BMS — ការសិក្សាស៊ីជម្រៅ: តួនាទី គណនេយ្យករទូទាត់ (AP/AR Accountant) <a href="#digitechkh-bms-ការសិក្សាស៊ីជម្រៅ-តួនាទី-គណនេយ្យករទូទាត់-apar-accountant" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h1>
+<div class="my-5 p-4 rounded-xl bg-slate-50 border-l-4 border-[#0f2b5c] text-slate-800 text-xs leading-relaxed shadow-sm">
+<p><strong>ឯកសារ</strong>: <code>role_apar_accountant.md</code><br><strong>កំណែ</strong>: 1.0<br><strong>កាលបរិច្ឆេទ</strong>: 20 កញ្ញា 2026<br><strong>គោលបំណង</strong>: ការយល់ 100% អំពីតួនាទី AP/AR Accountant (គណនេយ្យករទទួលបន្ទុកបំណុលត្រូវទារ និងបំណុលត្រូវសង) — រួមមានវិសាលភាពប្រតិបត្តិការសាច់ប្រាក់, សិទ្ធិអំណាច, UI Pages, វដ្តការងារប្រមូលប្រាក់ និងទូទាត់, ច្បាប់ពន្ធកាត់ទុក (WHT), ស្ថាបត្យកម្មប្រព័ន្ធ, និងផែនការ Prototype Planning</p>
+</div>
+<hr>
+<h2 id="ចំណុចចាំបាច់-បេសកកម្មស្នូល-និងការបែងចែកភារកិច្ច-core-mission-segregation-of-duties" class="scroll-mt-24 group">⚠️ ចំណុចចាំបាច់ — បេសកកម្មស្នូល និងការបែងចែកភារកិច្ច (Core Mission &amp; Segregation of Duties) <a href="#ចំណុចចាំបាច់-បេសកកម្មស្នូល-និងការបែងចែកភារកិច្ច-core-mission-segregation-of-duties" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<p>នៅក្នុងស្ថាបត្យកម្មហិរញ្ញវត្ថុនៃប្រព័ន្ធ DIGITECHKH BMS ផ្នែកគណនេយ្យត្រូវបានបែងចែកជា 2 កម្រិតយ៉ាងច្បាស់លាស់:</p>
+<div class="my-5 p-4 rounded-xl bg-slate-50 border-l-4 border-[#0f2b5c] text-slate-800 text-xs leading-relaxed shadow-sm">
+<p>🛡️ <strong>គោលការណ៍ស្នូល</strong>: AP/AR Accountant គឺជា <strong>&quot;អ្នកគ្រប់គ្រង និងប្រតិបត្តិចរន្តសាច់ប្រាក់ជាក់ស្តែង&quot; (Cash Flow Execution Officer)</strong>។ គាត់/នាង គ្រប់គ្រងរាល់លំហូរសាច់ប្រាក់ចូល (Accounts Receivable - AR) តាមដានបំណុលអតិថិជន និងលំហូរសាច់ប្រាក់ចេញ (Accounts Payable - AP) ទូទាត់វិក្កយបត្រអ្នកផ្គត់ផ្គង់។ ប៉ុន្តែ <strong>មិនមានសិទ្ធិកែប្រែតារាងគណនី (COA) ឬបិទបញ្ជីហិរញ្ញវត្ថុចុងគ្រា</strong> ឡើយ ដែលជាភារកិច្ចផ្តាច់មុខរបស់ប្រធានគណនេយ្យ (Chief Accountant)។</p>
+</div>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">វិស័យប្រតិបត្តិការ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ភារកិច្ចរបស់ AP/AR Accountant</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">អ្វីដែលត្រូវឆ្លងកាត់ប្រធានគណនេយ្យ (Chief Accountant)</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>បំណុលត្រូវទារ (AR)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">តាមដានវិក្កយបត្រជំពាក់, ផ្ទៀងផ្ទាត់ស្លីបបង់ប្រាក់ KHQR, ចេញបង្កាន់ដៃទទួលប្រាក់</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">អនុម័តការលុបចោលបំណុលខូច (Bad Debt Write-off)</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>បំណុលត្រូវសង (AP)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ផ្ទៀងផ្ទាត់វិក្កយបត្រទិញ (3-Way Matching), រៀបចំប័ណ្ណចំណាយទូទាត់, គណនាពន្ធកាត់ទុក (WHT)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ត្រួតពិនិត្យ និងចុះហត្ថលេខាអនុម័តប័ណ្ណចំណាយមុនបើកលុយ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>តារាងគណនី (COA)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ គ្មានសិទ្ធិកែប្រែ ឬបន្ថែមលេខកូដគណនី GL</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">គ្រប់គ្រង បន្ថែម និងកែប្រែរចនាសម្ព័ន្ធ COA ពេញលេញ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ការបិទបញ្ជីចុងខែ</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ផ្តល់របាយការណ៍ផ្ទៀងផ្ទាត់សមតុល្យធនាគារ និងតារាងបំណុលចាស់ៗ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ចុះបញ្ជីកែតម្រូវ (Adjusting Entries) និងបិទបញ្ជីជាផ្លូវការ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>របាយការណ៍ពន្ធ</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">កត់ត្រាប្រតិបត្តិការជាប់ពន្ធ អតប 10% និងពន្ធកាត់ទុក WHT</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">រៀបចំ និងដាក់លិខិតប្រកាសពន្ធប្រចាំខែទៅអគ្គនាយកដ្ឋានពន្ធដារ (GDT)</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="តារាងមាតិកា" class="scroll-mt-24 group">តារាងមាតិកា <a href="#តារាងមាតិកា" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<ol>
+<li><a href="#1-%E1%9E%A2%E1%9F%92%E1%9E%9C%E1%9E%B8%E1%9E%87%E1%9E%B6-apar-accountant">អ្វីជា AP/AR Accountant?</a></li>
+<li><a href="#2-%E1%9E%8B%E1%9E%B6%E1%9E%93%E1%9E%B6%E1%9E%93%E1%9E%BB%E1%9E%80%E1%9F%92%E1%9E%9A%E1%9E%98-%E1%9E%93%E1%9E%B7%E1%9E%84%E1%9E%91%E1%9F%86%E1%9E%93%E1%9E%B6%E1%9E%80%E1%9F%8B%E1%9E%91%E1%9F%86%E1%9E%93%E1%9E%84">ឋានានុក្រម និងទំនាក់ទំនង</a></li>
+<li><a href="#3-%E1%9E%A2%E1%9F%92%E1%9E%9C%E1%9E%B8%E1%9E%8A%E1%9F%82%E1%9E%9B-apar-accountant-%E1%9E%92%E1%9F%92%E1%9E%9C%E1%9E%BE%E1%9E%94%E1%9E%B6%E1%9E%93-%E1%9E%93%E1%9E%B7%E1%9E%84%E1%9E%A0%E1%9E%B6%E1%9E%98%E1%9E%92%E1%9F%92%E1%9E%9C%E1%9E%BE">អ្វីដែល AP/AR Accountant ធ្វើបាន និងហាមធ្វើ (Full Capability Map)</a></li>
+<li><a href="#4-%E1%9E%91%E1%9F%86%E1%9E%96%E1%9F%90%E1%9E%9A-ui-%E1%9E%96%E1%9F%81%E1%9E%89%E1%9E%9B%E1%9F%81%E1%9E%89">ទំព័រ UI ពេញលេញ (Page-by-Page Blueprint)</a></li>
+<li><a href="#5-%E1%9E%98%E1%9F%89%E1%9E%B6%E1%9E%91%E1%9F%92%E1%9E%9A%E1%9E%B8%E1%9E%9F%E1%9E%9F%E1%9E%B7%E1%9E%91%E1%9F%92%E1%9E%92%E1%9E%B7">ម៉ាទ្រីសសិទ្ធិ (Permission Matrix)</a></li>
+<li><a href="#6-%E1%9E%9C%E1%9E%8A%E1%9F%92%E1%9E%8F%E1%9E%80%E1%9E%B6%E1%9E%9A%E1%9E%84%E1%9E%B6%E1%9E%9A%E1%9E%9F%E1%9F%92%E1%9E%93%E1%9E%BC%E1%9E%9B%E1%9E%91%E1%9E%B6%E1%9F%86%E1%9E%84-6">វដ្តការងារស្នូលទាំង 6 (Core Workflows)</a></li>
+<li><a href="#7-business-logic--accounting-rules">Business Logic &amp; Accounting Rules</a></li>
+<li><a href="#8-%E1%9E%91%E1%9F%86%E1%9E%93%E1%9E%B6%E1%9E%80%E1%9F%8B%E1%9E%91%E1%9F%86%E1%9E%93%E1%9E%84%E1%9E%87%E1%9E%B6%E1%9E%98%E1%9E%BD%E1%9E%99%E1%9E%8F%E1%9E%BD%E1%9E%93%E1%9E%B6%E1%9E%91%E1%9E%B8%E1%9E%95%E1%9F%92%E1%9E%9F%E1%9F%81%E1%9E%84">ទំនាក់ទំនងជាមួយតួនាទីផ្សេង (Role Interaction Map)</a></li>
+<li><a href="#9-data-scope--%E1%9E%83%E1%9E%BE%E1%9E%89%E1%9E%A2%E1%9F%92%E1%9E%9C%E1%9E%B8-%E1%9E%9B%E1%9E%B6%E1%9E%80%E1%9F%8B%E1%9E%A2%E1%9F%92%E1%9E%9C%E1%9E%B8">Data Scope — ឃើញអ្វី? លាក់អ្វី?</a></li>
+<li><a href="#10-kpi-dashboard-%E1%9E%9F%E1%9E%98%E1%9F%92%E1%9E%9A%E1%9E%B6%E1%9E%94%E1%9F%8B-apar-accountant">KPI Dashboard សម្រាប់ AP/AR Accountant</a></li>
+<li><a href="#11-%E1%9E%82%E1%9F%86%E1%9E%9A%E1%9E%BC-database-schema">គំរូ Database Schema</a></li>
+<li><a href="#12-%E1%9E%80%E1%9E%B6%E1%9E%9A%E1%9E%82%E1%9F%92%E1%9E%9A%E1%9E%94%E1%9F%8B%E1%9E%82%E1%9F%92%E1%9E%9A%E1%9E%84%E1%9E%95%E1%9F%92%E1%9E%91%E1%9F%83%E1%9E%80%E1%9F%92%E1%9E%93%E1%9E%BB%E1%9E%84-%E1%9E%93%E1%9E%B7%E1%9E%84%E1%9E%80%E1%9E%B6%E1%9E%9A%E1%9E%91%E1%9E%94%E1%9F%8B%E1%9E%9F%E1%9F%92%E1%9E%80%E1%9E%B6%E1%9E%8F%E1%9F%8B%E1%9E%80%E1%9E%B6%E1%9E%9A%E1%9E%80%E1%9E%B7%E1%9E%94%E1%9E%80%E1%9F%81%E1%9E%84">ការគ្រប់គ្រងផ្ទៃក្នុង និងការទប់ស្កាត់ការកិបកេង (Anti-Fraud Controls)</a></li>
+<li><a href="#13-%E1%9E%A2%E1%9E%93%E1%9E%BB%E1%9E%9F%E1%9E%B6%E1%9E%9F%E1%9E%93%E1%9F%8D-architect--prototype-planning">អនុសាសន៍ Architect + Prototype Planning</a></li>
+<li><a href="#14-faq">FAQ — សំណួរ និងចម្លើយទូទៅ</a></li>
+</ol>
+<hr>
+<h2 id="1-អ្វីជា-apar-accountant" class="scroll-mt-24 group">1. អ្វីជា AP/AR Accountant? <a href="#1-អ្វីជា-apar-accountant" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="11-និយមន័យ-definition" class="scroll-mt-24 group">1.1 និយមន័យ (Definition) <a href="#11-និយមន័យ-definition" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p><strong>AP/AR Accountant</strong> (គណនេយ្យករទូទាត់ និងទារប្រាក់) គឺជា <strong>ឆ្មាំការពារចរន្តសាច់ប្រាក់ប្រចាំថ្ងៃ (Daily Cash Flow Gatekeeper)</strong> របស់ក្រុមហ៊ុន ដែលទទួលបន្ទុកផ្ទាល់លើមុខព្រួញធំៗពីរ:</p>
+<ol>
+<li><strong>Accounts Receivable (AR - បំណុលត្រូវទារ)</strong>: ធានាថារាល់ការលក់ជំពាក់ទាំងអស់ត្រូវបានប្រមូលប្រាក់ទាន់ពេលវេលា តាមដានអតិថិជនជំពាក់ហួសកាលកំណត់ និងបញ្ជាក់ការចូលនៃប្រាក់តាមធនាគារ ឬសាច់ប្រាក់។</li>
+<li><strong>Accounts Payable (AP - បំណុលត្រូវសង)</strong>: ធានាថាក្រុមហ៊ុនទូទាត់ថ្លៃទំនិញ ឬសេវាកម្មជូនអ្នកផ្គត់ផ្គង់បានត្រឹមត្រូវ ផ្ទៀងផ្ទាត់ទំនិញចូលឃ្លាំងពិតប្រាកដមុនបើកលុយ និងអនុវត្តកាត់ពន្ធកាត់ទុក (WHT) ស្របច្បាប់។</li>
+</ol>
+<div class="my-5 p-4 rounded-xl bg-blue-50/90 border-l-4 border-blue-500 text-blue-950 text-xs leading-relaxed shadow-sm">
+<p>💡 <strong>ការប្រៀបធៀប</strong>: ប្រសិនបើ Chief Accountant គឺជា <strong>ស្ថាបត្យករហិរញ្ញវត្ថុ (Chief Architect)</strong> ដែលគូរប្លង់ និងពិនិត្យសុខភាពក្រុមហ៊ុនទាំងមូល នោះ AP/AR Accountant គឺជា <strong>អ្នកបញ្ជាចរន្តឈាម (Circulation Specialist)</strong> ដែលធានាថាលុយហូរចូលគ្រប់គ្រាន់ និងលុយហូរចេញត្រូវខ្ទង់ មិនឱ្យកកស្ទះសាច់ប្រាក់ (Liquidity Crisis)។</p>
+</div>
+<h3 id="12-តួនាទីក្នុងបរិបទអាជីវកម្មកម្ពុជា-cambodian-real-world-context" class="scroll-mt-24 group">1.2 តួនាទីក្នុងបរិបទអាជីវកម្មកម្ពុជា (Cambodian Real-World Context) <a href="#12-តួនាទីក្នុងបរិបទអាជីវកម្មកម្ពុជា-cambodian-real-world-context" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p>នៅក្នុងអាជីវកម្មកម្ពុជា AP/AR Accountant ប្រឈមមុខនឹងលក្ខណៈពិសេស 3 យ៉ាង:</p>
+<ol>
+<li><strong>ប្រតិបត្តិការរូបិយប័ណ្ណទ្វេ (USD &amp; KHR)</strong>: វិក្កយបត្រភាគច្រើនចេញជា USD ប៉ុន្តែការបង់ប្រាក់អាចជា KHR តាមបាគង KHQR ដែលទាមទារការផ្ទៀងផ្ទាត់អត្រាប្តូរប្រាក់ផ្លូវការ (NBC Exchange Rate)។</li>
+<li><strong>ពន្ធកាត់ទុក (Withholding Tax - WHT)</strong>: រាល់ការទូទាត់ថ្លៃសេវាកម្ម (15%), ថ្លៃជួល (10%), ឬការប្រាក់ ត្រូវតែកាត់ទុកពន្ធភ្លាមៗមុនពេលបើកលុយជូនអ្នកផ្គត់ផ្គង់។</li>
+<li><strong>ការបិទវេន និងផ្ទៀងផ្ទាត់បញ្ជរលក់ (Cashier Reconciliation)</strong>: ទទួលរបាយការណ៍បិទវេន X/Z Report ពីអ្នកគិតប្រាក់ (Cashier) និងពិនិត្យសាច់ប្រាក់ជាក់ស្តែងធៀបនឹងប្រព័ន្ធ។</li>
+</ol>
+<hr>
+<h2 id="2-ឋានានុក្រម-និងទំនាក់ទំនង" class="scroll-mt-24 group">2. ឋានានុក្រម និងទំនាក់ទំនង <a href="#2-ឋានានុក្រម-និងទំនាក់ទំនង" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>┌───────────────────────────────────────────────┐
+│          👑 SUPER ADMIN (Platform Level)       │
+└──────────────────────┬────────────────────────┘
+                       │
+┌──────────────────────▼────────────────────────┐
+│        🏢 ADMIN / GM (Company Level)          │
+│   ← អនុម័តប័ណ្ណចំណាយធំៗ, ពិនិត្យចរន្តសាច់ប្រាក់ │
+└──────────────────────┬────────────────────────┘
+                       │
+┌──────────────────────▼────────────────────────┐
+│      📊 CHIEF ACCOUNTANT (ប្រធានគណនេយ្យ)        │
+│   ← គ្រប់គ្រង COA, ពន្ធ GDT, របាយការណ៍ P&amp;L   │
+└──────────────────────┬────────────────────────┘
+                       │ ត្រួតពិនិត្យ និងផ្តល់សិទ្ធិ
+                       ▼
+┌───────────────────────────────────────────────┐
+│        💳 AP/AR ACCOUNTANT (តួនាទីនេះ)        │
+│   Portal: 9-portals/accountant/               │
+│   Scope: ចរន្តសាច់ប្រាក់ចូល/ចេញ, បង្កាន់ដៃ, ប័ណ្ណចំណាយ │
+└──────────────┬─────────────────┬──────────────┘
+               │                 │
+       លំហូរចូល (AR)        លំហូរចេញ (AP)
+               ▼                 ▼
+   ┌──────────────────────┐  ┌──────────────────────┐
+   │ 👥 អតិថិជន / បញ្ជរលក់ │  │ 🏭 អ្នកផ្គត់ផ្គង់ (VENDORS) │
+   │ - វិក្កយបត្រលក់      │  │ - វិក្កយបត្រទិញចូល (BILLS) │
+   │ - បង្កាន់ដៃទទួលប្រាក់   │  │ - ប័ណ្ណចំណាយ (DISBURSEMENTS)│
+   │ - ស្កេន KHQR បាគង    │  │ - កាត់ពន្ធកាត់ទុក (WHT)   │
+   └──────────────────────┘  └──────────────────────┘
+</code></pre>
+        </div>
+<p><strong>ការប្រៀបធៀប AP/AR Accountant ជាមួយ Chief Accountant</strong>:</p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">លក្ខណៈវិនិច្ឆ័យ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">AP/AR Accountant</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">Chief Accountant</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>វិសាលភាពការងារ</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ប្រតិបត្តិការទូទាត់ប្រចាំថ្ងៃ (Daily Transactions)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ហិរញ្ញវត្ថុយុទ្ធសាស្ត្រ និងសវនកម្ម (Strategic Finance)</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ការចេញប័ណ្ណចំណាយ</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">✅ អ្នករៀបចំ (Prepared By)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">🔍 អ្នកត្រួតពិនិត្យ (Verified By)</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ការកែប្រែ COA</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ ហាមដាច់ខាត</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">✅ សិទ្ធិពេញលេញលើតារាងគណនី</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>របាយការណ៍បំណុល</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">✅ តាមដានតារាងអាយុបំណុល (AR/AP Aging)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">✅ វិភាគបំណុល និងប៉ាន់ប្រមាណហានិភ័យ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ការបិទបញ្ជីប្រចាំខែ</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">⚠️ ផ្ទៀងផ្ទាត់សមតុល្យសាច់ប្រាក់ និងធនាគារ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">✅ ចុះបញ្ជីកែតម្រូវ និងចាក់សោរគ្រាគណនេយ្យ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ការទាក់ទង GDT ពន្ធដារ</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">⚠️ រៀបចំទិន្នន័យធាតុចូល និងពន្ធកាត់ទុក</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">✅ ចុះហត្ថលេខាលើលិខិតប្រកាសពន្ធផ្លូវការ</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="3-អ្វីដែល-apar-accountant-ធ្វើបាន-និងហាមធ្វើ-full-capability-map" class="scroll-mt-24 group">3. អ្វីដែល AP/AR Accountant ធ្វើបាន និងហាមធ្វើ (Full Capability Map) <a href="#3-អ្វីដែល-apar-accountant-ធ្វើបាន-និងហាមធ្វើ-full-capability-map" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>AP/AR ACCOUNTANT CAPABILITIES
+│
+├── 📥 ACCOUNTS RECEIVABLE (AR - ការប្រមូលប្រាក់ និងតាមដានបំណុលអតិថិជន)
+│   ├── [READ]    បញ្ជីវិក្កយបត្រលក់ទាំងអស់ (ពិនិត្យស្ថានភាពបង់ប្រាក់)
+│   ├── [CREATE]  ចេញបង្កាន់ដៃទទួលប្រាក់ផ្លូវការ (Official Receipt)
+│   ├── [VERIFY]  ផ្ទៀងផ្ទាត់ស្លីបផ្ទេរប្រាក់ Bakong / Bank Slip ធៀបនឹងរបាយការណ៍ធនាគារ
+│   ├── [RECON]   ផ្ទៀងផ្ទាត់សាច់ប្រាក់បិទវេនរបស់ Cashier (X/Z Report Reconciliation)
+│   ├── [REPORT]  តារាងអាយុបំណុលត្រូវទារ (AR Aging Schedule: 1-30, 31-60, 61-90, &gt;90 ថ្ងៃ)
+│   └── [DUNNING] បញ្ជូនសាររំលឹកបំណុល (Payment Reminder) ទៅកាន់អតិថិជនតាម Telegram
+│
+├── 📤 ACCOUNTS PAYABLE (AP - ការទូទាត់ និងគ្រប់គ្រងបំណុលអ្នកផ្គត់ផ្គង់)
+│   ├── [READ]    បញ្ជីវិក្កយបត្រទិញចូល (Vendor Bills) ដែលបានមកពី Procurement
+│   ├── [VERIFY]  ត្រួតពិនិត្យ 3-Way Matching (PO + GRN ឃ្លាំង + Bill អ្នកផ្គត់ផ្គង់)
+│   ├── [CREATE]  រៀបចំប័ណ្ណចំណាយទូទាត់ (Payment Voucher / Disbursement Voucher)
+│   ├── [CALC]    គណនាពន្ធកាត់ទុក (Withholding Tax - WHT: 15% សេវា, 10% ជួល)
+│   ├── [PAY]     បញ្ជាក់ការទូទាត់ជាក់ស្តែង (Mark as Paid ភ្ជាប់លេខយោងធនាគារ)
+│   └── [REPORT]  តារាងអាយុបំណុលត្រូវសង (AP Aging Schedule)
+│
+├── 🏦 BANK &amp; CASH RECONCILIATION (ការផ្ទៀងផ្ទាត់សមតុល្យធនាគារ និងបេឡា)
+│   ├── [READ]    សមតុល្យគណនីធនាគារ (ABA, Canadia, ACLEDA) និងកាតាបេឡាសាច់ប្រាក់
+│   ├── [MATCH]   ផ្គូផ្គងប្រតិបត្តិការធនាគារ (Bank Statement vs System Ledger)
+│   ├── [CREATE]  កត់ត្រាចំណូល/ចំណាយបេឡាតូចតាច (Petty Cash Replenishment)
+│   └── [REPORT]  របាយការណ៍ផ្ទៀងផ្ទាត់សាច់ប្រាក់ប្រចាំថ្ងៃ (Daily Cash Reconciliation)
+│
+└── 📋 TAX LOGGING (ការកត់ត្រាទិន្នន័យពន្ធ)
+    ├── [LOG]     តារាងតាមដានពន្ធកាត់ទុក (WHT Ledger) តាមអ្នកផ្គត់ផ្គង់
+    └── [EXPORT]  ទាញយកតារាងធាតុចូល អតប 10% (Input VAT) និងធាតុចេញ (Output VAT)
+</code></pre>
+        </div>
+<h3 id="31-អ្វីដែល-apar-accountant-ធ្វើបាន" class="scroll-mt-24 group">3.1 ✅ អ្វីដែល AP/AR Accountant ធ្វើបាន <a href="#31-អ្វីដែល-apar-accountant-ធ្វើបាន" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">#</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">សកម្មភាពអនុញ្ញាត</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ផលប្រយោជន៍ និងសារៈសំខាន់</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">1</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ចេញបង្កាន់ដៃទទួលប្រាក់ (Official Receipt) ភ្ជាប់លេខកូដវិក្កយបត្រ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ជាភស្តុតាងផ្លូវការជូនអតិថិជនថាប្រាក់បានចូលក្រុមហ៊ុន</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">2</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">បង្កើតប័ណ្ណចំណាយទូទាត់ (Disbursement Voucher) កម្រិត A4</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ធានាឯកសារចំណាយមានហត្ថលេខាត្រឹមត្រូវស្របតាមសវនកម្ម</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">3</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">គណនាកាត់ពន្ធកាត់ទុក (WHT) 15% ឬ 10% ដោយស្វ័យប្រវត្តិ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ការពារការពិន័យពីអគ្គនាយកដ្ឋានពន្ធដារ (GDT)</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">4</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ផ្ទៀងផ្ទាត់ការបិទវេនរបស់អ្នកគិតប្រាក់ (POS Cashier Shift)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ការពារការបាត់បង់សាច់ប្រាក់ និងដឹងភាពខុសគ្នា (Over/Short) ភ្លាមៗ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">5</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ពិនិត្យ 3-Way Matching មុនបញ្ជូនប័ណ្ណចំណាយឱ្យប្រធានអនុម័ត</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ទប់ស្កាត់ការទូទាត់លើទំនិញដែលមិនទាន់ចូលឃ្លាំង ឬតម្លៃលើសការព្រមព្រៀង</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">6</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">តាមដានតារាងអាយុបំណុល (AR Aging) និងផ្ញើសាររំលឹក</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">កាត់បន្ថយបំណុលយឺតយ៉ាវ និងបង្កើនល្បឿនប្រមូលសាច់ប្រាក់ (DSO)</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">7</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ផ្ទៀងផ្ទាត់សមតុល្យធនាគារ (Bank Reconciliation) ប្រចាំថ្ងៃ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ធានាថាតួលេខក្នុងប្រព័ន្ធ និងក្នុងធនាគារពិតប្រាកដស៊ីគ្នាបេះបិទ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">8</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">បោះពុម្ពប័ណ្ណចំណាយ A4 ដែលមាន 4 ហត្ថលេខា</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">អនុលោមតាមស្តង់ដារបោះពុម្ពសហគ្រាស Rule 12</td>
+</tr>
+</tbody></table></div>
+<h3 id="32-អ្វីដែល-apar-accountant-ហាមធ្វើដាច់ខាត" class="scroll-mt-24 group">3.2 ❌ អ្វីដែល AP/AR Accountant ហាមធ្វើដាច់ខាត <a href="#32-អ្វីដែល-apar-accountant-ហាមធ្វើដាច់ខាត" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">#</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">សកម្មភាពហាមឃាត់</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ហានិភ័យ និងហេតុផលការពារ</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">1</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ <strong>កែប្រែតារាងគណនី (Chart of Accounts - COA)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ការពារការបំផ្លាញរចនាសម្ព័ន្ធគណនេយ្យទូទៅរបស់ស្ថាប័ន</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">2</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ <strong>ចុះហត្ថលេខាអនុម័តប័ណ្ណចំណាយដោយខ្លួនឯង</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">បំពានគោលការណ៍ Segregation of Duties (អ្នករៀបចំមិនអាចជាអ្នកអនុម័ត)</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">3</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ <strong>លុបចោលបំណុលអតិថិជន (Bad Debt Write-off)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ការកាត់កងបំណុលខូចទាមទារការសម្រេចពីនាយកប្រតិបត្តិ និង GM</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">4</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ <strong>កែប្រែតម្លៃលក់លើវិក្កយបត្រ ឬលុបវិក្កយបត្រ</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ភារកិច្ចផ្តាច់មុខរបស់ផ្នែកលក់ (Sales)</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">5</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ <strong>កែប្រែចំនួនស្តុកទំនិញជាក់ស្តែងក្នុងឃ្លាំង</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ភារកិច្ចផ្តាច់មុខរបស់បុគ្គលិកឃ្លាំង (Warehouse)</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">6</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ <strong>បិទបញ្ជីគណនេយ្យចុងខែ ឬចុងឆ្នាំជាផ្លូវការ</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ភារកិច្ចផ្តាច់មុខរបស់ប្រធានគណនេយ្យ (Chief Accountant)</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">7</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ <strong>កែប្រែព័ត៌មានគណនីធនាគាររបស់អ្នកផ្គត់ផ្គង់ដោយគ្មានលិខិតបញ្ជាក់</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ការពារការបន្លំផ្លាស់ប្តូរលេខគណនីដើម្បីកិបកេងលុយក្រុមហ៊ុន</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">8</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">❌ <strong>មើលឃើញ ឬកែប្រែទិន្នន័យប្រាក់ខែបុគ្គលិក (Payroll)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ព័ត៌មានសម្ងាត់របស់ HR និងប្រធានគណនេយ្យ</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="4-ទំព័រ-ui-ពេញលេញ-page-by-page-blueprint" class="scroll-mt-24 group">4. ទំព័រ UI ពេញលេញ (Page-by-Page Blueprint) <a href="#4-ទំព័រ-ui-ពេញលេញ-page-by-page-blueprint" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<p>នៅក្នុងស្ថាបត្យកម្មប្រព័ន្ធ DIGITECHKH BMS តួនាទី AP/AR Accountant ប្រើប្រាស់ច្រករបៀង <strong><code>frontend/src/pages/9-portals/accountant/</code></strong> (ចំនួន 6 ទំព័រ) រួមជាមួយការតភ្ជាប់ទៅកាន់ម៉ូឌុលលក់ <code>3-sales/4-payment/</code> (4 ទំព័រ) និងម៉ូឌុលទិញ <code>4-buy/3-disbursement/</code> (4 ទំព័រ):</p>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>9-portals/accountant/
+├── dashboard.html             ← មជ្ឈមណ្ឌលហិរញ្ញវត្ថុ &amp; ចរន្តសាច់ប្រាក់ប្រចាំថ្ងៃ
+├── payments.html              ← គ្រប់គ្រងការប្រមូលប្រាក់ &amp; បំណុលត្រូវទារ (AR Collection)
+├── disbursements.html         ← គ្រប់គ្រងការទូទាត់ &amp; បំណុលត្រូវសង (AP Management)
+├── create-disbursement.html   ← ទម្រង់បង្កើតប័ណ្ណចំណាយទូទាត់ (ភ្ជាប់ពន្ធកាត់ទុក WHT)
+├── view-voucher.html          ← សន្លឹកប័ណ្ណចំណាយទូទាត់ A4 មាន 4 ហត្ថលេខាផ្លូវការ
+└── reports.html              ← តារាងអាយុបំណុល (Aging Reports) &amp; ផ្ទៀងផ្ទាត់ពន្ធ
+</code></pre>
+        </div>
+<hr>
+<h3 id="41-dashboardhtml-មជ្ឈមណ្ឌលចរន្តសាច់ប្រាក់ប្រចាំថ្ងៃ-cash-flow-command-center" class="scroll-mt-24 group">4.1 <code>dashboard.html</code> — មជ្ឈមណ្ឌលចរន្តសាច់ប្រាក់ប្រចាំថ្ងៃ (Cash Flow Command Center) <a href="#41-dashboardhtml-មជ្ឈមណ្ឌលចរន្តសាច់ប្រាក់ប្រចាំថ្ងៃ-cash-flow-command-center" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p><strong>គោលបំណង</strong>: ផ្តល់ទិដ្ឋភាពច្បាស់ក្រឡែតអំពីលុយចូល, លុយចេញ, សមតុល្យសាច់ប្រាក់បច្ចុប្បន្ន, និងបំណុលដែលត្រូវទារ/ត្រូវសងបន្ទាន់។</p>
+<p><strong>ជួរកាត KPI សំខាន់ៗ (Top Stat Cards)</strong>:</p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ឈ្មោះកាត KPI</th>
+<th align="center">រូបតំណាង</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ការគណនា</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ការកំណត់ពណ៌ &amp; បរិបទ</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>សាច់ប្រាក់ក្នុងដៃ &amp; ធនាគារ</strong></td>
+<td align="center">🏦</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">SUM(Cash + Bank Balances)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ផ្ទៃខៀវដិត អក្សរស (Total Liquidity)</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>បំណុលត្រូវទារសរុប (Total AR)</strong></td>
+<td align="center">📥</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">SUM(Unpaid Invoices)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ផ្ទៃបៃតងខ្ចី អក្សរបៃតងដិត</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>បំណុល AR ហួសកំណត់</strong></td>
+<td align="center">⚠️</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">SUM(AR WHERE due_date &lt; TODAY)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ផ្ទៃក្រហមខ្ចី អក្សរក្រហមដិត (Overdue Risk)</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>បំណុលត្រូវសងសរុប (Total AP)</strong></td>
+<td align="center">📤</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">SUM(Unpaid Bills)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ផ្ទៃលឿងខ្ចី អក្សរត្នោត</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ប័ណ្ណចំណាយរង់ចាំអនុម័ត</strong></td>
+<td align="center">⏳</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">COUNT(Disbursements WHERE status=&#39;pending&#39;)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ផ្ទៃពណ៌ស្វាយខ្ចី (Action Required)</td>
+</tr>
+</tbody></table></div>
+<p><strong>ប្លង់ផ្នែកកណ្តាល និងផ្នែកខាងក្រោម</strong>:</p>
+<ol>
+<li><strong>តារាងរំលឹកបំណុលត្រូវទារក្នុងសប្តាហ៍នេះ (Incoming AR Due)</strong>: បញ្ជីអតិថិជនដែលដល់ថ្ងៃត្រូវទូទាត់ ជាមួយប៊ូតុងរហ័ស «ផ្ញើសាររំលឹកតាម Telegram»។</li>
+<li><strong>តារាងបំណុលអ្នកផ្គត់ផ្គង់ដែលត្រូវសង (Upcoming AP Due)</strong>: បញ្ជីវិក្កយបត្រទិញចូលដែលជិតដល់ថ្ងៃផុតកំណត់ ដើម្បីរក្សាកេរ្តិ៍ឈ្មោះឥណទាន (Credit Reputation)។</li>
+<li><strong>ក្រាហ្វចរន្តសាច់ប្រាក់ 30 ថ្ងៃ (Cash In vs Cash Out Trend)</strong>: ក្រាហ្វប្រៀបធៀបចំណូលសាច់ប្រាក់ជាក់ស្តែង ធៀបនឹងការចំណាយជាក់ស្តែង។</li>
+</ol>
+<hr>
+<h3 id="42-paymentshtml-ការប្រមូលប្រាក់-និងបំណុលត្រូវទារ-accounts-receivable-hub" class="scroll-mt-24 group">4.2 <code>payments.html</code> — ការប្រមូលប្រាក់ និងបំណុលត្រូវទារ (Accounts Receivable Hub) <a href="#42-paymentshtml-ការប្រមូលប្រាក់-និងបំណុលត្រូវទារ-accounts-receivable-hub" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p><strong>គោលបំណង</strong>: គ្រប់គ្រងរាល់ការទូទាត់ដែលបានចូលពីអតិថិជន, ចេញបង្កាន់ដៃទទួលប្រាក់, និងផ្ទៀងផ្ទាត់ស្លីបបង់ប្រាក់ KHQR។</p>
+<p><strong>ជួរឈរតារាង (Table Columns)</strong>:</p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ជួរឈរ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ប្រភេទ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ឧទាហរណ៍ទិន្នន័យ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ចំណាំ</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>លេខបង្កាន់ដៃ</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Badge</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>#REC-2026-0145</code></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ចុចបើកមើលសន្លឹកបង្កាន់ដៃ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>លេខវិក្កយបត្រ</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Link</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>#INV-2026-0120</code></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">តំណភ្ជាប់ទៅវិក្កយបត្រដើម</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>អតិថិជន</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Text + Avatar</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ហេង វិច្ឆិកា (ក្រុមហ៊ុន អេប៊ីស៊ី)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ឈ្មោះអតិថិជន</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>កាលបរិច្ឆេទ</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Date</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">20 កញ្ញា 2026</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ថ្ងៃដែលប្រាក់បានចូល</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>វិធីសាស្ត្រទូទាត់</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Badge</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">🟢 KHQR បាគង / 🔵 ធនាគារ / 🟡 សាច់ប្រាក់</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ប្រភពប្រាក់</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ទឹកប្រាក់ទទួល</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Amount</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>$450.00</code> (ឬ <code>1,845,000 ៛</code>)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">បង្ហាញរូបិយប័ណ្ណច្បាស់លាស់</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ស្ថានភាពផ្ទៀងផ្ទាត់</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Badge</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">✅ បានផ្ទៀងផ្ទាត់ / ⏳ រង់ចាំឆែកធនាគារ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ស្ថានភាព Reconcile</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>អ្នកទទួលប្រាក់</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Text</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">កែវ សោភា (AR Accountant)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">បុគ្គលិកទទួល</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>សកម្មភាព</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">⋮ Menu</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">បោះពុម្ពបង្កាន់ដៃ A4, មើលស្លីបធនាគារ, កែសម្រួល</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Floating Dropdown Menu</td>
+</tr>
+</tbody></table></div>
+<p><strong>តម្រងស្រាវជ្រាវស្តង់ដារ (Unified Filters)</strong>:</p>
+<ul>
+<li>ស្វែងរកតាមលេខបង្កាន់ដៃ, លេខវិក្កយបត្រ, ឈ្មោះអតិថិជន</li>
+<li>Custom Dropdown: វិធីសាស្ត្រទូទាត់ (ទាំងអស់, KHQR បាគង, ផ្ទេរតាមធនាគារ, សាច់ប្រាក់ផ្ទាល់)</li>
+<li>Custom Dropdown: ស្ថានភាពផ្ទៀងផ្ទាត់ (ទាំងអស់, បានផ្ទៀងផ្ទាត់រួច, រង់ចាំការបញ្ជាក់)</li>
+<li>Unified Date Range Picker: ចន្លោះកាលបរិច្ឆេទទទួលប្រាក់</li>
+</ul>
+<hr>
+<h3 id="43-disbursementshtml-ការគ្រប់គ្រងបំណុលត្រូវសង-accounts-payable-hub" class="scroll-mt-24 group">4.3 <code>disbursements.html</code> — ការគ្រប់គ្រងបំណុលត្រូវសង (Accounts Payable Hub) <a href="#43-disbursementshtml-ការគ្រប់គ្រងបំណុលត្រូវសង-accounts-payable-hub" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p><strong>គោលបំណង</strong>: បញ្ជីប័ណ្ណចំណាយទូទាត់ទាំងអស់សម្រាប់ផ្គត់ផ្គង់ទំនិញ ឬចំណាយប្រតិបត្តិការទូទៅ ព្រមទាំងតាមដានដំណាក់កាលអនុម័ត។</p>
+<p><strong>ជួរឈរតារាង (Table Columns)</strong>:</p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ជួរឈរ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ប្រភេទ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ឧទាហរណ៍ទិន្នន័យ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ចំណាំ</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>លេខប័ណ្ណចំណាយ</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Badge</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>#DIS-2026-0089</code></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ចុចបើកមើលសន្លឹកប័ណ្ណចំណាយ A4</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>អ្នកទទួលប្រាក់</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Text + Avatar</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ហ៊ុន ត្រេឌីង Co., Ltd.</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ឈ្មោះអ្នកផ្គត់ផ្គង់</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>យោងវិក្កយបត្រទិញ</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Link</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>#BILL-2026-0045</code> (PO-0045)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">តំណភ្ជាប់ទៅវិក្កយបត្រទិញ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>កាលបរិច្ឆេទស្នើ</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Date</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">19 កញ្ញា 2026</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ថ្ងៃរៀបចំប័ណ្ណ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ទឹកប្រាក់សរុបដើម</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Amount</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>$1,000.00</code></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Gross Amount</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ពន្ធកាត់ទុក (WHT)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Amount</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>-$150.00</code> (15% សេវាកម្ម)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">បង្ហាញចំនួនពន្ធដែលកាត់ទុក</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ទឹកប្រាក់បើកសុទ្ធ</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Amount (Bold)</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong><code>$850.00</code></strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Net Cash Paid</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ស្ថានភាព</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Badge</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">🟡 រង់ចាំអនុម័ត / 🟢 បានអនុម័ត / 💰 បានបើកប្រាក់រួច</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Approval Status</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>សកម្មភាព</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">⋮ Menu</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">បោះពុម្ពប័ណ្ណ A4, បញ្ជាក់ការផ្ទេរប្រាក់, កែសម្រួល</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Floating Dropdown Menu</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h3 id="44-create-disbursementhtml-ទម្រង់បង្កើតប័ណ្ណចំណាយទូទាត់-enterprise-disbursement-form" class="scroll-mt-24 group">4.4 <code>create-disbursement.html</code> — ទម្រង់បង្កើតប័ណ្ណចំណាយទូទាត់ (Enterprise Disbursement Form) <a href="#44-create-disbursementhtml-ទម្រង់បង្កើតប័ណ្ណចំណាយទូទាត់-enterprise-disbursement-form" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-5 p-4 rounded-xl bg-amber-50/90 border-l-4 border-amber-500 text-amber-950 text-xs leading-relaxed shadow-sm">
+<p>⚠️ អនុវត្តតាមច្បាប់ <strong>Rule 5 នៃ GEMINI.md</strong>: ហាមដាច់ខាតការប្រើ Pop-up Modal ។ ត្រូវតែជា Dedicated Full Page ដែលមានប៊ូតុងត្រឡប់ក្រោយស្តង់ដារ <code>w-10 h-10 rounded-xl bg-slate-50 border border-slate-200/70</code> គ្មាន Divider។</p>
+</div>
+<p><strong>ប្លង់ទម្រង់ 2 ជួរឈរ (Enterprise 2-Column Layout)</strong>:</p>
+<h4 id="ជួរឈរទី-1-ព័ត៌មានអ្នកទទួល-និងឯកសារយោង" class="scroll-mt-24 group">ជួរឈរទី 1: ព័ត៌មានអ្នកទទួល និងឯកសារយោង <a href="#ជួរឈរទី-1-ព័ត៌មានអ្នកទទួល-និងឯកសារយោង" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<ul>
+<li><strong>ជ្រើសរើសអ្នកផ្គត់ផ្គង់ (Select Supplier)</strong>: Custom Dropdown មាន Search និង Avatar ក្រុមហ៊ុន។</li>
+<li><strong>ជ្រើសរើសវិក្កយបត្រទិញយោង (Linked Vendor Bill)</strong>: Custom Dropdown បង្ហាញតែវិក្កយបត្រណាដែលបានឆ្លងកាត់ <strong>3-Way Matching រួចរាល់</strong> (ឧ. <code>#BILL-2026-0045 - $1,000.00</code>)។</li>
+<li><strong>គណនីធនាគារអ្នកទទួល (Payee Bank Account)</strong>: បង្ហាញព័ត៌មានស្វ័យប្រវត្តិ (ឈ្មោះធនាគារ, លេខគណនី, ឈ្មោះម្ចាស់គណនី) ដែលត្រូវបានចាក់សោរមិនឱ្យកែដោយសេរី។</li>
+<li><strong>គណនីប្រភពសាច់ប្រាក់ (Payment Source)</strong>: Custom Dropdown (គណនី ABA ប្រតិបត្តិការ, គណនី Canadia, ឬបេឡាសាច់ប្រាក់តូចតាច)។</li>
+</ul>
+<h4 id="ជួរឈរទី-2-ការគណនាទឹកប្រាក់-និងពន្ធកាត់ទុក-wht-engine" class="scroll-mt-24 group">ជួរឈរទី 2: ការគណនាទឹកប្រាក់ និងពន្ធកាត់ទុក (WHT Engine) <a href="#ជួរឈរទី-2-ការគណនាទឹកប្រាក់-និងពន្ធកាត់ទុក-wht-engine" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<ul>
+<li><strong>ទឹកប្រាក់សរុបដើម (Gross Amount)</strong>: បញ្ចូលស្វ័យប្រវត្តិតាមវិក្កយបត្រទិញ។</li>
+<li><strong>ប្រភេទពន្ធកាត់ទុក (Withholding Tax Type)</strong>:<ul>
+<li>Custom Dropdown:<ul>
+<li>គ្មានពន្ធកាត់ទុក (0% - ទំនិញ/ផលិតផលទូទៅ)</li>
+<li>ពន្ធកាត់ទុកលើសេវាកម្ម (15% - សេវាកម្មរូបវន្តបុគ្គល)</li>
+<li>ពន្ធកាត់ទុកលើការជួលអចលនទ្រព្យ (10% - ថ្លៃជួលអគារ/ឃ្លាំង)</li>
+<li>ពន្ធកាត់ទុកលើសេវាកម្មនីតិបុគ្គលមានវិក្កយបត្រពន្ធ (0% - VAT Registered)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>ទឹកប្រាក់ពន្ធកាត់ទុក (WHT Amount)</strong>: គណនាស្វ័យប្រវត្តិ (<code>Gross × Rate%</code>)។</li>
+<li><strong>ទឹកប្រាក់ត្រូវបើកសុទ្ធ (Net Payable Amount)</strong>: គណនាស្វ័យប្រវត្តិ (<code>Gross - WHT Amount</code>)។</li>
+<li><strong>មូលហេតុ និងការបរិយាយចំណាយ</strong>: Textarea កត់ត្រាខ្លឹមសារលម្អិតនៃប្រតិបត្តិការ។</li>
+<li><strong>ឯកសារយោងភ្ជាប់</strong>: Upload វិក្កយបត្រដើមរបស់អ្នកផ្គត់ផ្គង់, សេចក្តីព្រមព្រៀង, ឬភស្តុតាងផ្ទេរប្រាក់។</li>
+</ul>
+<p><strong>ប៊ូតុងសកម្មភាព (Footer Buttons)</strong>:</p>
+<ul>
+<li>ប៊ូតុង «រក្សាទុក និងដាក់ស្នើសុំអនុម័ត» (<code>bg-[#0f2b5c] text-white rounded-xl px-5 h-11</code>)</li>
+<li>ប៊ូតុង «រក្សាទុកជាព្រាង (Save as Draft)» (<code>bg-slate-100 text-slate-700 rounded-xl px-5 h-11</code>)</li>
+<li>ប៊ូតុង «បោះបង់» (<code>border border-slate-200 text-slate-600 rounded-xl px-5 h-11</code>)</li>
+</ul>
+<hr>
+<h3 id="45-view-voucherhtml-ប័ណ្ណចំណាយទូទាត់កម្រិតសហគ្រាស-a4-official-payment-voucher" class="scroll-mt-24 group">4.5 <code>view-voucher.html</code> — ប័ណ្ណចំណាយទូទាត់កម្រិតសហគ្រាស A4 (Official Payment Voucher) <a href="#45-view-voucherhtml-ប័ណ្ណចំណាយទូទាត់កម្រិតសហគ្រាស-a4-official-payment-voucher" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-5 p-4 rounded-xl bg-amber-50/90 border-l-4 border-amber-500 text-amber-950 text-xs leading-relaxed shadow-sm">
+<p>⚠️ អនុលោមតាម <strong>Rule 12 នៃ GEMINI.md</strong>: សន្លឹកឯកសារត្រូវតែទ្រទ្រង់ការបោះពុម្ពផ្លូវការ (Enterprise A4 Print) តាមរយៈ <code>@media print</code> ក្នុង <code>custom.css</code> ដោយលាក់ Sidebar, Header, ប៊ូតុងរុករក និងមានប្លង់ A4 ស្អាតបរិសុទ្ធ។</p>
+</div>
+<p><strong>រចនាសម្ព័ន្ធប័ណ្ណចំណាយផ្លូវការ</strong>:</p>
+<ol>
+<li><strong>ក្បាលសន្លឹកឯកសារ (Official Header)</strong>:<ul>
+<li>ឡូហ្គោក្រុមហ៊ុន DIGITECHKH + ឈ្មោះក្រុមហ៊ុនជាភាសាខ្មែរ និងអង់គ្លេស + លេខអត្តសញ្ញាណកម្មសារពើពន្ធ (TIN)។</li>
+<li>ចំណងជើងធំកណ្តាល: <strong>ប័ណ្ណចំណាយទូទាត់ (PAYMENT VOUCHER)</strong>។</li>
+<li>លេខកូដប័ណ្ណ: <code>#DIS-2026-0089</code> | កាលបរិច្ឆេទ: 20 កញ្ញា 2026។</li>
+</ul>
+</li>
+<li><strong>ព័ត៌មានអ្នកទទួលប្រាក់ (Payee Information)</strong>:<ul>
+<li>ឈ្មោះអ្នកផ្គត់ផ្គង់: ក្រុមហ៊ុន ហ៊ុន ត្រេឌីង ខូអិលធីឌី (TIN: K005-902100888)។</li>
+<li>វិធីសាស្ត្រទូទាត់: ផ្ទេរតាមធនាគារ ABA (គណនីលេខ: <code>000 123 456</code>)។</li>
+</ul>
+</li>
+<li><strong>តារាងលម្អិតមុខចំណាយ (Expense Breakdown Table)</strong>:<ul>
+<li>ជួរឈរ: ល.រ, បរិយាយមុខចំណាយ, ឯកសារយោង, ទឹកប្រាក់ដើម, អត្រា WHT, ពន្ធកាត់ទុក, ទឹកប្រាក់សុទ្ធ។</li>
+</ul>
+</li>
+<li><strong>ផ្នែកសង្ខេបហិរញ្ញវត្ថុ (Financial Summary)</strong>:<ul>
+<li>ទឹកប្រាក់សរុបដើម (Gross Amount): <code>$1,000.00</code></li>
+<li>ពន្ធកាត់ទុក (WHT 15%): <code>-$150.00</code></li>
+<li><strong>ទឹកប្រាក់បើកសុទ្ធ (Net Amount in Figures)</strong>: <strong><code>$850.00</code></strong></li>
+<li><strong>ទឹកប្រាក់ជាអក្សរ (Amount in Words)</strong>: <em>ប្រាំបីរយហាសិបដុល្លារអាមេរិកគត់</em></li>
+</ul>
+</li>
+<li><strong>ប្លង់ 4 ហត្ថលេខាផ្លូវការ (4-Signature Authority Block)</strong>:</li>
+</ol>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>┌─────────────────┬─────────────────┬─────────────────┬─────────────────┐
+│   អ្នករៀបចំ     │  អ្នកត្រួតពិនិត្យ │   អ្នកអនុម័ត     │   អ្នកទទួលប្រាក់  │
+│  (PREPARED BY)  │  (VERIFIED BY)  │  (APPROVED BY)  │  (RECEIVED BY)  │
+│                 │                 │                 │                 │
+│                 │                 │                 │                 │
+│ ________________│ ________________│ ________________│ ________________│
+│  កែវ សោភា       │  ជា វិចិត្រ       │  សេង ហុង        │ ហ៊ុន ត្រេឌីង     │
+│ គណនេយ្យករទូទាត់  │  ប្រធានគណនេយ្យ  │  នាយកប្រតិបត្តិ    │ ថ្ងៃ: __/__/____│
+└─────────────────┴─────────────────┴─────────────────┴─────────────────┘
+</code></pre>
+        </div>
+<hr>
+<h3 id="46-reportshtml-តារាងវិភាគអាយុបំណុល-និងរបាយការណ៍សាច់ប្រាក់-apar-aging-reports" class="scroll-mt-24 group">4.6 <code>reports.html</code> — តារាងវិភាគអាយុបំណុល និងរបាយការណ៍សាច់ប្រាក់ (AP/AR Aging Reports) <a href="#46-reportshtml-តារាងវិភាគអាយុបំណុល-និងរបាយការណ៍សាច់ប្រាក់-apar-aging-reports" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p><strong>គោលបំណង</strong>: ផ្តល់ឧបករណ៍វិភាគទិន្នន័យបំណុលស៊ីជម្រៅសម្រាប់ AP/AR Accountant តាមដានសុខភាពឥណទាន។</p>
+<p><strong>របាយការណ៍ស្នូលទាំង 3 លើទំព័រនេះ</strong>:</p>
+<ol>
+<li><strong>តារាងអាយុបំណុលត្រូវទារ (AR Aging Schedule)</strong>:<ul>
+<li>បែងចែកតាមជួរអាយុ: មិនទាន់ដល់កំណត់, 1-30 ថ្ងៃ, 31-60 ថ្ងៃ, 61-90 ថ្ងៃ, លើសពី 90 ថ្ងៃ។</li>
+<li>ចាត់ថ្នាក់កម្រិតហានិភ័យតាមពណ៌: 🟢 ធម្មតា, 🟡 តាមដាន, 🔴 ហានិភ័យខ្ពស់។</li>
+</ul>
+</li>
+<li><strong>តារាងអាយុបំណុលត្រូវសង (AP Aging Schedule)</strong>:<ul>
+<li>បង្ហាញកាលវិភាគដែលត្រូវសងអ្នកផ្គត់ផ្គង់ ដើម្បីរៀបចំផែនការបម្រុងសាច់ប្រាក់ (Cash Planning)។</li>
+</ul>
+</li>
+<li><strong>របាយការណ៍សង្ខេបពន្ធកាត់ទុក (WHT Monthly Summary)</strong>:<ul>
+<li>បញ្ជីរាយនាមរាល់ការកាត់ពន្ធ 15% និង 10% ប្រចាំខែ ត្រៀមបញ្ជូនទៅប្រធានគណនេយ្យសម្រាប់បង់ពន្ធ GDT។</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="5-ម៉ាទ្រីសសិទ្ធិ-permission-matrix" class="scroll-mt-24 group">5. ម៉ាទ្រីសសិទ្ធិ (Permission Matrix) <a href="#5-ម៉ាទ្រីសសិទ្ធិ-permission-matrix" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="51-ម៉ាទ្រីស-crud-ពេញលេញសម្រាប់-apar-accountant" class="scroll-mt-24 group">5.1 ម៉ាទ្រីស CRUD ពេញលេញសម្រាប់ AP/AR Accountant <a href="#51-ម៉ាទ្រីស-crud-ពេញលេញសម្រាប់-apar-accountant" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">មុខងារ / ម៉ូឌុល</th>
+<th align="center">CREATE (បង្កើត)</th>
+<th align="center">READ (មើល)</th>
+<th align="center">UPDATE (កែប្រែ)</th>
+<th align="center">DELETE (លុប)</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">កំណត់សម្គាល់លម្អិត</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>បង្កាន់ដៃទទួលប្រាក់ (AR Receipts)</strong></td>
+<td align="center">✅ ពេញលេញ</td>
+<td align="center">✅ ទាំងអស់</td>
+<td align="center">⚠️ មុន Reconcile</td>
+<td align="center">❌ ហាមលុប</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">រាល់ការចេញបង្កាន់ដៃត្រូវមាន Audit Trail</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ប័ណ្ណចំណាយទូទាត់ (Disbursements)</strong></td>
+<td align="center">✅ ពេញលេញ</td>
+<td align="center">✅ ទាំងអស់</td>
+<td align="center">⚠️ ស្ថានភាព Draft</td>
+<td align="center">❌ ហាមលុប</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ពេល Approved រួច ហាមកែប្រែដាច់ខាត</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>វិក្កយបត្រលក់ (Invoices)</strong></td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+<td align="center">👁️ មើលស្ថានភាព</td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">មើលដើម្បីទារប្រាក់ ហាមកែតម្លៃ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>វិក្កយបត្រទិញចូល (Bills)</strong></td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+<td align="center">👁️ មើល 3-Way Match</td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ផ្នែកលទ្ធកម្មជាអ្នកបញ្ចូល</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>តារាងគណនី (COA)</strong></td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+<td align="center">👁️ មើលលេខកូដ GL</td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ហាមកែប្រែជាដាច់ខាត (Chief Acc Only)</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ការផ្ទៀងផ្ទាត់ធនាគារ (Reconciliation)</strong></td>
+<td align="center">✅ ចុះបញ្ជីផ្ទៀង</td>
+<td align="center">✅ មើលរបាយការណ៍</td>
+<td align="center">⚠️ ក្នុងគ្រាសកម្ម</td>
+<td align="center">❌ ហាមលុប</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ផ្ទៀងផ្ទាត់សាច់ប្រាក់ជាក់ស្តែង</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ពន្ធកាត់ទុក (WHT Records)</strong></td>
+<td align="center">✅ កត់ត្រា WHT</td>
+<td align="center">✅ មើលរបាយការណ៍</td>
+<td align="center">⚠️ តាមប័ណ្ណចំណាយ</td>
+<td align="center">❌ ហាមលុប</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">គណនាក្នុងប័ណ្ណចំណាយស្វ័យប្រវត្តិ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>បេឡាសាច់ប្រាក់តូចតាច (Petty Cash)</strong></td>
+<td align="center">✅ បញ្ចូលចំណាយ</td>
+<td align="center">✅ មើលសមតុល្យ</td>
+<td align="center">⚠️ មុនទូទាត់សង</td>
+<td align="center">❌ ហាមលុប</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">រក្សាស្លីបចំណាយនីមួយៗ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>របាយការណ៍ចំណេញខាត (P&amp;L)</strong></td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+<td align="center">👁️ មើលទូទៅ</td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+<td align="center">❌ គ្មានសិទ្ធិ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ប្រធានគណនេយ្យជាអ្នកបិទបញ្ជី</td>
+</tr>
+</tbody></table></div>
+<div class="my-5 p-4 rounded-xl bg-amber-50/90 border-l-4 border-amber-500 text-amber-950 text-xs leading-relaxed shadow-sm">
+<p><strong>⚠️ Legend</strong>: ✅ Full Access | 👁️ Read-Only | ⚠️ Conditional / Restricted | ❌ Strictly Forbidden</p>
+</div>
+<hr>
+<h2 id="6-វដ្តការងារស្នូលទាំង-6-core-workflows" class="scroll-mt-24 group">6. វដ្តការងារស្នូលទាំង 6 (Core Workflows) <a href="#6-វដ្តការងារស្នូលទាំង-6-core-workflows" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="workflow-1-ការប្រមូលប្រាក់-និងចេញបង្កាន់ដៃ-ar-collection-official-receipt" class="scroll-mt-24 group">Workflow 1: ការប្រមូលប្រាក់ និងចេញបង្កាន់ដៃ (AR Collection &amp; Official Receipt) <a href="#workflow-1-ការប្រមូលប្រាក់-និងចេញបង្កាន់ដៃ-ar-collection-official-receipt" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>START
+  │
+  ▼
+អតិថិជនបង់ប្រាក់តាម KHQR បាគង ឬផ្ញើស្លីបផ្ទេរប្រាក់មកក្រុមហ៊ុន
+  │
+  ▼
+AP/AR Accountant ចូល `payments.html`
+  ├── ពិនិត្យការជូនដំណឹងពីប្រព័ន្ធធនាគារ (Bank Webhook Notification)
+  ├── ផ្ទៀងផ្ទាត់លេខយោងប្រតិបត្តិការ (Reference Number) ធៀបនឹង Bank Statement
+  └── ស្វែងរកវិក្កយបត្រ `#INV-2026-0120` របស់អតិថិជន
+  │
+  ▼
+ចុច «បញ្ជាក់ការទូទាត់ និងចេញបង្កាន់ដៃ (Confirm &amp; Issue Receipt)»
+  ├── ប្រព័ន្ធ Generate លេខកូដបង្កាន់ដៃ `#REC-2026-0145`
+  ├── ប្រព័ន្ធ Update ស្ថានភាពវិក្កយបត្រ: &quot;បានបង់រួច (Paid)&quot;
+  ├── ប្រព័ន្ធកាត់កងសមតុល្យបំណុលអតិថិជន (Customer Balance Update)
+  └── ប្រព័ន្ធបញ្ជូនបង្កាន់ដៃ PDF ស្វ័យប្រវត្តិតាម Telegram ជូនអតិថិជន
+  │
+  ▼
+showToast(&quot;ការទូទាត់ត្រូវបានបញ្ជាក់ និងចេញបង្កាន់ដៃជោគជ័យ&quot;)
+  │
+  ▼
+END
+</code></pre>
+        </div>
+<hr>
+<h3 id="workflow-2-ការបង្កើតប័ណ្ណចំណាយទូទាត់-និងកាត់ពន្ធ-wht-ap-disbursement-wht" class="scroll-mt-24 group">Workflow 2: ការបង្កើតប័ណ្ណចំណាយទូទាត់ និងកាត់ពន្ធ WHT (AP Disbursement &amp; WHT) <a href="#workflow-2-ការបង្កើតប័ណ្ណចំណាយទូទាត់-និងកាត់ពន្ធ-wht-ap-disbursement-wht" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>START
+  │
+  ▼
+វិក្កយបត្រទិញចូល `#BILL-2026-0045` ត្រូវបាន 3-Way Matched ដោយ Procurement
+  │
+  ▼
+AP/AR Accountant ចូល `create-disbursement.html`
+  ├── ជ្រើសរើសវិក្កយបត្រទិញ `#BILL-2026-0045` (Gross: $1,000.00)
+  ├── ពិនិត្យប្រភេទចំណាយ: &quot;ថ្លៃជួសជុល និងថែទាំម៉ាស៊ីន (សេវាកម្ម)&quot;
+  ├── ជ្រើសរើសប្រភេទពន្ធកាត់ទុក: &quot;15% Withholding Tax លើសេវាកម្ម&quot;
+  ├── ប្រព័ន្ធគណនាស្វ័យប្រវត្តិ: WHT = -$150.00 | Net Payable = $850.00
+  ├── ជ្រើសរើសប្រភពសាច់ប្រាក់: &quot;គណនីធនាគារ ABA ប្រតិបត្តិការ&quot;
+  └── ភ្ជាប់ឯកសារវិក្កយបត្រដើមរបស់អ្នកផ្គត់ផ្គង់
+  │
+  ▼
+ចុច «ដាក់ស្នើសុំការអនុម័ត (Submit for Approval)»
+  │
+  ├── ស្ថានភាពប័ណ្ណចំណាយ: &quot;រង់ចាំការត្រួតពិនិត្យ (Pending Verification)&quot;
+  └── ផ្ញើដំណឹង Notification ទៅកាន់ Chief Accountant
+  │
+  ▼
+Chief Accountant ពិនិត្យ → ចុះហត្ថលេខាឌីជីថល (Verified)
+  │
+  ▼
+GM / Director ពិនិត្យ → ចុះហត្ថលេខាអនុម័ត (Approved)
+  │
+  ▼
+AP/AR Accountant ធ្វើការផ្ទេរប្រាក់ $850.00 តាម App ធនាគារជូនអ្នកផ្គត់ផ្គង់
+  ├── ចុច «បញ្ជាក់ការបើកប្រាក់រួច (Mark as Paid)» ភ្ជាប់លេខយោងធនាគារ
+  └── ប្រព័ន្ធកត់ត្រាពន្ធ $150.00 ចូលតារាងកាតព្វកិច្ចពន្ធត្រូវបង់ GDT
+  │
+  ▼
+បោះពុម្ពសន្លឹកប័ណ្ណចំណាយ A4 ទុកជាភស្តុតាងសវនកម្ម (Audit Archive)
+  │
+  ▼
+END
+</code></pre>
+        </div>
+<hr>
+<h3 id="workflow-3-ការផ្ទៀងផ្ទាត់សាច់ប្រាក់បិទវេនបញ្ជរលក់-cashier-shift-reconciliation" class="scroll-mt-24 group">Workflow 3: ការផ្ទៀងផ្ទាត់សាច់ប្រាក់បិទវេនបញ្ជរលក់ (Cashier Shift Reconciliation) <a href="#workflow-3-ការផ្ទៀងផ្ទាត់សាច់ប្រាក់បិទវេនបញ្ជរលក់-cashier-shift-reconciliation" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>START
+  │
+  ▼
+អ្នកគិតប្រាក់ (Cashier) បិទវេនការងារក្នុង `close-shift.html`
+  ├── ប្រព័ន្ធរាយការណ៍ចំណូលតាមប្រព័ន្ធ (Expected Cash): $480.00
+  └── អ្នកគិតប្រាក់រាប់សាច់ប្រាក់ជាក់ស្តែងក្នុងថត (Actual Cash): $480.00
+  │
+  ▼
+អ្នកគិតប្រាក់យកស្រោមសំបុត្រសាច់ប្រាក់ និងរបាយការណ៍បិទវេនមកប្រគល់ឱ្យ AP/AR Accountant
+  │
+  ▼
+AP/AR Accountant ចូល `payments.html` → ផ្ទាំង «ផ្ទៀងផ្ទាត់វេនលក់ (Shift Audit)»
+  ├── រាប់សាច់ប្រាក់ជាក់ស្តែងម្តងទៀតជាសាក្សី
+  ├── ផ្ទៀងផ្ទាត់តួលេខលក់តាម KHQR ធៀបនឹង Bank Dashboard
+  └── ករណីស្មើគ្នា: ចុច «ទទួលស្គាល់វេនលក់ (Acknowledge Shift)»
+  │
+  ▼
+[ករណីមិនស្មើគ្នា - Over/Short]
+  ├── ប្រសិនខ្វះសាច់ប្រាក់ (Short): កត់ត្រាជាបំណុលបុគ្គលិក ឬចំណាយខាតបេឡា
+  └── ប្រសិនលើសសាច់ប្រាក់ (Over): កត់ត្រាជាចំណូលផ្សេងៗ
+  │
+  ▼
+បញ្ចូលសាច់ប្រាក់ចូលទៅក្នុងសុវត្ថិភាពធំ (Main Company Safe) ឬរៀបចំយកទៅផ្ញើធនាគារ
+  │
+  ▼
+END
+</code></pre>
+        </div>
+<hr>
+<h3 id="workflow-4-ការផ្ទៀងផ្ទាត់របាយការណ៍ធនាគារ-daily-bank-reconciliation" class="scroll-mt-24 group">Workflow 4: ការផ្ទៀងផ្ទាត់របាយការណ៍ធនាគារ (Daily Bank Reconciliation) <a href="#workflow-4-ការផ្ទៀងផ្ទាត់របាយការណ៍ធនាគារ-daily-bank-reconciliation" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>START
+  │
+  ▼
+រៀងរាល់ព្រឹកម៉ោង 8:30 នាទី AP/AR Accountant ទាញរបាយការណ៍ធនាគារ (Bank Statement)
+  │
+  ▼
+ចូលផ្ទាំង «Bank Reconciliation» ក្នុង `reports.html`
+  │
+  ├── ប្រព័ន្ធបង្ហាញប្រតិបត្តិការ 2 ជួរឈរ:
+  │   - ជួរឈរឆ្វេង: ប្រតិបត្តិការក្នុងប្រព័ន្ធ BMS (System Ledger)
+  │   - ជួរឈរស្តាំ: ប្រតិបត្តិការជាក់ស្តែងក្នុងធនាគារ (Bank Feed)
+  │
+  ▼
+ប្រព័ន្ធធ្វើការ Auto-Match លើប្រតិបត្តិការណាដែលមានចំនួនទឹកប្រាក់ និងកាលបរិច្ឆេទដូចគ្នា
+  │
+  ├── ប្រតិបត្តិការត្រូវគ្នា 100%: សម្គាល់ពណ៌បៃតង ✅
+  └── ប្រតិបត្តិការមិនទាន់ត្រូវគ្នា (Unreconciled):
+      - អតិថិជនផ្ទេរចូលតែមិនទាន់ដឹងជានរណា (Unidentified Inbound)
+      - ធនាគារកាត់ថ្លៃសេវាប្រចាំខែ (Bank Service Charges)
+  │
+  ▼
+AP/AR Accountant ចុះបញ្ជីកែតម្រូវចំពោះថ្លៃសេវាធនាគារ
+  │
+  ▼
+សមតុល្យចុងគ្រា (Ending Balance) ក្នុងប្រព័ន្ធ = សមតុល្យក្នុងធនាគារបេះបិទ
+  │
+  ▼
+END
+</code></pre>
+        </div>
+<hr>
+<h3 id="workflow-5-ការតាមដាន-និងរំលឹកបំណុលអតិថិជន-ar-aging-dunning-flow" class="scroll-mt-24 group">Workflow 5: ការតាមដាន និងរំលឹកបំណុលអតិថិជន (AR Aging &amp; Dunning Flow) <a href="#workflow-5-ការតាមដាន-និងរំលឹកបំណុលអតិថិជន-ar-aging-dunning-flow" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>START
+  │
+  ▼
+AP/AR Accountant ពិនិត្យផ្ទាំង «AR Aging Schedule» ក្នុង `reports.html`
+  │
+  ▼
+ត្រួតពិនិត្យអតិថិជនដែលមានបំណុលតាមដំណាក់កាល:
+  ├── ដំណាក់កាលទី 1 (ហួស 1 - 15 ថ្ងៃ): ប្រព័ន្ធផ្ញើសាររំលឹកដោយសុភាពតាម Telegram
+  ├── ដំណាក់កាលទី 2 (ហួស 16 - 30 ថ្ងៃ): AP/AR ខលទូរស័ព្ទផ្ទាល់ដើម្បីសាកសួរកាលបរិច្ឆេទសង
+  ├── ដំណាក់កាលទី 3 (ហួស 31 - 60 ថ្ងៃ): ចាក់សោរបណ្តោះអាសន្នមិនឱ្យទិញជំពាក់បន្ថែម (Credit Hold)
+  └── ដំណាក់កាលទី 4 (ហួសលើសពី 60 ថ្ងៃ): បញ្ជូនរបាយការណ៍ទៅកាន់ Sales Manager និង GM
+  │
+  ▼
+អតិថិជនសន្យាថ្ងៃសងប្រាក់ជាក់លាក់ → កត់ត្រាក្នុងកំណត់ហេតុតាមដានបំណុល
+  │
+  ▼
+END
+</code></pre>
+        </div>
+<hr>
+<h3 id="workflow-6-ការគ្រប់គ្រង-និងទូទាត់បេឡាសាច់ប្រាក់តូចតាច-petty-cash-flow" class="scroll-mt-24 group">Workflow 6: ការគ្រប់គ្រង និងទូទាត់បេឡាសាច់ប្រាក់តូចតាច (Petty Cash Flow) <a href="#workflow-6-ការគ្រប់គ្រង-និងទូទាត់បេឡាសាច់ប្រាក់តូចតាច-petty-cash-flow" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>START
+  │
+  ▼
+បុគ្គលិករដ្ឋបាលស្នើសុំបើកសងថ្លៃសម្ភារៈការិយាល័យតូចតាច ($35.00)
+  │
+  ▼
+AP/AR Accountant ពិនិត្យវិក្កយបត្រដើម និងប័ណ្ណស្នើសុំ
+  │
+  ▼
+បើកប្រាក់ពីកាតាបេឡាសាច់ប្រាក់តូចតាច (Petty Cash Box) ជូនបុគ្គលិក
+  │
+  ▼
+កត់ត្រាប្រតិបត្តិការក្នុងតារាងតាមដាន Petty Cash Log
+  │
+  ▼
+នៅពេលសាច់ប្រាក់ក្នុងបេឡាតូចធ្លាក់ចុះដល់កម្រិតអប្បបរមា (ឧ. នៅសល់ &lt; $50 នៃដើមទុន $300)
+  ├── AP/AR Accountant បូកសរុបរាល់វិក្កយបត្រតូចៗទាំងអស់
+  ├── បង្កើតប័ណ្ណចំណាយទូទាត់បំពេញបេឡា (Petty Cash Replenishment Voucher)
+  └── ដកសាច់ប្រាក់ពីធនាគារមកបំពេញបេឡាឱ្យគ្រប់ចំនួន $300 ដើមវិញ
+  │
+  ▼
+END
+</code></pre>
+        </div>
+<hr>
+<h2 id="7-business-logic-accounting-rules" class="scroll-mt-24 group">7. Business Logic &amp; Accounting Rules <a href="#7-business-logic-accounting-rules" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="71-ច្បាប់ពន្ធកាត់ទុកនៃព្រះរាជាណាចក្រកម្ពុជា-cambodia-withholding-tax-rules" class="scroll-mt-24 group">7.1 ច្បាប់ពន្ធកាត់ទុកនៃព្រះរាជាណាចក្រកម្ពុជា (Cambodia Withholding Tax Rules) <a href="#71-ច្បាប់ពន្ធកាត់ទុកនៃព្រះរាជាណាចក្រកម្ពុជា-cambodia-withholding-tax-rules" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p>ការកាត់ពន្ធកាត់ទុក (WHT) គឺជាកាតព្វកិច្ចផ្លូវច្បាប់ដែលក្រុមហ៊ុនជាអ្នកជាប់ពន្ធតាមរបបស្វ័យប្រកាសត្រូវអនុវត្តមុនពេលទូទាត់ប្រាក់:</p>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ប្រភេទប្រតិបត្តិការ</th>
+<th align="center">អត្រាពន្ធកាត់ទុក (WHT Rate)</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">លក្ខខណ្ឌអនុវត្តជាក់ស្តែង</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ការទិញទំនិញ / ផលិតផលរូបី</strong></td>
+<td align="center"><strong>0%</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">គ្មានការកាត់ពន្ធកាត់ទុកលើការទិញទំនិញធម្មតាឡើយ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>សេវាកម្មទូទៅ (រូបវន្តបុគ្គល)</strong></td>
+<td align="center"><strong>15%</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">សេវាកម្មជួសជុល, ប្រឹក្សាយោបល់, ដឹកជញ្ជូន ដែលផ្តល់ដោយបុគ្គលគ្មាន TIN</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ថ្លៃឈ្នួលអគារ / ឃ្លាំង / ទីតាំង</strong></td>
+<td align="center"><strong>10%</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ការជួលអចលនទ្រព្យពីម្ចាស់ផ្ទះដែលជារូបវន្តបុគ្គល</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ការប្រាក់កម្ចី (អ្នករស់នៅកម្ពុជា)</strong></td>
+<td align="center"><strong>15%</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ការទូទាត់ការប្រាក់ជូនបុគ្គល ឬស្ថាប័នក្រៅប្រព័ន្ធធនាគារ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>សេវាកម្មទៅក្រៅប្រទេស (Non-Resident)</strong></td>
+<td align="center"><strong>14%</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ការទូទាត់ថ្លៃសេវា Software, Hosting, ឬប្រឹក្សាយោបល់ទៅក្រុមហ៊ុនក្រៅប្រទេស</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>សេវាកម្មរវាងក្រុមហ៊ុនមាន TIN (VAT)</strong></td>
+<td align="center"><strong>0%</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ប្រសិនបើអ្នកផ្គត់ផ្គង់ចេញវិក្កយបត្រពន្ធផ្លូវការមាន VAT 10% ត្រឹមត្រូវ</td>
+</tr>
+</tbody></table></div>
+<h3 id="72-រូបមន្តគណនាពន្ធកាត់ទុក-calculation-formulas" class="scroll-mt-24 group">7.2 រូបមន្តគណនាពន្ធកាត់ទុក (Calculation Formulas) <a href="#72-រូបមន្តគណនាពន្ធកាត់ទុក-calculation-formulas" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>ករណីទី 1: តម្លៃរួមបញ្ចូលពន្ធ (Inclusive of WHT)
+  Gross Amount = $1,000.00
+  WHT (15%)    = $1,000.00 × 15% = $150.00
+  Net Paid     = $1,000.00 - $150.00 = $850.00
+
+ករណីទី 2: តម្លៃសុទ្ធកំណត់ជាមុន (Grossed-up Net Contract)
+  Net Contract = $1,000.00 (ម្ចាស់ផ្ទះទាមទារយកសុទ្ធ $1,000)
+  WHT (10%)    = Net / (1 - 0.10) - Net = $1,000 / 0.90 - $1,000 = $111.11
+  Gross Amount = $1,111.11
+  Tax to GDT   = $111.11
+</code></pre>
+        </div>
+<h3 id="73-ច្បាប់គ្រប់គ្រងអាយុបំណុល-aging-classification-buckets" class="scroll-mt-24 group">7.3 ច្បាប់គ្រប់គ្រងអាយុបំណុល (Aging Classification Buckets) <a href="#73-ច្បាប់គ្រប់គ្រងអាយុបំណុល-aging-classification-buckets" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>┌─────────────────┬─────────────────────────────────────────────────────────┐
+│ ចន្លោះអាយុបំណុល  │ កម្រិតសកម្មភាពរបស់ AP/AR Accountant                     │
+├─────────────────┼─────────────────────────────────────────────────────────┤
+│ មិនទាន់ដល់កំណត់ │ រក្សាការតាមដានធម្មតា                                     │
+│ 1 ដល់ 30 ថ្ងៃ    │ ផ្ញើសាររំលឹកលើកទី 1 តាម Telegram                        │
+│ 31 ដល់ 60 ថ្ងៃ   │ ទូរស័ព្ទផ្ទាល់ + ចេញលិខិតរំលឹកបំណុលផ្លូវការ             │
+│ 61 ដល់ 90 ថ្ងៃ   │ ចាក់សោរ Credit Hold + ស្នើប្រធានផ្នែកលក់ជួយអន្តរាគមន៍    │
+│ លើសពី 90 ថ្ងៃ    │ ដាក់ចូលបញ្ជីបំណុលហានិភ័យ (High Risk) ត្រៀមកាត់កងបំណុលខូច │
+└─────────────────┴─────────────────────────────────────────────────────────┘
+</code></pre>
+        </div>
+<hr>
+<h2 id="8-ទំនាក់ទំនងជាមួយតួនាទីផ្សេង-role-interaction-map" class="scroll-mt-24 group">8. ទំនាក់ទំនងជាមួយតួនាទីផ្សេង (Role Interaction Map) <a href="#8-ទំនាក់ទំនងជាមួយតួនាទីផ្សេង-role-interaction-map" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>AP/AR Accountant
+│
+├── ◄─── [អតិថិជន (Customer)] ── ទទួលប្រាក់បង់, ចេញបង្កាន់ដៃ, ផ្ញើសាររំលឹកបំណុល
+│
+├── ◄─── [អ្នកគិតប្រាក់ (Cashier)] ── ទទួលសាច់ប្រាក់បិទវេន, ផ្ទៀងផ្ទាត់របាយការណ៍ X/Z
+│
+├── ◄─── [បុគ្គលិកលក់ (Sales)] ── ពិនិត្យដែនកំណត់ជំពាក់ (Credit Limit) មុនចេញវិក្កយបត្រថ្មី
+│
+├── ◄─── [ផ្នែកលទ្ធកម្ម (Procurement)] ── ទទួលវិក្កយបត្រទិញដែលបាន 3-Way Match រួច
+│
+├── ──── [អ្នកផ្គត់ផ្គង់ (Supplier)] ── ផ្ទេរប្រាក់ទូទាត់ថ្លៃទំនិញ, ផ្ញើប័ណ្ណចំណាយ A4
+│
+├── ──── [Chief Accountant] ── ដាក់ស្នើប័ណ្ណចំណាយសុំការត្រួតពិនិត្យ, របាយការណ៍ WHT
+│
+└── ──── [Admin / GM] ── ដាក់ស្នើប័ណ្ណចំណាយទំហំធំសុំការអនុម័តចុងក្រោយ
+</code></pre>
+        </div>
+<hr>
+<h2 id="9-data-scope-ឃើញអ្វី-លាក់អ្វី" class="scroll-mt-24 group">9. Data Scope — ឃើញអ្វី? លាក់អ្វី? <a href="#9-data-scope-ឃើញអ្វី-លាក់អ្វី" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>AP/AR ACCOUNTANT DATA SCOPE
+│
+├── ✅ ឃើញពេញលេញ (CAN SEE):
+│   ├── រាល់ប្រតិបត្តិការសាច់ប្រាក់ចូល និងសាច់ប្រាក់ចេញ (Cash In / Cash Out)
+│   ├── បញ្ជីវិក្កយបត្រលក់ទាំងអស់ និងប្រវត្តិនៃការបង់ប្រាក់របស់អតិថិជន
+│   ├── បញ្ជីវិក្កយបត្រទិញចូលទាំងអស់ និងព័ត៌មានគណនីធនាគារអ្នកផ្គត់ផ្គង់
+│   ├── សមតុល្យគណនីធនាគារ និងកាតាបេឡាសាច់ប្រាក់ជាក់ស្តែង
+│   ├── តារាងបំណុលអតិថិជន និងបំណុលអ្នកផ្គត់ផ្គង់ (AR/AP Aging Schedules)
+│   └── កំណត់ត្រាពន្ធកាត់ទុក (WHT) និងពន្ធអាករលើតម្លៃបន្ថែម (VAT)
+│
+└── ❌ ហាមដាច់ខាត (CANNOT SEE / CANNOT MODIFY):
+    ├── ❌ ហាមកែប្រែរចនាសម្ព័ន្ធតារាងគណនី (Chart of Accounts - COA)
+    ├── ❌ ហាមកែប្រែ ឬលុបវិក្កយបត្រលក់ដែលចេញដោយផ្នែកលក់
+    ├── ❌ ហាមកែប្រែថ្លៃដើមទំនិញក្នុងកាតាឡុកស្តុក (Stock Valuation Engine)
+    ├── ❌ ហាមកែសម្រួលតុល្យភាពចំនួនទំនិញក្នុងឃ្លាំង
+    ├── ❌ ហាមមើលឃើញប្រាក់បៀវត្សរ៍លម្អិតរបស់បុគ្គលិកម្នាក់ៗ (Payroll Breakdown)
+    └── ❌ ហាមកែប្រែ ឬដកហូតកំណត់ហេតុសវនកម្ម (Audit Trail Logs)
+</code></pre>
+        </div>
+<hr>
+<h2 id="10-kpi-dashboard-សម្រាប់-apar-accountant" class="scroll-mt-24 group">10. KPI Dashboard សម្រាប់ AP/AR Accountant <a href="#10-kpi-dashboard-សម្រាប់-apar-accountant" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">#</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">រង្វាស់សមិទ្ធកម្ម (KPI Metric)</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">របៀបគណនា</th>
+<th align="center">គោលដៅស្តង់ដារ (Target)</th>
+<th align="center">ពណ៌សម្គាល់</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">1</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>រយៈពេលប្រមូលបំណុលមធ្យម (DSO)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">(បំណុល AR សរុប / ចំណូលលក់សរុប) × 365 ថ្ងៃ</td>
+<td align="center"><strong>&lt; 35 ថ្ងៃ</strong></td>
+<td align="center">🟢 ល្អ / 🔴 យឺតយ៉ាវ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">2</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>រយៈពេលសងបំណុលមធ្យម (DPO)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">(បំណុល AP សរុប / ថ្លៃដើមទិញសរុប) × 365 ថ្ងៃ</td>
+<td align="center"><strong>45 - 60 ថ្ងៃ</strong></td>
+<td align="center">🟢 គ្រប់គ្រងសាច់ប្រាក់ល្អ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">3</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>អត្រាបំណុលហួសកំណត់ (Overdue AR %)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">(បំណុល AR ហួសកាលកំណត់ / បំណុល AR សរុប) × 100%</td>
+<td align="center"><strong>&lt; 8%</strong></td>
+<td align="center">🟢 សុវត្ថិភាព / 🔴 ហានិភ័យ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">4</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ភាពត្រឹមត្រូវនៃធនាគារ (Reconciliation Rate)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ប្រតិបត្តិការធនាគារដែលបានផ្ទៀងផ្ទាត់ក្នុងថ្ងៃ</td>
+<td align="center"><strong>100% រៀងរាល់ថ្ងៃ</strong></td>
+<td align="center">🟢 បិទបញ្ជីទាន់ពេល</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">5</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ប័ណ្ណចំណាយដំណើរការទាន់ពេល</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ភាគរយប័ណ្ណចំណាយដែលបានបើកទាន់កាលបរិច្ឆេទ</td>
+<td align="center"><strong>≥ 98%</strong></td>
+<td align="center">🟢 រក្សាកេរ្តិ៍ឈ្មោះល្អ</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="11-គំរូ-database-schema" class="scroll-mt-24 group">11. គំរូ Database Schema <a href="#11-គំរូ-database-schema" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>-- គំរូតារាងទិន្នន័យសម្រាប់ AP/AR Accounting Module
+
+-- 1. តារាងបង្កាន់ដៃទទួលប្រាក់ពីអតិថិជន (Accounts Receivable Payments)
+CREATE TABLE ar_payments (
+    id                  UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    tenant_id           UUID REFERENCES tenants(id),
+    receipt_number      VARCHAR(50) UNIQUE NOT NULL, -- REC-2026-XXXX
+    invoice_id          UUID REFERENCES invoices(id) NOT NULL,
+    customer_id         UUID REFERENCES customers(id) NOT NULL,
+    payment_date        DATE NOT NULL,
+    amount              DECIMAL(15,2) NOT NULL,
+    currency            VARCHAR(3) DEFAULT &#39;USD&#39;, -- USD | KHR
+    exchange_rate       DECIMAL(10,2) DEFAULT 4100.00, -- NBC Official Rate
+    payment_method      VARCHAR(30) NOT NULL, -- khqr | bank_transfer | cash | check
+    bank_reference      VARCHAR(100), -- លេខយោងប្រតិបត្តិការធនាគារ
+    bank_account_id     UUID REFERENCES company_bank_accounts(id),
+    is_reconciled       BOOLEAN DEFAULT FALSE,
+    reconciled_at       TIMESTAMPTZ,
+    notes               TEXT,
+    received_by         UUID REFERENCES users(id),
+    created_at          TIMESTAMPTZ DEFAULT NOW(),
+    updated_at          TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 2. តារាងប័ណ្ណចំណាយទូទាត់ជូនអ្នកផ្គត់ផ្គង់ (Accounts Payable Disbursements)
+CREATE TABLE ap_disbursements (
+    id                  UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    tenant_id           UUID REFERENCES tenants(id),
+    voucher_number      VARCHAR(50) UNIQUE NOT NULL, -- DIS-2026-XXXX
+    bill_id             UUID REFERENCES vendor_bills(id),
+    supplier_id         UUID REFERENCES suppliers(id) NOT NULL,
+    expense_category_id UUID REFERENCES expense_categories(id),
+    payment_date        DATE NOT NULL,
+    gross_amount        DECIMAL(15,2) NOT NULL,
+    wht_rate            DECIMAL(5,2) DEFAULT 0.00, -- 0, 10, 15
+    wht_amount          DECIMAL(15,2) DEFAULT 0.00,
+    net_payable_amount  DECIMAL(15,2) NOT NULL,
+    currency            VARCHAR(3) DEFAULT &#39;USD&#39;,
+    payment_source      VARCHAR(50) NOT NULL, -- bank_account | petty_cash
+    bank_account_id     UUID REFERENCES company_bank_accounts(id),
+    supplier_bank_name  VARCHAR(100),
+    supplier_bank_acc   VARCHAR(100),
+    supplier_bank_title VARCHAR(255),
+    status              VARCHAR(30) DEFAULT &#39;draft&#39;, 
+        -- draft | pending_verification | approved | paid | rejected | cancelled
+    prepared_by         UUID REFERENCES users(id),
+    verified_by         UUID REFERENCES users(id), -- Chief Accountant
+    approved_by         UUID REFERENCES users(id), -- Director / GM
+    paid_at             TIMESTAMPTZ,
+    bank_transfer_ref   VARCHAR(100),
+    attachment_urls     JSONB DEFAULT &#39;[]&#39;,
+    notes               TEXT,
+    created_at          TIMESTAMPTZ DEFAULT NOW(),
+    updated_at          TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 3. តារាងតាមដានពន្ធកាត់ទុកប្រចាំខែ (Withholding Tax Ledger)
+CREATE TABLE withholding_tax_logs (
+    id                  BIGSERIAL PRIMARY KEY,
+    tenant_id           UUID REFERENCES tenants(id),
+    disbursement_id     UUID REFERENCES ap_disbursements(id) ON DELETE CASCADE,
+    supplier_id         UUID REFERENCES suppliers(id),
+    tax_month           VARCHAR(7) NOT NULL, -- YYYY-MM ឧ. 2026-09
+    tax_rate            DECIMAL(5,2) NOT NULL,
+    base_amount         DECIMAL(15,2) NOT NULL,
+    tax_withheld        DECIMAL(15,2) NOT NULL,
+    tax_declaration_ref VARCHAR(100), -- យោងពេលដាក់ពន្ធ GDT
+    is_declared         BOOLEAN DEFAULT FALSE,
+    created_at          TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 4. តារាងបេឡាសាច់ប្រាក់តូចតាច (Petty Cash Book)
+CREATE TABLE petty_cash_entries (
+    id                  UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    tenant_id           UUID REFERENCES tenants(id),
+    entry_number        VARCHAR(50) UNIQUE NOT NULL, -- PC-2026-XXXX
+    entry_type          VARCHAR(10) NOT NULL, -- IN (បំពេញបេឡា) | OUT (ចំណាយតូចតាច)
+    amount              DECIMAL(15,2) NOT NULL,
+    balance_after       DECIMAL(15,2) NOT NULL,
+    description         TEXT NOT NULL,
+    receipt_attachment  TEXT,
+    paid_to             VARCHAR(255),
+    handled_by          UUID REFERENCES users(id),
+    replenishment_disbursement_id UUID REFERENCES ap_disbursements(id),
+    created_at          TIMESTAMPTZ DEFAULT NOW()
+);
+</code></pre>
+        </div>
+<hr>
+<h2 id="12-ការគ្រប់គ្រងផ្ទៃក្នុង-និងការទប់ស្កាត់ការកិបកេង-anti-fraud-controls" class="scroll-mt-24 group">12. ការគ្រប់គ្រងផ្ទៃក្នុង និងការទប់ស្កាត់ការកិបកេង (Anti-Fraud Controls) <a href="#12-ការគ្រប់គ្រងផ្ទៃក្នុង-និងការទប់ស្កាត់ការកិបកេង-anti-fraud-controls" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<p>ដើម្បីការពារហានិភ័យបាត់បង់សាច់ប្រាក់ និងការក្លែងបន្លំហិរញ្ញវត្ថុ ប្រព័ន្ធត្រូវអនុវត្តការត្រួតពិនិត្យ 5 កម្រិត:</p>
+<ol>
+<li><strong>ការបែងចែកភារកិច្ចដាច់ខាត (Dual Authorization Requirement)</strong>:<ul>
+<li>គ្មានប័ណ្ណចំណាយណាមួយអាចបើកប្រាក់បានដោយគ្មានហត្ថលេខាឌីជីថល 2 យ៉ាងតិចនោះឡើយ (AP/AR រៀបចំ + Chief Accountant ឬ GM អនុម័ត)។</li>
+</ul>
+</li>
+<li><strong>ការចាក់សោរព័ត៌មានគណនីធនាគារអ្នកផ្គត់ផ្គង់ (Bank Account Lockdown)</strong>:<ul>
+<li>ព័ត៌មានធនាគាររបស់អ្នកផ្គត់ផ្គង់ត្រូវបានទាញចេញពី Profile ផ្លូវការ។ AP/AR Accountant មិនអាចវាយបញ្ចូលលេខគណនីធនាគារថ្មីតាមអំពើចិត្តលើប័ណ្ណចំណាយឡើយ។</li>
+</ul>
+</li>
+<li><strong>ការទប់ស្កាត់ការទូទាត់ស្ទួន (Duplicate Payment Prevention)</strong>:<ul>
+<li>ប្រព័ន្ធស្កេនពិនិត្យស្វ័យប្រវត្តិនូវលេខកូដវិក្កយបត្រអ្នកផ្គត់ផ្គង់ (Supplier Invoice Number)។ ប្រសិនបើមានវិក្កយបត្រដូចគ្នាពីអ្នកផ្គត់ផ្គង់តែមួយ ប្រព័ន្ធនឹង Block មិនឱ្យបង្កើតប័ណ្ណចំណាយស្ទួន។</li>
+</ul>
+</li>
+<li><strong>កំណត់ហេតុសវនកម្មដែលមិនអាចកែប្រែបាន (Immutable Audit Trail)</strong>:<ul>
+<li>រាល់ការបញ្ជាក់ការទទួលប្រាក់ ការបោះពុម្ពបង្កាន់ដៃ ឬការបើកប្រាក់ ត្រូវបានកត់ត្រាក្នុង System Audit Log ជាមួយ IP Address, ពេលវេលាពិត, និងអត្តសញ្ញាណបុគ្គលិក។</li>
+</ul>
+</li>
+<li><strong>ការផ្ទៀងផ្ទាត់ភាពខុសគ្នានៃការបិទវេន (Cashier Variance Threshold)</strong>:<ul>
+<li>ប្រសិនបើសាច់ប្រាក់បិទវេនរបស់ Cashier មានភាពខុសគ្នា (Over/Short) លើសពី $5.00 ប្រព័ន្ធតម្រូវឱ្យមានការបំភ្លឺជាលាយលក្ខណ៍អក្សរ និងការចុះហត្ថលេខាទទួលស្គាល់ពីអ្នកគិតប្រាក់។</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="13-អនុសាសន៍-architect-prototype-planning" class="scroll-mt-24 group">13. អនុសាសន៍ Architect + Prototype Planning <a href="#13-អនុសាសន៍-architect-prototype-planning" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="131-អនុសាសន៍រចនាប្រព័ន្ធ-architectural-recommendations" class="scroll-mt-24 group">13.1 អនុសាសន៍រចនាប្រព័ន្ធ (Architectural Recommendations) <a href="#131-អនុសាសន៍រចនាប្រព័ន្ធ-architectural-recommendations" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<h4 id="ណែនាំ-1-ស្វ័យប្រវត្តិកម្ម-bakong-khqr-webhook" class="scroll-mt-24 group">✅ ណែនាំ 1: ស្វ័យប្រវត្តិកម្ម Bakong KHQR Webhook <a href="#ណែនាំ-1-ស្វ័យប្រវត្តិកម្ម-bakong-khqr-webhook" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<p>ភ្ជាប់ប្រព័ន្ធដោយផ្ទាល់ជាមួយ Bakong Open API ឬ Payment Gateway (ដូចជា ABA PayWay):</p>
+<ul>
+<li>ពេលអតិថិជនស្កេន KHQR → ប្រព័ន្ធធនាគារផ្ញើ Webhook មកភ្លាមៗ → BMS បង្កើតបង្កាន់ដៃទទួលប្រាក់ <code>#REC-XXXX</code> និងកាត់កងវិក្កយបត្រដោយស្វ័យប្រវត្តិ 100% ដោយមិនបាច់ឱ្យ AP/AR Accountant វាយដៃឡើយ។</li>
+</ul>
+<h4 id="ណែនាំ-2-ការបោះពុម្ពប័ណ្ណចំណាយ-a4-ដែលមាន-qr-code-ផ្ទៀងផ្ទាត់" class="scroll-mt-24 group">✅ ណែនាំ 2: ការបោះពុម្ពប័ណ្ណចំណាយ A4 ដែលមាន QR Code ផ្ទៀងផ្ទាត់ <a href="#ណែនាំ-2-ការបោះពុម្ពប័ណ្ណចំណាយ-a4-ដែលមាន-qr-code-ផ្ទៀងផ្ទាត់" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<p>នៅលើប័ណ្ណចំណាយផ្លូវការ <a href="file:///D:/DATA/Project/ebms_prototype/frontend/src/pages/9-portals/accountant/view-voucher.html">view-voucher.html</a> ត្រូវបង្កប់ Dynamic QR Code នៅជ្រុងខាងក្រោម ដែលអនុញ្ញាតឱ្យសវនករ ឬនាយកស្កេនពិនិត្យមើលស្ថានភាពឯកសារដើមក្នុងប្រព័ន្ធបានភ្លាមៗ។</p>
+<h4 id="ណែនាំ-3-កាលវិភាគបម្រុងសាច់ប្រាក់-cash-outflow-forecasting" class="scroll-mt-24 group">✅ ណែនាំ 3: កាលវិភាគបម្រុងសាច់ប្រាក់ (Cash Outflow Forecasting) <a href="#ណែនាំ-3-កាលវិភាគបម្រុងសាច់ប្រាក់-cash-outflow-forecasting" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h4>
+<p>ផ្ទាំងគ្រប់គ្រងត្រូវបង្ហាញក្រាហ្វព្យាករណ៍តម្រូវការសាច់ប្រាក់ 7 ថ្ងៃ និង 30 ថ្ងៃទៅមុខ ដោយផ្អែកលើកាលបរិច្ឆេទកំណត់នៃបំណុលត្រូវសង (AP Due Dates) ដើម្បីការពារការខ្វះខាតសាច់ប្រាក់ក្នុងធនាគារ។</p>
+<hr>
+<h3 id="132-បញ្ជីត្រួតពិនិត្យការសាងសង់-prototype-15-point-prototype-checklist" class="scroll-mt-24 group">13.2 បញ្ជីត្រួតពិនិត្យការសាងសង់ Prototype (15-Point Prototype Checklist) <a href="#132-បញ្ជីត្រួតពិនិត្យការសាងសង់-prototype-15-point-prototype-checklist" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p>មុនពេលចាត់ទុកថា Prototype សម្រាប់ AP/AR Accountant ត្រឹមត្រូវ 100% ត្រូវផ្ទៀងផ្ទាត់:</p>
+<ul>
+<li><input disabled="" type="checkbox"> <strong>កម្ពស់ Header ស្មើគ្នា</strong>: ទាំង Sidebar Brand និង Content Top Header មានកម្ពស់ <code>h-[72px]</code> ស្មើគ្នាបេះបិទ។</li>
+<li><input disabled="" type="checkbox"> <strong>ភាសាខ្មែរសុទ្ធសាធ 100%</strong>: គ្មានពាក្យអង់គ្លេសលាយឡំលើ UI, ប៊ូតុង, តារាង, ផ្លាក Badge ឬ Toast ឡើយ។</li>
+<li><input disabled="" type="checkbox"> <strong>លេខអង់គ្លេស 0-9</strong>: គ្រប់លេខកូដ (#DIS-2026-0089, #REC-2026-0145), ទឹកប្រាក់, កាលបរិច្ឆេទ ប្រើលេខអង់គ្លេសជានិច្ច។</li>
+<li><input disabled="" type="checkbox"> <strong>គ្មាន Pop-up Modal</strong>: ទម្រង់បង្កើតប័ណ្ណចំណាយ <code>create-disbursement.html</code> និងមើលប័ណ្ណ <code>view-voucher.html</code> ជាទំព័រពេញលេញ (Dedicated Full Page)។</li>
+<li><input disabled="" type="checkbox"> <strong>ប៊ូតុងត្រឡប់ក្រោយស្តង់ដារ</strong>: ប្រអប់មូលកោង <code>w-10 h-10 rounded-xl bg-slate-50 border border-slate-200/70</code> មានតែរូបព្រួញ។</li>
+<li><input disabled="" type="checkbox"> <strong>គ្មាន Native Select</strong>: ប្រើ Custom Dropdown មាន Stacking Context <code>z-50</code> ត្រឹមត្រូវ។</li>
+<li><input disabled="" type="checkbox"> <strong>ជំនួស Alert / Confirm</strong>: ប្រើប្រាស់ <code>showToast()</code> និង <code>showCustomConfirm()</code>។</li>
+<li><input disabled="" type="checkbox"> <strong>លាក់របាររំកិល</strong>: Globally Hidden Scrollbars ទាំងផ្ដេក និងបញ្ឈរ។</li>
+<li><input disabled="" type="checkbox"> <strong>ប្លង់ពេញទទឹង</strong>: <code>&lt;main class=&quot;w-full&quot;&gt;</code> គ្មានការប្រើ <code>max-w-7xl mx-auto</code>។</li>
+<li><input disabled="" type="checkbox"> <strong>សកម្មភាពតារាង</strong>: ប្រើប៊ូតុង <code>⋮</code> ជាមួយ Floating Action Dropdown Menu។</li>
+<li><input disabled="" type="checkbox"> <strong>ម៉ាស៊ីនគណនា WHT ត្រឹមត្រូវ</strong>: គណនាពន្ធ 15% និង 10% ស្វ័យប្រវត្តិតាមជម្រើស Dropdown។</li>
+<li><input disabled="" type="checkbox"> <strong>ស្តង់ដារបោះពុម្ព A4 ប័ណ្ណចំណាយ</strong>: ប្លង់ 4 ហត្ថលេខាផ្លូវការ លាក់ Sidebar/Header ពេល Print។</li>
+<li><input disabled="" type="checkbox"> <strong>ការផ្ទៀងផ្ទាត់រូបិយប័ណ្ណទ្វេ</strong>: បង្ហាញទាំង USD និង KHR ជាមួយអត្រាប្តូរប្រាក់ផ្លូវការ។</li>
+<li><input disabled="" type="checkbox"> <strong>Unified Date Range Picker</strong>: មាន 10 Presets និងប្រតិទិនពីរជួរឈរតាមគំរូ <code>invoice.html</code>។</li>
+<li><input disabled="" type="checkbox"> <strong>ពុម្ពអក្សរ Kantumruy Pro</strong>: កម្រាស់ និងពណ៌អក្សរស្រទន់ <code>text-slate-700</code> មើលទៅមានវិជ្ជាជីវៈកម្រិតខ្ពស់។</li>
+</ul>
+<hr>
+<h2 id="14-faq-សំណួរ-និងចម្លើយទូទៅ" class="scroll-mt-24 group">14. FAQ — សំណួរ និងចម្លើយទូទៅ <a href="#14-faq-សំណួរ-និងចម្លើយទូទៅ" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<p><strong>Q: តើ AP/AR Accountant អាចកែប្រែលេខកូដគណនីក្នុងតារាងគណនី (COA) បានទេ?</strong><br>A: <strong>មិនអាចទេ</strong>។ សិទ្ធិកែប្រែ ឬបន្ថែមគណនីក្នុង COA ត្រូវបានចាក់សោរសម្រាប់តែប្រធានគណនេយ្យ (Chief Accountant) និង Admin ប៉ុណ្ណោះ ដើម្បីការពារកុំឱ្យច្របូកច្របល់របាយការណ៍ហិរញ្ញវត្ថុទូទៅ។</p>
+<p><strong>Q: ប្រសិនបើអតិថិជនបង់ប្រាក់លើស ឬបង់ខ្វះ តើ AP/AR Accountant ត្រូវដោះស្រាយយ៉ាងដូចម្តេច?</strong><br>A: ប្រសិនបើបង់ខ្វះ វិក្កយបត្រនឹងប្តូរស្ថានភាពទៅជា «បង់មួយផ្នែក (Partially Paid)» ហើយសមតុល្យនៅសល់នៅតែបន្តបង្ហាញក្នុងតារាងបំណុល។ ប្រសិនបើបង់លើស ចំនួនប្រាក់លើសនឹងត្រូវកត់ត្រាជា «ប្រាក់តម្កល់ទុករបស់អតិថិជន (Customer Overpayment / Credit Balance)» ដែលអាចយកទៅកាត់កងលើវិក្កយបត្របន្ទាប់បាន។</p>
+<p><strong>Q: តើប័ណ្ណចំណាយទូទាត់ (Disbursement Voucher) អាចអនុម័តដោយនរណាខ្លះ?</strong><br>A: តាមស្តង់ដារគ្រប់គ្រងផ្ទៃក្នុង:</p>
+<ul>
+<li>ចំណាយ ≤ $500.00: Chief Accountant អាចត្រួតពិនិត្យ និងអនុម័តបាន។</li>
+<li>ចំណាយ &gt; $500.00: ត្រូវតែមានការត្រួតពិនិត្យពី Chief Accountant និងការចុះហត្ថលេខាអនុម័តចុងក្រោយពី Director / GM។</li>
+</ul>
+<p><strong>Q: ហេតុអ្វីបានជាត្រូវកាត់ពន្ធកាត់ទុក (WHT) លើសេវាកម្ម 15% មុនបើកលុយឱ្យអ្នកផ្គត់ផ្គង់?</strong><br>A: តាមច្បាប់សារពើពន្ធនៃព្រះរាជាណាចក្រកម្ពុជា រាល់ពេលដែលក្រុមហ៊ុនទូទាត់ថ្លៃសេវាជូនរូបវន្តបុគ្គលដែលមិនបានចុះបញ្ជីពន្ធដារ (Non-VAT taxpayer) ក្រុមហ៊ុនមានកាតព្វកិច្ចកាត់ទុកប្រាក់ 15% នៃតម្លៃសរុប ដើម្បីបង់ជូនអគ្គនាយកដ្ឋានពន្ធដារ (GDT) ជំនួសបុគ្គលនោះ។ ប្រសិនបើមិនកាត់ទុកទេ ក្រុមហ៊ុននឹងត្រូវរងការពិន័យ និងការប្រាក់ពីពន្ធដារ។</p>
+<hr>
+<p><em>ឯកសារនេះតំណាង 100% នៃមូលដ្ឋានចំណេះដឹងសម្រាប់ AP/AR Accountant Role ក្នុង DIGITECHKH BMS</em><br><em>Previous Role: Customer Support → <a href="role_customer_support.html"><code>role_customer_support.md</code></a></em><br><em>Next Role: Sales Manager → <a href="role_sales_manager.html"><code>role_sales_manager.md</code></a></em></p>
+
+                </article>
+
+                <!-- Next / Previous Role Navigation Bar -->
+                <div class="no-print mt-12 pt-8 border-t border-slate-200 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <a href="role_customer_support.html" class="p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-transform flex-shrink-0">
+                            🎧
+                        </div>
+                        <div class="min-w-0">
+                            <div class="text-[10px] text-slate-400 font-medium">← តួនាទីមុន</div>
+                            <div class="text-xs font-bold text-slate-800 group-hover:text-primary transition truncate">ផ្នែកគាំទ្រអតិថិជន</div>
+                        </div>
+                    </a>
+
+                    <a href="role_sales_manager.html" class="p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group flex items-center justify-end text-right gap-3">
+                        <div class="min-w-0">
+                            <div class="text-[10px] text-slate-400 font-medium">តួនាទីបន្ទាប់ →</div>
+                            <div class="text-xs font-bold text-slate-800 group-hover:text-primary transition truncate">អ្នកគ្រប់គ្រងផ្នែកលក់</div>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-transform flex-shrink-0">
+                            👔
+                        </div>
+                    </a>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="no-print bg-white border-t border-slate-200 py-6 px-8 text-center text-xs text-slate-500">
+        <p>រក្សាសិទ្ធិគ្រប់យ៉ាង © 2026 ក្រុមហ៊ុន ឌីជីថេក ខេអេច (DIGITECHKH Co., Ltd.) · ព្រះរាជាណាចក្រកម្ពុជា</p>
+    </footer>
+
+</body>
+</html>
