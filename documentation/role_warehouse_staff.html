@@ -68,16 +68,18 @@
             <!-- Role Switcher -->
             <div class="relative">
                 <select onchange="window.location.href=this.value" class="h-9 pl-3 pr-8 bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl text-xs font-semibold text-white focus:outline-none focus:bg-[#0a1d3f] transition appearance-none cursor-pointer">
-                    <option value="role_superadmin.html" >👑 ស៊ុបភើរ អភិបាល (Super Admin)</option>
-<option value="role_procurement_manager.html" >🛒 អ្នកគ្រប់គ្រងលទ្ធកម្ម (Procurement Manager)</option>
-<option value="role_warehouse_staff.html" selected>👷 បុគ្គលិកឃ្លាំងទំនិញ (Warehouse Staff)</option>
-<option value="role_customer_support.html" >🎧 ផ្នែកគាំទ្រអតិថិជន (Customer Support)</option>
-<option value="role_apar_accountant.html" >💰 គណនេយ្យករចំណាយ និងចំណូល (AP/AR Accountant)</option>
-<option value="role_sales_manager.html" >👔 អ្នកគ្រប់គ្រងផ្នែកលក់ (Sales Manager)</option>
-<option value="role_internal_auditor_executive.html" >🔍 សវនករផ្ទៃក្នុង និងថ្នាក់ដឹកនាំ (Internal Auditor / Executive)</option>
-<option value="role_sales_executive.html" >💼 បុគ្គលិកប្រតិបត្តិផ្នែកលក់ (Sales Executive)</option>
-<option value="role_admin_general_manager.html" >🏛️ អភិបាល និងអ្នកចាត់ការទូទៅ (Admin / General Manager)</option>
-<option value="role_warehouse_manager.html" >📦 អ្នកគ្រប់គ្រងឃ្លាំងស្តុក (Warehouse Manager)</option>
+                    <option value="role_superadmin.html">1. 👑 ស៊ុបភើរ អភិបាល (Super Admin)</option>
+                    <option value="role_admin_general_manager.html">2. 🏛️ អភិបាលគ្រប់គ្រងទូទៅ (General Manager)</option>
+                    <option value="role_sales_manager.html">3. 👔 អ្នកគ្រប់គ្រងផ្នែកលក់ (Sales Manager)</option>
+                    <option value="role_sales_executive.html">4. 💼 បុគ្គលិកប្រតិបត្តិផ្នែកលក់ (Sales Executive)</option>
+                    <option value="role_cashier_pos.html">5. 🏪 អ្នកគិតលុយលក់រាយ (Cashier / POS)</option>
+                    <option value="role_procurement_manager.html">6. 🛒 អ្នកគ្រប់គ្រងលទ្ធកម្ម (Procurement Manager)</option>
+                    <option value="role_warehouse_manager.html">7. 📦 អ្នកគ្រប់គ្រងឃ្លាំងស្តុក (Warehouse Manager)</option>
+                    <option value="role_warehouse_staff.html" selected>8. 👷 បុគ្គលិកជាន់ឃ្លាំង (Warehouse Staff)</option>
+                    <option value="role_chief_accountant.html">9. 🏛️ ប្រធានគណនេយ្យ (Chief Accountant)</option>
+                    <option value="role_apar_accountant.html">10. 💰 គណនេយ្យករបំណុល និងការទារប្រាក់ (AP/AR Accountant)</option>
+                    <option value="role_internal_auditor_executive.html">11. 🔍 សវនករផ្ទៃក្នុង / នាយកប្រតិបត្តិ (សិទ្ធិមើល Read-Only) (Internal Auditor)</option>
+                    <option value="role_customer_support.html">12. 🎧 ផ្នែកគាំទ្រ និងបម្រើអតិថិជន (Customer Support)</option>
                 </select>
                 <i class="fas fa-chevron-down absolute right-3 top-3 text-[10px] text-white/60 pointer-events-none"></i>
             </div>
@@ -2091,29 +2093,29 @@ Dashboard Widget (when enabled):
 <p><strong>Q: Expired Item — Warehouse Staff ត្រូវ Dispose ហើយ Record?</strong><br>A: ✅ Warehouse Staff Submit Adjustment (ប្រភេទ: Expired) + Upload Evidence ។ Admin Approve → Stock ↓ ។ Accountant ឃើញ Inventory Loss Entry ក្នុង Accounting Module ។</p>
 <p><strong>Q: ប្រសិនបើ Item ថ្មី ដែលមិនទាន់ Register ក្នុង Catalog ផ្ញើ​ Delivery មក?</strong><br>A: Warehouse Staff ប្រើ <code>create-catalog.html</code> (Portal Minimal Form) ដើម្បី Quick Register ជាមុន ។ Admin ក្រោយ Set Prices ។ ហេតុ: ត្រូវ Record GRN ពិតប្រាកដ ។</p>
 <hr>
-<p><em>ឯកសារនេះតំណាង 100% knowledge base សម្រាប់ Warehouse Staff Role ក្នុង DIGITECHKH BMS</em><br><em>Previous Role: Procurement Manager → <a href="role_procurement_manager.html"><code>role_procurement_manager.md</code></a></em><br><em>Next Role: Customer Support → <a href="role_customer_support.html"><code>role_customer_support.md</code></a></em></p>
+<p><em>ឯកសារនេះតំណាង 100% knowledge base សម្រាប់ Warehouse Staff Role ក្នុង DIGITECHKH BMS</em><br><em>Previous Role: Procurement Manager → <a href="role_procurement_manager.html"><code>role_procurement_manager.md</code></a></em><br><em>Next Role: 9. ប្រធានគណនេយ្យ → <a href="role_chief_accountant.html"><code>role_chief_accountant.md</code></a></em></p>
 
                 </article>
 
                 <!-- Next / Previous Role Navigation Bar -->
                 <div class="no-print mt-12 pt-8 border-t border-slate-200 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <a href="role_procurement_manager.html" class="p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group flex items-center gap-3">
+                    <a href="role_warehouse_manager.html" class="p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group flex items-center gap-3">
                         <div class="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-transform flex-shrink-0">
-                            🛒
+                            📦
                         </div>
                         <div class="min-w-0">
                             <div class="text-[10px] text-slate-400 font-medium">← តួនាទីមុន</div>
-                            <div class="text-xs font-bold text-slate-800 group-hover:text-primary transition truncate">អ្នកគ្រប់គ្រងលទ្ធកម្ម</div>
+                            <div class="text-xs font-bold text-slate-800 group-hover:text-primary transition truncate">7. អ្នកគ្រប់គ្រងឃ្លាំងស្តុក</div>
                         </div>
                     </a>
 
-                    <a href="role_customer_support.html" class="p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group flex items-center justify-end text-right gap-3">
+                    <a href="role_chief_accountant.html" class="p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group flex items-center justify-end text-right gap-3">
                         <div class="min-w-0">
                             <div class="text-[10px] text-slate-400 font-medium">តួនាទីបន្ទាប់ →</div>
-                            <div class="text-xs font-bold text-slate-800 group-hover:text-primary transition truncate">ផ្នែកគាំទ្រអតិថិជន</div>
+                            <div class="text-xs font-bold text-slate-800 group-hover:text-primary transition truncate">9. ប្រធានគណនេយ្យ</div>
                         </div>
                         <div class="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-transform flex-shrink-0">
-                            🎧
+                            🏛️
                         </div>
                     </a>
                 </div>

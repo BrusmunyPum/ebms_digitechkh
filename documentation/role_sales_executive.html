@@ -68,16 +68,18 @@
             <!-- Role Switcher -->
             <div class="relative">
                 <select onchange="window.location.href=this.value" class="h-9 pl-3 pr-8 bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl text-xs font-semibold text-white focus:outline-none focus:bg-[#0a1d3f] transition appearance-none cursor-pointer">
-                    <option value="role_superadmin.html" >👑 ស៊ុបភើរ អភិបាល (Super Admin)</option>
-<option value="role_procurement_manager.html" >🛒 អ្នកគ្រប់គ្រងលទ្ធកម្ម (Procurement Manager)</option>
-<option value="role_warehouse_staff.html" >👷 បុគ្គលិកឃ្លាំងទំនិញ (Warehouse Staff)</option>
-<option value="role_customer_support.html" >🎧 ផ្នែកគាំទ្រអតិថិជន (Customer Support)</option>
-<option value="role_apar_accountant.html" >💰 គណនេយ្យករចំណាយ និងចំណូល (AP/AR Accountant)</option>
-<option value="role_sales_manager.html" >👔 អ្នកគ្រប់គ្រងផ្នែកលក់ (Sales Manager)</option>
-<option value="role_internal_auditor_executive.html" >🔍 សវនករផ្ទៃក្នុង និងថ្នាក់ដឹកនាំ (Internal Auditor / Executive)</option>
-<option value="role_sales_executive.html" selected>💼 បុគ្គលិកប្រតិបត្តិផ្នែកលក់ (Sales Executive)</option>
-<option value="role_admin_general_manager.html" >🏛️ អភិបាល និងអ្នកចាត់ការទូទៅ (Admin / General Manager)</option>
-<option value="role_warehouse_manager.html" >📦 អ្នកគ្រប់គ្រងឃ្លាំងស្តុក (Warehouse Manager)</option>
+                    <option value="role_superadmin.html">1. 👑 ស៊ុបភើរ អភិបាល (Super Admin)</option>
+                    <option value="role_admin_general_manager.html">2. 🏛️ អភិបាលគ្រប់គ្រងទូទៅ (General Manager)</option>
+                    <option value="role_sales_manager.html">3. 👔 អ្នកគ្រប់គ្រងផ្នែកលក់ (Sales Manager)</option>
+                    <option value="role_sales_executive.html" selected>4. 💼 បុគ្គលិកប្រតិបត្តិផ្នែកលក់ (Sales Executive)</option>
+                    <option value="role_cashier_pos.html">5. 🏪 អ្នកគិតលុយលក់រាយ (Cashier / POS)</option>
+                    <option value="role_procurement_manager.html">6. 🛒 អ្នកគ្រប់គ្រងលទ្ធកម្ម (Procurement Manager)</option>
+                    <option value="role_warehouse_manager.html">7. 📦 អ្នកគ្រប់គ្រងឃ្លាំងស្តុក (Warehouse Manager)</option>
+                    <option value="role_warehouse_staff.html">8. 👷 បុគ្គលិកជាន់ឃ្លាំង (Warehouse Staff)</option>
+                    <option value="role_chief_accountant.html">9. 🏛️ ប្រធានគណនេយ្យ (Chief Accountant)</option>
+                    <option value="role_apar_accountant.html">10. 💰 គណនេយ្យករបំណុល និងការទារប្រាក់ (AP/AR Accountant)</option>
+                    <option value="role_internal_auditor_executive.html">11. 🔍 សវនករផ្ទៃក្នុង / នាយកប្រតិបត្តិ (សិទ្ធិមើល Read-Only) (Internal Auditor)</option>
+                    <option value="role_customer_support.html">12. 🎧 ផ្នែកគាំទ្រ និងបម្រើអតិថិជន (Customer Support)</option>
                 </select>
                 <i class="fas fa-chevron-down absolute right-3 top-3 text-[10px] text-white/60 pointer-events-none"></i>
             </div>
@@ -107,41 +109,7 @@
                     <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-50 text-accent">TOC</span>
                 </div>
                 <div class="space-y-0.5 max-h-[calc(100vh-220px)] overflow-y-auto pr-1 text-xs">
-                    <a href="#ចំណុចចាំបាច់-បេសកកម្មស្នូល-និងគោលការណ៍រក្សាការសម្ងាត់ថ្លៃដើម-core-mission-zero-purchase-cost-leakage" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="⚠️ ចំណុចចាំបាច់ — បេសកកម្មស្នូល និងគោលការណ៍រក្សាការសម្ងាត់ថ្លៃដើម (Core Mission & Zero Purchase Cost Leakage)">⚠️ ចំណុចចាំបាច់ — បេសកកម្មស្នូល និងគោលការណ៍រក្សាការសម្ងាត់ថ្លៃដើម (Core Mission & Zero Purchase Cost Leakage)</a>
-<a href="#តារាងមាតិកា" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="តារាងមាតិកា">តារាងមាតិកា</a>
-<a href="#1-អ្វីជា-sales-executive" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="1. អ្វីជា Sales Executive?">1. អ្វីជា Sales Executive?</a>
-<a href="#11-និយមន័យ-definition" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="1.1 និយមន័យ (Definition)">1.1 និយមន័យ (Definition)</a>
-<a href="#12-ភាពខុសគ្នារវាង-sales-manager-និង-sales-executive" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="1.2 ភាពខុសគ្នារវាង Sales Manager និង Sales Executive">1.2 ភាពខុសគ្នារវាង Sales Manager និង Sales Executive</a>
-<a href="#2-ឋានានុក្រមក្នុងប្រព័ន្ធ-និងទំនាក់ទំនងស្ថាប័ន" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="2. ឋានានុក្រមក្នុងប្រព័ន្ធ និងទំនាក់ទំនងស្ថាប័ន">2. ឋានានុក្រមក្នុងប្រព័ន្ធ និងទំនាក់ទំនងស្ថាប័ន</a>
-<a href="#3-អ្វីដែល-sales-executive-ធ្វើបាន-និងហាមធ្វើ-full-capability-map" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="3. អ្វីដែល Sales Executive ធ្វើបាន និងហាមធ្វើ (Full Capability Map)">3. អ្វីដែល Sales Executive ធ្វើបាន និងហាមធ្វើ (Full Capability Map)</a>
-<a href="#31-អ្វីដែល-sales-executive-ធ្វើបានពេញលេញ" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="3.1 ✅ អ្វីដែល Sales Executive ធ្វើបានពេញលេញ">3.1 ✅ អ្វីដែល Sales Executive ធ្វើបានពេញលេញ</a>
-<a href="#32-អ្វីដែល-sales-executive-ហាមធ្វើដាច់ខាត" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="3.2 ❌ អ្វីដែល Sales Executive ហាមធ្វើដាច់ខាត">3.2 ❌ អ្វីដែល Sales Executive ហាមធ្វើដាច់ខាត</a>
-<a href="#4-ស្ថាបត្យកម្មទំព័រ-ui-ពេញលេញ-page-by-page-blueprint" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="4. ស្ថាបត្យកម្មទំព័រ UI ពេញលេញ (Page-by-Page Blueprint)">4. ស្ថាបត្យកម្មទំព័រ UI ពេញលេញ (Page-by-Page Blueprint)</a>
-<a href="#41-9-portalssales-staffdashboardhtml-ផ្ទាំងគ្រប់គ្រងសមិទ្ធផលបុគ្គលិកលក់" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.1 `9-portals/sales-staff/dashboard.html` — ផ្ទាំងគ្រប់គ្រងសមិទ្ធផលបុគ្គលិកលក់">4.1 `9-portals/sales-staff/dashboard.html` — ផ្ទាំងគ្រប់គ្រងសមិទ្ធផលបុគ្គលិកលក់</a>
-<a href="#42-9-portalssales-staffcreate-quotehtml-3-sales2-quotecreate-quotehtml-ទម្រង់បង្កើតសម្រង់តម្លៃ" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.2 `9-portals/sales-staff/create-quote.html` & `3-sales/2-quote/create-quote.html` — ទម្រង់បង្កើតសម្រង់តម្លៃ">4.2 `9-portals/sales-staff/create-quote.html` & `3-sales/2-quote/create-quote.html` — ទម្រង់បង្កើតសម្រង់តម្លៃ</a>
-<a href="#43-3-sales2-quoteview-quotehtml-បង្ហាញព័ត៌មានលម្អិតសម្រង់តម្លៃ-និងការបម្លែង" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.3 `3-sales/2-quote/view-quote.html` — បង្ហាញព័ត៌មានលម្អិតសម្រង់តម្លៃ និងការបម្លែង">4.3 `3-sales/2-quote/view-quote.html` — បង្ហាញព័ត៌មានលម្អិតសម្រង់តម្លៃ និងការបម្លែង</a>
-<a href="#44-3-sales1-invoiceview-invoicehtml-បង្ហាញព័ត៌មានលម្អិតវិក្កយបត្រលក់" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.4 `3-sales/1-invoice/view-invoice.html` — បង្ហាញព័ត៌មានលម្អិតវិក្កយបត្រលក់">4.4 `3-sales/1-invoice/view-invoice.html` — បង្ហាញព័ត៌មានលម្អិតវិក្កយបត្រលក់</a>
-<a href="#45-3-sales3-customerview-customerhtml-ព័ត៌មានលម្អិត-និងប្រវត្តិអតិថិជន" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.5 `3-sales/3-customer/view-customer.html` — ព័ត៌មានលម្អិត និងប្រវត្តិអតិថិជន">4.5 `3-sales/3-customer/view-customer.html` — ព័ត៌មានលម្អិត និងប្រវត្តិអតិថិជន</a>
-<a href="#5-ម៉ាទ្រីសសិទ្ធិអំណាច-permission-matrix" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="5. ម៉ាទ្រីសសិទ្ធិអំណាច (Permission Matrix)">5. ម៉ាទ្រីសសិទ្ធិអំណាច (Permission Matrix)</a>
-<a href="#6-វដ្តការងារស្នូលទាំង-6-core-workflows" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="6. វដ្តការងារស្នូលទាំង 6 (Core Workflows)">6. វដ្តការងារស្នូលទាំង 6 (Core Workflows)</a>
-<a href="#workflow-1-វដ្តពីសម្រង់តម្លៃទៅជាវិក្កយបត្រ-quotation-to-invoice-flow" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 1: វដ្តពីសម្រង់តម្លៃទៅជាវិក្កយបត្រ (Quotation to Invoice Flow)">Workflow 1: វដ្តពីសម្រង់តម្លៃទៅជាវិក្កយបត្រ (Quotation to Invoice Flow)</a>
-<a href="#workflow-2-ការស្នើសុំការអនុម័តបញ្ចុះតម្លៃពិសេស-discount-approval-workflow" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 2: ការស្នើសុំការអនុម័តបញ្ចុះតម្លៃពិសេស (Discount Approval Workflow)">Workflow 2: ការស្នើសុំការអនុម័តបញ្ចុះតម្លៃពិសេស (Discount Approval Workflow)</a>
-<a href="#workflow-3-ការត្រួតពិនិត្យពិដានឥណទានមុនពេលចេញវិក្កយបត្រ-credit-limit-verification" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 3: ការត្រួតពិនិត្យពិដានឥណទានមុនពេលចេញវិក្កយបត្រ (Credit Limit Verification)">Workflow 3: ការត្រួតពិនិត្យពិដានឥណទានមុនពេលចេញវិក្កយបត្រ (Credit Limit Verification)</a>
-<a href="#workflow-4-ការចុះឈ្មោះ-និងចាត់ចំណាត់ថ្នាក់អតិថិជនថ្មី-customer-onboarding-tiering" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 4: ការចុះឈ្មោះ និងចាត់ចំណាត់ថ្នាក់អតិថិជនថ្មី (Customer Onboarding & Tiering)">Workflow 4: ការចុះឈ្មោះ និងចាត់ចំណាត់ថ្នាក់អតិថិជនថ្មី (Customer Onboarding & Tiering)</a>
-<a href="#workflow-5-ការទទួល-lead-ពីគេហទំព័រ-showroom-inbound-showroom-lead-flow" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 5: ការទទួល Lead ពីគេហទំព័រ Showroom (Inbound Showroom Lead Flow)">Workflow 5: ការទទួល Lead ពីគេហទំព័រ Showroom (Inbound Showroom Lead Flow)</a>
-<a href="#workflow-6-ការតាមដានការប្រមូលប្រាក់-និងការទូទាត់កម្រៃជើងសារ-collection-commission-flow" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 6: ការតាមដានការប្រមូលប្រាក់ និងការទូទាត់កម្រៃជើងសារ (Collection & Commission Flow)">Workflow 6: ការតាមដានការប្រមូលប្រាក់ និងការទូទាត់កម្រៃជើងសារ (Collection & Commission Flow)</a>
-<a href="#7-តក្កវិជ្ជាអាជីវកម្ម-និងវិធានគណនាតម្លៃ-business-logic-pricing-rules" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="7. តក្កវិជ្ជាអាជីវកម្ម និងវិធានគណនាតម្លៃ (Business Logic & Pricing Rules)">7. តក្កវិជ្ជាអាជីវកម្ម និងវិធានគណនាតម្លៃ (Business Logic & Pricing Rules)</a>
-<a href="#71-គោលការណ៍តម្លៃឌីណាមិកតាមកម្រិតអតិថិជន-dynamic-tiered-pricing-logic" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="7.1 គោលការណ៍តម្លៃឌីណាមិកតាមកម្រិតអតិថិជន (Dynamic Tiered Pricing Logic)">7.1 គោលការណ៍តម្លៃឌីណាមិកតាមកម្រិតអតិថិជន (Dynamic Tiered Pricing Logic)</a>
-<a href="#72-វិធានគណនាហិរញ្ញវត្ថុស្តង់ដារ-financial-calculation-order" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="7.2 វិធានគណនាហិរញ្ញវត្ថុស្តង់ដារ (Financial Calculation Order)">7.2 វិធានគណនាហិរញ្ញវត្ថុស្តង់ដារ (Financial Calculation Order)</a>
-<a href="#8-ទំនាក់ទំនងឆ្លងផ្នែកជាមួយតួនាទីផ្សេងទៀត-cross-role-interaction-map" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="8. ទំនាក់ទំនងឆ្លងផ្នែកជាមួយតួនាទីផ្សេងទៀត (Cross-Role Interaction Map)">8. ទំនាក់ទំនងឆ្លងផ្នែកជាមួយតួនាទីផ្សេងទៀត (Cross-Role Interaction Map)</a>
-<a href="#9-វិសាលភាពទិន្នន័យ-data-scope-អ្វីដែលឃើញ-និងអ្វីដែលត្រូវលាក់" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="9. វិសាលភាពទិន្នន័យ (Data Scope — អ្វីដែលឃើញ និងអ្វីដែលត្រូវលាក់)">9. វិសាលភាពទិន្នន័យ (Data Scope — អ្វីដែលឃើញ និងអ្វីដែលត្រូវលាក់)</a>
-<a href="#10-ផ្ទាំងគ្រប់គ្រង-និងសូចនាករ-kpi-kpi-dashboard-commission-tracking" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="10. ផ្ទាំងគ្រប់គ្រង និងសូចនាករ KPI (KPI Dashboard & Commission Tracking)">10. ផ្ទាំងគ្រប់គ្រង និងសូចនាករ KPI (KPI Dashboard & Commission Tracking)</a>
-<a href="#11-គំរូរចនាសម្ព័ន្ធទិន្នន័យ-database-schema-blueprint" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="11. គំរូរចនាសម្ព័ន្ធទិន្នន័យ (Database Schema Blueprint)">11. គំរូរចនាសម្ព័ន្ធទិន្នន័យ (Database Schema Blueprint)</a>
-<a href="#12-ការការពារការក្លែងបន្លំ-និងសុវត្ថិភាពទិន្នន័យ-sales-integrity-controls" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="12. ការការពារការក្លែងបន្លំ និងសុវត្ថិភាពទិន្នន័យ (Sales Integrity Controls)">12. ការការពារការក្លែងបន្លំ និងសុវត្ថិភាពទិន្នន័យ (Sales Integrity Controls)</a>
-<a href="#13-អនុសាសន៍ស្ថាបត្យកម្ម-និងផែនការ-prototype-planning" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="13. អនុសាសន៍ស្ថាបត្យកម្ម និងផែនការ Prototype Planning">13. អនុសាសន៍ស្ថាបត្យកម្ម និងផែនការ Prototype Planning</a>
-<a href="#131-អនុសាសន៍រចនាប្រព័ន្ធ-architectural-recommendations" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="13.1 អនុសាសន៍រចនាប្រព័ន្ធ (Architectural Recommendations)">13.1 អនុសាសន៍រចនាប្រព័ន្ធ (Architectural Recommendations)</a>
-<a href="#132-បញ្ជីត្រួតពិនិត្យការសាងសង់-prototype-15-point-prototype-checklist" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="13.2 បញ្ជីត្រួតពិនិត្យការសាងសង់ Prototype (15-Point Prototype Checklist)">13.2 បញ្ជីត្រួតពិនិត្យការសាងសង់ Prototype (15-Point Prototype Checklist)</a>
-<a href="#14-សំណួរ-និងចម្លើយទូទៅ-faq" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="14. សំណួរ និងចម្លើយទូទៅ (FAQ)">14. សំណួរ និងចម្លើយទូទៅ (FAQ)</a>
+                    
                 </div>
                 <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
                     <a href="DIGITECHKH-Roles-And-Permissions-Interactive-Guide.html?role=sales_executive" class="w-full py-2 px-3 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-700 text-xs font-medium flex items-center justify-between transition border border-slate-200">
@@ -1268,29 +1236,29 @@ CREATE POLICY sales_rep_own_quotes ON quotations
 <p><strong>Q: តើបុគ្គលិកលក់អាចកែសម្រួលវិក្កយបត្រដែលបានបម្លែងចេញពី Quote បានទេ?</strong><br>A: នៅពេលទើបតែបម្លែងថ្មីៗក្នុងទម្រង់ <code>create-invoice.html</code> បុគ្គលិកលក់អាចកែសម្រួលព័ត៌មានដឹកជញ្ជូន ឬចំណាំបន្ថែមបាន។ ប៉ុន្តែនៅពេលបានចុច «ចេញវិក្កយបត្រផ្លូវការ» រួចហើយ វិក្កយបត្រនោះត្រូវបានចាក់សោរ (Locked) មិនអាចកែប្រែដោយឯកតោភាគីបានទៀតឡើយ។</p>
 <p><strong>Q: តើកម្រៃជើងសារ (Commission) របស់បុគ្គលិកលក់ត្រូវបានគណនានៅពេលណា?</strong><br>A: កម្រៃជើងសារមិនត្រូវបានបើកជូននៅពេលចេញវិក្កយបត្រនោះឡើយ។ ប្រព័ន្ធនឹងគណនា និងបញ្ចូលទៅក្នុងតារាងកម្រៃជើងសារដែលត្រូវបើក លុះត្រាតែអតិថិជនបានទូទាត់ប្រាក់ជាក់ស្តែង (Cash / Bakong collected) ចូលមកក្នុងគណនីក្រុមហ៊ុនរួចរាល់ប៉ុណ្ណោះ។</p>
 <hr>
-<p><em>ឯកសារនេះតំណាង 100% នៃមូលដ្ឋានចំណេះដឹងសម្រាប់ Sales Executive Role ក្នុង DIGITECHKH BMS</em><br><em>Previous Role: Internal Auditor / Executive → <a href="role_internal_auditor_executive.html"><code>role_internal_auditor_executive.md</code></a></em><br><em>Next Role: Admin / General Manager → <a href="role_admin_general_manager.html"><code>role_admin_general_manager.md</code></a></em></p>
+<p><em>ឯកសារនេះតំណាង 100% នៃមូលដ្ឋានចំណេះដឹងសម្រាប់ Sales Executive Role ក្នុង DIGITECHKH BMS</em><br><em>Previous Role: Internal Auditor / Executive → <a href="role_internal_auditor_executive.html"><code>role_internal_auditor_executive.md</code></a></em><br><em>Next Role: 5. អ្នកគិតលុយលក់រាយ → <a href="role_cashier_pos.html"><code>role_cashier_pos.md</code></a></em></p>
 
                 </article>
 
                 <!-- Next / Previous Role Navigation Bar -->
                 <div class="no-print mt-12 pt-8 border-t border-slate-200 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <a href="role_internal_auditor_executive.html" class="p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group flex items-center gap-3">
+                    <a href="role_sales_manager.html" class="p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group flex items-center gap-3">
                         <div class="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-transform flex-shrink-0">
-                            🔍
+                            👔
                         </div>
                         <div class="min-w-0">
                             <div class="text-[10px] text-slate-400 font-medium">← តួនាទីមុន</div>
-                            <div class="text-xs font-bold text-slate-800 group-hover:text-primary transition truncate">សវនករផ្ទៃក្នុង និងថ្នាក់ដឹកនាំ</div>
+                            <div class="text-xs font-bold text-slate-800 group-hover:text-primary transition truncate">3. អ្នកគ្រប់គ្រងផ្នែកលក់</div>
                         </div>
                     </a>
 
-                    <a href="role_admin_general_manager.html" class="p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group flex items-center justify-end text-right gap-3">
+                    <a href="role_cashier_pos.html" class="p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group flex items-center justify-end text-right gap-3">
                         <div class="min-w-0">
                             <div class="text-[10px] text-slate-400 font-medium">តួនាទីបន្ទាប់ →</div>
-                            <div class="text-xs font-bold text-slate-800 group-hover:text-primary transition truncate">អភិបាល និងអ្នកចាត់ការទូទៅ</div>
+                            <div class="text-xs font-bold text-slate-800 group-hover:text-primary transition truncate">5. អ្នកគិតលុយលក់រាយ</div>
                         </div>
                         <div class="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-transform flex-shrink-0">
-                            🏛️
+                            🏪
                         </div>
                     </a>
                 </div>

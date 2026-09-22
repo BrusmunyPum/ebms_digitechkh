@@ -68,16 +68,18 @@
             <!-- Role Switcher -->
             <div class="relative">
                 <select onchange="window.location.href=this.value" class="h-9 pl-3 pr-8 bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl text-xs font-semibold text-white focus:outline-none focus:bg-[#0a1d3f] transition appearance-none cursor-pointer">
-                    <option value="role_superadmin.html" >👑 ស៊ុបភើរ អភិបាល (Super Admin)</option>
-<option value="role_procurement_manager.html" >🛒 អ្នកគ្រប់គ្រងលទ្ធកម្ម (Procurement Manager)</option>
-<option value="role_warehouse_staff.html" >👷 បុគ្គលិកឃ្លាំងទំនិញ (Warehouse Staff)</option>
-<option value="role_customer_support.html" >🎧 ផ្នែកគាំទ្រអតិថិជន (Customer Support)</option>
-<option value="role_apar_accountant.html" selected>💰 គណនេយ្យករចំណាយ និងចំណូល (AP/AR Accountant)</option>
-<option value="role_sales_manager.html" >👔 អ្នកគ្រប់គ្រងផ្នែកលក់ (Sales Manager)</option>
-<option value="role_internal_auditor_executive.html" >🔍 សវនករផ្ទៃក្នុង និងថ្នាក់ដឹកនាំ (Internal Auditor / Executive)</option>
-<option value="role_sales_executive.html" >💼 បុគ្គលិកប្រតិបត្តិផ្នែកលក់ (Sales Executive)</option>
-<option value="role_admin_general_manager.html" >🏛️ អភិបាល និងអ្នកចាត់ការទូទៅ (Admin / General Manager)</option>
-<option value="role_warehouse_manager.html" >📦 អ្នកគ្រប់គ្រងឃ្លាំងស្តុក (Warehouse Manager)</option>
+                    <option value="role_superadmin.html">1. 👑 ស៊ុបភើរ អភិបាល (Super Admin)</option>
+                    <option value="role_admin_general_manager.html">2. 🏛️ អភិបាលគ្រប់គ្រងទូទៅ (General Manager)</option>
+                    <option value="role_sales_manager.html">3. 👔 អ្នកគ្រប់គ្រងផ្នែកលក់ (Sales Manager)</option>
+                    <option value="role_sales_executive.html">4. 💼 បុគ្គលិកប្រតិបត្តិផ្នែកលក់ (Sales Executive)</option>
+                    <option value="role_cashier_pos.html">5. 🏪 អ្នកគិតលុយលក់រាយ (Cashier / POS)</option>
+                    <option value="role_procurement_manager.html">6. 🛒 អ្នកគ្រប់គ្រងលទ្ធកម្ម (Procurement Manager)</option>
+                    <option value="role_warehouse_manager.html">7. 📦 អ្នកគ្រប់គ្រងឃ្លាំងស្តុក (Warehouse Manager)</option>
+                    <option value="role_warehouse_staff.html">8. 👷 បុគ្គលិកជាន់ឃ្លាំង (Warehouse Staff)</option>
+                    <option value="role_chief_accountant.html">9. 🏛️ ប្រធានគណនេយ្យ (Chief Accountant)</option>
+                    <option value="role_apar_accountant.html" selected>10. 💰 គណនេយ្យករបំណុល និងការទារប្រាក់ (AP/AR Accountant)</option>
+                    <option value="role_internal_auditor_executive.html">11. 🔍 សវនករផ្ទៃក្នុង / នាយកប្រតិបត្តិ (សិទ្ធិមើល Read-Only) (Internal Auditor)</option>
+                    <option value="role_customer_support.html">12. 🎧 ផ្នែកគាំទ្រ និងបម្រើអតិថិជន (Customer Support)</option>
                 </select>
                 <i class="fas fa-chevron-down absolute right-3 top-3 text-[10px] text-white/60 pointer-events-none"></i>
             </div>
@@ -107,44 +109,7 @@
                     <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-50 text-accent">TOC</span>
                 </div>
                 <div class="space-y-0.5 max-h-[calc(100vh-220px)] overflow-y-auto pr-1 text-xs">
-                    <a href="#ចំណុចចាំបាច់-បេសកកម្មស្នូល-និងការបែងចែកភារកិច្ច-core-mission-segregation-of-duties" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="⚠️ ចំណុចចាំបាច់ — បេសកកម្មស្នូល និងការបែងចែកភារកិច្ច (Core Mission & Segregation of Duties)">⚠️ ចំណុចចាំបាច់ — បេសកកម្មស្នូល និងការបែងចែកភារកិច្ច (Core Mission & Segregation of Duties)</a>
-<a href="#តារាងមាតិកា" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="តារាងមាតិកា">តារាងមាតិកា</a>
-<a href="#1-អ្វីជា-apar-accountant" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="1. អ្វីជា AP/AR Accountant?">1. អ្វីជា AP/AR Accountant?</a>
-<a href="#11-និយមន័យ-definition" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="1.1 និយមន័យ (Definition)">1.1 និយមន័យ (Definition)</a>
-<a href="#12-តួនាទីក្នុងបរិបទអាជីវកម្មកម្ពុជា-cambodian-real-world-context" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="1.2 តួនាទីក្នុងបរិបទអាជីវកម្មកម្ពុជា (Cambodian Real-World Context)">1.2 តួនាទីក្នុងបរិបទអាជីវកម្មកម្ពុជា (Cambodian Real-World Context)</a>
-<a href="#2-ឋានានុក្រម-និងទំនាក់ទំនង" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="2. ឋានានុក្រម និងទំនាក់ទំនង">2. ឋានានុក្រម និងទំនាក់ទំនង</a>
-<a href="#3-អ្វីដែល-apar-accountant-ធ្វើបាន-និងហាមធ្វើ-full-capability-map" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="3. អ្វីដែល AP/AR Accountant ធ្វើបាន និងហាមធ្វើ (Full Capability Map)">3. អ្វីដែល AP/AR Accountant ធ្វើបាន និងហាមធ្វើ (Full Capability Map)</a>
-<a href="#31-អ្វីដែល-apar-accountant-ធ្វើបាន" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="3.1 ✅ អ្វីដែល AP/AR Accountant ធ្វើបាន">3.1 ✅ អ្វីដែល AP/AR Accountant ធ្វើបាន</a>
-<a href="#32-អ្វីដែល-apar-accountant-ហាមធ្វើដាច់ខាត" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="3.2 ❌ អ្វីដែល AP/AR Accountant ហាមធ្វើដាច់ខាត">3.2 ❌ អ្វីដែល AP/AR Accountant ហាមធ្វើដាច់ខាត</a>
-<a href="#4-ទំព័រ-ui-ពេញលេញ-page-by-page-blueprint" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="4. ទំព័រ UI ពេញលេញ (Page-by-Page Blueprint)">4. ទំព័រ UI ពេញលេញ (Page-by-Page Blueprint)</a>
-<a href="#41-dashboardhtml-មជ្ឈមណ្ឌលចរន្តសាច់ប្រាក់ប្រចាំថ្ងៃ-cash-flow-command-center" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.1 `dashboard.html` — មជ្ឈមណ្ឌលចរន្តសាច់ប្រាក់ប្រចាំថ្ងៃ (Cash Flow Command Center)">4.1 `dashboard.html` — មជ្ឈមណ្ឌលចរន្តសាច់ប្រាក់ប្រចាំថ្ងៃ (Cash Flow Command Center)</a>
-<a href="#42-paymentshtml-ការប្រមូលប្រាក់-និងបំណុលត្រូវទារ-accounts-receivable-hub" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.2 `payments.html` — ការប្រមូលប្រាក់ និងបំណុលត្រូវទារ (Accounts Receivable Hub)">4.2 `payments.html` — ការប្រមូលប្រាក់ និងបំណុលត្រូវទារ (Accounts Receivable Hub)</a>
-<a href="#43-disbursementshtml-ការគ្រប់គ្រងបំណុលត្រូវសង-accounts-payable-hub" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.3 `disbursements.html` — ការគ្រប់គ្រងបំណុលត្រូវសង (Accounts Payable Hub)">4.3 `disbursements.html` — ការគ្រប់គ្រងបំណុលត្រូវសង (Accounts Payable Hub)</a>
-<a href="#44-create-disbursementhtml-ទម្រង់បង្កើតប័ណ្ណចំណាយទូទាត់-enterprise-disbursement-form" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.4 `create-disbursement.html` — ទម្រង់បង្កើតប័ណ្ណចំណាយទូទាត់ (Enterprise Disbursement Form)">4.4 `create-disbursement.html` — ទម្រង់បង្កើតប័ណ្ណចំណាយទូទាត់ (Enterprise Disbursement Form)</a>
-<a href="#45-view-voucherhtml-ប័ណ្ណចំណាយទូទាត់កម្រិតសហគ្រាស-a4-official-payment-voucher" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.5 `view-voucher.html` — ប័ណ្ណចំណាយទូទាត់កម្រិតសហគ្រាស A4 (Official Payment Voucher)">4.5 `view-voucher.html` — ប័ណ្ណចំណាយទូទាត់កម្រិតសហគ្រាស A4 (Official Payment Voucher)</a>
-<a href="#46-reportshtml-តារាងវិភាគអាយុបំណុល-និងរបាយការណ៍សាច់ប្រាក់-apar-aging-reports" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.6 `reports.html` — តារាងវិភាគអាយុបំណុល និងរបាយការណ៍សាច់ប្រាក់ (AP/AR Aging Reports)">4.6 `reports.html` — តារាងវិភាគអាយុបំណុល និងរបាយការណ៍សាច់ប្រាក់ (AP/AR Aging Reports)</a>
-<a href="#5-ម៉ាទ្រីសសិទ្ធិ-permission-matrix" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="5. ម៉ាទ្រីសសិទ្ធិ (Permission Matrix)">5. ម៉ាទ្រីសសិទ្ធិ (Permission Matrix)</a>
-<a href="#51-ម៉ាទ្រីស-crud-ពេញលេញសម្រាប់-apar-accountant" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="5.1 ម៉ាទ្រីស CRUD ពេញលេញសម្រាប់ AP/AR Accountant">5.1 ម៉ាទ្រីស CRUD ពេញលេញសម្រាប់ AP/AR Accountant</a>
-<a href="#6-វដ្តការងារស្នូលទាំង-6-core-workflows" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="6. វដ្តការងារស្នូលទាំង 6 (Core Workflows)">6. វដ្តការងារស្នូលទាំង 6 (Core Workflows)</a>
-<a href="#workflow-1-ការប្រមូលប្រាក់-និងចេញបង្កាន់ដៃ-ar-collection-official-receipt" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 1: ការប្រមូលប្រាក់ និងចេញបង្កាន់ដៃ (AR Collection & Official Receipt)">Workflow 1: ការប្រមូលប្រាក់ និងចេញបង្កាន់ដៃ (AR Collection & Official Receipt)</a>
-<a href="#workflow-2-ការបង្កើតប័ណ្ណចំណាយទូទាត់-និងកាត់ពន្ធ-wht-ap-disbursement-wht" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 2: ការបង្កើតប័ណ្ណចំណាយទូទាត់ និងកាត់ពន្ធ WHT (AP Disbursement & WHT)">Workflow 2: ការបង្កើតប័ណ្ណចំណាយទូទាត់ និងកាត់ពន្ធ WHT (AP Disbursement & WHT)</a>
-<a href="#workflow-3-ការផ្ទៀងផ្ទាត់សាច់ប្រាក់បិទវេនបញ្ជរលក់-cashier-shift-reconciliation" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 3: ការផ្ទៀងផ្ទាត់សាច់ប្រាក់បិទវេនបញ្ជរលក់ (Cashier Shift Reconciliation)">Workflow 3: ការផ្ទៀងផ្ទាត់សាច់ប្រាក់បិទវេនបញ្ជរលក់ (Cashier Shift Reconciliation)</a>
-<a href="#workflow-4-ការផ្ទៀងផ្ទាត់របាយការណ៍ធនាគារ-daily-bank-reconciliation" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 4: ការផ្ទៀងផ្ទាត់របាយការណ៍ធនាគារ (Daily Bank Reconciliation)">Workflow 4: ការផ្ទៀងផ្ទាត់របាយការណ៍ធនាគារ (Daily Bank Reconciliation)</a>
-<a href="#workflow-5-ការតាមដាន-និងរំលឹកបំណុលអតិថិជន-ar-aging-dunning-flow" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 5: ការតាមដាន និងរំលឹកបំណុលអតិថិជន (AR Aging & Dunning Flow)">Workflow 5: ការតាមដាន និងរំលឹកបំណុលអតិថិជន (AR Aging & Dunning Flow)</a>
-<a href="#workflow-6-ការគ្រប់គ្រង-និងទូទាត់បេឡាសាច់ប្រាក់តូចតាច-petty-cash-flow" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 6: ការគ្រប់គ្រង និងទូទាត់បេឡាសាច់ប្រាក់តូចតាច (Petty Cash Flow)">Workflow 6: ការគ្រប់គ្រង និងទូទាត់បេឡាសាច់ប្រាក់តូចតាច (Petty Cash Flow)</a>
-<a href="#7-business-logic-accounting-rules" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="7. Business Logic & Accounting Rules">7. Business Logic & Accounting Rules</a>
-<a href="#71-ច្បាប់ពន្ធកាត់ទុកនៃព្រះរាជាណាចក្រកម្ពុជា-cambodia-withholding-tax-rules" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="7.1 ច្បាប់ពន្ធកាត់ទុកនៃព្រះរាជាណាចក្រកម្ពុជា (Cambodia Withholding Tax Rules)">7.1 ច្បាប់ពន្ធកាត់ទុកនៃព្រះរាជាណាចក្រកម្ពុជា (Cambodia Withholding Tax Rules)</a>
-<a href="#72-រូបមន្តគណនាពន្ធកាត់ទុក-calculation-formulas" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="7.2 រូបមន្តគណនាពន្ធកាត់ទុក (Calculation Formulas)">7.2 រូបមន្តគណនាពន្ធកាត់ទុក (Calculation Formulas)</a>
-<a href="#73-ច្បាប់គ្រប់គ្រងអាយុបំណុល-aging-classification-buckets" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="7.3 ច្បាប់គ្រប់គ្រងអាយុបំណុល (Aging Classification Buckets)">7.3 ច្បាប់គ្រប់គ្រងអាយុបំណុល (Aging Classification Buckets)</a>
-<a href="#8-ទំនាក់ទំនងជាមួយតួនាទីផ្សេង-role-interaction-map" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="8. ទំនាក់ទំនងជាមួយតួនាទីផ្សេង (Role Interaction Map)">8. ទំនាក់ទំនងជាមួយតួនាទីផ្សេង (Role Interaction Map)</a>
-<a href="#9-data-scope-ឃើញអ្វី-លាក់អ្វី" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="9. Data Scope — ឃើញអ្វី? លាក់អ្វី?">9. Data Scope — ឃើញអ្វី? លាក់អ្វី?</a>
-<a href="#10-kpi-dashboard-សម្រាប់-apar-accountant" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="10. KPI Dashboard សម្រាប់ AP/AR Accountant">10. KPI Dashboard សម្រាប់ AP/AR Accountant</a>
-<a href="#11-គំរូ-database-schema" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="11. គំរូ Database Schema">11. គំរូ Database Schema</a>
-<a href="#12-ការគ្រប់គ្រងផ្ទៃក្នុង-និងការទប់ស្កាត់ការកិបកេង-anti-fraud-controls" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="12. ការគ្រប់គ្រងផ្ទៃក្នុង និងការទប់ស្កាត់ការកិបកេង (Anti-Fraud Controls)">12. ការគ្រប់គ្រងផ្ទៃក្នុង និងការទប់ស្កាត់ការកិបកេង (Anti-Fraud Controls)</a>
-<a href="#13-អនុសាសន៍-architect-prototype-planning" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="13. អនុសាសន៍ Architect + Prototype Planning">13. អនុសាសន៍ Architect + Prototype Planning</a>
-<a href="#131-អនុសាសន៍រចនាប្រព័ន្ធ-architectural-recommendations" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="13.1 អនុសាសន៍រចនាប្រព័ន្ធ (Architectural Recommendations)">13.1 អនុសាសន៍រចនាប្រព័ន្ធ (Architectural Recommendations)</a>
-<a href="#132-បញ្ជីត្រួតពិនិត្យការសាងសង់-prototype-15-point-prototype-checklist" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="13.2 បញ្ជីត្រួតពិនិត្យការសាងសង់ Prototype (15-Point Prototype Checklist)">13.2 បញ្ជីត្រួតពិនិត្យការសាងសង់ Prototype (15-Point Prototype Checklist)</a>
-<a href="#14-faq-សំណួរ-និងចម្លើយទូទៅ" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="14. FAQ — សំណួរ និងចម្លើយទូទៅ">14. FAQ — សំណួរ និងចម្លើយទូទៅ</a>
+                    
                 </div>
                 <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
                     <a href="DIGITECHKH-Roles-And-Permissions-Interactive-Guide.html?role=apar_accountant" class="w-full py-2 px-3 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-700 text-xs font-medium flex items-center justify-between transition border border-slate-200">
@@ -1419,29 +1384,29 @@ CREATE TABLE petty_cash_entries (
 </ul>
 <p><strong>Q: ហេតុអ្វីបានជាត្រូវកាត់ពន្ធកាត់ទុក (WHT) លើសេវាកម្ម 15% មុនបើកលុយឱ្យអ្នកផ្គត់ផ្គង់?</strong><br>A: តាមច្បាប់សារពើពន្ធនៃព្រះរាជាណាចក្រកម្ពុជា រាល់ពេលដែលក្រុមហ៊ុនទូទាត់ថ្លៃសេវាជូនរូបវន្តបុគ្គលដែលមិនបានចុះបញ្ជីពន្ធដារ (Non-VAT taxpayer) ក្រុមហ៊ុនមានកាតព្វកិច្ចកាត់ទុកប្រាក់ 15% នៃតម្លៃសរុប ដើម្បីបង់ជូនអគ្គនាយកដ្ឋានពន្ធដារ (GDT) ជំនួសបុគ្គលនោះ។ ប្រសិនបើមិនកាត់ទុកទេ ក្រុមហ៊ុននឹងត្រូវរងការពិន័យ និងការប្រាក់ពីពន្ធដារ។</p>
 <hr>
-<p><em>ឯកសារនេះតំណាង 100% នៃមូលដ្ឋានចំណេះដឹងសម្រាប់ AP/AR Accountant Role ក្នុង DIGITECHKH BMS</em><br><em>Previous Role: Customer Support → <a href="role_customer_support.html"><code>role_customer_support.md</code></a></em><br><em>Next Role: Sales Manager → <a href="role_sales_manager.html"><code>role_sales_manager.md</code></a></em></p>
+<p><em>ឯកសារនេះតំណាង 100% នៃមូលដ្ឋានចំណេះដឹងសម្រាប់ AP/AR Accountant Role ក្នុង DIGITECHKH BMS</em><br><em>Previous Role: Customer Support → <a href="role_customer_support.html"><code>role_customer_support.md</code></a></em><br><em>Next Role: 11. សវនករផ្ទៃក្នុង / នាយកប្រតិបត្តិ (សិទ្ធិមើល Read-Only) → <a href="role_internal_auditor_executive.html"><code>role_internal_auditor_executive.md</code></a></em></p>
 
                 </article>
 
                 <!-- Next / Previous Role Navigation Bar -->
                 <div class="no-print mt-12 pt-8 border-t border-slate-200 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <a href="role_customer_support.html" class="p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group flex items-center gap-3">
+                    <a href="role_chief_accountant.html" class="p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group flex items-center gap-3">
                         <div class="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-transform flex-shrink-0">
-                            🎧
+                            🏛️
                         </div>
                         <div class="min-w-0">
                             <div class="text-[10px] text-slate-400 font-medium">← តួនាទីមុន</div>
-                            <div class="text-xs font-bold text-slate-800 group-hover:text-primary transition truncate">ផ្នែកគាំទ្រអតិថិជន</div>
+                            <div class="text-xs font-bold text-slate-800 group-hover:text-primary transition truncate">9. ប្រធានគណនេយ្យ</div>
                         </div>
                     </a>
 
-                    <a href="role_sales_manager.html" class="p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group flex items-center justify-end text-right gap-3">
+                    <a href="role_internal_auditor_executive.html" class="p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group flex items-center justify-end text-right gap-3">
                         <div class="min-w-0">
                             <div class="text-[10px] text-slate-400 font-medium">តួនាទីបន្ទាប់ →</div>
-                            <div class="text-xs font-bold text-slate-800 group-hover:text-primary transition truncate">អ្នកគ្រប់គ្រងផ្នែកលក់</div>
+                            <div class="text-xs font-bold text-slate-800 group-hover:text-primary transition truncate">11. សវនករផ្ទៃក្នុង / នាយកប្រតិបត្តិ (សិទ្ធិមើល Read-Only)</div>
                         </div>
                         <div class="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-transform flex-shrink-0">
-                            👔
+                            🔍
                         </div>
                     </a>
                 </div>

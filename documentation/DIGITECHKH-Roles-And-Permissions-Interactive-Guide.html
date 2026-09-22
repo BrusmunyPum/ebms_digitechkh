@@ -87,7 +87,6 @@
 
                     <!-- Role List Items -->
                     <div class="space-y-1.5 max-h-[calc(100vh-230px)] overflow-y-auto pr-1" id="roleNavList">
-                        <!-- Items dynamically rendered or static -->
                         <button onclick="selectRole('superadmin')" id="nav-superadmin" class="role-nav-btn w-full text-left p-2.5 rounded-xl text-xs font-medium flex items-center justify-between transition bg-primary text-white shadow-sm">
                             <div class="flex items-center gap-2.5">
                                 <span class="text-base">👑</span>
@@ -99,48 +98,15 @@
                             <span class="text-[9px] px-1.5 py-0.5 rounded bg-white/20">Platform</span>
                         </button>
 
-                        <button onclick="selectRole('procurement_manager')" id="nav-procurement_manager" class="role-nav-btn w-full text-left p-2.5 rounded-xl text-xs font-medium flex items-center justify-between transition hover:bg-slate-100 text-slate-700">
+                        <button onclick="selectRole('admin_general_manager')" id="nav-admin_general_manager" class="role-nav-btn w-full text-left p-2.5 rounded-xl text-xs font-medium flex items-center justify-between transition hover:bg-slate-100 text-slate-700">
                             <div class="flex items-center gap-2.5">
-                                <span class="text-base">🛒</span>
+                                <span class="text-base">🏛️</span>
                                 <div>
-                                    <div class="font-bold">Procurement Manager</div>
-                                    <div class="text-[10px] text-slate-500">អ្នកគ្រប់គ្រងលទ្ធកម្ម</div>
+                                    <div class="font-bold">General Manager</div>
+                                    <div class="text-[10px] text-slate-500">អភិបាលគ្រប់គ្រងទូទៅ</div>
                                 </div>
                             </div>
-                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-blue-50 text-blue-700">PO & Bills</span>
-                        </button>
-
-                        <button onclick="selectRole('warehouse_staff')" id="nav-warehouse_staff" class="role-nav-btn w-full text-left p-2.5 rounded-xl text-xs font-medium flex items-center justify-between transition hover:bg-slate-100 text-slate-700">
-                            <div class="flex items-center gap-2.5">
-                                <span class="text-base">👷</span>
-                                <div>
-                                    <div class="font-bold">Warehouse Staff</div>
-                                    <div class="text-[10px] text-slate-500">បុគ្គលិកឃ្លាំង</div>
-                                </div>
-                            </div>
-                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-amber-50 text-amber-700">Zero Price</span>
-                        </button>
-
-                        <button onclick="selectRole('customer_support')" id="nav-customer_support" class="role-nav-btn w-full text-left p-2.5 rounded-xl text-xs font-medium flex items-center justify-between transition hover:bg-slate-100 text-slate-700">
-                            <div class="flex items-center gap-2.5">
-                                <span class="text-base">🎧</span>
-                                <div>
-                                    <div class="font-bold">Customer Support</div>
-                                    <div class="text-[10px] text-slate-500">ផ្នែកគាំទ្រអតិថិជន</div>
-                                </div>
-                            </div>
-                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700">Support</span>
-                        </button>
-
-                        <button onclick="selectRole('apar_accountant')" id="nav-apar_accountant" class="role-nav-btn w-full text-left p-2.5 rounded-xl text-xs font-medium flex items-center justify-between transition hover:bg-slate-100 text-slate-700">
-                            <div class="flex items-center gap-2.5">
-                                <span class="text-base">💰</span>
-                                <div>
-                                    <div class="font-bold">AP/AR Accountant</div>
-                                    <div class="text-[10px] text-slate-500">គណនេយ្យករទូទាត់</div>
-                                </div>
-                            </div>
-                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-green-50 text-green-700">Finance</span>
+                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-slate-100 text-slate-800">Command</span>
                         </button>
 
                         <button onclick="selectRole('sales_manager')" id="nav-sales_manager" class="role-nav-btn w-full text-left p-2.5 rounded-xl text-xs font-medium flex items-center justify-between transition hover:bg-slate-100 text-slate-700">
@@ -154,6 +120,83 @@
                             <span class="text-[9px] px-1.5 py-0.5 rounded bg-indigo-50 text-indigo-700">Sales Lead</span>
                         </button>
 
+                        <button onclick="selectRole('sales_executive')" id="nav-sales_executive" class="role-nav-btn w-full text-left p-2.5 rounded-xl text-xs font-medium flex items-center justify-between transition hover:bg-slate-100 text-slate-700">
+                            <div class="flex items-center gap-2.5">
+                                <span class="text-base">💼</span>
+                                <div>
+                                    <div class="font-bold">Sales Executive</div>
+                                    <div class="text-[10px] text-slate-500">បុគ្គលិកប្រតិបត្តិផ្នែកលក់</div>
+                                </div>
+                            </div>
+                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-sky-50 text-sky-700">Zero Cost</span>
+                        </button>
+
+                        <button onclick="selectRole('cashier_pos')" id="nav-cashier_pos" class="role-nav-btn w-full text-left p-2.5 rounded-xl text-xs font-medium flex items-center justify-between transition hover:bg-slate-100 text-slate-700">
+                            <div class="flex items-center gap-2.5">
+                                <span class="text-base">🏪</span>
+                                <div>
+                                    <div class="font-bold">Cashier / POS</div>
+                                    <div class="text-[10px] text-slate-500">អ្នកគិតលុយលក់រាយ</div>
+                                </div>
+                            </div>
+                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700">POS Shift</span>
+                        </button>
+
+                        <button onclick="selectRole('procurement_manager')" id="nav-procurement_manager" class="role-nav-btn w-full text-left p-2.5 rounded-xl text-xs font-medium flex items-center justify-between transition hover:bg-slate-100 text-slate-700">
+                            <div class="flex items-center gap-2.5">
+                                <span class="text-base">🛒</span>
+                                <div>
+                                    <div class="font-bold">Procurement Manager</div>
+                                    <div class="text-[10px] text-slate-500">អ្នកគ្រប់គ្រងលទ្ធកម្ម</div>
+                                </div>
+                            </div>
+                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-blue-50 text-blue-700">PO & Bills</span>
+                        </button>
+
+                        <button onclick="selectRole('warehouse_manager')" id="nav-warehouse_manager" class="role-nav-btn w-full text-left p-2.5 rounded-xl text-xs font-medium flex items-center justify-between transition hover:bg-slate-100 text-slate-700">
+                            <div class="flex items-center gap-2.5">
+                                <span class="text-base">📦</span>
+                                <div>
+                                    <div class="font-bold">Warehouse Manager</div>
+                                    <div class="text-[10px] text-slate-500">អ្នកគ្រប់គ្រងឃ្លាំងស្តុក</div>
+                                </div>
+                            </div>
+                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-orange-50 text-orange-700">Inventory</span>
+                        </button>
+
+                        <button onclick="selectRole('warehouse_staff')" id="nav-warehouse_staff" class="role-nav-btn w-full text-left p-2.5 rounded-xl text-xs font-medium flex items-center justify-between transition hover:bg-slate-100 text-slate-700">
+                            <div class="flex items-center gap-2.5">
+                                <span class="text-base">👷</span>
+                                <div>
+                                    <div class="font-bold">Warehouse Staff</div>
+                                    <div class="text-[10px] text-slate-500">បុគ្គលិកជាន់ឃ្លាំង</div>
+                                </div>
+                            </div>
+                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-amber-50 text-amber-700">Zero Price</span>
+                        </button>
+
+                        <button onclick="selectRole('chief_accountant')" id="nav-chief_accountant" class="role-nav-btn w-full text-left p-2.5 rounded-xl text-xs font-medium flex items-center justify-between transition hover:bg-slate-100 text-slate-700">
+                            <div class="flex items-center gap-2.5">
+                                <span class="text-base">🏛️</span>
+                                <div>
+                                    <div class="font-bold">Chief Accountant</div>
+                                    <div class="text-[10px] text-slate-500">ប្រធានគណនេយ្យ</div>
+                                </div>
+                            </div>
+                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-purple-50 text-purple-700">Controller</span>
+                        </button>
+
+                        <button onclick="selectRole('apar_accountant')" id="nav-apar_accountant" class="role-nav-btn w-full text-left p-2.5 rounded-xl text-xs font-medium flex items-center justify-between transition hover:bg-slate-100 text-slate-700">
+                            <div class="flex items-center gap-2.5">
+                                <span class="text-base">💰</span>
+                                <div>
+                                    <div class="font-bold">AP/AR Accountant</div>
+                                    <div class="text-[10px] text-slate-500">គណនេយ្យករបំណុល និងការទារប្រាក់</div>
+                                </div>
+                            </div>
+                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-green-50 text-green-700">Finance</span>
+                        </button>
+
                         <button onclick="selectRole('internal_auditor_executive')" id="nav-internal_auditor_executive" class="role-nav-btn w-full text-left p-2.5 rounded-xl text-xs font-medium flex items-center justify-between transition hover:bg-slate-100 text-slate-700">
                             <div class="flex items-center gap-2.5">
                                 <span class="text-base">🔍</span>
@@ -165,37 +208,15 @@
                             <span class="text-[9px] px-1.5 py-0.5 rounded bg-rose-50 text-rose-700">Read-Only</span>
                         </button>
 
-                        <button onclick="selectRole('sales_executive')" id="nav-sales_executive" class="role-nav-btn w-full text-left p-2.5 rounded-xl text-xs font-medium flex items-center justify-between transition hover:bg-slate-100 text-slate-700">
+                        <button onclick="selectRole('customer_support')" id="nav-customer_support" class="role-nav-btn w-full text-left p-2.5 rounded-xl text-xs font-medium flex items-center justify-between transition hover:bg-slate-100 text-slate-700">
                             <div class="flex items-center gap-2.5">
-                                <span class="text-base">💼</span>
+                                <span class="text-base">🎧</span>
                                 <div>
-                                    <div class="font-bold">Sales Executive</div>
-                                    <div class="text-[10px] text-slate-500">បុគ្គលិកផ្នែកលក់</div>
+                                    <div class="font-bold">Customer Support</div>
+                                    <div class="text-[10px] text-slate-500">ផ្នែកគាំទ្រ និងបម្រើអតិថិជន</div>
                                 </div>
                             </div>
-                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-sky-50 text-sky-700">Zero Cost</span>
-                        </button>
-
-                        <button onclick="selectRole('admin_general_manager')" id="nav-admin_general_manager" class="role-nav-btn w-full text-left p-2.5 rounded-xl text-xs font-medium flex items-center justify-between transition hover:bg-slate-100 text-slate-700">
-                            <div class="flex items-center gap-2.5">
-                                <span class="text-base">🏛️</span>
-                                <div>
-                                    <div class="font-bold">General Manager</div>
-                                    <div class="text-[10px] text-slate-500">អភិបាលក្រុមហ៊ុន</div>
-                                </div>
-                            </div>
-                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-slate-100 text-slate-800">Command</span>
-                        </button>
-
-                        <button onclick="selectRole('warehouse_manager')" id="nav-warehouse_manager" class="role-nav-btn w-full text-left p-2.5 rounded-xl text-xs font-medium flex items-center justify-between transition hover:bg-slate-100 text-slate-700">
-                            <div class="flex items-center gap-2.5">
-                                <span class="text-base">📦</span>
-                                <div>
-                                    <div class="font-bold">Warehouse Manager</div>
-                                    <div class="text-[10px] text-slate-500">អ្នកគ្រប់គ្រងឃ្លាំង</div>
-                                </div>
-                            </div>
-                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-orange-50 text-orange-700">Inventory</span>
+                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700">Support</span>
                         </button>
                     </div>
                 </div>
@@ -213,7 +234,7 @@
             <div class="mb-6 flex items-center justify-between flex-wrap gap-4 pb-4 border-b border-slate-100">
                 <div>
                     <h3 class="text-xl font-bold text-slate-900">ម៉ាទ្រីសប្រៀបធៀបសិទ្ធិអំណាចគ្រប់តួនាទី (Enterprise Permission Matrix)</h3>
-                    <p class="text-xs text-slate-500 mt-1">ការវិភាគទូលំទូលាយលើសិទ្ធិអំណាចនៃ 10 តួនាទីឆ្លងកាត់មុខងារប្រតិបត្តិការអាជីវកម្មស្នូល</p>
+                    <p class="text-xs text-slate-500 mt-1">ការវិភាគទូលំទូលាយលើសិទ្ធិអំណាចនៃ 12 តួនាទីឆ្លងកាត់មុខងារប្រតិបត្តិការអាជីវកម្មស្នូល</p>
                 </div>
                 <div class="flex items-center gap-2 text-xs font-semibold">
                     <span class="flex items-center gap-1 text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-lg"><i class="fas fa-check-circle"></i> មានសិទ្ធិពេញលេញ</span>
@@ -229,15 +250,17 @@
                         <tr>
                             <th class="p-3 border border-slate-300 font-semibold">មុខងារប្រតិបត្តិការ និងទិន្នន័យ</th>
                             <th class="p-2 border border-slate-300 text-center">Super Admin</th>
-                            <th class="p-2 border border-slate-300 text-center">Procure Mgr</th>
-                            <th class="p-2 border border-slate-300 text-center">Whse Staff</th>
-                            <th class="p-2 border border-slate-300 text-center">Cust Support</th>
-                            <th class="p-2 border border-slate-300 text-center">AP/AR Acct</th>
-                            <th class="p-2 border border-slate-300 text-center">Sales Mgr</th>
-                            <th class="p-2 border border-slate-300 text-center">Auditor/Exec</th>
-                            <th class="p-2 border border-slate-300 text-center">Sales Exec</th>
                             <th class="p-2 border border-slate-300 text-center">General Mgr</th>
+                            <th class="p-2 border border-slate-300 text-center">Sales Mgr</th>
+                            <th class="p-2 border border-slate-300 text-center">Sales Exec</th>
+                            <th class="p-2 border border-slate-300 text-center">Cashier</th>
+                            <th class="p-2 border border-slate-300 text-center">Procure Mgr</th>
                             <th class="p-2 border border-slate-300 text-center">Whse Mgr</th>
+                            <th class="p-2 border border-slate-300 text-center">Whse Staff</th>
+                            <th class="p-2 border border-slate-300 text-center">Chief Acct</th>
+                            <th class="p-2 border border-slate-300 text-center">AP/AR Acct</th>
+                            <th class="p-2 border border-slate-300 text-center">Auditor/Exec</th>
+                            <th class="p-2 border border-slate-300 text-center">Cust Support</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-slate-200 font-medium text-slate-700" id="matrixTableBody">
@@ -594,19 +617,19 @@
         };
 
         const matrixData = [
-            { func: "មើលថ្លៃដើមទិញ (Purchase Cost / COGS)", p: ["❌", "✅", "❌", "❌", "✅", "⚠️ Floor", "✅", "❌", "✅", "✅ MAC"] },
-            { func: "មើលតម្លៃលក់ជូនអតិថិជន (Selling Price)", p: ["❌", "❌", "❌", "✅", "✅", "✅", "✅", "✅", "✅", "❌"] },
-            { func: "បង្កើត/កែប្រែ សម្រង់តម្លៃ (Quotations)", p: ["❌", "❌", "❌", "❌", "❌", "✅ Edit/Appr", "❌ Read", "✅ Create/Edit", "✅ Full", "❌"] },
-            { func: "បង្កើត/កែប្រែ វិក្កយបត្រលក់ (Invoices)", p: ["❌", "❌", "❌", "❌", "✅ View/Pay", "✅ Edit/Appr", "❌ Read", "✅ Create/Conv", "✅ Full", "❌"] },
-            { func: "បង្កើត/ចេញ បញ្ជាទិញទំនិញ (Purchase Orders)", p: ["❌", "✅ Full", "❌", "❌", "✅ View/Match", "❌", "❌ Read", "❌", "✅ Appr > $1k", "❌ PR only"] },
-            { func: "ទទួលទំនិញចូល និងចេញ GRN (Receiving)", p: ["❌", "❌ PO Match", "✅ GRN Count", "❌", "✅ Match", "❌", "❌ Read", "❌", "✅ Oversight", "✅ GRN Appr"] },
-            { func: "អនុម័តប័ណ្ណចំណាយទូទាត់ (Disbursements)", p: ["❌", "❌", "❌", "❌", "✅ $\\le \\$500$", "❌", "❌ Read", "❌", "✅ $> \\$500$", "❌"] },
-            { func: "អនុម័តការបញ្ចុះតម្លៃពិសេស (Discounts)", p: ["❌", "❌", "❌", "❌", "❌", "✅ $\\le 10\\%$", "❌ Read", "⚠️ $\\le 5\\%$", "✅ $> 10\\%$", "❌"] },
-            { func: "លើកលែងពិដានឥណទាន (Credit Limit Override)", p: ["❌", "❌", "❌", "❌", "❌", "⚠️ Set Limit", "❌ Read", "❌", "✅ Override", "❌"] },
-            { func: "អនុម័តការកែតម្រូវស្តុក (Stock Adjustments)", p: ["❌", "❌", "⚠️ Submit", "❌", "✅ Ledger", "❌", "❌ Read", "❌", "✅ $> \\$200$", "✅ $\\le \\$200$"] },
-            { func: "បិទគ្រាគណនេយ្យប្រចាំខែ (Period Lock)", p: ["❌", "❌", "❌", "❌", "⚠️ Prepare", "❌", "❌ Read", "❌", "✅ Lock GM", "❌"] },
-            { func: "គ្រប់គ្រងគណនីបុគ្គលិក (User Management)", p: ["✅ Platform", "❌", "❌", "❌", "❌", "❌", "❌ Read", "❌", "✅ Tenant Roles", "❌"] },
-            { func: "មើលកំណត់ហេតុសវនកម្ម (Audit Trails)", p: ["✅ System", "❌", "❌", "❌", "❌", "❌", "✅ 100% Full", "❌", "✅ Tenant Logs", "❌"] }
+            { func: "មើលថ្លៃដើមទិញ (Purchase Cost / COGS)", p: ["❌", "✅", "⚠️ Floor", "❌", "❌", "✅", "✅ MAC", "❌", "✅", "✅", "✅", "❌"] },
+            { func: "មើលតម្លៃលក់ជូនអតិថិជន (Selling Price)", p: ["❌", "✅", "✅", "✅", "✅", "❌", "❌", "❌", "✅", "✅", "✅", "✅"] },
+            { func: "បង្កើត/កែប្រែ សម្រង់តម្លៃ (Quotations)", p: ["❌", "✅ Full", "✅ Edit/Appr", "✅ Create/Edit", "❌", "❌", "❌", "❌", "❌", "❌", "❌ Read", "❌"] },
+            { func: "បង្កើត/កែប្រែ វិក្កយបត្រលក់ (Invoices)", p: ["❌", "✅ Full", "✅ Edit/Appr", "✅ Create/Conv", "✅ POS Only", "❌", "❌", "❌", "✅ View/GL", "✅ View/Pay", "❌ Read", "❌"] },
+            { func: "បង្កើត/ចេញ បញ្ជាទិញទំនិញ (Purchase Orders)", p: ["❌", "✅ Appr > $1k", "❌", "❌", "❌", "✅ Full", "❌ PR only", "❌", "✅ View/Match", "✅ View/Match", "❌ Read", "❌"] },
+            { func: "ទទួលទំនិញចូល និងចេញ GRN (Receiving)", p: ["❌", "✅ Oversight", "❌", "❌", "❌", "❌ PO Match", "✅ GRN Appr", "✅ GRN Count", "✅ Match", "✅ Match", "❌ Read", "❌"] },
+            { func: "អនុម័តប័ណ្ណចំណាយទូទាត់ (Disbursements)", p: ["❌", "✅ > $500", "❌", "❌", "❌", "❌", "❌", "❌", "✅ > $500", "✅ $\\le \\$500$", "❌ Read", "❌"] },
+            { func: "អនុម័តការបញ្ចុះតម្លៃពិសេស (Discounts)", p: ["❌", "✅ > 10%", "✅ $\\le 10\\%$", "⚠️ $\\le 5\\%$", "❌", "❌", "❌", "❌", "❌", "❌", "❌ Read", "❌"] },
+            { func: "លើកលែងពិដានឥណទាន (Credit Limit Override)", p: ["❌", "✅ Override", "⚠️ Set Limit", "❌", "❌", "❌", "❌", "❌", "❌", "❌", "❌ Read", "❌"] },
+            { func: "អនុម័តការកែតម្រូវស្តុក (Stock Adjustments)", p: ["❌", "✅ > $200", "❌", "❌", "❌", "❌", "✅ $\\le \\$200$", "⚠️ Submit", "✅ Ledger", "✅ Ledger", "❌ Read", "❌"] },
+            { func: "បិទគ្រាគណនេយ្យប្រចាំខែ (Period Lock)", p: ["❌", "✅ Lock GM", "❌", "❌", "❌ Shift only", "❌", "❌", "❌", "✅ Lock Exec", "⚠️ Prepare", "❌ Read", "❌"] },
+            { func: "គ្រប់គ្រងគណនីបុគ្គលិក (User Management)", p: ["✅ Platform", "✅ Tenant Roles", "❌", "❌", "❌", "❌", "❌", "❌", "❌", "❌", "❌ Read", "❌"] },
+            { func: "មើលកំណត់ហេតុសវនកម្ម (Audit Trails)", p: ["✅ System", "✅ Tenant Logs", "❌", "❌", "❌", "❌", "❌", "❌", "✅ GL Trails", "❌", "✅ 100% Full", "❌"] }
         ];
 
         let currentRoleKey = 'superadmin';

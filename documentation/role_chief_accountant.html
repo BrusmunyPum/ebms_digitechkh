@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="km" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏛️ ប្រធានគណនេយ្យ និងហិរញ្ញវត្ថុ (Chief Accountant) — ការសិក្សាស៊ីជម្រៅ | DIGITECHKH BMS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Kantumruy Pro', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0f2b5c',
+                        primaryHover: '#0a1d3f',
+                        accent: '#2563eb',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Kantumruy Pro', sans-serif;
+            color: #334155;
+            background-color: #f8fafc;
+        }
+        ::-webkit-scrollbar { display: none; }
+        * { -ms-overflow-style: none; scrollbar-width: none; }
+        h1, h2, h3, h4 { color: #0f172a; font-weight: 700; }
+        h1 { font-size: 1.8rem; line-height: 2.35rem; margin-bottom: 1.25rem; }
+        h2 { font-size: 1.35rem; line-height: 1.85rem; margin-top: 2.25rem; margin-bottom: 0.85rem; padding-bottom: 0.5rem; border-bottom: 1px solid #e2e8f0; }
+        h3 { font-size: 1.1rem; line-height: 1.5rem; margin-top: 1.75rem; margin-bottom: 0.5rem; }
+        p { margin-bottom: 0.85rem; line-height: 1.8; font-size: 0.95rem; }
+        ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1rem; font-size: 0.95rem; }
+        ol { list-style-type: decimal; padding-left: 1.5rem; margin-bottom: 1rem; font-size: 0.95rem; }
+        li { margin-bottom: 0.35rem; line-height: 1.7; }
+        hr { border: 0; border-top: 1px solid #e2e8f0; margin: 2rem 0; }
+        @media print {
+            .no-print { display: none !important; }
+            body { background-color: #ffffff; color: #000; }
+            .print-container { max-width: 100% !important; margin: 0 !important; padding: 0 !important; box-shadow: none !important; border: none !important; }
+            table, pre, blockquote, .rounded-xl, .rounded-2xl { page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-primary selection:text-white min-h-screen flex flex-col justify-between">
+
+    <!-- Top Sticky Control Bar -->
+    <header class="no-print fixed top-0 left-0 right-0 h-16 bg-primary text-white z-50 px-4 sm:px-8 flex items-center justify-between shadow-md">
+        <div class="flex items-center gap-3">
+            <a href="index.html" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition flex items-center gap-2 text-xs font-semibold">
+                <i class="fas fa-arrow-left"></i> <span class="hidden sm:inline">មជ្ឈមណ្ឌលឯកសារ</span>
+            </a>
+            <span class="text-white/30 hidden sm:inline">|</span>
+            <div class="flex items-center gap-2">
+                <span class="text-xl">🏛️</span>
+                <span class="font-bold text-xs sm:text-sm text-white truncate max-w-[200px] sm:max-w-xs">ប្រធានគណនេយ្យ និងហិរញ្ញវត្ថុ</span>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-white/15 text-cyan-200 hidden md:inline">Controller</span>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-2 sm:gap-3">
+            <!-- Role Switcher -->
+            <div class="relative">
+                <select onchange="window.location.href=this.value" class="h-9 pl-3 pr-8 bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl text-xs font-semibold text-white focus:outline-none focus:bg-[#0a1d3f] transition appearance-none cursor-pointer">
+                    <option value="role_superadmin.html">1. 👑 ស៊ុបភើរ អភិបាល (Super Admin)</option>
+                    <option value="role_admin_general_manager.html">2. 🏛️ អភិបាលគ្រប់គ្រងទូទៅ (General Manager)</option>
+                    <option value="role_sales_manager.html">3. 👔 អ្នកគ្រប់គ្រងផ្នែកលក់ (Sales Manager)</option>
+                    <option value="role_sales_executive.html">4. 💼 បុគ្គលិកប្រតិបត្តិផ្នែកលក់ (Sales Executive)</option>
+                    <option value="role_cashier_pos.html">5. 🏪 អ្នកគិតលុយលក់រាយ (Cashier / POS)</option>
+                    <option value="role_procurement_manager.html">6. 🛒 អ្នកគ្រប់គ្រងលទ្ធកម្ម (Procurement Manager)</option>
+                    <option value="role_warehouse_manager.html">7. 📦 អ្នកគ្រប់គ្រងឃ្លាំងស្តុក (Warehouse Manager)</option>
+                    <option value="role_warehouse_staff.html">8. 👷 បុគ្គលិកជាន់ឃ្លាំង (Warehouse Staff)</option>
+                    <option value="role_chief_accountant.html" selected>9. 🏛️ ប្រធានគណនេយ្យ (Chief Accountant)</option>
+                    <option value="role_apar_accountant.html">10. 💰 គណនេយ្យករបំណុល និងការទារប្រាក់ (AP/AR Accountant)</option>
+                    <option value="role_internal_auditor_executive.html">11. 🔍 សវនករផ្ទៃក្នុង / នាយកប្រតិបត្តិ (សិទ្ធិមើល Read-Only) (Internal Auditor)</option>
+                    <option value="role_customer_support.html">12. 🎧 ផ្នែកគាំទ្រ និងបម្រើអតិថិជន (Customer Support)</option>
+                </select>
+                <i class="fas fa-chevron-down absolute right-3 top-3 text-[10px] text-white/60 pointer-events-none"></i>
+            </div>
+
+            <!-- Interactive Guide Link -->
+            <a href="DIGITECHKH-Roles-And-Permissions-Interactive-Guide.html?role=chief_accountant" class="px-3 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-semibold transition hidden lg:flex items-center gap-1.5 shadow-sm">
+                <i class="fas fa-table-cells"></i> ផ្ទាំងអន្តរកម្ម & ម៉ាទ្រីស
+            </a>
+
+            <!-- Print Button -->
+            <button onclick="window.print()" class="px-3 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-semibold transition flex items-center gap-1.5 shadow-sm cursor-pointer">
+                <i class="fas fa-print"></i> <span class="hidden sm:inline">បោះពុម្ព A4</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Reading Container -->
+    <div class="pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full flex-1">
+        <div class="flex flex-col lg:flex-row gap-8 items-start">
+
+            <!-- Left Table of Contents Sidebar -->
+            <aside class="no-print lg:w-72 flex-shrink-0 sticky top-24 hidden lg:block bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
+                <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-3">
+                    <span class="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
+                        <i class="fas fa-list-ul text-primary"></i> មាតិកាឯកសារ
+                    </span>
+                    <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-50 text-accent">TOC</span>
+                </div>
+                <div class="space-y-0.5 max-h-[calc(100vh-220px)] overflow-y-auto pr-1 text-xs">
+                    <a href="#ចំណុចចាំបាច់-បេសកកម្មស្នូល-និងការបែងចែកភារកិច្ច-core-mission-segregation-of-duties" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="⚠️ ចំណុចចាំបាច់ — បេសកកម្មស្នូល និងការបែងចែកភារកិច្ច (Core Mission & Segregation of Duties)">⚠️ ចំណុចចាំបាច់ — បេសកកម្មស្នូល និងការបែងចែកភារកិច្ច (Core Mission & Segregation of Duties)</a>
+<a href="#តារាងមាតិកា" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="តារាងមាតិកា">តារាងមាតិកា</a>
+<a href="#1-អ្វីជា-chief-accountant-financial-controller" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="1. អ្វីជា Chief Accountant / Financial Controller?">1. អ្វីជា Chief Accountant / Financial Controller?</a>
+<a href="#11-និយមន័យ-definition" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="1.1 និយមន័យ (Definition)">1.1 និយមន័យ (Definition)</a>
+<a href="#12-តួនាទីក្នុងបរិបទអាជីវកម្មកម្ពុជា-cambodian-real-world-context" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="1.2 តួនាទីក្នុងបរិបទអាជីវកម្មកម្ពុជា (Cambodian Real-World Context)">1.2 តួនាទីក្នុងបរិបទអាជីវកម្មកម្ពុជា (Cambodian Real-World Context)</a>
+<a href="#2-ឋានានុក្រមក្នុងប្រព័ន្ធ-និងទំនាក់ទំនងស្ថាប័ន" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="2. ឋានានុក្រមក្នុងប្រព័ន្ធ និងទំនាក់ទំនងស្ថាប័ន">2. ឋានានុក្រមក្នុងប្រព័ន្ធ និងទំនាក់ទំនងស្ថាប័ន</a>
+<a href="#3-អ្វីដែល-chief-accountant-ធ្វើបាន-និងហាមធ្វើ-full-capability-map" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="3. អ្វីដែល Chief Accountant ធ្វើបាន និងហាមធ្វើ (Full Capability Map)">3. អ្វីដែល Chief Accountant ធ្វើបាន និងហាមធ្វើ (Full Capability Map)</a>
+<a href="#31-អ្វីដែលធ្វើបាន-allowed-capabilities" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="3.1 អ្វីដែលធ្វើបាន (Allowed Capabilities)">3.1 អ្វីដែលធ្វើបាន (Allowed Capabilities)</a>
+<a href="#32-អ្វីដែលហាមធ្វើជាដាច់ខាត-forbidden-strict-restrictions" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="3.2 អ្វីដែលហាមធ្វើជាដាច់ខាត (Forbidden / Strict Restrictions)">3.2 អ្វីដែលហាមធ្វើជាដាច់ខាត (Forbidden / Strict Restrictions)</a>
+<a href="#4-ស្ថាបត្យកម្មទំព័រ-ui-ពេញលេញ-page-by-page-blueprint" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="4. ស្ថាបត្យកម្មទំព័រ UI ពេញលេញ (Page-by-Page Blueprint)">4. ស្ថាបត្យកម្មទំព័រ UI ពេញលេញ (Page-by-Page Blueprint)</a>
+<a href="#5-ម៉ាទ្រីសសិទ្ធិអំណាចពេញលេញ-permission-matrix" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="5. ម៉ាទ្រីសសិទ្ធិអំណាចពេញលេញ (Permission Matrix)">5. ម៉ាទ្រីសសិទ្ធិអំណាចពេញលេញ (Permission Matrix)</a>
+<a href="#6-វដ្តការងារស្នូលទាំង-6-core-accounting-workflows" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="6. វដ្តការងារស្នូលទាំង 6 (Core Accounting Workflows)">6. វដ្តការងារស្នូលទាំង 6 (Core Accounting Workflows)</a>
+<a href="#វដ្តការងារទី-1-ការបង្កើត-និងគ្រប់គ្រងតារាងគណនី-coa-management" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="វដ្តការងារទី 1: ការបង្កើត និងគ្រប់គ្រងតារាងគណនី (COA Management)">វដ្តការងារទី 1: ការបង្កើត និងគ្រប់គ្រងតារាងគណនី (COA Management)</a>
+<a href="#វដ្តការងារទី-2-ការអនុម័តប័ណ្ណចំណាយទូទាត់-disbursement-approval" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="វដ្តការងារទី 2: ការអនុម័តប័ណ្ណចំណាយទូទាត់ (Disbursement Approval)">វដ្តការងារទី 2: ការអនុម័តប័ណ្ណចំណាយទូទាត់ (Disbursement Approval)</a>
+<a href="#វដ្តការងារទី-3-ការផ្ទៀងផ្ទាត់សមតុល្យធនាគារ-bank-reconciliation" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="វដ្តការងារទី 3: ការផ្ទៀងផ្ទាត់សមតុល្យធនាគារ (Bank Reconciliation)">វដ្តការងារទី 3: ការផ្ទៀងផ្ទាត់សមតុល្យធនាគារ (Bank Reconciliation)</a>
+<a href="#វដ្តការងារទី-4-ការបិទបញ្ជីគ្រាហិរញ្ញវត្ថុប្រចាំខែ-month-end-closing-workflow" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="វដ្តការងារទី 4: ការបិទបញ្ជីគ្រាហិរញ្ញវត្ថុប្រចាំខែ (Month-End Closing Workflow)">វដ្តការងារទី 4: ការបិទបញ្ជីគ្រាហិរញ្ញវត្ថុប្រចាំខែ (Month-End Closing Workflow)</a>
+<a href="#វដ្តការងារទី-5-ការរៀបចំ-និងប្រកាសពន្ធប្រចាំខែ-gdt-monthly-tax-return" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="វដ្តការងារទី 5: ការរៀបចំ និងប្រកាសពន្ធប្រចាំខែ (GDT Monthly Tax Return)">វដ្តការងារទី 5: ការរៀបចំ និងប្រកាសពន្ធប្រចាំខែ (GDT Monthly Tax Return)</a>
+<a href="#វដ្តការងារទី-6-ការលុបបំណុលខូចតាមផ្លូវច្បាប់-bad-debt-write-off" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="វដ្តការងារទី 6: ការលុបបំណុលខូចតាមផ្លូវច្បាប់ (Bad Debt Write-Off)">វដ្តការងារទី 6: ការលុបបំណុលខូចតាមផ្លូវច្បាប់ (Bad Debt Write-Off)</a>
+<a href="#7-តក្កវិជ្ជាអាជីវកម្ម-និងរូបមន្តគណនេយ្យកម្ពុជា" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="7. តក្កវិជ្ជាអាជីវកម្ម និងរូបមន្តគណនេយ្យកម្ពុជា">7. តក្កវិជ្ជាអាជីវកម្ម និងរូបមន្តគណនេយ្យកម្ពុជា</a>
+<a href="#71-សមីការគណនេយ្យគ្រឹះ-the-fundamental-accounting-equation" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="7.1 សមីការគណនេយ្យគ្រឹះ (The Fundamental Accounting Equation)">7.1 សមីការគណនេយ្យគ្រឹះ (The Fundamental Accounting Equation)</a>
+<a href="#72-រូបមន្តគណនាអាករលើតម្លៃបន្ថែមសុទ្ធ-net-vat-payable-formula" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="7.2 រូបមន្តគណនាអាករលើតម្លៃបន្ថែមសុទ្ធ (Net VAT Payable Formula)">7.2 រូបមន្តគណនាអាករលើតម្លៃបន្ថែមសុទ្ធ (Net VAT Payable Formula)</a>
+<a href="#73-រូបមន្តពន្ធកាត់ទុកសេវាកម្ម-និងជួល-withholding-tax-formulas" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="7.3 រូបមន្តពន្ធកាត់ទុកសេវាកម្ម និងជួល (Withholding Tax Formulas)">7.3 រូបមន្តពន្ធកាត់ទុកសេវាកម្ម និងជួល (Withholding Tax Formulas)</a>
+<a href="#8-ទំនាក់ទំនងឆ្លងផ្នែកជាមួយតួនាទីផ្សេងទៀត" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="8. ទំនាក់ទំនងឆ្លងផ្នែកជាមួយតួនាទីផ្សេងទៀត">8. ទំនាក់ទំនងឆ្លងផ្នែកជាមួយតួនាទីផ្សេងទៀត</a>
+<a href="#9-វិសាលភាពទិន្នន័យ-data-scope-អ្វីដែលឃើញ-និងអ្វីដែលត្រូវលាក់" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="9. វិសាលភាពទិន្នន័យ (Data Scope — អ្វីដែលឃើញ និងអ្វីដែលត្រូវលាក់)">9. វិសាលភាពទិន្នន័យ (Data Scope — អ្វីដែលឃើញ និងអ្វីដែលត្រូវលាក់)</a>
+<a href="#10-ផ្ទាំងគ្រប់គ្រង-និងសូចនាករ-kpi-របស់-chief-accountant" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="10. ផ្ទាំងគ្រប់គ្រង និងសូចនាករ KPI របស់ Chief Accountant">10. ផ្ទាំងគ្រប់គ្រង និងសូចនាករ KPI របស់ Chief Accountant</a>
+<a href="#11-គំរូរចនាសម្ព័ន្ធទិន្នន័យ-database-schema-blueprint" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="11. គំរូរចនាសម្ព័ន្ធទិន្នន័យ (Database Schema Blueprint)">11. គំរូរចនាសម្ព័ន្ធទិន្នន័យ (Database Schema Blueprint)</a>
+<a href="#12-ក្របខ័ណ្ឌគ្រប់គ្រងផ្ទៃក្នុង-និងការទប់ស្កាត់ការក្លែងបន្លំ-anti-fraud-internal-audit-controls" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="12. ក្របខ័ណ្ឌគ្រប់គ្រងផ្ទៃក្នុង និងការទប់ស្កាត់ការក្លែងបន្លំ (Anti-Fraud & Internal Audit Controls)">12. ក្របខ័ណ្ឌគ្រប់គ្រងផ្ទៃក្នុង និងការទប់ស្កាត់ការក្លែងបន្លំ (Anti-Fraud & Internal Audit Controls)</a>
+<a href="#13-អនុសាសន៍ស្ថាបត្យកម្ម-និងផែនការ-prototype-planning" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="13. អនុសាសន៍ស្ថាបត្យកម្ម និងផែនការ Prototype Planning">13. អនុសាសន៍ស្ថាបត្យកម្ម និងផែនការ Prototype Planning</a>
+<a href="#14-សំណួរ-និងចម្លើយទូទៅ-faq" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="14. សំណួរ និងចម្លើយទូទៅ (FAQ)">14. សំណួរ និងចម្លើយទូទៅ (FAQ)</a>
+                </div>
+                <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
+                    <a href="DIGITECHKH-Roles-And-Permissions-Interactive-Guide.html?role=chief_accountant" class="w-full py-2 px-3 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-700 text-xs font-medium flex items-center justify-between transition border border-slate-200">
+                        <span>មើលក្នុងផ្ទាំងអន្តរកម្ម</span>
+                        <i class="fas fa-up-right-from-square text-[10px] text-slate-400"></i>
+                    </a>
+                    <a href="role_chief_accountant.md" class="w-full py-2 px-3 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-500 text-[11px] font-normal flex items-center justify-between transition border border-slate-200">
+                        <span>មើលឯកសារដើម (.md)</span>
+                        <i class="fas fa-file-code text-[10px]"></i>
+                    </a>
+                </div>
+            </aside>
+
+            <!-- Main Document Body -->
+            <main class="print-container flex-1 bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-12 min-w-0 max-w-4xl mx-auto">
+
+                <!-- Breadcrumb -->
+                <div class="no-print flex items-center gap-2 text-xs text-slate-500 mb-6 flex-wrap pb-4 border-b border-slate-100">
+                    <a href="index.html" class="hover:text-primary transition flex items-center gap-1">
+                        <i class="fas fa-home"></i> មជ្ឈមណ្ឌលឯកសារ
+                    </a>
+                    <span>/</span>
+                    <a href="DIGITECHKH-Roles-And-Permissions-Interactive-Guide.html" class="hover:text-primary transition">
+                        តួនាទីទាំង 10
+                    </a>
+                    <span>/</span>
+                    <span class="text-slate-800 font-semibold">ប្រធានគណនេយ្យ និងហិរញ្ញវត្ថុ</span>
+                </div>
+
+                <!-- Document Rendered HTML -->
+                <article class="prose prose-slate max-w-none">
+                    <h1 id="digitechkh-bms-ការសិក្សាស៊ីជម្រៅ-តួនាទី-ប្រធានគណនេយ្យ-និងហិរញ្ញវត្ថុ-chief-accountant-financial-controller" class="scroll-mt-24 group">🏛️ DIGITECHKH BMS — ការសិក្សាស៊ីជម្រៅ: តួនាទី ប្រធានគណនេយ្យ និងហិរញ្ញវត្ថុ (Chief Accountant / Financial Controller) <a href="#digitechkh-bms-ការសិក្សាស៊ីជម្រៅ-តួនាទី-ប្រធានគណនេយ្យ-និងហិរញ្ញវត្ថុ-chief-accountant-financial-controller" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h1>
+<div class="my-5 p-4 rounded-xl bg-slate-50 border-l-4 border-[#0f2b5c] text-slate-800 text-xs leading-relaxed shadow-sm">
+<p><strong>ឯកសារ</strong>: <code>role_chief_accountant.md</code><br><strong>កំណែ</strong>: 1.0<br><strong>កាលបរិច្ឆេទ</strong>: 21 កញ្ញា 2026<br><strong>គោលបំណង</strong>: ការយល់ដឹង 100% អំពីតួនាទី ប្រធានគណនេយ្យ និងហិរញ្ញវត្ថុ (Chief Accountant / Financial Controller) មុនពេលឈានទៅរៀបចំគំរូទម្រង់ដើម (Prototype) — រួមមានអភិបាលកិច្ចហិរញ្ញវត្ថុកំពូល (Supreme Financial Governance), ការគ្រប់គ្រងតារាងគណនីទូទៅ (Chart of Accounts - COA), ការបិទបញ្ជីគ្រាហិរញ្ញវត្ថុប្រចាំខែ និងប្រចាំឆ្នាំ (Financial Period Lock), ការផលិតរបាយការណ៍ហិរញ្ញវត្ថុផ្លូវការ (P&amp;L, Balance Sheet, Cash Flow), អនុលោមភាពពន្ធដារកម្ពុជា (GDT Tax Compliance: អតប 10%, WHT, ពន្ធលើប្រាក់ចំណេញ), ការអនុម័តប័ណ្ណចំណាយធំៗ, ស្ថាបត្យកម្មទំព័រ UI, វដ្តការងារស្នូល, គំរូទិន្នន័យ, និងក្របខ័ណ្ឌទប់ស្កាត់ការក្លែងបន្លំហិរញ្ញវត្ថុ (Anti-Fraud Internal Controls)។</p>
+</div>
+<hr>
+<h2 id="ចំណុចចាំបាច់-បេសកកម្មស្នូល-និងការបែងចែកភារកិច្ច-core-mission-segregation-of-duties" class="scroll-mt-24 group">⚠️ ចំណុចចាំបាច់ — បេសកកម្មស្នូល និងការបែងចែកភារកិច្ច (Core Mission &amp; Segregation of Duties) <a href="#ចំណុចចាំបាច់-បេសកកម្មស្នូល-និងការបែងចែកភារកិច្ច-core-mission-segregation-of-duties" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<p>នៅក្នុងស្ថាបត្យកម្មហិរញ្ញវត្ថុនៃប្រព័ន្ធ DIGITECHKH BMS តួនាទី <strong>Chief Accountant (ប្រធានគណនេយ្យ)</strong> គឺជា <strong>«ស្ថាបត្យករកំពូលនៃសុខភាពហិរញ្ញវត្ថុ និងអនុលោមភាពច្បាប់របស់សហគ្រាស» (Chief Financial Architect &amp; Compliance Custodian)</strong>។</p>
+<div class="my-5 p-4 rounded-xl bg-slate-50 border-l-4 border-[#0f2b5c] text-slate-800 text-xs leading-relaxed shadow-sm">
+<p>🛡️ <strong>គោលការណ៍បែងចែកភារកិច្ចហិរញ្ញវត្ថុដាច់ដោយឡែក (Financial Segregation of Duties - SoD Doctrine)</strong>:  </p>
+<ol>
+<li><strong>ការបែងចែករវាងអ្នកកត់ត្រា និងអ្នកអនុម័ត (Preparer vs Approver)</strong>: គណនេយ្យករទូទាត់ (AP/AR Accountant) ជាអ្នកបញ្ចូលទិន្នន័យប្រចាំថ្ងៃ (រៀបចំប័ណ្ណចំណាយ, កត់ត្រាបង្កាន់ដៃទទួលប្រាក់) ប៉ុន្តែ <strong>Chief Accountant គឺជាអ្នកត្រួតពិនិត្យ ផ្ទៀងផ្ទាត់ និងអនុម័តចុងក្រោយ</strong> មុនពេលបញ្ជូនទៅ General Manager។  </li>
+<li><strong>សិទ្ធិផ្តាច់មុខលើតារាងគណនី (Exclusive COA Authority)</strong>: មានតែ Chief Accountant ប៉ុណ្ណោះដែលមានសិទ្ធិបង្កើត កែប្រែ ឬចាត់ថ្នាក់គណនីទូទៅ (General Ledger Accounts) ក្នុងតារាងគណនីមេ (Chart of Accounts)។  </li>
+<li><strong>ការចាក់សោរគ្រាគណនេយ្យ (Financial Period Lock)</strong>: នៅពេលបិទបញ្ជីចុងខែ ឬចុងឆ្នាំ មានតែ Chief Accountant និង GM ប៉ុណ្ណោះដែលអាចបញ្ជា «ចាក់សោរគ្រាហិរញ្ញវត្ថុ» (Period Lock) ដើម្បីការពារកុំឱ្យបុគ្គលិកណាអាចកែប្រែទិន្នន័យប្រតិបត្តិការអតីតកាលបាន។  </li>
+<li><strong>អនុលោមភាពពន្ធដារកម្ពុជា 100% (GDT Tax Compliance)</strong>: ទទួលបន្ទុករៀបចំ និងផ្ទៀងផ្ទាត់តួលេខលិខិតប្រកាសពន្ធប្រចាំខែ (TOS, WHT, VAT) និងប្រចាំឆ្នាំ (TOI) តាមស្តង់ដារគណនេយ្យកម្ពុជាសម្រាប់សហគ្រាសធុនតូច និងមធ្យម (CIFRS for SMEs)។</li>
+</ol>
+</div>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">វិសាលភាព និងសកម្មភាព</th>
+<th align="center">សិទ្ធិរបស់ Chief Accountant</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">មូលហេតុ និងគោលការណ៍អភិបាលកិច្ច</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>គ្រប់គ្រងតារាងគណនីមេ (Chart of Accounts - COA)</strong></td>
+<td align="center">✅ សិទ្ធិផ្តាច់មុខ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">កំណត់រចនាសម្ព័ន្ធទ្រព្យសកម្ម បំណុល ចំណូល និងចំណាយ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ចុះបញ្ជីកែតម្រូវ និងកត់ត្រាទ្វេបញ្ជី (Adjusting Journal Entries)</strong></td>
+<td align="center">✅ ធ្វើបានពេញលេញ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">កែតម្រូវការរំលស់ (Depreciation), បន្ទុក និងចំណូលបង្គរ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ពិនិត្យ និងអនុម័តប័ណ្ណចំណាយធំៗ (&gt; $500.00)</strong></td>
+<td align="center">✅ ត្រួតពិនិត្យ និងអនុម័ត</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ផ្ទៀងផ្ទាត់ភាពស្របច្បាប់ និងអនុលោមភាពថវិកាក្រុមហ៊ុន</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>បិទបញ្ជីហិរញ្ញវត្ថុប្រចាំខែ និងចាក់សោរ (Period Closing &amp; Lock)</strong></td>
+<td align="center">✅ ធ្វើបានពេញលេញ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ការពារការកែប្រែទិន្នន័យហិរញ្ញវត្ថុអតីតកាល</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ផលិតរបាយការណ៍ហិរញ្ញវត្ថុផ្លូវការ (P&amp;L, Balance Sheet, Cash Flow)</strong></td>
+<td align="center">✅ ធ្វើបានពេញលេញ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ផ្តល់របាយការណ៍ជូននាយកប្រតិបត្តិ និងក្រុមប្រឹក្សាភិបាល</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>រៀបចំ និងដាក់លិខិតប្រកាសពន្ធជូនអគ្គនាយកដ្ឋានពន្ធដារ (GDT)</strong></td>
+<td align="center">✅ ធ្វើបានពេញលេញ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ធានាអនុលោមភាពពន្ធដារ អតប 10%, WHT, និងពន្ធលើប្រាក់ចំណេញ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>អនុម័តការលុបចោលបំណុលខូច (Bad Debt Write-Off)</strong></td>
+<td align="center">✅ ពិនិត្យ និងបញ្ជូនទៅ GM</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">វាយតម្លៃបំណុលដែលមិនអាចទារបានតាមផ្លូវច្បាប់</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>កែសម្រួលចំនួនទំនិញរូបវន្តក្នុងឃ្លាំងដោយផ្ទាល់</strong></td>
+<td align="center">❌ <strong>ហាមដាច់ខាត (SoD)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ភារកិច្ចផ្តាច់មុខរបស់ផ្នែកឃ្លាំង (Warehouse)</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>បង្កើតវិក្កយបត្រលក់ ឬកែសម្រួលសម្រង់តម្លៃ</strong></td>
+<td align="center">❌ <strong>ហាមដាច់ខាត (SoD)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ភារកិច្ចផ្តាច់មុខរបស់ផ្នែកលក់ (Sales)</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>អនុម័តប័ណ្ណចំណាយឱ្យខ្លួនឯងដោយគ្មានហត្ថលេខា GM</strong></td>
+<td align="center">❌ <strong>ហាមដាច់ខាត (Dual Control)</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ការពារទំនាស់ផលប្រយោជន៍ (Conflict of Interest)</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="តារាងមាតិកា" class="scroll-mt-24 group">តារាងមាតិកា <a href="#តារាងមាតិកា" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<ol>
+<li><a href="#1-%E1%9E%A2%E1%9F%92%E1%9E%9C%E1%9E%B8%E1%9E%87%E1%9E%B6-chief-accountant--financial-controller">អ្វីជា Chief Accountant / Financial Controller?</a></li>
+<li><a href="#2-%E1%9E%8B%E1%9E%B6%E1%9E%93%E1%9E%B6%E1%9E%93%E1%9E%BB%E1%9E%80%E1%9F%92%E1%9E%9A%E1%9E%98%E1%9E%80%E1%9F%92%E1%9E%93%E1%9E%BB%E1%9E%84%E1%9E%94%E1%9F%92%E1%9E%9A%E1%9E%96%E1%9F%90%E1%9E%93%E1%9F%92%E1%9E%92-%E1%9E%93%E1%9E%B7%E1%9E%84%E1%9E%91%E1%9F%86%E1%9E%93%E1%9E%B6%E1%9E%80%E1%9F%8B%E1%9E%91%E1%9F%86%E1%9E%93%E1%9E%84%E1%9E%9F%E1%9F%92%E1%9E%90%E1%9E%B6%E1%9E%94%E1%9F%90%E1%9E%93">ឋានានុក្រមក្នុងប្រព័ន្ធ និងទំនាក់ទំនងស្ថាប័ន</a></li>
+<li><a href="#3-%E1%9E%A2%E1%9F%92%E1%9E%9C%E1%9E%B8%E1%9E%8A%E1%9F%82%E1%9E%9B-chief-accountant-%E1%9E%92%E1%9F%92%E1%9E%9C%E1%9E%BE%E1%9E%94%E1%9E%B6%E1%9E%93-%E1%9E%93%E1%9E%B7%E1%9E%84%E1%9E%A0%E1%9E%B6%E1%9E%98%E1%9E%92%E1%9F%92%E1%9E%9C%E1%9E%BE">អ្វីដែល Chief Accountant ធ្វើបាន និងហាមធ្វើ (Full Capability Map)</a></li>
+<li><a href="#4-%E1%9E%9F%E1%9F%92%E1%9E%90%E1%9E%B6%E1%9E%94%E1%9E%8F%E1%9F%92%E1%9E%99%E1%9E%80%E1%9E%98%E1%9F%92%E1%9E%98%E1%9E%91%E1%9F%86%E1%9E%96%E1%9F%90%E1%9E%9A-ui-%E1%9E%96%E1%9F%81%E1%9E%89%E1%9E%9B%E1%9F%81%E1%9E%89">ស្ថាបត្យកម្មទំព័រ UI ពេញលេញ (Page-by-Page Blueprint)</a></li>
+<li><a href="#5-%E1%9E%98%E1%9F%89%E1%9E%B6%E1%9E%91%E1%9F%92%E1%9E%9A%E1%9E%B8%E1%9E%9F%E1%9E%9F%E1%9E%B7%E1%9E%91%E1%9F%92%E1%9E%92%E1%9E%B7%E1%9E%A2%E1%9F%86%E1%9E%8E%E1%9E%B6%E1%9E%85%E1%9E%96%E1%9F%81%E1%9E%89%E1%9E%9B%E1%9F%81%E1%9E%89">ម៉ាទ្រីសសិទ្ធិអំណាចពេញលេញ (Permission Matrix)</a></li>
+<li><a href="#6-%E1%9E%9C%E1%9E%8A%E1%9F%92%E1%9E%8F%E1%9E%80%E1%9E%B6%E1%9E%9A%E1%9E%84%E1%9E%B6%E1%9E%9A%E1%9E%9F%E1%9F%92%E1%9E%93%E1%9E%BC%E1%9E%9B%E1%9E%91%E1%9E%B6%E1%9F%86%E1%9E%84-6">វដ្តការងារស្នូលទាំង 6 (Core Accounting Workflows)</a></li>
+<li><a href="#7-%E1%9E%8F%E1%9E%80%E1%9F%92%E1%9E%80%E1%9E%9C%E1%9E%B7%E1%9E%87%E1%9F%92%E1%9E%87%E1%9E%B6%E1%9E%A2%E1%9E%B6%E1%9E%87%E1%9E%B8%E1%9E%9C%E1%9E%80%E1%9E%98%E1%9F%92%E1%9E%98-%E1%9E%93%E1%9E%B7%E1%9E%84%E1%9E%9A%E1%9E%BC%E1%9E%94%E1%9E%98%E1%9E%93%E1%9F%92%E1%9E%8F%E1%9E%82%E1%9E%8E%E1%9E%93%E1%9F%81%E1%9E%99%E1%9F%92%E1%9E%99%E1%9E%80%E1%9E%98%E1%9F%92%E1%9E%96%E1%9E%BB%E1%9E%87%E1%9E%B6">តក្កវិជ្ជាអាជីវកម្ម និងរូបមន្តគណនេយ្យកម្ពុជា (Business Logic &amp; Cambodian Accounting Math)</a></li>
+<li><a href="#8-%E1%9E%91%E1%9F%86%E1%9E%93%E1%9E%B6%E1%9E%80%E1%9F%8B%E1%9E%91%E1%9F%86%E1%9E%93%E1%9E%84%E1%9E%86%E1%9F%92%E1%9E%9B%E1%9E%84%E1%9E%95%E1%9F%92%E1%9E%93%E1%9F%82%E1%9E%80%E1%9E%87%E1%9E%B6%E1%9E%98%E1%9E%BD%E1%9E%99%E1%9E%8F%E1%9E%BD%E1%9E%93%E1%9E%B6%E1%9E%91%E1%9E%B8%E1%9E%95%E1%9F%92%E1%9E%9F%E1%9F%81%E1%9E%84%E1%9E%91%E1%9F%80%E1%9E%8F">ទំនាក់ទំនងឆ្លងផ្នែកជាមួយតួនាទីផ្សេងទៀត (Cross-Role Interaction Map)</a></li>
+<li><a href="#9-%E1%9E%9C%E1%9E%B7%E1%9E%9F%E1%9E%B6%E1%9E%9B%E1%9E%97%E1%9E%B6%E1%9E%96%E1%9E%91%E1%9E%B7%E1%9E%93%E1%9F%92%E1%9E%93%E1%9E%93%E1%9F%90%E1%9E%99">វិសាលភាពទិន្នន័យ (Data Scope — អ្វីដែលឃើញ និងអ្វីដែលត្រូវលាក់)</a></li>
+<li><a href="#10-%E1%9E%95%E1%9F%92%E1%9E%91%E1%9E%B6%E1%9F%86%E1%9E%84%E1%9E%82%E1%9F%92%E1%9E%9A%E1%9E%94%E1%9F%8B%E1%9E%82%E1%9F%92%E1%9E%9A%E1%9E%84-%E1%9E%93%E1%9E%B7%E1%9E%84%E1%9E%9F%E1%9E%BC%E1%9E%85%E1%9E%93%E1%9E%B6%E1%9E%80%E1%9E%9A-kpi-%E1%9E%9A%E1%9E%94%E1%9E%9F%E1%9F%8B-chief-accountant">ផ្ទាំងគ្រប់គ្រង និងសូចនាករ KPI របស់ Chief Accountant</a></li>
+<li><a href="#11-%E1%9E%82%E1%9F%86%E1%9E%9A%E1%9E%BC%E1%9E%9A%E1%9E%85%E1%9E%93%E1%9E%B6%E1%9E%9F%E1%9E%98%E1%9F%92%E1%9E%96%E1%9F%90%E1%9E%93%E1%9F%92%E1%9E%92%E1%9E%91%E1%9E%B7%E1%9E%93%E1%9F%92%E1%9E%93%E1%9E%93%E1%9F%90%E1%9E%99">គំរូរចនាសម្ព័ន្ធទិន្នន័យ (Database Schema Blueprint)</a></li>
+<li><a href="#12-%E1%9E%80%E1%9F%92%E1%9E%9A%E1%9E%94%E1%9E%81%E1%9F%90%E1%9E%8E%E1%9F%92%E1%9E%8C%E1%9E%82%E1%9F%92%E1%9E%9A%E1%9E%94%E1%9F%8B%E1%9E%82%E1%9F%92%E1%9E%9A%E1%9E%84%E1%9E%95%E1%9F%92%E1%9E%91%E1%9F%83%E1%9E%80%E1%9F%92%E1%9E%93%E1%9E%BB%E1%9E%84-%E1%9E%93%E1%9E%B7%E1%9E%84%E1%9E%80%E1%9E%B6%E1%9E%9A%E1%9E%91%E1%9E%94%E1%9F%8B%E1%9E%9F%E1%9F%92%E1%9E%80%E1%9E%B6%E1%9E%8F%E1%9F%8B%E1%9E%80%E1%9E%B6%E1%9E%9A%E1%9E%80%E1%9F%92%E1%9E%9B%E1%9F%82%E1%9E%84%E1%9E%94%E1%9E%93%E1%9F%92%E1%9E%9B%E1%9F%86">ក្របខ័ណ្ឌគ្រប់គ្រងផ្ទៃក្នុង និងការទប់ស្កាត់ការក្លែងបន្លំ (Anti-Fraud &amp; Internal Audit Controls)</a></li>
+<li><a href="#13-%E1%9E%A2%E1%9E%93%E1%9E%BB%E1%9E%9F%E1%9E%B6%E1%9E%9F%E1%9E%93%E1%9F%8D%E1%9E%9F%E1%9F%92%E1%9E%90%E1%9E%B6%E1%9E%94%E1%9E%8F%E1%9F%92%E1%9E%99%E1%9E%80%E1%9E%98%E1%9F%92%E1%9E%98-%E1%9E%93%E1%9E%B7%E1%9E%84%E1%9E%95%E1%9F%82%E1%9E%93%E1%9E%80%E1%9E%B6%E1%9E%9A-prototype-planning">អនុសាសន៍ស្ថាបត្យកម្ម និងផែនការ Prototype Planning</a></li>
+<li><a href="#14-%E1%9E%9F%E1%9F%86%E1%9E%8E%E1%9E%BD%E1%9E%9A-%E1%9E%93%E1%9E%B7%E1%9E%84%E1%9E%85%E1%9E%98%E1%9F%92%E1%9E%9B%E1%9E%BE%E1%9E%99%E1%9E%91%E1%9E%BC%E1%9E%91%E1%9F%85">សំណួរ និងចម្លើយទូទៅ (FAQ)</a></li>
+</ol>
+<hr>
+<h2 id="1-អ្វីជា-chief-accountant-financial-controller" class="scroll-mt-24 group">1. អ្វីជា Chief Accountant / Financial Controller? <a href="#1-អ្វីជា-chief-accountant-financial-controller" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="11-និយមន័យ-definition" class="scroll-mt-24 group">1.1 និយមន័យ (Definition) <a href="#11-និយមន័យ-definition" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p><strong>Chief Accountant (ប្រធានគណនេយ្យ)</strong> គឺជាថ្នាក់ដឹកនាំផ្នែកហិរញ្ញវត្ថុដែលគ្រប់គ្រងប្រព័ន្ធគណនេយ្យទូទៅទាំងមូលរបស់ក្រុមហ៊ុន។ នៅក្នុងប្រព័ន្ធ DIGITECHKH BMS គាត់/នាង ទទួលបន្ទុក៖</p>
+<ol>
+<li><strong>ភាពត្រឹមត្រូវនៃសៀវភៅធំ (General Ledger Integrity &amp; Trial Balance)</strong>: ធានាថារាល់ប្រតិបត្តិការជំពាក់ (Debit) និងសង (Credit) ត្រូវគ្នាល្អឥតខ្ចោះ 100%។</li>
+<li><strong>ការគ្រប់គ្រងគ្រាហិរញ្ញវត្ថុ (Financial Period Governance)</strong>: ដឹកនាំការបិទបញ្ជីប្រចាំខែ (Month-End Closing) ក្នុងរយៈពេល $&lt; 5$ ថ្ងៃ និងបិទបញ្ជីប្រចាំឆ្នាំ (Year-End Closing)។</li>
+<li><strong>អនុលោមភាពពន្ធដារកម្ពុជា (Cambodian Tax Compliance)</strong>: គ្រប់គ្រងការប្រកាសពន្ធលើតម្លៃបន្ថែម (VAT 10%), ពន្ធកាត់ទុក (WHT 15%/10%/14%), និងពន្ធលើប្រាក់ចំណេញ (TOI 20%) ជូនអគ្គនាយកដ្ឋានពន្ធដារ (GDT)។</li>
+<li><strong>ការវិភាគ និងរបាយការណ៍ថ្នាក់ដឹកនាំ (Executive Financial Reporting)</strong>: ផ្តល់របាយការណ៍លទ្ធផលអាជីវកម្ម (Income Statement), តារាងតុល្យការ (Balance Sheet), និងរបាយការណ៍លំហូរសាច់ប្រាក់ (Cash Flow Statement)។</li>
+</ol>
+<h3 id="12-តួនាទីក្នុងបរិបទអាជីវកម្មកម្ពុជា-cambodian-real-world-context" class="scroll-mt-24 group">1.2 តួនាទីក្នុងបរិបទអាជីវកម្មកម្ពុជា (Cambodian Real-World Context) <a href="#12-តួនាទីក្នុងបរិបទអាជីវកម្មកម្ពុជា-cambodian-real-world-context" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p>នៅក្នុងបរិបទប្រទេសកម្ពុជា ប្រធានគណនេយ្យត្រូវប្រឈមមុខនឹងកាតព្វកិច្ចច្បាប់តឹងរ៉ឹង៖</p>
+<ul>
+<li><strong>ការអនុវត្តស្តង់ដារ CIFRS for SMEs</strong>: តម្រូវឱ្យមានការកត់ត្រាទ្រព្យសកម្មអរូបី រំលស់ទ្រព្យសកម្ម និងចំណាយបង្គរត្រឹមត្រូវស្របតាមច្បាប់គណនេយ្យ និងសវនកម្មកម្ពុជា។</li>
+<li><strong>ប្រព័ន្ធប្រកាសពន្ធតាមអនឡាញ (GDT e-Filing)</strong>: ការទាញយកទិន្នន័យលក់ និងទិញពីប្រព័ន្ធ BMS ទៅបំពេញក្នុងប្រព័ន្ធ e-Filing របស់ពន្ធដារមុនថ្ងៃទី 25 នៃខែនីមួយៗ។</li>
+<li><strong>ការគ្រប់គ្រងអត្រាប្តូរប្រាក់ផ្លូវការ (NBC Exchange Rate)</strong>: គណនាការចំណេញ ឬខាតពីការប្រែប្រួលអត្រាប្តូរប្រាក់ (Foreign Exchange Gain/Loss) រវាង USD និង KHR។</li>
+</ul>
+<hr>
+<h2 id="2-ឋានានុក្រមក្នុងប្រព័ន្ធ-និងទំនាក់ទំនងស្ថាប័ន" class="scroll-mt-24 group">2. ឋានានុក្រមក្នុងប្រព័ន្ធ និងទំនាក់ទំនងស្ថាប័ន <a href="#2-ឋានានុក្រមក្នុងប្រព័ន្ធ-និងទំនាក់ទំនងស្ថាប័ន" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>               ┌──────────────────────────────┐
+               │    Admin / General Manager   │
+               └──────────────┬───────────────┘
+                              │
+               ┌──────────────▼──────────────┐
+               │       Chief Accountant       │
+               │    (Financial Controller)    │
+               └──────────────┬───────────────┘
+                              │
+       ┌──────────────────────┼──────────────────────┐
+       │                      │                      │
+┌──────▼──────┐        ┌──────▼──────┐        ┌──────▼──────┐
+│  AP/AR Acct │        │   Cashier   │        │ External    │
+│ (Operations)│        │ (POS Shifts)│        │ Auditor/GDT │
+└─────────────┘        └─────────────┘        └─────────────┘
+</code></pre>
+        </div>
+<ul>
+<li><strong>រាយការណ៍ផ្ទាល់ទៅ</strong>: General Manager (GM) និង Board of Directors</li>
+<li><strong>គ្រប់គ្រងផ្ទាល់លើ</strong>: AP/AR Accountant, Junior Accountants, និង Cashier Reconciliation</li>
+<li><strong>ទំនាក់ទំនងជាមួយ</strong>:<ul>
+<li><strong>Internal Auditor</strong>: សហការផ្តល់ឯកសារភស្តុតាង និងកំណត់ហេតុសវនកម្ម</li>
+<li><strong>General Department of Taxation (GDT)</strong>: ទំនាក់ទំនង និងដោះស្រាយសវនកម្មពន្ធដារ</li>
+<li><strong>External Auditors</strong>: សម្របសម្រួលសវនកម្មឯករាជ្យប្រចាំឆ្នាំ</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="3-អ្វីដែល-chief-accountant-ធ្វើបាន-និងហាមធ្វើ-full-capability-map" class="scroll-mt-24 group">3. អ្វីដែល Chief Accountant ធ្វើបាន និងហាមធ្វើ (Full Capability Map) <a href="#3-អ្វីដែល-chief-accountant-ធ្វើបាន-និងហាមធ្វើ-full-capability-map" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="31-អ្វីដែលធ្វើបាន-allowed-capabilities" class="scroll-mt-24 group">3.1 អ្វីដែលធ្វើបាន (Allowed Capabilities) <a href="#31-អ្វីដែលធ្វើបាន-allowed-capabilities" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<ul>
+<li>បង្កើត កែសម្រួល និងរៀបចំរចនាសម្ព័ន្ធតារាងគណនី (Chart of Accounts - COA) គ្រប់កម្រិត (Assets, Liabilities, Equity, Revenue, Expenses)</li>
+<li>បង្កើត និងអនុម័តប័ណ្ណចុះបញ្ជីទូទៅ (Manual / Adjusting Journal Entries) ដូចជា ការរំលស់ (Depreciation) និងការកែតម្រូវចុងគ្រា</li>
+<li>ពិនិត្យ ផ្ទៀងផ្ទាត់ និងអនុម័តប័ណ្ណចំណាយទូទាត់ (Payment Disbursements &gt; $500.00)</li>
+<li>បិទបញ្ជីគ្រាហិរញ្ញវត្ថុប្រចាំខែ និងបញ្ជាចាក់សោរគ្រា (Execute Financial Period Lock)</li>
+<li>បង្កើត និងទាញយករាល់របាយការណ៍ហិរញ្ញវត្ថុផ្លូវការ (P&amp;L, Balance Sheet, Trial Balance, Cash Flow)</li>
+<li>គណនា និងរៀបចំរបាយការណ៍ពន្ធដារប្រចាំខែ (VAT, WHT, Salary Tax) និងប្រចាំឆ្នាំ (TOI)</li>
+<li>កំណត់អត្រាប្តូរប្រាក់គណនេយ្យផ្លូវការរបស់ធនាគារជាតិនៃកម្ពុជា (NBC Official Rate)</li>
+<li>ពិនិត្យ និងវាយតម្លៃសំណើសុំលុបបំណុលខូច (Bad Debt Write-off Request) មុនបញ្ជូនទៅ GM</li>
+<li>ផ្ទៀងផ្ទាត់ការទូទាត់សមតុល្យធនាគារ (Bank Reconciliation) ជាមួយរបាយការណ៍ធនាគារ</li>
+</ul>
+<h3 id="32-អ្វីដែលហាមធ្វើជាដាច់ខាត-forbidden-strict-restrictions" class="scroll-mt-24 group">3.2 អ្វីដែលហាមធ្វើជាដាច់ខាត (Forbidden / Strict Restrictions) <a href="#32-អ្វីដែលហាមធ្វើជាដាច់ខាត-forbidden-strict-restrictions" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<ul>
+<li>❌ ហាមកែប្រែទិន្នន័យក្នុងគ្រាហិរញ្ញវត្ថុដែលបានចាក់សោររួច (Locked Period) ដោយគ្មានការអនុញ្ញាតជាលាយលក្ខណ៍អក្សរពី GM</li>
+<li>❌ ហាមបង្កើត ឬកែប្រែវិក្កយបត្រលក់របស់អតិថិជន (ភារកិច្ចរបស់ Sales Staff)</li>
+<li>❌ ហាមទទួល ឬបញ្ចេញទំនិញជាក់ស្តែងចេញពីឃ្លាំង (ភារកិច្ចរបស់ Warehouse Staff)</li>
+<li>❌ ហាមអនុម័តប័ណ្ណចំណាយទូទាត់ឱ្យខ្លួនឯង (ត្រូវឆ្លងកាត់ General Manager អនុម័ត)</li>
+<li>❌ ហាមលុបបំបាត់ ឬកែប្រែកំណត់ហេតុសវនកម្មសកល (Immutable Audit Trails)</li>
+<li>❌ ហាមលុបគណនីក្នុង COA ដែលមានប្រតិបត្តិការរួចហើយ (អនុញ្ញាតត្រឹម Deactivate ប៉ុណ្ណោះ)</li>
+</ul>
+<hr>
+<h2 id="4-ស្ថាបត្យកម្មទំព័រ-ui-ពេញលេញ-page-by-page-blueprint" class="scroll-mt-24 group">4. ស្ថាបត្យកម្មទំព័រ UI ពេញលេញ (Page-by-Page Blueprint) <a href="#4-ស្ថាបត្យកម្មទំព័រ-ui-ពេញលេញ-page-by-page-blueprint" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th align="center">ល.រ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ឈ្មោះឯកសារ UI</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ផ្លូវថត (File Path)</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">គោលបំណង និងធាតុសំខាន់ៗ</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td align="center">1</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong><code>dashboard.html</code></strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>frontend/src/pages/9-portals/accountant/</code></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ផ្ទាំងបញ្ជាការដ្ឋានហិរញ្ញវត្ថុ</strong>៖ សមតុល្យសាច់ប្រាក់សរុប, បំណុលត្រូវទារ AR Aging, បំណុលត្រូវសង AP Aging, បន្ទុកពន្ធប៉ាន់ស្មាន, និងបញ្ជីរង់ចាំអនុម័ត</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td align="center">2</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong><code>disbursements.html</code></strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>frontend/src/pages/9-portals/accountant/</code></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>បញ្ជីប័ណ្ណចំណាយទូទាត់</strong>៖ តម្រងកាលបរិច្ឆេទរួម, តម្រងស្ថានភាព (Pending/Approved/Paid), ប៊ូតុងអនុម័ត, និងតំណភ្ជាប់ទៅកាន់ View Voucher</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td align="center">3</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong><code>view-voucher.html</code></strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>frontend/src/pages/9-portals/accountant/</code></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>បង្ហាញប័ណ្ណចំណាយ A4 ផ្លូវការ</strong>៖ គណនីទ្វេបញ្ជី (Debit/Credit), ពន្ធកាត់ទុក WHT, 4 ហត្ថលេខាផ្លូវការ, ប្លង់ Print A4 ស្អាតបរិសុទ្ធ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td align="center">4</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong><code>reports.html</code></strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>frontend/src/pages/9-portals/accountant/</code></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>មជ្ឈមណ្ឌលរបាយការណ៍ហិរញ្ញវត្ថុ</strong>៖ តារាងលទ្ធផលអាជីវកម្ម (P&amp;L), តារាងតុល្យការ (Balance Sheet), តារាងសមតុល្យសាកល្បង (Trial Balance), របាយការណ៍ពន្ធ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td align="center">5</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong><code>tax.html</code></strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>frontend/src/pages/7-settings/3-tax/</code></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ការកំណត់ពន្ធដារកម្ពុជា</strong>៖ កំណត់អត្រា អតប 10%, អត្រា WHT តាមប្រភេទសេវាកម្ម (15%, 10%, 14%), និងលេខអត្តសញ្ញាណកម្មពន្ធដារ TIN</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td align="center">6</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong><code>system.html</code></strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><code>frontend/src/pages/7-settings/5-system/</code></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ការគ្រប់គ្រងប្រព័ន្ធ និងគ្រាហិរញ្ញវត្ថុ</strong>៖ កំណត់អត្រាប្តូរប្រាក់ NBC ប្រចាំថ្ងៃ និងប៊ូតុងចាក់សោរគ្រាហិរញ្ញវត្ថុ (Period Lock)</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="5-ម៉ាទ្រីសសិទ្ធិអំណាចពេញលេញ-permission-matrix" class="scroll-mt-24 group">5. ម៉ាទ្រីសសិទ្ធិអំណាចពេញលេញ (Permission Matrix) <a href="#5-ម៉ាទ្រីសសិទ្ធិអំណាចពេញលេញ-permission-matrix" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>┌──────────────────────────────────────┬────────┬────────┬────────┬────────┐
+│ មុខងារប្រតិបត្តិការ (Feature Module)  │ មើល    │ បង្កើត │ កែប្រែ │ អនុម័ត │
+├──────────────────────────────────────┼────────┼────────┼────────┼────────┤
+│ តារាងគណនីមេ (Chart of Accounts)     │   ✅   │   ✅   │   ✅   │   ✅   │
+│ ប័ណ្ណចុះបញ្ជីទូទៅ (Journal Entries)  │   ✅   │   ✅   │   ✅   │   ✅   │
+│ ប័ណ្ណចំណាយទូទាត់ (Disbursements)      │   ✅   │   ✅   │   ✅   │   ✅   │
+│ បិទបញ្ជីគ្រាហិរញ្ញវត្ថុ (Period Lock)  │   ✅   │   ✅   │   ✅   │   ✅   │
+│ របាយការណ៍ហិរញ្ញវត្ថុ (P&amp;L, Balance)   │   ✅   │   ✅   │   ❌   │   ✅   │
+│ របាយការណ៍ពន្ធដារ (VAT, WHT Declar)   │   ✅   │   ✅   │   ✅   │   ✅   │
+│ ផ្ទៀងផ្ទាត់សមតុល្យធនាគារ (Bank Rec) │   ✅   │   ✅   │   ✅   │   ✅   │
+│ លុបបំណុលខូច (Bad Debt Write-Off)    │   ✅   │   ✅   │   ❌   │   GM*   │
+│ វិក្កយបត្រលក់ និងសម្រង់តម្លៃ           │   ✅(មើល)│ ❌   │   ❌   │   ❌   │
+│ ស្តុកទំនិញរូបវន្តក្នុងឃ្លាំង         │   ✅(តម្លៃ)│❌   │   ❌   │   ❌   │
+└──────────────────────────────────────┴────────┴────────┴────────┴────────┘
+* ចំណាំ: ការ Write-off បំណុលខូច ទាមទារការចុះហត្ថលេខាឯកភាពចុងក្រោយពី General Manager។
+</code></pre>
+        </div>
+<hr>
+<h2 id="6-វដ្តការងារស្នូលទាំង-6-core-accounting-workflows" class="scroll-mt-24 group">6. វដ្តការងារស្នូលទាំង 6 (Core Accounting Workflows) <a href="#6-វដ្តការងារស្នូលទាំង-6-core-accounting-workflows" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="វដ្តការងារទី-1-ការបង្កើត-និងគ្រប់គ្រងតារាងគណនី-coa-management" class="scroll-mt-24 group">វដ្តការងារទី 1: ការបង្កើត និងគ្រប់គ្រងតារាងគណនី (COA Management) <a href="#វដ្តការងារទី-1-ការបង្កើត-និងគ្រប់គ្រងតារាងគណនី-coa-management" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>[កំណត់រចនាសម្ព័ន្ធគណនី] ──► បង្កើតលេខកូដគណនី 4 ខ្ទង់ (ឧ. 1000 - Assets)
+                             ├── 1111: សាច់ប្រាក់ក្នុងដៃ (Cash on Hand)
+                             ├── 1121: ធនាគារ អេស៊ីលីដា USD
+                             ├── 1131: បំណុលត្រូវទារពីអតិថិជន (AR)
+                             ├── 2111: បំណុលត្រូវសងអ្នកផ្គត់ផ្គង់ (AP)
+                             ├── 4111: ចំណូលពីការលក់ទំនិញ (Sales Revenue)
+                             └── 5111: ថ្លៃដើមទំនិញលក់ (COGS)
+</code></pre>
+        </div>
+<h3 id="វដ្តការងារទី-2-ការអនុម័តប័ណ្ណចំណាយទូទាត់-disbursement-approval" class="scroll-mt-24 group">វដ្តការងារទី 2: ការអនុម័តប័ណ្ណចំណាយទូទាត់ (Disbursement Approval) <a href="#វដ្តការងារទី-2-ការអនុម័តប័ណ្ណចំណាយទូទាត់-disbursement-approval" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>[AP Accountant បង្កើតប័ណ្ណចំណាយ] ──► ភ្ជាប់វិក្កយបត្រ, PO និង GRN (3-Way Matching)
+                                          │
+                                          ▼
+                         [Chief Accountant ត្រួតពិនិត្យ]
+                         ├── ពិនិត្យភាពត្រឹមត្រូវនៃគណនី Debit / Credit
+                         ├── ផ្ទៀងផ្ទាត់ការកាត់ពន្ធ WHT 15% ឬ 10%
+                         └── ពិនិត្យអនុលោមភាពថវិកា (Budget Check)
+                                          │
+                                          ▼
+                                 [ចុចអនុម័តប័ណ្ណចំណាយ]
+                         ├── ប្រសិនបើតូចជាង $500 ──► បើកលុយជូនអ្នកផ្គត់ផ្គង់
+                         └── ប្រសិនបើធំជាង $500 ──► បញ្ជូនទៅ GM ចុះហត្ថលេខាទី 2
+</code></pre>
+        </div>
+<h3 id="វដ្តការងារទី-3-ការផ្ទៀងផ្ទាត់សមតុល្យធនាគារ-bank-reconciliation" class="scroll-mt-24 group">វដ្តការងារទី 3: ការផ្ទៀងផ្ទាត់សមតុល្យធនាគារ (Bank Reconciliation) <a href="#វដ្តការងារទី-3-ការផ្ទៀងផ្ទាត់សមតុល្យធនាគារ-bank-reconciliation" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>[ទាញយក Bank Statement] ──► ផ្គូផ្គងជាមួយសៀវភៅធំធនាគារក្នុងប្រព័ន្ធ (GL Bank)
+                              ├── ប្រតិបត្តិការត្រូវគ្នា 100% ──► សម្គាល់ជា Reconciled
+                              └── ប្រតិបត្តិការខុសគ្នា (ថ្លៃសេវាធនាគារ, ការប្រាក់)
+                                     ──► បង្កើត Adjusting Entry ──► ធ្វើឱ្យសមតុល្យស្មើគ្នា
+</code></pre>
+        </div>
+<h3 id="វដ្តការងារទី-4-ការបិទបញ្ជីគ្រាហិរញ្ញវត្ថុប្រចាំខែ-month-end-closing-workflow" class="scroll-mt-24 group">វដ្តការងារទី 4: ការបិទបញ្ជីគ្រាហិរញ្ញវត្ថុប្រចាំខែ (Month-End Closing Workflow) <a href="#វដ្តការងារទី-4-ការបិទបញ្ជីគ្រាហិរញ្ញវត្ថុប្រចាំខែ-month-end-closing-workflow" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>[ថ្ងៃទី 30/31 នៃខែ] ──► ជំហាន 1: ផ្ទៀងផ្ទាត់វិក្កយបត្រលក់ និងទិញទាំងអស់ត្រូវបាន Confirmed
+                     ──► ជំហាន 2: ផ្ទៀងផ្ទាត់សាច់ប្រាក់បិទវេន POS និងសមតុល្យធនាគារ
+                     ──► ជំហាន 3: កត់ត្រារំលស់ទ្រព្យសកម្ម (Depreciation) និងចំណាយបង្គរ
+                     ──► ជំហាន 4: ដំណើរការគណនាថ្លៃដើមស្តុកមធ្យម (MAC Inventory Valuation)
+                     ──► ជំហាន 5: ពិនិត្យតារាងសមតុល្យសាកល្បង (Trial Balance: Debit = Credit)
+                     ──► ជំហាន 6: ចុចប៊ូតុង «ចាក់សោរគ្រាហិរញ្ញវត្ថុ (Period Lock)»
+</code></pre>
+        </div>
+<h3 id="វដ្តការងារទី-5-ការរៀបចំ-និងប្រកាសពន្ធប្រចាំខែ-gdt-monthly-tax-return" class="scroll-mt-24 group">វដ្តការងារទី 5: ការរៀបចំ និងប្រកាសពន្ធប្រចាំខែ (GDT Monthly Tax Return) <a href="#វដ្តការងារទី-5-ការរៀបចំ-និងប្រកាសពន្ធប្រចាំខែ-gdt-monthly-tax-return" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>[ថ្ងៃទី 1 ដល់ 20 នៃខែបន្ទាប់]
+       │
+       ▼
+[ទាញយករបាយការណ៍ពន្ធពី BMS]
+       ├── បញ្ជីវិក្កយបត្រលក់ជាប់ពន្ធ (Output VAT 10%)
+       ├── បញ្ជីវិក្កយបត្រទិញជាប់ពន្ធ (Input VAT 10%)
+       └── បញ្ជីការទូទាត់ជាប់ពន្ធកាត់ទុក (WHT 15% សេវាកម្ម, 10% ថ្លៃជួល)
+       │
+       ▼
+[គណនាអាករលើតម្លៃបន្ថែមត្រូវបង់សុទ្ធ] ──► Output VAT - Input VAT = Net VAT Payable
+       │
+       ▼
+[បំពេញក្នុងប្រព័ន្ធ GDT e-Filing + បង់ប្រាក់ពន្ធតាមធនាគារ] ──► ទទួលបានលិខិតទទួលស្គាល់
+</code></pre>
+        </div>
+<h3 id="វដ្តការងារទី-6-ការលុបបំណុលខូចតាមផ្លូវច្បាប់-bad-debt-write-off" class="scroll-mt-24 group">វដ្តការងារទី 6: ការលុបបំណុលខូចតាមផ្លូវច្បាប់ (Bad Debt Write-Off) <a href="#វដ្តការងារទី-6-ការលុបបំណុលខូចតាមផ្លូវច្បាប់-bad-debt-write-off" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>[អតិថិជនក្ស័យធន ឬបំណុលហួសកំណត់ &gt; 365 ថ្ងៃ មិនអាចទារបាន]
+       │
+       ▼
+[Chief Accountant រៀបចំសំណុំរឿងភស្តុតាង]
+       ├── ប្រវត្តិទារបំណុល 3 លើក និងលិខិតផ្លូវការ
+       └── ឯកសារបញ្ជាក់ផ្លូវច្បាប់
+       │
+       ▼
+[បង្កើតសេចក្តីព្រាង Write-Off Request] ──► បញ្ជូនទៅ General Manager
+       │
+       ▼
+[GM អនុម័តជាលាយលក្ខណ៍អក្សរ] ──► ចុះបញ្ជី Debit: Allowance for Bad Debt / Credit: AR
+</code></pre>
+        </div>
+<hr>
+<h2 id="7-តក្កវិជ្ជាអាជីវកម្ម-និងរូបមន្តគណនេយ្យកម្ពុជា" class="scroll-mt-24 group">7. តក្កវិជ្ជាអាជីវកម្ម និងរូបមន្តគណនេយ្យកម្ពុជា <a href="#7-តក្កវិជ្ជាអាជីវកម្ម-និងរូបមន្តគណនេយ្យកម្ពុជា" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<h3 id="71-សមីការគណនេយ្យគ្រឹះ-the-fundamental-accounting-equation" class="scroll-mt-24 group">7.1 សមីការគណនេយ្យគ្រឹះ (The Fundamental Accounting Equation) <a href="#71-សមីការគណនេយ្យគ្រឹះ-the-fundamental-accounting-equation" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p>$$ \text{Assets (ទ្រព្យសកម្ម)} = \text{Liabilities (បំណុល)} + \text{Equity (មូលធន)} $$</p>
+<h3 id="72-រូបមន្តគណនាអាករលើតម្លៃបន្ថែមសុទ្ធ-net-vat-payable-formula" class="scroll-mt-24 group">7.2 រូបមន្តគណនាអាករលើតម្លៃបន្ថែមសុទ្ធ (Net VAT Payable Formula) <a href="#72-រូបមន្តគណនាអាករលើតម្លៃបន្ថែមសុទ្ធ-net-vat-payable-formula" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<p>$$ \text{Net VAT Payable} = \sum \text{Output VAT (10% លើការលក់)} - \sum \text{Input VAT (10% លើការទិញស្របច្បាប់)} $$</p>
+<ul>
+<li>ប្រសិនបើ $\text{Net VAT} &gt; 0$៖ ត្រូវបង់ប្រាក់ពន្ធបន្ថែមជូនរដ្ឋ</li>
+<li>ប្រសិនបើ $\text{Net VAT} &lt; 0$៖ ទទួលបានឥណទានពន្ធទុកកាត់កងនៅខែបន្ទាប់ (VAT Credit Carried Forward)</li>
+</ul>
+<h3 id="73-រូបមន្តពន្ធកាត់ទុកសេវាកម្ម-និងជួល-withholding-tax-formulas" class="scroll-mt-24 group">7.3 រូបមន្តពន្ធកាត់ទុកសេវាកម្ម និងជួល (Withholding Tax Formulas) <a href="#73-រូបមន្តពន្ធកាត់ទុកសេវាកម្ម-និងជួល-withholding-tax-formulas" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h3>
+<ul>
+<li><strong>ពន្ធកាត់ទុកលើថ្លៃសេវាកម្ម (Services)</strong>:<br>$$ \text{WHT} = \text{Gross Service Amount} \times 15% $$</li>
+<li><strong>ពន្ធកាត់ទុកលើថ្លៃជួលទីតាំង (Rental)</strong>:<br>$$ \text{WHT} = \text{Gross Rental Amount} \times 10% $$</li>
+<li><strong>ទឹកប្រាក់បើកជូនអ្នកផ្គត់ផ្គង់ជាក់ស្តែង</strong>:<br>$$ \text{Net Cash Paid} = \text{Gross Amount} - \text{WHT Amount} $$</li>
+</ul>
+<hr>
+<h2 id="8-ទំនាក់ទំនងឆ្លងផ្នែកជាមួយតួនាទីផ្សេងទៀត" class="scroll-mt-24 group">8. ទំនាក់ទំនងឆ្លងផ្នែកជាមួយតួនាទីផ្សេងទៀត <a href="#8-ទំនាក់ទំនងឆ្លងផ្នែកជាមួយតួនាទីផ្សេងទៀត" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>              ┌─────────────────────────────┐
+              │    General Manager (GM)     │
+              │   - អនុម័តប័ណ្ណចំណាយធំៗ       │
+              │   - អនុម័តបិទបញ្ជីប្រចាំឆ្នាំ     │
+              └──────────────▲──────────────┘
+                             │
+                      [របាយការណ៍ / សំណើ]
+                             │
+              ┌──────────────┴──────────────┐
+              │  Chief Accountant (ប្រធាន)   │
+              └──────┬───────────────┬──────┘
+                     │               │
+        [បញ្ជាការ / ត្រួតពិនិត្យ]   [ផ្ទៀងផ្ទាត់ទ្វេបញ្ជី]
+                     │               │
+      ┌──────────────▼────────┐     ┌▼────────────────────────┐
+      │  AP/AR Accountant     │     │  Internal Auditor       │
+      │  - រៀបចំប័ណ្ណចំណាយ     │     │  - ត្រួតពិនិត្យសវនកម្ម   │
+      │  - តាមដានបំណុល AR/AP  │     │  - ផ្ទៀងផ្ទាត់ SoD      │
+      └───────────────────────┘     └─────────────────────────┘
+</code></pre>
+        </div>
+<hr>
+<h2 id="9-វិសាលភាពទិន្នន័យ-data-scope-អ្វីដែលឃើញ-និងអ្វីដែលត្រូវលាក់" class="scroll-mt-24 group">9. វិសាលភាពទិន្នន័យ (Data Scope — អ្វីដែលឃើញ និងអ្វីដែលត្រូវលាក់) <a href="#9-វិសាលភាពទិន្នន័យ-data-scope-អ្វីដែលឃើញ-និងអ្វីដែលត្រូវលាក់" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">ប្រភេទព័ត៌មាន</th>
+<th align="center">សិទ្ធិមើលឃើញ</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">កម្រិតនៃការការពារទិន្នន័យសម្ងាត់</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>សៀវភៅធំ និងតារាងគណនីទូទៅ (GL / COA)</strong></td>
+<td align="center">✅ ឃើញ និងកែប្រែពេញលេញ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">សិទ្ធិផ្តាច់មុខកម្រិតខ្ពស់</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>របាយការណ៍ហិរញ្ញវត្ថុ និងចំណេញខាត (P&amp;L)</strong></td>
+<td align="center">✅ ឃើញ 100%</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">សម្រាប់វិភាគ និងរៀបចំយុទ្ធសាស្ត្រ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ថ្លៃដើមទិញ និងតម្លៃលក់ទំនិញទាំងអស់</strong></td>
+<td align="center">✅ ឃើញ 100%</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">សម្រាប់គណនាថ្លៃដើមស្តុក និងពន្ធ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ប្រាក់ខែ និងកម្រៃជើងសារបុគ្គលិក</strong></td>
+<td align="center">✅ ឃើញ 100%</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">សម្រាប់គណនាពន្ធលើប្រាក់បៀវត្ស</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ទិន្នន័យរបស់ក្រុមហ៊ុនផ្សេង (Tenants)</strong></td>
+<td align="center">❌ <strong>លាក់ 100%</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Multi-Tenant Isolation ដាច់ខាត</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>កែប្រែទិន្នន័យក្នុងគ្រាដែលបានចាក់សោរ</strong></td>
+<td align="center">❌ <strong>ចាក់សោរ 100%</strong></td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">Period Lock ការពារការបន្លំតួលេខ</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="10-ផ្ទាំងគ្រប់គ្រង-និងសូចនាករ-kpi-របស់-chief-accountant" class="scroll-mt-24 group">10. ផ្ទាំងគ្រប់គ្រង និងសូចនាករ KPI របស់ Chief Accountant <a href="#10-ផ្ទាំងគ្រប់គ្រង-និងសូចនាករ-kpi-របស់-chief-accountant" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="w-full text-left border-collapse text-xs">
+<thead class="bg-[#0f2b5c] text-white">
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">សូចនាករ KPI</th>
+<th align="center">គោលដៅស្តង់ដារ (Target)</th>
+<th class="p-3.5 font-semibold text-white text-xs border-b border-slate-200">របៀបគណនា</th>
+</tr>
+</thead>
+<tbody><tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ល្បឿនបិទបញ្ជីប្រចាំខែ (Month-End Close Speed)</strong></td>
+<td align="center">$\le 5$ ថ្ងៃនៃខែបន្ទាប់</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">ចំនួនថ្ងៃគិតពីដំណាច់ខែ រហូតដល់ថ្ងៃចាក់សោរ Period</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ភាពត្រឹមត្រូវនៃលិខិតប្រកាសពន្ធ (Tax Accuracy)</strong></td>
+<td align="center">$100%$ គ្មានការពិន័យ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">គ្មានការផាកពិន័យពីអគ្គនាយកដ្ឋានពន្ធដារ (GDT Penalties = $0)</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>ភាពត្រឹមត្រូវនៃ Bank Reconciliation</strong></td>
+<td align="center">$100%$ ត្រូវគ្នារៀងរាល់ខែ</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">គ្មានភាពខុសគ្នារវាងសមតុល្យធនាគារ និងសៀវភៅធំ</td>
+</tr>
+<tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0">
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs"><strong>បំណុលចាស់ៗលើសពី 90 ថ្ងៃ (AR Aging &gt; 90 Days)</strong></td>
+<td align="center">$&lt; 3%$ នៃបំណុលសរុប</td>
+<td class="p-3 text-slate-700 border-b border-slate-100 text-xs">តាមដាន និងជំរុញការប្រមូលបំណុលទាន់ពេល</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="11-គំរូរចនាសម្ព័ន្ធទិន្នន័យ-database-schema-blueprint" class="scroll-mt-24 group">11. គំរូរចនាសម្ព័ន្ធទិន្នន័យ (Database Schema Blueprint) <a href="#11-គំរូរចនាសម្ព័ន្ធទិន្នន័យ-database-schema-blueprint" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<div class="my-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
+            <div class="px-4 py-2 bg-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between border-b border-slate-700/60">
+                <span class="flex items-center gap-1.5"><i class="fas fa-terminal text-cyan-400"></i> Diagram / Architecture / Schema</span>
+                <span class="text-[10px] text-slate-400 font-sans">UTF-8 · Khmer UI</span>
+            </div>
+            <pre class="p-5 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>-- 1. តារាងតារាងគណនីមេ (Chart of Accounts - COA)
+CREATE TABLE chart_of_accounts (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    tenant_id UUID NOT NULL,
+    account_code VARCHAR(20) NOT NULL,
+    account_name_kh VARCHAR(255) NOT NULL,
+    account_name_en VARCHAR(255) NOT NULL,
+    account_type VARCHAR(30) NOT NULL CHECK (account_type IN (&#39;ASSET&#39;, &#39;LIABILITY&#39;, &#39;EQUITY&#39;, &#39;REVENUE&#39;, &#39;EXPENSE&#39;)),
+    parent_id UUID REFERENCES chart_of_accounts(id) NULL,
+    is_active BOOLEAN DEFAULT TRUE,
+    currency VARCHAR(3) DEFAULT &#39;USD&#39;,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE(tenant_id, account_code)
+);
+
+-- 2. តារាងប័ណ្ណចុះបញ្ជីទូទៅ (Journal Entries)
+CREATE TABLE journal_entries (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    tenant_id UUID NOT NULL,
+    entry_number VARCHAR(50) UNIQUE NOT NULL,
+    entry_date DATE NOT NULL,
+    description TEXT NOT NULL,
+    source_document_ref VARCHAR(100) NULL,
+    entry_type VARCHAR(30) DEFAULT &#39;MANUAL&#39; CHECK (entry_type IN (&#39;MANUAL&#39;, &#39;INVOICE&#39;, &#39;BILL&#39;, &#39;DISBURSEMENT&#39;, &#39;ADJUSTMENT&#39;)),
+    status VARCHAR(20) DEFAULT &#39;DRAFT&#39; CHECK (status IN (&#39;DRAFT&#39;, &#39;POSTED&#39;, &#39;VOIDED&#39;)),
+    period_id UUID NOT NULL,
+    created_by UUID NOT NULL REFERENCES users(id),
+    posted_by UUID REFERENCES users(id),
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 3. តារាងបន្ទាត់ចុះបញ្ជីទ្វេ (Journal Entry Lines)
+CREATE TABLE journal_entry_lines (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    entry_id UUID NOT NULL REFERENCES journal_entries(id) ON DELETE CASCADE,
+    account_id UUID NOT NULL REFERENCES chart_of_accounts(id),
+    debit_usd DECIMAL(14,2) NOT NULL DEFAULT 0.00,
+    credit_usd DECIMAL(14,2) NOT NULL DEFAULT 0.00,
+    debit_khr DECIMAL(16,0) NOT NULL DEFAULT 0,
+    credit_khr DECIMAL(16,0) NOT NULL DEFAULT 0,
+    memo TEXT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 4. តារាងគ្រាហិរញ្ញវត្ថុ និងការចាក់សោរ (Financial Periods)
+CREATE TABLE financial_periods (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    tenant_id UUID NOT NULL,
+    period_name VARCHAR(50) NOT NULL, -- e.g. &quot;September 2026&quot;
+    start_date DATE NOT NULL,
+    end_date DATE NOT NULL,
+    is_locked BOOLEAN DEFAULT FALSE,
+    locked_at TIMESTAMP WITH TIME ZONE NULL,
+    locked_by UUID REFERENCES users(id) NULL,
+    closing_notes TEXT NULL,
+    UNIQUE(tenant_id, start_date, end_date)
+);
+</code></pre>
+        </div>
+<hr>
+<h2 id="12-ក្របខ័ណ្ឌគ្រប់គ្រងផ្ទៃក្នុង-និងការទប់ស្កាត់ការក្លែងបន្លំ-anti-fraud-internal-audit-controls" class="scroll-mt-24 group">12. ក្របខ័ណ្ឌគ្រប់គ្រងផ្ទៃក្នុង និងការទប់ស្កាត់ការក្លែងបន្លំ (Anti-Fraud &amp; Internal Audit Controls) <a href="#12-ក្របខ័ណ្ឌគ្រប់គ្រងផ្ទៃក្នុង-និងការទប់ស្កាត់ការក្លែងបន្លំ-anti-fraud-internal-audit-controls" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<ol>
+<li><strong>ការទប់ស្កាត់ការកែប្រែទិន្នន័យអតីតកាល (Immutable Period Locking)</strong>: នៅពេលគ្រាហិរញ្ញវត្ថុត្រូវបាន Lock ប្រព័ន្ធនឹងបិទសិទ្ធិ Create, Update, Delete លើគ្រប់តារាងដែលពាក់ព័ន្ធនឹងកាលបរិច្ឆេទក្នុងគ្រានោះ 100%។</li>
+<li><strong>គោលការណ៍ហត្ថលេខាទ្វេលើការបើកលុយធំ (Dual Authorization Threshold)</strong>: រាល់ប័ណ្ណចំណាយទូទាត់ដែលមានតម្លៃ $\ge $500.00$ ត្រូវតែមានហត្ថលេខាឌីជីថលពី Chief Accountant និង GM ទើបប្រព័ន្ធអនុញ្ញាតឱ្យទូទាត់។</li>
+<li><strong>កំណត់ហេតុសវនកម្មដែលមិនអាចកែប្រែបាន (Tamper-Proof Audit Logging)</strong>: រាល់ការចុះបញ្ជីកែតម្រូវ (Journal Adjustment) ត្រូវកត់ត្រា ID អ្នកធ្វើ, ពេលវេលា, តម្លៃចាស់, និងតម្លៃថ្មី ក្នុងតារាងសវនកម្មដែលមិនអាចលុបបាន។</li>
+<li><strong>ការផ្ទៀងផ្ទាត់បញ្ជីទ្វេស្វ័យប្រវត្តិ (Enforced Balanced Entry)</strong>: ប្រព័ន្ធនឹងបដិសេធមិនឱ្យរក្សាទុកប័ណ្ណចុះបញ្ជីទូទៅណាដែល $\sum \text{Debit} \neq \sum \text{Credit}$ ជាដាច់ខាត។</li>
+</ol>
+<hr>
+<h2 id="13-អនុសាសន៍ស្ថាបត្យកម្ម-និងផែនការ-prototype-planning" class="scroll-mt-24 group">13. អនុសាសន៍ស្ថាបត្យកម្ម និងផែនការ Prototype Planning <a href="#13-អនុសាសន៍ស្ថាបត្យកម្ម-និងផែនការ-prototype-planning" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<ol>
+<li><strong>ការគណនារបាយការណ៍លឿន (Materialized Views for Financial Statements)</strong>: សម្រាប់ទិន្នន័យ P&amp;L និង Balance Sheet គប្បីប្រើប្រាស់ Materialized Views ក្នុង Database ដើម្បីទាញរបាយការណ៍បានភ្លាមៗក្នុងរយៈពេល $&lt; 0.5$ វិនាទី។</li>
+<li><strong>ការតភ្ជាប់ជាមួយអគ្គនាយកដ្ឋានពន្ធដារ (GDT Data Export)</strong>: រៀបចំទម្រង់ Excel Export ឱ្យស្របតាមទម្រង់ផ្លូវការនៃប្រព័ន្ធ GDT e-Filing 100% ដើម្បីកាត់បន្ថយពេលវេលាវាយបញ្ចូលទិន្នន័យឡើងវិញ។</li>
+<li><strong>ប្លង់បោះពុម្ព A4 ផ្លូវការ (Executive Print Format)</strong>: របាយការណ៍ហិរញ្ញវត្ថុ និងប័ណ្ណចំណាយត្រូវទ្រទ្រង់ការបោះពុម្ពកម្រិតសហគ្រាស គ្មាន Border/Sidebar គេហទំព័រ និងមានកន្លែងចុះហត្ថលេខា 4 ជួរត្រឹមត្រូវ។</li>
+</ol>
+<hr>
+<h2 id="14-សំណួរ-និងចម្លើយទូទៅ-faq" class="scroll-mt-24 group">14. សំណួរ និងចម្លើយទូទៅ (FAQ) <a href="#14-សំណួរ-និងចម្លើយទូទៅ-faq" class="opacity-0 group-hover:opacity-40 hover:!opacity-100 text-slate-400 text-xs ml-2 transition">#</a></h2>
+<p><strong>សំណួរទី 1: តើ Chief Accountant ខុសពី AP/AR Accountant យ៉ាងដូចម្តេច?</strong><br><em>ចម្លើយ</em>: AP/AR Accountant គឺជាអ្នកកត់ត្រា និងអនុវត្តប្រតិបត្តិការសាច់ប្រាក់ប្រចាំថ្ងៃ (Daily Cash Flow Operations)។ ចំណែក Chief Accountant គឺជាអ្នកត្រួតពិនិត្យ គ្រប់គ្រងសៀវភៅធំ COA, អនុម័តប័ណ្ណចំណាយ, បិទបញ្ជីចុងខែ, និងរៀបចំរបាយការណ៍ពន្ធផ្លូវការ។</p>
+<p><strong>សំណួរទី 2: តើអាចដោះសោរគ្រាហិរញ្ញវត្ថុ (Unlock Period) បានដែរឬទេ ប្រសិនបើមានកំហុស?</strong><br><em>ចម្លើយ</em>: អាចដោះសោរបាន លុះត្រាតែមានការអនុម័ត និងវាយលេខកូដសម្ងាត់ពី General Manager រួមជាមួយ Chief Accountant ដោយមានការកត់ត្រាមូលហេតុច្បាស់លាស់ក្នុង Audit Log។</p>
+<p><strong>សំណួរទី 3: តើប្រព័ន្ធគណនាអត្រាប្តូរប្រាក់ចំណេញ/ខាត (Forex Gain/Loss) យ៉ាងដូចម្តេច?</strong><br><em>ចម្លើយ</em>: ប្រព័ន្ធប្រៀបធៀបអត្រាប្តូរប្រាក់ NBC នៅថ្ងៃចេញវិក្កយបត្រ ធៀបនឹងអត្រាប្តូរប្រាក់នៅថ្ងៃទូទាត់ជាក់ស្តែង។ ភាពខុសគ្នាត្រូវបានកត់ត្រាស្វ័យប្រវត្តិចូលគណនី <code>4211: Forex Gain</code> ឬ <code>5211: Forex Loss</code>។</p>
+<hr>
+<p><em>ឯកសារនេះជាកម្មសិទ្ធិបញ្ញាផ្លូវការរបស់ក្រុមហ៊ុន ឌីជីថេក ខេអេច (DIGITECHKH Co., Ltd.) រក្សាសិទ្ធិគ្រប់យ៉ាង © 2026</em></p>
+
+                </article>
+
+                <!-- Next / Previous Role Navigation Bar -->
+                <div class="no-print mt-12 pt-8 border-t border-slate-200 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <a href="role_warehouse_staff.html" class="p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-transform flex-shrink-0">
+                            👷
+                        </div>
+                        <div class="min-w-0">
+                            <div class="text-[10px] text-slate-400 font-medium">← តួនាទីមុន</div>
+                            <div class="text-xs font-bold text-slate-800 group-hover:text-primary transition truncate">8. បុគ្គលិកជាន់ឃ្លាំង</div>
+                        </div>
+                    </a>
+
+                    <a href="role_apar_accountant.html" class="p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group flex items-center justify-end text-right gap-3">
+                        <div class="min-w-0">
+                            <div class="text-[10px] text-slate-400 font-medium">តួនាទីបន្ទាប់ →</div>
+                            <div class="text-xs font-bold text-slate-800 group-hover:text-primary transition truncate">10. គណនេយ្យករបំណុល និងការទារប្រាក់</div>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-transform flex-shrink-0">
+                            💰
+                        </div>
+                    </a>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="no-print bg-white border-t border-slate-200 py-6 px-8 text-center text-xs text-slate-500">
+        <p>រក្សាសិទ្ធិគ្រប់យ៉ាង © 2026 ក្រុមហ៊ុន ឌីជីថេក ខេអេច (DIGITECHKH Co., Ltd.) · ព្រះរាជាណាចក្រកម្ពុជា</p>
+    </footer>
+
+</body>
+</html>

@@ -68,16 +68,18 @@
             <!-- Role Switcher -->
             <div class="relative">
                 <select onchange="window.location.href=this.value" class="h-9 pl-3 pr-8 bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl text-xs font-semibold text-white focus:outline-none focus:bg-[#0a1d3f] transition appearance-none cursor-pointer">
-                    <option value="role_superadmin.html" >👑 ស៊ុបភើរ អភិបាល (Super Admin)</option>
-<option value="role_procurement_manager.html" >🛒 អ្នកគ្រប់គ្រងលទ្ធកម្ម (Procurement Manager)</option>
-<option value="role_warehouse_staff.html" >👷 បុគ្គលិកឃ្លាំងទំនិញ (Warehouse Staff)</option>
-<option value="role_customer_support.html" >🎧 ផ្នែកគាំទ្រអតិថិជន (Customer Support)</option>
-<option value="role_apar_accountant.html" >💰 គណនេយ្យករចំណាយ និងចំណូល (AP/AR Accountant)</option>
-<option value="role_sales_manager.html" >👔 អ្នកគ្រប់គ្រងផ្នែកលក់ (Sales Manager)</option>
-<option value="role_internal_auditor_executive.html" >🔍 សវនករផ្ទៃក្នុង និងថ្នាក់ដឹកនាំ (Internal Auditor / Executive)</option>
-<option value="role_sales_executive.html" >💼 បុគ្គលិកប្រតិបត្តិផ្នែកលក់ (Sales Executive)</option>
-<option value="role_admin_general_manager.html" >🏛️ អភិបាល និងអ្នកចាត់ការទូទៅ (Admin / General Manager)</option>
-<option value="role_warehouse_manager.html" selected>📦 អ្នកគ្រប់គ្រងឃ្លាំងស្តុក (Warehouse Manager)</option>
+                    <option value="role_superadmin.html">1. 👑 ស៊ុបភើរ អភិបាល (Super Admin)</option>
+                    <option value="role_admin_general_manager.html">2. 🏛️ អភិបាលគ្រប់គ្រងទូទៅ (General Manager)</option>
+                    <option value="role_sales_manager.html">3. 👔 អ្នកគ្រប់គ្រងផ្នែកលក់ (Sales Manager)</option>
+                    <option value="role_sales_executive.html">4. 💼 បុគ្គលិកប្រតិបត្តិផ្នែកលក់ (Sales Executive)</option>
+                    <option value="role_cashier_pos.html">5. 🏪 អ្នកគិតលុយលក់រាយ (Cashier / POS)</option>
+                    <option value="role_procurement_manager.html">6. 🛒 អ្នកគ្រប់គ្រងលទ្ធកម្ម (Procurement Manager)</option>
+                    <option value="role_warehouse_manager.html" selected>7. 📦 អ្នកគ្រប់គ្រងឃ្លាំងស្តុក (Warehouse Manager)</option>
+                    <option value="role_warehouse_staff.html">8. 👷 បុគ្គលិកជាន់ឃ្លាំង (Warehouse Staff)</option>
+                    <option value="role_chief_accountant.html">9. 🏛️ ប្រធានគណនេយ្យ (Chief Accountant)</option>
+                    <option value="role_apar_accountant.html">10. 💰 គណនេយ្យករបំណុល និងការទារប្រាក់ (AP/AR Accountant)</option>
+                    <option value="role_internal_auditor_executive.html">11. 🔍 សវនករផ្ទៃក្នុង / នាយកប្រតិបត្តិ (សិទ្ធិមើល Read-Only) (Internal Auditor)</option>
+                    <option value="role_customer_support.html">12. 🎧 ផ្នែកគាំទ្រ និងបម្រើអតិថិជន (Customer Support)</option>
                 </select>
                 <i class="fas fa-chevron-down absolute right-3 top-3 text-[10px] text-white/60 pointer-events-none"></i>
             </div>
@@ -107,40 +109,7 @@
                     <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-50 text-accent">TOC</span>
                 </div>
                 <div class="space-y-0.5 max-h-[calc(100vh-220px)] overflow-y-auto pr-1 text-xs">
-                    <a href="#ចំណុចចាំបាច់-បេសកកម្មស្នូល-និងការការពារការសម្ងាត់តម្លៃលក់-core-mission-zero-selling-price-leakage" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="⚠️ ចំណុចចាំបាច់ — បេសកកម្មស្នូល និងការការពារការសម្ងាត់តម្លៃលក់ (Core Mission & Zero Selling Price Leakage)">⚠️ ចំណុចចាំបាច់ — បេសកកម្មស្នូល និងការការពារការសម្ងាត់តម្លៃលក់ (Core Mission & Zero Selling Price Leakage)</a>
-<a href="#តារាងមាតិកា" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="តារាងមាតិកា">តារាងមាតិកា</a>
-<a href="#1-អ្វីជា-warehouse-manager" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="1. អ្វីជា Warehouse Manager?">1. អ្វីជា Warehouse Manager?</a>
-<a href="#11-និយមន័យ-definition" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="1.1 និយមន័យ (Definition)">1.1 និយមន័យ (Definition)</a>
-<a href="#12-ភាពខុសគ្នារវាង-warehouse-manager-និង-warehouse-staff" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="1.2 ភាពខុសគ្នារវាង Warehouse Manager និង Warehouse Staff">1.2 ភាពខុសគ្នារវាង Warehouse Manager និង Warehouse Staff</a>
-<a href="#2-ឋានានុក្រមក្នុងប្រព័ន្ធ-និងទំនាក់ទំនងស្ថាប័ន" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="2. ឋានានុក្រមក្នុងប្រព័ន្ធ និងទំនាក់ទំនងស្ថាប័ន">2. ឋានានុក្រមក្នុងប្រព័ន្ធ និងទំនាក់ទំនងស្ថាប័ន</a>
-<a href="#3-អ្វីដែល-warehouse-manager-ធ្វើបាន-និងហាមធ្វើ-full-capability-map" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="3. អ្វីដែល Warehouse Manager ធ្វើបាន និងហាមធ្វើ (Full Capability Map)">3. អ្វីដែល Warehouse Manager ធ្វើបាន និងហាមធ្វើ (Full Capability Map)</a>
-<a href="#31-អ្វីដែល-warehouse-manager-ធ្វើបានពេញលេញ" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="3.1 ✅ អ្វីដែល Warehouse Manager ធ្វើបានពេញលេញ">3.1 ✅ អ្វីដែល Warehouse Manager ធ្វើបានពេញលេញ</a>
-<a href="#32-អ្វីដែល-warehouse-manager-ហាមធ្វើដាច់ខាត" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="3.2 ❌ អ្វីដែល Warehouse Manager ហាមធ្វើដាច់ខាត">3.2 ❌ អ្វីដែល Warehouse Manager ហាមធ្វើដាច់ខាត</a>
-<a href="#4-ស្ថាបត្យកម្មទំព័រ-ui-ពេញលេញ-page-by-page-blueprint" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="4. ស្ថាបត្យកម្មទំព័រ UI ពេញលេញ (Page-by-Page Blueprint)">4. ស្ថាបត្យកម្មទំព័រ UI ពេញលេញ (Page-by-Page Blueprint)</a>
-<a href="#41-5-stock1-balancebalancehtml-តារាងសមតុល្យស្តុកសហគ្រាស" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.1 `5-stock/1-balance/balance.html` — តារាងសមតុល្យស្តុកសហគ្រាស">4.1 `5-stock/1-balance/balance.html` — តារាងសមតុល្យស្តុកសហគ្រាស</a>
-<a href="#42-5-stock1-balanceadjust-balancehtml-ទម្រង់កែតម្រូវស្តុក-cycle-count-adjustment" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.2 `5-stock/1-balance/adjust-balance.html` — ទម្រង់កែតម្រូវស្តុក (Cycle Count Adjustment)">4.2 `5-stock/1-balance/adjust-balance.html` — ទម្រង់កែតម្រូវស្តុក (Cycle Count Adjustment)</a>
-<a href="#43-5-stock2-catalogcreate-cataloghtml-ទម្រង់បង្កើតមុខទំនិញថ្មី" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.3 `5-stock/2-catalog/create-catalog.html` — ទម្រង់បង្កើតមុខទំនិញថ្មី">4.3 `5-stock/2-catalog/create-catalog.html` — ទម្រង់បង្កើតមុខទំនិញថ្មី</a>
-<a href="#44-5-stock3-movementcreate-movementhtml-បង្កើតប័ណ្ណផ្ទេរទំនិញឆ្លងឃ្លាំង-inter-warehouse-transfer" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="4.4 `5-stock/3-movement/create-movement.html` — បង្កើតប័ណ្ណផ្ទេរទំនិញឆ្លងឃ្លាំង (Inter-Warehouse Transfer)">4.4 `5-stock/3-movement/create-movement.html` — បង្កើតប័ណ្ណផ្ទេរទំនិញឆ្លងឃ្លាំង (Inter-Warehouse Transfer)</a>
-<a href="#5-ម៉ាទ្រីសសិទ្ធិអំណាចពេញលេញ-permission-matrix" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="5. ម៉ាទ្រីសសិទ្ធិអំណាចពេញលេញ (Permission Matrix)">5. ម៉ាទ្រីសសិទ្ធិអំណាចពេញលេញ (Permission Matrix)</a>
-<a href="#6-វដ្តការងារស្នូលទាំង-6-core-warehouse-workflows" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="6. វដ្តការងារស្នូលទាំង 6 (Core Warehouse Workflows)">6. វដ្តការងារស្នូលទាំង 6 (Core Warehouse Workflows)</a>
-<a href="#workflow-1-ការអនុម័តការកែតម្រូវស្តុកក្រោយរាប់ជាក់ស្តែង-cycle-count-reconciliation" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 1: ការអនុម័តការកែតម្រូវស្តុកក្រោយរាប់ជាក់ស្តែង (Cycle Count Reconciliation)">Workflow 1: ការអនុម័តការកែតម្រូវស្តុកក្រោយរាប់ជាក់ស្តែង (Cycle Count Reconciliation)</a>
-<a href="#workflow-2-ការចាត់ចែងកាត់កងទំនិញខូចខាតទំហំធំ-damage-stock-write-off-flow-200" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 2: ការចាត់ចែងកាត់កងទំនិញខូចខាតទំហំធំ (Damage Stock Write-Off Flow > $200)">Workflow 2: ការចាត់ចែងកាត់កងទំនិញខូចខាតទំហំធំ (Damage Stock Write-Off Flow > $200)</a>
-<a href="#workflow-3-ការតាមដានកម្រិតស្តុកជិតអស់-និងការស្នើសុំទិញ-rop-purchase-requisition" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 3: ការតាមដានកម្រិតស្តុកជិតអស់ និងការស្នើសុំទិញ (ROP & Purchase Requisition)">Workflow 3: ការតាមដានកម្រិតស្តុកជិតអស់ និងការស្នើសុំទិញ (ROP & Purchase Requisition)</a>
-<a href="#workflow-4-ការផ្ទេរទំនិញឆ្លងឃ្លាំង-inter-warehouse-transfer-flow" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 4: ការផ្ទេរទំនិញឆ្លងឃ្លាំង (Inter-Warehouse Transfer Flow)">Workflow 4: ការផ្ទេរទំនិញឆ្លងឃ្លាំង (Inter-Warehouse Transfer Flow)</a>
-<a href="#workflow-5-ការបង្កើត-និងគ្រប់គ្រងកាតាឡុកទំនិញថ្មី-product-catalog-onboarding" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 5: ការបង្កើត និងគ្រប់គ្រងកាតាឡុកទំនិញថ្មី (Product Catalog Onboarding)">Workflow 5: ការបង្កើត និងគ្រប់គ្រងកាតាឡុកទំនិញថ្មី (Product Catalog Onboarding)</a>
-<a href="#workflow-6-ការបង្វិលទំនិញខូចត្រឡប់ទៅអ្នកផ្គត់ផ្គង់-return-to-vendor---rtv-flow" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="Workflow 6: ការបង្វិលទំនិញខូចត្រឡប់ទៅអ្នកផ្គត់ផ្គង់ (Return to Vendor - RTV Flow)">Workflow 6: ការបង្វិលទំនិញខូចត្រឡប់ទៅអ្នកផ្គត់ផ្គង់ (Return to Vendor - RTV Flow)</a>
-<a href="#7-តក្កវិជ្ជាអាជីវកម្ម-និងរូបមន្តគ្រប់គ្រងស្តុក-business-logic-inventory-math" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="7. តក្កវិជ្ជាអាជីវកម្ម និងរូបមន្តគ្រប់គ្រងស្តុក (Business Logic & Inventory Math)">7. តក្កវិជ្ជាអាជីវកម្ម និងរូបមន្តគ្រប់គ្រងស្តុក (Business Logic & Inventory Math)</a>
-<a href="#71-រូបមន្តគណនាថ្លៃដើមមធ្យមនៃស្តុក-weighted-moving-average-cost" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="7.1 រូបមន្តគណនាថ្លៃដើមមធ្យមនៃស្តុក (Weighted Moving Average Cost)">7.1 រូបមន្តគណនាថ្លៃដើមមធ្យមនៃស្តុក (Weighted Moving Average Cost)</a>
-<a href="#72-រូបមន្តចំណុចត្រូវបញ្ជាទិញបន្ថែម-reorder-point-formula" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="7.2 រូបមន្តចំណុចត្រូវបញ្ជាទិញបន្ថែម (Reorder Point Formula)">7.2 រូបមន្តចំណុចត្រូវបញ្ជាទិញបន្ថែម (Reorder Point Formula)</a>
-<a href="#8-ទំនាក់ទំនងឆ្លងផ្នែកជាមួយតួនាទីផ្សេងទៀត-cross-role-interaction-map" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="8. ទំនាក់ទំនងឆ្លងផ្នែកជាមួយតួនាទីផ្សេងទៀត (Cross-Role Interaction Map)">8. ទំនាក់ទំនងឆ្លងផ្នែកជាមួយតួនាទីផ្សេងទៀត (Cross-Role Interaction Map)</a>
-<a href="#9-វិសាលភាពទិន្នន័យ-data-scope-អ្វីដែលឃើញ-និងអ្វីដែលត្រូវលាក់" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="9. វិសាលភាពទិន្នន័យ (Data Scope — អ្វីដែលឃើញ និងអ្វីដែលត្រូវលាក់)">9. វិសាលភាពទិន្នន័យ (Data Scope — អ្វីដែលឃើញ និងអ្វីដែលត្រូវលាក់)</a>
-<a href="#10-ផ្ទាំងគ្រប់គ្រង-និងសូចនាករ-kpi-របស់-warehouse-manager" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="10. ផ្ទាំងគ្រប់គ្រង និងសូចនាករ KPI របស់ Warehouse Manager">10. ផ្ទាំងគ្រប់គ្រង និងសូចនាករ KPI របស់ Warehouse Manager</a>
-<a href="#11-គំរូរចនាសម្ព័ន្ធទិន្នន័យ-database-schema-blueprint" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="11. គំរូរចនាសម្ព័ន្ធទិន្នន័យ (Database Schema Blueprint)">11. គំរូរចនាសម្ព័ន្ធទិន្នន័យ (Database Schema Blueprint)</a>
-<a href="#12-ក្របខ័ណ្ឌការពារការបាត់បង់-និងការកិបកេងស្តុក-anti-theft-shrinkage-controls" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="12. ក្របខ័ណ្ឌការពារការបាត់បង់ និងការកិបកេងស្តុក (Anti-Theft & Shrinkage Controls)">12. ក្របខ័ណ្ឌការពារការបាត់បង់ និងការកិបកេងស្តុក (Anti-Theft & Shrinkage Controls)</a>
-<a href="#13-អនុសាសន៍ស្ថាបត្យកម្ម-និងផែនការ-prototype-planning" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="13. អនុសាសន៍ស្ថាបត្យកម្ម និងផែនការ Prototype Planning">13. អនុសាសន៍ស្ថាបត្យកម្ម និងផែនការ Prototype Planning</a>
-<a href="#131-អនុសាសន៍រចនាប្រព័ន្ធ-architectural-recommendations" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="13.1 អនុសាសន៍រចនាប្រព័ន្ធ (Architectural Recommendations)">13.1 អនុសាសន៍រចនាប្រព័ន្ធ (Architectural Recommendations)</a>
-<a href="#132-បញ្ជីត្រួតពិនិត្យការសាងសង់-prototype-15-point-prototype-checklist" class="block py-1 pl-4 text-[11px] text-slate-500 hover:text-primary transition truncate" title="13.2 បញ្ជីត្រួតពិនិត្យការសាងសង់ Prototype (15-Point Prototype Checklist)">13.2 បញ្ជីត្រួតពិនិត្យការសាងសង់ Prototype (15-Point Prototype Checklist)</a>
-<a href="#14-សំណួរ-និងចម្លើយទូទៅ-faq" class="block py-1 font-semibold text-xs text-slate-700 hover:text-primary transition truncate" title="14. សំណួរ និងចម្លើយទូទៅ (FAQ)">14. សំណួរ និងចម្លើយទូទៅ (FAQ)</a>
+                    
                 </div>
                 <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
                     <a href="DIGITECHKH-Roles-And-Permissions-Interactive-Guide.html?role=warehouse_manager" class="w-full py-2 px-3 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-700 text-xs font-medium flex items-center justify-between transition border border-slate-200">
@@ -1209,29 +1178,29 @@ CREATE TABLE stock_adjustments (
 </ul>
 <p><strong>Q: នៅពេលផ្ទេរទំនិញពីឃ្លាំងភ្នំពេញទៅសៀមរាប តើតួលេខស្តុកកើនឡើងនៅសៀមរាបភ្លាមៗទេ?</strong><br>A: <strong>មិនកើនឡើងភ្លាមៗឡើយ</strong>។ នៅពេលទំនិញចេញពីភ្នំពេញ ស្តុកនឹងធ្លាក់ចូលទៅក្នុងស្ថានភាព «កំពុងដឹកជញ្ជូន (In-Transit)»។ លុះត្រាតែបុគ្គលិកឃ្លាំងសៀមរាបរាប់ផ្ទៀងផ្ទាត់ និងចុច «ទទួលស្គាល់ការទទួលទំនិញ» ទើបស្តុកសៀមរាបកើនឡើងជាផ្លូវការ ដើម្បីការពារការបាត់បង់ទំនិញនៅពាក់កណ្តាលផ្លូវ។</p>
 <hr>
-<p><em>ឯកសារនេះតំណាង 100% នៃមូលដ្ឋានចំណេះដឹងសម្រាប់ Warehouse Manager Role ក្នុង DIGITECHKH BMS</em><br><em>Previous Role: Admin / General Manager → <a href="role_admin_general_manager.html"><code>role_admin_general_manager.md</code></a></em><br><em>Next Role: Cashier POS → <a href="role_cashier_pos.html"><code>role_cashier_pos.md</code></a> | or: Delivery Driver → <a href="role_delivery_driver.html"><code>role_delivery_driver.md</code></a></em></p>
+<p><em>ឯកសារនេះតំណាង 100% នៃមូលដ្ឋានចំណេះដឹងសម្រាប់ Warehouse Manager Role ក្នុង DIGITECHKH BMS</em><br><em>Previous Role: Admin / General Manager → <a href="role_admin_general_manager.html"><code>role_admin_general_manager.md</code></a></em><br><em>Next Role: 8. បុគ្គលិកជាន់ឃ្លាំង → <a href="role_warehouse_staff.html"><code>role_warehouse_staff.md</code></a> | or: Delivery Driver → <a href="role_delivery_driver.html"><code>role_delivery_driver.md</code></a></em></p>
 
                 </article>
 
                 <!-- Next / Previous Role Navigation Bar -->
                 <div class="no-print mt-12 pt-8 border-t border-slate-200 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <a href="role_admin_general_manager.html" class="p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group flex items-center gap-3">
+                    <a href="role_procurement_manager.html" class="p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group flex items-center gap-3">
                         <div class="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-transform flex-shrink-0">
-                            🏛️
+                            🛒
                         </div>
                         <div class="min-w-0">
                             <div class="text-[10px] text-slate-400 font-medium">← តួនាទីមុន</div>
-                            <div class="text-xs font-bold text-slate-800 group-hover:text-primary transition truncate">អភិបាល និងអ្នកចាត់ការទូទៅ</div>
+                            <div class="text-xs font-bold text-slate-800 group-hover:text-primary transition truncate">6. អ្នកគ្រប់គ្រងលទ្ធកម្ម</div>
                         </div>
                     </a>
 
-                    <a href="role_superadmin.html" class="p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group flex items-center justify-end text-right gap-3">
+                    <a href="role_warehouse_staff.html" class="p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group flex items-center justify-end text-right gap-3">
                         <div class="min-w-0">
                             <div class="text-[10px] text-slate-400 font-medium">តួនាទីបន្ទាប់ →</div>
-                            <div class="text-xs font-bold text-slate-800 group-hover:text-primary transition truncate">ស៊ុបភើរ អភិបាល</div>
+                            <div class="text-xs font-bold text-slate-800 group-hover:text-primary transition truncate">8. បុគ្គលិកជាន់ឃ្លាំង</div>
                         </div>
                         <div class="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-transform flex-shrink-0">
-                            👑
+                            👷
                         </div>
                     </a>
                 </div>

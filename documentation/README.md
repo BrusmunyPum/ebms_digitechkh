@@ -21,7 +21,7 @@
 | 5 | [**`DIGITECHKH-System-Architecture-Overview.html`**](DIGITECHKH-System-Architecture-Overview.html) | **ស្ថាបត្យកម្មប្រព័ន្ធ** — ប្លង់ 4 ស្រទាប់, ម៉ាទ្រីសសិទ្ធិ 12 តួនាទី, វិសាលភាព 9 ម៉ូឌុល, ដ្យាក្រាម Mermaid |
 | 6 | [**`DIGITECHKH-Delivery-Checklist-And-Recommendations.html`**](DIGITECHKH-Delivery-Checklist-And-Recommendations.html) | **តារាងត្រួតពិនិត្យការប្រគល់ & អនុសាសន៍** — Checklists 5 ដំណាក់កាល (D-30 ដល់ T+30) រួមជាមួយអនុសាសន៍ 4 សសរស្ដម្ភរបស់អ្នកជំនាញ |
 | 7 | [**`DIGITECHKH-BMS-Official-System-Documentation.html`**](DIGITECHKH-BMS-Official-System-Documentation.html) | **សៀវភៅណែនាំប្រព័ន្ធផ្លូវការកម្រិតបោះពុម្ព** — ប្លង់ A4 ស្អាតបរិសុទ្ធ គ្មាន Header/Sidebar ពេល Print |
-| 8 | [**`DIGITECHKH-Roles-And-Permissions-Interactive-Guide.html`**](DIGITECHKH-Roles-And-Permissions-Interactive-Guide.html) | **មគ្គុទ្ទេសក៍អន្តរកម្មនៃតួនាទី និងសិទ្ធិអំណាច** — រុករកតួនាទីទាំង 10, ម៉ាទ្រីសប្រៀបធៀបសិទ្ធិ, វដ្តការងារ និងបោះពុម្ព A4 |
+| 8 | [**`DIGITECHKH-Roles-And-Permissions-Interactive-Guide.html`**](DIGITECHKH-Roles-And-Permissions-Interactive-Guide.html) | **មគ្គុទ្ទេសក៍អន្តរកម្មនៃតួនាទី និងសិទ្ធិអំណាច** — រុករកតួនាទីទាំង 12, ម៉ាទ្រីសប្រៀបធៀបសិទ្ធិ, វដ្តការងារ និងបោះពុម្ព A4 |
 
 ---
 
@@ -54,16 +54,18 @@
 
 ឯកសារសិក្សាស៊ីជម្រៅលម្អិត 100% ជាទម្រង់ HTML រចនាស្អាតបរិសុទ្ធ ងាយស្រួលអានលើ Browser៖
 
-1. [**`role_superadmin.html`**](role_superadmin.html) ([Markdown](role_superadmin.md)) 👉 *តួនាទី ស៊ុបភើរ អភិបាល (Super Admin) — Multi-tenant Root Operator*
-2. [**`role_procurement_manager.html`**](role_procurement_manager.html) ([Markdown](role_procurement_manager.md)) 👉 *តួនាទី អ្នកគ្រប់គ្រងលទ្ធកម្ម (Procurement Manager) — PO, Bills, 3-Way Matching*
-3. [**`role_warehouse_staff.html`**](role_warehouse_staff.html) ([Markdown](role_warehouse_staff.md)) 👉 *តួនាទី បុគ្គលិកគ្រប់គ្រងស្តុក (Warehouse Staff) — GRN, Movement, Zero Price Leakage*
-4. [**`role_customer_support.html`**](role_customer_support.html) ([Markdown](role_customer_support.md)) 👉 *តួនាទី ផ្នែកគាំទ្រអតិថិជន (Customer Support) — Ticketing, Tracking, SLA, CSAT*
-5. [**`role_apar_accountant.html`**](role_apar_accountant.html) ([Markdown](role_apar_accountant.md)) 👉 *តួនាទី គណនេយ្យករទូទាត់ (AP/AR Accountant) — Inbound AR, Outbound AP, WHT, Voucher*
-6. [**`role_sales_manager.html`**](role_sales_manager.html) ([Markdown](role_sales_manager.md)) 👉 *តួនាទី អ្នកគ្រប់គ្រងផ្នែកលក់ (Sales Manager) — Quotations, Dynamic Pricing, Credit Limits, Approvals, Sales Targets*
-7. [**`role_internal_auditor_executive.html`**](role_internal_auditor_executive.html) ([Markdown](role_internal_auditor_executive.md)) 👉 *តួនាទី សវនករផ្ទៃក្នុង / នាយកប្រតិបត្តិ (Internal Auditor / Executive) — 100% Read-Only Audit, Forensics, Anti-Fraud*
-8. [**`role_sales_executive.html`**](role_sales_executive.html) ([Markdown](role_sales_executive.md)) 👉 *តួនាទី បុគ្គលិកផ្នែកលក់ (Sales Executive) — Quotations, Invoices, Tiered Pricing, Zero Cost Leakage*
-9. [**`role_admin_general_manager.html`**](role_admin_general_manager.html) ([Markdown](role_admin_general_manager.md)) 👉 *តួនាទី អភិបាលក្រុមហ៊ុន / អ្នកគ្រប់គ្រងទូទៅ (Admin / General Manager) — Tenant Command, Approvals, Period Lock, User Roles*
-10. [**`role_warehouse_manager.html`**](role_warehouse_manager.html) ([Markdown](role_warehouse_manager.md)) 👉 *តួនាទី អ្នកគ្រប់គ្រងឃ្លាំងស្តុក (Warehouse Manager) — Inventory Valuation, ROP, Stock Adjustments, Zero Selling Price Leakage*
+1. [**`role_superadmin.html`**](role_superadmin.html) ([Markdown](role_superadmin.md)) 👉 *1. Super Admin — ស៊ុបភើរ អភិបាល (Multi-Tenant Root Platform Operator)*
+2. [**`role_admin_general_manager.html`**](role_admin_general_manager.html) ([Markdown](role_admin_general_manager.md)) 👉 *2. Admin / General Manager — អភិបាលគ្រប់គ្រងទូទៅ (Command, Approvals, Period Lock)*
+3. [**`role_sales_manager.html`**](role_sales_manager.html) ([Markdown](role_sales_manager.md)) 👉 *3. Sales Manager — អ្នកគ្រប់គ្រងផ្នែកលក់ (Quotas, Discounts, Credit Limits, Approvals)*
+4. [**`role_sales_executive.html`**](role_sales_executive.html) ([Markdown](role_sales_executive.md)) 👉 *4. Sales Executive — បុគ្គលិកប្រតិបត្តិផ្នែកលក់ (Quotes, Invoices, Dynamic Pricing, Zero Cost)*
+5. [**`role_cashier_pos.html`**](role_cashier_pos.html) ([Markdown](role_cashier_pos.md)) 👉 *5. Cashier / POS — អ្នកគិតលុយលក់រាយ (Touch POS, KHQR, Barcode, Z-Report, Zero Price Mod)*
+6. [**`role_procurement_manager.html`**](role_procurement_manager.html) ([Markdown](role_procurement_manager.md)) 👉 *6. Procurement Manager — អ្នកគ្រប់គ្រងលទ្ធកម្ម (PO, Bills, 3-Way Matching, Suppliers)*
+7. [**`role_warehouse_manager.html`**](role_warehouse_manager.html) ([Markdown](role_warehouse_manager.md)) 👉 *7. Warehouse Manager — អ្នកគ្រប់គ្រងឃ្លាំងស្តុក (Valuation, ROP, Adjustments, Zero Selling Price)*
+8. [**`role_warehouse_staff.html`**](role_warehouse_staff.html) ([Markdown](role_warehouse_staff.md)) 👉 *8. Warehouse Staff — បុគ្គលិកជាន់ឃ្លាំង (GRN, Picking, Stock Count, Zero Price Leakage)*
+9. [**`role_chief_accountant.html`**](role_chief_accountant.html) ([Markdown](role_chief_accountant.md)) 👉 *9. Chief Accountant — ប្រធានគណនេយ្យ (COA Ledger, Period Lock, GDT Tax)*
+10. [**`role_apar_accountant.html`**](role_apar_accountant.html) ([Markdown](role_apar_accountant.md)) 👉 *10. AP/AR Accountant — គណនេយ្យករបំណុល និងការទារប្រាក់ (AR Inbound, AP Outbound, WHT)*
+11. [**`role_internal_auditor_executive.html`**](role_internal_auditor_executive.html) ([Markdown](role_internal_auditor_executive.md)) 👉 *11. Internal Auditor / Executive — សវនករផ្ទៃក្នុង / នាយកប្រតិបត្តិ (100% Read-Only, Anti-Fraud)*
+12. [**`role_customer_support.html`**](role_customer_support.html) ([Markdown](role_customer_support.md)) 👉 *12. Customer Support — ផ្នែកគាំទ្រ និងបម្រើអតិថិជន (Ticketing, Tracking, SLA, CSAT)*
 
 ---
 
