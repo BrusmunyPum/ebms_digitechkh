@@ -1,0 +1,160 @@
+/* ច្រកគ្រប់គ្រងផ្នែកលក់ — ស្រទាប់រចនាបន្ថែមលើ custom.css
+
+   custom.css បង្ខំ .text-xs / .text-[10px] / .text-[11px] / .text-[12px]
+   ទៅជាទំហំ 14.5px តែមួយដោយ !important ដែលធ្វើឱ្យចំណងជើង និងអត្ថបទរងមាន
+   ទំហំដូចគ្នា ហើយបាត់បង់ឋានានុក្រម។ វិធានខាងក្រោមប្រើ ID Scope ដើម្បី
+   ស្តារឋានានុក្រមឡើងវិញ ដោយមិនប៉ះពាល់ទំហំអក្សរសកលឡើយ។ */
+
+#smPortal .sm-kpi-label {
+    font-size: 12.5px !important;
+    line-height: 1.5 !important;
+    font-weight: 500 !important;
+}
+
+#smPortal .sm-kpi-value {
+    font-size: 26px !important;
+    line-height: 1.25 !important;
+    font-weight: 700 !important;
+}
+
+#smPortal .sm-kpi-unit {
+    font-size: 13px !important;
+    line-height: 1.4 !important;
+    font-weight: 400 !important;
+}
+
+#smPortal .sm-kpi-sub {
+    font-size: 11.5px !important;
+    line-height: 1.45 !important;
+}
+
+#smPortal .sm-card-title {
+    font-size: 16px !important;
+    line-height: 1.4 !important;
+    font-weight: 600 !important;
+}
+
+#smPortal .sm-card-sub {
+    font-size: 11.5px !important;
+    line-height: 1.45 !important;
+}
+
+#smPortal .sm-th {
+    font-size: 11.5px !important;
+    line-height: 1.4 !important;
+    font-weight: 600 !important;
+}
+
+#smPortal .sm-td {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    font-weight: 500 !important;
+}
+
+#smPortal .sm-td-strong {
+    font-size: 14.5px !important;
+    line-height: 1.5 !important;
+    font-weight: 600 !important;
+}
+
+#smPortal .sm-td-sub {
+    font-size: 11.5px !important;
+    line-height: 1.45 !important;
+}
+
+#smPortal .sm-badge {
+    font-size: 11.5px !important;
+    line-height: 1.5 !important;
+    font-weight: 500 !important;
+}
+
+#smPortal .sm-label {
+    font-size: 12.5px !important;
+    line-height: 1.5 !important;
+    font-weight: 500 !important;
+}
+
+#smPortal .sm-value {
+    font-size: 14.5px !important;
+    line-height: 1.5 !important;
+    font-weight: 600 !important;
+}
+
+#smPortal .sm-nav-label {
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+    font-weight: 500 !important;
+}
+
+#smPortal .sm-nav-note {
+    font-size: 11.5px !important;
+    line-height: 1.55 !important;
+}
+
+/* ម៉ឺនុយសកម្មភាពជួរតារាង (ស្តង់ដារលេខ 9) */
+#smPortal .sm-row-menu-item {
+    font-size: 13.5px !important;
+    line-height: 1.5 !important;
+    font-weight: 500 !important;
+}
+
+/* ===== ស្តង់ដារបោះពុម្ពឯកសារផ្លូវការ A4 (ស្តង់ដារលេខ 12) ===== */
+.print-footer {
+    display: none;
+}
+
+@media print {
+    aside,
+    header,
+    .no-print,
+    #bmsMobileBackdrop,
+    #bmsMobileMenuBtn,
+    #bmsSidebarCloseBtn {
+        display: none !important;
+    }
+
+    body,
+    #smPortal {
+        background: #fff !important;
+        display: block !important;
+        height: auto !important;
+        overflow: visible !important;
+    }
+
+    body > div.flex-1,
+    main {
+        display: block !important;
+        height: auto !important;
+        overflow: visible !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .bg-white,
+    .rounded-2xl {
+        box-shadow: none !important;
+        border-color: #e2e8f0 !important;
+    }
+
+    tr,
+    .signature-block,
+    .sm-summary,
+    .sm-print-block {
+        page-break-inside: avoid !important;
+    }
+
+    .print-footer {
+        display: block !important;
+        margin-top: 18px;
+        padding-top: 10px;
+        border-top: 1px solid #cbd5e1;
+        font-size: 11px;
+        color: #64748b;
+        text-align: center;
+    }
+
+    @page {
+        size: A4;
+        margin: 14mm 12mm;
+    }
+}

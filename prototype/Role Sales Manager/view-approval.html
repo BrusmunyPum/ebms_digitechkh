@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - ពិនិត្យសម្រង់តម្លៃលម្អិតមុនអនុម័ត</title>
+    <link rel="icon" type="image/png" href="shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1e3a5f",
+                        'primary-dark': "#142842",
+                        accent: "#0ea5e9",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="shared/styles/custom.css">
+    <link rel="stylesheet" href="shared/styles/portal.css">
+</head>
+<body id="smPortal" class="bg-slate-50 font-sans text-slate-800 text-[16px] flex h-screen overflow-hidden">
+
+    <!-- Sales Manager Sidebar -->
+    <aside class="w-64 bg-[#1e3a5f] text-white flex flex-col flex-shrink-0 select-none z-20 border-r border-slate-700">
+        <div class="h-[72px] px-6 flex items-center gap-3 border-b border-white/10 flex-shrink-0">
+            <div class="w-9 h-9 rounded-xl bg-white/15 border border-white/20 flex items-center justify-center p-1 shadow-sm overflow-hidden flex-shrink-0">
+                <img src="shared/assets/logo-mark-transparent.png" alt="DIGITECHKH" class="w-full h-full object-contain">
+            </div>
+            <div>
+                <h1 class="text-lg font-semibold tracking-wider whitespace-nowrap text-white">DIGITECHKH</h1>
+                <span class="sm-nav-note font-medium text-sky-300 uppercase tracking-wider block">ច្រកគ្រប់គ្រងលក់</span>
+            </div>
+        </div>
+
+        <div class="px-5 py-3 border-b border-white/5 bg-black/15">
+            <div class="flex items-center justify-between">
+                <span class="sm-nav-note text-sky-200">តួនាទី:</span>
+                <span class="sm-badge inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-sky-500/20 text-sky-200 border border-sky-400/30">
+                    <i class="fas fa-user-tie text-[10px]"></i> អ្នកគ្រប់គ្រងផ្នែកលក់
+                </span>
+            </div>
+        </div>
+
+        <nav class="flex-1 overflow-y-auto px-4 py-4 space-y-1.5 scrollbar-hide">
+            <a href="dashboard.html" class="flex items-center p-3 text-sky-100 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-chart-pie w-6 text-center text-sky-300"></i>
+                <span class="ml-3 sm-nav-label">ផ្ទាំងគ្រប់គ្រង</span>
+            </a>
+
+            <a href="approvals.html" class="flex items-center justify-between p-3 bg-white/15 text-white rounded-xl shadow-sm transition-all whitespace-nowrap border border-white/10">
+                <div class="flex items-center">
+                    <i class="fas fa-stamp w-6 text-center text-sky-300"></i>
+                    <span class="ml-3 sm-nav-label">ការអនុម័ត</span>
+                </div>
+                <span id="navQueueBadge" class="sm-badge bg-rose-500 text-white px-2 py-0.5 rounded-full">5</span>
+            </a>
+
+            <a href="reports.html" class="flex items-center p-3 text-sky-100 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-chart-column w-6 text-center text-sky-300"></i>
+                <span class="ml-3 sm-nav-label">របាយការណ៍លក់</span>
+            </a>
+
+            <div class="p-3 rounded-xl bg-white/5 border border-white/10 sm-nav-note text-sky-200 mt-6">
+                <i class="fas fa-info-circle mr-1 text-sky-300"></i> បញ្ចុះតម្លៃ 0.0% ដល់ 15.0% អនុម័តដោយផ្ទាល់។ លើសពី 15.0% ត្រូវបញ្ជូនទៅអភិបាលទូទៅ។
+            </div>
+        </nav>
+
+        <div class="p-4 border-t border-white/10 bg-black/10">
+            <div class="flex items-center gap-3 px-2">
+                <div class="w-9 h-9 rounded-full bg-white/15 border border-white/20 text-white flex items-center justify-center font-semibold text-xs flex-shrink-0">
+                    ហវ
+                </div>
+                <div class="min-w-0">
+                    <p class="sm-value text-white truncate">ហេង វិច្ឆិកា</p>
+                    <p class="sm-nav-note text-sky-300 truncate">អ្នកគ្រប់គ្រងផ្នែកលក់</p>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div class="flex items-center gap-4 min-w-0">
+                <a href="approvals.html"
+                   class="w-10 h-10 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-600 flex items-center justify-center transition border border-slate-200/70 flex-shrink-0"
+                   title="ត្រឡប់ទៅបញ្ជីអនុម័ត">
+                    <i class="fas fa-arrow-left text-sm"></i>
+                </a>
+                <div class="min-w-0">
+                    <h2 class="text-xl font-semibold text-gray-800 leading-tight flex items-center gap-2 truncate">
+                        <span id="docTitle">សម្រង់តម្លៃ</span>
+                        <span id="docStatus" class="sm-badge px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200 font-semibold flex-shrink-0"></span>
+                    </h2>
+                    <p id="docSubtitle" class="sm-card-sub text-gray-500 mt-0.5 truncate"></p>
+                </div>
+            </div>
+
+            <div id="headerActions" class="flex items-center space-x-2 no-print flex-shrink-0"></div>
+        </header>
+
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-6">
+            <div id="pageBody" class="w-full space-y-6"></div>
+        </main>
+    </div>
+
+    <script src="shared/scripts/ui-components.js"></script>
+    <script src="shared/scripts/data.js"></script>
+    <script src="shared/scripts/portal.js"></script>
+    <script>
+        const quoteId = new URLSearchParams(location.search).get('id') || 'QT-2026-0089';
+        const quote = getQuote(quoteId);
+
+        const STATUS_LABEL = {
+            draft: 'សេចក្តីព្រាង',
+            pending_approval: 'រង់ចាំការអនុម័ត',
+            approved: 'បានអនុម័ត',
+            rejected: 'បានបដិសេធ',
+            converted: 'បានបម្លែងជាវិក្កយបត្រ',
+            expired: 'ផុតសុពលភាព'
+        };
+
+        const STATUS_TONE = {
+            draft: 'bg-slate-100 text-slate-600 border-slate-200',
+            pending_approval: 'bg-amber-50 text-amber-700 border-amber-200',
+            approved: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+            rejected: 'bg-rose-50 text-rose-700 border-rose-200',
+            converted: 'bg-blue-50 text-blue-700 border-blue-200',
+            expired: 'bg-slate-100 text-slate-500 border-slate-200'
+        };
+
+        function authorityOf(percent) {
+            if (percent <= 5) return 'staff';
+            if (percent <= 15) return 'manager';
+            return 'gm';
+        }
+
+        function renderNotFound() {
+            document.getElementById('docTitle').textContent = 'រកមិនឃើញឯកសារ';
+            document.getElementById('docStatus').classList.add('hidden');
+            document.getElementById('docSubtitle').textContent = 'លេខឯកសារ ' + quoteId + ' មិនមានក្នុងប្រព័ន្ធទេ';
+            document.getElementById('pageBody').innerHTML = `
+                <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm py-16 text-center">
+                    <div class="w-14 h-14 rounded-2xl bg-slate-100 text-slate-400 flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-file-circle-question text-2xl"></i>
+                    </div>
+                    <h3 class="sm-card-title text-slate-700">រកមិនឃើញសម្រង់តម្លៃនេះទេ</h3>
+                    <p class="sm-card-sub text-slate-500 mt-1">សូមត្រឡប់ទៅបញ្ជីសំណើ ដើម្បីជ្រើសរើសឯកសារផ្សេង។</p>
+                    <a href="approvals.html" class="sm-badge inline-flex items-center gap-2 mt-4 px-4 py-2.5 rounded-xl bg-[#0f2b5c] text-white font-semibold">
+                        <i class="fas fa-arrow-left"></i> ត្រឡប់ទៅបញ្ជីអនុម័ត
+                    </a>
+                </div>`;
+        }
+
+        function renderHeader(totals, decided) {
+            const auth = authorityOf(quote.discountPercent);
+            const status = decided ? (decided === 'approve' ? 'approved' : decided === 'reject' ? 'rejected' : 'pending_approval') : quote.status;
+
+            document.getElementById('docTitle').textContent = 'សម្រង់តម្លៃ ' + quote.id;
+            const statusEl = document.getElementById('docStatus');
+            statusEl.textContent = decided === 'forward' ? 'បញ្ជូនទៅអភិបាលទូទៅ' : STATUS_LABEL[status];
+            statusEl.className = 'sm-badge px-2.5 py-0.5 rounded-full border font-semibold flex-shrink-0 ' +
+                (decided === 'forward' ? 'bg-purple-50 text-purple-700 border-purple-200' : STATUS_TONE[status]);
+
+            document.getElementById('docSubtitle').textContent =
+                `សុពលភាពដល់ ${fmtKhDate(quote.validUntil)} · ស្នើសុំដោយ ${getRep(quote.repId).name}`;
+
+            const actions = document.getElementById('headerActions');
+            const printBtn = `
+                <button onclick="window.print()" title="បោះពុម្ព" class="w-10 h-10 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-600 flex items-center justify-center transition border border-slate-200/70">
+                    <i class="fas fa-print text-sm"></i>
+                </button>`;
+
+            if (decided || quote.status !== 'pending_approval') {
+                actions.innerHTML = printBtn + `
+                    <span class="sm-badge px-4 py-2.5 rounded-xl bg-slate-100 text-slate-500 font-medium">សំណើនេះត្រូវបានសម្រេចរួចហើយ</span>`;
+                return;
+            }
+
+            const mainBtn = auth === 'gm'
+                ? `<button onclick="processApproval('forward')" class="sm-badge px-5 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-semibold shadow-sm transition inline-flex items-center gap-1.5">
+                        <i class="fas fa-paper-plane"></i><span>បញ្ជូនទៅអភិបាលទូទៅ</span>
+                   </button>`
+                : `<button onclick="processApproval('approve')" class="sm-badge px-5 py-2.5 rounded-xl bg-[#0f2b5c] hover:bg-[#0a1d3f] text-white font-semibold shadow-sm transition inline-flex items-center gap-1.5">
+                        <i class="fas fa-check"></i><span>យល់ព្រមអនុម័ត ${fmtUSD(totals.grandTotal)}</span>
+                   </button>`;
+
+            actions.innerHTML = printBtn + `
+                <button onclick="processApproval('reject')" class="sm-badge px-4 py-2.5 rounded-xl border border-rose-200 bg-rose-50 hover:bg-rose-100 text-rose-700 font-medium transition inline-flex items-center gap-1.5">
+                    <i class="fas fa-xmark"></i><span class="hidden sm:inline">បដិសេធ</span>
+                </button>` + mainBtn;
+        }
+
+        function renderBody(totals) {
+            const cust = getCustomer(quote.customerId);
+            const rep = getRep(quote.repId);
+            const auth = authorityOf(quote.discountPercent);
+            const newDebt = cust.oldDebt + totals.grandTotal;
+            const usage = Math.min((newDebt / cust.creditLimit) * 100, 100);
+            const overLimit = newDebt > cust.creditLimit;
+
+            const authCard = (range, who, note, active) => `
+                <div class="p-3 rounded-xl border ${active ? 'bg-[#0f2b5c] border-[#0f2b5c] shadow-sm' : 'bg-slate-50 border-slate-200'}">
+                    <p class="sm-kpi-sub ${active ? 'text-sky-200' : 'text-slate-500'}">${range}</p>
+                    <p class="sm-value ${active ? 'text-white' : 'text-slate-700'} mt-0.5">${who}</p>
+                    <p class="sm-kpi-sub ${active ? 'text-sky-200' : 'text-slate-400'} mt-1">${note}</p>
+                </div>`;
+
+            document.getElementById('pageBody').innerHTML = `
+                <div class="bg-amber-50/80 border border-amber-200 rounded-2xl p-4 flex items-start justify-between gap-4 flex-wrap sm-print-block">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center text-lg flex-shrink-0">
+                            <i class="fas fa-triangle-exclamation"></i>
+                        </div>
+                        <div>
+                            <h4 class="sm-card-title text-amber-900">មូលហេតុដែលប្រព័ន្ធទាមទារការអនុម័ត</h4>
+                            <p class="sm-card-sub text-amber-800 mt-0.5">
+                                ${rep.name} បានស្នើសុំបញ្ចុះតម្លៃពិសេស ${fmtPercent(quote.discountPercent)}
+                                ដែលហួសពីដែនកម្រិតស្វ័យប្រវត្តិ 5.0%។
+                                ការបញ្ចុះតម្លៃនេះកាត់បន្ថយប្រាក់ចំណេញដុលប្រមាណ ${fmtUSD(totals.discountAmount)}។
+                            </p>
+                        </div>
+                    </div>
+                    <span class="sm-badge px-3 py-1 rounded-full font-semibold whitespace-nowrap ${auth === 'gm' ? 'bg-purple-200 text-purple-900' : 'bg-amber-200 text-amber-900'}">
+                        ${auth === 'gm' ? 'លើសដែនសិទ្ធិ 15.0%' : 'ស្ថិតក្នុងដែនសិទ្ធិ 15.0%'}
+                    </span>
+                </div>
+
+                <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm sm-print-block">
+                    <h3 class="sm-card-title text-slate-700 mb-3">ដែនសិទ្ធិអនុម័តការបញ្ចុះតម្លៃ</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        ${authCard('0.0% ដល់ 5.0%', 'បុគ្គលិកលក់', auth === 'staff' ? `<i class="fas fa-circle-check mr-1"></i> សំណើនេះ ${fmtPercent(quote.discountPercent)}` : 'អនុញ្ញាតដោយស្វ័យប្រវត្តិ', auth === 'staff')}
+                        ${authCard('5.1% ដល់ 15.0%', 'អ្នកគ្រប់គ្រងផ្នែកលក់', auth === 'manager' ? `<i class="fas fa-circle-check mr-1"></i> សំណើនេះ ${fmtPercent(quote.discountPercent)}` : 'សិទ្ធិអនុម័តផ្ទាល់', auth === 'manager')}
+                        ${authCard('លើសពី 15.0%', 'អភិបាលទូទៅ', auth === 'gm' ? `<i class="fas fa-circle-check mr-1"></i> សំណើនេះ ${fmtPercent(quote.discountPercent)}` : 'ត្រូវបញ្ជូនបន្ត', auth === 'gm')}
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div class="space-y-6">
+                        <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm space-y-4 sm-print-block">
+                            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                                <h3 class="sm-card-title text-slate-700">ព័ត៌មានអតិថិជន</h3>
+                                <span class="sm-badge px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 font-semibold">${tierLabel(cust.tier)}</span>
+                            </div>
+                            <div class="space-y-2.5">
+                                <div>
+                                    <span class="sm-label text-slate-400 block">ឈ្មោះស្ថាប័ន</span>
+                                    <span class="sm-value text-slate-700">${cust.name}</span>
+                                </div>
+                                <div>
+                                    <span class="sm-label text-slate-400 block">អ្នកទាក់ទង</span>
+                                    <span class="sm-td text-slate-700">${cust.contact} · ${cust.phone}</span>
+                                </div>
+                                <div class="pt-2 border-t border-slate-100 space-y-1">
+                                    <div class="flex justify-between">
+                                        <span class="sm-label text-slate-500">ពិដានឥណទាន</span>
+                                        <span class="sm-value text-slate-700">${fmtUSD(cust.creditLimit)}</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="sm-label text-slate-500">បំណុលចាស់</span>
+                                        <span class="sm-value text-slate-700">${fmtUSD(cust.oldDebt)}</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="sm-label text-slate-500">សម្រង់តម្លៃនេះ</span>
+                                        <span class="sm-value text-blue-700">${fmtUSD(totals.grandTotal)}</span>
+                                    </div>
+                                    <div class="flex justify-between pt-1 border-t border-slate-100">
+                                        <span class="sm-label text-slate-700 font-semibold">សរុបបើអនុម័ត</span>
+                                        <span class="sm-value ${overLimit ? 'text-rose-600' : 'text-emerald-700'}">${fmtUSD(newDebt)}</span>
+                                    </div>
+                                </div>
+                                <div class="pt-1">
+                                    <div class="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
+                                        <div class="h-full ${overLimit ? 'bg-rose-500' : usage > 80 ? 'bg-amber-500' : 'bg-emerald-500'} rounded-full" style="width: ${usage}%"></div>
+                                    </div>
+                                    <p class="sm-kpi-sub ${overLimit ? 'text-rose-600 font-semibold' : 'text-slate-400'} mt-1">
+                                        ${overLimit
+                                            ? `លើសពិដានឥណទាន ${fmtUSD(newDebt - cust.creditLimit)} — ត្រូវការការលើកលែង`
+                                            : `ប្រើប្រាស់ឥណទាន ${fmtPercent(usage, 0)} · នៅសល់ ${fmtUSD(cust.creditLimit - newDebt)}`}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm space-y-3 sm-print-block">
+                            <h3 class="sm-card-title text-slate-700 border-b border-slate-100 pb-3">បុគ្គលិកដែលបានស្នើសុំ</h3>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center font-semibold text-sm flex-shrink-0">${rep.initials}</div>
+                                <div class="min-w-0">
+                                    <h4 class="sm-value text-slate-700">${rep.name}</h4>
+                                    <span class="sm-kpi-sub text-slate-500 block">បុគ្គលិកផ្នែកលក់</span>
+                                    <p class="sm-kpi-sub text-slate-400">ស្នើសុំ ${fmtKhDateTime(quote.date)}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-50 rounded-2xl p-4 border border-dashed border-slate-300 text-center no-print">
+                            <button disabled class="sm-badge w-full px-4 py-2.5 rounded-xl bg-slate-200 text-slate-400 font-medium cursor-not-allowed inline-flex items-center justify-center gap-2">
+                                <i class="fas fa-file-invoice"></i> បម្លែងជាវិក្កយបត្រ
+                            </button>
+                            <p class="sm-kpi-sub text-slate-400 mt-2">អាចប្រើប្រាស់បាន បន្ទាប់ពីសម្រង់តម្លៃត្រូវបានអនុម័ត</p>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-2 space-y-6">
+                        <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+                            <div class="p-4 border-b border-slate-100 flex items-center justify-between">
+                                <h3 class="sm-card-title text-slate-700">មុខទំនិញក្នុងសម្រង់តម្លៃ</h3>
+                                <span class="sm-card-sub text-slate-500">សរុប ${quote.items.length} មុខ</span>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left">
+                                    <thead class="bg-slate-50 text-slate-500 border-b border-slate-100">
+                                        <tr>
+                                            <th class="sm-th py-3 px-4">មុខទំនិញ</th>
+                                            <th class="sm-th py-3 px-4 text-center">ចំនួន</th>
+                                            <th class="sm-th py-3 px-4 text-right">តម្លៃឯកតា</th>
+                                            <th class="sm-th py-3 px-4 text-right">សរុប</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-slate-100 text-slate-700">
+                                        ${quote.items.map(it => {
+                                            const p = PRODUCTS[it.sku];
+                                            return `<tr>
+                                                <td class="py-3 px-4">
+                                                    <p class="sm-td text-slate-700">${p.name}</p>
+                                                    <span class="sm-td-sub text-slate-400">${it.sku}</span>
+                                                </td>
+                                                <td class="sm-td py-3 px-4 text-center">${it.qty} ${p.unit}</td>
+                                                <td class="sm-td py-3 px-4 text-right">${fmtUSD(it.price)}</td>
+                                                <td class="sm-td-strong py-3 px-4 text-right">${fmtUSD(it.qty * it.price)}</td>
+                                            </tr>`;
+                                        }).join('')}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm sm-summary">
+                            <div class="max-w-sm ml-auto space-y-2">
+                                <div class="flex justify-between">
+                                    <span class="sm-label text-slate-600">សរុបរងមុខទំនិញ</span>
+                                    <span class="sm-value text-slate-700">${fmtUSD(totals.subtotal)}</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="sm-label text-slate-600">ចូលរួមមុន</span>
+                                    <span class="sm-value text-slate-700">${fmtUSD(totals.downPayment)}</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="sm-label text-amber-700 font-semibold">ការបញ្ចុះតម្លៃពិសេស ${fmtPercent(totals.discountPercent)}</span>
+                                    <span class="sm-value text-amber-700">-${fmtUSD(totals.discountAmount)}</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="sm-label text-slate-600">អាករលើតម្លៃបន្ថែម 10%</span>
+                                    <span class="sm-value text-slate-700">${fmtUSD(totals.vatAmount)}</span>
+                                </div>
+                                <div class="flex justify-between pt-2 border-t border-slate-200">
+                                    <span class="sm-card-title text-slate-700">ទឹកប្រាក់សរុបចុងក្រោយ</span>
+                                    <span class="sm-kpi-value text-blue-700">${fmtUSD(totals.grandTotal)}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm space-y-3 no-print">
+                            <label class="sm-label block text-slate-700 font-semibold">មតិយោបល់ ឬការណែនាំរបស់អ្នកគ្រប់គ្រង</label>
+                            <textarea id="approvalComment" rows="2" placeholder="បញ្ចូលកំណត់ចំណាំនៃការអនុម័ត ឬមូលហេតុនៃការបដិសេធ..."
+                                class="sm-td w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-700 focus:outline-none focus:border-[#1e3a5f] transition resize-none"></textarea>
+                        </div>
+
+                        <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm signature-block">
+                            <div class="grid grid-cols-2 gap-6">
+                                <div class="text-center">
+                                    <p class="sm-label text-slate-600">អ្នកស្នើសុំ</p>
+                                    <div class="h-12"></div>
+                                    <div class="border-t border-slate-300 pt-1.5">
+                                        <p class="sm-value text-slate-700">${rep.name}</p>
+                                        <p class="sm-kpi-sub text-slate-400">${fmtKhDate(quote.date)}</p>
+                                    </div>
+                                </div>
+                                <div class="text-center">
+                                    <p class="sm-label text-slate-600">អ្នកអនុម័ត</p>
+                                    <div class="h-12"></div>
+                                    <div class="border-t border-slate-300 pt-1.5">
+                                        <p class="sm-value text-slate-700">ហេង វិច្ឆិកា</p>
+                                        <p class="sm-kpi-sub text-slate-400">អ្នកគ្រប់គ្រងផ្នែកលក់</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="print-footer">
+                    DIGITECHKH Co., Ltd. · សម្រង់តម្លៃលេខ ${quote.id} · បោះពុម្ពដោយ ហេង វិច្ឆិកា · ឯកសារនេះបង្កើតចេញពីប្រព័ន្ធដោយស្វ័យប្រវត្តិ
+                </div>`;
+        }
+
+        async function processApproval(action) {
+            const remarks = document.getElementById('approvalComment').value.trim();
+            const totals = quoteTotals(quote);
+
+            const copy = {
+                approve: {
+                    title: 'បញ្ជាក់ការអនុម័ត',
+                    message: `តើលោកអ្នកពិតជាយល់ព្រមអនុម័តការបញ្ចុះតម្លៃ ${fmtPercent(quote.discountPercent)} លើសម្រង់តម្លៃ ${quote.id} ទឹកប្រាក់ ${fmtUSD(totals.grandTotal)} មែនទេ? សកម្មភាពនេះនឹងត្រូវកត់ត្រាក្នុងកំណត់ហេតុសវនកម្មដែលមិនអាចកែប្រែបាន។`,
+                    confirmText: 'យល់ព្រមអនុម័ត',
+                    toast: `បានអនុម័តសម្រង់តម្លៃ ${quote.id} ដោយជោគជ័យ`,
+                    type: 'success'
+                },
+                reject: {
+                    title: 'បញ្ជាក់ការបដិសេធ',
+                    message: `តើលោកអ្នកពិតជាបដិសេធសម្រង់តម្លៃ ${quote.id} មែនទេ? បុគ្គលិកលក់នឹងទទួលបានដំណឹងដើម្បីកែសម្រួលឡើងវិញ។`,
+                    confirmText: 'បដិសេធសំណើ',
+                    danger: true,
+                    toast: `បានបដិសេធសម្រង់តម្លៃ ${quote.id}`,
+                    type: 'warning'
+                },
+                forward: {
+                    title: 'បញ្ជាក់ការបញ្ជូនបន្ត',
+                    message: `ការបញ្ចុះតម្លៃ ${fmtPercent(quote.discountPercent)} លើសពីដែនសិទ្ធិ 15.0%។ តើលោកអ្នកបញ្ជូនសម្រង់តម្លៃ ${quote.id} ទៅកាន់អភិបាលទូទៅដើម្បីអនុម័តចុងក្រោយមែនទេ?`,
+                    confirmText: 'បញ្ជូនបន្ត',
+                    toast: `បានបញ្ជូនសម្រង់តម្លៃ ${quote.id} ទៅកាន់អភិបាលទូទៅ`,
+                    type: 'info'
+                }
+            }[action];
+
+            const ok = await showCustomConfirm({
+                title: copy.title,
+                message: copy.message,
+                confirmText: copy.confirmText,
+                cancelText: 'បោះបង់',
+                danger: copy.danger === true
+            });
+            if (!ok) return;
+
+            saveDecision(quote.id, action);
+            showToast(copy.toast + (remarks ? ' · មតិយោបល់ត្រូវបានកត់ត្រា' : ''), copy.type);
+
+            setTimeout(() => {
+                window.location.href = 'approvals.html';
+            }, 1400);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('navQueueBadge').textContent = totalPending();
+
+            if (!quote) {
+                renderNotFound();
+                return;
+            }
+
+            const totals = quoteTotals(quote);
+            const decided = loadDecisions()[quote.id];
+            renderHeader(totals, decided);
+            renderBody(totals);
+        });
+    </script>
+</body>
+</html>

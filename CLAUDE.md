@@ -8,13 +8,20 @@ A **static HTML/CSS/JS prototype** of DIGITECHKH's Business Management System (B
 
 There is no build system, no `package.json`, no bundler, no tests, and no backend. Pages are plain HTML files opened directly in a browser, styled by the Tailwind Play CDN and a hand-written `custom.css`.
 
-`docs/` describes the **future** production system (Angular 22 + Spring Boot 4.1 + PostgreSQL, modular monolith). None of it is implemented. Treat `docs/` as design intent for a later rewrite, not as a description of the current code. `docs/RUNBOOK.md` in particular documents operations for a system that does not exist yet.
+There is no `docs/` directory anymore (it was removed). Business/system design intent now lives in `documentation/` — see [Documentation suite](#documentation-suite-documentation) below.
+
+## Repository is mid-rebuild — three trees, don't confuse them
+
+- **`frontend/`** — the live prototype, currently reset to a bare skeleton. `index.html` redirects to `roles/00-auth/login.html`, which **does not exist yet** — opening it today just shows the Khmer "redirecting…" message going nowhere. All that exists otherwise is `shared/{assets,scripts,styles}`: `shared/scripts/ui-components.js` and `shared/styles/custom.css` are byte-identical copies of the old `src/scripts/ui-components.js` / `src/styles/custom.css` (see below). `shared/scripts/sidebar.js`, `action-tracker.js` and `main.js` were **not** carried over — they exist only in the backup. There are no page files under `frontend/` yet — this is where new prototype pages are expected to be built.
+- **`frontend_old_admin_backup/`** — the previous, fully-built prototype (12 role portals, ~56 pages) that `documentation/`'s technical specs describe and link to. Its `src/pages/` tree and full `src/scripts/` runtime (`sidebar.js`, `ui-components.js`, `action-tracker.js`, `main.js`) are the source of every layout/component pattern referenced in the sections below. Treat it as a **read-only reference** for markup, copy, and behaviour — copy patterns out of it into `frontend/`, don't edit it in place.
+- **`prototype/`** — currently empty. A scratch directory at the repo root for upcoming prototype work; check with the user whether new pages belong here or under `frontend/` before assuming.
 
 ## Running it
 
 ```bash
-open frontend/index.html                       # redirects to the login page
-python3 -m http.server 8000 --directory frontend   # or serve it, then open localhost:8000
+open frontend/index.html                            # currently redirects to a page that doesn't exist yet (roles/00-auth/login.html)
+open frontend_old_admin_backup/index.html            # the old, fully-built prototype — still browsable
+python3 -m http.server 8000 --directory frontend     # or serve either tree, then open localhost:8000
 ```
 
 No build, lint, or test commands exist. Verification is visual: open the page in a browser.
@@ -25,6 +32,8 @@ Two files define non-negotiable rules and **must be read before changing any pag
 
 - [GEMINI.md](GEMINI.md) — the authoritative standards document (13 rules)
 - [.ai/ui-rules.md](.ai/ui-rules.md) — an earlier, overlapping subset
+
+Both files still refer to paths from the old layout (`frontend/src/pages/`, `frontend/src/styles/custom.css` — now `frontend_old_admin_backup/src/...`). The paths are stale; the rules themselves are not — apply them to whatever gets built next under `frontend/`.
 
 Key rules, condensed (the source files are authoritative):
 
@@ -43,9 +52,11 @@ Key rules, condensed (the source files are authoritative):
 | Document tables | No "discount" column. Financial summary order: subtotal → down payment → special discount → VAT 10% → grand total. |
 | Printing | Official documents print A4-clean via `@media print`; hide sidebar/header/buttons, `page-break-inside: avoid` on rows and signature blocks. |
 
-## Layout of the pages
+## Layout of the pages (reference: `frontend_old_admin_backup/src/pages/`)
 
-`frontend/src/pages/` is numbered to match the sidebar's workflow order:
+This describes the backup tree, not the current (empty) `frontend/`. It's the pattern to follow when building new pages.
+
+The admin tree is numbered to match the sidebar's workflow order:
 
 ```
 1-login/  2-home/  3-sales/  4-buy/  5-stock/  6-reports/  7-settings/
@@ -53,9 +64,11 @@ Key rules, condensed (the source files are authoritative):
 
 Each module has numbered feature subfolders (`3-sales/1-invoice/`, `3-sales/2-quote/`, …), and each feature subfolder holds up to four pages: `[feature].html` (list), `create-[feature].html`, `edit-[feature].html`, `view-[feature].html`. Never put a page loose in a module root.
 
+Beyond the admin tree, the backup also has `8-super-admin/` (super-admin/multi-tenant pages) and `9-portals/<role>/` — one subfolder per non-admin role (`manager`, `accountant`, `sales-staff`, `purchase-staff`, `inventory-staff`, `cashier`, `driver`, `hr-staff`, `supplier`, `customer` — 12 roles total including admin and super-admin). `documentation/`'s role-by-role specs (see below) describe these portals in full and link directly into this tree.
+
 `pages/empty.html` is a placeholder whose title/subtitle/icon are filled in at runtime by `setActiveNavItem()` from the `BMS_NAV_ITEMS` table.
 
-## Architecture: how a page is assembled
+## Architecture: how a page is assembled (reference: `frontend_old_admin_backup/`)
 
 Every page is a **self-contained document** — there are no includes or templates. A typical page contains, inline:
 
@@ -68,9 +81,9 @@ Every page is a **self-contained document** — there are no includes or templat
 7. A page-local `<script>` for that page's behaviour
 8. `<script src=".../ui-components.js">` then `<script src=".../sidebar.js">` at the end of `<body>`
 
-### Shared runtime layer (`frontend/src/scripts/`)
+### Shared runtime layer (`frontend_old_admin_backup/src/scripts/`)
 
-These are classic scripts declaring globals — no modules, no imports. Everything is called from `onclick=` attributes in the HTML.
+These are classic scripts declaring globals — no modules, no imports. Everything is called from `onclick=` attributes in the HTML. **Only `ui-components.js` and `custom.css` made it into the live `frontend/shared/`** (byte-identical copies); `sidebar.js`, `action-tracker.js` and `main.js` below currently exist only here. If new pages under `frontend/` need the sidebar, nav state, profile drawer or notification flyout, that script has to be brought over (or rebuilt) first.
 
 - **`ui-components.js`** — `showToast()`, `showCustomConfirm()` (Promise-based), the floating dropdown engine (`openFloatingDropdown` / `closeFloatingDropdown` / `closeAllFloatingDropdowns`), custom select/customer/product pickers, and the single-date picker (`initSingleDatePicker`, `renderSingleDatePickerGrid`, …). It installs global `click`, `scroll`, `resize` and `keydown` listeners to close popovers.
 - **`sidebar.js`** — `BMS_NAV_ITEMS` (nav id → Khmer title, subtitle, icon, parent menu), `toggleMenu()`, `setActiveNavItem()`, the user-profile dropdown, the global notification flyout, the change-password modal, and the mobile drawer. It self-initialises on load.
@@ -95,9 +108,9 @@ Consequence: changing the header's avatar or bell markup can silently break thes
 
 `setActiveNavItem(id)` fully derives the sidebar's active item, expanded parent menu and chevron rotation from `data-nav` attributes. **The active-state classes hand-written into each page's sidebar copy are redundant** — they are the reason the 56 sidebar copies are not byte-identical. Prefer letting the script own active state.
 
-## Known duplication — check before editing
+## Known duplication — check before editing (reference: `frontend_old_admin_backup/`)
 
-There is no shared layout, so single logical changes fan out across many files. Before a "small" edit, know the blast radius:
+There is no shared layout, so single logical changes fan out across many files. Before a "small" edit to the backup tree — or before copying its patterns into `frontend/` at scale — know the blast radius:
 
 | Duplicated thing | Copies |
 |---|---|
@@ -112,7 +125,7 @@ When asked to change navigation, brand colour, the date picker or the header, **
 
 ## `custom.css` gotchas
 
-`frontend/src/styles/custom.css` (~2,400 lines) does more than add classes:
+`frontend/shared/styles/custom.css` (~2,700 lines; identical copy also at `frontend_old_admin_backup/src/styles/custom.css`) does more than add classes:
 
 - It **overrides Tailwind's type scale globally with `!important`** — `.text-xs` renders at 14.5px, `.text-sm` at 15.5px, `.text-base` at 16.5px, and matching `[class*="text-xs"]` catches arbitrary values too. Tailwind size class names therefore do **not** mean their usual sizes; never debug a font-size problem without checking here first. Consequence: a component built from `text-xs` titles over `text-[11px]` subtitles renders both at the same size and loses its hierarchy. To restore hierarchy in one component without touching the global scale, add ID-scoped rules (higher specificity + `!important`) — see the `#bmsUserProfileDrawer .pd-*` block at the end of the file for the pattern.
 - It softens `text-slate-900/800` and `text-gray-900/800` globally.
@@ -121,4 +134,19 @@ When asked to change navigation, brand colour, the date picker or the header, **
 
 ## Data
 
-All data is fake and hard-coded in the markup or in JS literals. There is no persistence beyond `sessionStorage` (`bms_active_nav`) and the in-memory action tracker. Per GEMINI.md §10, prices are modelled as varying by customer tier / contract and by supplier — reflect that in any pricing UI rather than showing one fixed price per product.
+All data is fake and hard-coded in the markup or in JS literals. There is no persistence beyond `sessionStorage` (`bms_active_nav`) and the in-memory action tracker — both depend on `sidebar.js`/`ui-components.js` being wired into a page, which isn't the case anywhere under `frontend/` yet (see above). Per GEMINI.md §10, prices are modelled as varying by customer tier / contract and by supplier — reflect that in any pricing UI rather than showing one fixed price per product.
+
+## Documentation suite (`documentation/`)
+
+A ~30-file Khmer business/system documentation set (v2.0, dated 2026-09-18), each entry existing as both `.md` and a styled `.html` twin. It is the functional/business spec to consult when building new pages — it is **not** code, and its internal links point at the old `frontend/src/pages/...` layout (i.e. `frontend_old_admin_backup/`), not the current `frontend/` skeleton. Open `documentation/index.html` (or `DIGITECHKH-Documentation-Hub.html`) as the entry point. Three groups:
+
+1. **Interactive HTML portals** — `DIGITECHKH-Ecommerce-Showroom-Website.html` (digital-showroom demo site with KHQR quote flow), `DIGITECHKH-BMS-Executive-Presentation.html` (18-slide deck), `DIGITECHKH-Sales-Pitch-And-Client-Strategy.html`, `DIGITECHKH-System-Architecture-Overview.html`, `DIGITECHKH-Delivery-Checklist-And-Recommendations.html`, `DIGITECHKH-BMS-Official-System-Documentation.html` (print-ready A4 manual), `DIGITECHKH-Roles-And-Permissions-Interactive-Guide.html`.
+2. **Numbered technical specs `00`–`08`** — system overview & architecture, end-to-end workflow (8 business cycles), delivery audit checklist, user operational guide, learnings/standards benchmark, master blueprint & 3-phase roadmap (POS → Wholesale → Full Finance), full system spec for dev/QA, client pitch strategy, e-commerce showroom spec.
+3. **`role_*.md` / `role_*.html`** — one deep-study spec per role, covering all 12: super admin, admin/general manager, sales manager, sales executive, cashier/POS, procurement manager, warehouse manager, warehouse staff, chief accountant, AP/AR accountant, internal auditor/executive, customer support.
+
+Recurring business rules across the suite, useful when a new page needs to reflect them:
+
+- **Zero Data Leakage** — warehouse/inventory and delivery-driver roles never see selling price or cost, on UI or API, anywhere.
+- **Cambodian localization** — dual currency (USD/KHR), Bakong KHQR payment, VAT 10%, withholding tax (WHT), NSSF (ប.ស.ស) 4%, pure Khmer text, Arabic numerals — consistent with the standards in GEMINI.md.
+- **PWA offline POS** — cashier/POS terminal is expected to keep working offline 72+ hours and print to an 80mm thermal printer.
+- Financial documents need a 4-signature block (preparer, chief accountant, approving director, payee) and, per `role_apar_accountant.md`, a dynamic QR code for verifying the original record.

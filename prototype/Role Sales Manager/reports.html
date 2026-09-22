@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - របាយការណ៍លក់សង្ខេប</title>
+    <link rel="icon" type="image/png" href="shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1e3a5f",
+                        'primary-dark': "#142842",
+                        accent: "#0ea5e9",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="shared/styles/custom.css">
+    <link rel="stylesheet" href="shared/styles/portal.css">
+</head>
+<body id="smPortal" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <!-- Sales Manager Sidebar -->
+    <aside class="w-64 bg-[#1e3a5f] text-white flex flex-col flex-shrink-0 select-none z-20 border-r border-slate-700">
+        <div class="h-[72px] px-6 flex items-center gap-3 border-b border-white/10 flex-shrink-0">
+            <div class="w-9 h-9 rounded-xl bg-white/15 border border-white/20 flex items-center justify-center p-1 shadow-sm overflow-hidden flex-shrink-0">
+                <img src="shared/assets/logo-mark-transparent.png" alt="DIGITECHKH" class="w-full h-full object-contain">
+            </div>
+            <div>
+                <h1 class="text-lg font-semibold tracking-wider whitespace-nowrap text-white">DIGITECHKH</h1>
+                <span class="sm-nav-note font-medium text-sky-300 uppercase tracking-wider block">ច្រកគ្រប់គ្រងលក់</span>
+            </div>
+        </div>
+
+        <div class="px-5 py-3 border-b border-white/5 bg-black/15">
+            <div class="flex items-center justify-between">
+                <span class="sm-nav-note text-sky-200">តួនាទី:</span>
+                <span class="sm-badge inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-sky-500/20 text-sky-200 border border-sky-400/30">
+                    <i class="fas fa-user-tie text-[10px]"></i> អ្នកគ្រប់គ្រងផ្នែកលក់
+                </span>
+            </div>
+        </div>
+
+        <nav class="flex-1 overflow-y-auto px-4 py-4 space-y-1.5 scrollbar-hide">
+            <a href="dashboard.html" class="flex items-center p-3 text-sky-100 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-chart-pie w-6 text-center text-sky-300"></i>
+                <span class="ml-3 sm-nav-label">ផ្ទាំងគ្រប់គ្រង</span>
+            </a>
+
+            <a href="approvals.html" class="flex items-center justify-between p-3 text-sky-100 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <div class="flex items-center">
+                    <i class="fas fa-stamp w-6 text-center text-sky-300"></i>
+                    <span class="ml-3 sm-nav-label">ការអនុម័ត</span>
+                </div>
+                <span id="navQueueBadge" class="sm-badge bg-rose-500 text-white px-2 py-0.5 rounded-full">5</span>
+            </a>
+
+            <a href="reports.html" class="flex items-center p-3 bg-white/15 text-white rounded-xl shadow-sm transition-all whitespace-nowrap border border-white/10">
+                <i class="fas fa-chart-column w-6 text-center text-sky-300"></i>
+                <span class="ml-3 sm-nav-label">របាយការណ៍លក់</span>
+            </a>
+
+            <div class="p-3 rounded-xl bg-white/5 border border-white/10 sm-nav-note text-sky-200 mt-6">
+                <i class="fas fa-info-circle mr-1 text-sky-300"></i> បញ្ចុះតម្លៃ 0.0% ដល់ 15.0% អនុម័តដោយផ្ទាល់។ លើសពី 15.0% ត្រូវបញ្ជូនទៅអភិបាលទូទៅ។
+            </div>
+        </nav>
+
+        <div class="p-4 border-t border-white/10 bg-black/10">
+            <div class="flex items-center gap-3 px-2">
+                <div class="w-9 h-9 rounded-full bg-white/15 border border-white/20 text-white flex items-center justify-center font-semibold text-xs flex-shrink-0">
+                    ហវ
+                </div>
+                <div class="min-w-0">
+                    <p class="sm-value text-white truncate">ហេង វិច្ឆិកា</p>
+                    <p class="sm-nav-note text-sky-300 truncate">អ្នកគ្រប់គ្រងផ្នែកលក់</p>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div class="min-w-0">
+                <h2 class="text-xl font-semibold text-gray-800 leading-tight truncate">របាយការណ៍សង្ខេបផ្នែកលក់</h2>
+                <p class="sm-card-sub text-gray-500 mt-0.5 truncate">សមិទ្ធផលក្រុមការងារ អត្រាបម្លែងសម្រង់តម្លៃ និងសង្ខេបការអនុម័តប្រចាំខែ</p>
+            </div>
+
+            <div class="flex items-center space-x-2 flex-shrink-0">
+                <button onclick="showToast('បាននាំចេញរបាយការណ៍ជាឯកសារ PDF រួចរាល់', 'success')" class="sm-badge px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium transition flex items-center gap-1.5">
+                    <i class="fas fa-file-pdf text-rose-600"></i> PDF
+                </button>
+                <button onclick="showToast('បាននាំចេញរបាយការណ៍ជាឯកសារ Excel រួចរាល់', 'success')" class="sm-badge px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium transition flex items-center gap-1.5">
+                    <i class="fas fa-file-excel text-emerald-600"></i> Excel
+                </button>
+            </div>
+        </header>
+
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-4">
+            <div class="w-full space-y-4">
+
+                <!-- Tabs + Unified Date Range Filter -->
+                <div class="bg-white rounded-2xl p-2 border border-slate-200/80 shadow-sm flex flex-wrap items-center justify-between gap-3">
+                    <div class="flex flex-wrap items-center gap-2">
+                        <button id="tabBtn-perf" onclick="switchReportTab('perf')" class="sm-badge px-4 py-2 rounded-xl bg-[#1e3a5f] text-white font-semibold shadow-sm transition">
+                            សមិទ្ធផលលក់
+                        </button>
+                        <button id="tabBtn-pipeline" onclick="switchReportTab('pipeline')" class="sm-badge px-4 py-2 rounded-xl text-slate-600 hover:bg-slate-100 font-medium transition">
+                            អត្រាបម្លែង និងបំពង់លក់
+                        </button>
+                        <button id="tabBtn-approvals" onclick="switchReportTab('approvals')" class="sm-badge px-4 py-2 rounded-xl text-slate-600 hover:bg-slate-100 font-medium transition">
+                            សង្ខេបការអនុម័ត
+                        </button>
+                    </div>
+
+                    <div id="dateFilterHost" class="flex items-center"></div>
+                </div>
+
+                <!-- Panel: Sales Performance -->
+                <div id="panel-perf" class="space-y-4">
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+                        <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm lg:col-span-2">
+                            <h3 class="sm-card-title text-slate-700 mb-3">ដំណើរការលក់ប្រចាំសប្តាហ៍</h3>
+                            <div id="salesTrendChart" class="w-full h-72"></div>
+                        </div>
+
+                        <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
+                            <h3 class="sm-card-title text-slate-700 mb-3">សង្ខេបសមិទ្ធផលខែនេះ</h3>
+                            <div class="space-y-4">
+                                <div class="p-3 rounded-xl bg-slate-50 border border-slate-100">
+                                    <span class="sm-kpi-sub text-slate-500 block">វិក្កយបត្រចេញសរុប</span>
+                                    <span id="sumInvoiceCount" class="sm-kpi-value text-slate-700"></span>
+                                </div>
+                                <div class="p-3 rounded-xl bg-slate-50 border border-slate-100">
+                                    <span class="sm-kpi-sub text-slate-500 block">ប្រាក់បានប្រមូលរួច</span>
+                                    <span id="sumCollected" class="sm-kpi-value text-emerald-600"></span>
+                                </div>
+                                <div class="p-3 rounded-xl bg-slate-50 border border-slate-100">
+                                    <span class="sm-kpi-sub text-slate-500 block">ប្រាក់ជំពាក់នៅសល់</span>
+                                    <span id="sumReceivable" class="sm-kpi-value text-amber-600"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+                        <div class="p-5 border-b border-slate-100">
+                            <h3 class="sm-card-title text-slate-700">ទិន្នន័យលម្អិតតាមបុគ្គលិកលក់</h3>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left">
+                                <thead class="bg-slate-50 text-slate-500 border-b border-slate-100">
+                                    <tr>
+                                        <th class="sm-th py-3 px-4">បុគ្គលិកលក់</th>
+                                        <th class="sm-th py-3 px-4">ចំនួនវិក្កយបត្រ</th>
+                                        <th class="sm-th py-3 px-4">ទឹកប្រាក់លក់សរុប</th>
+                                        <th class="sm-th py-3 px-4">បានទូទាត់</th>
+                                        <th class="sm-th py-3 px-4">នៅជំពាក់</th>
+                                        <th class="sm-th py-3 px-4">អត្រាបម្លែង</th>
+                                        <th class="sm-th py-3 px-4">សម្រេចគោលដៅ</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="repTableBody" class="divide-y divide-slate-100 text-slate-700"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Panel: Conversion & Pipeline -->
+                <div id="panel-pipeline" class="hidden space-y-4">
+                    <div id="conversionKpis" class="grid grid-cols-1 sm:grid-cols-3 gap-4"></div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                        <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
+                            <h3 class="sm-card-title text-slate-700 mb-3">បំពង់លំហូរការលក់ខែនេះ</h3>
+                            <div id="reportFunnelChart" class="w-full h-72"></div>
+                        </div>
+
+                        <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+                            <div class="p-5 border-b border-slate-100">
+                                <h3 class="sm-card-title text-slate-700">ស្ថានភាពសម្រង់តម្លៃតាមប្រភេទ</h3>
+                            </div>
+                            <table class="w-full text-left">
+                                <tbody id="quoteStatusBody" class="divide-y divide-slate-100 text-slate-700"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Panel: Approvals Summary -->
+                <div id="panel-approvals" class="hidden space-y-4">
+                    <div id="approvalKpis" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"></div>
+
+                    <div class="bg-white rounded-2xl border border-rose-200 shadow-sm overflow-hidden">
+                        <div class="p-4 border-b border-rose-100 bg-rose-50/60 flex items-center gap-2">
+                            <i class="fas fa-triangle-exclamation text-rose-600 text-sm"></i>
+                            <h3 class="sm-card-title text-rose-800">អតិថិជនដែលមានបំណុលហួសកាលកំណត់ 30 ថ្ងៃ</h3>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left">
+                                <thead class="bg-slate-50 text-slate-500 border-b border-slate-100">
+                                    <tr>
+                                        <th class="sm-th py-3 px-4">អតិថិជន</th>
+                                        <th class="sm-th py-3 px-4">លេខវិក្កយបត្រ</th>
+                                        <th class="sm-th py-3 px-4">ថ្ងៃហួសកាលកំណត់</th>
+                                        <th class="sm-th py-3 px-4 text-right">ទឹកប្រាក់ជំពាក់</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="overdueTableBody" class="divide-y divide-slate-100 text-slate-700"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="shared/scripts/ui-components.js"></script>
+    <script src="shared/scripts/data.js"></script>
+    <script src="shared/scripts/portal.js"></script>
+    <script>
+        function switchReportTab(name) {
+            ['perf', 'pipeline', 'approvals'].forEach(t => {
+                document.getElementById('panel-' + t).classList.toggle('hidden', t !== name);
+                document.getElementById('tabBtn-' + t).className = t === name
+                    ? 'sm-badge px-4 py-2 rounded-xl bg-[#1e3a5f] text-white font-semibold shadow-sm transition'
+                    : 'sm-badge px-4 py-2 rounded-xl text-slate-600 hover:bg-slate-100 font-medium transition';
+            });
+        }
+
+        let reportFunnel = null;
+
+        function statCard(label, value, tone) {
+            return `<div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
+                <span class="sm-kpi-label text-slate-500">${label}</span>
+                <h3 class="sm-kpi-value ${tone} mt-1">${value}</h3>
+            </div>`;
+        }
+
+        function renderReports() {
+            const range = getSelectedRange();
+            const m = dashboardMetrics(range);
+
+            document.getElementById('sumInvoiceCount').textContent = `${m.invoiceCount} វិក្កយបត្រ`;
+            document.getElementById('sumCollected').textContent = fmtUSD(m.collected);
+            document.getElementById('sumReceivable').textContent = fmtUSD(m.receivable);
+
+            document.getElementById('repTableBody').innerHTML = repPerformance(range).map(rep => {
+                const quotaTone = rep.quotaPercent >= 100 ? 'bg-emerald-50 text-emerald-700'
+                    : rep.quotaPercent >= 90 ? 'bg-blue-50 text-blue-700'
+                    : 'bg-slate-100 text-slate-600';
+                return `<tr class="hover:bg-slate-50 transition">
+                    <td class="sm-td py-3.5 px-4">${rep.name}</td>
+                    <td class="sm-td py-3.5 px-4">${rep.invoiceCount}</td>
+                    <td class="sm-td-strong py-3.5 px-4">${fmtUSD(rep.revenue)}</td>
+                    <td class="sm-td py-3.5 px-4 text-emerald-600">${fmtUSD(rep.collected)}</td>
+                    <td class="sm-td py-3.5 px-4 text-amber-600">${fmtUSD(rep.outstanding)}</td>
+                    <td class="sm-td py-3.5 px-4">${fmtPercent(rep.conversion, 0)}</td>
+                    <td class="py-3.5 px-4"><span class="sm-badge px-2 py-0.5 rounded-full ${quotaTone} font-semibold">${fmtPercent(rep.quotaPercent, 0)}</span></td>
+                </tr>`;
+            }).join('');
+
+            document.getElementById('conversionKpis').innerHTML =
+                statCard('សម្រង់តម្លៃសរុប', `${m.quoteCount} <span class="sm-kpi-unit text-slate-500">សំណើ</span>`, 'text-slate-700') +
+                statCard('បានបម្លែងជាវិក្កយបត្រ', `${m.convertedCount} <span class="sm-kpi-unit text-emerald-600">សំណើ</span>`, 'text-emerald-600') +
+                statCard('អត្រាជោគជ័យនៃការលក់', fmtPercent(m.winRate), 'text-purple-600');
+
+            document.getElementById('quoteStatusBody').innerHTML = quoteStatusBreakdown(range).map(row =>
+                `<tr class="hover:bg-slate-50 transition">
+                    <td class="sm-td py-3 px-5">${row.label}</td>
+                    <td class="sm-td-strong py-3 px-5 text-right ${row.color}">${row.value}</td>
+                </tr>`
+            ).join('');
+
+            const decisions = loadDecisions();
+            const decided = Object.values(decisions);
+            const countOf = a => decided.filter(d => d === a).length;
+            document.getElementById('approvalKpis').innerHTML =
+                statCard('សំណើបានអនុម័ត', countOf('approve'), 'text-emerald-600') +
+                statCard('សំណើបានបដិសេធ', countOf('reject'), 'text-rose-600') +
+                statCard('បញ្ជូនបន្តទៅអភិបាលទូទៅ', countOf('forward'), 'text-purple-600') +
+                statCard('សំណើនៅរង់ចាំ', totalPending(), 'text-amber-600');
+
+            document.getElementById('overdueTableBody').innerHTML = m.overdueList.map(inv => {
+                const cust = getCustomer(inv.customerId);
+                return `<tr class="hover:bg-slate-50 transition">
+                    <td class="sm-td py-3.5 px-4">${cust.name}</td>
+                    <td class="sm-td py-3.5 px-4">${inv.id}</td>
+                    <td class="sm-td py-3.5 px-4 text-rose-600">${daysBetween(inv.dueDate)} ថ្ងៃ</td>
+                    <td class="sm-td-strong py-3.5 px-4 text-right">${fmtUSD(inv.total - inv.paid)}</td>
+                </tr>`;
+            }).join('');
+
+            document.getElementById('navQueueBadge').textContent = totalPending();
+
+            const funnelEl = document.getElementById('reportFunnelChart');
+            if (funnelEl) {
+                if (!reportFunnel) reportFunnel = echarts.init(funnelEl);
+                reportFunnel.setOption({
+                    tooltip: { trigger: 'item', formatter: '{b}: {c} ករណី', textStyle: { fontFamily: 'Kantumruy Pro' } },
+                    series: [{
+                        type: 'funnel',
+                        left: '5%', width: '90%', top: 0, bottom: 0,
+                        minSize: '25%', maxSize: '100%', gap: 3,
+                        label: { show: true, position: 'inside', color: '#fff', fontSize: 11, fontWeight: 600, fontFamily: 'Kantumruy Pro' },
+                        itemStyle: { borderColor: '#fff', borderWidth: 1 },
+                        data: pipelineStages(range).map(s => ({ value: s.value, name: s.name, itemStyle: { color: s.color } }))
+                    }]
+                });
+            }
+        }
+
+        window.onDateRangeApplied = renderReports;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderDateRangePicker('dateFilterHost');
+            renderReports();
+
+            const trendEl = document.getElementById('salesTrendChart');
+            if (trendEl) {
+                const chart = echarts.init(trendEl);
+                chart.setOption({
+                    tooltip: { trigger: 'axis', textStyle: { fontFamily: 'Kantumruy Pro' } },
+                    grid: { top: '10%', left: '3%', right: '4%', bottom: '15%', containLabel: true },
+                    xAxis: {
+                        type: 'category',
+                        data: WEEKLY_REVENUE.map(w => w.week),
+                        axisLabel: { fontFamily: 'Kantumruy Pro' }
+                    },
+                    yAxis: { type: 'value', axisLabel: { fontFamily: 'Kantumruy Pro' } },
+                    series: [{
+                        name: 'ការលក់', type: 'line', smooth: true,
+                        data: WEEKLY_REVENUE.map(w => w.actual),
+                        itemStyle: { color: '#1e3a5f' },
+                        lineStyle: { width: 3 },
+                        areaStyle: { color: 'rgba(30, 58, 95, 0.08)' }
+                    }]
+                });
+                window.addEventListener('resize', () => chart.resize());
+            }
+
+            window.addEventListener('resize', () => {
+                if (reportFunnel) reportFunnel.resize();
+            });
+        });
+    </script>
+</body>
+</html>
