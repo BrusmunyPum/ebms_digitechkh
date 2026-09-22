@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DIGITECHKH - ពិនិត្យសម្រង់តម្លៃលម្អិតមុនអនុម័ត</title>
-    <link rel="icon" type="image/png" href="shared/assets/favicon.png">
+    <link rel="icon" type="image/png" href="../../../shared/assets/favicon.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,70 +26,13 @@
             }
         }
     </script>
-    <link rel="stylesheet" href="shared/styles/custom.css">
-    <link rel="stylesheet" href="shared/styles/portal.css">
+    <link rel="stylesheet" href="../../../shared/styles/custom.css">
+    <link rel="stylesheet" href="../../../shared/styles/portal.css">
 </head>
-<body id="smPortal" class="bg-slate-50 font-sans text-slate-800 text-[16px] flex h-screen overflow-hidden">
+<body id="smPortal" data-role-root=".." data-active="approvals" class="bg-slate-50 font-sans text-slate-800 text-[16px] flex h-screen overflow-hidden">
 
-    <!-- Sales Manager Sidebar -->
-    <aside class="w-64 bg-[#1e3a5f] text-white flex flex-col flex-shrink-0 select-none z-20 border-r border-slate-700">
-        <div class="h-[72px] px-6 flex items-center gap-3 border-b border-white/10 flex-shrink-0">
-            <div class="w-9 h-9 rounded-xl bg-white/15 border border-white/20 flex items-center justify-center p-1 shadow-sm overflow-hidden flex-shrink-0">
-                <img src="shared/assets/logo-mark-transparent.png" alt="DIGITECHKH" class="w-full h-full object-contain">
-            </div>
-            <div>
-                <h1 class="text-lg font-semibold tracking-wider whitespace-nowrap text-white">DIGITECHKH</h1>
-                <span class="sm-nav-note font-medium text-sky-300 uppercase tracking-wider block">ច្រកគ្រប់គ្រងលក់</span>
-            </div>
-        </div>
+    <div id="sidebarHost"></div>
 
-        <div class="px-5 py-3 border-b border-white/5 bg-black/15">
-            <div class="flex items-center justify-between">
-                <span class="sm-nav-note text-sky-200">តួនាទី:</span>
-                <span class="sm-badge inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-sky-500/20 text-sky-200 border border-sky-400/30">
-                    <i class="fas fa-user-tie text-[10px]"></i> អ្នកគ្រប់គ្រងផ្នែកលក់
-                </span>
-            </div>
-        </div>
-
-        <nav class="flex-1 overflow-y-auto px-4 py-4 space-y-1.5 scrollbar-hide">
-            <a href="dashboard.html" class="flex items-center p-3 text-sky-100 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
-                <i class="fas fa-chart-pie w-6 text-center text-sky-300"></i>
-                <span class="ml-3 sm-nav-label">ផ្ទាំងគ្រប់គ្រង</span>
-            </a>
-
-            <a href="approvals.html" class="flex items-center justify-between p-3 bg-white/15 text-white rounded-xl shadow-sm transition-all whitespace-nowrap border border-white/10">
-                <div class="flex items-center">
-                    <i class="fas fa-stamp w-6 text-center text-sky-300"></i>
-                    <span class="ml-3 sm-nav-label">ការអនុម័ត</span>
-                </div>
-                <span id="navQueueBadge" class="sm-badge bg-rose-500 text-white px-2 py-0.5 rounded-full">5</span>
-            </a>
-
-            <a href="reports.html" class="flex items-center p-3 text-sky-100 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
-                <i class="fas fa-chart-column w-6 text-center text-sky-300"></i>
-                <span class="ml-3 sm-nav-label">របាយការណ៍លក់</span>
-            </a>
-
-            <div class="p-3 rounded-xl bg-white/5 border border-white/10 sm-nav-note text-sky-200 mt-6">
-                <i class="fas fa-info-circle mr-1 text-sky-300"></i> បញ្ចុះតម្លៃ 0.0% ដល់ 15.0% អនុម័តដោយផ្ទាល់។ លើសពី 15.0% ត្រូវបញ្ជូនទៅអភិបាលទូទៅ។
-            </div>
-        </nav>
-
-        <div class="p-4 border-t border-white/10 bg-black/10">
-            <div class="flex items-center gap-3 px-2">
-                <div class="w-9 h-9 rounded-full bg-white/15 border border-white/20 text-white flex items-center justify-center font-semibold text-xs flex-shrink-0">
-                    ហវ
-                </div>
-                <div class="min-w-0">
-                    <p class="sm-value text-white truncate">ហេង វិច្ឆិកា</p>
-                    <p class="sm-nav-note text-sky-300 truncate">អ្នកគ្រប់គ្រងផ្នែកលក់</p>
-                </div>
-            </div>
-        </div>
-    </aside>
-
-    <!-- Main Content -->
     <div class="flex-1 flex flex-col h-full overflow-hidden">
         <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
             <div class="flex items-center gap-4 min-w-0">
@@ -115,9 +58,9 @@
         </main>
     </div>
 
-    <script src="shared/scripts/ui-components.js"></script>
-    <script src="shared/scripts/data.js"></script>
-    <script src="shared/scripts/portal.js"></script>
+    <script src="../../../shared/scripts/ui-components.js"></script>
+    <script src="../data.js"></script>
+    <script src="../../../shared/scripts/portal.js"></script>
     <script>
         const quoteId = new URLSearchParams(location.search).get('id') || 'QT-2026-0089';
         const quote = getQuote(quoteId);
@@ -183,8 +126,8 @@
                 </button>`;
 
             if (decided || quote.status !== 'pending_approval') {
-                actions.innerHTML = printBtn + `
-                    <span class="sm-badge px-4 py-2.5 rounded-xl bg-slate-100 text-slate-500 font-medium">សំណើនេះត្រូវបានសម្រេចរួចហើយ</span>`;
+                actions.innerHTML = printBtn +
+                    '<span class="sm-badge px-4 py-2.5 rounded-xl bg-slate-100 text-slate-500 font-medium">សំណើនេះត្រូវបានសម្រេចរួចហើយ</span>';
                 return;
             }
 
@@ -335,7 +278,7 @@
                                             return `<tr>
                                                 <td class="py-3 px-4">
                                                     <p class="sm-td text-slate-700">${p.name}</p>
-                                                    <span class="sm-td-sub text-slate-400">${it.sku}</span>
+                                                    <span class="sm-td-sub text-slate-400">${it.sku} · ${CATEGORIES[p.category]}</span>
                                                 </td>
                                                 <td class="sm-td py-3 px-4 text-center">${it.qty} ${p.unit}</td>
                                                 <td class="sm-td py-3 px-4 text-right">${fmtUSD(it.price)}</td>
@@ -453,16 +396,12 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            document.getElementById('navQueueBadge').textContent = totalPending();
-
             if (!quote) {
                 renderNotFound();
                 return;
             }
-
             const totals = quoteTotals(quote);
-            const decided = loadDecisions()[quote.id];
-            renderHeader(totals, decided);
+            renderHeader(totals, loadDecisions()[quote.id]);
             renderBody(totals);
         });
     </script>

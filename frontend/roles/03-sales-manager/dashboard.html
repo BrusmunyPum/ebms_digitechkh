@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DIGITECHKH - ផ្ទាំងគ្រប់គ្រងអ្នកគ្រប់គ្រងផ្នែកលក់</title>
-    <link rel="icon" type="image/png" href="shared/assets/favicon.png">
+    <link rel="icon" type="image/png" href="../../shared/assets/favicon.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,87 +27,28 @@
             }
         }
     </script>
-    <link rel="stylesheet" href="shared/styles/custom.css">
-    <link rel="stylesheet" href="shared/styles/portal.css">
+    <link rel="stylesheet" href="../../shared/styles/custom.css">
+    <link rel="stylesheet" href="../../shared/styles/portal.css">
 </head>
-<body id="smPortal" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+<body id="smPortal" data-role-root="." data-active="dashboard" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
 
-    <!-- Sales Manager Sidebar -->
-    <aside class="w-64 bg-[#1e3a5f] text-white flex flex-col flex-shrink-0 select-none z-20 border-r border-slate-700">
-        <div class="h-[72px] px-6 flex items-center gap-3 border-b border-white/10 flex-shrink-0">
-            <div class="w-9 h-9 rounded-xl bg-white/15 border border-white/20 flex items-center justify-center p-1 shadow-sm overflow-hidden flex-shrink-0">
-                <img src="shared/assets/logo-mark-transparent.png" alt="DIGITECHKH" class="w-full h-full object-contain">
-            </div>
-            <div>
-                <h1 class="text-lg font-semibold tracking-wider whitespace-nowrap text-white">DIGITECHKH</h1>
-                <span class="sm-nav-note font-medium text-sky-300 uppercase tracking-wider block">ច្រកគ្រប់គ្រងលក់</span>
-            </div>
-        </div>
+    <div id="sidebarHost"></div>
 
-        <div class="px-5 py-3 border-b border-white/5 bg-black/15">
-            <div class="flex items-center justify-between">
-                <span class="sm-nav-note text-sky-200">តួនាទី:</span>
-                <span class="sm-badge inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-sky-500/20 text-sky-200 border border-sky-400/30">
-                    <i class="fas fa-user-tie text-[10px]"></i> អ្នកគ្រប់គ្រងផ្នែកលក់
-                </span>
-            </div>
-        </div>
-
-        <nav class="flex-1 overflow-y-auto px-4 py-4 space-y-1.5 scrollbar-hide">
-            <a href="dashboard.html" class="flex items-center p-3 bg-white/15 text-white rounded-xl shadow-sm transition-all whitespace-nowrap border border-white/10">
-                <i class="fas fa-chart-pie w-6 text-center text-sky-300"></i>
-                <span class="ml-3 sm-nav-label">ផ្ទាំងគ្រប់គ្រង</span>
-            </a>
-
-            <a href="approvals.html" class="flex items-center justify-between p-3 text-sky-100 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
-                <div class="flex items-center">
-                    <i class="fas fa-stamp w-6 text-center text-sky-300"></i>
-                    <span class="ml-3 sm-nav-label">ការអនុម័ត</span>
-                </div>
-                <span id="navQueueBadge" class="sm-badge bg-rose-500 text-white px-2 py-0.5 rounded-full">5</span>
-            </a>
-
-            <a href="reports.html" class="flex items-center p-3 text-sky-100 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
-                <i class="fas fa-chart-column w-6 text-center text-sky-300"></i>
-                <span class="ml-3 sm-nav-label">របាយការណ៍លក់</span>
-            </a>
-
-            <div class="p-3 rounded-xl bg-white/5 border border-white/10 sm-nav-note text-sky-200 mt-6">
-                <i class="fas fa-info-circle mr-1 text-sky-300"></i> បញ្ចុះតម្លៃ 0.0% ដល់ 15.0% អនុម័តដោយផ្ទាល់។ លើសពី 15.0% ត្រូវបញ្ជូនទៅអភិបាលទូទៅ។
-            </div>
-        </nav>
-
-        <div class="p-4 border-t border-white/10 bg-black/10">
-            <div class="flex items-center gap-3 px-2">
-                <div class="w-9 h-9 rounded-full bg-white/15 border border-white/20 text-white flex items-center justify-center font-semibold text-xs flex-shrink-0">
-                    ហវ
-                </div>
-                <div class="min-w-0">
-                    <p class="sm-value text-white truncate">ហេង វិច្ឆិកា</p>
-                    <p class="sm-nav-note text-sky-300 truncate">អ្នកគ្រប់គ្រងផ្នែកលក់</p>
-                </div>
-            </div>
-        </div>
-    </aside>
-
-    <!-- Main Content -->
     <div class="flex-1 flex flex-col h-full overflow-hidden">
         <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
             <div class="min-w-0">
                 <h2 class="text-xl font-semibold text-gray-800 leading-tight truncate">ផ្ទាំងគ្រប់គ្រងអ្នកគ្រប់គ្រងផ្នែកលក់</h2>
-                <p class="sm-card-sub text-gray-500 mt-0.5 truncate">ទិដ្ឋភាពជាក់ស្តែងនៃចំណូលលក់ ការអនុម័ត និងសមិទ្ធផលក្រុមការងារ</p>
+                <p class="sm-card-sub text-gray-500 mt-0.5 truncate">ល្បឿនលក់ សមិទ្ធផលក្រុមការងារ និងការតាមដានកម្រៃជើងសារ</p>
             </div>
 
             <div class="flex items-center space-x-3 flex-shrink-0">
-                <a href="approvals.html" class="sm-badge hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-rose-50 hover:bg-rose-100 border border-rose-200 text-rose-700 font-semibold transition">
+                <a href="approvals/approvals.html" class="sm-badge hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-rose-50 hover:bg-rose-100 border border-rose-200 text-rose-700 font-semibold transition">
                     <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
-                    <span id="headerQueuePill">សំណើរង់ចាំអនុម័ត៖ 5 ករណី</span>
+                    <span id="headerQueuePill">សំណើរង់ចាំអនុម័ត</span>
                 </a>
 
                 <div class="flex items-center sm:border-l sm:pl-3">
-                    <div class="w-10 h-10 rounded-full bg-[#1e3a5f] text-white flex items-center justify-center font-semibold text-sm shadow-sm">
-                        ហវ
-                    </div>
+                    <div class="w-10 h-10 rounded-full bg-[#1e3a5f] text-white flex items-center justify-center font-semibold text-sm shadow-sm">ហវ</div>
                 </div>
             </div>
         </header>
@@ -127,11 +68,20 @@
                 <!-- KPI Cards -->
                 <div id="kpiRow" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"></div>
 
+                <!-- Sales Velocity -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
+                    <div class="mb-4">
+                        <h3 class="sm-card-title text-slate-700">ល្បឿននៃការលក់ប្រចាំខែ</h3>
+                        <p class="sm-card-sub text-slate-500">វាស់វែងល្បឿនបិទការលក់ និងទំហំជាមធ្យមនៃប្រតិបត្តិការនីមួយៗ</p>
+                    </div>
+                    <div id="velocityRow" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3"></div>
+                </div>
+
                 <!-- Quota Progress -->
                 <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
                     <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
                         <div>
-                            <h3 class="sm-card-title text-slate-700">ការសម្រេចកូតាលក់ក្នុងកំឡុងពេលដែលបានជ្រើស</h3>
+                            <h3 class="sm-card-title text-slate-700">ការសម្រេចកូតាលក់</h3>
                             <p id="quotaSubtitle" class="sm-card-sub text-slate-500"></p>
                         </div>
                         <span id="quotaBadge" class="sm-badge px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200"></span>
@@ -155,71 +105,60 @@
                     </div>
                 </div>
 
-                <!-- Chart Row -->
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
-                    <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm lg:col-span-2">
-                        <div class="mb-4">
-                            <h3 class="sm-card-title text-slate-700">ចំណូលលក់ ធៀបនឹងគោលដៅ (6 ខែចុងក្រោយ)</h3>
-                            <p class="sm-card-sub text-slate-500">តាមដាននិន្នាការលក់ជាក់ស្តែងធៀបនឹងកូតាដែលបានកំណត់</p>
-                        </div>
-                        <div id="revenueTargetChart" class="w-full h-72"></div>
+                <!-- Revenue Chart -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
+                    <div class="mb-4">
+                        <h3 class="sm-card-title text-slate-700">ចំណូលលក់ ធៀបនឹងគោលដៅ (6 ខែចុងក្រោយ)</h3>
+                        <p class="sm-card-sub text-slate-500">តាមដាននិន្នាការលក់ជាក់ស្តែងធៀបនឹងកូតាដែលបានកំណត់</p>
                     </div>
+                    <div id="revenueTargetChart" class="w-full h-72"></div>
+                </div>
 
-                    <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
-                        <h3 class="sm-card-title text-slate-700">បំពង់លំហូរការលក់</h3>
-                        <p class="sm-card-sub text-slate-500 mb-2">ចំនួនសំណើតាមដំណាក់កាលនីមួយៗ</p>
-                        <div id="pipelineFunnelChart" class="w-full h-64"></div>
+                <!-- Leaderboard + Commission -->
+                <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+                    <div class="p-5 border-b border-slate-100 flex flex-wrap items-center justify-between gap-2">
+                        <div>
+                            <h3 class="sm-card-title text-slate-700">ចំណាត់ថ្នាក់បុគ្គលិកលក់ និងកម្រៃជើងសារ</h3>
+                            <p class="sm-card-sub text-slate-500">កម្រៃជើងសារបើកជូនលើទឹកប្រាក់ដែលប្រមូលបានជាក់ស្តែងប៉ុណ្ណោះ</p>
+                        </div>
+                        <a href="reports/reports.html" class="sm-badge font-semibold text-[#1e3a5f] hover:underline">មើលរបាយការណ៍ពេញលេញ</a>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left">
+                            <thead class="bg-slate-50 text-slate-500 border-b border-slate-100">
+                                <tr>
+                                    <th class="sm-th py-3 px-4">ចំណាត់ថ្នាក់</th>
+                                    <th class="sm-th py-3 px-4">បុគ្គលិកលក់</th>
+                                    <th class="sm-th py-3 px-4">វិក្កយបត្រ</th>
+                                    <th class="sm-th py-3 px-4">ចំណូលសម្រេចបាន</th>
+                                    <th class="sm-th py-3 px-4">កូតា</th>
+                                    <th class="sm-th py-3 px-4">អត្រាកម្រៃ</th>
+                                    <th class="sm-th py-3 px-4 text-right">កម្រៃត្រូវបើក</th>
+                                </tr>
+                            </thead>
+                            <tbody id="leaderboardBody" class="divide-y divide-slate-100 text-slate-700"></tbody>
+                            <tfoot id="leaderboardFoot" class="bg-slate-50 border-t border-slate-200"></tfoot>
+                        </table>
                     </div>
                 </div>
 
-                <!-- Leaderboard + Overdue Debt -->
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
-                    <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden lg:col-span-2">
-                        <div class="p-5 border-b border-slate-100 flex flex-wrap items-center justify-between gap-2">
-                            <h3 class="sm-card-title text-slate-700">តារាងចំណាត់ថ្នាក់បុគ្គលិកលក់ឆ្នើម</h3>
-                            <a href="reports.html" class="sm-badge font-semibold text-[#1e3a5f] hover:underline">មើលរបាយការណ៍ពេញលេញ</a>
-                        </div>
-                        <div class="overflow-x-auto">
-                            <table class="w-full text-left">
-                                <thead class="bg-slate-50 text-slate-500 border-b border-slate-100">
-                                    <tr>
-                                        <th class="sm-th py-3 px-4">ចំណាត់ថ្នាក់</th>
-                                        <th class="sm-th py-3 px-4">បុគ្គលិកលក់</th>
-                                        <th class="sm-th py-3 px-4">វិក្កយបត្រ</th>
-                                        <th class="sm-th py-3 px-4">ចំណូលសម្រេចបាន</th>
-                                        <th class="sm-th py-3 px-4">កូតា</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="leaderboardBody" class="divide-y divide-slate-100 text-slate-700"></tbody>
-                            </table>
-                        </div>
+                <!-- Overdue Debt -->
+                <div class="bg-white rounded-2xl border border-rose-200 shadow-sm overflow-hidden">
+                    <div class="p-4 border-b border-rose-100 bg-rose-50/60 flex items-center gap-2">
+                        <i class="fas fa-triangle-exclamation text-rose-600 text-sm"></i>
+                        <h3 class="sm-card-title text-rose-800">បំណុលហួសកាលកំណត់ 30 ថ្ងៃ</h3>
                     </div>
-
-                    <!-- Overdue Debt Alert -->
-                    <div class="bg-white rounded-2xl border border-rose-200 shadow-sm overflow-hidden">
-                        <div class="p-4 border-b border-rose-100 bg-rose-50/60 flex items-center gap-2">
-                            <i class="fas fa-triangle-exclamation text-rose-600 text-sm"></i>
-                            <h3 class="sm-card-title text-rose-800">បំណុលហួសកាលកំណត់ 30 ថ្ងៃ</h3>
-                        </div>
-                        <div id="overdueList" class="divide-y divide-slate-100"></div>
-                        <div class="p-3 bg-slate-50 border-t border-slate-100">
-                            <a href="reports.html" class="sm-td-sub font-semibold text-rose-700 hover:underline inline-flex items-center gap-1">
-                                មើលបំណុលហួសកាលកំណត់ទាំងអស់ <i class="fas fa-arrow-right text-[9px]"></i>
-                            </a>
-                        </div>
-                    </div>
+                    <div id="overdueList" class="divide-y divide-slate-100"></div>
                 </div>
 
             </div>
         </main>
     </div>
 
-    <script src="shared/scripts/ui-components.js"></script>
-    <script src="shared/scripts/data.js"></script>
-    <script src="shared/scripts/portal.js"></script>
+    <script src="../../shared/scripts/ui-components.js"></script>
+    <script src="data.js"></script>
+    <script src="../../shared/scripts/portal.js"></script>
     <script>
-        let funnelChart = null;
-
         function kpiCard(opts) {
             return `
                 <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
@@ -234,6 +173,14 @@
                 </div>`;
         }
 
+        function miniStat(label, value, sub) {
+            return `<div class="p-3 rounded-xl bg-slate-50 border border-slate-100">
+                <span class="sm-kpi-sub text-slate-500 block">${label}</span>
+                <span class="sm-kpi-value text-slate-700">${value}</span>
+                <span class="sm-kpi-sub text-slate-400 block mt-0.5">${sub}</span>
+            </div>`;
+        }
+
         function renderKpis(m) {
             document.getElementById('kpiRow').innerHTML =
                 kpiCard({
@@ -242,7 +189,7 @@
                     sub: `${m.invoiceCount} វិក្កយបត្រ · សម្រេច ${fmtPercent(m.quotaPercent)} នៃគោលដៅ`,
                     subTone: 'text-emerald-600 font-semibold'
                 }) +
-                `<a href="approvals.html" class="block bg-white rounded-2xl p-5 border-2 border-amber-200 shadow-sm bg-amber-50/20 hover:border-amber-300 transition">
+                `<a href="approvals/approvals.html" class="block bg-white rounded-2xl p-5 border-2 border-amber-200 shadow-sm bg-amber-50/20 hover:border-amber-300 transition">
                     <div class="flex items-center justify-between mb-2 gap-2">
                         <span class="sm-kpi-label text-amber-700 font-semibold">សម្រង់តម្លៃរង់ចាំការអនុម័ត</span>
                         <div class="w-9 h-9 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center flex-shrink-0">
@@ -267,20 +214,27 @@
                 });
         }
 
+        function renderVelocity(range) {
+            const v = salesVelocity(range);
+            document.getElementById('velocityRow').innerHTML =
+                miniStat('ទំហំជាមធ្យមក្នុងមួយប្រតិបត្តិការ', fmtUSD(v.avgDealSize), 'ទឹកប្រាក់ក្នុងមួយវិក្កយបត្រ') +
+                miniStat('វដ្តបិទការលក់ជាមធ្យម', `${v.cycleDays.toFixed(1)} <span class="sm-kpi-unit text-slate-500">ថ្ងៃ</span>`, 'ពីសម្រង់តម្លៃដល់ការបិទ') +
+                miniStat('ប្រតិបត្តិការក្នុងមួយសប្តាហ៍', v.dealsPerWeek.toFixed(1), 'ល្បឿនបិទការលក់') +
+                miniStat('ចំណូលជាមធ្យមក្នុងមួយថ្ងៃ', fmtUSD(v.revenuePerDay), 'គិតលើកំឡុងពេលដែលបានជ្រើស');
+        }
+
         function renderQuota(m) {
-            const pct = Math.min(m.quotaPercent, 100);
             document.getElementById('quotaSubtitle').textContent =
                 `គោលដៅរួម ${fmtUSD(m.totalTarget)} · សម្រេចបាន ${fmtUSD(m.revenue)}`;
             document.getElementById('quotaBadge').textContent = `សម្រេច ${fmtPercent(m.quotaPercent)}`;
-            document.getElementById('quotaBar').style.width = pct + '%';
-            document.getElementById('quotaRemain').textContent =
-                fmtUSD(Math.max(m.totalTarget - m.revenue, 0));
+            document.getElementById('quotaBar').style.width = Math.min(m.quotaPercent, 100) + '%';
+            document.getElementById('quotaRemain').textContent = fmtUSD(Math.max(m.totalTarget - m.revenue, 0));
             document.getElementById('quotaInvoices').textContent = `${m.invoiceCount} វិក្កយបត្រ`;
             document.getElementById('quotaCollected').textContent = fmtUSD(m.collected);
         }
 
         function renderLeaderboard(range) {
-            const rows = repPerformance(range);
+            const rows = commissionRows(range);
             document.getElementById('leaderboardBody').innerHTML = rows.map((rep, i) => {
                 const rankTone = i === 0 ? 'bg-amber-100 text-amber-700' : 'bg-slate-100 text-slate-600';
                 const quotaTone = rep.quotaPercent >= 100 ? 'bg-emerald-50 text-emerald-700'
@@ -294,58 +248,50 @@
                     <td class="sm-td py-3.5 px-4">${rep.invoiceCount}</td>
                     <td class="sm-td-strong py-3.5 px-4">${fmtUSD(rep.revenue)}</td>
                     <td class="py-3.5 px-4"><span class="sm-badge px-2 py-0.5 rounded-full ${quotaTone} font-semibold">${fmtPercent(rep.quotaPercent, 0)}</span></td>
+                    <td class="sm-td py-3.5 px-4">${fmtPercent(rep.commission)}</td>
+                    <td class="sm-td-strong py-3.5 px-4 text-right text-emerald-700">${fmtUSD(rep.payableNow)}</td>
                 </tr>`;
             }).join('');
+
+            const totalPayable = rows.reduce((s, r) => s + r.payableNow, 0);
+            const totalAccrued = rows.reduce((s, r) => s + r.commissionAmount, 0);
+            document.getElementById('leaderboardFoot').innerHTML = `
+                <tr>
+                    <td colspan="5" class="sm-td py-3 px-4 text-slate-500">កម្រៃបង្គរសរុប ${fmtUSD(totalAccrued)} · បើកជូនតាមប្រាក់ប្រមូលបាន</td>
+                    <td class="sm-td py-3 px-4 text-slate-600 font-semibold">សរុប</td>
+                    <td class="sm-td-strong py-3 px-4 text-right text-emerald-700">${fmtUSD(totalPayable)}</td>
+                </tr>`;
         }
 
         function renderOverdue(m) {
             const host = document.getElementById('overdueList');
             if (!m.overdueList.length) {
-                host.innerHTML = `<div class="p-6 text-center">
-                    <p class="sm-card-sub text-slate-500">គ្មានបំណុលហួសកាលកំណត់ទេ</p>
-                </div>`;
+                host.innerHTML = '<div class="p-6 text-center"><p class="sm-card-sub text-slate-500">គ្មានបំណុលហួសកាលកំណត់ទេ</p></div>';
                 return;
             }
             host.innerHTML = m.overdueList.map(inv => {
                 const cust = getCustomer(inv.customerId);
-                const days = daysBetween(inv.dueDate);
                 return `<div class="p-4 flex items-center justify-between gap-3">
                     <div class="min-w-0">
                         <p class="sm-td text-slate-700 truncate">${cust.name}</p>
-                        <p class="sm-td-sub text-slate-400">${inv.id} · ហួស ${days} ថ្ងៃ</p>
+                        <p class="sm-td-sub text-slate-400">${inv.id} · ហួស ${daysBetween(inv.dueDate)} ថ្ងៃ</p>
                     </div>
                     <span class="sm-td-strong text-rose-600 flex-shrink-0">${fmtUSD(inv.total - inv.paid)}</span>
                 </div>`;
             }).join('');
         }
 
-        function renderFunnel(range) {
-            const el = document.getElementById('pipelineFunnelChart');
-            if (!el) return;
-            if (!funnelChart) funnelChart = echarts.init(el);
-            funnelChart.setOption({
-                tooltip: { trigger: 'item', formatter: '{b}: {c} ករណី', textStyle: { fontFamily: 'Kantumruy Pro' } },
-                series: [{
-                    type: 'funnel',
-                    left: '5%', width: '90%', top: 0, bottom: 0,
-                    minSize: '25%', maxSize: '100%', gap: 3,
-                    label: { show: true, position: 'inside', color: '#fff', fontSize: 11, fontWeight: 600, fontFamily: 'Kantumruy Pro' },
-                    itemStyle: { borderColor: '#fff', borderWidth: 1 },
-                    data: pipelineStages(range).map(s => ({ value: s.value, name: s.name, itemStyle: { color: s.color } }))
-                }]
-            });
-        }
-
         function renderDashboard() {
             const range = getSelectedRange();
             const metrics = dashboardMetrics(range);
             renderKpis(metrics);
+            renderVelocity(range);
             renderQuota(metrics);
             renderLeaderboard(range);
             renderOverdue(metrics);
-            renderFunnel(range);
-            document.getElementById('navQueueBadge').textContent = totalPending();
-            document.getElementById('headerQueuePill').textContent = totalPending() + ' ករណីរង់ចាំអនុម័ត';
+            document.getElementById('headerQueuePill').textContent = `សំណើរង់ចាំអនុម័ត៖ ${totalPending()} ករណី`;
+            const badge = document.getElementById('navQueueBadge');
+            if (badge) badge.textContent = totalPending();
         }
 
         window.onDateRangeApplied = renderDashboard;
@@ -361,11 +307,7 @@
                     tooltip: { trigger: 'axis', textStyle: { fontFamily: 'Kantumruy Pro' } },
                     legend: { data: ['ចំណូលជាក់ស្តែង', 'គោលដៅ'], bottom: 0, textStyle: { fontFamily: 'Kantumruy Pro' } },
                     grid: { top: '10%', left: '3%', right: '4%', bottom: '15%', containLabel: true },
-                    xAxis: {
-                        type: 'category',
-                        data: MONTHLY_REVENUE.map(m => m.month),
-                        axisLabel: { fontFamily: 'Kantumruy Pro' }
-                    },
+                    xAxis: { type: 'category', data: MONTHLY_REVENUE.map(m => m.month), axisLabel: { fontFamily: 'Kantumruy Pro' } },
                     yAxis: { type: 'value', axisLabel: { fontFamily: 'Kantumruy Pro' } },
                     series: [
                         { name: 'ចំណូលជាក់ស្តែង', type: 'bar', data: MONTHLY_REVENUE.map(m => m.actual), itemStyle: { color: '#1e3a5f', borderRadius: [6, 6, 0, 0] } },
@@ -374,10 +316,6 @@
                 });
                 window.addEventListener('resize', () => chart.resize());
             }
-
-            window.addEventListener('resize', () => {
-                if (funnelChart) funnelChart.resize();
-            });
         });
     </script>
 </body>

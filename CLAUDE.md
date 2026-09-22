@@ -10,21 +10,48 @@ There is no build system, no `package.json`, no bundler, no tests, and no backen
 
 There is no `docs/` directory anymore (it was removed). Business/system design intent now lives in `documentation/` — see [Documentation suite](#documentation-suite-documentation) below.
 
-## Repository is mid-rebuild — three trees, don't confuse them
+## Repository is mid-rebuild — two trees, don't confuse them
 
-- **`frontend/`** — the live prototype, currently reset to a bare skeleton. `index.html` redirects to `roles/00-auth/login.html`, which **does not exist yet** — opening it today just shows the Khmer "redirecting…" message going nowhere. All that exists otherwise is `shared/{assets,scripts,styles}`: `shared/scripts/ui-components.js` and `shared/styles/custom.css` are byte-identical copies of the old `src/scripts/ui-components.js` / `src/styles/custom.css` (see below). `shared/scripts/sidebar.js`, `action-tracker.js` and `main.js` were **not** carried over — they exist only in the backup. There are no page files under `frontend/` yet — this is where new prototype pages are expected to be built.
-- **`frontend_old_admin_backup/`** — the previous, fully-built prototype (12 role portals, ~56 pages) that `documentation/`'s technical specs describe and link to. Its `src/pages/` tree and full `src/scripts/` runtime (`sidebar.js`, `ui-components.js`, `action-tracker.js`, `main.js`) are the source of every layout/component pattern referenced in the sections below. Treat it as a **read-only reference** for markup, copy, and behaviour — copy patterns out of it into `frontend/`, don't edit it in place.
-- **`prototype/`** — currently empty. A scratch directory at the repo root for upcoming prototype work; check with the user whether new pages belong here or under `frontend/` before assuming.
+- **`frontend/`** — the live rebuild, organised **by role** rather than by module. `index.html` redirects to `roles/00-auth/login.html`, which **does not exist yet**. Built so far:
+  ```
+  frontend/
+  ├── shared/
+  │   ├── assets/                     logos, favicons
+  │   ├── scripts/ui-components.js    (unchanged copy of the old runtime)
+  │   ├── scripts/portal.js           sidebar renderer + date picker + mobile drawer + ⋮ menu
+  │   ├── styles/custom.css           (unchanged copy of the old stylesheet)
+  │   └── styles/portal.css           ID-scoped type scale + A4 print rules
+  └── roles/03-sales-manager/         Sales Manager portal (5 pages)
+      ├── data.js                     the role's single mock-data source
+      ├── dashboard.html
+      ├── approvals/{approvals,view-approval}.html
+      ├── pipeline/pipeline.html
+      └── reports/reports.html
+  ```
+  Other roles get their own `roles/NN-<role>/` folder alongside it.
+- **`frontend_old_admin_backup/`** — the previous, fully-built prototype (12 role portals, ~56 pages) that `documentation/`'s technical specs describe and link to. Its `src/pages/` tree and full `src/scripts/` runtime (`sidebar.js`, `ui-components.js`, `action-tracker.js`, `main.js`) are the source of the layout/component patterns described below. Treat it as a **read-only reference** — copy patterns out of it, don't edit it in place. Note `sidebar.js`, `action-tracker.js` and `main.js` were never carried into `frontend/`; `portal.js` replaces the parts that were needed.
 
 ## Running it
 
 ```bash
-open frontend/index.html                            # currently redirects to a page that doesn't exist yet (roles/00-auth/login.html)
-open frontend_old_admin_backup/index.html            # the old, fully-built prototype — still browsable
-python3 -m http.server 8000 --directory frontend     # or serve either tree, then open localhost:8000
+open frontend/roles/03-sales-manager/dashboard.html   # the Sales Manager portal
+open frontend_old_admin_backup/index.html             # the old, fully-built prototype — still browsable
+python3 -m http.server 8000 --directory frontend      # or serve either tree, then open localhost:8000
 ```
 
+`frontend/index.html` still points at a login page that hasn't been built, so enter via a role's `dashboard.html` for now.
+
 No build, lint, or test commands exist. Verification is visual: open the page in a browser.
+
+## How a page in `frontend/roles/` is assembled
+
+Unlike the backup (where every page carried its own ~153-line `<aside>` copy), these pages **generate the sidebar from one source**:
+
+- `<body>` carries `id="smPortal"` (scopes `portal.css`), `data-role-root` (`.` for a page at the role root, `..` for one in a subfolder) and `data-active` (which nav item to highlight).
+- The page contains only `<div id="sidebarHost"></div>`; `renderPortalSidebar()` in `portal.js` replaces it, building nav hrefs from `data-role-root`. Change the nav in `portal.js` and every page follows — there are no copies to keep in sync.
+- `portal.js` also provides `renderDateRangePicker(hostId)` (emits the GEMINI.md §3 markup, so it is identical everywhere by construction), `toggleRowActionMenu()` for the `⋮` menus, and the mobile drawer.
+- Script order on every page: `ui-components.js` → the role's `data.js` → `portal.js` → the page's own inline `<script>`.
+- All figures come from `data.js`; nothing numeric is hard-coded in the markup. Decisions and Kanban moves persist in `sessionStorage`, so counts stay consistent across pages within a session.
 
 ## Mandatory project standards
 

@@ -29,13 +29,48 @@ const CUSTOMERS = [
     { id: 'c-school', name: 'សាលារៀន អន្តរជាតិ អាស៊ី', tier: 'wholesale', contact: 'លោក ជា វិសាល', phone: '096 777 888', creditLimit: 12000, oldDebt: 3150, repId: 'u-chan' }
 ];
 
-const PRODUCTS = {
-    'DEL-OPT-7010': { name: 'កុំព្យូទ័រ Dell OptiPlex 7010', unit: 'ឈុត', retail: 720, wholesale: 650, dealer: 610 },
-    'MON-DEL-24': { name: 'អេក្រង់ Dell 24 អ៊ីញ S2421HN', unit: 'គ្រឿង', retail: 165, wholesale: 140, dealer: 132 },
-    'PRN-CAN-2900': { name: 'ម៉ាស៊ីនព្រីន Canon Laser LBP2900', unit: 'គ្រឿង', retail: 185, wholesale: 160, dealer: 152 },
-    'KEY-KEY-K8': { name: 'ក្តារចុចមេកានិច Keychron K8', unit: 'គ្រឿង', retail: 95, wholesale: 82, dealer: 76 },
-    'CHR-ERG-01': { name: 'កៅអីការិយាល័យ Ergonomic', unit: 'គ្រឿង', retail: 240, wholesale: 210, dealer: 198 }
+const CATEGORIES = {
+    computer: 'កុំព្យូទ័រ',
+    monitor: 'អេក្រង់',
+    printer: 'ម៉ាស៊ីនបោះពុម្ព',
+    accessory: 'គ្រឿងបន្លាស់',
+    furniture: 'គ្រឿងសង្ហារិម'
 };
+
+const PRODUCTS = {
+    'DEL-OPT-7010': { name: 'កុំព្យូទ័រ Dell OptiPlex 7010', unit: 'ឈុត', category: 'computer', retail: 720, wholesale: 650, dealer: 610 },
+    'MON-DEL-24': { name: 'អេក្រង់ Dell 24 អ៊ីញ S2421HN', unit: 'គ្រឿង', category: 'monitor', retail: 165, wholesale: 140, dealer: 132 },
+    'PRN-CAN-2900': { name: 'ម៉ាស៊ីនព្រីន Canon Laser LBP2900', unit: 'គ្រឿង', category: 'printer', retail: 185, wholesale: 160, dealer: 152 },
+    'KEY-KEY-K8': { name: 'ក្តារចុចមេកានិច Keychron K8', unit: 'គ្រឿង', category: 'accessory', retail: 95, wholesale: 82, dealer: 76 },
+    'CHR-ERG-01': { name: 'កៅអីការិយាល័យ Ergonomic', unit: 'គ្រឿង', category: 'furniture', retail: 240, wholesale: 210, dealer: 198 }
+};
+
+/* បំពង់លំហូរការលក់ — ដំណាក់កាល: lead, qualified, proposal, won, lost */
+const PIPELINE_STAGES = [
+    { id: 'lead', label: 'អតិថិជនសក្តានុពល', tone: 'slate', accent: '#94a3b8' },
+    { id: 'qualified', label: 'បានផ្ទៀងផ្ទាត់', tone: 'sky', accent: '#0ea5e9' },
+    { id: 'proposal', label: 'បានដាក់សម្រង់តម្លៃ', tone: 'amber', accent: '#f59e0b' },
+    { id: 'won', label: 'បិទការលក់ជោគជ័យ', tone: 'emerald', accent: '#10b981' },
+    { id: 'lost', label: 'បាត់បង់ឱកាស', tone: 'rose', accent: '#f43f5e' }
+];
+
+const PIPELINE_DEALS = [
+    { id: 'OPP-2026-0201', customerId: 'c-rasmey', repId: 'u-sao', stage: 'lead', value: 5200, category: 'computer', date: '2026-09-19', note: 'សាកសួរតម្លៃកុំព្យូទ័រការិយាល័យ 8 ឈុត' },
+    { id: 'OPP-2026-0202', customerId: 'c-school', repId: 'u-chan', stage: 'lead', value: 8600, category: 'monitor', date: '2026-09-18', note: 'គម្រោងដំឡើងបន្ទប់កុំព្យូទ័រថ្មី' },
+    { id: 'OPP-2026-0203', customerId: 'c-treyluk', repId: 'u-sao', stage: 'lead', value: 1850, category: 'accessory', date: '2026-09-17', note: 'ត្រូវការគ្រឿងបន្លាស់បន្ថែម' },
+    { id: 'OPP-2026-0210', customerId: 'c-hotel', repId: 'u-heng', stage: 'qualified', value: 14200, category: 'furniture', date: '2026-09-16', note: 'បានបញ្ជាក់ថវិកា និងកាលបរិច្ឆេទដឹកជញ្ជូន' },
+    { id: 'OPP-2026-0211', customerId: 'c-nimit', repId: 'u-chan', stage: 'qualified', value: 9400, category: 'computer', date: '2026-09-15', note: 'រង់ចាំការអនុម័តថវិកាពីនាយក' },
+    { id: 'OPP-2026-0212', customerId: 'c-domrey', repId: 'u-heng', stage: 'qualified', value: 3600, category: 'printer', date: '2026-09-14', note: 'ប្តូរម៉ាស៊ីនបោះពុម្ពចាស់ទាំងអស់' },
+    { id: 'OPP-2026-0220', customerId: 'c-rasmey', repId: 'u-sao', stage: 'proposal', value: 4483, category: 'computer', date: '2026-09-17', quoteId: 'QT-2026-0089', note: 'សម្រង់តម្លៃរង់ចាំការអនុម័តបញ្ចុះតម្លៃ 8.0%' },
+    { id: 'OPP-2026-0221', customerId: 'c-hotel', repId: 'u-heng', stage: 'proposal', value: 6155, category: 'furniture', date: '2026-09-17', quoteId: 'QT-2026-0091', note: 'សម្រង់តម្លៃរង់ចាំការអនុម័តបញ្ចុះតម្លៃ 12.0%' },
+    { id: 'OPP-2026-0222', customerId: 'c-nimit', repId: 'u-chan', stage: 'proposal', value: 11356, category: 'computer', date: '2026-09-16', quoteId: 'QT-2026-0094', note: 'បញ្ចុះតម្លៃ 18.0% ត្រូវបញ្ជូនទៅអភិបាលទូទៅ' },
+    { id: 'OPP-2026-0230', customerId: 'c-hotel', repId: 'u-heng', stage: 'won', value: 8450, category: 'furniture', date: '2026-09-18', note: 'បានចេញវិក្កយបត្រ INV-2026-0122' },
+    { id: 'OPP-2026-0231', customerId: 'c-rasmey', repId: 'u-sao', stage: 'won', value: 9860, category: 'computer', date: '2026-09-19', note: 'បានចេញវិក្កយបត្រ INV-2026-0124' },
+    { id: 'OPP-2026-0232', customerId: 'c-nimit', repId: 'u-chan', stage: 'won', value: 6780, category: 'computer', date: '2026-09-17', note: 'បានចេញវិក្កយបត្រ INV-2026-0121' },
+    { id: 'OPP-2026-0233', customerId: 'c-treyluk', repId: 'u-sao', stage: 'won', value: 5420, category: 'furniture', date: '2026-09-14', note: 'បានចេញវិក្កយបត្រ INV-2026-0116' },
+    { id: 'OPP-2026-0240', customerId: 'c-school', repId: 'u-chan', stage: 'lost', value: 7300, category: 'computer', date: '2026-09-10', note: 'អតិថិជនជ្រើសរើសដៃគូប្រកួតប្រជែង ដោយសារតម្លៃទាបជាង' },
+    { id: 'OPP-2026-0241', customerId: 'c-domrey', repId: 'u-heng', stage: 'lost', value: 2400, category: 'accessory', date: '2026-09-08', note: 'អតិថិជនពន្យារគម្រោងទៅឆ្នាំក្រោយ' }
+];
 
 /* សម្រង់តម្លៃ — ស្ថានភាព: draft, pending_approval, approved, rejected, converted, expired */
 const QUOTES = [
@@ -317,6 +352,127 @@ function pipelineStages(range) {
         { name: 'បានចេញវិក្កយបត្រ', value: count('converted'), color: '#2563eb' },
         { name: 'បានទូទាត់', value: INVOICES.filter(i => i.status === 'paid' && inRange(i.date, range)).length, color: '#1e3a5f' }
     ];
+}
+
+/* ===== បំពង់លំហូរការលក់ (Kanban) ===== */
+
+const PIPELINE_KEY = 'sm_pipeline_moves';
+
+function loadPipelineMoves() {
+    try {
+        return JSON.parse(sessionStorage.getItem(PIPELINE_KEY)) || {};
+    } catch (e) {
+        return {};
+    }
+}
+
+function savePipelineMove(dealId, stage) {
+    const all = loadPipelineMoves();
+    all[dealId] = stage;
+    try {
+        sessionStorage.setItem(PIPELINE_KEY, JSON.stringify(all));
+    } catch (e) {
+        // វេនឯកជន ឬការផ្ទុកត្រូវបានបិទ — ការផ្លាស់ទីនៅរស់ត្រឹមទំព័របច្ចុប្បន្ន
+    }
+}
+
+function dealStage(deal) {
+    return loadPipelineMoves()[deal.id] || deal.stage;
+}
+
+function dealsByStage(filters) {
+    const f = filters || {};
+    const result = {};
+    PIPELINE_STAGES.forEach(s => { result[s.id] = []; });
+
+    PIPELINE_DEALS
+        .filter(d => !f.repId || d.repId === f.repId)
+        .filter(d => !f.category || d.category === f.category)
+        .filter(d => inRange(d.date, f.range))
+        .forEach(d => result[dealStage(d)].push(d));
+
+    return result;
+}
+
+function pipelineSummary(filters) {
+    const grouped = dealsByStage(filters);
+    const open = ['lead', 'qualified', 'proposal'].reduce((sum, s) =>
+        sum + grouped[s].reduce((t, d) => t + d.value, 0), 0);
+    const won = grouped.won.reduce((t, d) => t + d.value, 0);
+    const lost = grouped.lost.reduce((t, d) => t + d.value, 0);
+    const closed = grouped.won.length + grouped.lost.length;
+    return {
+        open,
+        won,
+        lost,
+        openCount: grouped.lead.length + grouped.qualified.length + grouped.proposal.length,
+        winRate: closed ? (grouped.won.length / closed) * 100 : 0
+    };
+}
+
+/* ===== ការវិភាគតាមប្រភេទទំនិញ ===== */
+
+function categoryRevenue(filters) {
+    const f = filters || {};
+    const buckets = {};
+    Object.keys(CATEGORIES).forEach(k => {
+        buckets[k] = { id: k, label: CATEGORIES[k], revenue: 0, qty: 0, deals: 0 };
+    });
+
+    QUOTES
+        .filter(q => q.status === 'converted')
+        .filter(q => !f.repId || q.repId === f.repId)
+        .filter(q => inRange(q.date, f.range))
+        .forEach(q => {
+            const seen = new Set();
+            q.items.forEach(it => {
+                const cat = PRODUCTS[it.sku].category;
+                if (f.category && cat !== f.category) return;
+                buckets[cat].revenue += it.qty * it.price;
+                buckets[cat].qty += it.qty;
+                seen.add(cat);
+            });
+            seen.forEach(cat => { buckets[cat].deals += 1; });
+        });
+
+    return Object.values(buckets)
+        .filter(b => !f.category || b.id === f.category)
+        .sort((a, b) => b.revenue - a.revenue);
+}
+
+/* ===== ល្បឿនលក់ និងកម្រៃជើងសារ ===== */
+
+function salesVelocity(range) {
+    const invs = invoicesInRange(range);
+    const converted = quotesInRange(range).filter(q => q.status === 'converted');
+
+    const revenue = invs.reduce((sum, i) => sum + i.total, 0);
+    const avgDealSize = invs.length ? revenue / invs.length : 0;
+
+    // រយៈពេលជាមធ្យមពីថ្ងៃចេញសម្រង់តម្លៃ រហូតដល់ថ្ងៃផុតសុពលភាព ជាការប៉ាន់ស្មានវដ្តបិទការលក់
+    const cycleDays = converted.length
+        ? converted.reduce((sum, q) => sum + Math.max(daysBetween(q.date, new Date(q.validUntil)), 0), 0) / converted.length
+        : 0;
+
+    const days = range && range.start && range.end
+        ? Math.max(Math.round((new Date(range.end) - new Date(range.start)) / 86400000) + 1, 1)
+        : 30;
+
+    return {
+        avgDealSize,
+        cycleDays,
+        dealsPerWeek: invs.length / (days / 7),
+        revenuePerDay: revenue / days
+    };
+}
+
+function commissionRows(range) {
+    return repPerformance(range).map(rep => ({
+        ...rep,
+        commissionAmount: rep.revenue * (rep.commission / 100),
+        // កម្រៃជើងសារបើកជូនតែលើទឹកប្រាក់ដែលប្រមូលបានជាក់ស្តែង
+        payableNow: rep.collected * (rep.commission / 100)
+    }));
 }
 
 function quoteStatusBreakdown(range) {

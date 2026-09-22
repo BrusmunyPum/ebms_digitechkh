@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - បំពង់លំហូរការលក់</title>
+    <link rel="icon" type="image/png" href="../../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1e3a5f",
+                        'primary-dark': "#142842",
+                        accent: "#0ea5e9",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../shared/styles/custom.css">
+    <link rel="stylesheet" href="../../../shared/styles/portal.css">
+    <style>
+        .kanban-col.drag-over { background-color: #eff6ff; border-color: #93c5fd; }
+        .kanban-card.dragging { opacity: 0.45; }
+    </style>
+</head>
+<body id="smPortal" data-role-root=".." data-active="pipeline" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <div id="sidebarHost"></div>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div class="min-w-0">
+                <h2 class="text-xl font-semibold text-gray-800 leading-tight truncate">បំពង់លំហូរការលក់</h2>
+                <p class="sm-card-sub text-gray-500 mt-0.5 truncate">តាមដានឱកាសលក់តាមដំណាក់កាល ចាប់ពីអតិថិជនសក្តានុពលរហូតដល់ការបិទការលក់</p>
+            </div>
+
+            <div class="flex items-center space-x-3 flex-shrink-0">
+                <span id="headerOpenValue" class="sm-badge hidden sm:inline-flex font-semibold px-3 py-1.5 rounded-xl bg-sky-50 text-sky-700 border border-sky-200"></span>
+                <div class="flex items-center sm:border-l sm:pl-3">
+                    <div class="w-10 h-10 rounded-full bg-[#1e3a5f] text-white flex items-center justify-center font-semibold text-sm shadow-sm">ហវ</div>
+                </div>
+            </div>
+        </header>
+
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-4">
+            <div class="w-full space-y-4">
+
+                <!-- Filters -->
+                <div class="bg-white rounded-2xl p-3 border border-slate-200/80 shadow-sm flex flex-wrap items-center justify-between gap-3">
+                    <div class="flex flex-wrap items-center gap-2">
+                        <i class="fas fa-filter text-slate-400 text-xs"></i>
+                        <span class="sm-label text-slate-600 mr-1">តម្រង</span>
+                        <div id="repFilterHost" class="relative"></div>
+                        <div id="categoryFilterHost" class="relative"></div>
+                    </div>
+                    <div id="dateFilterHost" class="flex items-center"></div>
+                </div>
+
+                <!-- Summary -->
+                <div id="pipelineSummary" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"></div>
+
+                <!-- Kanban Board -->
+                <div class="overflow-x-auto pb-2">
+                    <div id="kanbanBoard" class="flex gap-4 min-w-max"></div>
+                </div>
+
+                <p class="sm-card-sub text-slate-400 text-center">
+                    <i class="fas fa-hand-pointer mr-1"></i>
+                    អូសកាតទៅជួរឈរផ្សេង ដើម្បីប្តូរដំណាក់កាល ឬប្រើប៊ូតុងសកម្មភាពលើកាតនីមួយៗ
+                </p>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../shared/scripts/ui-components.js"></script>
+    <script src="../data.js"></script>
+    <script src="../../../shared/scripts/portal.js"></script>
+    <script>
+        let filterRep = '';
+        let filterCategory = '';
+        let draggingId = null;
+
+        function currentFilters() {
+            return { repId: filterRep, category: filterCategory, range: getSelectedRange() };
+        }
+
+        /* តម្រងជ្រើសរើស — ប្រើ Custom Dropdown ជំនួស Native select (ស្តង់ដារលេខ 6) */
+        function renderFilterDropdown(hostId, menuId, label, options, currentValue, onPick) {
+            const host = document.getElementById(hostId);
+            const active = options.find(o => o.value === currentValue);
+            host.innerHTML = `
+                <button onclick="toggleRowActionMenu(event, '${menuId}')"
+                    class="h-9 px-3 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 rounded-xl inline-flex items-center gap-2 shadow-sm transition-all focus:outline-none cursor-pointer">
+                    <i class="fas ${label.icon} text-primary text-xs"></i>
+                    <span class="sm-badge font-medium text-slate-800">${active ? active.label : label.all}</span>
+                    <i class="fas fa-chevron-down text-[10px] text-slate-400 ml-0.5"></i>
+                </button>
+                <div id="${menuId}" class="hidden bg-white rounded-2xl shadow-2xl border border-slate-200 p-2 text-left">
+                    <div class="px-3 py-2 mb-1 rounded-xl bg-slate-50 border border-slate-100">
+                        <p class="sm-td-sub text-slate-400">${label.title}</p>
+                    </div>
+                    ${options.map(o => `
+                        <button onclick="${onPick}('${o.value}')" class="sm-row-menu-item w-full flex items-center justify-between gap-2.5 px-3 py-2.5 rounded-xl text-slate-700 hover:bg-slate-50 transition text-left">
+                            <span>${o.label}</span>
+                            ${o.value === currentValue ? '<i class="fas fa-check text-[11px] text-emerald-600"></i>' : ''}
+                        </button>`).join('')}
+                </div>`;
+        }
+
+        function renderFilters() {
+            renderFilterDropdown('repFilterHost', 'repFilterMenu',
+                { icon: 'fa-user-tie', all: 'បុគ្គលិកលក់ទាំងអស់', title: 'ជ្រើសរើសបុគ្គលិកលក់' },
+                [{ value: '', label: 'បុគ្គលិកលក់ទាំងអស់' }].concat(SALES_REPS.map(r => ({ value: r.id, label: r.name }))),
+                filterRep, 'pickRep');
+
+            renderFilterDropdown('categoryFilterHost', 'categoryFilterMenu',
+                { icon: 'fa-tags', all: 'ប្រភេទទំនិញទាំងអស់', title: 'ជ្រើសរើសប្រភេទទំនិញ' },
+                [{ value: '', label: 'ប្រភេទទំនិញទាំងអស់' }].concat(Object.keys(CATEGORIES).map(k => ({ value: k, label: CATEGORIES[k] }))),
+                filterCategory, 'pickCategory');
+        }
+
+        function pickRep(value) {
+            filterRep = value;
+            closeAllFloatingDropdowns();
+            renderFilters();
+            renderBoard();
+        }
+
+        function pickCategory(value) {
+            filterCategory = value;
+            closeAllFloatingDropdowns();
+            renderFilters();
+            renderBoard();
+        }
+
+        function summaryCard(label, value, sub, tone) {
+            return `<div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
+                <span class="sm-kpi-label text-slate-500">${label}</span>
+                <h3 class="sm-kpi-value ${tone} mt-1">${value}</h3>
+                <p class="sm-kpi-sub text-slate-500 mt-1">${sub}</p>
+            </div>`;
+        }
+
+        function renderSummary() {
+            const s = pipelineSummary(currentFilters());
+            document.getElementById('pipelineSummary').innerHTML =
+                summaryCard('ឱកាសលក់កំពុងដំណើរការ', fmtUSD(s.open), `${s.openCount} ឱកាសនៅបើកចំហ`, 'text-slate-700') +
+                summaryCard('បិទការលក់ជោគជ័យ', fmtUSD(s.won), 'ទឹកប្រាក់ដែលបានបិទរួច', 'text-emerald-600') +
+                summaryCard('ឱកាសបាត់បង់', fmtUSD(s.lost), 'ទឹកប្រាក់ដែលមិនបានបិទ', 'text-rose-600') +
+                summaryCard('អត្រាបិទការលក់', fmtPercent(s.winRate), 'ធៀបនឹងឱកាសដែលបានបិទទាំងអស់', 'text-purple-600');
+
+            document.getElementById('headerOpenValue').textContent = `ឱកាសបើកចំហ៖ ${fmtUSD(s.open)}`;
+        }
+
+        function cardActionMenu(deal) {
+            const menuId = 'dealMenu-' + deal.id;
+            const stage = dealStage(deal);
+            const moves = PIPELINE_STAGES.filter(s => s.id !== stage).map(s => `
+                <button onclick="moveDeal('${deal.id}','${s.id}')" class="sm-row-menu-item w-full flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-slate-700 hover:bg-slate-50 transition text-left">
+                    <span class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style="background-color:${s.accent}1a;color:${s.accent}">
+                        <i class="fas fa-arrow-right text-[11px]"></i>
+                    </span>
+                    ផ្លាស់ទៅ ${s.label}
+                </button>`).join('');
+
+            const quoteLink = deal.quoteId ? `
+                <a href="../approvals/view-approval.html?type=quote&id=${deal.quoteId}" class="sm-row-menu-item flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-slate-700 hover:bg-slate-50 transition">
+                    <span class="w-7 h-7 rounded-lg bg-slate-100 text-slate-600 flex items-center justify-center flex-shrink-0"><i class="fas fa-eye text-[11px]"></i></span>
+                    ពិនិត្យសម្រង់តម្លៃ ${deal.quoteId}
+                </a>` : '';
+
+            return `
+                <button onclick="toggleRowActionMenu(event, '${menuId}')" title="សកម្មភាព"
+                    class="w-8 h-8 rounded-lg bg-white hover:bg-slate-100 text-slate-400 hover:text-slate-700 border border-slate-200/70 inline-flex items-center justify-center transition flex-shrink-0">
+                    <i class="fas fa-ellipsis-vertical text-xs"></i>
+                </button>
+                <div id="${menuId}" class="hidden bg-white rounded-2xl shadow-2xl border border-slate-200 p-2 text-left">
+                    <div class="px-3 py-2 mb-1 rounded-xl bg-slate-50 border border-slate-100">
+                        <p class="sm-td-sub text-slate-400">ឱកាសលក់</p>
+                        <p class="sm-value text-slate-700">${deal.id}</p>
+                    </div>
+                    ${quoteLink}
+                    ${moves}
+                </div>`;
+        }
+
+        function dealCard(deal) {
+            const cust = getCustomer(deal.customerId);
+            const rep = getRep(deal.repId);
+            return `
+                <div class="kanban-card bg-white rounded-xl p-3 border border-slate-200 shadow-sm hover:shadow-md transition cursor-grab active:cursor-grabbing"
+                     draggable="true" data-deal="${deal.id}"
+                     ondragstart="onDragStart(event,'${deal.id}')" ondragend="onDragEnd(event)">
+                    <div class="flex items-start justify-between gap-2">
+                        <div class="min-w-0">
+                            <p class="sm-td text-slate-700 truncate">${cust.name}</p>
+                            <p class="sm-td-sub text-slate-400">${deal.id}</p>
+                        </div>
+                        ${cardActionMenu(deal)}
+                    </div>
+                    <p class="sm-kpi-value text-slate-700 mt-2">${fmtUSD(deal.value)}</p>
+                    <p class="sm-td-sub text-slate-500 mt-1.5 line-clamp-2">${deal.note}</p>
+                    <div class="flex items-center justify-between gap-2 mt-3 pt-2.5 border-t border-slate-100">
+                        <span class="sm-badge inline-flex items-center gap-1.5 text-slate-600">
+                            <span class="w-5 h-5 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center text-[9px] font-semibold">${rep.initials}</span>
+                            ${rep.name}
+                        </span>
+                        <span class="sm-badge px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">${CATEGORIES[deal.category]}</span>
+                    </div>
+                </div>`;
+        }
+
+        function renderBoard() {
+            const grouped = dealsByStage(currentFilters());
+
+            document.getElementById('kanbanBoard').innerHTML = PIPELINE_STAGES.map(stage => {
+                const deals = grouped[stage.id];
+                const total = deals.reduce((sum, d) => sum + d.value, 0);
+                const cards = deals.length
+                    ? deals.map(dealCard).join('')
+                    : `<div class="py-8 text-center">
+                           <p class="sm-td-sub text-slate-400">គ្មានឱកាសលក់ក្នុងដំណាក់កាលនេះ</p>
+                       </div>`;
+
+                return `
+                    <div class="kanban-col w-[300px] flex-shrink-0 bg-slate-100/70 rounded-2xl border border-slate-200 transition-colors"
+                         ondragover="onDragOver(event)" ondragleave="onDragLeave(event)" ondrop="onDrop(event,'${stage.id}')">
+                        <div class="p-3.5 border-b border-slate-200">
+                            <div class="flex items-center justify-between gap-2">
+                                <span class="sm-card-title text-slate-700 flex items-center gap-2 min-w-0">
+                                    <span class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background-color:${stage.accent}"></span>
+                                    <span class="truncate">${stage.label}</span>
+                                </span>
+                                <span class="sm-badge px-2 py-0.5 rounded-full bg-white border border-slate-200 text-slate-600 flex-shrink-0">${deals.length}</span>
+                            </div>
+                            <p class="sm-td-sub text-slate-500 mt-1">${fmtUSD(total)}</p>
+                        </div>
+                        <div class="p-3 space-y-3 min-h-[120px]">${cards}</div>
+                    </div>`;
+            }).join('');
+
+            renderSummary();
+        }
+
+        function onDragStart(event, dealId) {
+            draggingId = dealId;
+            event.currentTarget.classList.add('dragging');
+            event.dataTransfer.effectAllowed = 'move';
+            closeAllFloatingDropdowns();
+        }
+
+        function onDragEnd(event) {
+            event.currentTarget.classList.remove('dragging');
+            draggingId = null;
+        }
+
+        function onDragOver(event) {
+            event.preventDefault();
+            event.currentTarget.classList.add('drag-over');
+        }
+
+        function onDragLeave(event) {
+            event.currentTarget.classList.remove('drag-over');
+        }
+
+        function onDrop(event, stageId) {
+            event.preventDefault();
+            event.currentTarget.classList.remove('drag-over');
+            if (!draggingId) return;
+            applyMove(draggingId, stageId);
+        }
+
+        function moveDeal(dealId, stageId) {
+            closeAllFloatingDropdowns();
+            applyMove(dealId, stageId);
+        }
+
+        function applyMove(dealId, stageId) {
+            const deal = PIPELINE_DEALS.find(d => d.id === dealId);
+            if (!deal || dealStage(deal) === stageId) return;
+
+            savePipelineMove(dealId, stageId);
+            renderBoard();
+
+            const stage = PIPELINE_STAGES.find(s => s.id === stageId);
+            const tone = stageId === 'won' ? 'success' : stageId === 'lost' ? 'warning' : 'info';
+            showToast(`បានផ្លាស់ទី ${dealId} ទៅដំណាក់កាល ${stage.label}`, tone);
+        }
+
+        window.onDateRangeApplied = renderBoard;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderDateRangePicker('dateFilterHost');
+            renderFilters();
+            renderBoard();
+        });
+    </script>
+</body>
+</html>

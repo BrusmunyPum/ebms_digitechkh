@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - របាយការណ៍លក់សង្ខេប</title>
+    <link rel="icon" type="image/png" href="../../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1e3a5f",
+                        'primary-dark': "#142842",
+                        accent: "#0ea5e9",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../shared/styles/custom.css">
+    <link rel="stylesheet" href="../../../shared/styles/portal.css">
+</head>
+<body id="smPortal" data-role-root=".." data-active="reports" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <div id="sidebarHost"></div>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div class="min-w-0">
+                <h2 class="text-xl font-semibold text-gray-800 leading-tight truncate">របាយការណ៍សង្ខេបផ្នែកលក់</h2>
+                <p class="sm-card-sub text-gray-500 mt-0.5 truncate">វិភាគតាមកាលបរិច្ឆេទ ប្រភេទទំនិញ និងបុគ្គលិកលក់</p>
+            </div>
+
+            <div class="flex items-center space-x-2 flex-shrink-0">
+                <button onclick="showToast('បាននាំចេញរបាយការណ៍ជាឯកសារ PDF រួចរាល់', 'success')" class="sm-badge px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium transition flex items-center gap-1.5">
+                    <i class="fas fa-file-pdf text-rose-600"></i> PDF
+                </button>
+                <button onclick="showToast('បាននាំចេញរបាយការណ៍ជាឯកសារ Excel រួចរាល់', 'success')" class="sm-badge px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium transition flex items-center gap-1.5">
+                    <i class="fas fa-file-excel text-emerald-600"></i> Excel
+                </button>
+            </div>
+        </header>
+
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-4">
+            <div class="w-full space-y-4">
+
+                <!-- Filters -->
+                <div class="bg-white rounded-2xl p-3 border border-slate-200/80 shadow-sm flex flex-wrap items-center justify-between gap-3">
+                    <div class="flex flex-wrap items-center gap-2">
+                        <i class="fas fa-filter text-slate-400 text-xs"></i>
+                        <span class="sm-label text-slate-600 mr-1">តម្រង</span>
+                        <div id="repFilterHost" class="relative"></div>
+                        <div id="categoryFilterHost" class="relative"></div>
+                    </div>
+                    <div id="dateFilterHost" class="flex items-center"></div>
+                </div>
+
+                <!-- Tabs -->
+                <div class="bg-white rounded-2xl p-2 border border-slate-200/80 shadow-sm flex flex-wrap items-center gap-2">
+                    <button id="tabBtn-perf" onclick="switchReportTab('perf')" class="sm-badge px-4 py-2 rounded-xl bg-[#1e3a5f] text-white font-semibold shadow-sm transition">
+                        សមិទ្ធផលលក់
+                    </button>
+                    <button id="tabBtn-category" onclick="switchReportTab('category')" class="sm-badge px-4 py-2 rounded-xl text-slate-600 hover:bg-slate-100 font-medium transition">
+                        ប្រភេទទំនិញ
+                    </button>
+                    <button id="tabBtn-approvals" onclick="switchReportTab('approvals')" class="sm-badge px-4 py-2 rounded-xl text-slate-600 hover:bg-slate-100 font-medium transition">
+                        សង្ខេបការអនុម័ត
+                    </button>
+                </div>
+
+                <!-- Panel: Sales Performance -->
+                <div id="panel-perf" class="space-y-4">
+                    <div id="perfSummary" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"></div>
+
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
+                        <h3 class="sm-card-title text-slate-700 mb-3">ដំណើរការលក់ប្រចាំសប្តាហ៍</h3>
+                        <div id="salesTrendChart" class="w-full h-72"></div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+                        <div class="p-5 border-b border-slate-100">
+                            <h3 class="sm-card-title text-slate-700">ទិន្នន័យលម្អិតតាមបុគ្គលិកលក់</h3>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left">
+                                <thead class="bg-slate-50 text-slate-500 border-b border-slate-100">
+                                    <tr>
+                                        <th class="sm-th py-3 px-4">បុគ្គលិកលក់</th>
+                                        <th class="sm-th py-3 px-4">ចំនួនវិក្កយបត្រ</th>
+                                        <th class="sm-th py-3 px-4">ទឹកប្រាក់លក់សរុប</th>
+                                        <th class="sm-th py-3 px-4">បានទូទាត់</th>
+                                        <th class="sm-th py-3 px-4">នៅជំពាក់</th>
+                                        <th class="sm-th py-3 px-4">អត្រាបម្លែង</th>
+                                        <th class="sm-th py-3 px-4">សម្រេចគោលដៅ</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="repTableBody" class="divide-y divide-slate-100 text-slate-700"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Panel: Product Category -->
+                <div id="panel-category" class="hidden space-y-4">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                        <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
+                            <h3 class="sm-card-title text-slate-700 mb-3">ចំណែកចំណូលតាមប្រភេទទំនិញ</h3>
+                            <div id="categoryChart" class="w-full h-72"></div>
+                        </div>
+
+                        <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+                            <div class="p-5 border-b border-slate-100">
+                                <h3 class="sm-card-title text-slate-700">ទិន្នន័យលម្អិតតាមប្រភេទ</h3>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left">
+                                    <thead class="bg-slate-50 text-slate-500 border-b border-slate-100">
+                                        <tr>
+                                            <th class="sm-th py-3 px-4">ប្រភេទទំនិញ</th>
+                                            <th class="sm-th py-3 px-4">បរិមាណលក់</th>
+                                            <th class="sm-th py-3 px-4">ប្រតិបត្តិការ</th>
+                                            <th class="sm-th py-3 px-4 text-right">ចំណូល</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="categoryTableBody" class="divide-y divide-slate-100 text-slate-700"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+                        <div class="p-5 border-b border-slate-100">
+                            <h3 class="sm-card-title text-slate-700">ស្ថានភាពសម្រង់តម្លៃ និងបំពង់លក់</h3>
+                        </div>
+                        <div class="grid grid-cols-1 lg:grid-cols-2">
+                            <table class="w-full text-left">
+                                <tbody id="quoteStatusBody" class="divide-y divide-slate-100 text-slate-700"></tbody>
+                            </table>
+                            <div class="p-4 border-t lg:border-t-0 lg:border-l border-slate-100">
+                                <div id="reportFunnelChart" class="w-full h-64"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Panel: Approvals Summary -->
+                <div id="panel-approvals" class="hidden space-y-4">
+                    <div id="approvalKpis" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"></div>
+
+                    <div class="bg-white rounded-2xl border border-rose-200 shadow-sm overflow-hidden">
+                        <div class="p-4 border-b border-rose-100 bg-rose-50/60 flex items-center gap-2">
+                            <i class="fas fa-triangle-exclamation text-rose-600 text-sm"></i>
+                            <h3 class="sm-card-title text-rose-800">អតិថិជនដែលមានបំណុលហួសកាលកំណត់ 30 ថ្ងៃ</h3>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left">
+                                <thead class="bg-slate-50 text-slate-500 border-b border-slate-100">
+                                    <tr>
+                                        <th class="sm-th py-3 px-4">អតិថិជន</th>
+                                        <th class="sm-th py-3 px-4">លេខវិក្កយបត្រ</th>
+                                        <th class="sm-th py-3 px-4">បុគ្គលិកទទួលបន្ទុក</th>
+                                        <th class="sm-th py-3 px-4">ថ្ងៃហួសកាលកំណត់</th>
+                                        <th class="sm-th py-3 px-4 text-right">ទឹកប្រាក់ជំពាក់</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="overdueTableBody" class="divide-y divide-slate-100 text-slate-700"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../shared/scripts/ui-components.js"></script>
+    <script src="../data.js"></script>
+    <script src="../../../shared/scripts/portal.js"></script>
+    <script>
+        let filterRep = '';
+        let filterCategory = '';
+        let trendChart = null;
+        let categoryChart = null;
+        let reportFunnel = null;
+
+        function currentFilters() {
+            return { repId: filterRep, category: filterCategory, range: getSelectedRange() };
+        }
+
+        /* តម្រងជ្រើសរើស — ប្រើ Custom Dropdown ជំនួស Native select (ស្តង់ដារលេខ 6) */
+        function renderFilterDropdown(hostId, menuId, label, options, currentValue, onPick) {
+            const host = document.getElementById(hostId);
+            const active = options.find(o => o.value === currentValue);
+            host.innerHTML = `
+                <button onclick="toggleRowActionMenu(event, '${menuId}')"
+                    class="h-9 px-3 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 rounded-xl inline-flex items-center gap-2 shadow-sm transition-all focus:outline-none cursor-pointer">
+                    <i class="fas ${label.icon} text-primary text-xs"></i>
+                    <span class="sm-badge font-medium text-slate-800">${active ? active.label : label.all}</span>
+                    <i class="fas fa-chevron-down text-[10px] text-slate-400 ml-0.5"></i>
+                </button>
+                <div id="${menuId}" class="hidden bg-white rounded-2xl shadow-2xl border border-slate-200 p-2 text-left">
+                    <div class="px-3 py-2 mb-1 rounded-xl bg-slate-50 border border-slate-100">
+                        <p class="sm-td-sub text-slate-400">${label.title}</p>
+                    </div>
+                    ${options.map(o => `
+                        <button onclick="${onPick}('${o.value}')" class="sm-row-menu-item w-full flex items-center justify-between gap-2.5 px-3 py-2.5 rounded-xl text-slate-700 hover:bg-slate-50 transition text-left">
+                            <span>${o.label}</span>
+                            ${o.value === currentValue ? '<i class="fas fa-check text-[11px] text-emerald-600"></i>' : ''}
+                        </button>`).join('')}
+                </div>`;
+        }
+
+        function renderFilters() {
+            renderFilterDropdown('repFilterHost', 'repFilterMenu',
+                { icon: 'fa-user-tie', all: 'បុគ្គលិកលក់ទាំងអស់', title: 'ជ្រើសរើសបុគ្គលិកលក់' },
+                [{ value: '', label: 'បុគ្គលិកលក់ទាំងអស់' }].concat(SALES_REPS.map(r => ({ value: r.id, label: r.name }))),
+                filterRep, 'pickRep');
+
+            renderFilterDropdown('categoryFilterHost', 'categoryFilterMenu',
+                { icon: 'fa-tags', all: 'ប្រភេទទំនិញទាំងអស់', title: 'ជ្រើសរើសប្រភេទទំនិញ' },
+                [{ value: '', label: 'ប្រភេទទំនិញទាំងអស់' }].concat(Object.keys(CATEGORIES).map(k => ({ value: k, label: CATEGORIES[k] }))),
+                filterCategory, 'pickCategory');
+        }
+
+        function pickRep(value) {
+            filterRep = value;
+            closeAllFloatingDropdowns();
+            renderFilters();
+            renderReports();
+        }
+
+        function pickCategory(value) {
+            filterCategory = value;
+            closeAllFloatingDropdowns();
+            renderFilters();
+            renderReports();
+        }
+
+        function statCard(label, value, tone, sub) {
+            return `<div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
+                <span class="sm-kpi-label text-slate-500">${label}</span>
+                <h3 class="sm-kpi-value ${tone} mt-1">${value}</h3>
+                ${sub ? `<p class="sm-kpi-sub text-slate-500 mt-1">${sub}</p>` : ''}
+            </div>`;
+        }
+
+        function renderReports() {
+            const range = getSelectedRange();
+            const filters = currentFilters();
+            const m = dashboardMetrics(range);
+            const reps = repPerformance(range).filter(r => !filterRep || r.id === filterRep);
+
+            const revenue = reps.reduce((s, r) => s + r.revenue, 0);
+            const collected = reps.reduce((s, r) => s + r.collected, 0);
+            const outstanding = reps.reduce((s, r) => s + r.outstanding, 0);
+            const invoiceCount = reps.reduce((s, r) => s + r.invoiceCount, 0);
+
+            document.getElementById('perfSummary').innerHTML =
+                statCard('ចំណូលលក់សរុប', fmtUSD(revenue), 'text-slate-700', `${invoiceCount} វិក្កយបត្រ`) +
+                statCard('ប្រាក់បានប្រមូលរួច', fmtUSD(collected), 'text-emerald-600', 'ទទួលបានជាក់ស្តែង') +
+                statCard('ប្រាក់ជំពាក់នៅសល់', fmtUSD(outstanding), 'text-amber-600', 'រង់ចាំការប្រមូល') +
+                statCard('អត្រាជោគជ័យនៃការលក់', fmtPercent(m.winRate), 'text-purple-600', `${m.convertedCount} ក្នុងចំណោម ${m.quoteCount} សម្រង់តម្លៃ`);
+
+            document.getElementById('repTableBody').innerHTML = reps.length ? reps.map(rep => {
+                const quotaTone = rep.quotaPercent >= 100 ? 'bg-emerald-50 text-emerald-700'
+                    : rep.quotaPercent >= 90 ? 'bg-blue-50 text-blue-700'
+                    : 'bg-slate-100 text-slate-600';
+                return `<tr class="hover:bg-slate-50 transition">
+                    <td class="sm-td py-3.5 px-4">${rep.name}</td>
+                    <td class="sm-td py-3.5 px-4">${rep.invoiceCount}</td>
+                    <td class="sm-td-strong py-3.5 px-4">${fmtUSD(rep.revenue)}</td>
+                    <td class="sm-td py-3.5 px-4 text-emerald-600">${fmtUSD(rep.collected)}</td>
+                    <td class="sm-td py-3.5 px-4 text-amber-600">${fmtUSD(rep.outstanding)}</td>
+                    <td class="sm-td py-3.5 px-4">${fmtPercent(rep.conversion, 0)}</td>
+                    <td class="py-3.5 px-4"><span class="sm-badge px-2 py-0.5 rounded-full ${quotaTone} font-semibold">${fmtPercent(rep.quotaPercent, 0)}</span></td>
+                </tr>`;
+            }).join('') : '<tr><td colspan="7" class="sm-card-sub text-slate-500 py-10 text-center">គ្មានទិន្នន័យត្រូវនឹងតម្រងទេ</td></tr>';
+
+            const cats = categoryRevenue(filters).filter(c => c.revenue > 0);
+            document.getElementById('categoryTableBody').innerHTML = cats.length ? cats.map(c =>
+                `<tr class="hover:bg-slate-50 transition">
+                    <td class="sm-td py-3.5 px-4">${c.label}</td>
+                    <td class="sm-td py-3.5 px-4">${c.qty}</td>
+                    <td class="sm-td py-3.5 px-4">${c.deals}</td>
+                    <td class="sm-td-strong py-3.5 px-4 text-right">${fmtUSD(c.revenue)}</td>
+                </tr>`).join('') : '<tr><td colspan="4" class="sm-card-sub text-slate-500 py-10 text-center">គ្មានទិន្នន័យត្រូវនឹងតម្រងទេ</td></tr>';
+
+            document.getElementById('quoteStatusBody').innerHTML = quoteStatusBreakdown(range).map(row =>
+                `<tr class="hover:bg-slate-50 transition">
+                    <td class="sm-td py-3 px-5">${row.label}</td>
+                    <td class="sm-td-strong py-3 px-5 text-right ${row.color}">${row.value}</td>
+                </tr>`).join('');
+
+            const decisions = loadDecisions();
+            const decided = Object.values(decisions);
+            const countOf = a => decided.filter(d => d === a).length;
+            document.getElementById('approvalKpis').innerHTML =
+                statCard('សំណើបានអនុម័ត', countOf('approve'), 'text-emerald-600') +
+                statCard('សំណើបានបដិសេធ', countOf('reject'), 'text-rose-600') +
+                statCard('បញ្ជូនបន្តទៅអភិបាលទូទៅ', countOf('forward'), 'text-purple-600') +
+                statCard('សំណើនៅរង់ចាំ', totalPending(), 'text-amber-600');
+
+            const overdue = m.overdueList.filter(i => !filterRep || i.repId === filterRep);
+            document.getElementById('overdueTableBody').innerHTML = overdue.length ? overdue.map(inv =>
+                `<tr class="hover:bg-slate-50 transition">
+                    <td class="sm-td py-3.5 px-4">${getCustomer(inv.customerId).name}</td>
+                    <td class="sm-td py-3.5 px-4">${inv.id}</td>
+                    <td class="sm-td py-3.5 px-4">${getRep(inv.repId).name}</td>
+                    <td class="sm-td py-3.5 px-4 text-rose-600">${daysBetween(inv.dueDate)} ថ្ងៃ</td>
+                    <td class="sm-td-strong py-3.5 px-4 text-right">${fmtUSD(inv.total - inv.paid)}</td>
+                </tr>`).join('') : '<tr><td colspan="5" class="sm-card-sub text-slate-500 py-10 text-center">គ្មានបំណុលហួសកាលកំណត់ទេ</td></tr>';
+
+            const badge = document.getElementById('navQueueBadge');
+            if (badge) badge.textContent = totalPending();
+
+            renderCharts(range, cats);
+        }
+
+        function renderCharts(range, cats) {
+            const catEl = document.getElementById('categoryChart');
+            if (catEl) {
+                if (!categoryChart) categoryChart = echarts.init(catEl);
+                const palette = ['#1e3a5f', '#0ea5e9', '#f59e0b', '#10b981', '#a855f7'];
+                categoryChart.setOption({
+                    tooltip: { trigger: 'item', formatter: '{b}: {c} ({d}%)', textStyle: { fontFamily: 'Kantumruy Pro' } },
+                    legend: { bottom: 0, textStyle: { fontFamily: 'Kantumruy Pro' } },
+                    series: [{
+                        type: 'pie',
+                        radius: ['45%', '70%'],
+                        avoidLabelOverlap: true,
+                        itemStyle: { borderColor: '#fff', borderWidth: 2 },
+                        label: { show: false },
+                        data: cats.map((c, i) => ({ value: Math.round(c.revenue), name: c.label, itemStyle: { color: palette[i % palette.length] } }))
+                    }]
+                }, true);
+            }
+
+            const funnelEl = document.getElementById('reportFunnelChart');
+            if (funnelEl) {
+                if (!reportFunnel) reportFunnel = echarts.init(funnelEl);
+                reportFunnel.setOption({
+                    tooltip: { trigger: 'item', formatter: '{b}: {c} ករណី', textStyle: { fontFamily: 'Kantumruy Pro' } },
+                    series: [{
+                        type: 'funnel',
+                        left: '5%', width: '90%', top: 0, bottom: 0,
+                        minSize: '25%', maxSize: '100%', gap: 3,
+                        label: { show: true, position: 'inside', color: '#fff', fontSize: 11, fontWeight: 600, fontFamily: 'Kantumruy Pro' },
+                        itemStyle: { borderColor: '#fff', borderWidth: 1 },
+                        data: pipelineStages(range).map(s => ({ value: s.value, name: s.name, itemStyle: { color: s.color } }))
+                    }]
+                });
+            }
+        }
+
+        function switchReportTab(name) {
+            closeAllFloatingDropdowns();
+            ['perf', 'category', 'approvals'].forEach(t => {
+                document.getElementById('panel-' + t).classList.toggle('hidden', t !== name);
+                document.getElementById('tabBtn-' + t).className = t === name
+                    ? 'sm-badge px-4 py-2 rounded-xl bg-[#1e3a5f] text-white font-semibold shadow-sm transition'
+                    : 'sm-badge px-4 py-2 rounded-xl text-slate-600 hover:bg-slate-100 font-medium transition';
+            });
+            // ECharts មិនអាចគណនាទំហំពេលធាតុត្រូវបានលាក់ ដូច្នេះត្រូវកំណត់ទំហំឡើងវិញពេលបង្ហាញ
+            [trendChart, categoryChart, reportFunnel].forEach(c => { if (c) c.resize(); });
+        }
+
+        window.onDateRangeApplied = renderReports;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderDateRangePicker('dateFilterHost');
+            renderFilters();
+
+            const trendEl = document.getElementById('salesTrendChart');
+            if (trendEl) {
+                trendChart = echarts.init(trendEl);
+                trendChart.setOption({
+                    tooltip: { trigger: 'axis', textStyle: { fontFamily: 'Kantumruy Pro' } },
+                    grid: { top: '10%', left: '3%', right: '4%', bottom: '15%', containLabel: true },
+                    xAxis: { type: 'category', data: WEEKLY_REVENUE.map(w => w.week), axisLabel: { fontFamily: 'Kantumruy Pro' } },
+                    yAxis: { type: 'value', axisLabel: { fontFamily: 'Kantumruy Pro' } },
+                    series: [{
+                        name: 'ការលក់', type: 'line', smooth: true,
+                        data: WEEKLY_REVENUE.map(w => w.actual),
+                        itemStyle: { color: '#1e3a5f' },
+                        lineStyle: { width: 3 },
+                        areaStyle: { color: 'rgba(30, 58, 95, 0.08)' }
+                    }]
+                });
+            }
+
+            renderReports();
+
+            window.addEventListener('resize', () => {
+                [trendChart, categoryChart, reportFunnel].forEach(c => { if (c) c.resize(); });
+            });
+        });
+    </script>
+</body>
+</html>

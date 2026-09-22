@@ -1,6 +1,85 @@
 /* ច្រកគ្រប់គ្រងផ្នែកលក់ — Shared runtime
    ផ្ទុក៖ ថតរបារចំហៀងចល័ត, តម្រងកាលបរិច្ឆេទរួម (ស្តង់ដារលេខ 3), ម៉ឺនុយសកម្មភាពជួរតារាង (ស្តង់ដារលេខ 9) */
 
+/* ===== 0. របារចំហៀង — បង្កើតចេញពីប្រភពតែមួយ =====
+   ទំព័រនីមួយៗគ្រាន់តែដាក់ <div id="sidebarHost"></div> ហើយកំណត់
+   data-role-root និង data-active លើ <body> ប៉ុណ្ណោះ។ ដោយសារ HTML
+   ត្រូវបង្កើតចេញពីអនុគមន៍តែមួយ របារចំហៀងគ្រប់ទំព័រដូចគ្នា 100%
+   ដោយស្វ័យប្រវត្តិ ទោះស្ថិតក្នុងថតជាន់ផ្សេងគ្នាក៏ដោយ។ */
+
+const PORTAL_NAV = [
+    { id: 'dashboard', label: 'ផ្ទាំងគ្រប់គ្រង', icon: 'fa-chart-pie', href: 'dashboard.html' },
+    { id: 'approvals', label: 'ការអនុម័ត', icon: 'fa-stamp', href: 'approvals/approvals.html', badge: true },
+    { id: 'pipeline', label: 'បំពង់លំហូរការលក់', icon: 'fa-diagram-project', href: 'pipeline/pipeline.html' },
+    { id: 'reports', label: 'របាយការណ៍លក់', icon: 'fa-chart-column', href: 'reports/reports.html' }
+];
+
+const NAV_ACTIVE_CLASS = 'flex items-center justify-between p-3 bg-white/15 text-white rounded-xl shadow-sm transition-all whitespace-nowrap border border-white/10';
+const NAV_IDLE_CLASS = 'flex items-center justify-between p-3 text-sky-100 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap';
+
+function renderPortalSidebar() {
+    const host = document.getElementById('sidebarHost');
+    if (!host) return;
+
+    const roleRoot = document.body.dataset.roleRoot || '.';
+    const activeId = document.body.dataset.active || '';
+    const sharedRoot = `${roleRoot}/../../shared`;
+
+    const navHtml = PORTAL_NAV.map(item => {
+        const isActive = item.id === activeId;
+        const badge = item.badge
+            ? '<span id="navQueueBadge" class="sm-badge bg-rose-500 text-white px-2 py-0.5 rounded-full flex-shrink-0">0</span>'
+            : '';
+        return `
+            <a href="${roleRoot}/${item.href}" class="${isActive ? NAV_ACTIVE_CLASS : NAV_IDLE_CLASS}">
+                <span class="flex items-center min-w-0">
+                    <i class="fas ${item.icon} w-6 text-center text-sky-300 flex-shrink-0"></i>
+                    <span class="ml-3 sm-nav-label truncate">${item.label}</span>
+                </span>
+                ${badge}
+            </a>`;
+    }).join('');
+
+    host.outerHTML = `
+        <aside class="w-64 bg-[#1e3a5f] text-white flex flex-col flex-shrink-0 select-none z-20 border-r border-slate-700">
+            <div class="h-[72px] px-6 flex items-center gap-3 border-b border-white/10 flex-shrink-0">
+                <div class="w-9 h-9 rounded-xl bg-white/15 border border-white/20 flex items-center justify-center p-1 shadow-sm overflow-hidden flex-shrink-0">
+                    <img src="${sharedRoot}/assets/logo-mark-transparent.png" alt="DIGITECHKH" class="w-full h-full object-contain">
+                </div>
+                <div class="min-w-0">
+                    <h1 class="text-lg font-semibold tracking-wider whitespace-nowrap text-white">DIGITECHKH</h1>
+                    <span class="sm-nav-note font-medium text-sky-300 uppercase tracking-wider block">ច្រកគ្រប់គ្រងលក់</span>
+                </div>
+            </div>
+
+            <div class="px-5 py-3 border-b border-white/5 bg-black/15">
+                <div class="flex items-center justify-between">
+                    <span class="sm-nav-note text-sky-200">តួនាទី:</span>
+                    <span class="sm-badge inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-sky-500/20 text-sky-200 border border-sky-400/30">
+                        <i class="fas fa-user-tie text-[10px]"></i> អ្នកគ្រប់គ្រងផ្នែកលក់
+                    </span>
+                </div>
+            </div>
+
+            <nav class="flex-1 overflow-y-auto px-4 py-4 space-y-1.5 scrollbar-hide">
+                ${navHtml}
+                <div class="p-3 rounded-xl bg-white/5 border border-white/10 sm-nav-note text-sky-200 mt-6">
+                    <i class="fas fa-info-circle mr-1 text-sky-300"></i> បញ្ចុះតម្លៃ 0.0% ដល់ 15.0% អនុម័តដោយផ្ទាល់។ លើសពី 15.0% ត្រូវបញ្ជូនទៅអភិបាលទូទៅ។
+                </div>
+            </nav>
+
+            <div class="p-4 border-t border-white/10 bg-black/10">
+                <div class="flex items-center gap-3 px-2">
+                    <div class="w-9 h-9 rounded-full bg-white/15 border border-white/20 text-white flex items-center justify-center font-semibold text-xs flex-shrink-0">ហវ</div>
+                    <div class="min-w-0">
+                        <p class="sm-value text-white truncate">ហេង វិច្ឆិកា</p>
+                        <p class="sm-nav-note text-sky-300 truncate">អ្នកគ្រប់គ្រងផ្នែកលក់</p>
+                    </div>
+                </div>
+            </div>
+        </aside>`;
+}
+
 /* ===== 1. របារចំហៀងចល័តសម្រាប់អេក្រង់តូច (< 1024px) ===== */
 function initPortalMobileDrawer() {
     const aside = document.querySelector('aside');
@@ -334,7 +413,13 @@ function toggleRowActionMenu(event, menuId) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    renderPortalSidebar();
     initPortalMobileDrawer();
+
+    if (typeof totalPending === 'function') {
+        const badge = document.getElementById('navQueueBadge');
+        if (badge) badge.textContent = totalPending();
+    }
 
     document.addEventListener('click', (e) => {
         const popover = document.getElementById('datePickerPopover');

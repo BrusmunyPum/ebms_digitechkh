@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DIGITECHKH - បញ្ជីសំណើរង់ចាំការអនុម័ត</title>
-    <link rel="icon" type="image/png" href="shared/assets/favicon.png">
+    <link rel="icon" type="image/png" href="../../../shared/assets/favicon.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,70 +26,13 @@
             }
         }
     </script>
-    <link rel="stylesheet" href="shared/styles/custom.css">
-    <link rel="stylesheet" href="shared/styles/portal.css">
+    <link rel="stylesheet" href="../../../shared/styles/custom.css">
+    <link rel="stylesheet" href="../../../shared/styles/portal.css">
 </head>
-<body id="smPortal" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+<body id="smPortal" data-role-root=".." data-active="approvals" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
 
-    <!-- Sales Manager Sidebar -->
-    <aside class="w-64 bg-[#1e3a5f] text-white flex flex-col flex-shrink-0 select-none z-20 border-r border-slate-700">
-        <div class="h-[72px] px-6 flex items-center gap-3 border-b border-white/10 flex-shrink-0">
-            <div class="w-9 h-9 rounded-xl bg-white/15 border border-white/20 flex items-center justify-center p-1 shadow-sm overflow-hidden flex-shrink-0">
-                <img src="shared/assets/logo-mark-transparent.png" alt="DIGITECHKH" class="w-full h-full object-contain">
-            </div>
-            <div>
-                <h1 class="text-lg font-semibold tracking-wider whitespace-nowrap text-white">DIGITECHKH</h1>
-                <span class="sm-nav-note font-medium text-sky-300 uppercase tracking-wider block">ច្រកគ្រប់គ្រងលក់</span>
-            </div>
-        </div>
+    <div id="sidebarHost"></div>
 
-        <div class="px-5 py-3 border-b border-white/5 bg-black/15">
-            <div class="flex items-center justify-between">
-                <span class="sm-nav-note text-sky-200">តួនាទី:</span>
-                <span class="sm-badge inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-sky-500/20 text-sky-200 border border-sky-400/30">
-                    <i class="fas fa-user-tie text-[10px]"></i> អ្នកគ្រប់គ្រងផ្នែកលក់
-                </span>
-            </div>
-        </div>
-
-        <nav class="flex-1 overflow-y-auto px-4 py-4 space-y-1.5 scrollbar-hide">
-            <a href="dashboard.html" class="flex items-center p-3 text-sky-100 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
-                <i class="fas fa-chart-pie w-6 text-center text-sky-300"></i>
-                <span class="ml-3 sm-nav-label">ផ្ទាំងគ្រប់គ្រង</span>
-            </a>
-
-            <a href="approvals.html" class="flex items-center justify-between p-3 bg-white/15 text-white rounded-xl shadow-sm transition-all whitespace-nowrap border border-white/10">
-                <div class="flex items-center">
-                    <i class="fas fa-stamp w-6 text-center text-sky-300"></i>
-                    <span class="ml-3 sm-nav-label">ការអនុម័ត</span>
-                </div>
-                <span id="navQueueBadge" class="sm-badge bg-rose-500 text-white px-2 py-0.5 rounded-full">5</span>
-            </a>
-
-            <a href="reports.html" class="flex items-center p-3 text-sky-100 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap">
-                <i class="fas fa-chart-column w-6 text-center text-sky-300"></i>
-                <span class="ml-3 sm-nav-label">របាយការណ៍លក់</span>
-            </a>
-
-            <div class="p-3 rounded-xl bg-white/5 border border-white/10 sm-nav-note text-sky-200 mt-6">
-                <i class="fas fa-info-circle mr-1 text-sky-300"></i> បញ្ចុះតម្លៃ 0.0% ដល់ 15.0% អនុម័តដោយផ្ទាល់។ លើសពី 15.0% ត្រូវបញ្ជូនទៅអភិបាលទូទៅ។
-            </div>
-        </nav>
-
-        <div class="p-4 border-t border-white/10 bg-black/10">
-            <div class="flex items-center gap-3 px-2">
-                <div class="w-9 h-9 rounded-full bg-white/15 border border-white/20 text-white flex items-center justify-center font-semibold text-xs flex-shrink-0">
-                    ហវ
-                </div>
-                <div class="min-w-0">
-                    <p class="sm-value text-white truncate">ហេង វិច្ឆិកា</p>
-                    <p class="sm-nav-note text-sky-300 truncate">អ្នកគ្រប់គ្រងផ្នែកលក់</p>
-                </div>
-            </div>
-        </div>
-    </aside>
-
-    <!-- Main Content -->
     <div class="flex-1 flex flex-col h-full overflow-hidden">
         <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
             <div class="min-w-0">
@@ -98,9 +41,7 @@
             </div>
 
             <div class="flex items-center space-x-3 flex-shrink-0">
-                <span id="headerQueuePill" class="sm-badge hidden sm:inline-flex font-semibold px-3 py-1.5 rounded-xl bg-rose-50 text-rose-700 border border-rose-200">
-                    5 ករណីរង់ចាំការសម្រេច
-                </span>
+                <span id="headerQueuePill" class="sm-badge hidden sm:inline-flex font-semibold px-3 py-1.5 rounded-xl bg-rose-50 text-rose-700 border border-rose-200"></span>
             </div>
         </header>
 
@@ -110,13 +51,13 @@
                 <!-- Tab Controls -->
                 <div class="bg-white rounded-2xl p-2 border border-slate-200/80 shadow-sm flex flex-wrap items-center gap-2">
                     <button id="tabBtn-quote" onclick="switchApprovalTab('quote')" class="sm-badge px-5 py-2.5 rounded-xl bg-[#1e3a5f] text-white font-semibold shadow-sm transition">
-                        សម្រង់តម្លៃបញ្ចុះពិសេស (<span id="tabCount-quote">3</span>)
+                        សម្រង់តម្លៃបញ្ចុះពិសេស (<span id="tabCount-quote">0</span>)
                     </button>
                     <button id="tabBtn-void" onclick="switchApprovalTab('void')" class="sm-badge px-5 py-2.5 rounded-xl text-slate-600 hover:bg-slate-100 font-medium transition">
-                        សំណើមោឃភាពវិក្កយបត្រ (<span id="tabCount-void">1</span>)
+                        សំណើមោឃភាពវិក្កយបត្រ (<span id="tabCount-void">0</span>)
                     </button>
                     <button id="tabBtn-credit" onclick="switchApprovalTab('credit')" class="sm-badge px-5 py-2.5 rounded-xl text-slate-600 hover:bg-slate-100 font-medium transition">
-                        សំណើពន្យារឥណទាន (<span id="tabCount-credit">1</span>)
+                        សំណើពន្យារឥណទាន (<span id="tabCount-credit">0</span>)
                     </button>
                 </div>
 
@@ -140,21 +81,20 @@
         </main>
     </div>
 
-    <script src="shared/scripts/ui-components.js"></script>
-    <script src="shared/scripts/data.js"></script>
-    <script src="shared/scripts/portal.js"></script>
+    <script src="../../../shared/scripts/ui-components.js"></script>
+    <script src="../data.js"></script>
+    <script src="../../../shared/scripts/portal.js"></script>
     <script>
         function buildQueue() {
             return {
                 quote: pendingQuotes().map(q => {
                     const cust = getCustomer(q.customerId);
-                    const rep = getRep(q.repId);
                     const totals = quoteTotals(q);
                     return {
                         id: q.id,
                         customer: cust.name,
                         tier: tierLabel(cust.tier),
-                        requester: rep.name,
+                        requester: getRep(q.repId).name,
                         amount: fmtUSD(totals.grandTotal),
                         date: fmtKhDateTime(q.date),
                         discount: q.discountPercent
@@ -162,12 +102,11 @@
                 }),
                 void: pendingVoids().map(v => {
                     const cust = getCustomer(v.customerId);
-                    const rep = getRep(v.repId);
                     return {
                         id: v.id,
                         customer: cust.name,
                         tier: tierLabel(cust.tier),
-                        requester: rep.name,
+                        requester: getRep(v.repId).name,
                         amount: fmtUSD(v.amount),
                         date: fmtKhDateTime(v.date),
                         stock: v.stockReleased ? 'បានបញ្ចេញពីឃ្លាំងរួច' : 'មិនទាន់បញ្ចេញពីឃ្លាំង',
@@ -177,7 +116,6 @@
                 }),
                 credit: pendingCredits().map(c => {
                     const cust = getCustomer(c.customerId);
-                    const rep = getRep(c.repId);
                     const debtInv = INVOICES.filter(i => i.customerId === c.customerId && i.status === 'overdue');
                     const debt = debtInv.reduce((s, i) => s + (i.total - i.paid), 0);
                     const oldestDays = debtInv.length ? Math.max(...debtInv.map(i => daysBetween(i.dueDate))) : 0;
@@ -185,7 +123,7 @@
                         id: c.id,
                         customer: cust.name,
                         tier: tierLabel(cust.tier),
-                        requester: rep.name,
+                        requester: getRep(c.repId).name,
                         date: fmtKhDateTime(c.date),
                         currentLimit: fmtUSD(c.currentLimit),
                         requestedLimit: fmtUSD(c.requestedLimit),
@@ -197,14 +135,13 @@
         }
 
         let QUEUE = { quote: [], void: [], credit: [] };
+        let activeTab = 'quote';
 
         const HEADS = {
             quote: ['លេខសម្រង់តម្លៃ', 'អតិថិជន', 'ស្នើដោយ', 'ទឹកប្រាក់សរុប', 'កាលបរិច្ឆេទ', 'ការបញ្ចុះតម្លៃ'],
             void: ['លេខវិក្កយបត្រ', 'អតិថិជន', 'ស្នើដោយ', 'ទឹកប្រាក់', 'ស្ថានភាពស្តុក', 'មូលហេតុ'],
             credit: ['អតិថិជន', 'ស្នើដោយ', 'ពិដានបច្ចុប្បន្ន', 'ពិដានស្នើសុំថ្មី', 'បំណុលបច្ចុប្បន្ន', 'មូលហេតុ']
         };
-
-        let activeTab = 'quote';
 
         function rowActionMenu(item, tab) {
             const menuId = 'rowMenu-' + item.id;
@@ -247,11 +184,8 @@
 
         function discountBadge(pct) {
             const beyond = pct > 15;
-            const cls = beyond
-                ? 'bg-purple-50 text-purple-800 border-purple-200'
-                : 'bg-blue-50 text-blue-800 border-blue-200';
-            const note = beyond ? ' · លើសដែនសិទ្ធិ' : '';
-            return `<span class="sm-badge px-2 py-0.5 rounded-full border ${cls}">បញ្ចុះតម្លៃ ${pct.toFixed(1)}%${note}</span>`;
+            const cls = beyond ? 'bg-purple-50 text-purple-800 border-purple-200' : 'bg-blue-50 text-blue-800 border-blue-200';
+            return `<span class="sm-badge px-2 py-0.5 rounded-full border ${cls}">បញ្ចុះតម្លៃ ${fmtPercent(pct)}${beyond ? ' · លើសដែនសិទ្ធិ' : ''}</span>`;
         }
 
         function renderQueue() {
@@ -310,21 +244,19 @@
                         <td class="sm-td py-3.5 px-4 text-slate-600">${item.reason}</td>`;
                 }
 
-                return `<tr class="hover:bg-slate-50 transition">
-                    ${cells}
+                return `<tr class="hover:bg-slate-50 transition">${cells}
                     <td class="py-3.5 px-4 text-right">${rowActionMenu(item, activeTab)}</td>
                 </tr>`;
             }).join('');
         }
 
         function updateCounts() {
-            let total = 0;
             Object.keys(QUEUE).forEach(tab => {
-                const n = QUEUE[tab].length;
-                total += n;
-                document.getElementById('tabCount-' + tab).textContent = n;
+                document.getElementById('tabCount-' + tab).textContent = QUEUE[tab].length;
             });
-            document.getElementById('navQueueBadge').textContent = total;
+            const total = totalPending();
+            const badge = document.getElementById('navQueueBadge');
+            if (badge) badge.textContent = total;
             document.getElementById('headerQueuePill').textContent = total + ' ករណីរង់ចាំការសម្រេច';
         }
 
