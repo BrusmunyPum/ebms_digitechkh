@@ -12,7 +12,7 @@ There is no `docs/` directory anymore (it was removed). Business/system design i
 
 ## Repository is mid-rebuild — two trees, don't confuse them
 
-- **`frontend/`** — the live rebuild, organised **by role** rather than by module. `index.html` redirects to `roles/00-auth/login.html`, which **does not exist yet**. Built so far:
+- **`frontend/`** — the live rebuild, organised **by role** rather than by module. `index.html` redirects to `roles/00-auth/login.html`. Built so far:
   ```
   frontend/
   ├── shared/
@@ -39,7 +39,7 @@ open frontend_old_admin_backup/index.html             # the old, fully-built pro
 python3 -m http.server 8000 --directory frontend      # or serve either tree, then open localhost:8000
 ```
 
-`frontend/index.html` still points at a login page that hasn't been built, so enter via a role's `dashboard.html` for now.
+`frontend/index.html` redirects to the login page (`roles/00-auth/login.html`).
 
 No build, lint, or test commands exist. Verification is visual: open the page in a browser.
 

@@ -174,14 +174,14 @@ function handleLogout() {
                 showToast('កំពុងចាកចេញពីប្រព័ន្ធ...', 'info');
                 const roleRoot = getRoleRoot();
                 setTimeout(() => {
-                    window.location.href = `${roleRoot}/../01-auth/login.html`;
+                    window.location.href = `${roleRoot}/../00-auth/login.html`;
                 }, 400);
             }
         });
     } else {
         if (confirm('តើលោកអ្នកពិតជាចង់ចាកចេញពីប្រព័ន្ធមែនទេ?')) {
             const roleRoot = getRoleRoot();
-            window.location.href = `${roleRoot}/../01-auth/login.html`;
+            window.location.href = `${roleRoot}/../00-auth/login.html`;
         }
     }
 }
