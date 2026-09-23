@@ -252,7 +252,9 @@ function closeFloatingDropdown(menu) {
 }
 
 function closeAllFloatingDropdowns() {
-    document.querySelectorAll('.bms-custom-select-menu[data-floating-active="true"], .bms-custom-select-menu:not(.hidden)').forEach(menu => {
+    // [data-floating-active] គ្របម៉ឺនុយគ្រប់ប្រភេទដែលបើកដោយ openFloatingDropdown()
+    // រួមទាំងម៉ឺនុយសកម្មភាពជួរតារាង (⋮) ដែលមិនមានថ្នាក់ .bms-custom-select-menu
+    document.querySelectorAll('[data-floating-active="true"], .bms-custom-select-menu:not(.hidden)').forEach(menu => {
         closeFloatingDropdown(menu);
     });
     document.querySelectorAll('.bms-card-active').forEach(c => c.classList.remove('bms-card-active'));
@@ -651,8 +653,8 @@ document.addEventListener('click', (e) => {
         document.querySelectorAll('.bms-date-popover').forEach(p => p.classList.add('hidden'));
         document.querySelectorAll('.bms-date-picker').forEach(c => c.classList.remove('z-50'));
     }
-    const isInsideDropdown = e.target.closest('.bms-custom-select') || 
-                             e.target.closest('.bms-custom-select-menu') || 
+    const isInsideDropdown = e.target.closest('.bms-custom-select') ||
+                             e.target.closest('.bms-custom-select-menu') ||
                              e.target.closest('.product-select-container') ||
                              e.target.closest('button[onclick*="Dropdown"]');
     if (!isInsideDropdown) {

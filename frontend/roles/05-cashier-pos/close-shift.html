@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - បិទវេន និងរាប់សាច់ប្រាក់</title>
+    <link rel="icon" type="image/png" href="../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { primary: "#1e3a5f", 'primary-dark': "#142842", accent: "#0ea5e9" },
+                    fontFamily: { sans: ["'Kantumruy Pro'", "sans-serif"] }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../shared/styles/custom.css">
+    <link rel="stylesheet" href="../../shared/styles/portal.css">
+</head>
+<body id="posPortal" data-role-root="." data-active="close-shift" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <div id="sidebarHost"></div>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div class="min-w-0">
+                <h2 class="text-xl font-semibold text-gray-800 leading-tight truncate">បិទវេន និងរាប់សាច់ប្រាក់</h2>
+                <p id="shiftSub" class="sm-card-sub text-gray-500 mt-0.5 truncate"></p>
+            </div>
+
+            <div class="flex items-center space-x-2 flex-shrink-0 no-print">
+                <button onclick="window.print()" class="sm-badge px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium transition inline-flex items-center gap-2">
+                    <i class="fas fa-print"></i> <span class="hidden sm:inline">បោះពុម្ព X Report</span>
+                </button>
+                <button onclick="closeShift()" class="sm-badge px-5 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-semibold shadow-sm transition inline-flex items-center gap-2">
+                    <i class="fas fa-lock"></i> <span>បិទវេន និងចេញ Z Report</span>
+                </button>
+            </div>
+        </header>
+
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-6">
+            <div class="w-full grid grid-cols-1 xl:grid-cols-5 gap-6">
+
+                <!-- ការរាប់សាច់ប្រាក់ជាក់ស្តែង -->
+                <div class="xl:col-span-3 space-y-6">
+                    <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+                        <div class="p-5 border-b border-slate-100">
+                            <h3 class="sm-card-title text-slate-700">រាប់ក្រដាសប្រាក់ដុល្លារ</h3>
+                            <p class="sm-card-sub text-slate-500">បញ្ចូលចំនួនសន្លឹកជាក់ស្តែងក្នុងថតប្រាក់</p>
+                        </div>
+                        <div id="usdNotes" class="p-5 grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+                        <div class="px-5 py-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+                            <span class="sm-card-title text-slate-700">សរុបរាប់បាន USD</span>
+                            <span id="usdCounted" class="sm-kpi-value text-slate-700"></span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+                        <div class="p-5 border-b border-slate-100">
+                            <h3 class="sm-card-title text-slate-700">រាប់ក្រដាសប្រាក់រៀល</h3>
+                            <p class="sm-card-sub text-slate-500">បញ្ចូលចំនួនសន្លឹកជាក់ស្តែងក្នុងថតប្រាក់</p>
+                        </div>
+                        <div id="khrNotes" class="p-5 grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+                        <div class="px-5 py-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+                            <span class="sm-card-title text-slate-700">សរុបរាប់បាន ៛</span>
+                            <span id="khrCounted" class="sm-kpi-value text-slate-700"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ការផ្ទៀងផ្ទាត់ និងរបាយការណ៍ -->
+                <div class="xl:col-span-2 space-y-6">
+                    <div id="varianceCard" class="bg-white rounded-2xl border-2 shadow-sm p-5"></div>
+
+                    <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm p-5 space-y-3 no-print">
+                        <label class="sm-label text-slate-700 font-semibold block">មូលហេតុនៃភាពខុសគ្នា (បើមាន)</label>
+                        <textarea id="varianceNote" rows="2" placeholder="ឧទាហរណ៍៖ អាប់ប្រាក់ខុស · ក្រដាសប្រាក់រហែក..."
+                            class="sm-td w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-700 focus:outline-none focus:border-[#1e3a5f] transition resize-none"></textarea>
+                    </div>
+
+                    <!-- X/Z Report -->
+                    <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden sm-print-block">
+                        <div class="p-4 border-b border-slate-100 flex items-center gap-2">
+                            <i class="fas fa-file-invoice text-[#1e3a5f]"></i>
+                            <div>
+                                <h3 class="sm-card-title text-slate-700">មើលរបាយការណ៍មុនបោះពុម្ព</h3>
+                                <p class="sm-card-sub text-slate-500">ទម្រង់ក្រដាសកម្តៅ 80mm</p>
+                            </div>
+                        </div>
+                        <div class="p-5 bg-slate-100/70">
+                            <div id="reportPreview" class="mx-auto bg-white rounded-lg shadow-sm p-5 max-w-[320px]"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="../../shared/scripts/ui-components.js"></script>
+    <script src="data.js"></script>
+    <script src="../../shared/scripts/portal.js"></script>
+    <script>
+        const countUSD = {};
+        const countKHR = {};
+
+        function renderNoteInputs() {
+            document.getElementById('usdNotes').innerHTML = USD_NOTES.map(n => `
+                <div class="flex items-center gap-3">
+                    <span class="sm-value text-slate-700 w-16 flex-shrink-0">$${n}</span>
+                    <span class="sm-td-sub text-slate-400">×</span>
+                    <input type="number" min="0" step="1" value="${countUSD[n] || ''}" placeholder="0"
+                        onchange="setCount('usd', ${n}, this.value)"
+                        class="sm-td w-20 px-2.5 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-700 text-center focus:outline-none focus:border-[#1e3a5f] transition">
+                    <span id="usdLine-${n}" class="sm-value text-slate-500 flex-1 text-right"></span>
+                </div>`).join('');
+
+            document.getElementById('khrNotes').innerHTML = KHR_NOTES.map(n => `
+                <div class="flex items-center gap-3">
+                    <span class="sm-value text-slate-700 w-20 flex-shrink-0">${n.toLocaleString('en-US')} ៛</span>
+                    <span class="sm-td-sub text-slate-400">×</span>
+                    <input type="number" min="0" step="1" value="${countKHR[n] || ''}" placeholder="0"
+                        onchange="setCount('khr', ${n}, this.value)"
+                        class="sm-td w-20 px-2.5 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-700 text-center focus:outline-none focus:border-[#1e3a5f] transition">
+                    <span id="khrLine-${n}" class="sm-value text-slate-500 flex-1 text-right"></span>
+                </div>`).join('');
+
+            updateLineLabels();
+        }
+
+        function setCount(currency, note, value) {
+            const qty = Math.max(parseInt(value, 10) || 0, 0);
+            if (currency === 'usd') countUSD[note] = qty; else countKHR[note] = qty;
+            updateLineLabels();
+            renderVariance();
+            renderReport();
+        }
+
+        function updateLineLabels() {
+            USD_NOTES.forEach(n => {
+                const el = document.getElementById('usdLine-' + n);
+                if (el) el.textContent = countUSD[n] ? fmtUSD(n * countUSD[n]) : '';
+            });
+            KHR_NOTES.forEach(n => {
+                const el = document.getElementById('khrLine-' + n);
+                if (el) el.textContent = countKHR[n] ? fmtKHR(n * countKHR[n]) : '';
+            });
+            document.getElementById('usdCounted').textContent = fmtUSD(totalCountedUSD());
+            document.getElementById('khrCounted').textContent = fmtKHR(totalCountedKHR());
+        }
+
+        function totalCountedUSD() {
+            return USD_NOTES.reduce((sum, n) => sum + n * (countUSD[n] || 0), 0);
+        }
+
+        function totalCountedKHR() {
+            return KHR_NOTES.reduce((sum, n) => sum + n * (countKHR[n] || 0), 0);
+        }
+
+        /* ភាពខុសគ្នាគិតជាដុល្លាររួម ដោយបម្លែងរៀលតាមអត្រាវេន */
+        function varianceData() {
+            const s = shiftSummary();
+            const expectedTotal = s.expectedUSD + toUSD(s.expectedKHR);
+            const countedTotal = totalCountedUSD() + toUSD(totalCountedKHR());
+            return {
+                summary: s,
+                expectedTotal,
+                countedTotal,
+                diff: countedTotal - expectedTotal,
+                usdDiff: totalCountedUSD() - s.expectedUSD,
+                khrDiff: totalCountedKHR() - s.expectedKHR
+            };
+        }
+
+        function renderVariance() {
+            const v = varianceData();
+            const counted = totalCountedUSD() + totalCountedKHR();
+            const isOver = v.diff > 0.005;
+            const isShort = v.diff < -0.005;
+            const neutral = !counted;
+
+            const tone = neutral ? 'border-slate-200' : isShort ? 'border-rose-300' : isOver ? 'border-amber-300' : 'border-emerald-300';
+            const label = neutral ? 'មិនទាន់រាប់' : isShort ? 'ខ្វះសាច់ប្រាក់ (Short)' : isOver ? 'លើសសាច់ប្រាក់ (Over)' : 'ត្រឹមត្រូវគត់';
+            const labelTone = neutral ? 'text-slate-500' : isShort ? 'text-rose-700' : isOver ? 'text-amber-700' : 'text-emerald-700';
+            const icon = neutral ? 'fa-calculator' : isShort ? 'fa-arrow-trend-down' : isOver ? 'fa-arrow-trend-up' : 'fa-circle-check';
+
+            document.getElementById('varianceCard').className = `bg-white rounded-2xl border-2 ${tone} shadow-sm p-5`;
+            document.getElementById('varianceCard').innerHTML = `
+                <div class="flex items-center gap-2.5 mb-4">
+                    <div class="w-10 h-10 rounded-xl ${neutral ? 'bg-slate-100 text-slate-500' : isShort ? 'bg-rose-100 text-rose-600' : isOver ? 'bg-amber-100 text-amber-600' : 'bg-emerald-100 text-emerald-600'} flex items-center justify-center flex-shrink-0">
+                        <i class="fas ${icon}"></i>
+                    </div>
+                    <div class="min-w-0">
+                        <h3 class="sm-card-title text-slate-700">ការផ្ទៀងផ្ទាត់សាច់ប្រាក់</h3>
+                        <p class="sm-card-sub ${labelTone}">${label}</p>
+                    </div>
+                </div>
+
+                <div class="space-y-2">
+                    <div class="flex justify-between">
+                        <span class="sm-label text-slate-600">ប្រាក់បើកវេន</span>
+                        <div class="text-right">
+                            <span class="sm-value text-slate-700 block">${fmtUSD(SHIFT.openingFloatUSD)}</span>
+                            <span class="sm-td-sub text-slate-500">${fmtKHR(SHIFT.openingFloatKHR)}</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="sm-label text-slate-600">លក់បានជាសាច់ប្រាក់</span>
+                        <div class="text-right">
+                            <span class="sm-value text-slate-700 block">${fmtUSD(v.summary.usdCash)}</span>
+                            <span class="sm-td-sub text-slate-500">${fmtKHR(v.summary.khrCash)}</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between pt-2 border-t border-slate-200">
+                        <span class="sm-label text-slate-700 font-semibold">ប្រព័ន្ធរំពឹងទុក</span>
+                        <div class="text-right">
+                            <span class="sm-value text-slate-700 block">${fmtUSD(v.summary.expectedUSD)}</span>
+                            <span class="sm-td-sub text-slate-500">${fmtKHR(v.summary.expectedKHR)}</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="sm-label text-slate-700 font-semibold">រាប់បានជាក់ស្តែង</span>
+                        <div class="text-right">
+                            <span class="sm-value text-slate-700 block">${fmtUSD(totalCountedUSD())}</span>
+                            <span class="sm-td-sub text-slate-500">${fmtKHR(totalCountedKHR())}</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between pt-2 border-t-2 border-slate-200">
+                        <span class="sm-card-title ${labelTone}">ភាពខុសគ្នា</span>
+                        <div class="text-right">
+                            <span class="sm-kpi-value ${labelTone} block">${v.diff >= 0 ? '+' : '−'}${fmtUSD(Math.abs(v.diff))}</span>
+                            <span class="sm-td-sub ${labelTone}">${fmtKHR(Math.abs(toKHR(v.diff)))}</span>
+                        </div>
+                    </div>
+                </div>`;
+        }
+
+        function renderReport() {
+            const v = varianceData();
+            const s = v.summary;
+            const row = (label, value, strong) => `
+                <div class="flex justify-between gap-3 ${strong ? 'pt-1.5 border-t border-dashed border-slate-300' : ''}">
+                    <span class="${strong ? 'sm-value' : 'sm-td'} text-slate-600">${label}</span>
+                    <span class="${strong ? 'sm-value' : 'sm-td'} text-slate-800">${value}</span>
+                </div>`;
+
+            document.getElementById('reportPreview').innerHTML = `
+                <div class="text-center border-b border-dashed border-slate-300 pb-3 mb-3">
+                    <p class="sm-card-title text-slate-800">DIGITECHKH RETAIL</p>
+                    <p class="sm-td-sub text-slate-500">${SHIFT.branch}</p>
+                    <p class="sm-td-sub text-slate-500">លេខ អតប ${MERCHANT.tin}</p>
+                    <p class="sm-value text-slate-800 mt-2">របាយការណ៍បិទវេន (X Report)</p>
+                </div>
+
+                <div class="space-y-1.5 pb-3 mb-3 border-b border-dashed border-slate-300">
+                    ${row('លេខវេន', SHIFT.id)}
+                    ${row('ម៉ាស៊ីន', SHIFT.terminal)}
+                    ${row('អ្នកគិតលុយ', SHIFT.cashier)}
+                    ${row('បើកវេន', fmtTime(SHIFT.openedAt))}
+                    ${row('បោះពុម្ព', fmtTime(BMS_TODAY))}
+                </div>
+
+                <div class="space-y-1.5 pb-3 mb-3 border-b border-dashed border-slate-300">
+                    ${row('ចំនួនវិក្កយបត្រ', s.count)}
+                    ${row('ចំនួនឯកតាលក់', s.qty)}
+                    ${row('តម្លៃមុនអាករ', fmtUSD(s.net))}
+                    ${row('អាករ អតប 10%', fmtUSD(s.vat))}
+                    ${row('លក់បានសរុប', fmtUSD(s.gross), true)}
+                </div>
+
+                <div class="space-y-1.5 pb-3 mb-3 border-b border-dashed border-slate-300">
+                    ${row('សាច់ប្រាក់ USD', fmtUSD(s.usdCash))}
+                    ${row('សាច់ប្រាក់ ៛', fmtKHR(s.khrCash))}
+                    ${row('KHQR បាគង', fmtUSD(s.khqr))}
+                </div>
+
+                <div class="space-y-1.5">
+                    ${row('រំពឹងទុក USD', fmtUSD(s.expectedUSD))}
+                    ${row('រាប់បាន USD', fmtUSD(totalCountedUSD()))}
+                    ${row('រំពឹងទុក ៛', fmtKHR(s.expectedKHR))}
+                    ${row('រាប់បាន ៛', fmtKHR(totalCountedKHR()))}
+                    ${row('ភាពខុសគ្នា', `${v.diff >= 0 ? '+' : '−'}${fmtUSD(Math.abs(v.diff))}`, true)}
+                </div>
+
+                <p class="sm-td-sub text-slate-400 text-center mt-4 pt-3 border-t border-dashed border-slate-300">
+                    អត្រាប្តូរប្រាក់ 1 USD = ${FX_RATE.toLocaleString('en-US')} ៛<br>
+                    សូមអរគុណ · ជួបគ្នាពេលក្រោយ
+                </p>`;
+        }
+
+        async function closeShift() {
+            const counted = totalCountedUSD() + totalCountedKHR();
+            if (!counted) {
+                return showToast('សូមរាប់សាច់ប្រាក់ជាក់ស្តែងជាមុនសិន មុននឹងបិទវេន', 'error');
+            }
+
+            const v = varianceData();
+            const note = document.getElementById('varianceNote').value.trim();
+            const isOff = Math.abs(v.diff) > 0.005;
+
+            if (isOff && !note) {
+                return showToast('មានភាពខុសគ្នាសាច់ប្រាក់ — សូមបញ្ចូលមូលហេតុជាមុនសិន', 'error');
+            }
+
+            const ok = await showCustomConfirm({
+                title: 'បញ្ជាក់ការបិទវេន',
+                message: isOff
+                    ? `មានភាពខុសគ្នា ${v.diff >= 0 ? 'លើស' : 'ខ្វះ'} ${fmtUSD(Math.abs(v.diff))}។ ក្រោយបិទវេន លោកអ្នកមិនអាចកែប្រែប្រតិបត្តិការបានទៀតឡើយ ហើយ Z Report នឹងត្រូវផ្ញើទៅប្រធានគណនេយ្យ។ តើបន្តមែនទេ?`
+                    : `សាច់ប្រាក់ត្រឹមត្រូវគត់។ ក្រោយបិទវេន លោកអ្នកមិនអាចកែប្រែប្រតិបត្តិការបានទៀតឡើយ។ តើបិទវេនមែនទេ?`,
+                confirmText: 'បិទវេន និងចេញ Z Report',
+                cancelText: 'បោះបង់',
+                danger: true
+            });
+            if (!ok) return;
+
+            showToast(`បានបិទវេន ${SHIFT.id} · កំពុងបោះពុម្ព Z Report`, 'success');
+            setTimeout(() => window.print(), 900);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('shiftSub').textContent =
+                `វេន ${SHIFT.id} · បើកម៉ោង ${fmtTime(SHIFT.openedAt)} · ${SHIFT.cashier}`;
+            renderNoteInputs();
+            renderVariance();
+            renderReport();
+        });
+    </script>
+</body>
+</html>

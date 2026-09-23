@@ -54,6 +54,20 @@ const PORTAL_CONFIGS = {
             { id: 'invoices', label: 'វិក្កយបត្រ', icon: 'mdi:receipt-text-outline', href: 'invoices/invoices.html', alertBadge: true }
         ]
     },
+    posPortal: {
+        title: 'ច្រកគិតលុយលក់រាយ',
+        roleName: 'អ្នកគិតលុយ',
+        roleIcon: 'mdi:cash-register',
+        userInitials: 'ចម',
+        userName: 'ចន្ទ មករា',
+        userRole: 'អ្នកគិតលុយលក់រាយ (POS)',
+        policyNote: 'ជាប់សោរត្រឹមវេនថ្ងៃនេះ — មិនអាចរុករកប្រតិបត្តិការ ឬចំណូលពីវេនមុនបានឡើយ។',
+        nav: [
+            { id: 'pos', label: 'ផ្ទាំងគិតលុយ', icon: 'mdi:point-of-sale', href: 'pos-terminal.html' },
+            { id: 'receipts', label: 'វិក្កយបត្រក្នុងវេន', icon: 'mdi:receipt-text-outline', href: 'receipts/receipts.html', badge: true },
+            { id: 'close-shift', label: 'បិទវេន និងរាប់សាច់ប្រាក់', icon: 'mdi:cash-lock-open', href: 'close-shift.html' }
+        ]
+    },
     wmPortal: {
         title: 'ច្រកគ្រប់គ្រងស្តុក',
         roleName: 'អ្នកគ្រប់គ្រងឃ្លាំងស្តុក',
@@ -138,7 +152,7 @@ function getRoleRoot() {
         return document.body.dataset.roleRoot;
     }
     const loc = window.location.pathname.replace(/\\/g, '/');
-    const isSub = /\/(stock-[a-z]+|approvals|pipeline|reports|companies|subscriptions|audit-logs|users|company-profile|system-settings|customers|quotes|invoices)(\/|$)/.test(loc);
+    const isSub = /\/(stock-[a-z]+|approvals|pipeline|reports|companies|subscriptions|audit-logs|users|company-profile|system-settings|customers|quotes|invoices|receipts)(\/|$)/.test(loc);
     return isSub ? '..' : '.';
 }
 

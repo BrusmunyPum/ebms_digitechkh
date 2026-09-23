@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - ផ្ទាំងគិតលុយលក់រាយ</title>
+    <link rel="icon" type="image/png" href="../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { primary: "#1e3a5f", 'primary-dark': "#142842", accent: "#0ea5e9" },
+                    fontFamily: { sans: ["'Kantumruy Pro'", "sans-serif"] }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../shared/styles/custom.css">
+    <link rel="stylesheet" href="../../shared/styles/portal.css">
+</head>
+<body id="posPortal" data-role-root="." data-active="pos" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <div id="sidebarHost"></div>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div class="min-w-0">
+                <h2 class="text-xl font-semibold text-gray-800 leading-tight truncate">ផ្ទាំងគិតលុយលក់រាយ</h2>
+                <p class="sm-card-sub text-gray-500 mt-0.5 truncate">ស្កេនបាកូដ ឬចុចលើក្រឡាទំនិញ ដើម្បីបន្ថែមចូលកន្ត្រក</p>
+            </div>
+
+            <div class="flex items-center space-x-3 flex-shrink-0">
+                <span class="sm-badge hidden md:inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span id="shiftChip"></span>
+                </span>
+                <div class="w-10 h-10 rounded-full bg-[#1e3a5f] text-white flex items-center justify-center font-semibold text-sm shadow-sm">ចម</div>
+            </div>
+        </header>
+
+        <div class="flex-1 flex overflow-hidden">
+
+            <!-- ផ្នែកជ្រើសរើសទំនិញ -->
+            <div class="flex-1 flex flex-col overflow-hidden min-w-0">
+                <div class="px-4 md:px-6 pt-4 pb-3 space-y-3 flex-shrink-0">
+                    <div class="relative">
+                        <i class="fas fa-barcode absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                        <input id="barcodeInput" type="text" autocomplete="off"
+                               onkeydown="if(event.key==='Enter') scanBarcode()"
+                               oninput="renderProducts()"
+                               placeholder="ស្កេនបាកូដ ឬវាយឈ្មោះទំនិញ..."
+                               class="sm-td w-full pl-12 pr-28 py-3.5 rounded-2xl bg-white border-2 border-slate-200 text-slate-700 focus:outline-none focus:border-[#1e3a5f] transition shadow-sm">
+                        <button onclick="scanBarcode()"
+                                class="sm-badge absolute right-2 top-1/2 -translate-y-1/2 px-4 py-2 rounded-xl bg-[#1e3a5f] hover:bg-[#142842] text-white font-semibold transition">
+                            បន្ថែម
+                        </button>
+                    </div>
+
+                    <div id="categoryPills" class="flex flex-wrap items-center gap-2"></div>
+                </div>
+
+                <div class="flex-1 overflow-y-auto px-4 md:px-6 pb-5 scrollbar-hide">
+                    <div id="productGrid" class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3"></div>
+                    <div id="productEmpty" class="hidden py-16 text-center">
+                        <div class="w-14 h-14 rounded-2xl bg-slate-100 text-slate-400 flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-magnifying-glass text-2xl"></i>
+                        </div>
+                        <h3 class="sm-card-title text-slate-700">រកមិនឃើញទំនិញទេ</h3>
+                        <p class="sm-card-sub text-slate-500 mt-1">សូមពិនិត្យបាកូដ ឬជ្រើសរើសប្រភេទផ្សេង។</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- កន្ត្រកទំនិញ -->
+            <aside class="w-[380px] xl:w-[420px] bg-white border-l border-slate-200 flex flex-col flex-shrink-0 hidden lg:flex">
+                <div class="px-5 py-4 border-b border-slate-100 flex items-center justify-between gap-2 flex-shrink-0">
+                    <div class="min-w-0">
+                        <h3 class="sm-card-title text-slate-700">កន្ត្រកទំនិញ</h3>
+                        <p id="cartMeta" class="sm-card-sub text-slate-500"></p>
+                    </div>
+                    <button onclick="askClearCart()" title="សម្អាតកន្ត្រក"
+                            class="w-9 h-9 rounded-xl bg-slate-50 hover:bg-rose-50 text-slate-400 hover:text-rose-600 border border-slate-200/70 inline-flex items-center justify-center transition flex-shrink-0">
+                        <i class="fas fa-trash-can text-xs"></i>
+                    </button>
+                </div>
+
+                <div id="cartLines" class="flex-1 overflow-y-auto scrollbar-hide divide-y divide-slate-100"></div>
+
+                <div class="border-t border-slate-200 p-5 space-y-3 flex-shrink-0 bg-slate-50/60">
+                    <div id="cartTotals" class="space-y-1.5"></div>
+                    <div id="paymentPanel" class="space-y-3"></div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <script src="../../shared/scripts/ui-components.js"></script>
+    <script src="data.js"></script>
+    <script src="../../shared/scripts/portal.js"></script>
+    <script>
+        let cart = [];
+        let activeCategory = 'all';
+        let pay = { usdCash: 0, khrCash: 0, khqr: 0 };
+
+        function renderCategories() {
+            document.getElementById('categoryPills').innerHTML = CATEGORIES.map(c => {
+                const active = c.id === activeCategory;
+                return `<button onclick="pickCategory('${c.id}')"
+                    class="sm-badge px-4 py-2 rounded-xl inline-flex items-center gap-2 transition ${active
+                        ? 'bg-[#1e3a5f] text-white font-semibold shadow-sm'
+                        : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100 font-medium'}">
+                    <i class="fas ${c.icon} text-xs"></i> ${c.label}
+                </button>`;
+            }).join('');
+        }
+
+        function pickCategory(id) {
+            activeCategory = id;
+            renderCategories();
+            renderProducts();
+        }
+
+        function renderProducts() {
+            const q = (document.getElementById('barcodeInput').value || '').trim().toLowerCase();
+            const rows = PRODUCTS
+                .filter(p => activeCategory === 'all' || p.category === activeCategory)
+                .filter(p => !q || p.name.toLowerCase().includes(q) || p.barcode.includes(q));
+
+            const grid = document.getElementById('productGrid');
+            const empty = document.getElementById('productEmpty');
+            if (!rows.length) {
+                grid.innerHTML = '';
+                empty.classList.remove('hidden');
+                return;
+            }
+            empty.classList.add('hidden');
+
+            grid.innerHTML = rows.map(p => `
+                <button onclick="addToCart('${p.sku}')"
+                    class="bg-white rounded-2xl p-3.5 border border-slate-200 hover:border-[#1e3a5f] hover:shadow-md active:scale-[0.97] transition text-left flex flex-col gap-2 min-h-[132px]">
+                    <div class="w-11 h-11 rounded-xl bg-${p.tone}-50 text-${p.tone}-600 flex items-center justify-center flex-shrink-0">
+                        <i class="fas ${p.icon} text-lg"></i>
+                    </div>
+                    <p class="sm-td text-slate-700 leading-snug flex-1">${p.name}</p>
+                    <div class="flex items-end justify-between gap-2">
+                        <span class="sm-value text-[#1e3a5f]">${fmtUSD(p.price)}</span>
+                        <span class="sm-td-sub text-slate-400">ស្តុក ${p.stock}</span>
+                    </div>
+                </button>`).join('');
+        }
+
+        function scanBarcode() {
+            const input = document.getElementById('barcodeInput');
+            const code = input.value.trim();
+            if (!code) return;
+
+            const product = findByBarcode(code);
+            if (!product) {
+                showToast(`រកមិនឃើញទំនិញសម្រាប់ «${code}»`, 'error');
+                return;
+            }
+            addToCart(product.sku);
+            input.value = '';
+            renderProducts();
+            input.focus();
+        }
+
+        function addToCart(sku) {
+            const line = cart.find(l => l.sku === sku);
+            if (line) {
+                line.qty += 1;
+            } else {
+                cart.push({ sku, qty: 1 });
+            }
+            saveCart(cart);
+            renderCart();
+        }
+
+        function changeQty(sku, delta) {
+            const line = cart.find(l => l.sku === sku);
+            if (!line) return;
+            line.qty += delta;
+            if (line.qty <= 0) cart = cart.filter(l => l.sku !== sku);
+            saveCart(cart);
+            renderCart();
+        }
+
+        function removeLine(sku) {
+            cart = cart.filter(l => l.sku !== sku);
+            saveCart(cart);
+            renderCart();
+        }
+
+        async function askClearCart() {
+            if (!cart.length) return;
+            const ok = await showCustomConfirm({
+                title: 'សម្អាតកន្ត្រកទំនិញ',
+                message: 'តើលោកអ្នកពិតជាចង់ដកមុខទំនិញទាំងអស់ចេញពីកន្ត្រកមែនទេ?',
+                confirmText: 'សម្អាតកន្ត្រក',
+                cancelText: 'បោះបង់',
+                danger: true
+            });
+            if (!ok) return;
+            cart = [];
+            pay = { usdCash: 0, khrCash: 0, khqr: 0 };
+            clearCart();
+            renderCart();
+            showToast('បានសម្អាតកន្ត្រកទំនិញ', 'info');
+        }
+
+        function renderCart() {
+            const lines = document.getElementById('cartLines');
+            const t = saleTotals(cart);
+
+            document.getElementById('cartMeta').textContent = cart.length
+                ? `${cart.length} មុខទំនិញ · ${t.qty} ឯកតា`
+                : 'មិនទាន់មានទំនិញក្នុងកន្ត្រក';
+
+            if (!cart.length) {
+                lines.innerHTML = `
+                    <div class="py-16 px-6 text-center">
+                        <div class="w-14 h-14 rounded-2xl bg-slate-100 text-slate-300 flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-cart-shopping text-2xl"></i>
+                        </div>
+                        <p class="sm-card-sub text-slate-500">ចុចលើក្រឡាទំនិញ ឬស្កេនបាកូដ ដើម្បីចាប់ផ្តើម</p>
+                    </div>`;
+            } else {
+                lines.innerHTML = cart.map(l => {
+                    const p = getProduct(l.sku);
+                    return `
+                        <div class="p-4 flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-${p.tone}-50 text-${p.tone}-600 flex items-center justify-center flex-shrink-0">
+                                <i class="fas ${p.icon}"></i>
+                            </div>
+                            <div class="min-w-0 flex-1">
+                                <p class="sm-td text-slate-700 leading-snug">${p.name}</p>
+                                <p class="sm-td-sub text-slate-400">${fmtUSD(p.price)} · ${p.unit}</p>
+                                <div class="flex items-center gap-2 mt-2">
+                                    <button onclick="changeQty('${l.sku}', -1)"
+                                        class="w-8 h-8 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-600 inline-flex items-center justify-center transition">
+                                        <i class="fas fa-minus text-[11px]"></i>
+                                    </button>
+                                    <span class="sm-value text-slate-700 w-8 text-center">${l.qty}</span>
+                                    <button onclick="changeQty('${l.sku}', 1)"
+                                        class="w-8 h-8 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-600 inline-flex items-center justify-center transition">
+                                        <i class="fas fa-plus text-[11px]"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="text-right flex-shrink-0">
+                                <p class="sm-value text-slate-700">${fmtUSD(lineTotal(l))}</p>
+                                <button onclick="removeLine('${l.sku}')" title="ដកចេញ"
+                                    class="mt-2 w-8 h-8 rounded-lg bg-slate-50 hover:bg-rose-50 text-slate-300 hover:text-rose-600 inline-flex items-center justify-center transition">
+                                    <i class="fas fa-xmark text-xs"></i>
+                                </button>
+                            </div>
+                        </div>`;
+                }).join('');
+            }
+
+            document.getElementById('cartTotals').innerHTML = `
+                <div class="flex justify-between">
+                    <span class="sm-label text-slate-600">តម្លៃមុនអាករ</span>
+                    <span class="sm-value text-slate-700">${fmtUSD(t.net)}</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="sm-label text-slate-600">អាករលើតម្លៃបន្ថែម 10%</span>
+                    <span class="sm-value text-slate-700">${fmtUSD(t.vat)}</span>
+                </div>
+                <div class="flex justify-between pt-2 border-t border-slate-200">
+                    <span class="sm-card-title text-slate-700">សរុបត្រូវបង់</span>
+                    <div class="text-right">
+                        <span class="sm-kpi-value text-[#1e3a5f] block">${fmtUSD(t.gross)}</span>
+                        <span class="sm-td-sub text-slate-500">${fmtKHR(toKHR(t.gross))}</span>
+                    </div>
+                </div>`;
+
+            renderPaymentPanel(t);
+        }
+
+        function renderPaymentPanel(t) {
+            const due = t.gross;
+            const paid = paidTotal(pay);
+            const remaining = due - paid;
+            const change = paid - due;
+            const canFinish = cart.length > 0 && remaining <= 0.005;
+
+            document.getElementById('paymentPanel').innerHTML = `
+                <div class="grid grid-cols-3 gap-2">
+                    <div>
+                        <label class="sm-td-sub text-slate-500 block mb-1">សាច់ប្រាក់ USD</label>
+                        <input type="number" min="0" step="0.01" value="${pay.usdCash || ''}" placeholder="0.00"
+                            onchange="setPay('usdCash', this.value)"
+                            class="sm-td w-full px-2.5 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 text-right focus:outline-none focus:border-[#1e3a5f] transition">
+                    </div>
+                    <div>
+                        <label class="sm-td-sub text-slate-500 block mb-1">សាច់ប្រាក់ ៛</label>
+                        <input type="number" min="0" step="100" value="${pay.khrCash || ''}" placeholder="0"
+                            onchange="setPay('khrCash', this.value)"
+                            class="sm-td w-full px-2.5 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 text-right focus:outline-none focus:border-[#1e3a5f] transition">
+                    </div>
+                    <div>
+                        <label class="sm-td-sub text-slate-500 block mb-1">KHQR</label>
+                        <input type="number" min="0" step="0.01" value="${pay.khqr || ''}" placeholder="0.00"
+                            onchange="setPay('khqr', this.value)"
+                            class="sm-td w-full px-2.5 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 text-right focus:outline-none focus:border-[#1e3a5f] transition">
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="quickPay('exact')" class="sm-badge px-3 py-1.5 rounded-lg bg-white border border-slate-200 hover:bg-slate-100 text-slate-600 font-medium transition">គត់</button>
+                    <button onclick="quickPay(5)" class="sm-badge px-3 py-1.5 rounded-lg bg-white border border-slate-200 hover:bg-slate-100 text-slate-600 font-medium transition">$5</button>
+                    <button onclick="quickPay(10)" class="sm-badge px-3 py-1.5 rounded-lg bg-white border border-slate-200 hover:bg-slate-100 text-slate-600 font-medium transition">$10</button>
+                    <button onclick="quickPay(20)" class="sm-badge px-3 py-1.5 rounded-lg bg-white border border-slate-200 hover:bg-slate-100 text-slate-600 font-medium transition">$20</button>
+                    <button onclick="quickPay('khqr')" class="sm-badge px-3 py-1.5 rounded-lg bg-sky-50 border border-sky-200 hover:bg-sky-100 text-sky-700 font-semibold transition">
+                        <i class="fas fa-qrcode mr-1"></i> KHQR ពេញ
+                    </button>
+                </div>
+
+                <div class="p-3 rounded-xl ${remaining > 0.005 ? 'bg-amber-50 border border-amber-200' : 'bg-emerald-50 border border-emerald-200'}">
+                    <div class="flex justify-between">
+                        <span class="sm-label ${remaining > 0.005 ? 'text-amber-800' : 'text-emerald-800'}">
+                            ${remaining > 0.005 ? 'នៅខ្វះ' : 'ប្រាក់អាប់'}
+                        </span>
+                        <div class="text-right">
+                            <span class="sm-value ${remaining > 0.005 ? 'text-amber-800' : 'text-emerald-800'} block">
+                                ${fmtUSD(remaining > 0.005 ? remaining : Math.max(change, 0))}
+                            </span>
+                            ${remaining <= 0.005 && change > 0.005
+                                ? `<span class="sm-td-sub text-emerald-700">${fmtKHR(toKHR(change))}</span>` : ''}
+                        </div>
+                    </div>
+                </div>
+
+                <button onclick="finishSale()" ${canFinish ? '' : 'disabled'}
+                    class="sm-card-title w-full py-4 rounded-2xl font-semibold shadow-sm transition inline-flex items-center justify-center gap-2 ${canFinish
+                        ? 'bg-emerald-600 hover:bg-emerald-700 text-white'
+                        : 'bg-slate-200 text-slate-400 cursor-not-allowed'}">
+                    <i class="fas fa-circle-check"></i> បញ្ចប់ការលក់
+                </button>`;
+        }
+
+        function setPay(key, value) {
+            pay[key] = Math.max(parseFloat(value) || 0, 0);
+            renderCart();
+        }
+
+        function quickPay(mode) {
+            const due = saleTotals(cart).gross;
+            if (!cart.length) return showToast('កន្ត្រកទំនិញនៅទទេ', 'warning');
+
+            if (mode === 'exact') {
+                pay = { usdCash: due, khrCash: 0, khqr: 0 };
+            } else if (mode === 'khqr') {
+                pay = { usdCash: 0, khrCash: 0, khqr: due };
+            } else {
+                pay = { usdCash: mode, khrCash: 0, khqr: 0 };
+            }
+            renderCart();
+        }
+
+        async function finishSale() {
+            const t = saleTotals(cart);
+            const due = t.gross;
+            const paid = paidTotal(pay);
+            if (!cart.length || paid < due - 0.005) return;
+
+            const receiptId = nextReceiptNumber();
+
+            // បើមានផ្នែក KHQR ត្រូវបញ្ជូនទៅទំព័រស្កេនជាមុនសិន
+            if (pay.khqr > 0.005) {
+                savePendingPayment({ receiptId, items: cart, pay, due });
+                window.location.href = `khqr-payment.html?receipt=${receiptId}&amount=${pay.khqr.toFixed(2)}`;
+                return;
+            }
+
+            const change = paid - due;
+            const ok = await showCustomConfirm({
+                title: 'បញ្ជាក់ការទូទាត់',
+                message: `សរុបត្រូវបង់ ${fmtUSD(due)} · ទទួលបាន ${fmtUSD(paid)}${change > 0.005 ? ` · ប្រាក់អាប់ ${fmtUSD(change)} (${fmtKHR(toKHR(change))})` : ''}។ តើបញ្ចប់ការលក់មែនទេ?`,
+                confirmText: 'បញ្ចប់ការលក់',
+                cancelText: 'បោះបង់'
+            });
+            if (!ok) return;
+
+            saveSale({
+                id: receiptId,
+                time: new Date(BMS_TODAY).toISOString(),
+                items: cart.map(l => ({ ...l })),
+                pay: { ...pay }
+            });
+
+            cart = [];
+            pay = { usdCash: 0, khrCash: 0, khqr: 0 };
+            clearCart();
+            renderCart();
+            updatePortalBadges();
+
+            showToast(`បានបញ្ចប់ការលក់ ${receiptId}` + (change > 0.005 ? ` · ប្រាក់អាប់ ${fmtUSD(change)}` : ''), 'success');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('shiftChip').textContent =
+                `វេន ${SHIFT.terminal} · បើកម៉ោង ${fmtTime(SHIFT.openedAt)}`;
+
+            cart = loadCart();
+
+            // ត្រឡប់មកវិញពីទំព័រ KHQR ដោយជោគជ័យ
+            const params = new URLSearchParams(location.search);
+            if (params.get('paid')) {
+                const done = params.get('paid');
+                clearCart();
+                cart = [];
+                history.replaceState(null, '', location.pathname);
+                showToast(`បានបញ្ចប់ការលក់ ${done} តាមរយៈ KHQR បាគង`, 'success');
+            }
+
+            renderCategories();
+            renderProducts();
+            renderCart();
+            document.getElementById('barcodeInput').focus();
+        });
+    </script>
+</body>
+</html>
