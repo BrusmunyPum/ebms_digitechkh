@@ -179,22 +179,24 @@
             </div>
             <div class="p-4 sm:p-6 overflow-y-auto flex-1 bg-slate-50/50">
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3.5">
-                    <!-- Role 1: 1. Super Admin -->
-                    <div onclick="selectDemoRole('super-admin', 'ស៊ុបភើរ អភិបាល', '../../../documentation/role_superadmin.html')"
-                         class="p-3.5 rounded-2xl bg-white border border-slate-200 hover:border-primary/50 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group cursor-pointer hover:-translate-y-0.5">
+                    <!-- Role 1: 1. Super Admin (Active Live Portal) -->
+                    <a href="../01-super-admin/dashboard.html"
+                       class="p-3.5 rounded-2xl bg-white border-2 border-purple-400/80 hover:border-purple-500 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group cursor-pointer bg-gradient-to-b from-purple-50/20 to-white hover:-translate-y-0.5">
                         <div>
                             <div class="flex items-center justify-between mb-2">
                                 <span class="text-xl">👑</span>
-                                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-purple-50 text-purple-700">Multi-Tenant</span>
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-purple-100 text-purple-700">Multi-Tenant</span>
                             </div>
-                            <h4 class="text-sm font-bold text-slate-800 mb-0.5 group-hover:text-primary transition">1. Super Admin</h4>
+                            <h4 class="text-sm font-bold text-slate-900 mb-0.5 group-hover:text-purple-700 transition">1. Super Admin</h4>
                             <p class="text-[11px] text-slate-500 leading-snug">គ្រប់គ្រងប្រព័ន្ធ និងក្រុមហ៊ុនសាខា</p>
                         </div>
-                        <div class="pt-2 mt-2.5 border-t border-slate-100 flex items-center justify-between text-slate-400 group-hover:text-primary transition text-xs">
-                            <span class="text-[11px]">ឯកសារបច្ចេកទេស</span>
-                            <i class="fas fa-arrow-right text-[10px] text-slate-300 transition-transform group-hover:translate-x-1"></i>
+                        <div class="pt-2 mt-2.5 border-t border-purple-100 flex items-center justify-between text-purple-600 font-semibold text-xs">
+                            <span class="flex items-center gap-1.5">
+                                <span class="w-1.5 h-1.5 rounded-full bg-purple-500 animate-pulse"></span>ចូលសាកល្បង
+                            </span>
+                            <i class="fas fa-arrow-right text-[10px] transition-transform group-hover:translate-x-1"></i>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- Role 2: 2. Admin / General Manager -->
                     <div onclick="selectDemoRole('admin', 'អភិបាលគ្រប់គ្រងទូទៅ', '../../../documentation/role_admin_general_manager.html')"
@@ -433,6 +435,10 @@
         }
 
         function selectDemoRole(role, roleName, docUrl) {
+            if (role === 'super-admin' || role === '01-super-admin') {
+                window.location.href = '../01-super-admin/dashboard.html';
+                return;
+            }
             if (role === 'manager' || role === 'sales-manager' || role === '03-sales-manager') {
                 window.location.href = '../03-sales-manager/dashboard.html';
                 return;
@@ -465,6 +471,14 @@
             const val = (usernameInput ? usernameInput.value : '').trim().toLowerCase();
 
             // ផ្ទៀងផ្ទាត់គណនី
+            if (val.includes('super') || val.includes('root') || val.includes('platform')) {
+                showToast('ចូលប្រព័ន្ធជោគជ័យ! កំពុងបញ្ជូនទៅកាន់ច្រកស៊ុបភើរអភិបាល...', 'success');
+                setTimeout(() => {
+                    window.location.href = '../01-super-admin/dashboard.html';
+                }, 800);
+                return;
+            }
+
             if (val.includes('staff') || val.includes('floor') || val.includes('worker')) {
                 showToast('ចូលប្រព័ន្ធជោគជ័យ! កំពុងបញ្ជូនទៅកាន់ជាន់ឃ្លាំង...', 'success');
                 setTimeout(() => {

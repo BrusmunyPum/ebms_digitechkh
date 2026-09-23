@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - ផ្ទាំងគ្រប់គ្រងស៊ុបភើរអភិបាល</title>
+    <link rel="icon" type="image/png" href="../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1e3a5f",
+                        'primary-dark': "#142842",
+                        accent: "#0ea5e9",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../shared/styles/custom.css">
+    <link rel="stylesheet" href="../../shared/styles/portal.css">
+</head>
+<body id="saPortal" data-role-root="." data-active="dashboard" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <div id="sidebarHost"></div>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div class="min-w-0">
+                <h2 class="text-xl font-semibold text-gray-800 leading-tight truncate">ផ្ទាំងគ្រប់គ្រងសកល</h2>
+                <p class="text-xs font-normal text-gray-500 mt-0.5 truncate">ទិដ្ឋភាពទូទៅនៃប្រព័ន្ធ ក្រុមហ៊ុនជាវ និងស្ថានភាពហេដ្ឋារចនាសម្ព័ន្ធ</p>
+            </div>
+
+            <div class="flex items-center space-x-3 flex-shrink-0">
+                <a href="subscriptions/subscriptions.html" class="hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 border border-amber-200 text-amber-700 text-xs font-medium transition">
+                    <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+                    <span id="headerExpiringPill">ការជាវជិតផុតកំណត់: 0</span>
+                </a>
+
+                <div class="flex items-center sm:border-l sm:pl-3">
+                    <div class="w-10 h-10 rounded-full bg-[#1e3a5f] text-white flex items-center justify-center font-semibold text-sm shadow-sm" title="ស៊ុបភើរ អភិបាល">សភ</div>
+                </div>
+            </div>
+        </header>
+
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-4">
+            <div class="w-full space-y-5">
+
+                <!-- Filter Toolbar -->
+                <div class="bg-white rounded-2xl p-3 border border-slate-200/80 shadow-sm flex flex-wrap items-center justify-between gap-3">
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-filter text-slate-400 text-xs"></i>
+                        <span class="text-xs font-medium text-slate-600">កាលបរិច្ឆេទវិភាគប្រព័ន្ធ</span>
+                    </div>
+                    <div id="dateFilterHost" class="flex items-center"></div>
+                </div>
+
+                <!-- KPI Cards -->
+                <div id="kpiRow" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"></div>
+
+                <!-- Middle Section: Chart & Expiry Alerts -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+                    <!-- Growth Chart (2 cols) -->
+                    <div class="lg:col-span-2 bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm flex flex-col justify-between">
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                            <div>
+                                <h3 class="text-base font-semibold text-slate-700">កំណើនការជាវ និងចំណូលប្រចាំខែ</h3>
+                                <p class="text-xs text-slate-500">ការវិវត្តនៃចំនួនក្រុមហ៊ុនជាវ និងចំណូលប្រចាំខែ (MRR)</p>
+                            </div>
+                            <span class="text-xs font-medium px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
+                                <i class="fas fa-arrow-trend-up mr-1"></i> កំណើន 18.5%
+                            </span>
+                        </div>
+                        <div id="growthChart" class="w-full h-72"></div>
+                    </div>
+
+                    <!-- Expiry Alerts Box (1 col) -->
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-8 h-8 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-sm">
+                                        <i class="fas fa-clock-rotate-left"></i>
+                                    </div>
+                                    <h3 class="text-base font-semibold text-slate-700">ជិតផុតកំណត់ក្នុង 7 ថ្ងៃ</h3>
+                                </div>
+                                <a href="subscriptions/subscriptions.html" class="text-xs text-primary hover:underline font-medium">មើលទាំងអស់</a>
+                            </div>
+                            <p class="text-xs text-slate-500 mb-3">ក្រុមហ៊ុនដែលត្រូវបន្តការជាវជាបន្ទាន់ដើម្បីជៀសវាងការផ្អាក</p>
+                            <div id="expiringList" class="space-y-2.5"></div>
+                        </div>
+
+                        <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
+                            <span>ការដាស់តឿនដោយស្វ័យប្រវត្តិ</span>
+                            <span class="text-emerald-600 font-medium"><i class="fas fa-check-circle mr-1"></i> Telegram បើក</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Platform Infrastructure Metrics -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
+                    <div class="mb-4">
+                        <h3 class="text-base font-semibold text-slate-700">ស្ថានភាពហេដ្ឋារចនាសម្ព័ន្ធ និងសុខភាពប្រព័ន្ធ</h3>
+                        <p class="text-xs text-slate-500">ការតាមដាន Server Uptime ទំហំផ្ទុកទិន្នន័យ និងចំនួនសម័យសកម្ម</p>
+                    </div>
+                    <div id="systemMetricsRow" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3"></div>
+                </div>
+
+                <!-- Recent Tenants Table -->
+                <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+                    <div class="p-5 border-b border-slate-100 flex flex-wrap items-center justify-between gap-3">
+                        <div>
+                            <h3 class="text-base font-semibold text-slate-700">បញ្ជីក្រុមហ៊ុនក្នុងប្រព័ន្ធ</h3>
+                            <p class="text-xs text-slate-500">ក្រុមហ៊ុនជាវសកម្ម និងក្រុមហ៊ុនដែលបានចុះឈ្មោះក្នុងប្រព័ន្ធ</p>
+                        </div>
+                        <div class="flex items-center gap-2.5">
+                            <a href="companies/companies.html" class="text-xs font-medium text-slate-600 hover:text-primary px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 transition">
+                                មើលក្រុមហ៊ុនទាំងអស់
+                            </a>
+                            <a href="companies/create-company.html" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#1e3a5f] hover:bg-[#142842] text-white text-xs font-medium shadow-sm transition">
+                                <i class="fas fa-plus text-xs"></i>
+                                <span>ចុះឈ្មោះក្រុមហ៊ុនថ្មី</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left">
+                            <thead class="bg-slate-50 text-slate-500 border-b border-slate-100 text-xs">
+                                <tr>
+                                    <th class="py-3 px-4 font-semibold">លេខកូដ</th>
+                                    <th class="py-3 px-4 font-semibold">ឈ្មោះក្រុមហ៊ុន</th>
+                                    <th class="py-3 px-4 font-semibold">លេខ TIN</th>
+                                    <th class="py-3 px-4 font-semibold">កញ្ចប់សេវា</th>
+                                    <th class="py-3 px-4 font-semibold">អ្នកប្រើប្រាស់</th>
+                                    <th class="py-3 px-4 font-semibold">ផុតកំណត់</th>
+                                    <th class="py-3 px-4 font-semibold">ស្ថានភាព</th>
+                                    <th class="py-3 px-4 font-semibold text-right">សកម្មភាព</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recentTenantsBody" class="divide-y divide-slate-100 text-xs text-slate-700"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="../../shared/scripts/ui-components.js"></script>
+    <script src="data.js"></script>
+    <script src="../../shared/scripts/portal.js"></script>
+    <script>
+        function kpiCard(opts) {
+            return `
+                <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm hover:shadow-md transition">
+                    <div class="flex items-center justify-between mb-2 gap-2">
+                        <span class="text-xs font-medium text-slate-500">${opts.label}</span>
+                        <div class="w-9 h-9 rounded-xl bg-${opts.tone}-50 text-${opts.tone}-600 flex items-center justify-center flex-shrink-0">
+                            <i class="fas ${opts.icon} text-sm"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-800">${opts.value}</h3>
+                    <p class="text-xs ${opts.subTone || 'text-slate-500'} mt-1.5">${opts.sub}</p>
+                </div>`;
+        }
+
+        function miniStat(label, value, sub, icon) {
+            return `<div class="p-3.5 rounded-xl bg-slate-50 border border-slate-100 flex items-start gap-3">
+                <div class="w-8 h-8 rounded-lg bg-white border border-slate-200 text-slate-600 flex items-center justify-center text-xs flex-shrink-0 mt-0.5">
+                    <i class="fas ${icon}"></i>
+                </div>
+                <div class="min-w-0">
+                    <span class="text-xs text-slate-500 block">${label}</span>
+                    <span class="text-sm font-semibold text-slate-800 mt-0.5 block">${value}</span>
+                    <span class="text-[11px] text-slate-400 block mt-0.5">${sub}</span>
+                </div>
+            </div>`;
+        }
+
+        function getStatusBadge(status) {
+            if (status === 'active') {
+                return '<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-medium border border-emerald-200"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>សកម្ម</span>';
+            }
+            if (status === 'expiring') {
+                return '<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-50 text-amber-700 text-xs font-medium border border-amber-200"><span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>ជិតផុត</span>';
+            }
+            return '<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-rose-50 text-rose-700 text-xs font-medium border border-rose-200"><span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span>ផ្អាក</span>';
+        }
+
+        function getPlanBadge(planKey) {
+            const plan = SUBSCRIPTION_PLANS[planKey] || { name: planKey, badgeColor: 'slate' };
+            const color = plan.badgeColor || 'slate';
+            return `<span class="px-2.5 py-0.5 rounded-md bg-${color}-50 text-${color}-700 text-xs font-medium border border-${color}-200">${plan.name}</span>`;
+        }
+
+        function renderDashboard() {
+            const stats = getPlatformKPIs();
+            const tenants = getTenants();
+
+            // Render KPI cards
+            document.getElementById('kpiRow').innerHTML =
+                kpiCard({
+                    label: 'ក្រុមហ៊ុនសកម្ម',
+                    icon: 'fa-building-circle-check',
+                    tone: 'emerald',
+                    value: `${stats.activeCount} <span class="text-sm font-normal text-slate-500">ក្រុមហ៊ុន</span>`,
+                    sub: `ក្នុងចំណោម ${stats.totalTenants} ក្រុមហ៊ុនសរុប`,
+                    subTone: 'text-emerald-600 font-medium'
+                }) +
+                kpiCard({
+                    label: 'ចំណូលប្រចាំខែ (MRR)',
+                    icon: 'fa-sack-dollar',
+                    tone: 'sky',
+                    value: fmtUSD(stats.mrr),
+                    sub: 'គិតលើកញ្ចប់សេវាសកម្មបច្ចុប្បន្ន',
+                    subTone: 'text-sky-600 font-medium'
+                }) +
+                kpiCard({
+                    label: 'ការជាវជិតផុតកំណត់',
+                    icon: 'fa-clock-rotate-left',
+                    tone: 'amber',
+                    value: `${stats.expiringCount} <span class="text-sm font-normal text-slate-500">ក្រុមហ៊ុន</span>`,
+                    sub: 'ផុតកំណត់ក្នុងរយៈពេល 7 ថ្ងៃខាងមុខ',
+                    subTone: 'text-amber-600 font-medium'
+                }) +
+                kpiCard({
+                    label: 'ក្រុមហ៊ុនផ្អាកដំណើរការ',
+                    icon: 'fa-ban',
+                    tone: 'rose',
+                    value: `${stats.suspendedCount} <span class="text-sm font-normal text-slate-500">ក្រុមហ៊ុន</span>`,
+                    sub: 'ខកខានការបង់ប្រាក់បន្តការជាវ',
+                    subTone: 'text-rose-600 font-medium'
+                });
+
+            // Header pill
+            const pillEl = document.getElementById('headerExpiringPill');
+            if (pillEl) {
+                pillEl.textContent = `ការជាវជិតផុតកំណត់: ${stats.expiringCount} ក្រុមហ៊ុន`;
+            }
+
+            // Infrastructure stats
+            document.getElementById('systemMetricsRow').innerHTML =
+                miniStat('កម្រិតដំណើរការប្រព័ន្ធ', stats.systemUptime, 'គ្មានការរអាក់រអួលក្នុងខែនេះ', 'fa-server') +
+                miniStat('អ្នកប្រើប្រាស់សរុប', `${stats.totalUsers} នាក់`, 'គណនីបុគ្គលិកគ្រប់ក្រុមហ៊ុន', 'fa-users') +
+                miniStat('ទំហំផ្ទុកទិន្នន័យ', `${(stats.storageTotalMb / 1024).toFixed(2)} GB`, 'នៃទំហំសរុប 500 GB', 'fa-database') +
+                miniStat('សម័យប្រើប្រាស់សកម្ម', '48 សម័យ', 'បុគ្គលិកកំពុង Online ជាក់ស្តែង', 'fa-network-wired');
+
+            // Expiring list
+            const expiringTenants = tenants.filter(t => t.status === 'expiring');
+            const expListHost = document.getElementById('expiringList');
+            if (!expiringTenants.length) {
+                expListHost.innerHTML = '<div class="p-4 text-center text-xs text-slate-400">គ្មានការជាវជិតផុតកំណត់ទេ</div>';
+            } else {
+                expListHost.innerHTML = expiringTenants.map(t => `
+                    <div class="p-3 rounded-xl bg-amber-50/60 border border-amber-200/70 flex items-center justify-between gap-3">
+                        <div class="min-w-0">
+                            <p class="text-xs font-semibold text-slate-800 truncate">${t.nameKh}</p>
+                            <p class="text-[11px] text-amber-700">ផុតកំណត់៖ ${fmtDateKh(t.expiresAt)}</p>
+                        </div>
+                        <a href="companies/view-company.html?id=${t.id}" class="text-[11px] font-medium text-[#1e3a5f] hover:underline px-2.5 py-1 rounded-lg bg-white border border-slate-200 flex-shrink-0">
+                            ពិនិត្យ
+                        </a>
+                    </div>
+                `).join('');
+            }
+
+            // Recent Tenants Table
+            const bodyHost = document.getElementById('recentTenantsBody');
+            bodyHost.innerHTML = tenants.slice(0, 8).map((t, idx) => `
+                <tr class="hover:bg-slate-50/80 transition">
+                    <td class="py-3 px-4 font-mono font-medium text-slate-500">${t.id}</td>
+                    <td class="py-3 px-4 font-medium text-slate-800">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-8 h-8 rounded-lg bg-[#1e3a5f]/10 text-primary font-semibold flex items-center justify-center text-xs flex-shrink-0">
+                                ${t.logoInitial}
+                            </div>
+                            <div>
+                                <span class="block">${t.nameKh}</span>
+                                <span class="text-[11px] text-slate-400 font-normal">${t.contactName}</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="py-3 px-4 font-mono text-slate-600">${t.tin}</td>
+                    <td class="py-3 px-4">${getPlanBadge(t.plan)}</td>
+                    <td class="py-3 px-4 font-medium">${t.usersCount} / ${t.quotaUsers} នាក់</td>
+                    <td class="py-3 px-4 text-slate-500">${fmtDateKh(t.expiresAt)}</td>
+                    <td class="py-3 px-4">${getStatusBadge(t.status)}</td>
+                    <td class="py-3 px-4 text-right">
+                        <a href="companies/view-company.html?id=${t.id}" class="inline-flex items-center gap-1 px-3 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium transition">
+                            <span>មើល</span>
+                            <i class="fas fa-chevron-right text-[10px]"></i>
+                        </a>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        window.onDateRangeApplied = renderDashboard;
+
+        function initDashboard() {
+            renderPortalSidebar();
+            if (typeof renderDateRangePicker === 'function') {
+                renderDateRangePicker('dateFilterHost');
+            }
+            renderDashboard();
+
+            // Setup ECharts
+            const chartDom = document.getElementById('growthChart');
+            if (chartDom) {
+                const myChart = echarts.init(chartDom);
+                const option = {
+                    tooltip: {
+                        trigger: 'axis',
+                        textStyle: { fontFamily: 'Kantumruy Pro' }
+                    },
+                    legend: {
+                        data: ['ចំនួនក្រុមហ៊ុន', 'ចំណូលប្រចាំខែ (USD)'],
+                        bottom: 0,
+                        textStyle: { fontFamily: 'Kantumruy Pro', fontSize: 11 }
+                    },
+                    grid: { top: '12%', left: '3%', right: '4%', bottom: '15%', containLabel: true },
+                    xAxis: {
+                        type: 'category',
+                        data: ['មករា', 'កុម្ភៈ', 'មីនា', 'មេសា', 'ឧសភា', 'មិថុនា', 'កក្កដា', 'សីហា', 'កញ្ញា'],
+                        axisLabel: { fontFamily: 'Kantumruy Pro', fontSize: 11 }
+                    },
+                    yAxis: [
+                        {
+                            type: 'value',
+                            name: 'ក្រុមហ៊ុន',
+                            nameTextStyle: { fontFamily: 'Kantumruy Pro', fontSize: 10 },
+                            axisLabel: { fontFamily: 'Kantumruy Pro' }
+                        },
+                        {
+                            type: 'value',
+                            name: 'USD',
+                            nameTextStyle: { fontFamily: 'Kantumruy Pro', fontSize: 10 },
+                            axisLabel: {
+                                fontFamily: 'Kantumruy Pro',
+                                formatter: '${value}'
+                            }
+                        }
+                    ],
+                    series: [
+                        {
+                            name: 'ចំនួនក្រុមហ៊ុន',
+                            type: 'bar',
+                            data: [3, 4, 5, 6, 7, 7, 8, 8, 8],
+                            itemStyle: { color: '#1e3a5f', borderRadius: [6, 6, 0, 0] }
+                        },
+                        {
+                            name: 'ចំណូលប្រចាំខែ (USD)',
+                            type: 'line',
+                            yAxisIndex: 1,
+                            smooth: true,
+                            data: [180, 240, 310, 390, 480, 520, 610, 680, 712],
+                            itemStyle: { color: '#0ea5e9' },
+                            lineStyle: { width: 3 }
+                        }
+                    ]
+                };
+                myChart.setOption(option);
+                window.addEventListener('resize', () => myChart.resize());
+            }
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initDashboard);
+        } else {
+            initDashboard();
+        }
+    </script>
+</body>
+</html>

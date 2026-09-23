@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - គ្រប់គ្រងកញ្ចប់សេវា & ការជាវ</title>
+    <link rel="icon" type="image/png" href="../../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1e3a5f",
+                        'primary-dark': "#142842",
+                        accent: "#0ea5e9",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../shared/styles/custom.css">
+    <link rel="stylesheet" href="../../../shared/styles/portal.css">
+</head>
+<body id="saPortal" data-role-root=".." data-active="subscriptions" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <div id="sidebarHost"></div>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div class="min-w-0">
+                <h2 class="text-xl font-semibold text-gray-800 leading-tight truncate">គ្រប់គ្រងកញ្ចប់សេវា & ការជាវ</h2>
+                <p class="text-xs font-normal text-gray-500 mt-0.5 truncate">តាមដានកញ្ចប់សេវាជាវ ស្ថានភាពបន្តសុពលភាព និងចំណូលប្រចាំខែ (MRR)</p>
+            </div>
+
+            <div class="flex items-center space-x-3 flex-shrink-0">
+                <a href="../companies/create-company.html" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#1e3a5f] hover:bg-[#142842] text-white text-xs font-medium shadow-sm transition">
+                    <i class="fas fa-plus text-xs"></i>
+                    <span>ចុះឈ្មោះក្រុមហ៊ុនថ្មី</span>
+                </a>
+
+                <div class="flex items-center sm:border-l sm:pl-3">
+                    <div class="w-10 h-10 rounded-full bg-[#1e3a5f] text-white flex items-center justify-center font-semibold text-sm shadow-sm" title="ស៊ុបភើរ អភិបាល">សភ</div>
+                </div>
+            </div>
+        </header>
+
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-5">
+            <div class="w-full space-y-6">
+
+                <!-- Financial & Subscription KPIs -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-medium text-slate-500">ចំណូលប្រចាំខែ (MRR)</span>
+                            <div class="w-9 h-9 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-sm">
+                                <i class="fas fa-sack-dollar"></i>
+                            </div>
+                        </div>
+                        <h3 id="kpiMrr" class="text-2xl font-bold text-slate-800">$0.00</h3>
+                        <p class="text-xs text-emerald-600 font-medium mt-1">
+                            <i class="fas fa-arrow-trend-up mr-1"></i> កើនឡើង 12% ធៀបខែមុន
+                        </p>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-medium text-slate-500">ក្រុមហ៊ុនកំពុងជាវសកម្ម</span>
+                            <div class="w-9 h-9 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-sm">
+                                <i class="fas fa-building-circle-check"></i>
+                            </div>
+                        </div>
+                        <h3 id="kpiActiveTenants" class="text-2xl font-bold text-slate-800">0</h3>
+                        <p id="kpiActiveTenantsSub" class="text-xs text-slate-500 mt-1"></p>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-medium text-slate-500">ការជាវជិតផុតកំណត់ (7 ថ្ងៃ)</span>
+                            <div class="w-9 h-9 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-sm">
+                                <i class="fas fa-clock-rotate-left"></i>
+                            </div>
+                        </div>
+                        <h3 id="kpiExpiring" class="text-2xl font-bold text-amber-700">0</h3>
+                        <p class="text-xs text-amber-600 font-medium mt-1">រង់ចាំការបង់ប្រាក់បន្ត</p>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-medium text-slate-500">អត្រាឈប់ជាវ (Churn Rate)</span>
+                            <div class="w-9 h-9 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-sm">
+                                <i class="fas fa-chart-line-down"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-800">1.2%</h3>
+                        <p class="text-xs text-emerald-600 font-medium mt-1">កម្រិតទាបបំផុតក្នុងស្តង់ដារ SaaS</p>
+                    </div>
+                </div>
+
+                <!-- Section A: Plan Definitions & Capabilities -->
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="text-base font-semibold text-slate-800">កញ្ចប់សេវាផ្លូវការរបស់ប្រព័ន្ធ (Subscription Plans)</h3>
+                            <p class="text-xs text-slate-500">កម្រិតកញ្ចប់សេវា តម្លៃ និងចំនួនអ្នកជាវបច្ចុប្បន្ន</p>
+                        </div>
+                        <span class="text-xs font-medium text-slate-400">ប្រព័ន្ធពហុក្រុមហ៊ុន (Multi-Tenant)</span>
+                    </div>
+
+                    <div id="planCardsRow" class="grid grid-cols-1 md:grid-cols-3 gap-5"></div>
+                </div>
+
+                <!-- Section B: Active Subscriptions Table -->
+                <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden space-y-0">
+                    <div class="p-5 border-b border-slate-100 flex flex-wrap items-center justify-between gap-3">
+                        <div>
+                            <h3 class="text-base font-semibold text-slate-800">ស្ថានភាពការជាវរបស់ក្រុមហ៊ុននីមួយៗ</h3>
+                            <p class="text-xs text-slate-500">តាមដានសុពលភាព រយៈពេលនៅសល់ និងការបន្តការជាវ</p>
+                        </div>
+
+                        <!-- Filter Status -->
+                        <div class="flex items-center gap-2">
+                            <button type="button" onclick="filterSubTable('')" id="btnFilterAll" class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-[#1e3a5f] text-white transition cursor-pointer">
+                                ទាំងអស់
+                            </button>
+                            <button type="button" onclick="filterSubTable('active')" id="btnFilterActive" class="px-3 py-1.5 rounded-xl text-xs font-medium bg-slate-100 hover:bg-slate-200 text-slate-700 transition cursor-pointer">
+                                សកម្ម
+                            </button>
+                            <button type="button" onclick="filterSubTable('expiring')" id="btnFilterExpiring" class="px-3 py-1.5 rounded-xl text-xs font-medium bg-slate-100 hover:bg-slate-200 text-slate-700 transition cursor-pointer">
+                                ជិតផុត
+                            </button>
+                            <button type="button" onclick="filterSubTable('suspended')" id="btnFilterSuspended" class="px-3 py-1.5 rounded-xl text-xs font-medium bg-slate-100 hover:bg-slate-200 text-slate-700 transition cursor-pointer">
+                                ផ្អាក
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="overflow-x-auto min-h-[300px]">
+                        <table class="w-full text-left">
+                            <thead class="bg-slate-50 text-slate-500 border-b border-slate-100 text-xs">
+                                <tr>
+                                    <th class="py-3 px-4 font-semibold w-12 text-center">ល.រ</th>
+                                    <th class="py-3 px-4 font-semibold">ឈ្មោះក្រុមហ៊ុន</th>
+                                    <th class="py-3 px-4 font-semibold">កញ្ចប់សេវា</th>
+                                    <th class="py-3 px-4 font-semibold">ចាប់ផ្តើម</th>
+                                    <th class="py-3 px-4 font-semibold">ផុតកំណត់</th>
+                                    <th class="py-3 px-4 font-semibold">រយៈពេលនៅសល់</th>
+                                    <th class="py-3 px-4 font-semibold">កម្រៃសេវា/ខែ</th>
+                                    <th class="py-3 px-4 font-semibold text-right">សកម្មភាព</th>
+                                </tr>
+                            </thead>
+                            <tbody id="subscriptionsTableBody" class="divide-y divide-slate-100 text-xs text-slate-700"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../shared/scripts/ui-components.js"></script>
+    <script src="../data.js"></script>
+    <script src="../../../shared/scripts/portal.js"></script>
+    <script>
+        let currentSubFilter = '';
+
+        function renderSubscriptionsPage() {
+            const tenants = getTenants();
+            const stats = getPlatformKPIs();
+
+            // KPIs
+            document.getElementById('kpiMrr').textContent = fmtUSD(stats.mrr);
+            document.getElementById('kpiActiveTenants').textContent = stats.activeCount;
+            document.getElementById('kpiActiveTenantsSub').textContent = `ក្នុងចំណោម ${stats.totalTenants} ក្រុមហ៊ុនសរុប`;
+            document.getElementById('kpiExpiring').textContent = stats.expiringCount;
+
+            // Plan Cards
+            renderPlanCards(tenants);
+
+            // Table
+            renderTableRows(tenants);
+        }
+
+        function renderPlanCards(tenants) {
+            const row = document.getElementById('planCardsRow');
+            const plans = [SUBSCRIPTION_PLANS.starter, SUBSCRIPTION_PLANS.pro, SUBSCRIPTION_PLANS.enterprise];
+
+            row.innerHTML = plans.map(p => {
+                const count = tenants.filter(t => t.plan === p.id && t.status !== 'suspended').length;
+                const isPopular = p.id === 'pro';
+                const isVip = p.id === 'enterprise';
+
+                return `
+                    <div class="bg-white rounded-2xl p-6 border ${isPopular ? 'border-indigo-400 ring-2 ring-indigo-400/20' : 'border-slate-200/80'} shadow-sm flex flex-col justify-between relative overflow-hidden">
+                        ${isPopular ? '<span class="absolute top-0 right-0 bg-indigo-500 text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl tracking-wider">ពេញនិយមបំផុត</span>' : ''}
+                        ${isVip ? '<span class="absolute top-0 right-0 bg-purple-600 text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl tracking-wider">VIP</span>' : ''}
+
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <h4 class="text-base font-bold text-slate-800">${p.name}</h4>
+                            </div>
+                            <div class="flex items-baseline gap-1 mb-3">
+                                <span class="text-3xl font-extrabold text-slate-900">$${p.price}</span>
+                                <span class="text-xs text-slate-400 font-medium">/ខែ</span>
+                            </div>
+                            <p class="text-xs text-slate-500 leading-relaxed mb-4">${p.description}</p>
+
+                            <div class="p-3 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-between text-xs mb-4">
+                                <span class="text-slate-600 font-medium">ចំនួនក្រុមហ៊ុនកំពុងជាវ៖</span>
+                                <span class="font-bold text-primary">${count} ក្រុមហ៊ុន</span>
+                            </div>
+
+                            <ul class="space-y-2.5 text-xs text-slate-600 mb-6">
+                                ${p.features.map(f => `
+                                    <li class="flex items-start gap-2">
+                                        <i class="fas fa-check-circle text-emerald-500 text-xs mt-0.5 flex-shrink-0"></i>
+                                        <span>${f}</span>
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
+
+                        <div class="pt-4 border-t border-slate-100">
+                            <a href="../companies/companies.html" class="w-full py-2.5 px-4 rounded-xl text-center text-xs font-semibold transition block ${isPopular ? 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm' : 'bg-slate-100 hover:bg-slate-200 text-slate-700'}">
+                                មើលក្រុមហ៊ុនប្រើប្រាស់កញ្ចប់នេះ
+                            </a>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function getDaysLeftBadge(expiresAtStr, status) {
+            if (status === 'suspended') {
+                return '<span class="px-2.5 py-1 rounded-full bg-rose-50 text-rose-700 text-xs font-semibold border border-rose-200">ផ្អាកដំណើរការ</span>';
+            }
+
+            const today = new Date(2026, 8, 23);
+            const exp = new Date(expiresAtStr);
+            const diffTime = exp - today;
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+            if (diffDays <= 0) {
+                return '<span class="px-2.5 py-1 rounded-full bg-rose-50 text-rose-700 text-xs font-semibold border border-rose-200">ហួសកាលកំណត់</span>';
+            }
+            if (diffDays <= 7) {
+                return `<span class="px-2.5 py-1 rounded-full bg-amber-50 text-amber-700 text-xs font-semibold border border-amber-200 animate-pulse">នៅសល់ ${diffDays} ថ្ងៃ</span>`;
+            }
+            return `<span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-medium">នៅសល់ ${diffDays} ថ្ងៃ</span>`;
+        }
+
+        function renderTableRows(allTenants) {
+            const list = allTenants.filter(t => {
+                if (currentSubFilter && t.status !== currentSubFilter) return false;
+                return true;
+            });
+
+            const body = document.getElementById('subscriptionsTableBody');
+            body.innerHTML = list.map((t, idx) => {
+                const plan = SUBSCRIPTION_PLANS[t.plan] || { name: t.plan, price: 0 };
+                return `
+                    <tr class="hover:bg-slate-50 transition">
+                        <td class="py-3.5 px-4 text-center font-medium text-slate-400">${idx + 1}</td>
+                        <td class="py-3.5 px-4 font-medium text-slate-800">
+                            <div class="flex items-center gap-2.5">
+                                <div class="w-8 h-8 rounded-lg bg-[#1e3a5f]/10 text-primary font-semibold flex items-center justify-center text-xs flex-shrink-0">
+                                    ${t.logoInitial}
+                                </div>
+                                <div>
+                                    <a href="../companies/view-company.html?id=${t.id}" class="hover:text-primary hover:underline font-semibold block">${t.nameKh}</a>
+                                    <span class="text-[11px] text-slate-400 font-normal">TIN: ${t.tin}</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="py-3.5 px-4">
+                            <span class="font-semibold text-slate-700">${plan.name}</span>
+                        </td>
+                        <td class="py-3.5 px-4 text-slate-500">${fmtDateKh(t.createdAt)}</td>
+                        <td class="py-3.5 px-4 font-medium text-slate-700">${fmtDateKh(t.expiresAt)}</td>
+                        <td class="py-3.5 px-4">${getDaysLeftBadge(t.expiresAt, t.status)}</td>
+                        <td class="py-3.5 px-4 font-semibold text-slate-800">${fmtUSD(plan.price)}</td>
+                        <td class="py-3.5 px-4 text-right">
+                            <div class="flex items-center justify-end gap-1.5">
+                                <button type="button" onclick="handleRenew('${t.id}')"
+                                    class="px-2.5 py-1 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-700 text-xs font-semibold transition cursor-pointer"
+                                    title="បន្តការជាវ 12 ខែទៀត">
+                                    បន្តការជាវ
+                                </button>
+                                <a href="../companies/edit-company.html?id=${t.id}#subscription"
+                                    class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium transition"
+                                    title="ផ្លាស់ប្តូរកញ្ចប់សេវា">
+                                    ប្តូរកញ្ចប់
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function filterSubTable(status) {
+            currentSubFilter = status;
+            const buttons = [
+                { id: 'btnFilterAll', active: status === '' },
+                { id: 'btnFilterActive', active: status === 'active' },
+                { id: 'btnFilterExpiring', active: status === 'expiring' },
+                { id: 'btnFilterSuspended', active: status === 'suspended' }
+            ];
+
+            buttons.forEach(b => {
+                const el = document.getElementById(b.id);
+                if (b.active) {
+                    el.className = 'px-3 py-1.5 rounded-xl text-xs font-semibold bg-[#1e3a5f] text-white transition cursor-pointer';
+                } else {
+                    el.className = 'px-3 py-1.5 rounded-xl text-xs font-medium bg-slate-100 hover:bg-slate-200 text-slate-700 transition cursor-pointer';
+                }
+            });
+
+            renderTableRows(getTenants());
+        }
+
+        function handleRenew(tenantId) {
+            const tenant = getTenantById(tenantId);
+            if (!tenant) return;
+
+            showCustomConfirm({
+                title: 'បន្តសុពលភាពការជាវ',
+                message: `តើលោកអ្នកចង់បន្តការជាវក្រុមហ៊ុន «${tenant.nameKh}» រយៈពេល 12 ខែបន្ថែមមែនទេ?`,
+                confirmText: 'បន្តការជាវ',
+                cancelText: 'បោះបង់',
+                onConfirm: () => {
+                    const currentExp = new Date(tenant.expiresAt);
+                    currentExp.setFullYear(currentExp.getFullYear() + 1);
+                    const y = currentExp.getFullYear();
+                    const m = String(currentExp.getMonth() + 1).padStart(2, '0');
+                    const d = String(currentExp.getDate()).padStart(2, '0');
+                    const newExpiry = `${y}-${m}-${d}`;
+
+                    updateTenant(tenantId, {
+                        expiresAt: newExpiry,
+                        status: 'active'
+                    });
+
+                    addAuditLog({
+                        companyName: tenant.nameKh,
+                        companyId: tenant.id,
+                        action: 'RENEW_SUBSCRIPTION',
+                        actionLabel: 'បន្តការជាវ',
+                        entity: `កញ្ចប់សេវា #${tenant.plan}`,
+                        result: 'SUCCESS',
+                        resultLabel: 'ជោគជ័យ',
+                        details: `បានបន្តសុពលភាពការជាវក្រុមហ៊ុន «${tenant.nameKh}» ដល់ ${fmtDateKh(newExpiry)}`
+                    });
+
+                    showToast(`បានបន្តការជាវក្រុមហ៊ុន «${tenant.nameKh}» ដល់ថ្ងៃទី ${fmtDateKh(newExpiry)} ដោយជោគជ័យ`, 'success');
+                    renderSubscriptionsPage();
+                }
+            });
+        }
+
+        function initSubscriptions() {
+            renderPortalSidebar();
+            renderSubscriptionsPage();
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initSubscriptions);
+        } else {
+            initSubscriptions();
+        }
+    </script>
+</body>
+</html>

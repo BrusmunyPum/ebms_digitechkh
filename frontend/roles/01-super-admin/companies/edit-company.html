@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - កែប្រែព័ត៌មានក្រុមហ៊ុន</title>
+    <link rel="icon" type="image/png" href="../../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1e3a5f",
+                        'primary-dark': "#142842",
+                        accent: "#0ea5e9",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../shared/styles/custom.css">
+    <link rel="stylesheet" href="../../../shared/styles/portal.css">
+</head>
+<body id="saPortal" data-role-root=".." data-active="companies" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <div id="sidebarHost"></div>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div class="flex items-center gap-3 min-w-0">
+                <a id="backLink" href="companies.html" class="w-10 h-10 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-600 flex items-center justify-center transition border border-slate-200/70 flex-shrink-0" title="ត្រឡប់ក្រោយ">
+                    <i class="fas fa-arrow-left text-sm"></i>
+                </a>
+                <div class="min-w-0">
+                    <h2 class="text-xl font-semibold text-gray-800 leading-tight truncate">កែប្រែព័ត៌មានក្រុមហ៊ុន</h2>
+                    <p id="subHeaderTenantId" class="text-xs font-normal text-gray-500 mt-0.5 truncate">កំពុងកែប្រែទិន្នន័យក្រុមហ៊ុន...</p>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-3 flex-shrink-0">
+                <a id="cancelBtn" href="companies.html" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium transition cursor-pointer">
+                    បោះបង់
+                </a>
+                <button type="button" onclick="submitEditCompany()" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#1e3a5f] hover:bg-[#142842] text-white text-xs font-medium shadow-sm transition cursor-pointer">
+                    <i class="fas fa-save text-xs"></i>
+                    <span>រក្សាទុកការកែប្រែ</span>
+                </button>
+            </div>
+        </header>
+
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-5">
+            <form id="editCompanyForm" onsubmit="event.preventDefault(); submitEditCompany();" class="w-full space-y-5">
+
+                <!-- 2-Column Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+
+                    <!-- Section 1: ព័ត៌មានទូទៅរបស់ក្រុមហ៊ុន -->
+                    <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-4">
+                        <div class="border-b border-slate-100 pb-3 flex items-center gap-2.5">
+                            <div class="w-8 h-8 rounded-xl bg-[#1e3a5f]/10 text-primary flex items-center justify-center text-sm">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-semibold text-slate-800">ព័ត៌មានទូទៅរបស់ក្រុមហ៊ុន</h3>
+                                <p class="text-[11px] text-slate-400">ព័ត៌មានចុះបញ្ជីអាជីវកម្មផ្លូវការ និងអ្នកទទួលខុសត្រូវ</p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">
+                                ឈ្មោះក្រុមហ៊ុនជាភាសាខ្មែរ <span class="text-rose-500">*</span>
+                            </label>
+                            <input type="text" id="nameKh" required
+                                class="w-full bg-slate-50 hover:bg-slate-100/70 focus:bg-white border border-slate-200 focus:border-primary focus:ring-2 focus:ring-primary/10 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 transition outline-none font-medium">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">
+                                ឈ្មោះក្រុមហ៊ុនជាភាសាអង់គ្លេស <span class="text-rose-500">*</span>
+                            </label>
+                            <input type="text" id="nameEn" required
+                                class="w-full bg-slate-50 hover:bg-slate-100/70 focus:bg-white border border-slate-200 focus:border-primary focus:ring-2 focus:ring-primary/10 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 transition outline-none font-medium">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">
+                                លេខអត្តសញ្ញាណកម្មសារពើពន្ធ (TIN) <span class="text-rose-500">*</span>
+                            </label>
+                            <input type="text" id="tin" required
+                                class="w-full font-mono bg-slate-50 hover:bg-slate-100/70 focus:bg-white border border-slate-200 focus:border-primary focus:ring-2 focus:ring-primary/10 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 transition outline-none font-medium">
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 mb-1.5">
+                                    ឈ្មោះអ្នកគ្រប់គ្រង Admin <span class="text-rose-500">*</span>
+                                </label>
+                                <input type="text" id="contactName" required
+                                    class="w-full bg-slate-50 hover:bg-slate-100/70 focus:bg-white border border-slate-200 focus:border-primary focus:ring-2 focus:ring-primary/10 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 transition outline-none font-medium">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 mb-1.5">
+                                    លេខទូរស័ព្ទទំនាក់ទំនង <span class="text-rose-500">*</span>
+                                </label>
+                                <input type="text" id="contactPhone" required
+                                    class="w-full bg-slate-50 hover:bg-slate-100/70 focus:bg-white border border-slate-200 focus:border-primary focus:ring-2 focus:ring-primary/10 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 transition outline-none font-medium">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">
+                                អ៊ីមែល Admin (សម្រាប់ចូលប្រព័ន្ធ) <span class="text-rose-500">*</span>
+                            </label>
+                            <input type="email" id="contactEmail" required
+                                class="w-full bg-slate-50 hover:bg-slate-100/70 focus:bg-white border border-slate-200 focus:border-primary focus:ring-2 focus:ring-primary/10 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 transition outline-none font-medium">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">
+                                អាសយដ្ឋានក្រុមហ៊ុន
+                            </label>
+                            <textarea id="address" rows="2"
+                                class="w-full bg-slate-50 hover:bg-slate-100/70 focus:bg-white border border-slate-200 focus:border-primary focus:ring-2 focus:ring-primary/10 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 transition outline-none font-medium"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Section 2: ការកំណត់កញ្ចប់សេវាជាវ -->
+                    <div id="subscription" class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-4">
+                        <div class="border-b border-slate-100 pb-3 flex items-center gap-2.5">
+                            <div class="w-8 h-8 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-sm">
+                                <i class="fas fa-boxes-packing"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-semibold text-slate-800">ការកំណត់កញ្ចប់សេវាជាវ (Subscription)</h3>
+                                <p class="text-[11px] text-slate-400">ជ្រើសរើសកម្រិតកញ្ចប់សេវា កូតាអ្នកប្រើប្រាស់ និងរយៈពេល</p>
+                            </div>
+                        </div>
+
+                        <!-- Subscription Plan Selector -->
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-2">
+                                ជ្រើសរើសកញ្ចប់សេវា <span class="text-rose-500">*</span>
+                            </label>
+                            <div class="grid grid-cols-3 gap-3">
+                                <label class="border-2 border-slate-200 hover:border-sky-400 rounded-xl p-3 flex flex-col justify-between cursor-pointer transition has-[:checked]:border-sky-600 has-[:checked]:bg-sky-50/30">
+                                    <input type="radio" name="planChoice" id="planStarter" value="starter" onchange="onPlanChange('starter')" class="sr-only">
+                                    <div>
+                                        <span class="text-xs font-bold text-slate-800 block">កញ្ចប់ចាប់ផ្តើម</span>
+                                        <span class="text-sm font-bold text-sky-700 mt-1 block">$29<span class="text-[10px] text-slate-400 font-normal">/ខែ</span></span>
+                                    </div>
+                                    <span class="text-[10px] text-slate-500 mt-2 block">5 អ្នកប្រើប្រាស់</span>
+                                </label>
+
+                                <label class="border-2 border-slate-200 hover:border-indigo-400 rounded-xl p-3 flex flex-col justify-between cursor-pointer transition has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50/50">
+                                    <input type="radio" name="planChoice" id="planPro" value="pro" onchange="onPlanChange('pro')" class="sr-only">
+                                    <div>
+                                        <span class="text-xs font-bold text-slate-800 block">កញ្ចប់អាជីព</span>
+                                        <span class="text-sm font-bold text-indigo-700 mt-1 block">$69<span class="text-[10px] text-slate-400 font-normal">/ខែ</span></span>
+                                    </div>
+                                    <span class="text-[10px] text-slate-500 mt-2 block">15 អ្នកប្រើប្រាស់</span>
+                                </label>
+
+                                <label class="border-2 border-slate-200 hover:border-purple-400 rounded-xl p-3 flex flex-col justify-between cursor-pointer transition has-[:checked]:border-purple-600 has-[:checked]:bg-purple-50/30">
+                                    <input type="radio" name="planChoice" id="planEnterprise" value="enterprise" onchange="onPlanChange('enterprise')" class="sr-only">
+                                    <div>
+                                        <span class="text-xs font-bold text-slate-800 block">កញ្ចប់សហគ្រាស</span>
+                                        <span class="text-sm font-bold text-purple-700 mt-1 block">$199<span class="text-[10px] text-slate-400 font-normal">/ខែ</span></span>
+                                    </div>
+                                    <span class="text-[10px] text-slate-500 mt-2 block">50 អ្នកប្រើប្រាស់</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 mb-1.5">
+                                    ចំនួនអ្នកប្រើប្រាស់អតិបរមា (Quota) <span class="text-rose-500">*</span>
+                                </label>
+                                <input type="number" id="quotaUsers" min="1" max="500" required
+                                    class="w-full bg-slate-50 hover:bg-slate-100/70 focus:bg-white border border-slate-200 focus:border-primary focus:ring-2 focus:ring-primary/10 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 transition outline-none font-medium">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 mb-1.5">
+                                    រូបិយប័ណ្ណគោល <span class="text-rose-500">*</span>
+                                </label>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <label class="border border-slate-200 rounded-xl p-2.5 flex items-center justify-center gap-2 cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-primary/5">
+                                        <input type="radio" name="currencyChoice" id="curUSD" value="USD" class="sr-only">
+                                        <span class="text-xs font-semibold text-slate-700">ដុល្លារ ($)</span>
+                                    </label>
+                                    <label class="border border-slate-200 rounded-xl p-2.5 flex items-center justify-center gap-2 cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-primary/5">
+                                        <input type="radio" name="currencyChoice" id="curKHR" value="KHR" class="sr-only">
+                                        <span class="text-xs font-semibold text-slate-700">រៀល (៛)</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">
+                                កាលបរិច្ឆេទផុតកំណត់នៃការជាវ <span class="text-rose-500">*</span>
+                            </label>
+                            <input type="date" id="expiresAt" required
+                                class="w-full bg-slate-50 hover:bg-slate-100/70 focus:bg-white border border-slate-200 focus:border-primary focus:ring-2 focus:ring-primary/10 rounded-xl px-3.5 py-2 text-xs text-slate-800 transition outline-none font-medium">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">
+                                កំណត់ចំណាំផ្ទៃក្នុង
+                            </label>
+                            <input type="text" id="notes"
+                                class="w-full bg-slate-50 hover:bg-slate-100/70 focus:bg-white border border-slate-200 focus:border-primary focus:ring-2 focus:ring-primary/10 rounded-xl px-3.5 py-2 text-xs text-slate-800 transition outline-none font-medium">
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Section 3: Feature Flags -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-4">
+                    <div class="border-b border-slate-100 pb-3 flex items-center justify-between">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-sm">
+                                <i class="fas fa-toggle-on"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-semibold text-slate-800">ការកំណត់មុខងារប្រើប្រាស់ (Feature Flags)</h3>
+                                <p class="text-[11px] text-slate-400">បើក ឬបិទម៉ូឌុលជាក់លាក់សម្រាប់ក្រុមហ៊ុននេះ</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <label class="p-4 rounded-xl border border-slate-200 hover:border-slate-300 flex items-start justify-between cursor-pointer transition">
+                            <div class="min-w-0 pr-3">
+                                <span class="text-xs font-bold text-slate-800 block">ម៉ូឌុលគិតប្រាក់លក់រហ័ស (Touch POS)</span>
+                                <span class="text-[11px] text-slate-400 mt-0.5 block">ចំណុចប្រទាក់អេក្រង់ប៉ះ ស្កេនបាកូដ និងបោះពុម្ព</span>
+                            </div>
+                            <input type="checkbox" id="featPos" class="w-4 h-4 text-primary rounded accent-primary mt-1 flex-shrink-0 cursor-pointer">
+                        </label>
+
+                        <label class="p-4 rounded-xl border border-slate-200 hover:border-slate-300 flex items-start justify-between cursor-pointer transition">
+                            <div class="min-w-0 pr-3">
+                                <span class="text-xs font-bold text-slate-800 block">គេហទំព័រ Digital Showroom</span>
+                                <span class="text-[11px] text-slate-400 mt-0.5 block">ដាក់តាំងផលិតផលលើអនឡាញ និងសម្រង់តម្លៃ</span>
+                            </div>
+                            <input type="checkbox" id="featShowroom" class="w-4 h-4 text-primary rounded accent-primary mt-1 flex-shrink-0 cursor-pointer">
+                        </label>
+
+                        <label class="p-4 rounded-xl border border-slate-200 hover:border-slate-300 flex items-start justify-between cursor-pointer transition">
+                            <div class="min-w-0 pr-3">
+                                <span class="text-xs font-bold text-slate-800 block">ម៉ូឌុលធនធានមនុស្ស & បៀវត្សរ៍</span>
+                                <span class="text-[11px] text-slate-400 mt-0.5 block">គ្រប់គ្រងបុគ្គលិក វត្តមាន និងបើកប្រាក់ខែ</span>
+                            </div>
+                            <input type="checkbox" id="featHr" class="w-4 h-4 text-primary rounded accent-primary mt-1 flex-shrink-0 cursor-pointer">
+                        </label>
+
+                        <label class="p-4 rounded-xl border border-slate-200 hover:border-slate-300 flex items-start justify-between cursor-pointer transition">
+                            <div class="min-w-0 pr-3">
+                                <span class="text-xs font-bold text-slate-800 block">ការដាស់តឿនតាម Telegram</span>
+                                <span class="text-[11px] text-slate-400 mt-0.5 block">ជូនដំណឹងពេលមានការលក់ ឬសំណើអនុម័ត</span>
+                            </div>
+                            <input type="checkbox" id="featTelegram" class="w-4 h-4 text-primary rounded accent-primary mt-1 flex-shrink-0 cursor-pointer">
+                        </label>
+
+                        <label class="p-4 rounded-xl border border-slate-200 hover:border-slate-300 flex items-start justify-between cursor-pointer transition">
+                            <div class="min-w-0 pr-3">
+                                <span class="text-xs font-bold text-slate-800 block">គ្រប់គ្រងពហុឃ្លាំងស្តុក</span>
+                                <span class="text-[11px] text-slate-400 mt-0.5 block">ផ្ទេរស្តុកឆ្លងឃ្លាំង និងបែងចែកស្តុកសាខា</span>
+                            </div>
+                            <input type="checkbox" id="featMultiWarehouse" class="w-4 h-4 text-primary rounded accent-primary mt-1 flex-shrink-0 cursor-pointer">
+                        </label>
+
+                        <label class="p-4 rounded-xl border border-slate-200 hover:border-slate-300 flex items-start justify-between cursor-pointer transition">
+                            <div class="min-w-0 pr-3">
+                                <span class="text-xs font-bold text-slate-800 block">តាមដានឡូត៍ & ផុតកំណត់</span>
+                                <span class="text-[11px] text-slate-400 mt-0.5 block">គ្រប់គ្រង Batch Number និងកាលបរិច្ឆេទផុតកំណត់</span>
+                            </div>
+                            <input type="checkbox" id="featLotTracking" class="w-4 h-4 text-primary rounded accent-primary mt-1 flex-shrink-0 cursor-pointer">
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Bottom Actions Bar -->
+                <div class="bg-white rounded-2xl p-4 border border-slate-200/80 shadow-sm flex items-center justify-between">
+                    <span class="text-xs text-slate-500">
+                        <i class="fas fa-info-circle text-sky-600 mr-1"></i>
+                        ការផ្លាស់ប្តូរកញ្ចប់សេវានឹងធ្វើបច្ចុប្បន្នភាពកូតាអ្នកប្រើប្រាស់ និង Feature Flags ភ្លាមៗ
+                    </span>
+                    <div class="flex items-center gap-3">
+                        <a id="cancelBtnBottom" href="companies.html" class="px-5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium transition cursor-pointer">
+                            បោះបង់
+                        </a>
+                        <button type="submit" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[#1e3a5f] hover:bg-[#142842] text-white text-xs font-medium shadow-md transition cursor-pointer">
+                            <i class="fas fa-save text-xs"></i>
+                            <span>រក្សាទុកការកែប្រែ</span>
+                        </button>
+                    </div>
+                </div>
+
+            </form>
+        </main>
+    </div>
+
+    <script src="../../../shared/scripts/ui-components.js"></script>
+    <script src="../data.js"></script>
+    <script src="../../../shared/scripts/portal.js"></script>
+    <script>
+        let tenantId = null;
+        let selectedPlan = 'pro';
+
+        function loadTenantData() {
+            const params = new URLSearchParams(window.location.search);
+            tenantId = params.get('id') || 'TNT-1001';
+
+            const tenant = getTenantById(tenantId);
+            if (!tenant) {
+                showToast(`រកមិនឃើញក្រុមហ៊ុនដែលមានលេខកូដ #${tenantId} ឡើយ`, 'error');
+                setTimeout(() => window.location.href = 'companies.html', 1500);
+                return;
+            }
+
+            document.getElementById('subHeaderTenantId').textContent = `លេខសម្គាល់ក្រុមហ៊ុន៖ #${tenant.id} (${tenant.nameKh})`;
+            document.getElementById('backLink').href = `view-company.html?id=${tenant.id}`;
+            document.getElementById('cancelBtn').href = `view-company.html?id=${tenant.id}`;
+            document.getElementById('cancelBtnBottom').href = `view-company.html?id=${tenant.id}`;
+
+            document.getElementById('nameKh').value = tenant.nameKh || '';
+            document.getElementById('nameEn').value = tenant.nameEn || '';
+            document.getElementById('tin').value = tenant.tin || '';
+            document.getElementById('contactName').value = tenant.contactName || '';
+            document.getElementById('contactPhone').value = tenant.contactPhone || '';
+            document.getElementById('contactEmail').value = tenant.contactEmail || '';
+            document.getElementById('address').value = tenant.address || '';
+            document.getElementById('quotaUsers').value = tenant.quotaUsers || 15;
+            document.getElementById('expiresAt').value = tenant.expiresAt || '';
+            document.getElementById('notes').value = tenant.notes || '';
+
+            // Currency
+            if (tenant.baseCurrency === 'KHR') {
+                document.getElementById('curKHR').checked = true;
+            } else {
+                document.getElementById('curUSD').checked = true;
+            }
+
+            // Plan
+            selectedPlan = tenant.plan || 'pro';
+            if (selectedPlan === 'starter') document.getElementById('planStarter').checked = true;
+            else if (selectedPlan === 'enterprise') document.getElementById('planEnterprise').checked = true;
+            else document.getElementById('planPro').checked = true;
+
+            // Features
+            document.getElementById('featPos').checked = !!tenant.features?.pos;
+            document.getElementById('featShowroom').checked = !!tenant.features?.showroom;
+            document.getElementById('featHr').checked = !!tenant.features?.hr;
+            document.getElementById('featTelegram').checked = !!tenant.features?.telegram;
+            document.getElementById('featMultiWarehouse').checked = !!tenant.features?.multiWarehouse;
+            document.getElementById('featLotTracking').checked = !!tenant.features?.lotTracking;
+        }
+
+        function onPlanChange(planKey) {
+            selectedPlan = planKey;
+            const quotaInput = document.getElementById('quotaUsers');
+            if (planKey === 'starter') {
+                quotaInput.value = 5;
+            } else if (planKey === 'pro') {
+                quotaInput.value = 15;
+            } else if (planKey === 'enterprise') {
+                quotaInput.value = 50;
+            }
+        }
+
+        function submitEditCompany() {
+            const nameKh = document.getElementById('nameKh').value.trim();
+            const nameEn = document.getElementById('nameEn').value.trim();
+            const tin = document.getElementById('tin').value.trim();
+            const contactName = document.getElementById('contactName').value.trim();
+            const contactPhone = document.getElementById('contactPhone').value.trim();
+            const contactEmail = document.getElementById('contactEmail').value.trim();
+            const address = document.getElementById('address').value.trim();
+            const quotaUsers = document.getElementById('quotaUsers').value;
+            const currencyChoice = document.querySelector('input[name="currencyChoice"]:checked')?.value || 'USD';
+            const expiresAt = document.getElementById('expiresAt').value;
+            const notes = document.getElementById('notes').value.trim();
+
+            if (!nameKh || !nameEn || !tin || !contactName || !contactPhone || !contactEmail) {
+                showToast('សូមបំពេញគ្រប់ប្រអប់ដែលមានសញ្ញាផ្កាយក្រហម (*)', 'warning');
+                return;
+            }
+
+            const updated = updateTenant(tenantId, {
+                nameKh,
+                nameEn,
+                tin,
+                contactName,
+                contactPhone,
+                contactEmail,
+                address,
+                plan: selectedPlan,
+                quotaUsers: parseInt(quotaUsers) || 15,
+                baseCurrency: currencyChoice,
+                expiresAt,
+                notes,
+                features: {
+                    pos: document.getElementById('featPos').checked,
+                    showroom: document.getElementById('featShowroom').checked,
+                    hr: document.getElementById('featHr').checked,
+                    telegram: document.getElementById('featTelegram').checked,
+                    multiWarehouse: document.getElementById('featMultiWarehouse').checked,
+                    lotTracking: document.getElementById('featLotTracking').checked
+                }
+            });
+
+            showToast(`បានរក្សាទុកការកែប្រែក្រុមហ៊ុន «${updated.nameKh}» ដោយជោគជ័យ`, 'success');
+
+            setTimeout(() => {
+                window.location.href = `view-company.html?id=${tenantId}`;
+            }, 800);
+        }
+
+        function initEditCompany() {
+            renderPortalSidebar();
+            loadTenantData();
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initEditCompany);
+        } else {
+            initEditCompany();
+        }
+    </script>
+</body>
+</html>

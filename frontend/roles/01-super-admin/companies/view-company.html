@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - ព័ត៌មានលម្អិតក្រុមហ៊ុន</title>
+    <link rel="icon" type="image/png" href="../../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1e3a5f",
+                        'primary-dark': "#142842",
+                        accent: "#0ea5e9",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../shared/styles/custom.css">
+    <link rel="stylesheet" href="../../../shared/styles/portal.css">
+</head>
+<body id="saPortal" data-role-root=".." data-active="companies" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <div id="sidebarHost"></div>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full print:hidden">
+            <div class="flex items-center gap-3 min-w-0">
+                <a href="companies.html" class="w-10 h-10 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-600 flex items-center justify-center transition border border-slate-200/70 flex-shrink-0" title="ត្រឡប់ទៅកាន់បញ្ជីក្រុមហ៊ុន">
+                    <i class="fas fa-arrow-left text-sm"></i>
+                </a>
+                <div class="min-w-0">
+                    <h2 class="text-xl font-semibold text-gray-800 leading-tight truncate">ព័ត៌មានលម្អិតក្រុមហ៊ុន</h2>
+                    <p id="headerSubtitle" class="text-xs font-normal text-gray-500 mt-0.5 truncate">ទម្រង់ព័ត៌មានក្រុមហ៊ុនពេញលេញ ស្ថិតិប្រើប្រាស់ និងប្រវត្តិការជាវ</p>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-2.5 flex-shrink-0">
+                <button type="button" onclick="window.print()" class="px-3.5 py-2 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-700 text-xs font-medium border border-slate-200 transition shadow-sm cursor-pointer">
+                    <i class="fas fa-print mr-1 text-slate-500"></i>
+                    <span>បោះពុម្ព</span>
+                </button>
+
+                <button type="button" onclick="handleResetPassword()" class="px-3.5 py-2 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-700 text-xs font-medium border border-amber-200 transition cursor-pointer">
+                    <i class="fas fa-key mr-1"></i>
+                    <span>Reset Password</span>
+                </button>
+
+                <button type="button" id="toggleStatusBtn" onclick="handleToggleStatus()" class="px-3.5 py-2 rounded-xl text-xs font-medium transition cursor-pointer">
+                    <i id="toggleStatusIcon" class="fas fa-ban mr-1"></i>
+                    <span id="toggleStatusLabel">ផ្អាកដំណើរការ</span>
+                </button>
+
+                <a id="editCompanyBtn" href="#" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#1e3a5f] hover:bg-[#142842] text-white text-xs font-medium shadow-sm transition">
+                    <i class="fas fa-pen-to-square text-xs"></i>
+                    <span>កែប្រែព័ត៌មាន</span>
+                </a>
+            </div>
+        </header>
+
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-5">
+            <div class="w-full space-y-5">
+
+                <!-- Company Master Banner Card -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
+                    <div class="flex items-center gap-4 min-w-0">
+                        <div id="companyLogoBadge" class="w-16 h-16 rounded-2xl bg-[#1e3a5f] text-white flex items-center justify-center text-xl font-bold flex-shrink-0 shadow-md">
+                            អអ
+                        </div>
+                        <div class="min-w-0">
+                            <div class="flex flex-wrap items-center gap-2.5">
+                                <h1 id="viewNameKh" class="text-lg md:text-xl font-bold text-slate-800 leading-tight">ក្រុមហ៊ុន អង្គរ អេឡិចត្រូនិច ឯ.ក</h1>
+                                <span id="viewStatusBadge"></span>
+                                <span id="viewPlanBadge"></span>
+                            </div>
+                            <p id="viewNameEn" class="text-xs text-slate-500 mt-1">Angkor Electronics Co., Ltd.</p>
+                            <div class="flex flex-wrap items-center gap-4 mt-2 text-xs text-slate-500">
+                                <span><i class="fas fa-id-card text-slate-400 mr-1.5"></i>TIN: <span id="viewTin" class="font-mono font-medium text-slate-700"></span></span>
+                                <span><i class="fas fa-calendar-check text-slate-400 mr-1.5"></i>ចុះឈ្មោះ៖ <span id="viewCreatedAt" class="font-medium text-slate-700"></span></span>
+                                <span><i class="fas fa-hourglass-half text-slate-400 mr-1.5"></i>ផុតកំណត់៖ <span id="viewExpiresAt" class="font-semibold text-slate-800"></span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex md:flex-col items-end justify-between w-full md:w-auto border-t md:border-t-0 pt-3 md:pt-0 border-slate-100 gap-2">
+                        <span class="text-xs text-slate-400">កម្រៃសេវាជាវប្រចាំខែ</span>
+                        <span id="viewMonthlyPrice" class="text-xl md:text-2xl font-bold text-slate-800">$199.00</span>
+                        <span id="viewCurrencyBadge" class="text-[11px] text-slate-500 font-medium">រូបិយប័ណ្ណគោល៖ USD</span>
+                    </div>
+                </div>
+
+                <!-- Tab Navigation -->
+                <div class="flex items-center gap-2 border-b border-slate-200 print:hidden">
+                    <button type="button" onclick="switchTab('overview')" id="tabBtnOverview"
+                        class="px-5 py-3 text-xs font-semibold text-primary border-b-2 border-primary -mb-px transition cursor-pointer flex items-center gap-2">
+                        <i class="fas fa-circle-info"></i>
+                        <span>ព័ត៌មានទូទៅ & មុខងារ</span>
+                    </button>
+                    <button type="button" onclick="switchTab('usage')" id="tabBtnUsage"
+                        class="px-5 py-3 text-xs font-medium text-slate-500 hover:text-slate-700 border-b-2 border-transparent -mb-px transition cursor-pointer flex items-center gap-2">
+                        <i class="fas fa-chart-pie"></i>
+                        <span>ស្ថិតិប្រើប្រាស់ជាក់ស្តែង</span>
+                    </button>
+                    <button type="button" onclick="switchTab('history')" id="tabBtnHistory"
+                        class="px-5 py-3 text-xs font-medium text-slate-500 hover:text-slate-700 border-b-2 border-transparent -mb-px transition cursor-pointer flex items-center gap-2">
+                        <i class="fas fa-clock-rotate-left"></i>
+                        <span>ប្រវត្តិការជាវ & Renewal</span>
+                    </button>
+                </div>
+
+                <!-- Tab 1: Overview & Features -->
+                <div id="tabContentOverview" class="space-y-5">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                        <!-- Contact Info Card -->
+                        <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-4">
+                            <h3 class="text-sm font-semibold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                                <i class="fas fa-user-shield text-slate-400"></i>
+                                <span>ព័ត៌មានទំនាក់ទំនង និងអ្នកគ្រប់គ្រង</span>
+                            </h3>
+
+                            <div class="grid grid-cols-2 gap-4 text-xs">
+                                <div>
+                                    <span class="text-slate-400 block mb-1">ឈ្មោះអ្នកគ្រប់គ្រង (Admin)</span>
+                                    <span id="viewContactName" class="font-semibold text-slate-800 text-sm"></span>
+                                </div>
+                                <div>
+                                    <span class="text-slate-400 block mb-1">លេខទូរស័ព្ទ</span>
+                                    <span id="viewContactPhone" class="font-semibold text-slate-800 text-sm"></span>
+                                </div>
+                                <div class="col-span-2">
+                                    <span class="text-slate-400 block mb-1">អ៊ីមែលផ្លូវការ (Login Email)</span>
+                                    <span id="viewContactEmail" class="text-slate-700 font-medium"></span>
+                                </div>
+                                <div class="col-span-2">
+                                    <span class="text-slate-400 block mb-1">អាសយដ្ឋានក្រុមហ៊ុន</span>
+                                    <span id="viewAddress" class="text-slate-700 leading-relaxed font-normal"></span>
+                                </div>
+                                <div class="col-span-2">
+                                    <span class="text-slate-400 block mb-1">កំណត់ចំណាំផ្ទៃក្នុង (Super Admin Only)</span>
+                                    <div id="viewNotes" class="p-3 rounded-xl bg-slate-50 border border-slate-100 text-slate-600 text-xs italic"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Subscription Details Card -->
+                        <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-4">
+                            <h3 class="text-sm font-semibold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                                <i class="fas fa-boxes-packing text-slate-400"></i>
+                                <span>ព័ត៌មានកញ្ចប់សេវាជាវ</span>
+                            </h3>
+
+                            <div class="grid grid-cols-2 gap-4 text-xs">
+                                <div>
+                                    <span class="text-slate-400 block mb-1">កញ្ចប់សេវាបច្ចុប្បន្ន</span>
+                                    <span id="viewPlanName" class="font-bold text-slate-800 text-sm"></span>
+                                </div>
+                                <div>
+                                    <span class="text-slate-400 block mb-1">កូតាអ្នកប្រើប្រាស់</span>
+                                    <span id="viewQuota" class="font-semibold text-slate-800 text-sm"></span>
+                                </div>
+                                <div>
+                                    <span class="text-slate-400 block mb-1">កាលបរិច្ឆេទចាប់ផ្តើម</span>
+                                    <span id="viewStartKh" class="font-medium text-slate-700"></span>
+                                </div>
+                                <div>
+                                    <span class="text-slate-400 block mb-1">កាលបរិច្ឆេទផុតកំណត់</span>
+                                    <span id="viewExpiresKh" class="font-semibold text-slate-800"></span>
+                                </div>
+                                <div class="col-span-2">
+                                    <span class="text-slate-400 block mb-2">ការពិពណ៌នាកញ្ចប់សេវា</span>
+                                    <p id="viewPlanDesc" class="text-slate-600 leading-relaxed"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Enabled Features Grid -->
+                    <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-4">
+                        <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                            <h3 class="text-sm font-semibold text-slate-800 flex items-center gap-2">
+                                <i class="fas fa-toggle-on text-emerald-600"></i>
+                                <span>ស្ថានភាពម៉ូឌុលមុខងារ (Feature Flags)</span>
+                            </h3>
+                            <span class="text-xs text-slate-400">កំណត់ស្របតាមកញ្ចប់សេវា</span>
+                        </div>
+
+                        <div id="featureFlagsList" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 text-xs"></div>
+                    </div>
+                </div>
+
+                <!-- Tab 2: Usage Stats -->
+                <div id="tabContentUsage" class="hidden space-y-5">
+                    <!-- Usage KPIs -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
+                            <span class="text-xs text-slate-500 block mb-1">អ្នកប្រើប្រាស់សកម្ម</span>
+                            <h3 id="statUsers" class="text-2xl font-bold text-slate-800"></h3>
+                            <p id="statUsersSub" class="text-[11px] text-slate-400 mt-1"></p>
+                        </div>
+
+                        <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
+                            <span class="text-xs text-slate-500 block mb-1">វិក្កយបត្រក្នុងខែនេះ</span>
+                            <h3 id="statInvoices" class="text-2xl font-bold text-slate-800"></h3>
+                            <p class="text-[11px] text-emerald-600 mt-1 font-medium">ប្រតិបត្តិការអាជីវកម្មធម្មតា</p>
+                        </div>
+
+                        <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
+                            <span class="text-xs text-slate-500 block mb-1">ទំហំផ្ទុកទិន្នន័យ (Storage)</span>
+                            <h3 id="statStorage" class="text-2xl font-bold text-slate-800"></h3>
+                            <p class="text-[11px] text-slate-400 mt-1">ទិន្នន័យ & ឯកសារភ្ជាប់</p>
+                        </div>
+
+                        <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
+                            <span class="text-xs text-slate-500 block mb-1">ចូលប្រើប្រព័ន្ធចុងក្រោយ</span>
+                            <h3 id="statLastLogin" class="text-sm font-bold text-slate-800 mt-1"></h3>
+                            <p class="text-[11px] text-slate-400 mt-1">ដោយ Admin ក្រុមហ៊ុន</p>
+                        </div>
+                    </div>
+
+                    <!-- Quota Progress Bar -->
+                    <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h3 class="text-sm font-semibold text-slate-800">កម្រិតនៃការប្រើប្រាស់កូតាអ្នកប្រើប្រាស់</h3>
+                                <p class="text-xs text-slate-500">សមាមាត្រអ្នកប្រើប្រាស់ដែលបានបង្កើតធៀបនឹងកូតាអតិបរមា</p>
+                            </div>
+                            <span id="quotaPercentBadge" class="text-xs font-bold px-2.5 py-1 rounded-full bg-slate-100 text-slate-700"></span>
+                        </div>
+                        <div class="w-full h-3 rounded-full bg-slate-100 overflow-hidden">
+                            <div id="quotaProgressBar" class="h-full bg-primary rounded-full transition-all duration-500" style="width: 0%"></div>
+                        </div>
+                        <div class="flex items-center justify-between text-xs text-slate-400">
+                            <span>0 នាក់</span>
+                            <span id="quotaMaxLabel"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 3: History -->
+                <div id="tabContentHistory" class="hidden space-y-5">
+                    <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+                        <div class="p-5 border-b border-slate-100">
+                            <h3 class="text-sm font-semibold text-slate-800">ប្រវត្តិការជាវ និងកំណត់ត្រាប្រព័ន្ធ</h3>
+                            <p class="text-xs text-slate-500">ព្រឹត្តិការណ៍ផ្លាស់ប្តូរកញ្ចប់សេវា ការបន្តការជាវ និងការផ្អាក</p>
+                        </div>
+
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left">
+                                <thead class="bg-slate-50 text-slate-500 border-b border-slate-100 text-xs">
+                                    <tr>
+                                        <th class="py-3 px-4 font-semibold">កាលបរិច្ឆេទ</th>
+                                        <th class="py-3 px-4 font-semibold">ព្រឹត្តិការណ៍</th>
+                                        <th class="py-3 px-4 font-semibold">កញ្ចប់សេវា</th>
+                                        <th class="py-3 px-4 font-semibold">អ្នកកត់ត្រា</th>
+                                        <th class="py-3 px-4 font-semibold">ស្ថានភាព</th>
+                                        <th class="py-3 px-4 font-semibold">កំណត់ចំណាំ</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="historyTableBody" class="divide-y divide-slate-100 text-xs text-slate-700"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../shared/scripts/ui-components.js"></script>
+    <script src="../data.js"></script>
+    <script src="../../../shared/scripts/portal.js"></script>
+    <script>
+        let tenantId = null;
+        let currentTenant = null;
+
+        function loadCompanyDetail() {
+            const params = new URLSearchParams(window.location.search);
+            tenantId = params.get('id') || 'TNT-1001';
+            currentTenant = getTenantById(tenantId);
+
+            if (!currentTenant) {
+                showToast(`រកមិនឃើញក្រុមហ៊ុន #${tenantId} ឡើយ`, 'error');
+                setTimeout(() => window.location.href = 'companies.html', 1500);
+                return;
+            }
+
+            // Subtitle & Header Links
+            document.getElementById('headerSubtitle').textContent = `លេខកូដក្រុមហ៊ុន៖ #${currentTenant.id} · ចុះឈ្មោះថ្ងៃទី ${fmtDateKh(currentTenant.createdAt)}`;
+            document.getElementById('editCompanyBtn').href = `edit-company.html?id=${currentTenant.id}`;
+
+            // Top Banner
+            document.getElementById('companyLogoBadge').textContent = currentTenant.logoInitial || 'កថ';
+            document.getElementById('viewNameKh').textContent = currentTenant.nameKh;
+            document.getElementById('viewNameEn').textContent = currentTenant.nameEn;
+            document.getElementById('viewTin').textContent = currentTenant.tin;
+            document.getElementById('viewCreatedAt').textContent = fmtDateKh(currentTenant.createdAt);
+            document.getElementById('viewExpiresAt').textContent = fmtDateKh(currentTenant.expiresAt);
+
+            const plan = SUBSCRIPTION_PLANS[currentTenant.plan] || { name: currentTenant.plan, price: 0, maxUsers: 5, badgeColor: 'slate' };
+            document.getElementById('viewMonthlyPrice').textContent = fmtUSD(plan.price);
+            document.getElementById('viewCurrencyBadge').textContent = `រូបិយប័ណ្ណគោល៖ ${currentTenant.baseCurrency || 'USD'}`;
+
+            // Badges
+            updateStatusElements();
+
+            const pColor = plan.badgeColor || 'slate';
+            document.getElementById('viewPlanBadge').className = `px-2.5 py-0.5 rounded-full bg-${pColor}-50 text-${pColor}-700 text-xs font-semibold border border-${pColor}-200`;
+            document.getElementById('viewPlanBadge').textContent = plan.name;
+
+            // Overview tab
+            document.getElementById('viewContactName').textContent = currentTenant.contactName;
+            document.getElementById('viewContactPhone').textContent = currentTenant.contactPhone;
+            document.getElementById('viewContactEmail').textContent = currentTenant.contactEmail;
+            document.getElementById('viewAddress').textContent = currentTenant.address || 'មិនមានអាសយដ្ឋានជាក់លាក់';
+            document.getElementById('viewNotes').textContent = currentTenant.notes || 'គ្មានកំណត់ចំណាំបន្ថែម';
+
+            document.getElementById('viewPlanName').textContent = plan.name;
+            document.getElementById('viewQuota').textContent = `${currentTenant.quotaUsers} នាក់`;
+            document.getElementById('viewStartKh').textContent = fmtDateKh(currentTenant.createdAt);
+            document.getElementById('viewExpiresKh').textContent = fmtDateKh(currentTenant.expiresAt);
+            document.getElementById('viewPlanDesc').textContent = plan.description;
+
+            // Feature Flags
+            renderFeatureFlags(currentTenant.features);
+
+            // Usage Stats Tab
+            renderUsageStats();
+
+            // History Tab
+            renderHistory();
+        }
+
+        function updateStatusElements() {
+            const isSuspended = currentTenant.status === 'suspended';
+            const statusEl = document.getElementById('viewStatusBadge');
+            const toggleBtn = document.getElementById('toggleStatusBtn');
+            const toggleIcon = document.getElementById('toggleStatusIcon');
+            const toggleLabel = document.getElementById('toggleStatusLabel');
+
+            if (currentTenant.status === 'active') {
+                statusEl.className = 'inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-xs font-semibold border border-emerald-200';
+                statusEl.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> សកម្ម';
+            } else if (currentTenant.status === 'expiring') {
+                statusEl.className = 'inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-amber-50 text-amber-700 text-xs font-semibold border border-amber-200';
+                statusEl.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span> ជិតផុតកំណត់';
+            } else {
+                statusEl.className = 'inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-rose-50 text-rose-700 text-xs font-semibold border border-rose-200';
+                statusEl.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span> ផ្អាកដំណើរការ';
+            }
+
+            if (isSuspended) {
+                toggleBtn.className = 'px-3.5 py-2 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-700 text-xs font-medium border border-emerald-200 transition cursor-pointer';
+                toggleIcon.className = 'fas fa-circle-check mr-1 text-emerald-600';
+                toggleLabel.textContent = 'បើកដំណើរការឡើងវិញ';
+            } else {
+                toggleBtn.className = 'px-3.5 py-2 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 text-xs font-medium border border-rose-200 transition cursor-pointer';
+                toggleIcon.className = 'fas fa-ban mr-1 text-rose-600';
+                toggleLabel.textContent = 'ផ្អាកដំណើរការ';
+            }
+        }
+
+        function renderFeatureFlags(features = {}) {
+            const flags = [
+                { key: 'pos', name: 'ម៉ូឌុលគិតប្រាក់ (POS)', desc: 'អេក្រង់ប៉ះ ស្កេន និងបោះពុម្ព' },
+                { key: 'showroom', name: 'Digital Showroom', desc: 'តាំងផលិតផល និងសម្រង់តម្លៃអនឡាញ' },
+                { key: 'hr', name: 'ធនធានមនុស្ស & បៀវត្សរ៍', desc: 'វត្តមាន និងបើកប្រាក់បៀវត្សរ៍' },
+                { key: 'telegram', name: 'ការដាស់តឿន Telegram', desc: 'ជូនដំណឹងប្រតិបត្តិការស្វ័យប្រវត្តិ' },
+                { key: 'multiWarehouse', name: 'គ្រប់គ្រងពហុឃ្លាំង', desc: 'ផ្ទេរស្តុក និងតាមដានសាខា' },
+                { key: 'lotTracking', name: 'តាមដានឡូត៍ & ផុតកំណត់', desc: 'Batch number និងកាលបរិច្ឆេទ' }
+            ];
+
+            const host = document.getElementById('featureFlagsList');
+            host.innerHTML = flags.map(f => {
+                const active = !!features[f.key];
+                return `
+                    <div class="p-3.5 rounded-xl border ${active ? 'border-emerald-200 bg-emerald-50/20' : 'border-slate-200 bg-slate-50/40'} flex items-start justify-between">
+                        <div class="min-w-0 pr-2">
+                            <span class="font-semibold text-slate-800 block">${f.name}</span>
+                            <span class="text-[11px] text-slate-400 mt-0.5 block">${f.desc}</span>
+                        </div>
+                        <span class="px-2 py-0.5 rounded-full text-[10px] font-semibold flex-shrink-0 ${active ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-200 text-slate-500'}">
+                            ${active ? 'បើកដំណើរការ' : 'បិទ'}
+                        </span>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function renderUsageStats() {
+            const u = currentTenant.usersCount || 1;
+            const q = currentTenant.quotaUsers || 15;
+            const pct = Math.min(Math.round((u / q) * 100), 100);
+
+            document.getElementById('statUsers').textContent = `${u} / ${q} នាក់`;
+            document.getElementById('statUsersSub').textContent = `បានប្រើប្រាស់ ${pct}% នៃកូតា`;
+            document.getElementById('statInvoices').textContent = `${currentTenant.stats?.invoicesThisMonth || 0} ច្បាប់`;
+            document.getElementById('statStorage').textContent = `${currentTenant.stats?.storageMb || 0} MB`;
+            document.getElementById('statLastLogin').textContent = currentTenant.stats?.lastLogin || '—';
+
+            document.getElementById('quotaPercentBadge').textContent = `${pct}% បានប្រើប្រាស់`;
+            document.getElementById('quotaProgressBar').style.width = `${pct}%`;
+            document.getElementById('quotaMaxLabel').textContent = `${q} នាក់ (កូតាអតិបរមា)`;
+        }
+
+        function renderHistory() {
+            const history = [
+                {
+                    date: currentTenant.createdAt,
+                    event: 'ចុះឈ្មោះក្រុមហ៊ុនថ្មី (Onboarding)',
+                    plan: currentTenant.plan,
+                    by: 'អភិបាល ប្រព័ន្ធ (Super Admin)',
+                    status: 'ជោគជ័យ',
+                    notes: 'បានបង្កើត tenant schema និងផ្ញើអ៊ីមែលស្វាគមន៍'
+                },
+                {
+                    date: '2026-06-01',
+                    event: 'ពិនិត្យ និងបន្តសុពលភាពជាវ',
+                    plan: currentTenant.plan,
+                    by: 'ប្រព័ន្ធស្វ័យប្រវត្តិ',
+                    status: 'ជោគជ័យ',
+                    notes: 'បានកត់ត្រាការទូទាត់ប្រចាំខែតាមរយៈធនាគារបាគង KHQR'
+                }
+            ];
+
+            if (currentTenant.status === 'suspended') {
+                history.unshift({
+                    date: currentTenant.suspendedAt || '2026-09-23',
+                    event: 'ផ្អាកដំណើរការក្រុមហ៊ុន',
+                    plan: currentTenant.plan,
+                    by: 'អភិបាល ប្រព័ន្ធ (Super Admin)',
+                    status: 'ផ្អាក',
+                    notes: 'បានផ្អាកដោយសារខកខានការបង់ប្រាក់បន្តការជាវ'
+                });
+            }
+
+            const body = document.getElementById('historyTableBody');
+            body.innerHTML = history.map(h => `
+                <tr class="hover:bg-slate-50 transition">
+                    <td class="py-3 px-4 text-slate-500">${fmtDateKh(h.date)}</td>
+                    <td class="py-3 px-4 font-medium text-slate-800">${h.event}</td>
+                    <td class="py-3 px-4 uppercase font-semibold text-slate-600">${h.plan}</td>
+                    <td class="py-3 px-4 text-slate-600">${h.by}</td>
+                    <td class="py-3 px-4"><span class="px-2 py-0.5 rounded-full text-[10px] font-semibold ${h.status === 'ផ្អាក' ? 'bg-rose-100 text-rose-700' : 'bg-emerald-100 text-emerald-700'}">${h.status}</span></td>
+                    <td class="py-3 px-4 text-slate-500">${h.notes}</td>
+                </tr>
+            `).join('');
+        }
+
+        function switchTab(tabId) {
+            document.getElementById('tabContentOverview').classList.add('hidden');
+            document.getElementById('tabContentUsage').classList.add('hidden');
+            document.getElementById('tabContentHistory').classList.add('hidden');
+
+            const btnO = document.getElementById('tabBtnOverview');
+            const btnU = document.getElementById('tabBtnUsage');
+            const btnH = document.getElementById('tabBtnHistory');
+
+            btnO.className = 'px-5 py-3 text-xs font-medium text-slate-500 hover:text-slate-700 border-b-2 border-transparent -mb-px transition cursor-pointer flex items-center gap-2';
+            btnU.className = 'px-5 py-3 text-xs font-medium text-slate-500 hover:text-slate-700 border-b-2 border-transparent -mb-px transition cursor-pointer flex items-center gap-2';
+            btnH.className = 'px-5 py-3 text-xs font-medium text-slate-500 hover:text-slate-700 border-b-2 border-transparent -mb-px transition cursor-pointer flex items-center gap-2';
+
+            const activeClass = 'px-5 py-3 text-xs font-semibold text-primary border-b-2 border-primary -mb-px transition cursor-pointer flex items-center gap-2';
+
+            if (tabId === 'overview') {
+                document.getElementById('tabContentOverview').classList.remove('hidden');
+                btnO.className = activeClass;
+            } else if (tabId === 'usage') {
+                document.getElementById('tabContentUsage').classList.remove('hidden');
+                btnU.className = activeClass;
+            } else if (tabId === 'history') {
+                document.getElementById('tabContentHistory').classList.remove('hidden');
+                btnH.className = activeClass;
+            }
+        }
+
+        function handleToggleStatus() {
+            const willSuspend = currentTenant.status !== 'suspended';
+            const actionKh = willSuspend ? 'ផ្អាកដំណើរការ' : 'បើកដំណើរការឡើងវិញ';
+
+            showCustomConfirm({
+                title: `${actionKh}ក្រុមហ៊ុន`,
+                message: `តើលោកអ្នកពិតជាចង់${actionKh}លើក្រុមហ៊ុន «${currentTenant.nameKh}» មែនទេ?`,
+                confirmText: actionKh,
+                cancelText: 'បោះបង់',
+                danger: willSuspend,
+                onConfirm: () => {
+                    currentTenant = toggleTenantStatus(currentTenant.id);
+                    updateStatusElements();
+                    renderHistory();
+                    showToast(`បាន${actionKh}ក្រុមហ៊ុន «${currentTenant.nameKh}» ដោយជោគជ័យ`, 'success');
+                }
+            });
+        }
+
+        function handleResetPassword() {
+            showCustomConfirm({
+                title: 'កំណត់ពាក្យសម្ងាត់ Admin ឡើងវិញ',
+                message: `តើលោកអ្នកចង់ផ្ញើតំណភ្ជាប់កំណត់ពាក្យសម្ងាត់ថ្មីទៅកាន់ ${currentTenant.contactEmail} មែនទេ?`,
+                confirmText: 'ផ្ញើតំណភ្ជាប់',
+                cancelText: 'បោះបង់',
+                onConfirm: () => {
+                    addAuditLog({
+                        companyName: currentTenant.nameKh,
+                        companyId: currentTenant.id,
+                        action: 'RESET_PASSWORD',
+                        actionLabel: 'កំណត់ពាក្យសម្ងាត់',
+                        entity: `Admin (${currentTenant.contactName})`,
+                        result: 'SUCCESS',
+                        resultLabel: 'ជោគជ័យ',
+                        details: `បានផ្ញើតំណភ្ជាប់កំណត់ពាក្យសម្ងាត់ឡើងវិញទៅកាន់ ${currentTenant.contactEmail}`
+                    });
+                    showToast(`បានផ្ញើតំណភ្ជាប់កំណត់ពាក្យសម្ងាត់ថ្មីទៅកាន់ ${currentTenant.contactEmail} រួចរាល់`, 'success');
+                }
+            });
+        }
+
+        function initViewCompany() {
+            renderPortalSidebar();
+            loadCompanyDetail();
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initViewCompany);
+        } else {
+            initViewCompany();
+        }
+    </script>
+</body>
+</html>

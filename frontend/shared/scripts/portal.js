@@ -81,6 +81,21 @@ const PORTAL_CONFIGS = {
             { id: 'orders-lookup', label: 'ស្វែងរកវិក្កយបត្រ', icon: 'mdi:file-document-outline', href: 'orders-lookup.html' },
             { id: 'delivery-status', label: 'តាមដានការដឹកជញ្ជូន', icon: 'mdi:truck-check-outline', href: 'delivery-status.html' }
         ]
+    },
+    saPortal: {
+        title: 'ច្រកស៊ុបភើរអភិបាល',
+        roleName: 'ស៊ុបភើរ អភិបាល',
+        roleIcon: 'mdi:shield-crown-outline',
+        userInitials: 'សភ',
+        userName: 'អភិបាល ប្រព័ន្ធ',
+        userRole: 'Super Admin (Platform Root)',
+        policyNote: 'គ្រប់គ្រង Platform និង Tenant កម្រិតសកល។ គ្មានសិទ្ធិបង្កើត ឬកែប្រែប្រតិបត្តិការអាជីវកម្មផ្ទៃក្នុងក្រុមហ៊ុនឡើយ។',
+        nav: [
+            { id: 'dashboard', label: 'ផ្ទាំងគ្រប់គ្រង', icon: 'mdi:view-dashboard-outline', href: 'dashboard.html' },
+            { id: 'companies', label: 'គ្រប់គ្រងក្រុមហ៊ុន', icon: 'mdi:domain', href: 'companies/companies.html' },
+            { id: 'subscriptions', label: 'កញ្ចប់សេវា & ការជាវ', icon: 'mdi:credit-card-outline', href: 'subscriptions/subscriptions.html' },
+            { id: 'audit-logs', label: 'កំណត់ហេតុសវនកម្ម', icon: 'mdi:clipboard-text-clock-outline', href: 'audit-logs/audit-logs.html' }
+        ]
     }
 };
 
@@ -88,8 +103,11 @@ const NAV_ACTIVE_CLASS = 'flex items-center justify-between p-3 bg-white/15 text
 const NAV_IDLE_CLASS = 'flex items-center justify-between p-3 text-sky-100 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap';
 
 function getRoleRoot() {
+    if (document.body.dataset.roleRoot) {
+        return document.body.dataset.roleRoot;
+    }
     const loc = window.location.pathname.replace(/\\/g, '/');
-    const isSub = /\/(stock-[a-z]+|approvals|pipeline|reports)(\/|$)/.test(loc);
+    const isSub = /\/(stock-[a-z]+|approvals|pipeline|reports|companies|subscriptions|audit-logs)(\/|$)/.test(loc);
     return isSub ? '..' : '.';
 }
 
@@ -655,7 +673,7 @@ function updatePortalBadges() {
 document.addEventListener('DOMContentLoaded', () => {
     renderPortalSidebar();
     initPortalMobileDrawer();
-    initSeamlessNavigation();
+    // initSeamlessNavigation(); // បិទការស្ទាក់ចាប់ SPA នេះ ដើម្បីឱ្យការប្តូរទំព័រដំណើរការតាម Browser ធម្មជាតិ និងដំណើរការ DOMContentLoaded គ្រប់ទំព័រ 100%
     updatePortalBadges();
 
     document.addEventListener('click', (e) => {
