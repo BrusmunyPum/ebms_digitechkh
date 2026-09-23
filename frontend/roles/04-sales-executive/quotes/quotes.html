@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - បញ្ជីសម្រង់តម្លៃ</title>
+    <link rel="icon" type="image/png" href="../../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { primary: "#1e3a5f", 'primary-dark': "#142842", accent: "#0ea5e9" },
+                    fontFamily: { sans: ["'Kantumruy Pro'", "sans-serif"] }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../shared/styles/custom.css">
+    <link rel="stylesheet" href="../../../shared/styles/portal.css">
+</head>
+<body id="sePortal" data-role-root=".." data-active="quotes" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <div id="sidebarHost"></div>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div class="min-w-0">
+                <h2 class="text-xl font-semibold text-gray-800 leading-tight truncate">បញ្ជីសម្រង់តម្លៃ</h2>
+                <p class="sm-card-sub text-gray-500 mt-0.5 truncate">តាមដានស្ថានភាពអនុម័ត និងកាលបរិច្ឆេទផុតសុពលភាព</p>
+            </div>
+
+            <div class="flex items-center space-x-3 flex-shrink-0">
+                <a href="create-quote.html" class="sm-badge inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#0f2b5c] hover:bg-[#0a1d3f] text-white font-semibold shadow-sm transition">
+                    <i class="fas fa-plus"></i> <span class="hidden sm:inline">បង្កើតសម្រង់តម្លៃ</span>
+                </a>
+            </div>
+        </header>
+
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-4">
+            <div class="w-full space-y-4">
+
+                <!-- Status tabs + date filter -->
+                <div class="bg-white rounded-2xl p-2 border border-slate-200/80 shadow-sm flex flex-wrap items-center justify-between gap-3">
+                    <div id="statusTabs" class="flex flex-wrap items-center gap-2"></div>
+                    <div id="dateFilterHost" class="flex items-center pr-1"></div>
+                </div>
+
+                <!-- Expiring soon banner -->
+                <div id="expiringBanner" class="hidden bg-amber-50/80 border border-amber-200 rounded-2xl p-4 flex items-start gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center text-lg flex-shrink-0">
+                        <i class="fas fa-hourglass-end"></i>
+                    </div>
+                    <div>
+                        <h4 class="sm-card-title text-amber-900">សម្រង់តម្លៃជិតផុតសុពលភាព</h4>
+                        <p id="expiringText" class="sm-card-sub text-amber-800 mt-0.5"></p>
+                    </div>
+                </div>
+
+                <!-- Table -->
+                <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left">
+                            <thead class="bg-slate-50 text-slate-500 border-b border-slate-100">
+                                <tr>
+                                    <th class="sm-th py-3.5 px-4">លេខសម្រង់តម្លៃ</th>
+                                    <th class="sm-th py-3.5 px-4">អតិថិជន</th>
+                                    <th class="sm-th py-3.5 px-4">កាលបរិច្ឆេទចេញ</th>
+                                    <th class="sm-th py-3.5 px-4">សុពលភាពដល់</th>
+                                    <th class="sm-th py-3.5 px-4">ស្ថានភាព</th>
+                                    <th class="sm-th py-3.5 px-4 text-right">ទឹកប្រាក់សរុប</th>
+                                    <th class="sm-th py-3.5 px-4 text-right">សកម្មភាព</th>
+                                </tr>
+                            </thead>
+                            <tbody id="quoteBody" class="divide-y divide-slate-100 text-slate-700"></tbody>
+                        </table>
+                    </div>
+                    <div id="quoteEmpty" class="hidden py-14 px-6 text-center">
+                        <div class="w-14 h-14 rounded-2xl bg-slate-100 text-slate-400 flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-file-circle-question text-2xl"></i>
+                        </div>
+                        <h3 class="sm-card-title text-slate-700">គ្មានសម្រង់តម្លៃក្នុងលក្ខខណ្ឌនេះទេ</h3>
+                        <p class="sm-card-sub text-slate-500 mt-1">សូមប្តូរតម្រងស្ថានភាព ឬកំឡុងពេល។</p>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../shared/scripts/ui-components.js"></script>
+    <script src="../data.js"></script>
+    <script src="../../../shared/scripts/portal.js"></script>
+    <script>
+        let filterStatus = 'all';
+
+        const TABS = [
+            { id: 'all', label: 'ទាំងអស់' },
+            { id: 'draft', label: 'សេចក្តីព្រាង' },
+            { id: 'pending_approval', label: 'រង់ចាំការអនុម័ត' },
+            { id: 'approved', label: 'បានអនុម័ត' },
+            { id: 'converted', label: 'បានបម្លែង' },
+            { id: 'expired', label: 'ផុតសុពលភាព' },
+            { id: 'rejected', label: 'បានបដិសេធ' }
+        ];
+
+        function renderTabs() {
+            document.getElementById('statusTabs').innerHTML = TABS.map(t => {
+                const count = t.id === 'all' ? QUOTES.length : QUOTES.filter(q => q.status === t.id).length;
+                const active = filterStatus === t.id;
+                return `<button onclick="pickStatus('${t.id}')" class="sm-badge px-4 py-2 rounded-xl transition ${active
+                    ? 'bg-[#1e3a5f] text-white font-semibold shadow-sm'
+                    : 'text-slate-600 hover:bg-slate-100 font-medium'}">${t.label} (${count})</button>`;
+            }).join('');
+        }
+
+        function pickStatus(id) {
+            filterStatus = id;
+            closeAllFloatingDropdowns();
+            renderTabs();
+            renderQuotes();
+        }
+
+        function renderQuotes() {
+            const range = getSelectedRange();
+            const rows = QUOTES
+                .filter(q => filterStatus === 'all' || q.status === filterStatus)
+                .filter(q => inRange(q.date, range))
+                .sort((a, b) => new Date(b.date) - new Date(a.date));
+
+            // ផ្ទាំងព្រមានសម្រង់តម្លៃដែលនៅសកម្ម ប៉ុន្តែជិតផុតសុពលភាព
+            const expiring = QUOTES.filter(q => {
+                if (!['draft', 'pending_approval', 'approved'].includes(q.status)) return false;
+                const left = quoteExpiry(q).days;
+                return left >= 0 && left <= 3;
+            });
+            const banner = document.getElementById('expiringBanner');
+            if (expiring.length) {
+                banner.classList.remove('hidden');
+                document.getElementById('expiringText').textContent =
+                    `មាន ${expiring.length} សម្រង់តម្លៃដែលនឹងផុតសុពលភាពក្នុងរយៈពេល 3 ថ្ងៃ៖ ` +
+                    expiring.map(q => `${q.id} (${getCustomer(q.customerId).name})`).join(' · ');
+            } else {
+                banner.classList.add('hidden');
+            }
+
+            const body = document.getElementById('quoteBody');
+            const empty = document.getElementById('quoteEmpty');
+            if (!rows.length) {
+                body.innerHTML = '';
+                body.parentElement.classList.add('hidden');
+                empty.classList.remove('hidden');
+                return;
+            }
+            body.parentElement.classList.remove('hidden');
+            empty.classList.add('hidden');
+
+            body.innerHTML = rows.map(q => {
+                const cust = getCustomer(q.customerId);
+                const st = QUOTE_STATUS[q.status];
+                const exp = quoteExpiry(q);
+                const totals = docTotals(q);
+                const menuId = 'quoteMenu-' + q.id;
+
+                const convertItem = q.status === 'approved' ? `
+                    <a href="../invoices/create-invoice.html?from=${q.id}" class="sm-row-menu-item flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-emerald-700 hover:bg-emerald-50 transition">
+                        <span class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center flex-shrink-0"><i class="fas fa-file-invoice-dollar text-[11px]"></i></span>
+                        បម្លែងជាវិក្កយបត្រ
+                    </a>` : '';
+
+                const invoiceItem = q.status === 'converted' && q.invoiceId ? `
+                    <a href="../invoices/view-invoice.html?id=${q.invoiceId}" class="sm-row-menu-item flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-blue-700 hover:bg-blue-50 transition">
+                        <span class="w-7 h-7 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center flex-shrink-0"><i class="fas fa-receipt text-[11px]"></i></span>
+                        មើលវិក្កយបត្រ ${q.invoiceId}
+                    </a>` : '';
+
+                return `
+                    <tr class="hover:bg-slate-50 transition">
+                        <td class="sm-td-strong py-3.5 px-4">${q.id}</td>
+                        <td class="py-3.5 px-4">
+                            <p class="sm-td text-slate-700">${cust.name}</p>
+                            <span class="sm-badge px-2 py-0.5 rounded-full border ${tierTone(cust.tier)} mt-1 inline-block">${tierLabel(cust.tier)}</span>
+                        </td>
+                        <td class="sm-td py-3.5 px-4 text-slate-500">${fmtKhDate(q.date)}</td>
+                        <td class="py-3.5 px-4">
+                            <p class="sm-td text-slate-700">${fmtKhDate(q.validUntil)}</p>
+                            <p class="sm-td-sub ${exp.tone}">${exp.label}</p>
+                        </td>
+                        <td class="py-3.5 px-4">
+                            <span class="sm-badge px-2 py-0.5 rounded-full border ${st.tone}">${st.label}</span>
+                            ${q.discountPercent > DISCOUNT_SELF_LIMIT ? `<p class="sm-td-sub text-amber-600 mt-1">បញ្ចុះតម្លៃ ${fmtPercent(q.discountPercent)}</p>` : ''}
+                        </td>
+                        <td class="sm-td-strong py-3.5 px-4 text-right">${fmtUSD(totals.grandTotal)}</td>
+                        <td class="py-3.5 px-4 text-right">
+                            <button onclick="toggleRowActionMenu(event, '${menuId}')" title="សកម្មភាព"
+                                class="w-9 h-9 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-500 hover:text-slate-700 border border-slate-200/70 inline-flex items-center justify-center transition">
+                                <i class="fas fa-ellipsis-vertical text-sm"></i>
+                            </button>
+                            <div id="${menuId}" class="hidden bg-white rounded-2xl shadow-2xl border border-slate-200 p-2 text-left">
+                                <div class="px-3 py-2 mb-1 rounded-xl bg-slate-50 border border-slate-100">
+                                    <p class="sm-td-sub text-slate-400">សកម្មភាពលើសម្រង់តម្លៃ</p>
+                                    <p class="sm-value text-slate-700">${q.id}</p>
+                                </div>
+                                <a href="view-quote.html?id=${q.id}" class="sm-row-menu-item flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-slate-700 hover:bg-slate-50 transition">
+                                    <span class="w-7 h-7 rounded-lg bg-slate-100 text-slate-600 flex items-center justify-center flex-shrink-0"><i class="fas fa-eye text-[11px]"></i></span>
+                                    ពិនិត្យលម្អិត
+                                </a>
+                                ${convertItem}
+                                ${invoiceItem}
+                                <a href="tel:${cust.phone.replace(/\s/g, '')}" class="sm-row-menu-item flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-slate-700 hover:bg-slate-50 transition">
+                                    <span class="w-7 h-7 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center flex-shrink-0"><i class="fas fa-phone text-[11px]"></i></span>
+                                    ទូរស័ព្ទតាមដានអតិថិជន
+                                </a>
+                            </div>
+                        </td>
+                    </tr>`;
+            }).join('');
+        }
+
+        window.onDateRangeApplied = renderQuotes;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderDateRangePicker('dateFilterHost');
+            renderTabs();
+            renderQuotes();
+        });
+    </script>
+</body>
+</html>

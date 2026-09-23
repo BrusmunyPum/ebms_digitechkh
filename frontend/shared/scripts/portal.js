@@ -39,6 +39,21 @@ const PORTAL_CONFIGS = {
             { id: 'reports', label: 'របាយការណ៍លក់', icon: 'mdi:chart-bar', href: 'reports/reports.html' }
         ]
     },
+    sePortal: {
+        title: 'ច្រកបុគ្គលិកលក់',
+        roleName: 'បុគ្គលិកប្រតិបត្តិផ្នែកលក់',
+        roleIcon: 'mdi:briefcase-account-outline',
+        userInitials: 'សស',
+        userName: 'សៅ សុខា',
+        userRole: 'បុគ្គលិកប្រតិបត្តិផ្នែកលក់',
+        policyNote: 'បញ្ចុះតម្លៃ 0.0% ដល់ 5.0% អនុវត្តបានដោយផ្ទាល់។ លើសពី 5.0% ត្រូវស្នើសុំការអនុម័តពីអ្នកគ្រប់គ្រងផ្នែកលក់។ ថ្លៃដើមទិញត្រូវលាក់ 100%។',
+        nav: [
+            { id: 'dashboard', label: 'ផ្ទាំងការងារ', icon: 'mdi:chart-pie', href: 'dashboard.html' },
+            { id: 'customers', label: 'អតិថិជនរបស់ខ្ញុំ', icon: 'mdi:account-multiple-outline', href: 'customers/customers.html' },
+            { id: 'quotes', label: 'សម្រង់តម្លៃ', icon: 'mdi:file-document-edit-outline', href: 'quotes/quotes.html', badge: true },
+            { id: 'invoices', label: 'វិក្កយបត្រ', icon: 'mdi:receipt-text-outline', href: 'invoices/invoices.html', alertBadge: true }
+        ]
+    },
     wmPortal: {
         title: 'ច្រកគ្រប់គ្រងស្តុក',
         roleName: 'អ្នកគ្រប់គ្រងឃ្លាំងស្តុក',
@@ -123,7 +138,7 @@ function getRoleRoot() {
         return document.body.dataset.roleRoot;
     }
     const loc = window.location.pathname.replace(/\\/g, '/');
-    const isSub = /\/(stock-[a-z]+|approvals|pipeline|reports|companies|subscriptions|audit-logs|users|company-profile|system-settings)(\/|$)/.test(loc);
+    const isSub = /\/(stock-[a-z]+|approvals|pipeline|reports|companies|subscriptions|audit-logs|users|company-profile|system-settings|customers|quotes|invoices)(\/|$)/.test(loc);
     return isSub ? '..' : '.';
 }
 

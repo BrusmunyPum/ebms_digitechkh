@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - សម្រង់តម្លៃផ្លូវការ</title>
+    <link rel="icon" type="image/png" href="../../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { primary: "#1e3a5f", 'primary-dark': "#142842", accent: "#0ea5e9" },
+                    fontFamily: { sans: ["'Kantumruy Pro'", "sans-serif"] }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../shared/styles/custom.css">
+    <link rel="stylesheet" href="../../../shared/styles/portal.css">
+</head>
+<body id="sePortal" data-role-root=".." data-active="quotes" class="bg-slate-50 font-sans text-slate-800 text-[16px] flex h-screen overflow-hidden">
+
+    <div id="sidebarHost"></div>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div class="flex items-center gap-4 min-w-0">
+                <a href="quotes.html"
+                   class="w-10 h-10 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-600 flex items-center justify-center transition border border-slate-200/70 flex-shrink-0"
+                   title="ត្រឡប់ទៅបញ្ជីសម្រង់តម្លៃ">
+                    <i class="fas fa-arrow-left text-sm"></i>
+                </a>
+                <div class="min-w-0">
+                    <h2 class="text-xl font-semibold text-gray-800 leading-tight flex items-center gap-2 truncate">
+                        <span id="docTitle">សម្រង់តម្លៃ</span>
+                        <span id="docStatus" class="sm-badge px-2.5 py-0.5 rounded-full border font-semibold flex-shrink-0"></span>
+                    </h2>
+                    <p id="docSubtitle" class="sm-card-sub text-gray-500 mt-0.5 truncate"></p>
+                </div>
+            </div>
+
+            <div id="headerActions" class="flex items-center space-x-2 no-print flex-shrink-0"></div>
+        </header>
+
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-6">
+            <div id="pageBody" class="w-full space-y-6"></div>
+        </main>
+    </div>
+
+    <script src="../../../shared/scripts/ui-components.js"></script>
+    <script src="../data.js"></script>
+    <script src="../../../shared/scripts/portal.js"></script>
+    <script>
+        const quoteId = new URLSearchParams(location.search).get('id') || 'QT-2026-0089';
+        const quote = getQuote(quoteId);
+
+        function renderNotFound() {
+            document.getElementById('docTitle').textContent = 'រកមិនឃើញឯកសារ';
+            document.getElementById('docStatus').classList.add('hidden');
+            document.getElementById('docSubtitle').textContent = 'លេខសម្រង់តម្លៃ ' + quoteId + ' មិនមានក្នុងប្រព័ន្ធទេ';
+            document.getElementById('pageBody').innerHTML = `
+                <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm py-16 text-center">
+                    <div class="w-14 h-14 rounded-2xl bg-slate-100 text-slate-400 flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-file-circle-question text-2xl"></i>
+                    </div>
+                    <h3 class="sm-card-title text-slate-700">រកមិនឃើញសម្រង់តម្លៃនេះទេ</h3>
+                    <a href="quotes.html" class="sm-badge inline-flex items-center gap-2 mt-4 px-4 py-2.5 rounded-xl bg-[#0f2b5c] text-white font-semibold">
+                        <i class="fas fa-arrow-left"></i> ត្រឡប់ទៅបញ្ជីសម្រង់តម្លៃ
+                    </a>
+                </div>`;
+        }
+
+        function renderHeader() {
+            const st = QUOTE_STATUS[quote.status];
+            const exp = quoteExpiry(quote);
+            const cust = getCustomer(quote.customerId);
+
+            document.getElementById('docTitle').textContent = 'សម្រង់តម្លៃ ' + quote.id;
+            const badge = document.getElementById('docStatus');
+            badge.textContent = st.label;
+            badge.className = 'sm-badge px-2.5 py-0.5 rounded-full border font-semibold flex-shrink-0 ' + st.tone;
+            document.getElementById('docSubtitle').textContent = `${cust.name} · ${exp.label}`;
+
+            const canConvert = quote.status === 'approved';
+            const convertBtn = quote.status === 'converted'
+                ? `<a href="../invoices/view-invoice.html?id=${quote.invoiceId}" class="sm-badge px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold shadow-sm transition inline-flex items-center gap-2">
+                       <i class="fas fa-receipt"></i> <span>មើលវិក្កយបត្រ</span>
+                   </a>`
+                : canConvert
+                    ? `<a href="../invoices/create-invoice.html?from=${quote.id}" class="sm-badge px-5 py-2.5 rounded-xl bg-[#0f2b5c] hover:bg-[#0a1d3f] text-white font-semibold shadow-sm transition inline-flex items-center gap-2">
+                           <i class="fas fa-file-invoice-dollar"></i> <span>បម្លែងជាវិក្កយបត្រ</span>
+                       </a>`
+                    : `<button onclick="explainConvert()" class="sm-badge px-5 py-2.5 rounded-xl bg-slate-200 text-slate-400 font-semibold cursor-not-allowed inline-flex items-center gap-2">
+                           <i class="fas fa-file-invoice-dollar"></i> <span>បម្លែងជាវិក្កយបត្រ</span>
+                       </button>`;
+
+            document.getElementById('headerActions').innerHTML = `
+                <button onclick="window.print()" class="sm-badge px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium transition inline-flex items-center gap-2">
+                    <i class="fas fa-print"></i> <span class="hidden sm:inline">បោះពុម្ព A4</span>
+                </button>
+                ${convertBtn}`;
+        }
+
+        function explainConvert() {
+            const st = QUOTE_STATUS[quote.status];
+            showToast(`សម្រង់តម្លៃស្ថិតក្នុងស្ថានភាព «${st.label}» — អាចបម្លែងជាវិក្កយបត្របាន លុះត្រាតែបានអនុម័តជាមុនសិន`, 'warning');
+        }
+
+        function renderBody() {
+            const cust = getCustomer(quote.customerId);
+            const t = docTotals(quote);
+            const exp = quoteExpiry(quote);
+            const needsApproval = quote.discountPercent > DISCOUNT_SELF_LIMIT;
+
+            document.getElementById('pageBody').innerHTML = `
+                ${needsApproval && quote.status === 'pending_approval' ? `
+                <div class="bg-amber-50/80 border border-amber-200 rounded-2xl p-4 flex items-start gap-3 no-print">
+                    <div class="w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center text-lg flex-shrink-0">
+                        <i class="fas fa-hourglass-half"></i>
+                    </div>
+                    <div>
+                        <h4 class="sm-card-title text-amber-900">កំពុងរង់ចាំការអនុម័ត</h4>
+                        <p class="sm-card-sub text-amber-800 mt-0.5">
+                            ការបញ្ចុះតម្លៃ ${fmtPercent(quote.discountPercent)} លើសពីដែនកម្រិត ${fmtPercent(DISCOUNT_SELF_LIMIT)}។
+                            ${CURRENT_REP.manager} កំពុងពិនិត្យ។ លោកអ្នកមិនអាចបម្លែងជាវិក្កយបត្របានទេ រហូតដល់មានការអនុម័ត។
+                        </p>
+                    </div>
+                </div>` : ''}
+
+                ${quote.status === 'rejected' ? `
+                <div class="bg-rose-50/80 border border-rose-200 rounded-2xl p-4 flex items-start gap-3 no-print">
+                    <div class="w-10 h-10 rounded-xl bg-rose-500 text-white flex items-center justify-center text-lg flex-shrink-0">
+                        <i class="fas fa-circle-xmark"></i>
+                    </div>
+                    <div>
+                        <h4 class="sm-card-title text-rose-900">សម្រង់តម្លៃត្រូវបានបដិសេធ</h4>
+                        <p class="sm-card-sub text-rose-800 mt-0.5">${quote.note || 'សូមទាក់ទងអ្នកគ្រប់គ្រងសម្រាប់ព័ត៌មានបន្ថែម។'}</p>
+                    </div>
+                </div>` : ''}
+
+                <!-- ឯកសារ A4 -->
+                <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm p-6 md:p-8 space-y-6">
+
+                    <div class="flex flex-wrap items-start justify-between gap-4 pb-5 border-b border-slate-200">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-xl bg-[#1e3a5f] flex items-center justify-center p-1.5 flex-shrink-0">
+                                <img src="../../../shared/assets/logo-mark-transparent.png" alt="DIGITECHKH" class="w-full h-full object-contain">
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-slate-800">DIGITECHKH CO., LTD.</h3>
+                                <p class="sm-td-sub text-slate-500">លេខអត្តសញ្ញាណកម្មសារពើពន្ធ ${MERCHANT.tin}</p>
+                                <p class="sm-td-sub text-slate-500">មហាវិថី ព្រះមុនីវង្ស រាជធានីភ្នំពេញ · 023 999 888</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <h3 class="text-lg font-semibold text-slate-800">សម្រង់តម្លៃ</h3>
+                            <p class="sm-value text-slate-700">${quote.id}</p>
+                            <p class="sm-td-sub text-slate-500">ចេញថ្ងៃ ${fmtKhDate(quote.date)}</p>
+                            <p class="sm-td-sub ${exp.tone}">សុពលភាពដល់ ${fmtKhDate(quote.validUntil)}</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <p class="sm-label text-slate-500 mb-1.5">ជូនចំពោះ</p>
+                            <p class="sm-value text-slate-700">${cust.name}</p>
+                            <p class="sm-td text-slate-600">${cust.contact} · ${cust.phone}</p>
+                            <p class="sm-td-sub text-slate-500 mt-1">${cust.address}</p>
+                            <span class="sm-badge px-2 py-0.5 rounded-full border ${tierTone(cust.tier)} mt-2 inline-block">${tierLabel(cust.tier)}</span>
+                        </div>
+                        <div class="sm:text-right">
+                            <p class="sm-label text-slate-500 mb-1.5">បុគ្គលិកទទួលបន្ទុក</p>
+                            <p class="sm-value text-slate-700">${CURRENT_REP.name}</p>
+                            <p class="sm-td text-slate-600">${CURRENT_REP.phone}</p>
+                            <p class="sm-td-sub text-slate-500 mt-1">លក្ខខណ្ឌទូទាត់៖ ${cust.paymentTerms === 0 ? 'សាច់ប្រាក់ភ្លាម' : `ជំពាក់ ${cust.paymentTerms} ថ្ងៃ`}</p>
+                        </div>
+                    </div>
+
+                    <!-- តារាងមុខទំនិញ — គ្មានជួរឈរបញ្ចុះតម្លៃ (ស្តង់ដារលេខ 13) -->
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left">
+                            <thead class="bg-slate-50 text-slate-500 border-y border-slate-200">
+                                <tr>
+                                    <th class="sm-th py-3 px-3 w-12">ល.រ</th>
+                                    <th class="sm-th py-3 px-3">បរិយាយមុខទំនិញ</th>
+                                    <th class="sm-th py-3 px-3 text-center">ចំនួន</th>
+                                    <th class="sm-th py-3 px-3 text-right">តម្លៃឯកតា</th>
+                                    <th class="sm-th py-3 px-3 text-right">ទឹកប្រាក់សរុប</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 text-slate-700">
+                                ${quote.items.map((it, i) => {
+                                    const p = getProduct(it.sku);
+                                    return `<tr>
+                                        <td class="sm-td py-3 px-3 text-slate-500">${i + 1}</td>
+                                        <td class="py-3 px-3">
+                                            <p class="sm-td text-slate-700">${p.name}</p>
+                                            <span class="sm-td-sub text-slate-400">${p.sku} · ${p.category}</span>
+                                        </td>
+                                        <td class="sm-td py-3 px-3 text-center">${it.qty} ${p.unit}</td>
+                                        <td class="sm-td py-3 px-3 text-right">${fmtUSD(it.price)}</td>
+                                        <td class="sm-td-strong py-3 px-3 text-right">${fmtUSD(it.qty * it.price)}</td>
+                                    </tr>`;
+                                }).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- សង្ខេបហិរញ្ញវត្ថុ 5 ដំណាក់កាល -->
+                    <div class="flex justify-end sm-summary">
+                        <div class="w-full sm:w-80 space-y-2">
+                            <div class="flex justify-between">
+                                <span class="sm-label text-slate-600">សរុបរងមុខទំនិញ</span>
+                                <span class="sm-value text-slate-700">${fmtUSD(t.subtotal)}</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="sm-label text-slate-600">ចូលរួមមុន</span>
+                                <span class="sm-value text-slate-700">${fmtUSD(t.downPayment)}</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="sm-label ${t.discountAmount ? 'text-amber-700 font-semibold' : 'text-slate-600'}">ការបញ្ចុះតម្លៃពិសេស ${fmtPercent(t.discountPercent)}</span>
+                                <span class="sm-value ${t.discountAmount ? 'text-amber-700' : 'text-slate-700'}">-${fmtUSD(t.discountAmount)}</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="sm-label text-slate-600">អាករលើតម្លៃបន្ថែម 10%</span>
+                                <span class="sm-value text-slate-700">${fmtUSD(t.vatAmount)}</span>
+                            </div>
+                            <div class="flex justify-between pt-2 border-t border-slate-200">
+                                <span class="sm-card-title text-slate-700">ទឹកប្រាក់សរុបចុងក្រោយ</span>
+                                <span class="sm-kpi-value text-blue-700">${fmtUSD(t.grandTotal)}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    ${quote.note ? `
+                    <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                        <p class="sm-label text-slate-500 mb-1">កំណត់ចំណាំ</p>
+                        <p class="sm-td text-slate-700">${quote.note}</p>
+                    </div>` : ''}
+
+                    <!-- ហត្ថលេខា -->
+                    <div class="grid grid-cols-2 gap-6 pt-4 signature-block">
+                        <div class="text-center">
+                            <p class="sm-label text-slate-600">បុគ្គលិកផ្នែកលក់</p>
+                            <div class="h-14"></div>
+                            <div class="border-t border-slate-300 pt-1.5">
+                                <p class="sm-value text-slate-700">${CURRENT_REP.name}</p>
+                                <p class="sm-kpi-sub text-slate-400">${fmtKhDate(quote.date)}</p>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <p class="sm-label text-slate-600">អតិថិជនយល់ព្រម</p>
+                            <div class="h-14"></div>
+                            <div class="border-t border-slate-300 pt-1.5">
+                                <p class="sm-value text-slate-700">${cust.contact}</p>
+                                <p class="sm-kpi-sub text-slate-400">ថ្ងៃ ......... ខែ ......... ឆ្នាំ .........</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="print-footer">
+                        DIGITECHKH Co., Ltd. · សម្រង់តម្លៃលេខ ${quote.id} · ចេញដោយ ${CURRENT_REP.name} · ឯកសារនេះបង្កើតចេញពីប្រព័ន្ធដោយស្វ័យប្រវត្តិ
+                    </div>
+                </div>`;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!quote) {
+                renderNotFound();
+                return;
+            }
+            renderHeader();
+            renderBody();
+        });
+    </script>
+</body>
+</html>

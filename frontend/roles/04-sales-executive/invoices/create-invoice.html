@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - បង្កើតវិក្កយបត្រថ្មី</title>
+    <link rel="icon" type="image/png" href="../../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { primary: "#1e3a5f", 'primary-dark': "#142842", accent: "#0ea5e9" },
+                    fontFamily: { sans: ["'Kantumruy Pro'", "sans-serif"] }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../shared/styles/custom.css">
+    <link rel="stylesheet" href="../../../shared/styles/portal.css">
+</head>
+<body id="sePortal" data-role-root=".." data-active="invoices" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <div id="sidebarHost"></div>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div class="flex items-center gap-4 min-w-0">
+                <a href="invoices.html"
+                   class="w-10 h-10 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-600 flex items-center justify-center transition border border-slate-200/70 flex-shrink-0"
+                   title="ត្រឡប់ទៅបញ្ជីវិក្កយបត្រ">
+                    <i class="fas fa-arrow-left text-sm"></i>
+                </a>
+                <div class="min-w-0">
+                    <h2 class="text-xl font-semibold text-gray-800 leading-tight truncate">បង្កើតវិក្កយបត្រថ្មី</h2>
+                    <p id="pageSubtitle" class="sm-card-sub text-gray-500 mt-0.5 truncate">ចូលរួមមុន · បញ្ចុះតម្លៃពិសេស · អាករលើតម្លៃបន្ថែម 10%</p>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-2 flex-shrink-0">
+                <a href="invoices.html" class="sm-badge px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium transition">បោះបង់</a>
+                <button onclick="saveInvoice()" class="sm-badge px-5 py-2.5 rounded-xl bg-[#0f2b5c] hover:bg-[#0a1d3f] text-white font-semibold shadow-sm transition inline-flex items-center gap-2">
+                    <i class="fas fa-file-invoice-dollar"></i> <span>ចេញវិក្កយបត្រ</span>
+                </button>
+            </div>
+        </header>
+
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-6">
+            <div class="w-full space-y-6">
+
+                <div id="conversionBanner" class="hidden"></div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div class="lg:col-span-2 space-y-6">
+                        <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
+                            <h3 class="sm-card-title text-slate-700 border-b border-slate-100 pb-3 mb-4">អតិថិជន</h3>
+                            <div id="customerPickerHost"></div>
+                        </div>
+
+                        <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+                            <div class="p-4 border-b border-slate-100 flex flex-wrap items-center justify-between gap-2">
+                                <div>
+                                    <h3 class="sm-card-title text-slate-700">មុខទំនិញ</h3>
+                                    <p class="sm-card-sub text-slate-500">តម្លៃឯកតាកំណត់តាមកម្រិតអតិថិជន ហើយអាចកែសម្រួលបាន</p>
+                                </div>
+                                <button onclick="addLine()" class="sm-badge px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold transition inline-flex items-center gap-2">
+                                    <i class="fas fa-plus text-xs"></i> បន្ថែមបន្ទាត់
+                                </button>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left">
+                                    <thead class="bg-slate-50 text-slate-500 border-b border-slate-100">
+                                        <tr>
+                                            <th class="sm-th py-3 px-3">មុខទំនិញ</th>
+                                            <th class="sm-th py-3 px-3">ចំនួន</th>
+                                            <th class="sm-th py-3 px-3">តម្លៃឯកតា</th>
+                                            <th class="sm-th py-3 px-3 text-right">សរុប</th>
+                                            <th class="sm-th py-3 px-3"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="itemLinesBody" class="divide-y divide-slate-100 text-slate-700"></tbody>
+                                </table>
+                            </div>
+                            <div id="itemLinesEmpty" class="hidden py-10 px-6 text-center">
+                                <p class="sm-card-sub text-slate-500">មិនទាន់មានបន្ទាត់មុខទំនិញទេ</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
+                            <label class="sm-label text-slate-700 font-semibold block mb-2">កំណត់ចំណាំលើវិក្កយបត្រ</label>
+                            <textarea id="fNote" rows="2" placeholder="ឧទាហរណ៍៖ ទំនិញធានា 12 ខែ · ដឹកជញ្ជូនក្នុងរយៈពេល 3 ថ្ងៃ..."
+                                class="sm-td w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-700 focus:outline-none focus:border-[#1e3a5f] transition resize-none"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
+                            <h3 class="sm-card-title text-slate-700 border-b border-slate-100 pb-3 mb-4">លក្ខខណ្ឌទូទាត់</h3>
+                            <div id="termsPickerHost" class="relative"></div>
+                            <p id="termsHint" class="sm-kpi-sub text-slate-500 mt-2"></p>
+                        </div>
+
+                        <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
+                            <h3 class="sm-card-title text-slate-700 border-b border-slate-100 pb-3 mb-4">សង្ខេបហិរញ្ញវត្ថុ</h3>
+                            <div id="summaryHost"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../shared/scripts/ui-components.js"></script>
+    <script src="../data.js"></script>
+    <script src="../doc-editor.js"></script>
+    <script src="../../../shared/scripts/portal.js"></script>
+    <script>
+        const TERM_OPTIONS = [
+            { value: 0, label: 'ទូទាត់សាច់ប្រាក់ភ្លាម' },
+            { value: 15, label: 'ជំពាក់ 15 ថ្ងៃ' },
+            { value: 30, label: 'ជំពាក់ 30 ថ្ងៃ' },
+            { value: 45, label: 'ជំពាក់ 45 ថ្ងៃ' },
+            { value: 60, label: 'ជំពាក់ 60 ថ្ងៃ' }
+        ];
+        let paymentTerms = 30;
+        let sourceQuoteId = '';
+
+        function dueDate() {
+            const d = new Date(BMS_TODAY);
+            d.setDate(d.getDate() + paymentTerms);
+            return d;
+        }
+
+        function renderTermsPicker() {
+            const active = TERM_OPTIONS.find(o => o.value === paymentTerms) || TERM_OPTIONS[2];
+            document.getElementById('termsPickerHost').innerHTML = `
+                <button onclick="toggleRowActionMenu(event, 'termsMenu')" type="button"
+                    class="w-full flex items-center justify-between gap-2 px-3.5 py-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition text-left">
+                    <span class="sm-td text-slate-700">${active.label}</span>
+                    <i class="fas fa-chevron-down text-[10px] text-slate-400 flex-shrink-0"></i>
+                </button>
+                <div id="termsMenu" class="hidden bg-white rounded-2xl shadow-2xl border border-slate-200 p-2 text-left">
+                    <div class="px-3 py-2 mb-1 rounded-xl bg-slate-50 border border-slate-100">
+                        <p class="sm-td-sub text-slate-400">លក្ខខណ្ឌទូទាត់</p>
+                    </div>
+                    ${TERM_OPTIONS.map(o => `
+                        <button onclick="pickTerms(${o.value})" class="sm-row-menu-item w-full flex items-center justify-between gap-2.5 px-3 py-2.5 rounded-xl text-slate-700 hover:bg-slate-50 transition text-left">
+                            <span>${o.label}</span>
+                            ${o.value === paymentTerms ? '<i class="fas fa-check text-[11px] text-emerald-600"></i>' : ''}
+                        </button>`).join('')}
+                </div>`;
+            document.getElementById('termsHint').textContent = paymentTerms === 0
+                ? `ចេញថ្ងៃ ${fmtKhDate(BMS_TODAY)} · ត្រូវទូទាត់ភ្លាមៗ`
+                : `ចេញថ្ងៃ ${fmtKhDate(BMS_TODAY)} · ផុតកំណត់ទូទាត់ ${fmtKhDate(dueDate())}`;
+        }
+
+        function pickTerms(value) {
+            paymentTerms = value;
+            closeAllFloatingDropdowns();
+            renderTermsPicker();
+        }
+
+        function renderConversionBanner() {
+            if (!sourceQuoteId) return;
+            const src = getQuote(sourceQuoteId);
+            if (!src) return;
+            const cust = getCustomer(src.customerId);
+            const banner = document.getElementById('conversionBanner');
+            banner.classList.remove('hidden');
+            banner.innerHTML = `
+                <div class="bg-emerald-50/80 border border-emerald-200 rounded-2xl p-4 flex items-start gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-500 text-white flex items-center justify-center text-lg flex-shrink-0">
+                        <i class="fas fa-right-left"></i>
+                    </div>
+                    <div class="min-w-0">
+                        <h4 class="sm-card-title text-emerald-900">កំពុងបម្លែងពីសម្រង់តម្លៃ ${src.id}</h4>
+                        <p class="sm-card-sub text-emerald-800 mt-0.5">
+                            មុខទំនិញ បរិមាណ តម្លៃឯកតា និងការបញ្ចុះតម្លៃ ${fmtPercent(src.discountPercent)} របស់ ${cust.name}
+                            ត្រូវបានចម្លងមកដោយស្វ័យប្រវត្តិ។ លោកអ្នកនៅតែអាចកែសម្រួលមុននឹងចេញវិក្កយបត្រ។
+                        </p>
+                    </div>
+                </div>`;
+            document.getElementById('pageSubtitle').textContent = `បម្លែងពីសម្រង់តម្លៃ ${src.id}`;
+        }
+
+        async function saveInvoice() {
+            const error = validateDoc();
+            if (error) return showToast(error, 'error');
+
+            const doc = collectDoc();
+            const cust = getCustomer(doc.customerId);
+            const totals = editorTotals();
+            const id = nextDocNumber('INV');
+
+            // ពិនិត្យពិដានឥណទានមុនចេញវិក្កយបត្រជំពាក់
+            const debt = INVOICES.filter(i => i.customerId === cust.id)
+                .reduce((sum, i) => sum + invoiceState(i).due, 0);
+            const after = debt + totals.grandTotal;
+            const overLimit = paymentTerms > 0 && after > cust.creditLimit;
+
+            if (needsManagerApproval()) {
+                return showToast(`ការបញ្ចុះតម្លៃ ${fmtPercent(totals.discountPercent)} លើសដែនកម្រិត ${fmtPercent(DISCOUNT_SELF_LIMIT)} — សូមបង្កើតជាសម្រង់តម្លៃ ដើម្បីសុំការអនុម័តជាមុនសិន`, 'error');
+            }
+
+            const ok = await showCustomConfirm({
+                title: 'បញ្ជាក់ការចេញវិក្កយបត្រ',
+                message: overLimit
+                    ? `បំណុលសរុបរបស់ ${cust.name} នឹងឡើងដល់ ${fmtUSD(after)} ដែលលើសពិដានឥណទាន ${fmtUSD(cust.creditLimit)}។ សំណើលើកលែងនឹងផ្ញើទៅ ${CURRENT_REP.manager}។ តើបន្តមែនទេ?`
+                    : `តើលោកអ្នកពិតជាចេញវិក្កយបត្រ ${id} ជូន ${cust.name} ទឹកប្រាក់ ${fmtUSD(totals.grandTotal)} មែនទេ? វិក្កយបត្រដែលចេញរួច មិនអាចលុបចោលដោយខ្លួនឯងបានទេ។`,
+                confirmText: 'ចេញវិក្កយបត្រ',
+                cancelText: 'បោះបង់',
+                danger: overLimit
+            });
+            if (!ok) return;
+
+            saveNewDoc({
+                id,
+                type: 'invoice',
+                customerId: doc.customerId,
+                items: doc.items,
+                discountPercent: doc.discountPercent,
+                downPayment: doc.downPayment,
+                quoteId: sourceQuoteId || null,
+                date: new Date(BMS_TODAY).toISOString(),
+                dueDate: dueDate().toISOString(),
+                paid: 0,
+                note: document.getElementById('fNote').value.trim()
+            });
+
+            showToast(`បានចេញវិក្កយបត្រ ${id} ជូន ${cust.name}` + (overLimit ? ' · សំណើលើកលែងឥណទានបានផ្ញើទៅអ្នកគ្រប់គ្រង' : ''), 'success');
+            setTimeout(() => { window.location.href = 'invoices.html'; }, 1400);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(location.search);
+            sourceQuoteId = params.get('from') || '';
+            const preCustomer = params.get('customer');
+
+            initDocEditor({ mode: 'invoice', prefillFrom: sourceQuoteId || null });
+
+            if (!sourceQuoteId && preCustomer && getCustomer(preCustomer)) {
+                DOC_EDITOR.customerId = preCustomer;
+                renderCustomerPicker();
+                renderLines();
+                renderSummary();
+            }
+
+            const cust = DOC_EDITOR.customerId ? getCustomer(DOC_EDITOR.customerId) : null;
+            if (cust) paymentTerms = cust.paymentTerms;
+
+            renderConversionBanner();
+            renderTermsPicker();
+        });
+    </script>
+</body>
+</html>

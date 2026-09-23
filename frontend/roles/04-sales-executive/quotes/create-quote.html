@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - បង្កើតសម្រង់តម្លៃថ្មី</title>
+    <link rel="icon" type="image/png" href="../../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { primary: "#1e3a5f", 'primary-dark': "#142842", accent: "#0ea5e9" },
+                    fontFamily: { sans: ["'Kantumruy Pro'", "sans-serif"] }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../shared/styles/custom.css">
+    <link rel="stylesheet" href="../../../shared/styles/portal.css">
+</head>
+<body id="sePortal" data-role-root=".." data-active="quotes" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <div id="sidebarHost"></div>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div class="flex items-center gap-4 min-w-0">
+                <a href="quotes.html"
+                   class="w-10 h-10 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-600 flex items-center justify-center transition border border-slate-200/70 flex-shrink-0"
+                   title="ត្រឡប់ទៅបញ្ជីសម្រង់តម្លៃ">
+                    <i class="fas fa-arrow-left text-sm"></i>
+                </a>
+                <div class="min-w-0">
+                    <h2 id="pageTitle" class="text-xl font-semibold text-gray-800 leading-tight truncate">បង្កើតសម្រង់តម្លៃថ្មី</h2>
+                    <p class="sm-card-sub text-gray-500 mt-0.5 truncate">តម្លៃឯកតាកំណត់ដោយស្វ័យប្រវត្តិតាមកម្រិតអតិថិជន</p>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-2 flex-shrink-0">
+                <button onclick="saveQuote('draft')" class="sm-badge px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium transition">
+                    រក្សាទុកជាសេចក្តីព្រាង
+                </button>
+                <button onclick="saveQuote('send')" class="sm-badge px-5 py-2.5 rounded-xl bg-[#0f2b5c] hover:bg-[#0a1d3f] text-white font-semibold shadow-sm transition inline-flex items-center gap-2">
+                    <i class="fas fa-paper-plane"></i> <span>រក្សាទុក និងផ្ញើ</span>
+                </button>
+            </div>
+        </header>
+
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-6">
+            <div class="w-full grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+                <div class="lg:col-span-2 space-y-6">
+                    <!-- Customer -->
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
+                        <h3 class="sm-card-title text-slate-700 border-b border-slate-100 pb-3 mb-4">អតិថិជន</h3>
+                        <div id="customerPickerHost"></div>
+                    </div>
+
+                    <!-- Item lines -->
+                    <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+                        <div class="p-4 border-b border-slate-100 flex flex-wrap items-center justify-between gap-2">
+                            <div>
+                                <h3 class="sm-card-title text-slate-700">មុខទំនិញ</h3>
+                                <p class="sm-card-sub text-slate-500">តម្លៃឯកតាអាចកែសម្រួលបានតាមការចរចាជាក់ស្តែង</p>
+                            </div>
+                            <button onclick="addLine()" class="sm-badge px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold transition inline-flex items-center gap-2">
+                                <i class="fas fa-plus text-xs"></i> បន្ថែមបន្ទាត់
+                            </button>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left">
+                                <thead class="bg-slate-50 text-slate-500 border-b border-slate-100">
+                                    <tr>
+                                        <th class="sm-th py-3 px-3">មុខទំនិញ</th>
+                                        <th class="sm-th py-3 px-3">ចំនួន</th>
+                                        <th class="sm-th py-3 px-3">តម្លៃឯកតា</th>
+                                        <th class="sm-th py-3 px-3 text-right">សរុប</th>
+                                        <th class="sm-th py-3 px-3"></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="itemLinesBody" class="divide-y divide-slate-100 text-slate-700"></tbody>
+                            </table>
+                        </div>
+                        <div id="itemLinesEmpty" class="hidden py-10 px-6 text-center">
+                            <p class="sm-card-sub text-slate-500">មិនទាន់មានបន្ទាត់មុខទំនិញទេ</p>
+                        </div>
+                    </div>
+
+                    <!-- Note -->
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
+                        <label class="sm-label text-slate-700 font-semibold block mb-2">កំណត់ចំណាំសម្រាប់អតិថិជន</label>
+                        <textarea id="fNote" rows="2" placeholder="ឧទាហរណ៍៖ តម្លៃរួមបញ្ចូលការដឹកជញ្ជូនក្នុងរាជធានីភ្នំពេញ..."
+                            class="sm-td w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-700 focus:outline-none focus:border-[#1e3a5f] transition resize-none"></textarea>
+                    </div>
+                </div>
+
+                <!-- Summary -->
+                <div class="space-y-6">
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
+                        <h3 class="sm-card-title text-slate-700 border-b border-slate-100 pb-3 mb-4">សុពលភាពសម្រង់តម្លៃ</h3>
+                        <div id="validityPickerHost" class="relative"></div>
+                        <p id="validityHint" class="sm-kpi-sub text-slate-500 mt-2"></p>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
+                        <h3 class="sm-card-title text-slate-700 border-b border-slate-100 pb-3 mb-4">សង្ខេបហិរញ្ញវត្ថុ</h3>
+                        <div id="summaryHost"></div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../shared/scripts/ui-components.js"></script>
+    <script src="../data.js"></script>
+    <script src="../doc-editor.js"></script>
+    <script src="../../../shared/scripts/portal.js"></script>
+    <script>
+        const VALIDITY_OPTIONS = [
+            { value: 7, label: 'សុពលភាព 7 ថ្ងៃ' },
+            { value: 14, label: 'សុពលភាព 14 ថ្ងៃ' },
+            { value: 30, label: 'សុពលភាព 30 ថ្ងៃ' }
+        ];
+        let validityDays = 14;
+
+        function validUntilDate() {
+            const d = new Date(BMS_TODAY);
+            d.setDate(d.getDate() + validityDays);
+            return d;
+        }
+
+        function renderValidityPicker() {
+            const active = VALIDITY_OPTIONS.find(o => o.value === validityDays);
+            document.getElementById('validityPickerHost').innerHTML = `
+                <button onclick="toggleRowActionMenu(event, 'validityMenu')" type="button"
+                    class="w-full flex items-center justify-between gap-2 px-3.5 py-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition text-left">
+                    <span class="sm-td text-slate-700">${active.label}</span>
+                    <i class="fas fa-chevron-down text-[10px] text-slate-400 flex-shrink-0"></i>
+                </button>
+                <div id="validityMenu" class="hidden bg-white rounded-2xl shadow-2xl border border-slate-200 p-2 text-left">
+                    <div class="px-3 py-2 mb-1 rounded-xl bg-slate-50 border border-slate-100">
+                        <p class="sm-td-sub text-slate-400">រយៈពេលសុពលភាព</p>
+                    </div>
+                    ${VALIDITY_OPTIONS.map(o => `
+                        <button onclick="pickValidity(${o.value})" class="sm-row-menu-item w-full flex items-center justify-between gap-2.5 px-3 py-2.5 rounded-xl text-slate-700 hover:bg-slate-50 transition text-left">
+                            <span>${o.label}</span>
+                            ${o.value === validityDays ? '<i class="fas fa-check text-[11px] text-emerald-600"></i>' : ''}
+                        </button>`).join('')}
+                </div>`;
+            document.getElementById('validityHint').textContent =
+                `ចេញថ្ងៃ ${fmtKhDate(BMS_TODAY)} · ផុតសុពលភាព ${fmtKhDate(validUntilDate())}`;
+        }
+
+        function pickValidity(days) {
+            validityDays = days;
+            closeAllFloatingDropdowns();
+            renderValidityPicker();
+        }
+
+        async function saveQuote(action) {
+            const error = validateDoc();
+            if (error) return showToast(error, 'error');
+
+            const doc = collectDoc();
+            const cust = getCustomer(doc.customerId);
+            const totals = editorTotals();
+            const id = nextDocNumber('QT');
+            const needsApproval = needsManagerApproval();
+
+            const ok = await showCustomConfirm({
+                title: action === 'draft' ? 'រក្សាទុកជាសេចក្តីព្រាង' : 'បញ្ជាក់ការផ្ញើសម្រង់តម្លៃ',
+                message: needsApproval
+                    ? `ការបញ្ចុះតម្លៃ ${fmtPercent(totals.discountPercent)} លើសពីដែនកម្រិត ${fmtPercent(DISCOUNT_SELF_LIMIT)}។ សម្រង់តម្លៃ ${id} ទឹកប្រាក់ ${fmtUSD(totals.grandTotal)} នឹងផ្ញើទៅ ${CURRENT_REP.manager} ដើម្បីអនុម័តជាមុនសិន។ តើបន្តមែនទេ?`
+                    : `តើលោកអ្នកពិតជារក្សាទុកសម្រង់តម្លៃ ${id} ជូន ${cust.name} ទឹកប្រាក់ ${fmtUSD(totals.grandTotal)} មែនទេ?`,
+                confirmText: action === 'draft' ? 'រក្សាទុក' : 'រក្សាទុក និងផ្ញើ',
+                cancelText: 'បោះបង់'
+            });
+            if (!ok) return;
+
+            const status = action === 'draft' ? 'draft' : (needsApproval ? 'pending_approval' : 'approved');
+            saveNewDoc({
+                id,
+                type: 'quote',
+                customerId: doc.customerId,
+                items: doc.items,
+                discountPercent: doc.discountPercent,
+                downPayment: doc.downPayment,
+                status,
+                date: new Date(BMS_TODAY).toISOString(),
+                validUntil: validUntilDate().toISOString(),
+                note: document.getElementById('fNote').value.trim()
+            });
+
+            const msg = status === 'pending_approval'
+                ? `បានរក្សាទុកសម្រង់តម្លៃ ${id} · បានផ្ញើទៅ ${CURRENT_REP.manager} ដើម្បីអនុម័ត`
+                : status === 'draft'
+                    ? `បានរក្សាទុកសម្រង់តម្លៃ ${id} ជាសេចក្តីព្រាង`
+                    : `បានរក្សាទុក និងផ្ញើសម្រង់តម្លៃ ${id} ជូន ${cust.name}`;
+            showToast(msg, 'success');
+
+            setTimeout(() => { window.location.href = 'quotes.html'; }, 1400);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(location.search);
+            const preCustomer = params.get('customer');
+
+            initDocEditor({ mode: 'quote' });
+
+            if (preCustomer && getCustomer(preCustomer)) {
+                DOC_EDITOR.customerId = preCustomer;
+                renderCustomerPicker();
+                renderLines();
+                renderSummary();
+            }
+
+            renderValidityPicker();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - វិក្កយបត្រផ្លូវការ</title>
+    <link rel="icon" type="image/png" href="../../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { primary: "#1e3a5f", 'primary-dark': "#142842", accent: "#0ea5e9" },
+                    fontFamily: { sans: ["'Kantumruy Pro'", "sans-serif"] }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../shared/styles/custom.css">
+    <link rel="stylesheet" href="../../../shared/styles/portal.css">
+</head>
+<body id="sePortal" data-role-root=".." data-active="invoices" class="bg-slate-50 font-sans text-slate-800 text-[16px] flex h-screen overflow-hidden">
+
+    <div id="sidebarHost"></div>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div class="flex items-center gap-4 min-w-0">
+                <a href="invoices.html"
+                   class="w-10 h-10 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-600 flex items-center justify-center transition border border-slate-200/70 flex-shrink-0"
+                   title="ត្រឡប់ទៅបញ្ជីវិក្កយបត្រ">
+                    <i class="fas fa-arrow-left text-sm"></i>
+                </a>
+                <div class="min-w-0">
+                    <h2 class="text-xl font-semibold text-gray-800 leading-tight flex items-center gap-2 truncate">
+                        <span id="docTitle">វិក្កយបត្រ</span>
+                        <span id="docStatus" class="sm-badge px-2.5 py-0.5 rounded-full border font-semibold flex-shrink-0"></span>
+                    </h2>
+                    <p id="docSubtitle" class="sm-card-sub text-gray-500 mt-0.5 truncate"></p>
+                </div>
+            </div>
+
+            <div id="headerActions" class="flex items-center space-x-2 no-print flex-shrink-0"></div>
+        </header>
+
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-6">
+            <div id="pageBody" class="w-full space-y-6"></div>
+        </main>
+    </div>
+
+    <script src="../../../shared/scripts/ui-components.js"></script>
+    <script src="../data.js"></script>
+    <script src="../../../shared/scripts/portal.js"></script>
+    <script>
+        const invoiceId = new URLSearchParams(location.search).get('id') || 'INV-2026-0109';
+        const invoice = getInvoice(invoiceId);
+
+        function renderNotFound() {
+            document.getElementById('docTitle').textContent = 'រកមិនឃើញឯកសារ';
+            document.getElementById('docStatus').classList.add('hidden');
+            document.getElementById('docSubtitle').textContent = 'លេខវិក្កយបត្រ ' + invoiceId + ' មិនមានក្នុងប្រព័ន្ធទេ';
+            document.getElementById('pageBody').innerHTML = `
+                <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm py-16 text-center">
+                    <div class="w-14 h-14 rounded-2xl bg-slate-100 text-slate-400 flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-receipt text-2xl"></i>
+                    </div>
+                    <h3 class="sm-card-title text-slate-700">រកមិនឃើញវិក្កយបត្រនេះទេ</h3>
+                    <a href="invoices.html" class="sm-badge inline-flex items-center gap-2 mt-4 px-4 py-2.5 rounded-xl bg-[#0f2b5c] text-white font-semibold">
+                        <i class="fas fa-arrow-left"></i> ត្រឡប់ទៅបញ្ជីវិក្កយបត្រ
+                    </a>
+                </div>`;
+        }
+
+        function renderHeader(st) {
+            const cust = getCustomer(invoice.customerId);
+            document.getElementById('docTitle').textContent = 'វិក្កយបត្រ ' + invoice.id;
+            const badge = document.getElementById('docStatus');
+            badge.textContent = st.label;
+            badge.className = 'sm-badge px-2.5 py-0.5 rounded-full border font-semibold flex-shrink-0 ' + st.tone;
+            document.getElementById('docSubtitle').textContent =
+                `${cust.name} · ផុតកំណត់ទូទាត់ ${fmtKhDate(invoice.dueDate)}`;
+
+            document.getElementById('headerActions').innerHTML = `
+                <button onclick="window.print()" class="sm-badge px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium transition inline-flex items-center gap-2">
+                    <i class="fas fa-print"></i> <span class="hidden sm:inline">បោះពុម្ព A4</span>
+                </button>
+                ${st.due > 0 ? `
+                <button onclick="remindPayment()" class="sm-badge px-5 py-2.5 rounded-xl bg-[#0f2b5c] hover:bg-[#0a1d3f] text-white font-semibold shadow-sm transition inline-flex items-center gap-2">
+                    <i class="fas fa-bell"></i> <span>រំលឹកទារប្រាក់</span>
+                </button>` : `
+                <span class="sm-badge px-4 py-2.5 rounded-xl bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold inline-flex items-center gap-2">
+                    <i class="fas fa-circle-check"></i> បានទូទាត់ពេញ
+                </span>`}`;
+        }
+
+        function remindPayment() {
+            const cust = getCustomer(invoice.customerId);
+            const st = invoiceState(invoice);
+            showToast(`បានផ្ញើការរំលឹកទារប្រាក់ ${fmtUSD(st.due)} ជូន ${cust.name}`, 'success');
+        }
+
+        function renderBody(st) {
+            const cust = getCustomer(invoice.customerId);
+            const t = st.totals;
+            const srcQuote = invoice.quoteId ? getQuote(invoice.quoteId) : null;
+
+            document.getElementById('pageBody').innerHTML = `
+                ${st.key === 'overdue' ? `
+                <div class="bg-rose-50/80 border border-rose-200 rounded-2xl p-4 flex items-start gap-3 no-print">
+                    <div class="w-10 h-10 rounded-xl bg-rose-500 text-white flex items-center justify-center text-lg flex-shrink-0">
+                        <i class="fas fa-triangle-exclamation"></i>
+                    </div>
+                    <div>
+                        <h4 class="sm-card-title text-rose-900">វិក្កយបត្រហួសកាលកំណត់ទូទាត់</h4>
+                        <p class="sm-card-sub text-rose-800 mt-0.5">
+                            ហួសកំណត់ ${st.overdueDays} ថ្ងៃ · នៅជំពាក់ ${fmtUSD(st.due)}។ សូមទាក់ទងអតិថិជនដើម្បីតាមដានការទូទាត់។
+                        </p>
+                    </div>
+                </div>` : ''}
+
+                <!-- ឯកសារ A4 -->
+                <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm p-6 md:p-8 space-y-6">
+
+                    <div class="flex flex-wrap items-start justify-between gap-4 pb-5 border-b border-slate-200">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-xl bg-[#1e3a5f] flex items-center justify-center p-1.5 flex-shrink-0">
+                                <img src="../../../shared/assets/logo-mark-transparent.png" alt="DIGITECHKH" class="w-full h-full object-contain">
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-slate-800">DIGITECHKH CO., LTD.</h3>
+                                <p class="sm-td-sub text-slate-500">លេខអត្តសញ្ញាណកម្មសារពើពន្ធ ${MERCHANT.tin}</p>
+                                <p class="sm-td-sub text-slate-500">មហាវិថី ព្រះមុនីវង្ស រាជធានីភ្នំពេញ · 023 999 888</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <h3 class="text-lg font-semibold text-slate-800">វិក្កយបត្រពាណិជ្ជកម្ម</h3>
+                            <p class="sm-value text-slate-700">${invoice.id}</p>
+                            <p class="sm-td-sub text-slate-500">ចេញថ្ងៃ ${fmtKhDate(invoice.date)}</p>
+                            <p class="sm-td-sub ${st.key === 'overdue' ? 'text-rose-600 font-semibold' : 'text-slate-500'}">ផុតកំណត់ទូទាត់ ${fmtKhDate(invoice.dueDate)}</p>
+                            ${srcQuote ? `<p class="sm-td-sub text-slate-400">យោងសម្រង់តម្លៃ ${srcQuote.id}</p>` : ''}
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <p class="sm-label text-slate-500 mb-1.5">អតិថិជន</p>
+                            <p class="sm-value text-slate-700">${cust.name}</p>
+                            <p class="sm-td text-slate-600">${cust.contact} · ${cust.phone}</p>
+                            <p class="sm-td-sub text-slate-500 mt-1">${cust.address}</p>
+                            <span class="sm-badge px-2 py-0.5 rounded-full border ${tierTone(cust.tier)} mt-2 inline-block">${tierLabel(cust.tier)}</span>
+                        </div>
+                        <div class="sm:text-right">
+                            <p class="sm-label text-slate-500 mb-1.5">បុគ្គលិកទទួលបន្ទុក</p>
+                            <p class="sm-value text-slate-700">${CURRENT_REP.name}</p>
+                            <p class="sm-td text-slate-600">${CURRENT_REP.phone}</p>
+                            <p class="sm-td-sub text-slate-500 mt-1">លក្ខខណ្ឌទូទាត់៖ ${cust.paymentTerms === 0 ? 'សាច់ប្រាក់ភ្លាម' : `ជំពាក់ ${cust.paymentTerms} ថ្ងៃ`}</p>
+                        </div>
+                    </div>
+
+                    <!-- តារាងមុខទំនិញ — គ្មានជួរឈរបញ្ចុះតម្លៃ (ស្តង់ដារលេខ 13) -->
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left">
+                            <thead class="bg-slate-50 text-slate-500 border-y border-slate-200">
+                                <tr>
+                                    <th class="sm-th py-3 px-3 w-12">ល.រ</th>
+                                    <th class="sm-th py-3 px-3">បរិយាយមុខទំនិញ</th>
+                                    <th class="sm-th py-3 px-3 text-center">ចំនួន</th>
+                                    <th class="sm-th py-3 px-3 text-right">តម្លៃឯកតា</th>
+                                    <th class="sm-th py-3 px-3 text-right">ទឹកប្រាក់សរុប</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 text-slate-700">
+                                ${invoice.items.map((it, i) => {
+                                    const p = getProduct(it.sku);
+                                    return `<tr>
+                                        <td class="sm-td py-3 px-3 text-slate-500">${i + 1}</td>
+                                        <td class="py-3 px-3">
+                                            <p class="sm-td text-slate-700">${p.name}</p>
+                                            <span class="sm-td-sub text-slate-400">${p.sku} · ${p.category}</span>
+                                        </td>
+                                        <td class="sm-td py-3 px-3 text-center">${it.qty} ${p.unit}</td>
+                                        <td class="sm-td py-3 px-3 text-right">${fmtUSD(it.price)}</td>
+                                        <td class="sm-td-strong py-3 px-3 text-right">${fmtUSD(it.qty * it.price)}</td>
+                                    </tr>`;
+                                }).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <!-- KHQR បាគង -->
+                        <div class="p-4 rounded-2xl border border-slate-200 bg-slate-50/60 sm-print-block">
+                            <div class="flex items-center gap-2 mb-3">
+                                <i class="fas fa-qrcode text-[#1e3a5f]"></i>
+                                <h4 class="sm-card-title text-slate-700">ទូទាត់តាម KHQR បាគង</h4>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="p-2.5 bg-white rounded-xl border border-slate-200 flex-shrink-0">
+                                    <div id="khqrCanvas"></div>
+                                </div>
+                                <div class="min-w-0">
+                                    <p class="sm-kpi-sub text-slate-500">ទឹកប្រាក់ត្រូវទូទាត់</p>
+                                    <p class="sm-kpi-value text-[#1e3a5f]">${fmtUSD(st.due > 0 ? st.due : t.grandTotal)}</p>
+                                    <p class="sm-td-sub text-slate-600 mt-1.5">${MERCHANT.name}</p>
+                                    <p class="sm-td-sub text-slate-500">${MERCHANT.account}</p>
+                                    <p class="sm-td-sub text-slate-400 mt-1.5">ស្កេនដោយកម្មវិធីធនាគារណាមួយដែលភ្ជាប់បាគង</p>
+                                </div>
+                            </div>
+                            <p class="sm-td-sub text-slate-400 mt-3">កូដនេះបង្កើតតាមទឹកប្រាក់នៃវិក្កយបត្រនេះ · សម្រាប់ការបង្ហាញគំរូប៉ុណ្ណោះ</p>
+                        </div>
+
+                        <!-- សង្ខេបហិរញ្ញវត្ថុ 5 ដំណាក់កាល -->
+                        <div class="sm-summary">
+                            <div class="space-y-2">
+                                <div class="flex justify-between">
+                                    <span class="sm-label text-slate-600">សរុបរងមុខទំនិញ</span>
+                                    <span class="sm-value text-slate-700">${fmtUSD(t.subtotal)}</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="sm-label text-slate-600">ចូលរួមមុន</span>
+                                    <span class="sm-value text-slate-700">${fmtUSD(t.downPayment)}</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="sm-label ${t.discountAmount ? 'text-amber-700 font-semibold' : 'text-slate-600'}">ការបញ្ចុះតម្លៃពិសេស ${fmtPercent(t.discountPercent)}</span>
+                                    <span class="sm-value ${t.discountAmount ? 'text-amber-700' : 'text-slate-700'}">-${fmtUSD(t.discountAmount)}</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="sm-label text-slate-600">អាករលើតម្លៃបន្ថែម 10%</span>
+                                    <span class="sm-value text-slate-700">${fmtUSD(t.vatAmount)}</span>
+                                </div>
+                                <div class="flex justify-between pt-2 border-t border-slate-200">
+                                    <span class="sm-card-title text-slate-700">ទឹកប្រាក់សរុបចុងក្រោយ</span>
+                                    <span class="sm-kpi-value text-blue-700">${fmtUSD(t.grandTotal)}</span>
+                                </div>
+                                <div class="flex justify-between pt-2 border-t border-slate-100">
+                                    <span class="sm-label text-emerald-700">បានទូទាត់រួច</span>
+                                    <span class="sm-value text-emerald-700">${fmtUSD(invoice.paid)}</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="sm-label ${st.due > 0 ? 'text-rose-700 font-semibold' : 'text-slate-600'}">នៅជំពាក់</span>
+                                    <span class="sm-value ${st.due > 0 ? 'text-rose-700' : 'text-slate-700'}">${fmtUSD(st.due)}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    ${invoice.note ? `
+                    <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                        <p class="sm-label text-slate-500 mb-1">កំណត់ចំណាំ</p>
+                        <p class="sm-td text-slate-700">${invoice.note}</p>
+                    </div>` : ''}
+
+                    <!-- ហត្ថលេខា -->
+                    <div class="grid grid-cols-3 gap-6 pt-4 signature-block">
+                        <div class="text-center">
+                            <p class="sm-label text-slate-600">អ្នករៀបចំ</p>
+                            <div class="h-14"></div>
+                            <div class="border-t border-slate-300 pt-1.5">
+                                <p class="sm-value text-slate-700">${CURRENT_REP.name}</p>
+                                <p class="sm-kpi-sub text-slate-400">បុគ្គលិកផ្នែកលក់</p>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <p class="sm-label text-slate-600">ផ្នែកគណនេយ្យ</p>
+                            <div class="h-14"></div>
+                            <div class="border-t border-slate-300 pt-1.5">
+                                <p class="sm-value text-slate-700">.........................</p>
+                                <p class="sm-kpi-sub text-slate-400">ផ្ទៀងផ្ទាត់ការទូទាត់</p>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <p class="sm-label text-slate-600">អតិថិជនទទួល</p>
+                            <div class="h-14"></div>
+                            <div class="border-t border-slate-300 pt-1.5">
+                                <p class="sm-value text-slate-700">${cust.contact}</p>
+                                <p class="sm-kpi-sub text-slate-400">ថ្ងៃ ......... ខែ ......... ឆ្នាំ .........</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="print-footer">
+                        DIGITECHKH Co., Ltd. · វិក្កយបត្រលេខ ${invoice.id} · ចេញដោយ ${CURRENT_REP.name} · ឯកសារនេះបង្កើតចេញពីប្រព័ន្ធដោយស្វ័យប្រវត្តិ
+                    </div>
+                </div>`;
+        }
+
+        function renderKhqr(st) {
+            const host = document.getElementById('khqrCanvas');
+            if (!host || typeof QRCode === 'undefined') return;
+            host.innerHTML = '';
+            const amount = st.due > 0 ? st.due : st.totals.grandTotal;
+            new QRCode(host, {
+                text: buildKhqrPayload(invoice.id, amount),
+                width: 132,
+                height: 132,
+                colorDark: '#1e3a5f',
+                colorLight: '#ffffff',
+                correctLevel: QRCode.CorrectLevel.M
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!invoice) {
+                renderNotFound();
+                return;
+            }
+            const st = invoiceState(invoice);
+            renderHeader(st);
+            renderBody(st);
+            renderKhqr(st);
+        });
+    </script>
+</body>
+</html>

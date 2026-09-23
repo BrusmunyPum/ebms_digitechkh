@@ -236,22 +236,24 @@
                         </div>
                     </a>
 
-                    <!-- Role 4: 4. Sales Executive -->
-                    <div onclick="selectDemoRole('sales-executive', 'បុគ្គលិកប្រតិបត្តិផ្នែកលក់', '../../../documentation/role_sales_executive.html')"
-                         class="p-3.5 rounded-2xl bg-white border border-slate-200 hover:border-primary/50 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group cursor-pointer hover:-translate-y-0.5">
+                    <!-- Role 4: 4. Sales Executive (Active Live Portal) -->
+                    <a href="../04-sales-executive/dashboard.html"
+                       class="p-3.5 rounded-2xl bg-white border-2 border-emerald-400/80 hover:border-emerald-500 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group cursor-pointer bg-gradient-to-b from-emerald-50/20 to-white hover:-translate-y-0.5">
                         <div>
                             <div class="flex items-center justify-between mb-2">
                                 <span class="text-xl">💼</span>
                                 <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-sky-50 text-sky-700">Zero Cost</span>
                             </div>
-                            <h4 class="text-sm font-bold text-slate-800 mb-0.5 group-hover:text-primary transition">4. Sales Executive</h4>
+                            <h4 class="text-sm font-bold text-slate-900 mb-0.5 group-hover:text-emerald-700 transition">4. Sales Executive</h4>
                             <p class="text-[11px] text-slate-500 leading-snug">ចេញវិក្កយបត្រ និងសម្រង់តម្លៃ</p>
                         </div>
-                        <div class="pt-2 mt-2.5 border-t border-slate-100 flex items-center justify-between text-slate-400 group-hover:text-primary transition text-xs">
-                            <span class="text-[11px]">ឯកសារបច្ចេកទេស</span>
-                            <i class="fas fa-arrow-right text-[10px] text-slate-300 transition-transform group-hover:translate-x-1"></i>
+                        <div class="pt-2 mt-2.5 border-t border-emerald-100 flex items-center justify-between text-emerald-600 font-semibold text-xs">
+                            <span class="flex items-center gap-1.5">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>ចូលសាកល្បង
+                            </span>
+                            <i class="fas fa-arrow-right text-[10px] transition-transform group-hover:translate-x-1"></i>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- Role 5: 5. Cashier / POS -->
                     <div onclick="selectDemoRole('cashier', 'អ្នកគិតលុយលក់រាយ', '../../../documentation/role_cashier_pos.html')"
@@ -449,6 +451,10 @@
                 window.location.href = '../03-sales-manager/dashboard.html';
                 return;
             }
+            if (role === 'sales-executive' || role === 'sales-staff' || role === '04-sales-executive') {
+                window.location.href = '../04-sales-executive/dashboard.html';
+                return;
+            }
             if (role === 'warehouse' || role === 'warehouse-manager' || role === '07-warehouse-manager') {
                 window.location.href = '../07-warehouse-manager/dashboard.html';
                 return;
@@ -489,6 +495,15 @@
                 showToast('ចូលប្រព័ន្ធជោគជ័យ! កំពុងបញ្ជូនទៅកាន់ច្រកអភិបាលទូទៅ...', 'success');
                 setTimeout(() => {
                     window.location.href = '../02-admin-general-manager/dashboard.html';
+                }, 800);
+                return;
+            }
+
+            if (val.includes('exec') || val.includes('rep') || val.includes('sao')
+                || (val.includes('sales') && !val.includes('manager'))) {
+                showToast('ចូលប្រព័ន្ធជោគជ័យ! កំពុងបញ្ជូនទៅកាន់ច្រកបុគ្គលិកលក់...', 'success');
+                setTimeout(() => {
+                    window.location.href = '../04-sales-executive/dashboard.html';
                 }, 800);
                 return;
             }

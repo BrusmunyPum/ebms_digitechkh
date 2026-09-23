@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - ចុះឈ្មោះអតិថិជនថ្មី</title>
+    <link rel="icon" type="image/png" href="../../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { primary: "#1e3a5f", 'primary-dark': "#142842", accent: "#0ea5e9" },
+                    fontFamily: { sans: ["'Kantumruy Pro'", "sans-serif"] }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../shared/styles/custom.css">
+    <link rel="stylesheet" href="../../../shared/styles/portal.css">
+</head>
+<body id="sePortal" data-role-root=".." data-active="customers" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <div id="sidebarHost"></div>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div class="flex items-center gap-4 min-w-0">
+                <a href="customers.html"
+                   class="w-10 h-10 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-600 flex items-center justify-center transition border border-slate-200/70 flex-shrink-0"
+                   title="ត្រឡប់ទៅបញ្ជីអតិថិជន">
+                    <i class="fas fa-arrow-left text-sm"></i>
+                </a>
+                <div class="min-w-0">
+                    <h2 class="text-xl font-semibold text-gray-800 leading-tight truncate">ចុះឈ្មោះអតិថិជនថ្មី</h2>
+                    <p class="sm-card-sub text-gray-500 mt-0.5 truncate">បញ្ចូលព័ត៌មានទំនាក់ទំនង កម្រិតអតិថិជន និងពិដានឥណទាន</p>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-2 flex-shrink-0">
+                <a href="customers.html" class="sm-badge px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium transition">បោះបង់</a>
+                <button onclick="saveCustomer()" class="sm-badge px-5 py-2.5 rounded-xl bg-[#0f2b5c] hover:bg-[#0a1d3f] text-white font-semibold shadow-sm transition inline-flex items-center gap-2">
+                    <i class="fas fa-floppy-disk"></i> <span>រក្សាទុក</span>
+                </button>
+            </div>
+        </header>
+
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-6">
+            <div class="w-full grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+                <!-- Main form -->
+                <div class="lg:col-span-2 space-y-6">
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm space-y-4">
+                        <h3 class="sm-card-title text-slate-700 border-b border-slate-100 pb-3">ព័ត៌មានទូទៅ</h3>
+
+                        <div>
+                            <label class="sm-label text-slate-600 block mb-1.5">ឈ្មោះអតិថិជន ឬក្រុមហ៊ុន <span class="text-rose-500">*</span></label>
+                            <input id="fName" type="text" placeholder="ឧទាហរណ៍៖ ក្រុមហ៊ុន រស្មី អភិវឌ្ឍន៍"
+                                class="sm-td w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-700 focus:outline-none focus:border-[#1e3a5f] transition">
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="sm-label text-slate-600 block mb-1.5">ឈ្មោះអ្នកទាក់ទង <span class="text-rose-500">*</span></label>
+                                <input id="fContact" type="text" placeholder="ឧទាហរណ៍៖ លោក គង់ សំណាង"
+                                    class="sm-td w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-700 focus:outline-none focus:border-[#1e3a5f] transition">
+                            </div>
+                            <div>
+                                <label class="sm-label text-slate-600 block mb-1.5">លេខទូរស័ព្ទ <span class="text-rose-500">*</span></label>
+                                <input id="fPhone" type="text" placeholder="012 345 678"
+                                    class="sm-td w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-700 focus:outline-none focus:border-[#1e3a5f] transition">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="sm-label text-slate-600 block mb-1.5">អ៊ីមែល</label>
+                            <input id="fEmail" type="text" placeholder="name@company.com"
+                                class="sm-td w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-700 focus:outline-none focus:border-[#1e3a5f] transition">
+                        </div>
+
+                        <div>
+                            <label class="sm-label text-slate-600 block mb-1.5">អាសយដ្ឋានដឹកជញ្ជូន</label>
+                            <textarea id="fAddress" rows="2" placeholder="ផ្ទះលេខ ផ្លូវ សង្កាត់ ខណ្ឌ ទីក្រុង"
+                                class="sm-td w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-700 focus:outline-none focus:border-[#1e3a5f] transition resize-none"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm space-y-4">
+                        <h3 class="sm-card-title text-slate-700 border-b border-slate-100 pb-3">កម្រិតអតិថិជន និងលក្ខខណ្ឌឥណទាន</h3>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="sm-label text-slate-600 block mb-1.5">កម្រិតអតិថិជន <span class="text-rose-500">*</span></label>
+                                <div id="tierPickerHost" class="relative"></div>
+                            </div>
+                            <div>
+                                <label class="sm-label text-slate-600 block mb-1.5">លក្ខខណ្ឌទូទាត់</label>
+                                <div id="termsPickerHost" class="relative"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="sm-label text-slate-600 block mb-1.5">ពិដានឥណទានអនុញ្ញាត <span class="text-rose-500">*</span></label>
+                            <div class="relative">
+                                <span class="absolute left-3.5 top-1/2 -translate-y-1/2 sm-td text-slate-400">$</span>
+                                <input id="fCredit" type="number" min="0" step="100" value="0" oninput="renderCreditHint()"
+                                    class="sm-td w-full pl-8 pr-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-700 focus:outline-none focus:border-[#1e3a5f] transition">
+                            </div>
+                            <p id="creditHint" class="sm-kpi-sub text-slate-500 mt-1.5"></p>
+                        </div>
+
+                        <div>
+                            <label class="sm-label text-slate-600 block mb-1.5">កំណត់ចំណាំ</label>
+                            <textarea id="fNote" rows="2" placeholder="ឧទាហរណ៍៖ អតិថិជនណែនាំដោយដៃគូ ឬលក្ខខណ្ឌពិសេស..."
+                                class="sm-td w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-700 focus:outline-none focus:border-[#1e3a5f] transition resize-none"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Side panel -->
+                <div class="space-y-6">
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
+                        <h3 class="sm-card-title text-slate-700 border-b border-slate-100 pb-3 mb-3">តម្លៃលក់តាមកម្រិត</h3>
+                        <p class="sm-card-sub text-slate-500 mb-3">កម្រិតដែលលោកអ្នកជ្រើសរើស នឹងកំណត់តម្លៃឯកតាដោយស្វ័យប្រវត្តិ ពេលបង្កើតសម្រង់តម្លៃ។</p>
+                        <div id="tierPreview" class="space-y-2"></div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
+                        <h3 class="sm-card-title text-slate-700 border-b border-slate-100 pb-3 mb-3">បុគ្គលិកទទួលបន្ទុក</h3>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center font-semibold text-sm flex-shrink-0">សស</div>
+                            <div class="min-w-0">
+                                <p class="sm-value text-slate-700">សៅ សុខា</p>
+                                <p class="sm-kpi-sub text-slate-500">បុគ្គលិកប្រតិបត្តិផ្នែកលក់</p>
+                            </div>
+                        </div>
+                        <p class="sm-kpi-sub text-slate-400 mt-3">អតិថិជនថ្មីនឹងស្ថិតក្រោមការទទួលបន្ទុករបស់លោកអ្នកដោយស្វ័យប្រវត្តិ។</p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-sky-50 border border-sky-200 flex items-start gap-2.5">
+                        <i class="fas fa-circle-info text-sky-600 text-sm mt-0.5 flex-shrink-0"></i>
+                        <p class="sm-card-sub text-sky-800">
+                            ពិដានឥណទានលើសពី $10,000.00 ត្រូវការការអនុម័តពីអ្នកគ្រប់គ្រងផ្នែកលក់ មុននឹងចូលជាធរមាន។
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../shared/scripts/ui-components.js"></script>
+    <script src="../data.js"></script>
+    <script src="../../../shared/scripts/portal.js"></script>
+    <script>
+        const TERM_OPTIONS = [
+            { value: 0, label: 'ទូទាត់សាច់ប្រាក់ភ្លាម' },
+            { value: 15, label: 'ជំពាក់ 15 ថ្ងៃ' },
+            { value: 30, label: 'ជំពាក់ 30 ថ្ងៃ' },
+            { value: 45, label: 'ជំពាក់ 45 ថ្ងៃ' },
+            { value: 60, label: 'ជំពាក់ 60 ថ្ងៃ' }
+        ];
+
+        let newTier = 'retail';
+        let newTerms = 30;
+
+        function renderTierPicker() {
+            const options = Object.keys(TIER_LABEL).map(k => ({ value: k, label: TIER_LABEL[k] }));
+            document.getElementById('tierPickerHost').innerHTML = `
+                <button onclick="toggleRowActionMenu(event, 'tierPickerMenu')" type="button"
+                    class="w-full flex items-center justify-between gap-2 px-3.5 py-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition text-left">
+                    <span class="sm-td text-slate-700">${TIER_LABEL[newTier]}</span>
+                    <i class="fas fa-chevron-down text-[10px] text-slate-400 flex-shrink-0"></i>
+                </button>
+                <div id="tierPickerMenu" class="hidden bg-white rounded-2xl shadow-2xl border border-slate-200 p-2 text-left">
+                    <div class="px-3 py-2 mb-1 rounded-xl bg-slate-50 border border-slate-100">
+                        <p class="sm-td-sub text-slate-400">ជ្រើសរើសកម្រិតអតិថិជន</p>
+                    </div>
+                    ${options.map(o => `
+                        <button onclick="pickNewTier('${o.value}')" class="sm-row-menu-item w-full flex items-center justify-between gap-2.5 px-3 py-2.5 rounded-xl text-slate-700 hover:bg-slate-50 transition text-left">
+                            <span>${o.label}</span>
+                            ${o.value === newTier ? '<i class="fas fa-check text-[11px] text-emerald-600"></i>' : ''}
+                        </button>`).join('')}
+                </div>`;
+        }
+
+        function pickNewTier(value) {
+            newTier = value;
+            closeAllFloatingDropdowns();
+            renderTierPicker();
+            renderTierPreview();
+        }
+
+        function renderTermsPicker() {
+            const active = TERM_OPTIONS.find(o => o.value === newTerms);
+            document.getElementById('termsPickerHost').innerHTML = `
+                <button onclick="toggleRowActionMenu(event, 'termsPickerMenu')" type="button"
+                    class="w-full flex items-center justify-between gap-2 px-3.5 py-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition text-left">
+                    <span class="sm-td text-slate-700">${active.label}</span>
+                    <i class="fas fa-chevron-down text-[10px] text-slate-400 flex-shrink-0"></i>
+                </button>
+                <div id="termsPickerMenu" class="hidden bg-white rounded-2xl shadow-2xl border border-slate-200 p-2 text-left">
+                    <div class="px-3 py-2 mb-1 rounded-xl bg-slate-50 border border-slate-100">
+                        <p class="sm-td-sub text-slate-400">ជ្រើសរើសលក្ខខណ្ឌទូទាត់</p>
+                    </div>
+                    ${TERM_OPTIONS.map(o => `
+                        <button onclick="pickNewTerms(${o.value})" class="sm-row-menu-item w-full flex items-center justify-between gap-2.5 px-3 py-2.5 rounded-xl text-slate-700 hover:bg-slate-50 transition text-left">
+                            <span>${o.label}</span>
+                            ${o.value === newTerms ? '<i class="fas fa-check text-[11px] text-emerald-600"></i>' : ''}
+                        </button>`).join('')}
+                </div>`;
+        }
+
+        function pickNewTerms(value) {
+            newTerms = value;
+            closeAllFloatingDropdowns();
+            renderTermsPicker();
+        }
+
+        function renderTierPreview() {
+            document.getElementById('tierPreview').innerHTML = PRODUCTS.slice(0, 4).map(p => `
+                <div class="flex items-center justify-between gap-2 p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+                    <span class="sm-td-sub text-slate-600 truncate">${p.name}</span>
+                    <span class="sm-value text-slate-700 flex-shrink-0">${fmtUSD(p.price[newTier])}</span>
+                </div>`).join('');
+        }
+
+        function renderCreditHint() {
+            const value = parseFloat(document.getElementById('fCredit').value) || 0;
+            const hint = document.getElementById('creditHint');
+            if (value > 10000) {
+                hint.textContent = `ពិដាន ${fmtUSD(value)} លើស $10,000.00 — ត្រូវការការអនុម័តពី ${CURRENT_REP.manager}`;
+                hint.className = 'sm-kpi-sub text-amber-700 font-semibold mt-1.5';
+            } else if (value > 0) {
+                hint.textContent = `អតិថិជននេះអាចទិញជំពាក់បានរហូតដល់ ${fmtUSD(value)}`;
+                hint.className = 'sm-kpi-sub text-slate-500 mt-1.5';
+            } else {
+                hint.textContent = 'ពិដាន $0.00 មានន័យថាអតិថិជនត្រូវទូទាត់សាច់ប្រាក់ភ្លាមៗ';
+                hint.className = 'sm-kpi-sub text-slate-500 mt-1.5';
+            }
+        }
+
+        async function saveCustomer() {
+            const name = document.getElementById('fName').value.trim();
+            const contact = document.getElementById('fContact').value.trim();
+            const phone = document.getElementById('fPhone').value.trim();
+            const credit = parseFloat(document.getElementById('fCredit').value) || 0;
+
+            if (!name) return showToast('សូមបញ្ចូលឈ្មោះអតិថិជន ឬក្រុមហ៊ុន', 'error');
+            if (!contact) return showToast('សូមបញ្ចូលឈ្មោះអ្នកទាក់ទង', 'error');
+            if (!phone) return showToast('សូមបញ្ចូលលេខទូរស័ព្ទ', 'error');
+
+            const needsApproval = credit > 10000;
+            const ok = await showCustomConfirm({
+                title: 'បញ្ជាក់ការចុះឈ្មោះអតិថិជន',
+                message: needsApproval
+                    ? `ពិដានឥណទាន ${fmtUSD(credit)} លើស $10,000.00។ អតិថិជននឹងត្រូវចុះឈ្មោះ ហើយសំណើពិដានឥណទាននឹងផ្ញើទៅ ${CURRENT_REP.manager} ដើម្បីអនុម័ត។ តើបន្តមែនទេ?`
+                    : `តើលោកអ្នកពិតជាចុះឈ្មោះ ${name} ជា${TIER_LABEL[newTier]} ជាមួយពិដានឥណទាន ${fmtUSD(credit)} មែនទេ?`,
+                confirmText: 'រក្សាទុក',
+                cancelText: 'បោះបង់'
+            });
+            if (!ok) return;
+
+            showToast(`បានចុះឈ្មោះអតិថិជន ${name} ដោយជោគជ័យ` + (needsApproval ? ' · សំណើឥណទានបានផ្ញើទៅអ្នកគ្រប់គ្រង' : ''), 'success');
+            setTimeout(() => { window.location.href = 'customers.html'; }, 1300);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderTierPicker();
+            renderTermsPicker();
+            renderTierPreview();
+            renderCreditHint();
+        });
+    </script>
+</body>
+</html>
