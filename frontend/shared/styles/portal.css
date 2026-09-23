@@ -1,99 +1,126 @@
-/* ច្រកគ្រប់គ្រងផ្នែកលក់ — ស្រទាប់រចនាបន្ថែមលើ custom.css
+/* ច្រកគ្រប់គ្រងទាំងអស់ — ស្រទាប់រចនាបន្ថែមលើ custom.css
 
    custom.css បង្ខំ .text-xs / .text-[10px] / .text-[11px] / .text-[12px]
    ទៅជាទំហំ 14.5px តែមួយដោយ !important ដែលធ្វើឱ្យចំណងជើង និងអត្ថបទរងមាន
-   ទំហំដូចគ្នា ហើយបាត់បង់ឋានានុក្រម។ វិធានខាងក្រោមប្រើ ID Scope ដើម្បី
-   ស្តារឋានានុក្រមឡើងវិញ ដោយមិនប៉ះពាល់ទំហំអក្សរសកលឡើយ។ */
+   ទំហំដូចគ្នា ហើយបាត់បង់ឋានានុក្រម។ វិធានខាងក្រោមស្តារឋានានុក្រមឡើងវិញ
+   ដោយមិនប៉ះពាល់ទំហំអក្សរសកលឡើយ។
 
-#smPortal .sm-kpi-label {
-    font-size: 12.5px !important;
+   វិសាលភាព [id$="Portal"] គ្របគ្រប់ច្រកទាំងអស់ (smPortal, sePortal, wmPortal,
+   wsPortal, csPortal, gmPortal, saPortal និងច្រកថ្មីនាពេលអនាគត) ដូច្នេះ
+   តួនាទីថ្មីទទួលបានមាត្រដ្ឋានដូចគ្នាដោយស្វ័យប្រវត្តិ។ */
+
+/* ===== 1. ស្តារឋានានុក្រមសម្រាប់ថ្នាក់ Tailwind ដើម =====
+   ទំព័រចាស់ខ្លះនៅប្រើ text-xs / text-[11px] ដោយផ្ទាល់ ដោយមិនប្រើថ្នាក់ sm-*។
+   custom.css បង្ខំពួកវាទាំងអស់ទៅ 14.5px ដូចគ្នា។ វិធានខាងក្រោមបំបែកពួកវា
+   ជាកាំជណ្ដើរ ដោយមិនធ្វើឱ្យតូចជាងទំហំដែល custom.css កំណត់រួចឡើយ។
+   .text-xs និង .text-sm ទុកតាម custom.css ដើម (14.5px និង 15.5px)។ */
+
+[id$="Portal"] .text-\[10px\] {
+    font-size: 13px !important;
+    line-height: 1.45 !important;
+}
+
+[id$="Portal"] .text-\[11px\] {
+    font-size: 13.5px !important;
+    line-height: 1.45 !important;
+}
+
+[id$="Portal"] .text-\[12px\] {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+}
+
+/* ===== 2. មាត្រដ្ឋានឈ្មោះតួនាទី (សម្រាប់ទំព័រដែលប្រើថ្នាក់ sm-*) ===== */
+
+[id$="Portal"] .sm-kpi-label {
+    font-size: 14.5px !important;
     line-height: 1.5 !important;
     font-weight: 500 !important;
 }
 
-#smPortal .sm-kpi-value {
-    font-size: 26px !important;
+[id$="Portal"] .sm-kpi-value {
+    font-size: 28px !important;
     line-height: 1.25 !important;
     font-weight: 700 !important;
 }
 
-#smPortal .sm-kpi-unit {
-    font-size: 13px !important;
+[id$="Portal"] .sm-kpi-unit {
+    font-size: 15px !important;
     line-height: 1.4 !important;
     font-weight: 400 !important;
 }
 
-#smPortal .sm-kpi-sub {
-    font-size: 11.5px !important;
+[id$="Portal"] .sm-kpi-sub {
+    font-size: 13.5px !important;
     line-height: 1.45 !important;
 }
 
-#smPortal .sm-card-title {
+[id$="Portal"] .sm-card-title {
+    font-size: 18px !important;
+    line-height: 1.4 !important;
+    font-weight: 600 !important;
+}
+
+[id$="Portal"] .sm-card-sub {
+    font-size: 13.5px !important;
+    line-height: 1.45 !important;
+}
+
+[id$="Portal"] .sm-th {
+    font-size: 13.5px !important;
+    line-height: 1.45 !important;
+    font-weight: 600 !important;
+}
+
+[id$="Portal"] .sm-td {
     font-size: 16px !important;
-    line-height: 1.4 !important;
+    line-height: 1.55 !important;
+    font-weight: 500 !important;
+}
+
+[id$="Portal"] .sm-td-strong {
+    font-size: 16px !important;
+    line-height: 1.5 !important;
     font-weight: 600 !important;
 }
 
-#smPortal .sm-card-sub {
-    font-size: 11.5px !important;
+[id$="Portal"] .sm-td-sub {
+    font-size: 13.5px !important;
     line-height: 1.45 !important;
 }
 
-#smPortal .sm-th {
-    font-size: 11.5px !important;
-    line-height: 1.4 !important;
-    font-weight: 600 !important;
-}
-
-#smPortal .sm-td {
-    font-size: 14px !important;
+[id$="Portal"] .sm-badge {
+    font-size: 13.5px !important;
     line-height: 1.5 !important;
     font-weight: 500 !important;
 }
 
-#smPortal .sm-td-strong {
+[id$="Portal"] .sm-label {
     font-size: 14.5px !important;
     line-height: 1.5 !important;
-    font-weight: 600 !important;
-}
-
-#smPortal .sm-td-sub {
-    font-size: 11.5px !important;
-    line-height: 1.45 !important;
-}
-
-#smPortal .sm-badge {
-    font-size: 11.5px !important;
-    line-height: 1.5 !important;
     font-weight: 500 !important;
 }
 
-#smPortal .sm-label {
-    font-size: 12.5px !important;
-    line-height: 1.5 !important;
-    font-weight: 500 !important;
-}
-
-#smPortal .sm-value {
-    font-size: 14.5px !important;
+[id$="Portal"] .sm-value {
+    font-size: 16px !important;
     line-height: 1.5 !important;
     font-weight: 600 !important;
 }
 
-#smPortal .sm-nav-label {
-    font-size: 15px !important;
+[id$="Portal"] .sm-nav-label {
+    font-size: 16px !important;
     line-height: 1.5 !important;
     font-weight: 500 !important;
 }
 
-#smPortal .sm-nav-note {
-    font-size: 11.5px !important;
+[id$="Portal"] .sm-nav-note {
+    font-size: 13.5px !important;
     line-height: 1.55 !important;
 }
 
 /* ម៉ឺនុយសកម្មភាពជួរតារាង (ស្តង់ដារលេខ 9) */
-#smPortal .sm-row-menu-item {
-    font-size: 13.5px !important;
+[id$="Portal"] .sm-row-menu-item {
+    font-size: 15.5px !important;
     line-height: 1.5 !important;
     font-weight: 500 !important;
 }
@@ -114,7 +141,7 @@
     }
 
     body,
-    #smPortal {
+    [id$="Portal"] {
         background: #fff !important;
         display: block !important;
         height: auto !important;
