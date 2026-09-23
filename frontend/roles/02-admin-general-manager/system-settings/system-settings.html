@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - ការកំណត់ប្រព័ន្ធ និងការបិទគ្រា</title>
+    <link rel="icon" type="image/png" href="../../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1e3a5f",
+                        'primary-dark': "#142842",
+                        accent: "#0ea5e9",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../shared/styles/custom.css">
+    <link rel="stylesheet" href="../../../shared/styles/portal.css">
+</head>
+<body id="gmPortal" data-role-root=".." data-active="system-settings" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <div id="sidebarHost"></div>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <!-- Content Top Header -->
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div class="min-w-0">
+                <h2 class="text-xl font-semibold text-gray-800 leading-tight truncate">ការកំណត់ប្រព័ន្ធ និងការបិទគ្រាគណនេយ្យ</h2>
+                <p class="text-xs font-normal text-gray-500 mt-0.5 truncate">ការកំណត់អត្រាប្តូរប្រាក់ NBC ពន្ធសារពើពន្ធ ពិដានអនុម័ត និងការចាក់សោរគ្រាហិរញ្ញវត្ថុ</p>
+            </div>
+
+            <div class="flex items-center space-x-3 flex-shrink-0">
+                <button type="button" onclick="handleSaveAllSettings()" class="h-9 px-4 bg-[#1e3a5f] hover:bg-[#142842] text-white text-xs rounded-xl flex items-center gap-2 font-medium transition shadow-sm cursor-pointer">
+                    <i class="fas fa-save"></i>
+                    <span>រក្សាទុកការកំណត់</span>
+                </button>
+                <div class="flex items-center sm:border-l sm:pl-3">
+                    <div class="w-10 h-10 rounded-full bg-[#1e3a5f] text-white flex items-center justify-center font-semibold text-sm shadow-sm" title="លី ហាក់សេង (អភិបាលទូទៅ)">លហ</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-5">
+            <div class="w-full space-y-6">
+
+                <!-- Row 1: NBC Exchange Rate & Tax Rates (2 cols) -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+                    <!-- Section 1: NBC Official Exchange Rate -->
+                    <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-4">
+                        <div class="flex items-center gap-2 pb-3 border-b border-slate-100">
+                            <div class="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-sm font-semibold">
+                                <i class="fas fa-money-bill-transfer"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-bold text-slate-800">អត្រាប្តូរប្រាក់ផ្លូវការធនាគារជាតិ</h3>
+                                <p class="text-xs text-slate-400">កំណត់អត្រាប្តូរប្រាក់ពីធនាគារជាតិនៃកម្ពុជាសម្រាប់បម្លែងវិក្កយបត្រ និង KHQR</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4 text-xs">
+                            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-between">
+                                <span class="font-medium text-slate-700">រូបិយប័ណ្ណគោល:</span>
+                                <span class="font-bold text-slate-800">ដុល្លារអាមេរិក ($)</span>
+                            </div>
+
+                            <div>
+                                <label for="iptExchangeRate" class="block font-semibold text-slate-700 mb-1.5">
+                                    អត្រាប្តូរប្រាក់ 1 ដុល្លារ = ? រៀល <span class="text-rose-500">*</span>
+                                </label>
+                                <div class="relative">
+                                    <input type="number" id="iptExchangeRate" value="4100"
+                                        class="w-full bg-slate-50 hover:bg-slate-100/70 focus:bg-white border border-slate-200 rounded-xl pl-3.5 pr-12 py-2.5 text-xs text-slate-800 transition outline-none font-bold">
+                                    <span class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 font-semibold text-xs pointer-events-none">
+                                        ៛
+                                    </span>
+                                </div>
+                                <span class="text-[11px] text-slate-400 block mt-1">កាលបរិច្ឆេទធ្វើបច្ចុប្បន្នភាពចុងក្រោយ: 23 កញ្ញា 2026</span>
+                            </div>
+
+                            <div class="p-3 rounded-xl bg-sky-50/70 border border-sky-100 text-sky-900 text-xs flex items-center gap-2">
+                                <i class="fas fa-circle-info text-sky-600"></i>
+                                <span>អត្រានេះនឹងត្រូវបានអនុវត្តលើគ្រប់វិក្កយបត្រថ្មី និងការគណនាប័ណ្ណទូទាត់រៀល។</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 2: Tax Rates Configuration -->
+                    <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-4">
+                        <div class="flex items-center gap-2 pb-3 border-b border-slate-100">
+                            <div class="w-8 h-8 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-sm font-semibold">
+                                <i class="fas fa-percent"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-bold text-slate-800">អត្រាពន្ធសារពើពន្ធកម្ពុជា</h3>
+                                <p class="text-xs text-slate-400">អត្រាពន្ធតាមច្បាប់សារពើពន្ធនៃព្រះរាជាណាចក្រកម្ពុជា</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-3.5 text-xs">
+                            <div>
+                                <label class="block font-semibold text-slate-700 mb-1">
+                                    អាករលើតម្លៃបន្ថែម (អតប):
+                                </label>
+                                <div class="relative">
+                                    <input type="number" id="iptTaxVAT" value="10.0" step="0.1"
+                                        class="w-full bg-slate-50 hover:bg-slate-100/70 focus:bg-white border border-slate-200 rounded-xl pl-3.5 pr-10 py-2.5 text-xs text-slate-800 transition outline-none font-bold">
+                                    <span class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 font-semibold pointer-events-none">%</span>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block font-semibold text-slate-700 mb-1">
+                                    ពន្ធកាត់ទុកលើថ្លៃសេវាកម្ម:
+                                </label>
+                                <div class="relative">
+                                    <input type="number" id="iptTaxWHTServices" value="15.0" step="0.1"
+                                        class="w-full bg-slate-50 hover:bg-slate-100/70 focus:bg-white border border-slate-200 rounded-xl pl-3.5 pr-10 py-2.5 text-xs text-slate-800 transition outline-none font-bold">
+                                    <span class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 font-semibold pointer-events-none">%</span>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block font-semibold text-slate-700 mb-1">
+                                    ពន្ធកាត់ទុកលើការជួលទ្រព្យសម្បត្តិ:
+                                </label>
+                                <div class="relative">
+                                    <input type="number" id="iptTaxWHTRental" value="10.0" step="0.1"
+                                        class="w-full bg-slate-50 hover:bg-slate-100/70 focus:bg-white border border-slate-200 rounded-xl pl-3.5 pr-10 py-2.5 text-xs text-slate-800 transition outline-none font-bold">
+                                    <span class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 font-semibold pointer-events-none">%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Row 2: Approval Thresholds Configuration -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-4">
+                    <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                        <div class="flex items-center gap-2">
+                            <div class="w-8 h-8 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-sm font-semibold">
+                                <i class="fas fa-sliders"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-bold text-slate-800">ម៉ាទ្រីសកំណត់ពិដានអនុម័ត</h3>
+                                <p class="text-xs text-slate-400">កំណត់ដែនសមត្ថកិច្ចហិរញ្ញវត្ថុដែលតម្រូវឱ្យមានការអនុម័តពីអភិបាលទូទៅ</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/70 space-y-2">
+                            <div class="flex items-center justify-between">
+                                <span class="font-bold text-slate-700">ការបញ្ជាទិញទំនិញ</span>
+                                <i class="fas fa-cart-shopping text-emerald-600"></i>
+                            </div>
+                            <p class="text-[11px] text-slate-400">ទឹកប្រាក់លើសពីនេះត្រូវអភិបាលទូទៅអនុម័ត:</p>
+                            <div class="relative">
+                                <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400 font-bold">$</span>
+                                <input type="number" id="thPO" value="1000.00" class="w-full bg-white border border-slate-200 rounded-lg pl-7 pr-3 py-1.5 font-bold text-slate-800 outline-none">
+                            </div>
+                            <span class="text-[10px] text-slate-400 block">≤ $1,000.00: អ្នកគ្រប់គ្រងលទ្ធកម្ម</span>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/70 space-y-2">
+                            <div class="flex items-center justify-between">
+                                <span class="font-bold text-slate-700">ប័ណ្ណចំណាយទូទាត់</span>
+                                <i class="fas fa-receipt text-blue-600"></i>
+                            </div>
+                            <p class="text-[11px] text-slate-400">ទឹកប្រាក់លើសពីនេះត្រូវអភិបាលទូទៅអនុម័ត:</p>
+                            <div class="relative">
+                                <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400 font-bold">$</span>
+                                <input type="number" id="thDisb" value="500.00" class="w-full bg-white border border-slate-200 rounded-lg pl-7 pr-3 py-1.5 font-bold text-slate-800 outline-none">
+                            </div>
+                            <span class="text-[10px] text-slate-400 block">≤ $500.00: ប្រធានគណនេយ្យ</span>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/70 space-y-2">
+                            <div class="flex items-center justify-between">
+                                <span class="font-bold text-slate-700">ការបញ្ចុះតម្លៃពិសេស</span>
+                                <i class="fas fa-tag text-purple-600"></i>
+                            </div>
+                            <p class="text-[11px] text-slate-400">ភាគរយលើសពីនេះត្រូវអភិបាលទូទៅអនុម័ត:</p>
+                            <div class="relative">
+                                <input type="number" id="thDisc" value="10.0" step="0.5" class="w-full bg-white border border-slate-200 rounded-lg px-3 py-1.5 font-bold text-slate-800 outline-none">
+                                <span class="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 font-bold">%</span>
+                            </div>
+                            <span class="text-[10px] text-slate-400 block">≤ 10.0%: អ្នកគ្រប់គ្រងផ្នែកលក់</span>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/70 space-y-2">
+                            <div class="flex items-center justify-between">
+                                <span class="font-bold text-slate-700">កាត់កងស្តុកខូចខាត</span>
+                                <i class="fas fa-box-open text-rose-600"></i>
+                            </div>
+                            <p class="text-[11px] text-slate-400">ទឹកប្រាក់លើសពីនេះត្រូវអភិបាលទូទៅអនុម័ត:</p>
+                            <div class="relative">
+                                <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400 font-bold">$</span>
+                                <input type="number" id="thWriteoff" value="200.00" class="w-full bg-white border border-slate-200 rounded-lg pl-7 pr-3 py-1.5 font-bold text-slate-800 outline-none">
+                            </div>
+                            <span class="text-[10px] text-slate-400 block">≤ $200.00: អ្នកគ្រប់គ្រងឃ្លាំង</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 3: Financial Period Closing & Lock Module -->
+                <div class="bg-white rounded-2xl p-6 border-2 border-indigo-100 shadow-sm space-y-4">
+                    <div class="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-slate-100">
+                        <div class="flex items-center gap-2">
+                            <div class="w-8 h-8 rounded-xl bg-primary text-white flex items-center justify-center text-sm font-semibold">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-bold text-slate-800">ការបិទគ្រាគណនេយ្យប្រចាំខែ</h3>
+                                <p class="text-xs text-slate-400">ចាក់សោរទិន្នន័យខែចាស់ការពារការកែប្រែ ឬលុបឯកសារហិរញ្ញវត្ថុដែលបានប្រកាសពន្ធរួច</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs text-slate-500 font-medium">ឆ្នាំសារពើពន្ធ:</span>
+                            <span class="px-3 py-1 rounded-lg bg-slate-100 text-slate-800 font-bold text-xs">2026</span>
+                        </div>
+                    </div>
+
+                    <!-- Warning Notice -->
+                    <div class="p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-xs flex items-start gap-2.5">
+                        <i class="fas fa-triangle-exclamation text-amber-600 mt-0.5"></i>
+                        <p class="leading-relaxed">
+                            <strong>ការព្រមានស្តីពីអភិបាលកិច្ចសារពើពន្ធ:</strong> នៅពេលខែណាមួយត្រូវបានចាក់សោរ គ្មានបុគ្គលិកណា (រួមទាំងអភិបាលទូទៅ) អាចបង្កើត កែប្រែ ឬលុបវិក្កយបត្រ ប័ណ្ណចំណាយ ឬទិន្នន័យស្តុកក្នុងខែនោះបានទៀតឡើយ។ រាល់ការដោះសោរបណ្តោះអាសន្ននឹងត្រូវបានកត់ត្រាក្នុងកំណត់ហេតុសវនកម្មជាកាតព្វកិច្ច។
+                        </p>
+                    </div>
+
+                    <!-- 12 Months Period Matrix Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3.5 text-xs pt-1" id="periodsGrid"></div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../../shared/scripts/ui-components.js"></script>
+    <script src="../data.js"></script>
+    <script src="../../../shared/scripts/portal.js"></script>
+    <script>
+        function loadSystemSettings() {
+            const settings = BMS_GM.getSystemSettings();
+
+            document.getElementById('iptExchangeRate').value = settings.exchangeRateNBC || 4100;
+            document.getElementById('iptTaxVAT').value = settings.taxVAT || 10.0;
+            document.getElementById('iptTaxWHTServices').value = settings.taxWHTServices || 15.0;
+            document.getElementById('iptTaxWHTRental').value = settings.taxWHTRental || 10.0;
+
+            if (settings.thresholds) {
+                document.getElementById('thPO').value = settings.thresholds.poGM || 1000.00;
+                document.getElementById('thDisb').value = settings.thresholds.disbursementGM || 500.00;
+                document.getElementById('thDisc').value = settings.thresholds.discountGM || 10.0;
+                document.getElementById('thWriteoff').value = settings.thresholds.writeoffGM || 200.00;
+            }
+
+            renderPeriodsGrid();
+        }
+
+        function renderPeriodsGrid() {
+            const settings = BMS_GM.getSystemSettings();
+            const periods = settings.periodLocks || [];
+            const container = document.getElementById('periodsGrid');
+
+            container.innerHTML = periods.map(p => {
+                let badgeHtml = '';
+                let actionBtnHtml = '';
+
+                if (p.isLocked) {
+                    badgeHtml = '<span class="px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700 text-[10px] font-bold border border-indigo-200"><i class="fas fa-lock mr-1"></i>ចាក់សោរ</span>';
+                    actionBtnHtml = `
+                        <button onclick="handleTogglePeriod(${p.year}, ${p.month}, 'unlock')" class="w-full py-1.5 px-2.5 rounded-lg bg-slate-100 hover:bg-rose-50 hover:text-rose-700 text-slate-600 text-xs font-medium transition cursor-pointer border border-slate-200">
+                            ដោះសោរបណ្តោះអាសន្ន
+                        </button>
+                    `;
+                } else if (p.status === 'pending') {
+                    badgeHtml = '<span class="px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 text-[10px] font-bold border border-amber-200"><i class="fas fa-clock mr-1"></i>រង់ចាំបិទបញ្ជី</span>';
+                    actionBtnHtml = `
+                        <button onclick="handleTogglePeriod(${p.year}, ${p.month}, 'lock')" class="w-full py-1.5 px-2.5 rounded-lg bg-[#1e3a5f] hover:bg-[#142842] text-white text-xs font-medium transition cursor-pointer shadow-xs">
+                            ចាក់សោរគ្រាហិរញ្ញវត្ថុ
+                        </button>
+                    `;
+                } else if (p.isCurrent) {
+                    badgeHtml = '<span class="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-[10px] font-bold border border-emerald-200"><i class="fas fa-spinner fa-spin mr-1"></i>កំពុងដំណើរការ</span>';
+                    actionBtnHtml = `
+                        <button disabled class="w-full py-1.5 px-2.5 rounded-lg bg-slate-100 text-slate-400 text-xs font-medium cursor-not-allowed">
+                            គ្រាបច្ចុប្បន្ន (បិទចុងខែ)
+                        </button>
+                    `;
+                } else {
+                    badgeHtml = '<span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[10px] font-medium">អនាគត</span>';
+                    actionBtnHtml = `
+                        <button disabled class="w-full py-1.5 px-2.5 rounded-lg bg-slate-100 text-slate-400 text-xs font-medium cursor-not-allowed">
+                            មិនទាន់ដល់កាលកំណត់
+                        </button>
+                    `;
+                }
+
+                return `
+                    <div class="p-3.5 rounded-xl ${p.isLocked ? 'bg-slate-50/80 border-slate-200' : p.isCurrent ? 'bg-emerald-50/30 border-emerald-200' : 'bg-white border-slate-200'} border shadow-xs flex flex-col justify-between space-y-3">
+                        <div>
+                            <div class="flex items-center justify-between mb-1.5">
+                                <span class="font-bold text-slate-800 text-xs">${p.nameKh}</span>
+                                ${badgeHtml}
+                            </div>
+                            <p class="text-[11px] text-slate-400 leading-tight">
+                                ${p.note || (p.isLocked ? `ចាក់សោរដោយ: ${p.lockedBy}` : 'គ្រាប្រតិបត្តិការ')}
+                            </p>
+                        </div>
+                        <div>
+                            ${actionBtnHtml}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function handleTogglePeriod(year, month, action) {
+            const settings = BMS_GM.getSystemSettings();
+            const period = (settings.periodLocks || []).find(p => p.year === year && p.month === month);
+            if (!period) return;
+
+            const isLocking = action === 'lock';
+            showCustomConfirm({
+                title: isLocking ? `ចាក់សោរគ្រាហិរញ្ញវត្ថុ ${period.nameKh}` : `ដោះសោរគ្រាហិរញ្ញវត្ថុ ${period.nameKh}`,
+                message: isLocking
+                    ? `តើលោកអ្នកពិតជាចង់ចាក់សោរគ្រា ${period.nameKh} នេះមែនទេ? គ្មាននរណាម្នាក់អាចកែប្រែទិន្នន័យក្នុងខែនោះបានទៀតឡើយ។`
+                    : `ការដោះសោរគ្រា ${period.nameKh} នឹងត្រូវបានកត់ត្រាក្នុងកំណត់ហេតុសវនកម្ម។ តើលោកអ្នកពិតជាចង់ដោះសោរមែនទេ?`,
+                confirmText: isLocking ? 'ចាក់សោរជាផ្លូវការ' : 'ដោះសោរបណ្តោះអាសន្ន',
+                confirmClass: isLocking ? 'bg-[#1e3a5f] text-white' : 'bg-rose-600 text-white',
+                onConfirm: () => {
+                    const res = BMS_GM.togglePeriodLock(year, month);
+                    if (res.success) {
+                        showToast(`គ្រាហិរញ្ញវត្ថុ ${period.nameKh} ត្រូវបាន${isLocking ? 'ចាក់សោរ' : 'ដោះសោរ'}ដោយជោគជ័យ!`, 'success');
+                        renderPeriodsGrid();
+                    } else {
+                        showToast(res.message, 'error');
+                    }
+                }
+            });
+        }
+
+        function handleSaveAllSettings() {
+            const exchangeRate = Number(document.getElementById('iptExchangeRate').value) || 4100;
+            const taxVAT = Number(document.getElementById('iptTaxVAT').value) || 10.0;
+            const taxWHTServices = Number(document.getElementById('iptTaxWHTServices').value) || 15.0;
+            const taxWHTRental = Number(document.getElementById('iptTaxWHTRental').value) || 10.0;
+
+            const poGM = Number(document.getElementById('thPO').value) || 1000.00;
+            const disbGM = Number(document.getElementById('thDisb').value) || 500.00;
+            const discGM = Number(document.getElementById('thDisc').value) || 10.0;
+            const writeoffGM = Number(document.getElementById('thWriteoff').value) || 200.00;
+
+            const updatedSettings = {
+                exchangeRateNBC: exchangeRate,
+                taxVAT,
+                taxWHTServices,
+                taxWHTRental,
+                thresholds: {
+                    poGM,
+                    disbursementGM: disbGM,
+                    discountGM: discGM,
+                    writeoffGM
+                }
+            };
+
+            const res = BMS_GM.saveSystemSettings(updatedSettings);
+            if (res.success) {
+                showToast('ការកំណត់ប្រព័ន្ធទាំងអស់ត្រូវបានរក្សាទុកដោយជោគជ័យ!', 'success');
+            } else {
+                showToast('មានបញ្ហាក្នុងការរក្សាទុកការកំណត់', 'error');
+            }
+        }
+
+        function initPage() {
+            renderPortalSidebar();
+            loadSystemSettings();
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initPage);
+        } else {
+            initPage();
+        }
+    </script>
+</body>
+</html>

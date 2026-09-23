@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - ផ្ទាំងបញ្ជាការដ្ឋានអភិបាលទូទៅ</title>
+    <link rel="icon" type="image/png" href="../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1e3a5f",
+                        'primary-dark': "#142842",
+                        accent: "#0ea5e9",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../shared/styles/custom.css">
+    <link rel="stylesheet" href="../../shared/styles/portal.css">
+</head>
+<body id="gmPortal" data-role-root="." data-active="dashboard" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <div id="sidebarHost"></div>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <!-- Content Top Header -->
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div class="min-w-0">
+                <h2 class="text-xl font-semibold text-gray-800 leading-tight truncate">ផ្ទាំងបញ្ជាការដ្ឋានប្រតិបត្តិការ</h2>
+                <p class="text-xs font-normal text-gray-500 mt-0.5 truncate">ទិដ្ឋភាពទូទៅនៃប្រតិបត្តិការអាជីវកម្ម 360 ដឺក្រេ លំហូរសាច់ប្រាក់ និងការអនុម័តជាន់ខ្ពស់</p>
+            </div>
+
+            <div class="flex items-center space-x-3 flex-shrink-0">
+                <a href="approvals/approvals.html" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 border border-rose-200 text-rose-700 text-xs font-semibold transition">
+                    <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
+                    <span id="headerPendingPill">សំណើរង់ចាំអនុម័ត: 0</span>
+                </a>
+
+                <div class="flex items-center sm:border-l sm:pl-3">
+                    <div class="w-10 h-10 rounded-full bg-[#1e3a5f] text-white flex items-center justify-center font-semibold text-sm shadow-sm" title="លី ហាក់សេង (អភិបាលទូទៅ)">លហ</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area (Full Width, Hidden Scrollbar) -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-4">
+            <div class="w-full space-y-5">
+
+                <!-- Filter Toolbar with Unified Date Range Picker -->
+                <div class="bg-white rounded-2xl p-3 border border-slate-200/80 shadow-sm flex flex-wrap items-center justify-between gap-3">
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-filter text-slate-400 text-xs"></i>
+                        <span class="text-xs font-medium text-slate-600">កាលបរិច្ឆេទវិភាគប្រតិបត្តិការ</span>
+                    </div>
+                    <div id="dateFilterHost" class="flex items-center"></div>
+                </div>
+
+                <!-- Top 5 Executive KPI Cards -->
+                <div id="kpiRow" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4"></div>
+
+                <!-- Cash Flow Runway Alert Widget -->
+                <div class="bg-white rounded-2xl p-4 border border-slate-200/80 shadow-sm flex flex-wrap items-center justify-between gap-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center flex-shrink-0 text-base">
+                            <i class="fas fa-shield-halved"></i>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h4 class="text-sm font-semibold text-slate-800">សុខភាពលំហូរសាច់ប្រាក់:</h4>
+                                <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-semibold">សុវត្ថិភាពខ្ពស់ 3.4 ខែ</span>
+                            </div>
+                            <p class="text-xs text-slate-500 mt-0.5">
+                                សមតុល្យសាច់ប្រាក់ធនាគារសរុប <span class="font-medium text-slate-700" id="runwayCash">$42,180.00</span> ធៀបនឹងចំណាយប្រតិបត្តិការប្រចាំខែ <span class="font-medium text-slate-700" id="runwayBurn">$12,400.00/ខែ</span> អាចទ្រទ្រង់ដំណើរការបាន <span class="font-semibold text-emerald-700">3.4 ខែ</span> ដោយពុំចាំបាច់មានចំណូលបន្ថែម។
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <a href="approvals/approvals.html" class="px-4 py-2 rounded-xl bg-[#1e3a5f] hover:bg-[#142842] text-white text-xs font-medium transition shadow-sm">
+                            <i class="fas fa-stamp mr-1.5"></i>ពិនិត្យសំណើបន្ទាន់
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Middle Section: Revenue/Expense Chart & Pending Approvals Box -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+                    <!-- 12-Month Financial Chart (2 cols) -->
+                    <div class="lg:col-span-2 bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm flex flex-col">
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                            <div>
+                                <h3 class="text-base font-semibold text-slate-700">និន្នាការហិរញ្ញវត្ថុ 12 ខែ</h3>
+                                <p class="text-xs text-slate-500">ការប្រៀបធៀបចំណូលសរុប ចំណាយប្រតិបត្តិការ និងប្រាក់ចំណេញសុទ្ធ</p>
+                            </div>
+                            <span class="text-xs font-medium px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
+                                <i class="fas fa-arrow-trend-up mr-1"></i> កំណើនចំណូល 14.2%
+                            </span>
+                        </div>
+                        <div id="financialChart" class="w-full flex-1 min-h-[340px]"></div>
+                    </div>
+
+                    <!-- Pending Approvals Queue (1 col) -->
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-8 h-8 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center text-sm">
+                                        <i class="fas fa-bell"></i>
+                                    </div>
+                                    <h3 class="text-base font-semibold text-slate-700">សំណើរង់ចាំការអនុម័ត</h3>
+                                </div>
+                                <a href="approvals/approvals.html" class="text-xs text-primary hover:underline font-medium">មើលទាំងអស់ (<span id="pendingCountLabel">0</span>)</a>
+                            </div>
+                            <p class="text-xs text-slate-500 mb-3">សំណើដែលលើសពិដានសមត្ថកិច្ចរបស់ប្រធានផ្នែក និងទាមទារហត្ថលេខាពីអភិបាលទូទៅ</p>
+                            <div id="pendingApprovalsList" class="space-y-2.5"></div>
+                        </div>
+
+                        <div class="pt-3 border-t border-slate-100 mt-3 text-right">
+                            <a href="approvals/approvals.html" class="text-xs text-primary hover:underline font-medium inline-flex items-center gap-1">
+                                <span>ចូលទៅមជ្ឈមណ្ឌលអនុម័តពេញលេញ</span>
+                                <i class="fas fa-arrow-right text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Section: Departmental Health & System Governance -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+                    <!-- Cross-Department Operations Health (2 cols) -->
+                    <div class="lg:col-span-2 bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
+                        <div class="flex items-center justify-between mb-4">
+                            <div>
+                                <h3 class="text-base font-semibold text-slate-700">ស្ថានភាពប្រតិបត្តិការឆ្លងផ្នែក</h3>
+                                <p class="text-xs text-slate-500">ការត្រួតពិនិត្យដំណើរការរួមរវាងផ្នែកលក់ លទ្ធកម្ម ឃ្លាំង និងគណនេយ្យ</p>
+                            </div>
+                            <span class="text-xs px-2.5 py-1 rounded-full bg-slate-100 text-slate-600 font-medium">
+                                ធ្វើបច្ចុប្បន្នភាពជាក់ស្តែង
+                            </span>
+                        </div>
+                        <div id="deptHealthGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-3.5"></div>
+                    </div>
+
+                    <!-- System Governance & Financial Period Lock Card (1 col) -->
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-8 h-8 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-sm">
+                                        <i class="fas fa-lock"></i>
+                                    </div>
+                                    <h3 class="text-base font-semibold text-slate-700">អភិបាលកិច្ច និងការបិទគ្រា</h3>
+                                </div>
+                                <a href="system-settings/system-settings.html" class="text-xs text-primary hover:underline font-medium">ការកំណត់</a>
+                            </div>
+                            <p class="text-xs text-slate-500 mb-3">ស្ថានភាពបច្ចុប្បន្ននៃការចាក់សោរគ្រាហិរញ្ញវត្ថុ និងអត្រាប្តូរប្រាក់ផ្លូវការ</p>
+                            
+                            <div class="space-y-2.5 text-xs">
+                                <div class="p-3 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-between">
+                                    <div>
+                                        <span class="text-slate-500 block">គ្រាប្រតិបត្តិការបច្ចុប្បន្ន:</span>
+                                        <span class="font-semibold text-slate-800 text-sm mt-0.5 block">កញ្ញា 2026</span>
+                                    </div>
+                                    <span class="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 font-medium border border-emerald-200">កំពុងដំណើរការ</span>
+                                </div>
+
+                                <div class="p-3 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-between">
+                                    <div>
+                                        <span class="text-slate-500 block">គ្រាចុងក្រោយដែលបានចាក់សោរ:</span>
+                                        <span class="font-semibold text-slate-800 text-sm mt-0.5 block">កក្កដា 2026</span>
+                                    </div>
+                                    <span class="px-2.5 py-1 rounded-full bg-indigo-50 text-indigo-700 font-medium border border-indigo-200">ចាក់សោររួចរាល់</span>
+                                </div>
+
+                                <div class="p-3 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-between">
+                                    <div>
+                                        <span class="text-slate-500 block">អត្រាប្តូរប្រាក់ធនាគារជាតិ:</span>
+                                        <span class="font-semibold text-slate-800 text-sm mt-0.5 block">1 ដុល្លារ = 4,100 រៀល</span>
+                                    </div>
+                                    <span class="px-2 py-0.5 rounded text-slate-400 font-normal">23 កញ្ញា 2026</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pt-3 border-t border-slate-100 mt-4">
+                            <a href="system-settings/system-settings.html" class="w-full py-2 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium transition flex items-center justify-center gap-1.5">
+                                <i class="fas fa-sliders text-xs"></i>
+                                <span>ចូលគ្រប់គ្រងការកំណត់ប្រព័ន្ធ</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../shared/scripts/ui-components.js"></script>
+    <script src="data.js"></script>
+    <script src="../../shared/scripts/portal.js"></script>
+    <script>
+        function kpiCard(opts) {
+            return `
+                <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm hover:shadow-md transition">
+                    <div class="flex items-center justify-between mb-2 gap-2">
+                        <span class="text-xs font-medium text-slate-500">${opts.label}</span>
+                        <div class="w-9 h-9 rounded-xl bg-${opts.tone}-50 text-${opts.tone}-600 flex items-center justify-center flex-shrink-0">
+                            <i class="fas ${opts.icon} text-sm"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-800">${opts.value}</h3>
+                    <p class="text-xs ${opts.subTone || 'text-slate-500'} mt-1.5 font-medium">${opts.sub}</p>
+                </div>`;
+        }
+
+        function renderDashboard() {
+            const store = BMS_GM.getGMStore();
+            const k = store.kpis || {};
+            const approvals = BMS_GM.getApprovals();
+            const pendingApprovals = approvals.filter(a => a.status === 'pending');
+
+            // Update Header Pill
+            const headerPendingPill = document.getElementById('headerPendingPill');
+            if (headerPendingPill) {
+                headerPendingPill.textContent = `សំណើរង់ចាំអនុម័ត: ${pendingApprovals.length}`;
+            }
+
+            // Update Pending Count Label
+            const pendingCountLabel = document.getElementById('pendingCountLabel');
+            if (pendingCountLabel) {
+                pendingCountLabel.textContent = pendingApprovals.length;
+            }
+
+            // Top KPI Cards
+            const kpiRow = document.getElementById('kpiRow');
+            if (kpiRow) {
+                kpiRow.innerHTML =
+                    kpiCard({
+                        label: 'ចំណូលលក់ប្រចាំខែ',
+                        icon: 'fa-arrow-trend-up',
+                        tone: 'emerald',
+                        value: BMS_GM.fmtCurrencyKh(k.revenueMTD),
+                        sub: `↑ ${k.revenueGrowthPct}% ធៀបនឹងខែមុន`,
+                        subTone: 'text-emerald-600'
+                    }) +
+                    kpiCard({
+                        label: 'ចំណេញសុទ្ធប៉ាន់ស្មាន',
+                        icon: 'fa-coins',
+                        tone: 'sky',
+                        value: BMS_GM.fmtCurrencyKh(k.estimatedNetProfit),
+                        sub: `អត្រាចំណេញសុទ្ធ ${k.netProfitMarginPct}%`,
+                        subTone: 'text-sky-600'
+                    }) +
+                    kpiCard({
+                        label: 'សាច់ប្រាក់ និងធនាគារ',
+                        icon: 'fa-vault',
+                        tone: 'indigo',
+                        value: BMS_GM.fmtCurrencyKh(k.cashLiquidity),
+                        sub: 'ធនាគារវឌ្ឍនៈ និងកាណាឌីយ៉ា',
+                        subTone: 'text-indigo-600'
+                    }) +
+                    kpiCard({
+                        label: 'បំណុលត្រូវទារ',
+                        icon: 'fa-file-invoice-dollar',
+                        tone: 'amber',
+                        value: BMS_GM.fmtCurrencyKh(k.totalAR),
+                        sub: `ហួសកំណត់: ${BMS_GM.fmtCurrencyKh(k.overdueAR)}`,
+                        subTone: 'text-amber-600'
+                    }) +
+                    kpiCard({
+                        label: 'រង់ចាំការអនុម័ត',
+                        icon: 'fa-stamp',
+                        tone: 'rose',
+                        value: `${pendingApprovals.length} <span class="text-sm font-normal text-slate-500">សំណើ</span>`,
+                        sub: 'ទាមទារហត្ថលេខាពីអភិបាលទូទៅ',
+                        subTone: 'text-rose-600'
+                    });
+            }
+
+            // Runway Numbers
+            const runwayCash = document.getElementById('runwayCash');
+            if (runwayCash) runwayCash.textContent = BMS_GM.fmtCurrencyKh(k.cashLiquidity);
+            const runwayBurn = document.getElementById('runwayBurn');
+            if (runwayBurn) runwayBurn.textContent = BMS_GM.fmtCurrencyKh(k.monthlyBurnRate) + '/ខែ';
+
+            // Pending Approvals List (Quick 4)
+            const pendingList = document.getElementById('pendingApprovalsList');
+            if (pendingList) {
+                if (pendingApprovals.length === 0) {
+                    pendingList.innerHTML = '<div class="py-6 text-center text-xs text-slate-400">គ្មានសំណើរង់ចាំការអនុម័តឡើយ</div>';
+                } else {
+                    pendingList.innerHTML = pendingApprovals.slice(0, 4).map(app => `
+                        <div class="p-3 rounded-xl bg-slate-50 hover:bg-slate-100/80 border border-slate-200/60 transition flex items-center justify-between gap-3">
+                            <div class="min-w-0">
+                                <div class="flex items-center gap-2">
+                                    <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-${app.typeBadgeColor}-50 text-${app.typeBadgeColor}-700 border border-${app.typeBadgeColor}-200">${app.typeNameKh}</span>
+                                    <span class="text-xs font-semibold text-slate-800 truncate">${app.refCode}</span>
+                                </div>
+                                <p class="text-xs text-slate-600 truncate mt-1">${app.subject}</p>
+                                <div class="flex items-center gap-2 mt-1 text-[11px] text-slate-400">
+                                    <span>${app.requesterName}</span>
+                                    <span>•</span>
+                                    <span class="font-medium text-slate-700">${BMS_GM.fmtCurrencyKh(app.amount)}</span>
+                                </div>
+                            </div>
+                            <a href="approvals/view-approval.html?id=${app.id}" class="px-3 py-1.5 rounded-lg bg-white hover:bg-slate-200 text-primary border border-slate-200 text-xs font-medium transition shadow-xs flex-shrink-0 flex items-center gap-1">
+                                <span>ពិនិត្យ</span>
+                                <i class="fas fa-chevron-right text-[10px]"></i>
+                            </a>
+                        </div>
+                    `).join('');
+                }
+            }
+
+            // Departmental Health Grid
+            const deptGrid = document.getElementById('deptHealthGrid');
+            if (deptGrid && k.deptHealth) {
+                const depts = [k.deptHealth.sales, k.deptHealth.procure, k.deptHealth.warehouse, k.deptHealth.finance];
+                deptGrid.innerHTML = depts.map(d => {
+                    const statusColor = d.status === 'good' ? 'emerald' : 'amber';
+                    return `
+                        <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-100 flex flex-col justify-between">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-semibold text-slate-800">${d.label}</span>
+                                <span class="text-xs font-semibold text-${statusColor}-600">${d.progressPct}%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 rounded-full h-1.5 mb-2 overflow-hidden">
+                                <div class="bg-${statusColor}-500 h-1.5 rounded-full" style="width: ${d.progressPct}%"></div>
+                            </div>
+                            <p class="text-[11px] text-slate-500 leading-snug">${d.note}</p>
+                        </div>
+                    `;
+                }).join('');
+            }
+        }
+
+        window.onDateRangeApplied = renderDashboard;
+
+        function initDashboard() {
+            renderPortalSidebar();
+            if (typeof renderDateRangePicker === 'function') {
+                renderDateRangePicker('dateFilterHost');
+            }
+            renderDashboard();
+
+            // Setup ECharts (Revenue vs Expense vs Net Profit)
+            const chartDom = document.getElementById('financialChart');
+            if (chartDom) {
+                const myChart = echarts.init(chartDom);
+                const store = BMS_GM.getGMStore();
+                const m = store.kpis.monthlyChart;
+
+                const option = {
+                    tooltip: {
+                        trigger: 'axis',
+                        textStyle: { fontFamily: 'Kantumruy Pro' }
+                    },
+                    legend: {
+                        data: ['ចំណូលសរុប', 'ចំណាយប្រតិបត្តិការ', 'ចំណេញសុទ្ធ'],
+                        bottom: 0,
+                        textStyle: { fontFamily: 'Kantumruy Pro', fontSize: 11 }
+                    },
+                    grid: { top: 25, left: '2%', right: '3%', bottom: 40, containLabel: true },
+                    xAxis: {
+                        type: 'category',
+                        data: m.months.slice(0, 9),
+                        axisLabel: { fontFamily: 'Kantumruy Pro', fontSize: 11 }
+                    },
+                    yAxis: {
+                        type: 'value',
+                        axisLabel: {
+                            fontFamily: 'Kantumruy Pro',
+                            formatter: '${value}'
+                        }
+                    },
+                    series: [
+                        {
+                            name: 'ចំណូលសរុប',
+                            type: 'bar',
+                            data: m.revenue.slice(0, 9),
+                            itemStyle: { color: '#1e3a5f', borderRadius: [4, 4, 0, 0] }
+                        },
+                        {
+                            name: 'ចំណាយប្រតិបត្តិការ',
+                            type: 'bar',
+                            data: m.expense.slice(0, 9),
+                            itemStyle: { color: '#f59e0b', borderRadius: [4, 4, 0, 0] }
+                        },
+                        {
+                            name: 'ចំណេញសុទ្ធ',
+                            type: 'line',
+                            smooth: true,
+                            data: m.netProfit.slice(0, 9),
+                            itemStyle: { color: '#10b981' },
+                            lineStyle: { width: 3 }
+                        }
+                    ]
+                };
+                myChart.setOption(option);
+                window.addEventListener('resize', () => myChart.resize());
+                if (window.ResizeObserver) {
+                    const ro = new ResizeObserver(() => myChart.resize());
+                    ro.observe(chartDom);
+                }
+            }
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initDashboard);
+        } else {
+            initDashboard();
+        }
+    </script>
+</body>
+</html>

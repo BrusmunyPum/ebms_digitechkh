@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - ប្រវត្តិរូបបុគ្គលិក</title>
+    <link rel="icon" type="image/png" href="../../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1e3a5f",
+                        'primary-dark': "#142842",
+                        accent: "#0ea5e9",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../shared/styles/custom.css">
+    <link rel="stylesheet" href="../../../shared/styles/portal.css">
+</head>
+<body id="gmPortal" data-role-root=".." data-active="users" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <div id="sidebarHost"></div>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <!-- Content Top Header with Standard Back Button -->
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div class="flex items-center gap-4 min-w-0">
+                <a href="users.html" class="w-10 h-10 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-600 flex items-center justify-center transition border border-slate-200/70 flex-shrink-0" title="ត្រឡប់ទៅបញ្ជីបុគ្គលិក...">
+                    <i class="fas fa-arrow-left text-sm"></i>
+                </a>
+                <div class="min-w-0">
+                    <div class="flex items-center gap-2">
+                        <h2 id="headerTitle" class="text-xl font-semibold text-gray-800 leading-tight truncate">ប្រវត្តិរូបបុគ្គលិក</h2>
+                        <span id="userStatusBadge"></span>
+                    </div>
+                    <p id="headerSub" class="text-xs font-normal text-gray-500 mt-0.5 truncate">ព័ត៌មានលម្អិត សិទ្ធិចូលប្រើប្រាស់ និងកំណត់ត្រាសកម្មភាព</p>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-3 flex-shrink-0">
+                <button onclick="window.print()" class="h-9 px-3.5 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 text-xs rounded-xl flex items-center gap-2 font-medium transition shadow-xs cursor-pointer">
+                    <i class="fas fa-print text-slate-500"></i>
+                    <span class="hidden sm:inline">បោះពុម្ពប្រវត្តិរូប</span>
+                </button>
+                <a id="editUserBtn" href="#" class="h-9 px-4 bg-[#1e3a5f] hover:bg-[#142842] text-white text-xs rounded-xl flex items-center gap-2 font-medium transition shadow-sm cursor-pointer">
+                    <i class="fas fa-user-pen"></i>
+                    <span>កែប្រែព័ត៌មាន</span>
+                </a>
+                <div class="flex items-center sm:border-l sm:pl-3">
+                    <div class="w-10 h-10 rounded-full bg-[#1e3a5f] text-white flex items-center justify-center font-semibold text-sm shadow-sm" title="លី ហាក់សេង (អភិបាលទូទៅ)">លហ</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-5">
+            <div class="w-full space-y-6">
+
+                <!-- Profile Hero Card -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm flex flex-wrap items-center justify-between gap-6">
+                    <div class="flex items-center gap-4">
+                        <div id="profileAvatar" class="w-16 h-16 rounded-2xl bg-[#1e3a5f] text-white flex items-center justify-center text-xl font-bold flex-shrink-0 shadow-sm"></div>
+                        <div>
+                            <div class="flex items-center gap-2.5">
+                                <h3 id="profileNameKh" class="text-lg font-bold text-slate-800"></h3>
+                                <span id="profileRoleBadge" class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-sky-50 text-sky-700 border border-sky-200"></span>
+                            </div>
+                            <p class="text-xs text-slate-400 mt-0.5"><span id="profileNameEn"></span> • <span id="profileUserId" class="font-semibold text-slate-600"></span></p>
+                            <p class="text-xs text-slate-500 mt-1 flex items-center gap-2">
+                                <i class="fas fa-building text-slate-400 text-[11px]"></i>
+                                <span id="profileBranch"></span>
+                                <span>•</span>
+                                <span id="profileDept"></span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-3">
+                        <button id="toggleStatusBtn" onclick="handleToggleStatus()" class="px-4 py-2 rounded-xl text-xs font-medium transition cursor-pointer border flex items-center gap-2">
+                            <i class="fas fa-ban"></i>
+                            <span id="toggleStatusText">ចាក់សោរគណនី</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 2-Column Details Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+                    <!-- Left: Contact & Information (1 col) -->
+                    <div class="space-y-6">
+                        <!-- Contact Card -->
+                        <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-4">
+                            <h4 class="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-2">
+                                <i class="fas fa-address-book text-slate-400"></i>
+                                <span>ព័ត៌មានទំនាក់ទំនង</span>
+                            </h4>
+
+                            <div class="space-y-3 text-xs">
+                                <div class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100">
+                                    <div class="w-7 h-7 rounded-lg bg-white border border-slate-200 text-slate-500 flex items-center justify-center flex-shrink-0 text-xs">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div class="min-w-0">
+                                        <span class="text-slate-400 block text-[11px]">អ៊ីមែលផ្លូវការ</span>
+                                        <span id="cardEmail" class="font-semibold text-slate-800 break-all"></span>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100">
+                                    <div class="w-7 h-7 rounded-lg bg-white border border-slate-200 text-slate-500 flex items-center justify-center flex-shrink-0 text-xs">
+                                        <i class="fas fa-phone"></i>
+                                    </div>
+                                    <div class="min-w-0">
+                                        <span class="text-slate-400 block text-[11px]">លេខទូរស័ព្ទ</span>
+                                        <span id="cardPhone" class="font-semibold text-slate-800"></span>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100">
+                                    <div class="w-7 h-7 rounded-lg bg-white border border-slate-200 text-slate-500 flex items-center justify-center flex-shrink-0 text-xs">
+                                        <i class="fas fa-calendar-check"></i>
+                                    </div>
+                                    <div class="min-w-0">
+                                        <span class="text-slate-400 block text-[11px]">កាលបរិច្ឆេទចូលបម្រើការងារ</span>
+                                        <span id="cardJoinedDate" class="font-semibold text-slate-800"></span>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100">
+                                    <div class="w-7 h-7 rounded-lg bg-white border border-slate-200 text-slate-500 flex items-center justify-center flex-shrink-0 text-xs">
+                                        <i class="fas fa-right-to-bracket"></i>
+                                    </div>
+                                    <div class="min-w-0">
+                                        <span class="text-slate-400 block text-[11px]">ចូលប្រព័ន្ធចុងក្រោយ</span>
+                                        <span id="cardLastLogin" class="font-semibold text-slate-800"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Permissions & Audit History (2 cols) -->
+                    <div class="lg:col-span-2 space-y-6">
+
+                        <!-- Permissions Breakdown Card -->
+                        <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-4">
+                            <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-sm font-semibold">
+                                        <i class="fas fa-shield-halved"></i>
+                                    </div>
+                                    <h4 class="text-sm font-bold text-slate-800">សិទ្ធិទទួលបានក្នុងប្រព័ន្ធ</h4>
+                                </div>
+                                <span class="text-xs text-slate-400">កំណត់តាមតួនាទី</span>
+                            </div>
+
+                            <div id="permissionsGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs"></div>
+                        </div>
+
+                        <!-- User Audit Trail Card -->
+                        <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-4">
+                            <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-8 h-8 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-sm font-semibold">
+                                        <i class="fas fa-clock-rotate-left"></i>
+                                    </div>
+                                    <h4 class="text-sm font-bold text-slate-800">ប្រវត្តិកំណត់ហេតុសកម្មភាព</h4>
+                                </div>
+                                <span class="text-xs text-slate-400">សវនកម្មសុវត្ថិភាព 100%</span>
+                            </div>
+
+                            <div id="userActivityList" class="space-y-3 text-xs"></div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../../shared/scripts/ui-components.js"></script>
+    <script src="../data.js"></script>
+    <script src="../../../shared/scripts/portal.js"></script>
+    <script>
+        let currentUser = null;
+
+        function getParamId() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('id') || 'USR-002';
+        }
+
+        function loadUserProfile() {
+            const id = getParamId();
+            currentUser = BMS_GM.getUserById(id);
+
+            if (!currentUser) {
+                showToast('រកមិនឃើញបុគ្គលិកនេះឡើយ!', 'error');
+                setTimeout(() => window.location.href = 'users.html', 1500);
+                return;
+            }
+
+            document.getElementById('headerTitle').textContent = `ប្រវត្តិរូប ${currentUser.fullNameKh}`;
+            document.getElementById('editUserBtn').href = `edit-user.html?id=${currentUser.id}`;
+
+            // Hero
+            document.getElementById('profileAvatar').textContent = currentUser.avatar || 'បក';
+            document.getElementById('profileNameKh').textContent = currentUser.fullNameKh;
+            document.getElementById('profileNameEn').textContent = currentUser.fullNameEn;
+            document.getElementById('profileUserId').textContent = currentUser.id;
+            document.getElementById('profileRoleBadge').textContent = currentUser.roleNameKh;
+            document.getElementById('profileBranch').textContent = currentUser.branchName;
+            document.getElementById('profileDept').textContent = currentUser.department;
+
+            // Badges & Toggle Button
+            const statusBadge = document.getElementById('userStatusBadge');
+            const toggleBtn = document.getElementById('toggleStatusBtn');
+            const toggleText = document.getElementById('toggleStatusText');
+
+            if (currentUser.status === 'active') {
+                statusBadge.innerHTML = '<span class="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-medium border border-emerald-200">សកម្ម</span>';
+                toggleBtn.className = 'px-4 py-2 rounded-xl text-xs font-medium transition cursor-pointer border border-rose-200 bg-rose-50 hover:bg-rose-100 text-rose-700 flex items-center gap-2';
+                toggleText.textContent = 'ផ្អាកគណនី';
+            } else {
+                statusBadge.innerHTML = '<span class="px-2.5 py-1 rounded-full bg-rose-50 text-rose-700 text-xs font-medium border border-rose-200">បានផ្អាក</span>';
+                toggleBtn.className = 'px-4 py-2 rounded-xl text-xs font-medium transition cursor-pointer border border-emerald-200 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 flex items-center gap-2';
+                toggleText.textContent = 'បើកដំណើរការឡើងវិញ';
+            }
+
+            // Contact
+            document.getElementById('cardEmail').textContent = currentUser.email;
+            document.getElementById('cardPhone').textContent = currentUser.phone;
+            document.getElementById('cardJoinedDate').textContent = currentUser.joinedDate || '01 មករា 2024';
+            document.getElementById('cardLastLogin').textContent = currentUser.lastLogin || '23 កញ្ញា 2026';
+
+            // Permissions
+            const permGrid = document.getElementById('permissionsGrid');
+            const perms = [
+                { name: 'ចូលប្រើប្រាស់ម៉ូឌុលមុខងារ', granted: true },
+                { name: 'បង្កើត និងកែប្រែប្រតិបត្តិការ', granted: true },
+                { name: 'ទាញយករបាយការណ៍សង្ខេប', granted: true },
+                { name: 'មើលព័ត៌មានអតិថិជន និងអ្នកផ្គត់ផ្គង់', granted: true },
+                { name: 'អនុម័តលើសពិដានកំណត់', granted: currentUser.roleId === 'admin_gm' },
+                { name: 'ចាក់សោរគ្រាហិរញ្ញវត្ថុ', granted: currentUser.roleId === 'admin_gm' },
+                { name: 'គ្រប់គ្រងគណនីបុគ្គលិកដទៃ', granted: currentUser.roleId === 'admin_gm' },
+                { name: 'មើលថ្លៃដើមទិញពិត', granted: currentUser.roleId !== 'sales_exec' && currentUser.roleId !== 'warehouse_staff' }
+            ];
+
+            permGrid.innerHTML = perms.map(p => `
+                <div class="p-2.5 rounded-xl ${p.granted ? 'bg-emerald-50/60 border border-emerald-100 text-emerald-900' : 'bg-slate-50 border border-slate-200 text-slate-400'} flex items-center gap-2.5">
+                    <i class="fas ${p.granted ? 'fa-check text-emerald-600' : 'fa-xmark text-slate-300'} text-xs"></i>
+                    <span>${p.name}</span>
+                </div>
+            `).join('');
+
+            // Activities
+            const actList = document.getElementById('userActivityList');
+            const acts = [
+                { action: 'បានចូលប្រើប្រាស់ប្រព័ន្ធដោយជោគជ័យ', ip: '103.14.24.11', time: currentUser.lastLogin },
+                { action: 'បានបើកពិនិត្យទំព័រប្រតិបត្តិការប្រចាំថ្ងៃ', ip: '103.14.24.11', time: '22 កញ្ញា 2026, 16:30' },
+                { action: 'បានកត់ត្រាឯកសារប្រតិបត្តិការថ្មី', ip: '103.14.24.11', time: '22 កញ្ញា 2026, 14:15' }
+            ];
+
+            actList.innerHTML = acts.map(a => `
+                <div class="p-3 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-between gap-3">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-2 h-2 rounded-full bg-emerald-500"></div>
+                        <div>
+                            <span class="font-medium text-slate-800 block">${a.action}</span>
+                            <span class="text-[11px] text-slate-400">IP: ${a.ip}</span>
+                        </div>
+                    </div>
+                    <span class="text-[11px] text-slate-500 font-medium whitespace-nowrap">${a.time}</span>
+                </div>
+            `).join('');
+        }
+
+        function handleToggleStatus() {
+            if (!currentUser) return;
+            const actionText = currentUser.status === 'active' ? 'ចាក់សោរ' : 'បើកដំណើរការ';
+
+            showCustomConfirm({
+                title: `បញ្ជាក់ការ${actionText}គណនី`,
+                message: `តើលោកអ្នកពិតជាចង់${actionText}គណនីរបស់ ${currentUser.fullNameKh} មែនទេ?`,
+                confirmText: `យល់ព្រម${actionText}`,
+                confirmClass: currentUser.status === 'active' ? 'bg-rose-600 text-white' : 'bg-emerald-600 text-white',
+                onConfirm: () => {
+                    const res = BMS_GM.toggleUserStatus(currentUser.id);
+                    if (res.success) {
+                        showToast(`គណនីត្រូវបាន${actionText}ដោយជោគជ័យ!`, 'success');
+                        loadUserProfile();
+                    } else {
+                        showToast(res.message, 'error');
+                    }
+                }
+            });
+        }
+
+        function initPage() {
+            renderPortalSidebar();
+            loadUserProfile();
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initPage);
+        } else {
+            initPage();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - ព័ត៌មានក្រុមហ៊ុន និងសាខា</title>
+    <link rel="icon" type="image/png" href="../../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1e3a5f",
+                        'primary-dark': "#142842",
+                        accent: "#0ea5e9",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../shared/styles/custom.css">
+    <link rel="stylesheet" href="../../../shared/styles/portal.css">
+</head>
+<body id="gmPortal" data-role-root=".." data-active="company-profile" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <div id="sidebarHost"></div>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <!-- Content Top Header -->
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div class="min-w-0">
+                <h2 class="text-xl font-semibold text-gray-800 leading-tight truncate">ព័ត៌មានក្រុមហ៊ុន និងសាខា</h2>
+                <p class="text-xs font-normal text-gray-500 mt-0.5 truncate">ការគ្រប់គ្រងអត្តសញ្ញាណស្របច្បាប់ លេខសារពើពន្ធ គណនីធនាគារ KHQR និងទីតាំងសាខា</p>
+            </div>
+
+            <div class="flex items-center space-x-3 flex-shrink-0">
+                <button type="button" onclick="handleSaveProfile()" class="h-9 px-4 bg-[#1e3a5f] hover:bg-[#142842] text-white text-xs rounded-xl flex items-center gap-2 font-medium transition shadow-sm cursor-pointer">
+                    <i class="fas fa-check"></i>
+                    <span>រក្សាទុកព័ត៌មានក្រុមហ៊ុន</span>
+                </button>
+                <div class="flex items-center sm:border-l sm:pl-3">
+                    <div class="w-10 h-10 rounded-full bg-[#1e3a5f] text-white flex items-center justify-center font-semibold text-sm shadow-sm" title="លី ហាក់សេង (អភិបាលទូទៅ)">លហ</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-5">
+            <div class="w-full space-y-6">
+
+                <!-- Company Hero Card -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm flex flex-wrap items-center justify-between gap-6">
+                    <div class="flex items-center gap-4">
+                        <div class="w-16 h-16 rounded-2xl bg-[#1e3a5f] text-white flex items-center justify-center text-xl font-bold flex-shrink-0 shadow-sm">
+                            ឌថ
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2.5">
+                                <h3 id="heroNameKh" class="text-lg font-bold text-slate-800">ក្រុមហ៊ុន ឌីជីថេក ខេអេច ឯ.ក</h3>
+                                <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                                    អ្នកជាប់ពន្ធធំ
+                                </span>
+                            </div>
+                            <p id="heroNameEn" class="text-xs text-slate-400 mt-0.5">DIGITECH KH Co., Ltd. • អត្តសញ្ញាណកម្មសារពើពន្ធ: K002-90218847</p>
+                            <p class="text-xs text-slate-500 mt-1 flex items-center gap-2">
+                                <i class="fas fa-user-tie text-slate-400 text-[11px]"></i>
+                                <span>អភិបាលទូទៅ: <strong class="text-slate-700">លី ហាក់សេង</strong></span>
+                                <span>•</span>
+                                <span>សាខាប្រតិបត្តិការ: <strong class="text-slate-700">3 សាខា</strong></span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-2">
+                        <button type="button" onclick="showToast('មុខងារផ្លាស់ប្តូររូបសញ្ញាឡូហ្គោត្រូវបានបើកដំណើរការ', 'info')" class="px-3.5 py-2 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 text-xs font-medium transition cursor-pointer flex items-center gap-2">
+                            <i class="fas fa-image text-slate-500"></i>
+                            <span>ប្តូររូបសញ្ញា</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 2-Column Responsive Layout -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+                    <!-- Left: Official Profile & Legal Info (2 cols) -->
+                    <div class="lg:col-span-2 space-y-6">
+
+                        <!-- Legal Info Card -->
+                        <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-4">
+                            <div class="flex items-center gap-2 pb-3 border-b border-slate-100">
+                                <div class="w-8 h-8 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-sm font-semibold">
+                                    <i class="fas fa-building"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-bold text-slate-800">ព័ត៌មានចុះបញ្ជីស្របច្បាប់</h4>
+                                    <p class="text-xs text-slate-400">ព័ត៌មានដែលបង្ហាញលើវិក្កយបត្រសារពើពន្ធផ្លូវការ</p>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+                                <div>
+                                    <label class="block font-semibold text-slate-700 mb-1.5">
+                                        ឈ្មោះក្រុមហ៊ុនជាភាសាខ្មែរ <span class="text-rose-500">*</span>
+                                    </label>
+                                    <input type="text" id="iptNameKh" class="w-full bg-slate-50 hover:bg-slate-100/70 focus:bg-white border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 transition outline-none font-medium">
+                                </div>
+
+                                <div>
+                                    <label class="block font-semibold text-slate-700 mb-1.5">
+                                        ឈ្មោះក្រុមហ៊ុនជាឡាតាំង <span class="text-rose-500">*</span>
+                                    </label>
+                                    <input type="text" id="iptNameEn" class="w-full bg-slate-50 hover:bg-slate-100/70 focus:bg-white border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 transition outline-none font-medium">
+                                </div>
+
+                                <div>
+                                    <label class="block font-semibold text-slate-700 mb-1.5">
+                                        លេខអត្តសញ្ញាណកម្មសារពើពន្ធ <span class="text-rose-500">*</span>
+                                    </label>
+                                    <input type="text" id="iptTin" class="w-full bg-slate-50 hover:bg-slate-100/70 focus:bg-white border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 transition outline-none font-medium">
+                                </div>
+
+                                <div>
+                                    <label class="block font-semibold text-slate-700 mb-1.5">
+                                        ប្រភេទអ្នកជាប់ពន្ធ
+                                    </label>
+                                    <input type="text" id="iptTaxType" class="w-full bg-slate-100 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-600 transition outline-none font-medium" readonly>
+                                </div>
+
+                                <div>
+                                    <label class="block font-semibold text-slate-700 mb-1.5">
+                                        លេខទូរស័ព្ទផ្លូវការ
+                                    </label>
+                                    <input type="text" id="iptPhone" class="w-full bg-slate-50 hover:bg-slate-100/70 focus:bg-white border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 transition outline-none font-medium">
+                                </div>
+
+                                <div>
+                                    <label class="block font-semibold text-slate-700 mb-1.5">
+                                        អ៊ីមែលផ្លូវការ
+                                    </label>
+                                    <input type="email" id="iptEmail" class="w-full bg-slate-50 hover:bg-slate-100/70 focus:bg-white border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 transition outline-none font-medium">
+                                </div>
+
+                                <div class="sm:col-span-2">
+                                    <label class="block font-semibold text-slate-700 mb-1.5">
+                                        អាសយដ្ឋានចុះបញ្ជីផ្លូវការ
+                                    </label>
+                                    <textarea id="iptAddress" rows="2" class="w-full bg-slate-50 hover:bg-slate-100/70 focus:bg-white border border-slate-200 rounded-xl p-3 text-xs text-slate-800 transition outline-none font-medium"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Branches Management Card -->
+                        <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-4">
+                            <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-8 h-8 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-sm font-semibold">
+                                        <i class="fas fa-sitemap"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm font-bold text-slate-800">បញ្ជីទីតាំងសាខាប្រតិបត្តិការ</h4>
+                                        <p class="text-xs text-slate-400">គ្រប់គ្រងសាខា និងបុគ្គលិកទទួលខុសត្រូវតាមទីតាំង</p>
+                                    </div>
+                                </div>
+                                <button type="button" onclick="showToast('មុខងារបន្ថែមសាខាថ្មីតម្រូវឱ្យទាក់ទងអ្នកគ្រប់គ្រងប្រព័ន្ធជាន់ខ្ពស់ដើម្បីពង្រីកកញ្ចប់', 'info')" class="px-3 py-1.5 rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 text-xs font-medium transition cursor-pointer">
+                                    + បន្ថែមសាខាថ្មី
+                                </button>
+                            </div>
+
+                            <div id="branchesList" class="space-y-3"></div>
+                        </div>
+
+                    </div>
+
+                    <!-- Right: Bank Accounts & KHQR (1 col) -->
+                    <div class="space-y-6">
+
+                        <!-- Banking & KHQR Card -->
+                        <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-4">
+                            <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-sm font-semibold">
+                                        <i class="fas fa-qrcode"></i>
+                                    </div>
+                                    <h4 class="text-sm font-bold text-slate-800">គណនីធនាគារ និង KHQR</h4>
+                                </div>
+                                <span class="text-[11px] text-slate-400">ស្កេនទូទាត់</span>
+                            </div>
+
+                            <p class="text-xs text-slate-500">គណនីធនាគារសម្រាប់ទទួលការទូទាត់ពីអតិថិជន និងបោះពុម្ពលើវិក្កយបត្រ៖</p>
+
+                            <div id="bankAccountsList" class="space-y-3 text-xs"></div>
+                        </div>
+
+                        <!-- System Security & Isolation Info -->
+                        <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm space-y-3">
+                            <h4 class="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-2">
+                                <i class="fas fa-shield-cat text-slate-400"></i>
+                                <span>សុវត្ថិភាពទិន្នន័យក្រុមហ៊ុន</span>
+                            </h4>
+                            <p class="text-xs text-slate-500 leading-relaxed">
+                                ទិន្នន័យរបស់ក្រុមហ៊ុនត្រូវបានការពារដោយគោលការណ៍ <strong class="text-slate-700">ប្រព័ន្ធដាច់ដោយឡែកពីគ្នា</strong> 100%។ គ្មានក្រុមហ៊ុនដទៃណាអាចមើលឃើញ ឬទាញយកទិន្នន័យអាជីវកម្មរបស់អ្នកបានឡើយ។
+                            </p>
+                            <div class="p-3 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-between text-xs">
+                                <span class="text-slate-500">ស្ថានភាពសុវត្ថិភាព:</span>
+                                <span class="text-emerald-700 font-semibold flex items-center gap-1">
+                                    <i class="fas fa-circle-check"></i>
+                                    <span>ការពារពេញលេញ 100%</span>
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../../shared/scripts/ui-components.js"></script>
+    <script src="../data.js"></script>
+    <script src="../../../shared/scripts/portal.js"></script>
+    <script>
+        function loadCompanyProfile() {
+            const profile = BMS_GM.getCompanyProfile();
+
+            document.getElementById('heroNameKh').textContent = profile.nameKh;
+            document.getElementById('heroNameEn').textContent = `${profile.nameEn} • អត្តសញ្ញាណកម្មសារពើពន្ធ: ${profile.tin}`;
+
+            document.getElementById('iptNameKh').value = profile.nameKh || '';
+            document.getElementById('iptNameEn').value = profile.nameEn || '';
+            document.getElementById('iptTin').value = profile.tin || '';
+            document.getElementById('iptTaxType').value = profile.taxType || 'អ្នកជាប់ពន្ធធំ';
+            document.getElementById('iptPhone').value = profile.phone || '';
+            document.getElementById('iptEmail').value = profile.email || '';
+            document.getElementById('iptAddress').value = profile.address || '';
+
+            // Render Branches
+            const branchBox = document.getElementById('branchesList');
+            const branches = profile.branches || [];
+            branchBox.innerHTML = branches.map(b => `
+                <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/70 hover:bg-slate-100/70 transition flex items-start justify-between gap-4">
+                    <div class="space-y-1">
+                        <div class="flex items-center gap-2">
+                            <span class="font-bold text-slate-800 text-xs">${b.name}</span>
+                            ${b.isHQ ? '<span class="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] font-bold">ទីស្នាក់ការធំ</span>' : ''}
+                        </div>
+                        <p class="text-xs text-slate-500">${b.address}</p>
+                        <div class="flex items-center gap-3 pt-1 text-[11px] text-slate-400">
+                            <span><i class="fas fa-user-tie mr-1 text-slate-400"></i>ប្រធានសាខា: <strong class="text-slate-600">${b.manager}</strong></span>
+                            <span>•</span>
+                            <span><i class="fas fa-users mr-1 text-slate-400"></i>បុគ្គលិក: <strong class="text-slate-600">${b.staffCount} នាក់</strong></span>
+                            <span>•</span>
+                            <span><i class="fas fa-phone mr-1 text-slate-400"></i>${b.phone}</span>
+                        </div>
+                    </div>
+                    <span class="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-[11px] font-medium border border-emerald-200 flex-shrink-0">សកម្ម</span>
+                </div>
+            `).join('');
+
+            // Render Bank Accounts
+            const bankBox = document.getElementById('bankAccountsList');
+            const accounts = profile.bankAccounts || [];
+            bankBox.innerHTML = accounts.map(a => `
+                <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/70 hover:bg-slate-100/70 transition space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="font-bold text-slate-800">${a.bank}</span>
+                        ${a.isDefault ? '<span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[10px] font-bold">គណនីមេ</span>' : ''}
+                    </div>
+                    <div class="flex items-center justify-between text-slate-600">
+                        <span>លេខគណនី:</span>
+                        <strong class="font-semibold text-slate-800">${a.accNo} (${a.currency === 'USD' ? 'ដុល្លារ' : 'រៀល'})</strong>
+                    </div>
+                    <div class="flex items-center justify-between text-slate-600">
+                        <span>ឈ្មោះម្ចាស់គណនី:</span>
+                        <span class="font-medium text-slate-700 text-[11px]">${a.accName}</span>
+                    </div>
+                    ${a.qr ? `
+                        <div class="pt-2 border-t border-slate-200 flex items-center justify-between">
+                            <span class="text-[11px] text-primary font-medium flex items-center gap-1.5">
+                                <i class="fas fa-qrcode"></i>
+                                <span>KHQR រួចរាល់</span>
+                            </span>
+                            <button onclick="showToast('កំពុងបង្ហាញកូដ KHQR សម្រាប់ការស្កេន', 'info')" class="text-[11px] text-sky-600 hover:underline cursor-pointer font-medium">
+                                មើលកូដ QR
+                            </button>
+                        </div>
+                    ` : ''}
+                </div>
+            `).join('');
+        }
+
+        function handleSaveProfile() {
+            const nameKh = document.getElementById('iptNameKh').value.trim();
+            const nameEn = document.getElementById('iptNameEn').value.trim();
+            const tin = document.getElementById('iptTin').value.trim();
+            const phone = document.getElementById('iptPhone').value.trim();
+            const email = document.getElementById('iptEmail').value.trim();
+            const address = document.getElementById('iptAddress').value.trim();
+
+            const updated = {
+                nameKh,
+                nameEn,
+                tin,
+                phone,
+                email,
+                address
+            };
+
+            const res = BMS_GM.saveCompanyProfile(updated);
+            if (res.success) {
+                showToast('ព័ត៌មានក្រុមហ៊ុនត្រូវបានរក្សាទុកដោយជោគជ័យ!', 'success');
+                loadCompanyProfile();
+            } else {
+                showToast('មានបញ្ហាក្នុងការរក្សាទុកព័ត៌មាន', 'error');
+            }
+        }
+
+        function initPage() {
+            renderPortalSidebar();
+            loadCompanyProfile();
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initPage);
+        } else {
+            initPage();
+        }
+    </script>
+</body>
+</html>

@@ -82,6 +82,22 @@ const PORTAL_CONFIGS = {
             { id: 'delivery-status', label: 'តាមដានការដឹកជញ្ជូន', icon: 'mdi:truck-check-outline', href: 'delivery-status.html' }
         ]
     },
+    gmPortal: {
+        title: 'ច្រកអភិបាលទូទៅ',
+        roleName: 'អភិបាលទូទៅ',
+        roleIcon: 'mdi:shield-account',
+        userInitials: 'លហ',
+        userName: 'លី ហាក់សេង',
+        userRole: 'អភិបាលក្រុមហ៊ុន / អ្នកគ្រប់គ្រងទូទៅ',
+        policyNote: 'សិទ្ធិបញ្ជាការដ្ឋាន និងអនុម័តកំពូលនៃក្រុមហ៊ុន។',
+        nav: [
+            { id: 'dashboard', label: 'ផ្ទាំងគ្រប់គ្រង', icon: 'mdi:view-dashboard-outline', href: 'dashboard.html' },
+            { id: 'approvals', label: 'មជ្ឈមណ្ឌលអនុម័ត', icon: 'mdi:stamper', href: 'approvals/approvals.html', badge: true },
+            { id: 'users', label: 'គណនីបុគ្គលិក', icon: 'mdi:account-group-outline', href: 'users/users.html' },
+            { id: 'company-profile', label: 'ព័ត៌មានក្រុមហ៊ុន', icon: 'mdi:domain', href: 'company-profile/company-profile.html' },
+            { id: 'system-settings', label: 'ការកំណត់ប្រព័ន្ធ', icon: 'mdi:cog-outline', href: 'system-settings/system-settings.html' }
+        ]
+    },
     saPortal: {
         title: 'ច្រកស៊ុបភើរអភិបាល',
         roleName: 'ស៊ុបភើរ អភិបាល',
@@ -107,7 +123,7 @@ function getRoleRoot() {
         return document.body.dataset.roleRoot;
     }
     const loc = window.location.pathname.replace(/\\/g, '/');
-    const isSub = /\/(stock-[a-z]+|approvals|pipeline|reports|companies|subscriptions|audit-logs)(\/|$)/.test(loc);
+    const isSub = /\/(stock-[a-z]+|approvals|pipeline|reports|companies|subscriptions|audit-logs|users|company-profile|system-settings)(\/|$)/.test(loc);
     return isSub ? '..' : '.';
 }
 

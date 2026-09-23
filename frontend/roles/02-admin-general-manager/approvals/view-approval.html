@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - ពិនិត្យសំណើអនុម័ត</title>
+    <link rel="icon" type="image/png" href="../../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1e3a5f",
+                        'primary-dark': "#142842",
+                        accent: "#0ea5e9",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../shared/styles/custom.css">
+    <link rel="stylesheet" href="../../../shared/styles/portal.css">
+</head>
+<body id="gmPortal" data-role-root=".." data-active="approvals" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <div id="sidebarHost"></div>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <!-- Content Top Header with Unified Back Button -->
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div class="flex items-center gap-4 min-w-0">
+                <!-- Standard Back Button (Icon Only) -->
+                <a href="approvals.html" class="w-10 h-10 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-600 flex items-center justify-center transition border border-slate-200/70 flex-shrink-0" title="ត្រឡប់ទៅមជ្ឈមណ្ឌលអនុម័ត...">
+                    <i class="fas fa-arrow-left text-sm"></i>
+                </a>
+                <div class="min-w-0">
+                    <div class="flex items-center gap-2">
+                        <h2 id="headerTitle" class="text-xl font-semibold text-gray-800 leading-tight truncate">ពិនិត្យសំណើអនុម័ត</h2>
+                        <span id="headerStatusBadge"></span>
+                    </div>
+                    <p id="headerSub" class="text-xs font-normal text-gray-500 mt-0.5 truncate">ព័ត៌មានលម្អិតនៃសំណើ និងការផ្ទៀងផ្ទាត់ភស្តុតាងហិរញ្ញវត្ថុ</p>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-3 flex-shrink-0">
+                <button onclick="window.print()" class="h-9 px-3.5 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 text-xs rounded-xl flex items-center gap-2 font-medium transition shadow-xs cursor-pointer">
+                    <i class="fas fa-print text-slate-500"></i>
+                    <span class="hidden sm:inline">បោះពុម្ពឯកសារ</span>
+                </button>
+                <div class="flex items-center sm:border-l sm:pl-3">
+                    <div class="w-10 h-10 rounded-full bg-[#1e3a5f] text-white flex items-center justify-center font-semibold text-sm shadow-sm" title="លី ហាក់សេង (អភិបាលទូទៅ)">លហ</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-5">
+            <div class="w-full space-y-5">
+
+                <!-- Alert Banner for Resolved Decisions -->
+                <div id="decisionBanner" class="hidden rounded-2xl p-4 border flex items-start gap-3"></div>
+
+                <!-- 2-Column Responsive Layout -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+
+                    <!-- Left Column: Details, Proof & Decision (2 cols) -->
+                    <div class="lg:col-span-2 space-y-5">
+
+                        <!-- Main Request Dossier Card -->
+                        <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-5">
+                            <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-100">
+                                <div>
+                                    <span class="text-xs text-slate-400 block">ឯកសារយោង និងប្រធានបទ</span>
+                                    <h3 id="dossierSubject" class="text-base font-bold text-slate-800 mt-0.5"></h3>
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-xs text-slate-400 block">ទឹកប្រាក់សរុប</span>
+                                    <span id="dossierAmount" class="text-xl font-bold text-primary"></span>
+                                </div>
+                            </div>
+
+                            <!-- Reason for Request -->
+                            <div>
+                                <h4 class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
+                                    <i class="fas fa-comment-dots text-slate-400"></i>
+                                    <span>មូលហេតុ និងហេតុផលនៃការស្នើសុំ</span>
+                                </h4>
+                                <div id="dossierReason" class="p-3.5 rounded-xl bg-slate-50 border border-slate-100 text-xs text-slate-700 leading-relaxed"></div>
+                            </div>
+
+                            <!-- Financial Impact Assessment -->
+                            <div>
+                                <h4 class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
+                                    <i class="fas fa-chart-pie text-slate-400"></i>
+                                    <span>ការវិភាគផលប៉ះពាល់ហិរញ្ញវត្ថុ និងសន្ទនីយភាព</span>
+                                </h4>
+                                <div id="dossierImpact" class="p-3.5 rounded-xl bg-sky-50/70 border border-sky-100 text-xs text-sky-900 leading-relaxed"></div>
+                            </div>
+
+                            <!-- Items / Line-items breakdown (3-Way Matching) -->
+                            <div>
+                                <h4 class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2 flex items-center justify-between">
+                                    <span class="flex items-center gap-1.5">
+                                        <i class="fas fa-table-list text-slate-400"></i>
+                                        <span>តារាងមុខទំនិញ និងការផ្ទៀងផ្ទាត់</span>
+                                    </span>
+                                    <span class="text-[11px] font-normal text-emerald-600 flex items-center gap-1">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>ផ្ទៀងផ្ទាត់ត្រឹមត្រូវ 100%</span>
+                                    </span>
+                                </h4>
+                                <div class="border border-slate-200 rounded-xl overflow-hidden">
+                                    <table class="w-full text-left border-collapse text-xs">
+                                        <thead>
+                                            <tr class="bg-slate-50 border-b border-slate-200 text-slate-600 font-semibold">
+                                                <th class="py-2.5 px-3">#</th>
+                                                <th class="py-2.5 px-3">មុខទំនិញ / សេវាកម្ម</th>
+                                                <th class="py-2.5 px-3 text-center">ចំនួន</th>
+                                                <th class="py-2.5 px-3 text-right">តម្លៃឯកតា</th>
+                                                <th class="py-2.5 px-3 text-right">សរុប</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="itemsTableBody" class="divide-y divide-slate-100 text-slate-700"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- Attachments Preview List -->
+                            <div>
+                                <h4 class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                                    <i class="fas fa-paperclip text-slate-400"></i>
+                                    <span>ឯកសារភស្តុតាងភ្ជាប់មកជាមួយ</span>
+                                </h4>
+                                <div id="attachmentsList" class="grid grid-cols-1 sm:grid-cols-3 gap-2.5"></div>
+                            </div>
+                        </div>
+
+                        <!-- Executive Decision Box (Active when pending) -->
+                        <div id="decisionActionCard" class="bg-white rounded-2xl p-6 border-2 border-indigo-100 shadow-sm space-y-4">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-8 h-8 rounded-xl bg-[#1e3a5f]/10 text-primary flex items-center justify-center text-sm font-semibold">
+                                        <i class="fas fa-signature"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm font-bold text-slate-800">សេចក្តីសម្រេចរបស់អភិបាលទូទៅ</h4>
+                                        <p class="text-xs text-slate-400">ការចុះហត្ថលេខាឌីជីថល និងកំណត់សម្គាល់ការណែនាំ</p>
+                                    </div>
+                                </div>
+                                <span class="px-2.5 py-1 rounded-full bg-amber-50 text-amber-700 text-xs font-medium border border-amber-200">
+                                    រង់ចាំការសម្រេច
+                                </span>
+                            </div>
+
+                            <div>
+                                <label for="executiveNotes" class="block text-xs font-medium text-slate-700 mb-1.5">
+                                    យោបល់ ឬការណែនាំបន្ថែមរបស់អភិបាលទូទៅ:
+                                </label>
+                                <textarea id="executiveNotes" rows="3"
+                                    placeholder="បញ្ចូលយោបល់ ការណែនាំដល់គណនេយ្យករ ឬមូលហេតុនៃការអនុម័ត/បដិសេធ..."
+                                    class="w-full bg-slate-50 hover:bg-slate-100/70 focus:bg-white border border-slate-200 focus:border-primary rounded-xl p-3 text-xs text-slate-800 transition outline-none font-medium placeholder:text-slate-400 placeholder:font-normal"></textarea>
+                            </div>
+
+                            <div class="pt-2 flex flex-wrap items-center justify-end gap-3 border-t border-slate-100">
+                                <button type="button" onclick="handleRejectRequest()" class="px-5 py-2.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 font-medium text-xs transition cursor-pointer flex items-center gap-2">
+                                    <i class="fas fa-xmark"></i>
+                                    <span>បដិសេធសំណើ</span>
+                                </button>
+                                <button type="button" onclick="handleApproveRequest()" class="px-6 py-2.5 rounded-xl bg-[#1e3a5f] hover:bg-[#142842] text-white font-medium text-xs transition shadow-md hover:shadow-lg cursor-pointer flex items-center gap-2">
+                                    <i class="fas fa-stamp"></i>
+                                    <span>អនុម័តជាផ្លូវការ</span>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Right Column: Requester Dossier & Timeline (1 col) -->
+                    <div class="space-y-5">
+
+                        <!-- Financial Snapshot Widget -->
+                        <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm space-y-4">
+                            <h4 class="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-2">
+                                <i class="fas fa-wallet text-slate-400"></i>
+                                <span>ទិន្នន័យសង្ខេបហិរញ្ញវត្ថុ</span>
+                            </h4>
+
+                            <div class="space-y-2.5 text-xs">
+                                <div class="flex justify-between py-2 border-b border-slate-100">
+                                    <span class="text-slate-500">ទឹកប្រាក់សំណើ:</span>
+                                    <span id="sideAmount" class="font-bold text-slate-800"></span>
+                                </div>
+                                <div class="flex justify-between py-2 border-b border-slate-100">
+                                    <span class="text-slate-500">សមតុល្យសាច់ប្រាក់បច្ចុប្បន្ន:</span>
+                                    <span class="font-semibold text-emerald-700">$42,180.00</span>
+                                </div>
+                                <div class="flex justify-between py-2 border-b border-slate-100">
+                                    <span class="text-slate-500">សាច់ប្រាក់នៅសល់ក្រោយអនុម័ត:</span>
+                                    <span id="sideRemainingCash" class="font-semibold text-slate-700"></span>
+                                </div>
+                                <div class="flex justify-between py-2">
+                                    <span class="text-slate-500">ចរន្តសាច់ប្រាក់ទ្រទ្រង់:</span>
+                                    <span class="font-semibold text-emerald-700">3.4 ខែ (សុវត្ថិភាព)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Requester Dossier Card -->
+                        <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm space-y-4">
+                            <h4 class="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-2">
+                                <i class="fas fa-user-tie text-slate-400"></i>
+                                <span>ព័ត៌មានបុគ្គលិកស្នើសុំ</span>
+                            </h4>
+
+                            <div class="flex items-center gap-3">
+                                <div id="sideRequesterAvatar" class="w-11 h-11 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center font-bold text-sm flex-shrink-0"></div>
+                                <div class="min-w-0">
+                                    <span id="sideRequesterName" class="font-bold text-slate-800 block truncate"></span>
+                                    <span id="sideRequesterRole" class="text-xs text-slate-500 block truncate"></span>
+                                </div>
+                            </div>
+
+                            <div class="space-y-2 text-xs pt-2 border-t border-slate-100">
+                                <div class="flex justify-between">
+                                    <span class="text-slate-400">កាលបរិច្ឆេទស្នើ:</span>
+                                    <span id="sideRequestedDate" class="text-slate-700 font-medium"></span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-slate-400">សាខាប្រតិបត្តិការ:</span>
+                                    <span class="text-slate-700 font-medium">ទីស្នាក់ការកណ្តាល (ភ្នំពេញ)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Audit Trail / Approval Timeline Card -->
+                        <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm space-y-4">
+                            <h4 class="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-2">
+                                <i class="fas fa-clock-rotate-left text-slate-400"></i>
+                                <span>ប្រវត្តិកំណត់ហេតុអនុម័ត</span>
+                            </h4>
+
+                            <div id="timelineContainer" class="space-y-4 relative before:absolute before:inset-0 before:left-3.5 before:w-0.5 before:bg-slate-200 pl-2"></div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../../shared/scripts/ui-components.js"></script>
+    <script src="../data.js"></script>
+    <script src="../../../shared/scripts/portal.js"></script>
+    <script>
+        let currentItem = null;
+
+        function getParamId() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('id') || 'APP-2026-0038';
+        }
+
+        function loadApprovalDetail() {
+            const id = getParamId();
+            currentItem = BMS_GM.getApprovalById(id);
+
+            if (!currentItem) {
+                showToast('រកមិនឃើញសំណើនេះឡើយ!', 'error');
+                setTimeout(() => window.location.href = 'approvals.html', 1500);
+                return;
+            }
+
+            // Populate Headers
+            document.getElementById('headerTitle').textContent = `ពិនិត្យសំណើ ${currentItem.id}`;
+            document.getElementById('headerSub').textContent = `ឯកសារយោង ${currentItem.refCode} • ប្រភេទ: ${currentItem.typeNameKh}`;
+            
+            // Status Badge
+            const badgeHost = document.getElementById('headerStatusBadge');
+            if (currentItem.status === 'approved') {
+                badgeHost.innerHTML = '<span class="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-medium border border-emerald-200">បានអនុម័ត</span>';
+            } else if (currentItem.status === 'rejected') {
+                badgeHost.innerHTML = '<span class="px-2.5 py-1 rounded-full bg-rose-50 text-rose-700 text-xs font-medium border border-rose-200">បានបដិសេធ</span>';
+            } else {
+                badgeHost.innerHTML = '<span class="px-2.5 py-1 rounded-full bg-amber-50 text-amber-700 text-xs font-medium border border-amber-200 animate-pulse">រង់ចាំការពិនិត្យ</span>';
+            }
+
+            // Dossier Details
+            document.getElementById('dossierSubject').textContent = currentItem.subject;
+            document.getElementById('dossierAmount').textContent = BMS_GM.fmtCurrencyKh(currentItem.amount);
+            document.getElementById('dossierReason').textContent = currentItem.reason || 'ពុំមានការបញ្ជាក់';
+            document.getElementById('dossierImpact').textContent = currentItem.impactAssessment || 'ការវិភាគផលប៉ះពាល់ស្ថិតក្នុងកម្រិតសុវត្ថិភាព។';
+
+            // Items Table
+            const itemsTbody = document.getElementById('itemsTableBody');
+            if (currentItem.items && currentItem.items.length > 0) {
+                itemsTbody.innerHTML = currentItem.items.map((it, idx) => `
+                    <tr class="hover:bg-slate-50/50">
+                        <td class="py-2.5 px-3 text-slate-400">${idx + 1}</td>
+                        <td class="py-2.5 px-3 font-medium text-slate-800">${it.name}</td>
+                        <td class="py-2.5 px-3 text-center">${it.qty}</td>
+                        <td class="py-2.5 px-3 text-right">${BMS_GM.fmtCurrencyKh(it.unitPrice)}</td>
+                        <td class="py-2.5 px-3 text-right font-semibold text-slate-800">${BMS_GM.fmtCurrencyKh(it.total)}</td>
+                    </tr>
+                `).join('');
+            } else {
+                itemsTbody.innerHTML = '<tr><td colspan="5" class="py-4 text-center text-slate-400">គ្មានបញ្ជីមុខទំនិញជាក់លាក់ឡើយ</td></tr>';
+            }
+
+            // Attachments
+            const attachHost = document.getElementById('attachmentsList');
+            const files = currentItem.attachments || ['Supporting_Document.pdf'];
+            attachHost.innerHTML = files.map(f => `
+                <div class="p-3 rounded-xl bg-slate-50 border border-slate-200/70 hover:bg-slate-100 transition flex items-center gap-2.5 cursor-pointer" onclick="showToast('កំពុងបើកឯកសារភ្ជាប់: ${f}', 'info')">
+                    <div class="w-8 h-8 rounded-lg bg-rose-50 text-rose-600 flex items-center justify-center text-sm flex-shrink-0">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <div class="min-w-0">
+                        <span class="text-xs font-medium text-slate-700 block truncate">${f}</span>
+                        <span class="text-[10px] text-slate-400 block">ចុចដើម្បីមើលឯកសារ</span>
+                    </div>
+                </div>
+            `).join('');
+
+            // Right Snapshot
+            document.getElementById('sideAmount').textContent = BMS_GM.fmtCurrencyKh(currentItem.amount);
+            const remaining = 42180.00 - (currentItem.amount || 0);
+            document.getElementById('sideRemainingCash').textContent = BMS_GM.fmtCurrencyKh(remaining);
+            document.getElementById('sideRequesterAvatar').textContent = currentItem.requesterAvatar || 'បក';
+            document.getElementById('sideRequesterName').textContent = currentItem.requesterName;
+            document.getElementById('sideRequesterRole').textContent = currentItem.requesterRole;
+            document.getElementById('sideRequestedDate').textContent = currentItem.requestedDate;
+
+            // Decision Action Card Visibility
+            const decisionCard = document.getElementById('decisionActionCard');
+            const decisionBanner = document.getElementById('decisionBanner');
+
+            if (currentItem.status === 'approved') {
+                decisionCard.classList.add('hidden');
+                decisionBanner.className = 'rounded-2xl p-4 border bg-emerald-50 border-emerald-200 text-emerald-900 flex items-start gap-3';
+                decisionBanner.innerHTML = `
+                    <div class="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-circle-check"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-bold">សំណើនេះត្រូវបានអនុម័តជាផ្លូវការរួចរាល់</h4>
+                        <p class="text-xs mt-0.5">អនុម័តដោយ: <span class="font-semibold">${currentItem.approverName}</span> នៅ ${currentItem.decidedAt}</p>
+                        ${currentItem.decisionNotes ? `<p class="text-xs mt-1.5 p-2 rounded-lg bg-white/60 border border-emerald-200 font-medium">«${currentItem.decisionNotes}»</p>` : ''}
+                    </div>
+                `;
+            } else if (currentItem.status === 'rejected') {
+                decisionCard.classList.add('hidden');
+                decisionBanner.className = 'rounded-2xl p-4 border bg-rose-50 border-rose-200 text-rose-900 flex items-start gap-3';
+                decisionBanner.innerHTML = `
+                    <div class="w-8 h-8 rounded-xl bg-rose-100 text-rose-700 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-circle-xmark"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-bold">សំណើនេះត្រូវបានបដិសេធ</h4>
+                        <p class="text-xs mt-0.5">បដិសេធដោយ: <span class="font-semibold">${currentItem.approverName}</span> នៅ ${currentItem.decidedAt}</p>
+                        ${currentItem.decisionNotes ? `<p class="text-xs mt-1.5 p-2 rounded-lg bg-white/60 border border-rose-200 font-medium">«${currentItem.decisionNotes}»</p>` : ''}
+                    </div>
+                `;
+            } else {
+                decisionCard.classList.remove('hidden');
+                decisionBanner.classList.add('hidden');
+            }
+
+            // Timeline
+            const timelineBox = document.getElementById('timelineContainer');
+            const logs = currentItem.timeline || [];
+            timelineBox.innerHTML = logs.map(l => `
+                <div class="relative flex items-start gap-3">
+                    <div class="w-7 h-7 rounded-full bg-white border-2 border-primary flex items-center justify-center text-primary text-xs flex-shrink-0 z-10">
+                        <i class="fas fa-check text-[10px]"></i>
+                    </div>
+                    <div class="min-w-0">
+                        <span class="text-xs font-semibold text-slate-800 block">${l.action}</span>
+                        <span class="text-[11px] text-slate-500 block">${l.actor}</span>
+                        <span class="text-[10px] text-slate-400 block mt-0.5">${l.time}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function handleApproveRequest() {
+            if (!currentItem) return;
+            const notes = (document.getElementById('executiveNotes').value || '').trim();
+
+            showCustomConfirm({
+                title: 'បញ្ជាក់ការចុះហត្ថលេខាអនុម័ត',
+                message: `តើលោកអ្នកពិតជាចង់ចុះហត្ថលេខាអនុម័តសំណើ ${currentItem.id} (${BMS_GM.fmtCurrencyKh(currentItem.amount)}) នេះមែនទេ?`,
+                confirmText: 'អនុម័តជាផ្លូវការ',
+                confirmClass: 'bg-[#1e3a5f] text-white hover:bg-[#142842]',
+                onConfirm: () => {
+                    const res = BMS_GM.approveRequest(currentItem.id, notes || 'បានអនុម័តជាផ្លូវការដោយអភិបាលទូទៅ');
+                    if (res.success) {
+                        showToast(`សំណើ ${currentItem.id} ត្រូវបានអនុម័តដោយជោគជ័យ!`, 'success');
+                        loadApprovalDetail();
+                    } else {
+                        showToast(res.message, 'error');
+                    }
+                }
+            });
+        }
+
+        function handleRejectRequest() {
+            if (!currentItem) return;
+            const notes = (document.getElementById('executiveNotes').value || '').trim();
+
+            if (!notes) {
+                showToast('សូមបញ្ចូលមូលហេតុនៃការបដិសេធក្នុងប្រអប់យោបល់ជាមុនសិន!', 'warning');
+                document.getElementById('executiveNotes').focus();
+                return;
+            }
+
+            showCustomConfirm({
+                title: 'បញ្ជាក់ការបដិសេធសំណើ',
+                message: `តើលោកអ្នកពិតជាចង់បដិសេធសំណើ ${currentItem.id} នេះមែនទេ? សំណើនឹងត្រូវបញ្ជូនត្រឡប់ទៅអ្នកស្នើសុំវិញ។`,
+                confirmText: 'បដិសេធសំណើ',
+                confirmClass: 'bg-rose-600 text-white hover:bg-rose-700',
+                onConfirm: () => {
+                    const res = BMS_GM.rejectRequest(currentItem.id, notes);
+                    if (res.success) {
+                        showToast(`សំណើ ${currentItem.id} ត្រូវបានបដិសេធ!`, 'info');
+                        loadApprovalDetail();
+                    } else {
+                        showToast(res.message, 'error');
+                    }
+                }
+            });
+        }
+
+        function initPage() {
+            renderPortalSidebar();
+            loadApprovalDetail();
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initPage);
+        } else {
+            initPage();
+        }
+    </script>
+</body>
+</html>

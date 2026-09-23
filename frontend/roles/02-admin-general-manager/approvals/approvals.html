@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - មជ្ឈមណ្ឌលអនុម័តសកល</title>
+    <link rel="icon" type="image/png" href="../../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1e3a5f",
+                        'primary-dark': "#142842",
+                        accent: "#0ea5e9",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../shared/styles/custom.css">
+    <link rel="stylesheet" href="../../../shared/styles/portal.css">
+</head>
+<body id="gmPortal" data-role-root=".." data-active="approvals" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <div id="sidebarHost"></div>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <!-- Content Top Header -->
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div class="min-w-0">
+                <h2 class="text-xl font-semibold text-gray-800 leading-tight truncate">មជ្ឈមណ្ឌលអនុម័តសកល</h2>
+                <p class="text-xs font-normal text-gray-500 mt-0.5 truncate">ការពិនិត្យ ផ្ទៀងផ្ទាត់ និងអនុម័តសំណើប្រតិបត្តិការអាជីវកម្មលើសពិដានកម្រិតសហគ្រាស</p>
+            </div>
+
+            <div class="flex items-center space-x-3 flex-shrink-0">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 text-slate-700 text-xs font-medium">
+                    <i class="fas fa-layer-group text-slate-400"></i>
+                    <span>សរុប <span id="totalApprovalsCount" class="font-bold text-slate-800">0</span> សំណើ</span>
+                </span>
+
+                <div class="flex items-center sm:border-l sm:pl-3">
+                    <div class="w-10 h-10 rounded-full bg-[#1e3a5f] text-white flex items-center justify-center font-semibold text-sm shadow-sm" title="លី ហាក់សេង (អភិបាលទូទៅ)">លហ</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-4">
+            <div class="w-full space-y-4">
+
+                <!-- Category Tabs (Filter by Request Type) -->
+                <div class="bg-white rounded-2xl p-2 border border-slate-200/80 shadow-sm flex flex-wrap items-center gap-1.5 overflow-x-auto">
+                    <button onclick="setCategoryTab('all', this)" class="category-tab active px-3.5 py-2 rounded-xl text-xs font-medium transition flex items-center gap-2 bg-[#1e3a5f] text-white shadow-sm cursor-pointer">
+                        <i class="fas fa-list-check"></i>
+                        <span>ទាំងអស់</span>
+                        <span id="tabCountAll" class="px-1.5 py-0.5 rounded-full bg-white/20 text-[10px]">0</span>
+                    </button>
+                    <button onclick="setCategoryTab('disbursement', this)" class="category-tab px-3.5 py-2 rounded-xl text-xs font-medium transition flex items-center gap-2 text-slate-600 hover:bg-slate-100 cursor-pointer">
+                        <i class="fas fa-receipt text-blue-500"></i>
+                        <span>ប័ណ្ណចំណាយទូទាត់</span>
+                        <span id="tabCountDisb" class="px-1.5 py-0.5 rounded-full bg-slate-100 text-slate-600 text-[10px]">0</span>
+                    </button>
+                    <button onclick="setCategoryTab('purchase_order', this)" class="category-tab px-3.5 py-2 rounded-xl text-xs font-medium transition flex items-center gap-2 text-slate-600 hover:bg-slate-100 cursor-pointer">
+                        <i class="fas fa-cart-shopping text-emerald-500"></i>
+                        <span>បញ្ជាទិញទំនិញ</span>
+                        <span id="tabCountPO" class="px-1.5 py-0.5 rounded-full bg-slate-100 text-slate-600 text-[10px]">0</span>
+                    </button>
+                    <button onclick="setCategoryTab('high_discount', this)" class="category-tab px-3.5 py-2 rounded-xl text-xs font-medium transition flex items-center gap-2 text-slate-600 hover:bg-slate-100 cursor-pointer">
+                        <i class="fas fa-tag text-purple-500"></i>
+                        <span>បញ្ចុះតម្លៃពិសេស</span>
+                        <span id="tabCountDisc" class="px-1.5 py-0.5 rounded-full bg-slate-100 text-slate-600 text-[10px]">0</span>
+                    </button>
+                    <button onclick="setCategoryTab('credit_override', this)" class="category-tab px-3.5 py-2 rounded-xl text-xs font-medium transition flex items-center gap-2 text-slate-600 hover:bg-slate-100 cursor-pointer">
+                        <i class="fas fa-credit-card text-amber-500"></i>
+                        <span>លើកលែងពិដានឥណទាន</span>
+                        <span id="tabCountCredit" class="px-1.5 py-0.5 rounded-full bg-slate-100 text-slate-600 text-[10px]">0</span>
+                    </button>
+                    <button onclick="setCategoryTab('stock_writeoff', this)" class="category-tab px-3.5 py-2 rounded-xl text-xs font-medium transition flex items-center gap-2 text-slate-600 hover:bg-slate-100 cursor-pointer">
+                        <i class="fas fa-box-open text-rose-500"></i>
+                        <span>កាត់កងស្តុកខូចខាត</span>
+                        <span id="tabCountWriteoff" class="px-1.5 py-0.5 rounded-full bg-slate-100 text-slate-600 text-[10px]">0</span>
+                    </button>
+                    <button onclick="setCategoryTab('void_invoice', this)" class="category-tab px-3.5 py-2 rounded-xl text-xs font-medium transition flex items-center gap-2 text-slate-600 hover:bg-slate-100 cursor-pointer">
+                        <i class="fas fa-ban text-slate-500"></i>
+                        <span>លុបវិក្កយបត្រ</span>
+                        <span id="tabCountVoid" class="px-1.5 py-0.5 rounded-full bg-slate-100 text-slate-600 text-[10px]">0</span>
+                    </button>
+                </div>
+
+                <!-- Search & Filters Toolbar -->
+                <div class="bg-white rounded-2xl p-4 border border-slate-200/80 shadow-sm flex flex-wrap items-center justify-between gap-3">
+                    <div class="flex flex-wrap items-center gap-3 flex-1 min-w-[280px]">
+                        <!-- Search Input -->
+                        <div class="relative flex-1 min-w-[200px] max-w-md">
+                            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                                <i class="fas fa-search text-xs"></i>
+                            </span>
+                            <input type="text" id="searchInput" oninput="handleSearch()"
+                                placeholder="ស្វែងរកតាមលេខកូដសំណើ អ្នកស្នើសុំ ឬបរិយាយ..."
+                                class="w-full bg-slate-50 hover:bg-slate-100/70 focus:bg-white border border-slate-200 rounded-xl pl-9 pr-4 py-2 text-xs text-slate-800 transition outline-none font-medium placeholder:text-slate-400 placeholder:font-normal">
+                        </div>
+
+                        <!-- Status Filter Buttons -->
+                        <div class="flex items-center gap-1 bg-slate-50 p-1 rounded-xl border border-slate-200">
+                            <button onclick="setStatusFilter('all', this)" class="status-btn active px-3 py-1.5 rounded-lg text-xs font-medium transition bg-white text-slate-800 shadow-xs cursor-pointer">
+                                ទាំងអស់
+                            </button>
+                            <button onclick="setStatusFilter('pending', this)" class="status-btn px-3 py-1.5 rounded-lg text-xs font-medium transition text-slate-600 hover:text-slate-900 cursor-pointer">
+                                <span class="w-1.5 h-1.5 rounded-full bg-amber-500 inline-block mr-1"></span>រង់ចាំអនុម័ត
+                            </button>
+                            <button onclick="setStatusFilter('approved', this)" class="status-btn px-3 py-1.5 rounded-lg text-xs font-medium transition text-slate-600 hover:text-slate-900 cursor-pointer">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block mr-1"></span>បានអនុម័ត
+                            </button>
+                            <button onclick="setStatusFilter('rejected', this)" class="status-btn px-3 py-1.5 rounded-lg text-xs font-medium transition text-slate-600 hover:text-slate-900 cursor-pointer">
+                                <span class="w-1.5 h-1.5 rounded-full bg-rose-500 inline-block mr-1"></span>បានបដិសេធ
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-2">
+                        <button onclick="exportApprovalsCSV()" class="h-9 px-3.5 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 text-xs rounded-xl flex items-center gap-2 font-medium transition shadow-xs cursor-pointer">
+                            <i class="fas fa-file-csv text-slate-500"></i>
+                            <span>នាំចេញ CSV</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Approvals Table Container -->
+                <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-slate-50/80 border-b border-slate-200 text-slate-600 text-xs font-semibold uppercase tracking-wider">
+                                    <th class="py-3.5 px-4">លេខកូដសំណើ</th>
+                                    <th class="py-3.5 px-4">ប្រភេទ</th>
+                                    <th class="py-3.5 px-4">អ្នកស្នើសុំ</th>
+                                    <th class="py-3.5 px-4">ឯកសារយោង និងបរិយាយ</th>
+                                    <th class="py-3.5 px-4 text-right">ទឹកប្រាក់</th>
+                                    <th class="py-3.5 px-4">កាលបរិច្ឆេទ</th>
+                                    <th class="py-3.5 px-4 text-center">ស្ថានភាព</th>
+                                    <th class="py-3.5 px-4 text-center">សកម្មភាព</th>
+                                </tr>
+                            </thead>
+                            <tbody id="approvalsTableBody" class="divide-y divide-slate-100 text-xs text-slate-700"></tbody>
+                        </table>
+                    </div>
+
+                    <!-- Empty State -->
+                    <div id="emptyState" class="hidden py-12 text-center">
+                        <div class="w-12 h-12 rounded-2xl bg-slate-100 text-slate-400 flex items-center justify-center mx-auto mb-3 text-lg">
+                            <i class="fas fa-folder-open"></i>
+                        </div>
+                        <h4 class="text-sm font-semibold text-slate-700">មិនមានសំណើត្រូវបង្ហាញឡើយ</h4>
+                        <p class="text-xs text-slate-400 mt-1">សូមសាកល្បងផ្លាស់ប្តូរពាក្យស្វែងរក ឬផ្ទាំងតម្រង</p>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Floating Row Action Dropdown Menu (Standard 9) -->
+    <div id="rowActionDropdown" class="fixed hidden bg-white rounded-2xl shadow-xl border border-slate-200 py-1.5 w-52 z-50 transition-opacity duration-150">
+        <div class="px-3 py-1.5 border-b border-slate-100 mb-1">
+            <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider block">សកម្មភាពលើសំណើ</span>
+            <span id="dropdownRefCode" class="text-xs font-bold text-slate-800 truncate block"></span>
+        </div>
+        <a id="dropdownViewLink" href="#" class="flex items-center gap-2.5 px-3.5 py-2 text-xs text-slate-700 hover:bg-slate-50 transition">
+            <div class="w-6 h-6 rounded-lg bg-sky-50 text-sky-600 flex items-center justify-center text-[11px]">
+                <i class="fas fa-file-invoice"></i>
+            </div>
+            <span>ពិនិត្យលម្អិត និងចុះហត្ថលេខា</span>
+        </a>
+        <button id="dropdownApproveBtn" onclick="quickApproveFromDropdown()" class="w-full flex items-center gap-2.5 px-3.5 py-2 text-xs text-emerald-700 hover:bg-emerald-50 transition text-left cursor-pointer">
+            <div class="w-6 h-6 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center text-[11px]">
+                <i class="fas fa-check"></i>
+            </div>
+            <span>អនុម័តរហ័ស</span>
+        </button>
+        <button id="dropdownRejectBtn" onclick="quickRejectFromDropdown()" class="w-full flex items-center gap-2.5 px-3.5 py-2 text-xs text-rose-700 hover:bg-rose-50 transition text-left cursor-pointer">
+            <div class="w-6 h-6 rounded-lg bg-rose-50 text-rose-600 flex items-center justify-center text-[11px]">
+                <i class="fas fa-xmark"></i>
+            </div>
+            <span>បដិសេធរហ័ស</span>
+        </button>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../../shared/scripts/ui-components.js"></script>
+    <script src="../data.js"></script>
+    <script src="../../../shared/scripts/portal.js"></script>
+    <script>
+        let currentCategory = 'all';
+        let currentStatus = 'all';
+        let searchQuery = '';
+        let activeDropdownRequestId = null;
+
+        function setCategoryTab(category, btn) {
+            currentCategory = category;
+            document.querySelectorAll('.category-tab').forEach(b => {
+                b.classList.remove('bg-[#1e3a5f]', 'text-white', 'shadow-sm');
+                b.classList.add('text-slate-600', 'hover:bg-slate-100');
+            });
+            btn.classList.add('bg-[#1e3a5f]', 'text-white', 'shadow-sm');
+            btn.classList.remove('text-slate-600', 'hover:bg-slate-100');
+            renderTable();
+        }
+
+        function setStatusFilter(status, btn) {
+            currentStatus = status;
+            document.querySelectorAll('.status-btn').forEach(b => {
+                b.classList.remove('bg-white', 'text-slate-800', 'shadow-xs');
+                b.classList.add('text-slate-600');
+            });
+            btn.classList.add('bg-white', 'text-slate-800', 'shadow-xs');
+            btn.classList.remove('text-slate-600');
+            renderTable();
+        }
+
+        function handleSearch() {
+            searchQuery = (document.getElementById('searchInput').value || '').trim().toLowerCase();
+            renderTable();
+        }
+
+        function getStatusBadge(status) {
+            if (status === 'approved') {
+                return '<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-[11px] font-medium border border-emerald-200"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>បានអនុម័ត</span>';
+            }
+            if (status === 'rejected') {
+                return '<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-rose-50 text-rose-700 text-[11px] font-medium border border-rose-200"><span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span>បានបដិសេធ</span>';
+            }
+            return '<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-50 text-amber-700 text-[11px] font-medium border border-amber-200"><span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>រង់ចាំអនុម័ត</span>';
+        }
+
+        function renderTable() {
+            const all = BMS_GM.getApprovals();
+            
+            // Update Tab Counts
+            document.getElementById('totalApprovalsCount').textContent = all.length;
+            document.getElementById('tabCountAll').textContent = all.length;
+            document.getElementById('tabCountDisb').textContent = all.filter(a => a.type === 'disbursement').length;
+            document.getElementById('tabCountPO').textContent = all.filter(a => a.type === 'purchase_order').length;
+            document.getElementById('tabCountDisc').textContent = all.filter(a => a.type === 'high_discount').length;
+            document.getElementById('tabCountCredit').textContent = all.filter(a => a.type === 'credit_override').length;
+            document.getElementById('tabCountWriteoff').textContent = all.filter(a => a.type === 'stock_writeoff').length;
+            document.getElementById('tabCountVoid').textContent = all.filter(a => a.type === 'void_invoice').length;
+
+            let filtered = BMS_GM.getApprovals(currentCategory, currentStatus);
+
+            if (searchQuery) {
+                filtered = filtered.filter(a => 
+                    a.id.toLowerCase().includes(searchQuery) ||
+                    a.refCode.toLowerCase().includes(searchQuery) ||
+                    a.requesterName.toLowerCase().includes(searchQuery) ||
+                    a.subject.toLowerCase().includes(searchQuery)
+                );
+            }
+
+            const tbody = document.getElementById('approvalsTableBody');
+            const empty = document.getElementById('emptyState');
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = '';
+                empty.classList.remove('hidden');
+                return;
+            }
+
+            empty.classList.add('hidden');
+            tbody.innerHTML = filtered.map(app => `
+                <tr class="hover:bg-slate-50/70 transition">
+                    <!-- Code -->
+                    <td class="py-3.5 px-4 font-semibold text-primary whitespace-nowrap">
+                        <a href="view-approval.html?id=${app.id}" class="hover:underline flex items-center gap-1.5">
+                            <i class="fas fa-file-signature text-xs text-slate-400"></i>
+                            <span>${app.id}</span>
+                        </a>
+                    </td>
+
+                    <!-- Type -->
+                    <td class="py-3.5 px-4 whitespace-nowrap">
+                        <span class="px-2.5 py-1 rounded-md text-[11px] font-medium bg-${app.typeBadgeColor}-50 text-${app.typeBadgeColor}-700 border border-${app.typeBadgeColor}-200">${app.typeNameKh}</span>
+                    </td>
+
+                    <!-- Requester -->
+                    <td class="py-3.5 px-4">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-8 h-8 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center font-medium text-xs flex-shrink-0">
+                                ${app.requesterAvatar}
+                            </div>
+                            <div class="min-w-0">
+                                <span class="font-medium text-slate-800 block truncate">${app.requesterName}</span>
+                                <span class="text-[11px] text-slate-400 block truncate">${app.requesterRole}</span>
+                            </div>
+                        </div>
+                    </td>
+
+                    <!-- Ref & Subject -->
+                    <td class="py-3.5 px-4 max-w-xs">
+                        <a href="view-approval.html?id=${app.id}" class="font-semibold text-slate-800 hover:text-primary transition block truncate">${app.refCode}</a>
+                        <span class="text-[11px] text-slate-500 block truncate mt-0.5">${app.subject}</span>
+                    </td>
+
+                    <!-- Amount -->
+                    <td class="py-3.5 px-4 text-right whitespace-nowrap">
+                        <span class="text-sm font-bold text-slate-800">${BMS_GM.fmtCurrencyKh(app.amount)}</span>
+                        ${app.discountPct ? `<span class="block text-[11px] text-purple-600 font-medium">ចុះ ${app.discountPct}%</span>` : ''}
+                    </td>
+
+                    <!-- Date -->
+                    <td class="py-3.5 px-4 whitespace-nowrap text-slate-600 text-xs">
+                        ${app.requestedDate}
+                    </td>
+
+                    <!-- Status -->
+                    <td class="py-3.5 px-4 text-center whitespace-nowrap">
+                        ${getStatusBadge(app.status)}
+                    </td>
+
+                    <!-- Actions -->
+                    <td class="py-3.5 px-4 text-center whitespace-nowrap">
+                        <button type="button" onclick="openRowAction(event, '${app.id}', '${app.refCode}', '${app.status}')" class="w-8 h-8 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-600 inline-flex items-center justify-center transition cursor-pointer" title="សកម្មភាព">
+                            <i class="fas fa-ellipsis-vertical text-xs"></i>
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function openRowAction(event, id, refCode, status) {
+            event.stopPropagation();
+            activeDropdownRequestId = id;
+            const dropdown = document.getElementById('rowActionDropdown');
+            document.getElementById('dropdownRefCode').textContent = `${id} (${refCode})`;
+            document.getElementById('dropdownViewLink').href = `view-approval.html?id=${id}`;
+
+            const approveBtn = document.getElementById('dropdownApproveBtn');
+            const rejectBtn = document.getElementById('dropdownRejectBtn');
+
+            if (status === 'approved' || status === 'rejected') {
+                approveBtn.classList.add('hidden');
+                rejectBtn.classList.add('hidden');
+            } else {
+                approveBtn.classList.remove('hidden');
+                rejectBtn.classList.remove('hidden');
+            }
+
+            const btnRect = event.currentTarget.getBoundingClientRect();
+            dropdown.style.top = `${btnRect.bottom + window.scrollY + 4}px`;
+            dropdown.style.left = `${btnRect.right - 208}px`;
+            dropdown.classList.remove('hidden');
+        }
+
+        function quickApproveFromDropdown() {
+            if (!activeDropdownRequestId) return;
+            const reqId = activeDropdownRequestId;
+            closeDropdown();
+            showCustomConfirm({
+                title: 'អនុម័តសំណើជាផ្លូវការ',
+                message: `តើលោកអ្នកពិតជាចង់អនុម័តសំណើ ${reqId} នេះមែនទេ? សកម្មភាពនេះនឹងបើកផ្លូវឱ្យប្រតិបត្តិការដំណើរការបន្ត។`,
+                confirmText: 'អនុម័តឥឡូវនេះ',
+                confirmClass: 'bg-[#1e3a5f] text-white hover:bg-[#142842]',
+                onConfirm: () => {
+                    const res = BMS_GM.approveRequest(reqId, 'បានអនុម័តរហ័សពីមជ្ឈមណ្ឌលអនុម័ត');
+                    if (res.success) {
+                        showToast(`សំណើ ${reqId} ត្រូវបានអនុម័តដោយជោគជ័យ!`, 'success');
+                        renderTable();
+                    } else {
+                        showToast(res.message, 'error');
+                    }
+                }
+            });
+        }
+
+        function quickRejectFromDropdown() {
+            if (!activeDropdownRequestId) return;
+            const reqId = activeDropdownRequestId;
+            closeDropdown();
+            showCustomConfirm({
+                title: 'បដិសេធសំណើ',
+                message: `តើលោកអ្នកពិតជាចង់បដិសេធសំណើ ${reqId} នេះមែនទេ? សំណើនឹងត្រូវបញ្ជូនត្រឡប់ទៅអ្នកស្នើសុំវិញ។`,
+                confirmText: 'បដិសេធ',
+                confirmClass: 'bg-rose-600 text-white hover:bg-rose-700',
+                onConfirm: () => {
+                    const res = BMS_GM.rejectRequest(reqId, 'បានបដិសេធរហ័សពីមជ្ឈមណ្ឌលអនុម័ត');
+                    if (res.success) {
+                        showToast(`សំណើ ${reqId} ត្រូវបានបដិសេធ!`, 'info');
+                        renderTable();
+                    } else {
+                        showToast(res.message, 'error');
+                    }
+                }
+            });
+        }
+
+        function closeDropdown() {
+            const dropdown = document.getElementById('rowActionDropdown');
+            if (dropdown) dropdown.classList.add('hidden');
+        }
+
+        document.addEventListener('click', closeDropdown);
+
+        function exportApprovalsCSV() {
+            const approvals = BMS_GM.getApprovals();
+            let csv = "\uFEFFលេខកូដសំណើ,ប្រភេទ,អ្នកស្នើសុំ,ឯកសារយោង,បរិយាយ,ទឹកប្រាក់,កាលបរិច្ឆេទ,ស្ថានភាព\n";
+            approvals.forEach(a => {
+                csv += `"${a.id}","${a.typeNameKh}","${a.requesterName}","${a.refCode}","${a.subject.replace(/"/g, '""')}","${a.amount}","${a.requestedDate}","${a.status}"\n`;
+            });
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.setAttribute("href", url);
+            link.setAttribute("download", `digitechkh_approvals_${new Date().toISOString().slice(0,10)}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            showToast('ទាញយករបាយការណ៍សំណើអនុម័តជា CSV ជោគជ័យ!', 'success');
+        }
+
+        function initPage() {
+            renderPortalSidebar();
+            renderTable();
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initPage);
+        } else {
+            initPage();
+        }
+    </script>
+</body>
+</html>

@@ -198,22 +198,24 @@
                         </div>
                     </a>
 
-                    <!-- Role 2: 2. Admin / General Manager -->
-                    <div onclick="selectDemoRole('admin', 'អភិបាលគ្រប់គ្រងទូទៅ', '../../../documentation/role_admin_general_manager.html')"
-                         class="p-3.5 rounded-2xl bg-white border border-slate-200 hover:border-primary/50 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group cursor-pointer hover:-translate-y-0.5">
+                    <!-- Role 2: 2. Admin / General Manager (Active Live Portal) -->
+                    <a href="../02-admin-general-manager/dashboard.html"
+                       class="p-3.5 rounded-2xl bg-white border-2 border-emerald-400/80 hover:border-emerald-500 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group cursor-pointer bg-gradient-to-b from-emerald-50/20 to-white hover:-translate-y-0.5">
                         <div>
                             <div class="flex items-center justify-between mb-2">
                                 <span class="text-xl">🏛️</span>
-                                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-100 text-slate-800">Command</span>
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-amber-50 text-amber-700">បញ្ជាការដ្ឋាន</span>
                             </div>
-                            <h4 class="text-sm font-bold text-slate-800 mb-0.5 group-hover:text-primary transition">2. Admin / General Manager</h4>
+                            <h4 class="text-sm font-bold text-slate-900 mb-0.5 group-hover:text-emerald-700 transition">2. Admin / General Manager</h4>
                             <p class="text-[11px] text-slate-500 leading-snug">បញ្ជាការដ្ឋានកំពូល និងការអនុម័ត</p>
                         </div>
-                        <div class="pt-2 mt-2.5 border-t border-slate-100 flex items-center justify-between text-slate-400 group-hover:text-primary transition text-xs">
-                            <span class="text-[11px]">ឯកសារបច្ចេកទេស</span>
-                            <i class="fas fa-arrow-right text-[10px] text-slate-300 transition-transform group-hover:translate-x-1"></i>
+                        <div class="pt-2 mt-2.5 border-t border-emerald-100 flex items-center justify-between text-emerald-600 font-semibold text-xs">
+                            <span class="flex items-center gap-1.5">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>ចូលសាកល្បង
+                            </span>
+                            <i class="fas fa-arrow-right text-[10px] transition-transform group-hover:translate-x-1"></i>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- Role 3: 3. Sales Manager (Active Live Portal) -->
                     <a href="../03-sales-manager/dashboard.html"
@@ -363,10 +365,10 @@
                         <div>
                             <div class="flex items-center justify-between mb-2">
                                 <span class="text-xl">🔍</span>
-                                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-rose-50 text-rose-700">Read-Only</span>
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-rose-50 text-rose-700">មើលប៉ុណ្ណោះ</span>
                             </div>
                             <h4 class="text-sm font-bold text-slate-800 mb-0.5 group-hover:text-primary transition">11. Internal Auditor / Executive</h4>
-                            <p class="text-[11px] text-slate-500 leading-snug">ត្រួតពិនិត្យសវនកម្ម (Read-Only)</p>
+                            <p class="text-[11px] text-slate-500 leading-snug">ត្រួតពិនិត្យសវនកម្ម (មើលប៉ុណ្ណោះ)</p>
                         </div>
                         <div class="pt-2 mt-2.5 border-t border-slate-100 flex items-center justify-between text-slate-400 group-hover:text-primary transition text-xs">
                             <span class="text-[11px]">ឯកសារបច្ចេកទេស</span>
@@ -380,7 +382,7 @@
                         <div>
                             <div class="flex items-center justify-between mb-2">
                                 <span class="text-xl">🎧</span>
-                                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700">Support</span>
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700">ផ្នែកជំនួយ</span>
                             </div>
                             <h4 class="text-sm font-bold text-slate-900 mb-0.5 group-hover:text-emerald-700 transition">12. Customer Support</h4>
                             <p class="text-[11px] text-slate-500 leading-snug">សំបុត្រជំនួយ និងតាមដានដឹក</p>
@@ -397,7 +399,7 @@
             <div class="p-3.5 sm:p-4 bg-white border-t border-slate-100 flex flex-wrap items-center justify-between gap-3 flex-shrink-0">
                 <a href="../../../documentation/DIGITECHKH-Roles-And-Permissions-Interactive-Guide.html" class="text-xs text-indigo-600 hover:text-indigo-800 font-medium flex items-center gap-1.5 transition">
                     <i class="fas fa-table-cells"></i>
-                    <span>បើកផ្ទាំងអន្តរកម្ម & ម៉ាទ្រីសសិទ្ធិ (12 Roles Guide)</span>
+                    <span>បើកផ្ទាំងអន្តរកម្ម និងម៉ាទ្រីសសិទ្ធិ (ការណែនាំ 12 តួនាទី)</span>
                 </a>
                 <button onclick="toggleRoleModal()" class="px-5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium text-xs transition cursor-pointer">
                     បិទផ្ទាំង
@@ -437,6 +439,10 @@
         function selectDemoRole(role, roleName, docUrl) {
             if (role === 'super-admin' || role === '01-super-admin') {
                 window.location.href = '../01-super-admin/dashboard.html';
+                return;
+            }
+            if (role === 'admin' || role === 'general-manager' || role === '02-admin-general-manager') {
+                window.location.href = '../02-admin-general-manager/dashboard.html';
                 return;
             }
             if (role === 'manager' || role === 'sales-manager' || role === '03-sales-manager') {
@@ -479,6 +485,14 @@
                 return;
             }
 
+            if (val.includes('admin') || val.includes('gm') || val.includes('general')) {
+                showToast('ចូលប្រព័ន្ធជោគជ័យ! កំពុងបញ្ជូនទៅកាន់ច្រកអភិបាលទូទៅ...', 'success');
+                setTimeout(() => {
+                    window.location.href = '../02-admin-general-manager/dashboard.html';
+                }, 800);
+                return;
+            }
+
             if (val.includes('staff') || val.includes('floor') || val.includes('worker')) {
                 showToast('ចូលប្រព័ន្ធជោគជ័យ! កំពុងបញ្ជូនទៅកាន់ជាន់ឃ្លាំង...', 'success');
                 setTimeout(() => {
@@ -503,7 +517,7 @@
                 return;
             }
 
-            if (val.includes('admin') || val.includes('cashier') || val.includes('accountant') || val.includes('purchase')) {
+            if (val.includes('cashier') || val.includes('accountant') || val.includes('purchase')) {
                 showToast('គណនីតួនាទីនេះមិនទាន់បើកដំណើរការទេ។ សូមប្រើប្រាស់គណនីដែលមានស្រាប់', 'warning');
                 return;
             }

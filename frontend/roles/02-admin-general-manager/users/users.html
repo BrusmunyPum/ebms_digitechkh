@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - គ្រប់គ្រងគណនីបុគ្គលិក</title>
+    <link rel="icon" type="image/png" href="../../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1e3a5f",
+                        'primary-dark': "#142842",
+                        accent: "#0ea5e9",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../shared/styles/custom.css">
+    <link rel="stylesheet" href="../../../shared/styles/portal.css">
+</head>
+<body id="gmPortal" data-role-root=".." data-active="users" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <div id="sidebarHost"></div>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <!-- Content Top Header -->
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div class="min-w-0">
+                <h2 class="text-xl font-semibold text-gray-800 leading-tight truncate">គ្រប់គ្រងគណនីបុគ្គលិក និងសិទ្ធិ</h2>
+                <p class="text-xs font-normal text-gray-500 mt-0.5 truncate">ការបង្កើត កែប្រែ និងកំណត់សិទ្ធិចូលប្រើប្រាស់ប្រព័ន្ធសម្រាប់បុគ្គលិកគ្រប់ផ្នែក</p>
+            </div>
+
+            <div class="flex items-center space-x-3 flex-shrink-0">
+                <a href="create-user.html" class="px-4 py-2 rounded-xl bg-[#1e3a5f] hover:bg-[#142842] text-white text-xs font-medium transition shadow-sm flex items-center gap-2 cursor-pointer">
+                    <i class="fas fa-user-plus text-xs"></i>
+                    <span>+ បង្កើតគណនីបុគ្គលិកថ្មី</span>
+                </a>
+                <div class="flex items-center sm:border-l sm:pl-3">
+                    <div class="w-10 h-10 rounded-full bg-[#1e3a5f] text-white flex items-center justify-center font-semibold text-sm shadow-sm" title="លី ហាក់សេង (អភិបាលទូទៅ)">លហ</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-4">
+            <div class="w-full space-y-4">
+
+                <!-- 4 Summary KPI Mini-Cards -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="bg-white rounded-2xl p-4 border border-slate-200/80 shadow-sm flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-slate-500 block">បុគ្គលិកសរុប</span>
+                            <h3 id="statTotalUsers" class="text-2xl font-bold text-slate-800 mt-0.5">0</h3>
+                            <span class="text-[11px] text-slate-400">គ្រប់ផ្នែកក្នុងក្រុមហ៊ុន</span>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-sm">
+                            <i class="fas fa-users"></i>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-4 border border-slate-200/80 shadow-sm flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-slate-500 block">កំពុងដំណើរការ</span>
+                            <h3 id="statActiveUsers" class="text-2xl font-bold text-emerald-600 mt-0.5">0</h3>
+                            <span class="text-[11px] text-emerald-600 font-medium">មានសិទ្ធិចូលប្រព័ន្ធ</span>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-sm">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-4 border border-slate-200/80 shadow-sm flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-slate-500 block">បានផ្អាក / ចាក់សោរ</span>
+                            <h3 id="statSuspendedUsers" class="text-2xl font-bold text-rose-600 mt-0.5">0</h3>
+                            <span class="text-[11px] text-slate-400">គណនីបិទដំណើរការ</span>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center text-sm">
+                            <i class="fas fa-user-lock"></i>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-4 border border-slate-200/80 shadow-sm flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-slate-500 block">សាខាប្រតិបត្តិការ</span>
+                            <h3 class="text-2xl font-bold text-slate-800 mt-0.5">3</h3>
+                            <span class="text-[11px] text-indigo-600 font-medium">ភ្នំពេញ, សៀមរាប, ឫស្សីកែវ</span>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-sm">
+                            <i class="fas fa-building"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Search & Filters Toolbar -->
+                <div class="bg-white rounded-2xl p-4 border border-slate-200/80 shadow-sm flex flex-wrap items-center justify-between gap-3">
+                    <div class="flex flex-wrap items-center gap-3 flex-1 min-w-[280px]">
+                        <!-- Search Input -->
+                        <div class="relative flex-1 min-w-[200px] max-w-sm">
+                            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                                <i class="fas fa-search text-xs"></i>
+                            </span>
+                            <input type="text" id="searchInput" oninput="handleSearch()"
+                                placeholder="ស្វែងរកតាមឈ្មោះ អ៊ីមែល ឬលេខទូរស័ព្ទ..."
+                                class="w-full bg-slate-50 hover:bg-slate-100/70 focus:bg-white border border-slate-200 rounded-xl pl-9 pr-4 py-2 text-xs text-slate-800 transition outline-none font-medium placeholder:text-slate-400 placeholder:font-normal">
+                        </div>
+
+                        <!-- Role Filter Dropdown -->
+                        <div class="relative">
+                            <button id="roleFilterBtn" onclick="toggleDropdown('roleDropdown')" class="h-9 px-3.5 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 text-xs rounded-xl flex items-center gap-2 font-medium transition cursor-pointer">
+                                <i class="fas fa-user-tag text-slate-400"></i>
+                                <span id="roleFilterLabel">តួនាទី: ទាំងអស់</span>
+                                <i class="fas fa-chevron-down text-[10px] text-slate-400"></i>
+                            </button>
+                            <div id="roleDropdown" class="hidden absolute left-0 mt-1.5 w-52 bg-white rounded-2xl shadow-xl border border-slate-200 py-1.5 z-50 text-xs">
+                                <div onclick="selectRole('all', 'តួនាទី: ទាំងអស់')" class="px-3.5 py-2 hover:bg-slate-50 cursor-pointer font-medium text-slate-700">ទាំងអស់</div>
+                                <div onclick="selectRole('sales_manager', 'អ្នកគ្រប់គ្រងផ្នែកលក់')" class="px-3.5 py-2 hover:bg-slate-50 cursor-pointer text-slate-600">អ្នកគ្រប់គ្រងផ្នែកលក់</div>
+                                <div onclick="selectRole('sales_exec', 'បុគ្គលិកផ្នែកលក់')" class="px-3.5 py-2 hover:bg-slate-50 cursor-pointer text-slate-600">បុគ្គលិកផ្នែកលក់</div>
+                                <div onclick="selectRole('warehouse_manager', 'អ្នកគ្រប់គ្រងឃ្លាំង')" class="px-3.5 py-2 hover:bg-slate-50 cursor-pointer text-slate-600">អ្នកគ្រប់គ្រងឃ្លាំង</div>
+                                <div onclick="selectRole('procurement_manager', 'អ្នកគ្រប់គ្រងលទ្ធកម្ម')" class="px-3.5 py-2 hover:bg-slate-50 cursor-pointer text-slate-600">អ្នកគ្រប់គ្រងលទ្ធកម្ម</div>
+                                <div onclick="selectRole('chief_accountant', 'ប្រធានគណនេយ្យ')" class="px-3.5 py-2 hover:bg-slate-50 cursor-pointer text-slate-600">ប្រធានគណនេយ្យ</div>
+                                <div onclick="selectRole('apar_accountant', 'គណនេយ្យករទូទាត់ និងទារបំណុល')" class="px-3.5 py-2 hover:bg-slate-50 cursor-pointer text-slate-600">គណនេយ្យករទូទាត់ និងទារបំណុល</div>
+                                <div onclick="selectRole('customer_support', 'ផ្នែកគាំទ្រអតិថិជន')" class="px-3.5 py-2 hover:bg-slate-50 cursor-pointer text-slate-600">ផ្នែកគាំទ្រអតិថិជន</div>
+                                <div onclick="selectRole('cashier_pos', 'អ្នកគិតលុយលក់រាយ')" class="px-3.5 py-2 hover:bg-slate-50 cursor-pointer text-slate-600">អ្នកគិតលុយលក់រាយ</div>
+                            </div>
+                        </div>
+
+                        <!-- Branch Filter Dropdown -->
+                        <div class="relative">
+                            <button id="branchFilterBtn" onclick="toggleDropdown('branchDropdown')" class="h-9 px-3.5 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 text-xs rounded-xl flex items-center gap-2 font-medium transition cursor-pointer">
+                                <i class="fas fa-building text-slate-400"></i>
+                                <span id="branchFilterLabel">សាខា: ទាំងអស់</span>
+                                <i class="fas fa-chevron-down text-[10px] text-slate-400"></i>
+                            </button>
+                            <div id="branchDropdown" class="hidden absolute left-0 mt-1.5 w-52 bg-white rounded-2xl shadow-xl border border-slate-200 py-1.5 z-50 text-xs">
+                                <div onclick="selectBranch('all', 'សាខា: ទាំងអស់')" class="px-3.5 py-2 hover:bg-slate-50 cursor-pointer font-medium text-slate-700">ទាំងអស់</div>
+                                <div onclick="selectBranch('BR-01', 'ទីស្នាក់ការកណ្តាល (ភ្នំពេញ)')" class="px-3.5 py-2 hover:bg-slate-50 cursor-pointer text-slate-600">ទីស្នាក់ការកណ្តាល (ភ្នំពេញ)</div>
+                                <div onclick="selectBranch('BR-02', 'សាខាខេត្តសៀមរាប')" class="px-3.5 py-2 hover:bg-slate-50 cursor-pointer text-slate-600">សាខាខេត្តសៀមរាប</div>
+                                <div onclick="selectBranch('BR-03', 'ឃ្លាំងកណ្តាលឫស្សីកែវ')" class="px-3.5 py-2 hover:bg-slate-50 cursor-pointer text-slate-600">ឃ្លាំងកណ្តាលឫស្សីកែវ</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-2">
+                        <button onclick="exportUsersCSV()" class="h-9 px-3.5 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 text-xs rounded-xl flex items-center gap-2 font-medium transition shadow-xs cursor-pointer">
+                            <i class="fas fa-file-csv text-slate-500"></i>
+                            <span>នាំចេញ CSV</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Users Table Container -->
+                <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-slate-50/80 border-b border-slate-200 text-slate-600 text-xs font-semibold uppercase tracking-wider">
+                                    <th class="py-3.5 px-4">បុគ្គលិក</th>
+                                    <th class="py-3.5 px-4">តួនាទី និងផ្នែក</th>
+                                    <th class="py-3.5 px-4">សាខា</th>
+                                    <th class="py-3.5 px-4">ទំនាក់ទំនង</th>
+                                    <th class="py-3.5 px-4">ចូលចុងក្រោយ</th>
+                                    <th class="py-3.5 px-4 text-center">ស្ថានភាព</th>
+                                    <th class="py-3.5 px-4 text-center">សកម្មភាព</th>
+                                </tr>
+                            </thead>
+                            <tbody id="usersTableBody" class="divide-y divide-slate-100 text-xs text-slate-700"></tbody>
+                        </table>
+                    </div>
+
+                    <!-- Empty State -->
+                    <div id="emptyUsersState" class="hidden py-12 text-center">
+                        <div class="w-12 h-12 rounded-2xl bg-slate-100 text-slate-400 flex items-center justify-center mx-auto mb-3 text-lg">
+                            <i class="fas fa-user-slash"></i>
+                        </div>
+                        <h4 class="text-sm font-semibold text-slate-700">មិនមានបុគ្គលិកត្រូវបង្ហាញឡើយ</h4>
+                        <p class="text-xs text-slate-400 mt-1">សូមសាកល្បងផ្លាស់ប្តូរពាក្យស្វែងរក ឬផ្ទាំងតម្រង</p>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Floating Row Action Dropdown Menu -->
+    <div id="rowActionDropdown" class="fixed hidden bg-white rounded-2xl shadow-xl border border-slate-200 py-1.5 w-52 z-50 transition-opacity duration-150">
+        <div class="px-3 py-1.5 border-b border-slate-100 mb-1">
+            <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider block">សកម្មភាពបុគ្គលិក</span>
+            <span id="dropdownUserName" class="text-xs font-bold text-slate-800 truncate block"></span>
+        </div>
+        <a id="dropdownViewLink" href="#" class="flex items-center gap-2.5 px-3.5 py-2 text-xs text-slate-700 hover:bg-slate-50 transition">
+            <div class="w-6 h-6 rounded-lg bg-sky-50 text-sky-600 flex items-center justify-center text-[11px]">
+                <i class="fas fa-id-badge"></i>
+            </div>
+            <span>ពិនិត្យប្រវត្តិរូប</span>
+        </a>
+        <a id="dropdownEditLink" href="#" class="flex items-center gap-2.5 px-3.5 py-2 text-xs text-slate-700 hover:bg-slate-50 transition">
+            <div class="w-6 h-6 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center text-[11px]">
+                <i class="fas fa-user-pen"></i>
+            </div>
+            <span>កែប្រែព័ត៌មាន</span>
+        </a>
+        <button onclick="handleResetPassword()" class="w-full flex items-center gap-2.5 px-3.5 py-2 text-xs text-slate-700 hover:bg-slate-50 transition text-left cursor-pointer">
+            <div class="w-6 h-6 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center text-[11px]">
+                <i class="fas fa-key"></i>
+            </div>
+            <span>កំណត់ពាក្យសម្ងាត់ឡើងវិញ</span>
+        </button>
+        <button id="dropdownToggleStatusBtn" onclick="handleToggleUserStatus()" class="w-full flex items-center gap-2.5 px-3.5 py-2 text-xs hover:bg-slate-50 transition text-left cursor-pointer border-t border-slate-100 mt-1">
+            <div class="w-6 h-6 rounded-lg bg-rose-50 text-rose-600 flex items-center justify-center text-[11px]">
+                <i class="fas fa-ban"></i>
+            </div>
+            <span id="dropdownToggleStatusText">ផ្អាកគណនី</span>
+        </button>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../../shared/scripts/ui-components.js"></script>
+    <script src="../data.js"></script>
+    <script src="../../../shared/scripts/portal.js"></script>
+    <script>
+        let currentRole = 'all';
+        let currentBranch = 'all';
+        let searchQuery = '';
+        let activeUserId = null;
+
+        function toggleDropdown(id) {
+            const el = document.getElementById(id);
+            const isHidden = el.classList.contains('hidden');
+            closeAllFilterDropdowns();
+            if (isHidden) el.classList.remove('hidden');
+        }
+
+        function closeAllFilterDropdowns() {
+            document.querySelectorAll('#roleDropdown, #branchDropdown').forEach(d => d.classList.add('hidden'));
+        }
+
+        function selectRole(role, label) {
+            currentRole = role;
+            document.getElementById('roleFilterLabel').textContent = label;
+            closeAllFilterDropdowns();
+            renderUsers();
+        }
+
+        function selectBranch(branch, label) {
+            currentBranch = branch;
+            document.getElementById('branchFilterLabel').textContent = label;
+            closeAllFilterDropdowns();
+            renderUsers();
+        }
+
+        function handleSearch() {
+            searchQuery = (document.getElementById('searchInput').value || '').trim().toLowerCase();
+            renderUsers();
+        }
+
+        function renderUsers() {
+            const allUsers = BMS_GM.getUsers();
+
+            // Update stats
+            document.getElementById('statTotalUsers').textContent = allUsers.length;
+            document.getElementById('statActiveUsers').textContent = allUsers.filter(u => u.status === 'active').length;
+            document.getElementById('statSuspendedUsers').textContent = allUsers.filter(u => u.status === 'suspended').length;
+
+            let filtered = BMS_GM.getUsers(currentRole, currentBranch, 'all');
+
+            if (searchQuery) {
+                filtered = filtered.filter(u =>
+                    u.fullNameKh.toLowerCase().includes(searchQuery) ||
+                    u.fullNameEn.toLowerCase().includes(searchQuery) ||
+                    u.email.toLowerCase().includes(searchQuery) ||
+                    u.phone.includes(searchQuery) ||
+                    u.id.toLowerCase().includes(searchQuery)
+                );
+            }
+
+            const tbody = document.getElementById('usersTableBody');
+            const empty = document.getElementById('emptyUsersState');
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = '';
+                empty.classList.remove('hidden');
+                return;
+            }
+
+            empty.classList.add('hidden');
+            tbody.innerHTML = filtered.map(u => `
+                <tr class="hover:bg-slate-50/70 transition">
+                    <!-- Staff Info -->
+                    <td class="py-3.5 px-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-9 h-9 rounded-full ${u.avatarBg || 'bg-[#1e3a5f]'} text-white flex items-center justify-center font-semibold text-xs flex-shrink-0 shadow-xs">
+                                ${u.avatar || 'បក'}
+                            </div>
+                            <div class="min-w-0">
+                                <a href="view-user.html?id=${u.id}" class="font-semibold text-slate-800 hover:text-primary transition block truncate">
+                                    ${u.fullNameKh}
+                                </a>
+                                <span class="text-[11px] text-slate-400 block truncate">${u.fullNameEn} • ${u.id}</span>
+                            </div>
+                        </div>
+                    </td>
+
+                    <!-- Role & Dept -->
+                    <td class="py-3.5 px-4 whitespace-nowrap">
+                        <span class="font-medium text-slate-800 block">${u.roleNameKh}</span>
+                        <span class="text-[11px] text-slate-400 block">${u.department}</span>
+                    </td>
+
+                    <!-- Branch -->
+                    <td class="py-3.5 px-4 whitespace-nowrap">
+                        <span class="px-2.5 py-1 rounded-md text-[11px] font-medium bg-slate-100 text-slate-700 border border-slate-200">${u.branchName}</span>
+                    </td>
+
+                    <!-- Contact -->
+                    <td class="py-3.5 px-4 whitespace-nowrap">
+                        <span class="font-medium text-slate-700 block">${u.phone}</span>
+                        <span class="text-[11px] text-slate-400 block">${u.email}</span>
+                    </td>
+
+                    <!-- Last Login -->
+                    <td class="py-3.5 px-4 whitespace-nowrap text-xs text-slate-600">
+                        ${u.lastLogin}
+                    </td>
+
+                    <!-- Status -->
+                    <td class="py-3.5 px-4 text-center whitespace-nowrap">
+                        ${u.status === 'active' 
+                            ? '<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-[11px] font-medium border border-emerald-200"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>សកម្ម</span>'
+                            : '<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-rose-50 text-rose-700 text-[11px] font-medium border border-rose-200"><span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span>បានផ្អាក</span>'
+                        }
+                    </td>
+
+                    <!-- Actions -->
+                    <td class="py-3.5 px-4 text-center whitespace-nowrap">
+                        <button type="button" onclick="openRowAction(event, '${u.id}', '${u.fullNameKh}', '${u.status}')" class="w-8 h-8 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-600 inline-flex items-center justify-center transition cursor-pointer" title="សកម្មភាព">
+                            <i class="fas fa-ellipsis-vertical text-xs"></i>
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function openRowAction(event, id, name, status) {
+            event.stopPropagation();
+            activeUserId = id;
+            const dropdown = document.getElementById('rowActionDropdown');
+            document.getElementById('dropdownUserName').textContent = name;
+            document.getElementById('dropdownViewLink').href = `view-user.html?id=${id}`;
+            document.getElementById('dropdownEditLink').href = `edit-user.html?id=${id}`;
+
+            const toggleBtnText = document.getElementById('dropdownToggleStatusText');
+            if (status === 'active') {
+                toggleBtnText.textContent = 'ផ្អាកគណនី';
+                toggleBtnText.className = 'text-rose-600 font-medium';
+            } else {
+                toggleBtnText.textContent = 'បើកដំណើរការឡើងវិញ';
+                toggleBtnText.className = 'text-emerald-600 font-medium';
+            }
+
+            const btnRect = event.currentTarget.getBoundingClientRect();
+            dropdown.style.top = `${btnRect.bottom + window.scrollY + 4}px`;
+            dropdown.style.left = `${btnRect.right - 208}px`;
+            dropdown.classList.remove('hidden');
+        }
+
+        function handleResetPassword() {
+            if (!activeUserId) return;
+            const u = BMS_GM.getUserById(activeUserId);
+            closeDropdown();
+            showCustomConfirm({
+                title: 'កំណត់ពាក្យសម្ងាត់ឡើងវិញ',
+                message: `តើលោកអ្នកចង់ផ្ញើតំណភ្ជាប់កំណត់ពាក្យសម្ងាត់ថ្មីទៅកាន់អ៊ីមែល ${u.email} របស់ ${u.fullNameKh} មែនទេ?`,
+                confirmText: 'ផ្ញើតំណភ្ជាប់',
+                confirmClass: 'bg-[#1e3a5f] text-white',
+                onConfirm: () => {
+                    showToast(`តំណភ្ជាប់កំណត់ពាក្យសម្ងាត់ត្រូវបានផ្ញើជូន ${u.fullNameKh} ដោយជោគជ័យ!`, 'success');
+                }
+            });
+        }
+
+        function handleToggleUserStatus() {
+            if (!activeUserId) return;
+            const u = BMS_GM.getUserById(activeUserId);
+            closeDropdown();
+            const actionText = u.status === 'active' ? 'ចាក់សោរ' : 'បើកដំណើរការ';
+
+            showCustomConfirm({
+                title: `បញ្ជាក់ការ${actionText}គណនី`,
+                message: `តើលោកអ្នកពិតជាចង់${actionText}គណនីរបស់ ${u.fullNameKh} មែនទេ?`,
+                confirmText: `យល់ព្រម${actionText}`,
+                confirmClass: u.status === 'active' ? 'bg-rose-600 text-white' : 'bg-emerald-600 text-white',
+                onConfirm: () => {
+                    const res = BMS_GM.toggleUserStatus(activeUserId);
+                    if (res.success) {
+                        showToast(`គណនីត្រូវបាន${actionText}ដោយជោគជ័យ!`, 'success');
+                        renderUsers();
+                    } else {
+                        showToast(res.message, 'error');
+                    }
+                }
+            });
+        }
+
+        function closeDropdown() {
+            const dropdown = document.getElementById('rowActionDropdown');
+            if (dropdown) dropdown.classList.add('hidden');
+            closeAllFilterDropdowns();
+        }
+
+        document.addEventListener('click', closeDropdown);
+
+        function exportUsersCSV() {
+            const users = BMS_GM.getUsers();
+            let csv = "\uFEFFលេខកូដ,ឈ្មោះខ្មែរ,ឈ្មោះអង់គ្លេស,តួនាទី,ផ្នែក,សាខា,ទូរស័ព្ទ,អ៊ីមែល,ស្ថានភាព,ចូលចុងក្រោយ\n";
+            users.forEach(u => {
+                csv += `"${u.id}","${u.fullNameKh}","${u.fullNameEn}","${u.roleNameKh}","${u.department}","${u.branchName}","${u.phone}","${u.email}","${u.status}","${u.lastLogin}"\n`;
+            });
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.setAttribute("href", url);
+            link.setAttribute("download", `digitechkh_users_${new Date().toISOString().slice(0,10)}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            showToast('ទាញយកបញ្ជីបុគ្គលិកជា CSV ជោគជ័យ!', 'success');
+        }
+
+        function initPage() {
+            renderPortalSidebar();
+            renderUsers();
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initPage);
+        } else {
+            initPage();
+        }
+    </script>
+</body>
+</html>
