@@ -22,6 +22,18 @@
     </script>
     <link rel="stylesheet" href="../../shared/styles/custom.css">
     <link rel="stylesheet" href="../../shared/styles/portal.css">
+    <style>
+        /* បោះពុម្ពតែរបាយការណ៍ X/Z ប៉ុណ្ណោះ — មិនរួមបញ្ចូលប្រអប់រាប់សាច់ប្រាក់ */
+        @media print {
+            body * { visibility: hidden !important; }
+            #reportPreview, #reportPreview * { visibility: visible !important; }
+            #reportPreview {
+                position: absolute; left: 0; top: 0; width: 100%;
+                max-width: none !important; box-shadow: none !important; padding: 0 !important;
+            }
+            @page { size: 80mm auto; margin: 4mm; }
+        }
+    </style>
 </head>
 <body id="posPortal" data-role-root="." data-active="close-shift" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
 

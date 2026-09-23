@@ -144,6 +144,28 @@ function getProduct(sku) {
     return PRODUCTS.find(p => p.sku === sku);
 }
 
+/* ===== រូបភាពទំនិញ =====
+   រូបថតរក្សាទុកក្នុង shared/assets/products/<sku>.jpg ។
+   បើឯកសារមិនទាន់មាន ប្រព័ន្ធបង្ហាញរូបតំណាងជំនួសដោយស្វ័យប្រវត្តិ
+   ដូច្នេះផ្ទាំងគិតលុយមិនដែលបង្ហាញរូបភាពខូចឡើយ។ */
+
+function productImageSrc(p) {
+    const root = (document.body && document.body.dataset.roleRoot) || '.';
+    return `${root}/../../shared/assets/products/${p.sku}.jpg`;
+}
+
+/* object-contain ដើម្បីបង្ហាញទំនិញទាំងមូល មិនកាត់ក្បាល ឬជើងដបឡើយ
+   ព្រោះរូបថតទំនិញជាការេ ហើយទំនិញនៅចំកណ្តាល */
+function productImgHtml(p, iconSize) {
+    return `
+        <img src="${productImageSrc(p)}" alt="${p.name}" loading="lazy"
+             class="w-full h-full object-contain"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <span class="hidden w-full h-full items-center justify-center text-${p.tone}-600">
+            <i class="fas ${p.icon} ${iconSize || 'text-2xl'}"></i>
+        </span>`;
+}
+
 function findByBarcode(code) {
     const q = String(code).trim().toLowerCase();
     return PRODUCTS.find(p => p.barcode === q)
@@ -313,6 +335,89 @@ function topSellers(limit = 5) {
 /* ផ្លាកលេខក្នុងម៉ឺនុយចំហៀង (ហៅដោយ portal.js) */
 function totalPending() {
     return shiftSales().length;
+}
+
+/* ===== ស្តុកនៅសល់ក្នុងវេន ===== */
+
+/* ចំនួនដែលបានលក់រួចក្នុងវេននេះ */
+function soldQty(sku) {
+    return shiftSales().reduce((sum, s) =>
+        sum + s.items.filter(i => i.sku === sku).reduce((n, i) => n + i.qty, 0), 0);
+}
+
+/* ស្តុកដែលនៅអាចលក់បាន — ស្តុកដើមដកចេញនូវអ្វីដែលលក់រួច */
+function availableStock(sku) {
+    const p = getProduct(sku);
+    return p ? Math.max(p.stock - soldQty(sku), 0) : 0;
+}
+
+/* ===== ទម្រង់វិក្កយបត្រក្រដាសកម្តៅ 80mm =====
+   ប្រើរួមគ្នាដោយផ្ទាំងគិតលុយ និងទំព័របោះពុម្ពឡើងវិញ ដូច្នេះទម្រង់ដូចគ្នាជានិច្ច */
+function receiptHtml(sale, options) {
+    const opts = options || {};
+    const t = saleTotals(sale.items);
+    const paid = paidTotal(sale.pay);
+    const change = paid - t.gross;
+
+    const row = (label, value, strong) => `
+        <div style="display:flex;justify-content:space-between;gap:8px;${strong ? 'font-weight:600;padding-top:4px;border-top:1px dashed #94a3b8;' : ''}">
+            <span>${label}</span><span>${value}</span>
+        </div>`;
+
+    const items = sale.items.map(l => {
+        const p = getProduct(l.sku);
+        return `
+            <div style="margin-bottom:6px;">
+                <div>${p.name}</div>
+                <div style="display:flex;justify-content:space-between;gap:8px;color:#475569;">
+                    <span>${l.qty} ${p.unit} × ${fmtUSD(p.price)}</span>
+                    <span>${fmtUSD(lineTotal(l))}</span>
+                </div>
+            </div>`;
+    }).join('');
+
+    const payLines = [
+        sale.pay.usdCash > 0 ? row('សាច់ប្រាក់ USD', fmtUSD(sale.pay.usdCash)) : '',
+        sale.pay.khrCash > 0 ? row('សាច់ប្រាក់ ៛', fmtKHR(sale.pay.khrCash)) : '',
+        sale.pay.khqr > 0 ? row('KHQR បាគង', fmtUSD(sale.pay.khqr)) : '',
+        change > 0.005 ? row('ប្រាក់អាប់', `${fmtUSD(change)} · ${fmtKHR(toKHR(change))}`) : ''
+    ].join('');
+
+    return `
+        <div style="width:72mm;margin:0 auto;font-family:'Kantumruy Pro',sans-serif;font-size:12px;line-height:1.5;color:#0f172a;">
+            <div style="text-align:center;padding-bottom:8px;border-bottom:1px dashed #94a3b8;">
+                <div style="font-size:15px;font-weight:700;">DIGITECHKH RETAIL</div>
+                <div style="color:#475569;">${SHIFT.branch}</div>
+                <div style="color:#475569;">លេខ អតប ${MERCHANT.tin}</div>
+                <div style="color:#475569;">ទូរស័ព្ទ 023 999 888</div>
+            </div>
+
+            <div style="padding:8px 0;border-bottom:1px dashed #94a3b8;">
+                ${row('លេខវិក្កយបត្រ', sale.id)}
+                ${row('កាលបរិច្ឆេទ', fmtKhDate(sale.time))}
+                ${row('ម៉ោង', fmtTime(sale.time))}
+                ${row('អ្នកគិតលុយ', SHIFT.cashier)}
+                ${row('ម៉ាស៊ីន', SHIFT.terminal)}
+            </div>
+
+            <div style="padding:8px 0;border-bottom:1px dashed #94a3b8;">${items}</div>
+
+            <div style="padding:8px 0;border-bottom:1px dashed #94a3b8;">
+                ${row('ចំនួនឯកតា', t.qty)}
+                ${row('តម្លៃមុនអាករ', fmtUSD(t.net))}
+                ${row('អាករ អតប 10%', fmtUSD(t.vat))}
+                ${row('សរុបត្រូវបង់', fmtUSD(t.gross), true)}
+                ${row('គិតជារៀល', fmtKHR(toKHR(t.gross)))}
+            </div>
+
+            <div style="padding:8px 0;border-bottom:1px dashed #94a3b8;">${payLines}</div>
+
+            <div style="text-align:center;padding-top:10px;color:#475569;">
+                <div>អត្រាប្តូរប្រាក់ 1 USD = ${FX_RATE.toLocaleString('en-US')} ៛</div>
+                <div style="margin-top:6px;font-weight:600;color:#0f172a;">សូមអរគុណ · ជួបគ្នាពេលក្រោយ</div>
+                ${opts.reprint ? '<div style="margin-top:6px;font-weight:600;">-- បោះពុម្ពឡើងវិញ --</div>' : ''}
+            </div>
+        </div>`;
 }
 
 /* ===== កូដ KHQR បាគង (គំរូសាកល្បង) ===== */

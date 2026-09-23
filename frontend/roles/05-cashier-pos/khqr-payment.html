@@ -136,8 +136,8 @@
                 const p = getProduct(l.sku);
                 return `
                     <div class="p-3.5 flex items-center gap-3">
-                        <div class="w-9 h-9 rounded-xl bg-${p.tone}-50 text-${p.tone}-600 flex items-center justify-center flex-shrink-0">
-                            <i class="fas ${p.icon} text-xs"></i>
+                        <div class="w-10 h-10 rounded-xl bg-white border border-slate-200 p-1 flex items-center justify-center overflow-hidden flex-shrink-0">
+                            ${productImgHtml(p, 'text-sm')}
                         </div>
                         <div class="min-w-0 flex-1">
                             <p class="sm-td text-slate-700 leading-snug">${p.name}</p>

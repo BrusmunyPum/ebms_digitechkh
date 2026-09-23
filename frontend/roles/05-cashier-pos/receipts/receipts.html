@@ -22,6 +22,15 @@
     </script>
     <link rel="stylesheet" href="../../../shared/styles/custom.css">
     <link rel="stylesheet" href="../../../shared/styles/portal.css">
+    <style>
+        /* បោះពុម្ពតែវិក្កយបត្រ 80mm ប៉ុណ្ណោះ */
+        @media print {
+            body * { visibility: hidden !important; }
+            #printArea, #printArea * { visibility: visible !important; }
+            #printArea { position: absolute; left: 0; top: 0; width: 100%; display: block !important; }
+            @page { size: 80mm auto; margin: 4mm; }
+        }
+    </style>
 </head>
 <body id="posPortal" data-role-root=".." data-active="receipts" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
 
@@ -94,6 +103,9 @@
             </div>
         </main>
     </div>
+
+    <!-- តំបន់បោះពុម្ពវិក្កយបត្រ 80mm -->
+    <div id="printArea" class="hidden"></div>
 
     <script src="../../../shared/scripts/ui-components.js"></script>
     <script src="../data.js"></script>
@@ -251,7 +263,12 @@
 
         function reprint(id) {
             closeAllFloatingDropdowns();
+            const sale = shiftSales().find(s => s.id === id);
+            if (!sale) return showToast(`រកមិនឃើញវិក្កយបត្រ ${id}`, 'error');
+
+            document.getElementById('printArea').innerHTML = receiptHtml(sale, { reprint: true });
             showToast(`កំពុងបញ្ជូនវិក្កយបត្រ ${id} ទៅម៉ាស៊ីនបោះពុម្ពកម្តៅ 80mm`, 'info');
+            setTimeout(() => window.print(), 400);
         }
 
         document.addEventListener('DOMContentLoaded', () => {
