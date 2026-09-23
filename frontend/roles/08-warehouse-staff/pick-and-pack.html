@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="km">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - បញ្ជីរើស និងវេចខ្ចប់ទំនិញ (Pick & Pack)</title>
+    <link rel="icon" type="image/png" href="../../shared/assets/favicon.png">
+    <link rel="shortcut icon" type="image/png" href="../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1e3a5f",
+                        'primary-dark': "#142842",
+                        accent: "#0ea5e9",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../shared/styles/custom.css">
+    <link rel="stylesheet" href="../../shared/styles/portal.css">
+</head>
+
+<body id="wsPortal" data-active="pick-pack" class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col md:flex-row overflow-x-hidden">
+
+    <!-- របារចំហៀង -->
+    <div id="sidebarHost"></div>
+
+    <!-- ផ្ទៃមាតិកាចម្បង -->
+    <div class="flex-1 flex flex-col min-w-0 h-screen overflow-y-auto">
+
+        <!-- ក្បាលទំព័រ -->
+        <header class="h-[72px] px-6 flex items-center justify-between border-b border-slate-200 bg-white/80 backdrop-blur sticky top-0 z-10 flex-shrink-0">
+            <div class="flex items-center gap-3">
+                <button onclick="toggleMobileSidebar()" class="w-10 h-10 rounded-xl bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600 transition md:hidden">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div>
+                    <h2 class="text-base font-bold text-slate-800 flex items-center gap-2">
+                        <i class="fas fa-box-open text-sky-600"></i>
+                        <span>បញ្ជីរើស និងវេចខ្ចប់ទំនិញ (Pick & Pack)</span>
+                    </h2>
+                    <p class="text-xs text-slate-500">ស្កេនបាកូដ ផ្ទៀងផ្ទាត់ទីតាំងធ្នើរ និងវេចខ្ចប់តាមបញ្ជាទិញ</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 text-xs font-semibold">
+                    <i class="fas fa-shield-halved text-amber-600"></i>
+                    <span>Zero Price Policy (លាក់តម្លៃ 100%)</span>
+                </div>
+                <div class="flex items-center gap-2 pl-3 border-l border-slate-200">
+                    <div class="w-9 h-9 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-700 font-bold text-xs">សច</div>
+                    <div class="hidden lg:block text-left">
+                        <p class="text-xs font-bold text-slate-800 leading-tight">សុខ ចាន់ថន</p>
+                        <p class="text-[11px] text-slate-500">ជាន់ឃ្លាំងកណ្តាល (WH-PP01)</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- មាតិកាខាងក្នុង -->
+        <main class="p-4 sm:p-6 space-y-6 flex-1">
+
+            <!-- កាតសង្ខេបប្រតិបត្តិការប្រចាំថ្ងៃ -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
+                    <div>
+                        <p class="text-xs text-slate-500 font-medium">បញ្ជីរង់ចាំរើស (Pending)</p>
+                        <h3 class="text-2xl font-bold text-amber-600 mt-1" id="pendingCount">1</h3>
+                        <p class="text-[11px] text-slate-400 mt-0.5">ត្រូវការរៀបចំជាបន្ទាន់</p>
+                    </div>
+                    <div class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl">
+                        <i class="fas fa-hourglass-half"></i>
+                    </div>
+                </div>
+
+                <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
+                    <div>
+                        <p class="text-xs text-slate-500 font-medium">កំពុងរើសលើធ្នើរ (Picking)</p>
+                        <h3 class="text-2xl font-bold text-sky-600 mt-1" id="pickingCount">1</h3>
+                        <p class="text-[11px] text-slate-400 mt-0.5">កំពុងផ្ទៀងផ្ទាត់បាកូដ</p>
+                    </div>
+                    <div class="w-12 h-12 rounded-2xl bg-sky-50 text-sky-600 flex items-center justify-center text-xl">
+                        <i class="fas fa-barcode"></i>
+                    </div>
+                </div>
+
+                <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
+                    <div>
+                        <p class="text-xs text-slate-500 font-medium">វេចខ្ចប់រួចរាល់ (Packed)</p>
+                        <h3 class="text-2xl font-bold text-emerald-600 mt-1" id="packedCount">1</h3>
+                        <p class="text-[11px] text-slate-400 mt-0.5">រង់ចាំឡានដឹកមកទទួល</p>
+                    </div>
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl">
+                        <i class="fas fa-boxes-packing"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ឧបករណ៍ស្កេនបាកូដរហ័ស (Barcode Scanning Simulator) -->
+            <div class="bg-gradient-to-r from-[#1e3a5f] to-[#142842] text-white p-5 rounded-3xl shadow-md border border-slate-700">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div>
+                        <h3 class="text-base font-bold flex items-center gap-2">
+                            <i class="fas fa-qrcode text-sky-400"></i>
+                            <span>ម៉ាស៊ីនស្កេនបាកូដផ្ទៀងផ្ទាត់ទំនិញ (Barcode Verification)</span>
+                        </h3>
+                        <p class="text-xs text-sky-200 mt-1">ស្កេនបាកូដទំនិញលើកេះ ឬវាយកូដ SKU ដើម្បីផ្ទៀងផ្ទាត់ចំនួនរើសស្វ័យប្រវត្តិ</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="relative flex-1 sm:w-80">
+                            <i class="fas fa-barcode absolute left-3.5 top-3.5 text-slate-400"></i>
+                            <input type="text" id="scanInput" placeholder="ស្កេន ឬវាយកូដបាកូដ / SKU..."
+                                onkeydown="if(event.key === 'Enter') handleBarcodeScan()"
+                                class="w-full bg-white/10 text-white placeholder-sky-200/60 border border-white/20 rounded-xl pl-10 pr-24 py-2.5 text-sm focus:outline-none focus:bg-white/20 focus:border-sky-400 font-mono">
+                            <button onclick="handleBarcodeScan()" class="absolute right-1.5 top-1.5 px-3 py-1.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-white text-xs font-semibold transition cursor-pointer">
+                                ស្កេន
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- បញ្ជីប័ណ្ណរើសទំនិញ (Pick Lists Table & Cards) -->
+            <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
+                <div class="p-5 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div class="flex items-center gap-2">
+                        <button onclick="filterPickStatus('all')" class="status-tab px-3.5 py-1.5 rounded-xl text-xs font-semibold transition bg-primary text-white" data-status="all">ទាំងអស់</button>
+                        <button onclick="filterPickStatus('pending')" class="status-tab px-3.5 py-1.5 rounded-xl text-xs font-semibold transition bg-slate-100 text-slate-600 hover:bg-slate-200" data-status="pending">រង់ចាំរើស</button>
+                        <button onclick="filterPickStatus('picking')" class="status-tab px-3.5 py-1.5 rounded-xl text-xs font-semibold transition bg-slate-100 text-slate-600 hover:bg-slate-200" data-status="picking">កំពុងរើស</button>
+                        <button onclick="filterPickStatus('packed')" class="status-tab px-3.5 py-1.5 rounded-xl text-xs font-semibold transition bg-slate-100 text-slate-600 hover:bg-slate-200" data-status="packed">វេចខ្ចប់រួច</button>
+                    </div>
+                    <div class="relative w-full sm:w-64">
+                        <i class="fas fa-search absolute left-3 top-2.5 text-slate-400 text-xs"></i>
+                        <input type="text" id="searchInput" oninput="renderPickLists()" placeholder="ស្វែងរកតាមលេខប័ណ្ណ ឬអតិថិជន..."
+                            class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-8 pr-3 py-1.5 text-xs focus:outline-none focus:border-primary">
+                    </div>
+                </div>
+
+                <div id="pickListContainer" class="divide-y divide-slate-100 p-4 space-y-4">
+                    <!-- Dynamic Pick List Cards -->
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Modal ពិនិត្យ និងបញ្ចប់ការវេចខ្ចប់ -->
+    <div id="packModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+        <div class="bg-white rounded-3xl shadow-2xl border border-slate-100 w-full max-w-xl overflow-hidden">
+            <div class="p-6 bg-gradient-to-r from-[#0f2b5c] to-[#1e3a5f] text-white flex items-center justify-between">
+                <div>
+                    <h3 class="text-base font-bold flex items-center gap-2">
+                        <i class="fas fa-boxes-packing text-sky-300"></i>
+                        <span>បញ្ចប់ការវេចខ្ចប់ និងបិទស្លាកកញ្ចប់</span>
+                    </h3>
+                    <p class="text-xs text-sky-200 mt-0.5" id="packModalSubtitle">ប័ណ្ណលេខ PKL-2026-0891</p>
+                </div>
+                <button onclick="closePackModal()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition cursor-pointer">
+                    <i class="fas fa-xmark text-sm"></i>
+                </button>
+            </div>
+            <div class="p-6 space-y-4">
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+                    <div class="flex justify-between text-xs">
+                        <span class="text-slate-500">អតិថិជនទទួល:</span>
+                        <span class="font-bold text-slate-800" id="packCustomerName">-</span>
+                    </div>
+                    <div class="flex justify-between text-xs">
+                        <span class="text-slate-500">គោលដៅដឹកជញ្ជូន:</span>
+                        <span class="font-medium text-slate-700" id="packTargetZone">-</span>
+                    </div>
+                    <div class="flex justify-between text-xs">
+                        <span class="text-slate-500">ចំនួនទំនិញសរុប:</span>
+                        <span class="font-bold text-sky-700" id="packTotalItems">-</span>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1.5">កំណត់ចំណាំកញ្ចប់ / លេខកេសដឹក</label>
+                    <input type="text" id="packBoxNote" value="កេសស្តង់ដារ 1 កេះ + រុំប្លាស្ទិកការពារជម្រាបទឹក"
+                        class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-primary">
+                </div>
+
+                <div class="p-3 bg-emerald-50 rounded-xl border border-emerald-200 text-emerald-800 text-xs flex items-center gap-2">
+                    <i class="fas fa-check-circle text-emerald-600"></i>
+                    <span>ទំនិញទាំងអស់ត្រូវបានស្កេនផ្ទៀងផ្ទាត់រួច 100% ត្រឹមត្រូវ។</span>
+                </div>
+            </div>
+            <div class="p-4 bg-slate-50 border-t border-slate-100 flex justify-end gap-3">
+                <button onclick="closePackModal()" class="px-4 py-2 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-700 font-medium text-xs transition cursor-pointer">
+                    ថយក្រោយ
+                </button>
+                <button onclick="confirmCompletePacking()" class="px-5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs transition shadow-sm cursor-pointer flex items-center gap-1.5">
+                    <i class="fas fa-check"></i> បញ្ជាក់វេចខ្ចប់រួចរាល់
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../shared/scripts/ui-components.js"></script>
+    <script src="data.js"></script>
+    <script src="../../shared/scripts/portal.js"></script>
+    <script>
+        let currentFilter = 'all';
+        let activePackId = null;
+
+        function updateCounts() {
+            const data = getWarehouseStaffData();
+            const pending = data.pickLists.filter(p => p.status === 'pending').length;
+            const picking = data.pickLists.filter(p => p.status === 'picking').length;
+            const packed = data.pickLists.filter(p => p.status === 'packed').length;
+
+            document.getElementById('pendingCount').textContent = pending;
+            document.getElementById('pickingCount').textContent = picking;
+            document.getElementById('packedCount').textContent = packed;
+        }
+
+        function filterPickStatus(status) {
+            currentFilter = status;
+            document.querySelectorAll('.status-tab').forEach(tab => {
+                const isMatch = tab.dataset.status === status;
+                tab.className = isMatch ?
+                    'status-tab px-3.5 py-1.5 rounded-xl text-xs font-semibold transition bg-primary text-white' :
+                    'status-tab px-3.5 py-1.5 rounded-xl text-xs font-semibold transition bg-slate-100 text-slate-600 hover:bg-slate-200';
+            });
+            renderPickLists();
+        }
+
+        function renderPickLists() {
+            const data = getWarehouseStaffData();
+            const search = (document.getElementById('searchInput')?.value || '').trim().toLowerCase();
+            const container = document.getElementById('pickListContainer');
+            if (!container) return;
+
+            let list = data.pickLists;
+            if (currentFilter !== 'all') {
+                list = list.filter(p => p.status === currentFilter);
+            }
+            if (search) {
+                list = list.filter(p => p.id.toLowerCase().includes(search) || p.orderNo.toLowerCase().includes(search) || p.customerName.toLowerCase().includes(search));
+            }
+
+            if (list.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12 text-slate-400">
+                        <i class="fas fa-inbox text-4xl mb-3 text-slate-300"></i>
+                        <p class="text-sm">មិនមានបញ្ជីរើសទំនិញតាមលក្ខខណ្ឌនេះឡើយ</p>
+                    </div>`;
+                return;
+            }
+
+            container.innerHTML = list.map(item => {
+                const totalReq = item.items.reduce((s, i) => s + i.reqQty, 0);
+                const totalPicked = item.items.reduce((s, i) => s + i.pickedQty, 0);
+                const isFullyPicked = totalPicked >= totalReq;
+
+                let statusBadge = '';
+                if (item.status === 'pending') {
+                    statusBadge = '<span class="px-2.5 py-1 rounded-full bg-amber-50 text-amber-700 border border-amber-200 text-xs font-semibold"><i class="fas fa-clock mr-1"></i> រង់ចាំរើស</span>';
+                } else if (item.status === 'picking') {
+                    statusBadge = '<span class="px-2.5 py-1 rounded-full bg-sky-50 text-sky-700 border border-sky-200 text-xs font-semibold"><i class="fas fa-box-open mr-1"></i> កំពុងរើស</span>';
+                } else {
+                    statusBadge = '<span class="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-semibold"><i class="fas fa-check-circle mr-1"></i> វេចខ្ចប់រួច</span>';
+                }
+
+                const itemsHtml = item.items.map(subItem => `
+                    <tr class="hover:bg-slate-50/80 transition">
+                        <td class="py-2.5 px-3 text-xs font-mono font-bold text-sky-700">${subItem.sku}</td>
+                        <td class="py-2.5 px-3 text-xs font-medium text-slate-800">${subItem.name}</td>
+                        <td class="py-2.5 px-3 text-xs font-semibold text-purple-700">
+                            <span class="px-2 py-0.5 rounded-lg bg-purple-50 border border-purple-200"><i class="fas fa-location-dot mr-1"></i> ${subItem.bin}</span>
+                        </td>
+                        <td class="py-2.5 px-3 text-xs font-mono text-slate-600">${subItem.barcode}</td>
+                        <td class="py-2.5 px-3 text-xs font-bold text-center text-slate-700">${subItem.reqQty}</td>
+                        <td class="py-2.5 px-3 text-xs font-bold text-center ${subItem.pickedQty >= subItem.reqQty ? 'text-emerald-600' : 'text-amber-600'}">${subItem.pickedQty}</td>
+                        <td class="py-2.5 px-3 text-center">
+                            ${subItem.verified ? 
+                                '<span class="text-emerald-500 text-sm" title="បានស្កេនផ្ទៀងផ្ទាត់"><i class="fas fa-circle-check"></i></span>' : 
+                                `<button onclick="quickVerifyItem('${item.id}', '${subItem.sku}')" class="px-2.5 py-1 rounded-lg bg-sky-50 hover:bg-sky-100 text-sky-700 border border-sky-200 text-[11px] font-semibold transition cursor-pointer">
+                                    <i class="fas fa-barcode"></i> រើស +1
+                                 </button>`}
+                        </td>
+                    </tr>
+                `).join('');
+
+                let actionBtn = '';
+                if (item.status === 'pending') {
+                    actionBtn = `
+                        <button onclick="startPicking('${item.id}')" class="px-4 py-2 rounded-xl bg-sky-600 hover:bg-sky-700 text-white text-xs font-semibold transition shadow-sm flex items-center gap-1.5 cursor-pointer">
+                            <i class="fas fa-play"></i> ចាប់ផ្តើមរើស
+                        </button>`;
+                } else if (item.status === 'picking') {
+                    actionBtn = `
+                        <button onclick="openPackModal('${item.id}')" class="px-4 py-2 rounded-xl ${isFullyPicked ? 'bg-emerald-600 hover:bg-emerald-700 text-white' : 'bg-slate-200 text-slate-400 cursor-not-allowed'} text-xs font-semibold transition shadow-sm flex items-center gap-1.5" ${isFullyPicked ? '' : 'disabled'}>
+                            <i class="fas fa-boxes-packing"></i> បញ្ចប់វេចខ្ចប់
+                        </button>`;
+                } else {
+                    actionBtn = `
+                        <button onclick="showToast('កញ្ចប់នេះត្រូវបានវេចខ្ចប់រួចរាល់ និងត្រៀមប្រគល់ទៅអ្នកដឹកជញ្ជូន', 'info')" class="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition flex items-center gap-1.5 cursor-pointer">
+                            <i class="fas fa-print"></i> ស្លាកកញ្ចប់
+                        </button>`;
+                }
+
+                return `
+                    <div class="p-5 bg-white rounded-2xl border border-slate-200/80 hover:border-slate-300 transition shadow-sm space-y-4">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-sky-50 text-sky-700 flex items-center justify-center font-bold text-sm">
+                                    <i class="fas fa-clipboard-list"></i>
+                                </div>
+                                <div>
+                                    <div class="flex items-center gap-2">
+                                        <h4 class="text-sm font-bold text-slate-800">${item.id}</h4>
+                                        <span class="text-xs font-mono text-slate-500">(${item.orderNo})</span>
+                                        ${item.priority.includes('បន្ទាន់') ? '<span class="px-2 py-0.5 rounded-full bg-rose-100 text-rose-700 text-[10px] font-bold">បន្ទាន់ខ្លាំង</span>' : ''}
+                                    </div>
+                                    <p class="text-xs text-slate-500 mt-0.5">
+                                        <i class="fas fa-user-tag mr-1 text-slate-400"></i> ${item.customerName} &bull; <i class="fas fa-location-dot ml-1 mr-1 text-slate-400"></i> ${item.targetZone}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3 self-end sm:self-center">
+                                ${statusBadge}
+                                ${actionBtn}
+                            </div>
+                        </div>
+
+                        <!-- តារាងទំនិញក្នុងបញ្ជីរើស (Zero Price: SKU, ឈ្មោះ, ទីតាំង, ចំនួនរើស) -->
+                        <div class="overflow-x-auto rounded-xl border border-slate-100 bg-slate-50/50">
+                            <table class="w-full text-left">
+                                <thead class="bg-slate-100/70 text-slate-600 text-[11px] font-bold uppercase tracking-wider">
+                                    <tr>
+                                        <th class="py-2 px-3">កូដ SKU</th>
+                                        <th class="py-2 px-3">ឈ្មោះទំនិញ</th>
+                                        <th class="py-2 px-3">ទីតាំងធ្នើរ (Bin)</th>
+                                        <th class="py-2 px-3">កូដបាកូដ</th>
+                                        <th class="py-2 px-3 text-center">ត្រូវរើស</th>
+                                        <th class="py-2 px-3 text-center">រើសបាន</th>
+                                        <th class="py-2 px-3 text-center">ស្ថានភាព</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-100 bg-white">
+                                    ${itemsHtml}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>`;
+            }).join('');
+        }
+
+        function startPicking(id) {
+            const data = getWarehouseStaffData();
+            const item = data.pickLists.find(p => p.id === id);
+            if (item) {
+                item.status = 'picking';
+                saveWarehouseStaffData(data);
+                showToast(`បានចាប់ផ្តើមរើសទំនិញសម្រាប់ ${id}`, 'success');
+                updateCounts();
+                renderPickLists();
+            }
+        }
+
+        function quickVerifyItem(pickId, sku) {
+            const data = getWarehouseStaffData();
+            const pick = data.pickLists.find(p => p.id === pickId);
+            if (!pick) return;
+            const item = pick.items.find(i => i.sku === sku);
+            if (item) {
+                if (item.pickedQty < item.reqQty) {
+                    item.pickedQty += 1;
+                }
+                if (item.pickedQty >= item.reqQty) {
+                    item.verified = true;
+                }
+                saveWarehouseStaffData(data);
+                showToast(`បានផ្ទៀងផ្ទាត់ ${item.name} (${item.pickedQty}/${item.reqQty})`, 'info');
+                renderPickLists();
+            }
+        }
+
+        function handleBarcodeScan() {
+            const input = document.getElementById('scanInput');
+            const code = (input?.value || '').trim();
+            if (!code) {
+                showToast('សូមបញ្ចូលកូដបាកូដ ឬ SKU ដើម្បីស្កេន', 'warning');
+                return;
+            }
+
+            const data = getWarehouseStaffData();
+            let matched = false;
+
+            // ស្វែងរកក្នុងបញ្ជីដែលកំពុង Picking
+            for (const pick of data.pickLists) {
+                if (pick.status === 'picking') {
+                    for (const item of pick.items) {
+                        if (item.barcode === code || item.sku.toLowerCase() === code.toLowerCase()) {
+                            matched = true;
+                            if (item.pickedQty < item.reqQty) {
+                                item.pickedQty += 1;
+                                if (item.pickedQty >= item.reqQty) {
+                                    item.verified = true;
+                                }
+                                saveWarehouseStaffData(data);
+                                showToast(`ស្កេនជោគជ័យ! ${item.name} (រើសបាន ${item.pickedQty}/${item.reqQty})`, 'success');
+                                input.value = '';
+                                renderPickLists();
+                                return;
+                            } else {
+                                showToast(`${item.name} បានរើសគ្រប់ចំនួនហើយ (${item.reqQty} គ្រឿង)`, 'warning');
+                                input.value = '';
+                                return;
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (!matched) {
+                showToast(`រកមិនឃើញទំនិញដែលមានបាកូដ [${code}] ក្នុងបញ្ជីដែលកំពុងរើសឡើយ!`, 'error');
+            }
+        }
+
+        function openPackModal(id) {
+            const data = getWarehouseStaffData();
+            const pick = data.pickLists.find(p => p.id === id);
+            if (!pick) return;
+
+            activePackId = id;
+            document.getElementById('packModalSubtitle').textContent = `ប័ណ្ណលេខ ${pick.id} (${pick.orderNo})`;
+            document.getElementById('packCustomerName').textContent = pick.customerName;
+            document.getElementById('packTargetZone').textContent = pick.targetZone;
+            const totalQty = pick.items.reduce((s, i) => s + i.reqQty, 0);
+            document.getElementById('packTotalItems').textContent = `${totalQty} គ្រឿង (${pick.items.length} មុខទំនិញ)`;
+
+            const modal = document.getElementById('packModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closePackModal() {
+            const modal = document.getElementById('packModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            activePackId = null;
+        }
+
+        function confirmCompletePacking() {
+            if (!activePackId) return;
+            const data = getWarehouseStaffData();
+            const pick = data.pickLists.find(p => p.id === activePackId);
+            if (pick) {
+                pick.status = 'packed';
+                saveWarehouseStaffData(data);
+                showToast(`ប័ណ្ណលេខ ${pick.id} ត្រូវបានវេចខ្ចប់រួចរាល់ និងត្រៀមប្រគល់ជូនអ្នកដឹក!`, 'success');
+                closePackModal();
+                updateCounts();
+                renderPickLists();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCounts();
+            renderPickLists();
+        });
+    </script>
+</body>
+
+</html>

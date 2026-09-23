@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - ការដាស់តឿនស្តុកទំនិញ</title>
+    <link rel="icon" type="image/png" href="../../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1e3a5f",
+                        'primary-dark': "#142842",
+                        accent: "#0ea5e9",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../shared/styles/custom.css">
+    <link rel="stylesheet" href="../../../shared/styles/portal.css">
+</head>
+<body id="wmPortal" data-role-root=".." data-active="alerts" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <div id="sidebarHost"></div>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div class="min-w-0">
+                <h2 class="text-xl font-semibold text-gray-800 leading-tight truncate">ការដាស់តឿនស្តុកទំនិញ (Low Stock Alerts)</h2>
+                <p class="sm-card-sub text-gray-500 mt-0.5 truncate">តាមដានមុខទំនិញក្រោមចំណុចសុវត្ថិភាពត្រូវបញ្ជាទិញបន្ថែម (Reorder Point & Safety Stock)</p>
+            </div>
+
+            <div class="flex items-center space-x-3 flex-shrink-0">
+                <button onclick="handleBatchPR()" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-semibold text-xs shadow-sm transition cursor-pointer">
+                    <i class="fas fa-file-invoice text-xs"></i>
+                    <span>បង្កើតសំណើទិញចូល (Batch PR)</span>
+                </button>
+            </div>
+        </header>
+
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-4">
+            <div class="w-full space-y-4">
+
+                <!-- Alert KPI Summary -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div class="p-4 rounded-2xl bg-rose-50 border border-rose-200 text-rose-900 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-rose-600 font-medium block">កម្រិតអាសន្នខ្លាំង (Critical)</span>
+                            <span id="kpiCritical" class="text-xl font-bold text-rose-800">0 មុខ</span>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center text-lg">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-amber-50 border border-amber-200 text-amber-900 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-amber-700 font-medium block">ក្រោមចំណុចបញ្ជាទិញ (Reorder Point)</span>
+                            <span id="kpiWarning" class="text-xl font-bold text-amber-800">0 មុខ</span>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center text-lg">
+                            <i class="fas fa-triangle-exclamation"></i>
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-sky-50 border border-sky-200 text-sky-900 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-sky-700 font-medium block">ចំនួនទំនិញត្រូវការបន្ថែមសរុប</span>
+                            <span id="kpiDeficit" class="text-xl font-bold text-sky-800">0 ឯកតា</span>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-sky-100 text-sky-600 flex items-center justify-center text-lg">
+                            <i class="fas fa-cart-flatbed"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filter Bar -->
+                <div class="bg-white rounded-2xl p-3 border border-slate-200/80 shadow-sm flex flex-wrap items-center justify-between gap-3">
+                    <div class="flex flex-wrap items-center gap-2">
+                        <div class="relative w-64">
+                            <i class="fas fa-search absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                            <input type="text" id="alertSearch" oninput="renderTable()" placeholder="ស្វែងរកតាម SKU ឬឈ្មោះ..."
+                                class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-9 pr-3 py-1.5 text-xs text-slate-700 outline-none focus:border-primary">
+                        </div>
+                        <div class="flex items-center gap-1 bg-slate-100 p-1 rounded-xl text-xs">
+                            <button onclick="setUrgencyFilter('all')" id="btnUrgency-all" class="px-3 py-1 rounded-lg bg-white shadow-sm font-semibold text-slate-800 transition">ទាំងអស់</button>
+                            <button onclick="setUrgencyFilter('critical')" id="btnUrgency-critical" class="px-3 py-1 rounded-lg text-slate-600 hover:text-slate-800 transition">អាសន្នខ្លាំង</button>
+                            <button onclick="setUrgencyFilter('warning')" id="btnUrgency-warning" class="px-3 py-1 rounded-lg text-slate-600 hover:text-slate-800 transition">ក្រោមចំណុចទិញ</button>
+                        </div>
+                    </div>
+                    <button onclick="window.print()" class="px-3 py-1.5 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-700 text-xs font-semibold inline-flex items-center gap-1.5 transition">
+                        <i class="fas fa-print text-xs"></i>
+                        <span>បោះពុម្ពបញ្ជី</span>
+                    </button>
+                </div>
+
+                <!-- Table Card -->
+                <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left">
+                            <thead class="bg-slate-50 text-slate-500 border-b border-slate-100">
+                                <tr>
+                                    <th class="sm-th py-3 px-4">កូដ SKU</th>
+                                    <th class="sm-th py-3 px-4">ឈ្មោះមុខទំនិញ</th>
+                                    <th class="sm-th py-3 px-4">ប្រភេទ</th>
+                                    <th class="sm-th py-3 px-4">ទីតាំងធ្នើរ</th>
+                                    <th class="sm-th py-3 px-4 text-center">ស្តុកក្នុងដៃសរុប</th>
+                                    <th class="sm-th py-3 px-4 text-center">ចំណុចទាបបំផុត (Min)</th>
+                                    <th class="sm-th py-3 px-4 text-center">កម្រិតខ្ពស់ (Max)</th>
+                                    <th class="sm-th py-3 px-4 text-right">ខ្វះខាត</th>
+                                    <th class="sm-th py-3 px-4 text-right">ណែនាំឱ្យទិញ</th>
+                                    <th class="sm-th py-3 px-4">កម្រិតអាសន្ន</th>
+                                    <th class="sm-th py-3 px-4 text-center">សកម្មភាព</th>
+                                </tr>
+                            </thead>
+                            <tbody id="alertsTableBody" class="divide-y divide-slate-100 text-slate-700"></tbody>
+                        </table>
+                    </div>
+                    <div id="emptyAlertsMsg" class="hidden py-14 text-center">
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-500 flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-circle-check text-xl"></i>
+                        </div>
+                        <p class="text-xs text-slate-500">ស្តុកទំនិញទាំងអស់ស្ថិតក្នុងកម្រិតសុវត្ថិភាពល្អប្រសើរ</p>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../shared/scripts/ui-components.js"></script>
+    <script src="../data.js"></script>
+    <script src="../../../shared/scripts/portal.js"></script>
+    <script>
+        let currentUrgency = 'all';
+
+        function setUrgencyFilter(u) {
+            currentUrgency = u;
+            ['all', 'critical', 'warning'].forEach(k => {
+                const btn = document.getElementById(`btnUrgency-${k}`);
+                if (btn) {
+                    if (k === u) {
+                        btn.className = 'px-3 py-1 rounded-lg bg-white shadow-sm font-semibold text-slate-800 transition';
+                    } else {
+                        btn.className = 'px-3 py-1 rounded-lg text-slate-600 hover:text-slate-800 transition';
+                    }
+                }
+            });
+            renderTable();
+        }
+
+        function renderTable() {
+            const list = getLowStockAlerts();
+            const search = (document.getElementById('alertSearch')?.value || '').toLowerCase().trim();
+            const tbody = document.getElementById('alertsTableBody');
+            const emptyMsg = document.getElementById('emptyAlertsMsg');
+
+            const criticalCount = list.filter(a => a.urgency === 'critical').length;
+            const warningCount = list.filter(a => a.urgency === 'warning').length;
+            const totalDeficit = list.reduce((s, a) => s + a.deficit, 0);
+
+            document.getElementById('kpiCritical').textContent = `${criticalCount} មុខ`;
+            document.getElementById('kpiWarning').textContent = `${warningCount} មុខ`;
+            document.getElementById('kpiDeficit').textContent = `${fmtNumber(totalDeficit)} ឯកតា`;
+
+            const filtered = list.filter(a => {
+                const matchU = currentUrgency === 'all' || a.urgency === currentUrgency;
+                const matchSearch = !search ||
+                    a.sku.toLowerCase().includes(search) ||
+                    a.name.toLowerCase().includes(search) ||
+                    CATEGORIES[a.category]?.toLowerCase().includes(search);
+                return matchU && matchSearch;
+            });
+
+            if (!filtered.length) {
+                tbody.innerHTML = '';
+                emptyMsg.classList.remove('hidden');
+                return;
+            }
+
+            emptyMsg.classList.add('hidden');
+            tbody.innerHTML = filtered.map(a => {
+                const isCrit = a.urgency === 'critical';
+                const tagStyle = isCrit
+                    ? 'bg-rose-50 text-rose-700 border-rose-200'
+                    : 'bg-amber-50 text-amber-800 border-amber-200';
+                const stockColor = isCrit ? 'text-rose-600 font-bold' : 'text-amber-700 font-bold';
+
+                return `
+                    <tr class="hover:bg-slate-50 transition">
+                        <td class="py-3 px-4 font-mono text-xs font-semibold text-slate-800">${a.sku}</td>
+                        <td class="py-3 px-4 sm-td font-medium text-slate-800">${a.name}</td>
+                        <td class="py-3 px-4 sm-td text-slate-500">${CATEGORIES[a.category] || a.category}</td>
+                        <td class="py-3 px-4 sm-td text-slate-400 font-mono text-[11px]">${a.bin}</td>
+                        <td class="py-3 px-4 text-center ${stockColor}">${fmtNumber(a.totalStock)} ${a.unit}</td>
+                        <td class="py-3 px-4 text-center sm-td text-slate-500">${a.min}</td>
+                        <td class="py-3 px-4 text-center sm-td text-slate-500">${a.max}</td>
+                        <td class="py-3 px-4 text-right font-bold text-rose-600">-${a.deficit}</td>
+                        <td class="py-3 px-4 text-right font-bold text-sky-700">${a.suggestedOrder}</td>
+                        <td class="py-3 px-4">
+                            <span class="sm-badge px-2.5 py-0.5 rounded-full ${tagStyle} border font-semibold text-[11px] flex items-center gap-1 w-fit">
+                                <span class="w-1.5 h-1.5 rounded-full ${isCrit ? 'bg-rose-500 animate-pulse' : 'bg-amber-500'}"></span>
+                                <span>${a.urgencyLabel}</span>
+                            </span>
+                        </td>
+                        <td class="py-3 px-4 text-center">
+                            <div class="flex items-center justify-center gap-1.5">
+                                <button onclick="handleSinglePR('${a.sku}', '${a.name}', ${a.suggestedOrder})" class="px-2.5 py-1 rounded-lg bg-sky-50 hover:bg-sky-100 text-sky-700 font-semibold text-[11px] border border-sky-200 transition" title="ស្នើសុំទិញចូល">
+                                    <i class="fas fa-cart-plus mr-1"></i> សុំទិញ (PR)
+                                </button>
+                                <a href="../stock-movements/create-movement.html" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-[11px] transition" title="ផ្ទេរស្តុក">
+                                    <i class="fas fa-truck-ramp-box mr-1"></i> ផ្ទេរ
+                                </a>
+                            </div>
+                        </td>
+                    </tr>`;
+            }).join('');
+        }
+
+        function handleSinglePR(sku, name, suggestedQty) {
+            showCustomConfirm({
+                title: 'បង្កើតសំណើសុំទិញ (Purchase Requisition)',
+                message: `តើលោកអ្នកពិតជាចង់បញ្ជូនសំណើសុំទិញចូលសម្រាប់ ${name} (${sku}) ចំនួន ${suggestedQty} ឯកតា ទៅកាន់ផ្នែកលទ្ធកម្ម (Procurement) មែនទេ?`,
+                confirmText: 'បញ្ជូនសំណើ PR'
+            }).then(confirmed => {
+                if (confirmed) {
+                    showToast(`បានបញ្ជូនសំណើសុំទិញ (PR) សម្រាប់ ${sku} ទៅកាន់ Procurement Manager រួចរាល់!`, 'success');
+                }
+            });
+        }
+
+        function handleBatchPR() {
+            const list = getLowStockAlerts();
+            if (!list.length) {
+                showToast('គ្មានមុខទំនិញខ្វះស្តុកត្រូវបង្កើតសំណើទេ!', 'info');
+                return;
+            }
+
+            showCustomConfirm({
+                title: 'បង្កើតសំណើសុំទិញចូលរួម (Batch PR)',
+                message: `តើលោកអ្នកចង់បង្កើតសំណើសុំទិញសម្រាប់មុខទំនិញខ្វះស្តុកទាំងអស់ចំនួន ${list.length} មុខ ទៅកាន់ផ្នែកលទ្ធកម្មមែនទេ?`,
+                confirmText: 'បញ្ជូនសំណើទាំងអស់'
+            }).then(confirmed => {
+                if (confirmed) {
+                    showToast(`បានបញ្ជូនសំណើសុំទិញចូល (Batch PR) ចំនួន ${list.length} មុខទំនិញទៅកាន់ផ្នែកលទ្ធកម្មជោគជ័យ!`, 'success');
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderTable();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="km">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - រាប់ស្តុកជាក់ស្តែង (Physical Stock Count)</title>
+    <link rel="icon" type="image/png" href="../../shared/assets/favicon.png">
+    <link rel="shortcut icon" type="image/png" href="../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1e3a5f",
+                        'primary-dark': "#142842",
+                        accent: "#0ea5e9",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../shared/styles/custom.css">
+    <link rel="stylesheet" href="../../shared/styles/portal.css">
+</head>
+
+<body id="wsPortal" data-active="stock-count" class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col md:flex-row overflow-x-hidden">
+
+    <!-- របារចំហៀង -->
+    <div id="sidebarHost"></div>
+
+    <!-- ផ្ទៃមាតិកាចម្បង -->
+    <div class="flex-1 flex flex-col min-w-0 h-screen overflow-y-auto">
+
+        <!-- ក្បាលទំព័រ -->
+        <header class="h-[72px] px-6 flex items-center justify-between border-b border-slate-200 bg-white/80 backdrop-blur sticky top-0 z-10 flex-shrink-0">
+            <div class="flex items-center gap-3">
+                <button onclick="toggleMobileSidebar()" class="w-10 h-10 rounded-xl bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600 transition md:hidden">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div>
+                    <h2 class="text-base font-bold text-slate-800 flex items-center gap-2">
+                        <i class="fas fa-list-check text-sky-600"></i>
+                        <span>រាប់ស្តុកជាក់ស្តែងតាមធ្នើរ (Cycle Count)</span>
+                    </h2>
+                    <p class="text-xs text-slate-500">ផ្ទៀងផ្ទាត់ចំនួនក្នុងប្រព័ន្ធ និងចំនួនរាប់ជាក់ស្តែងលើធ្នើរឃ្លាំង</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 text-xs font-semibold">
+                    <i class="fas fa-shield-halved text-amber-600"></i>
+                    <span>Zero Price Policy</span>
+                </div>
+                <div class="flex items-center gap-2 pl-3 border-l border-slate-200">
+                    <div class="w-9 h-9 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-700 font-bold text-xs">សច</div>
+                    <div class="hidden lg:block text-left">
+                        <p class="text-xs font-bold text-slate-800 leading-tight">សុខ ចាន់ថន</p>
+                        <p class="text-[11px] text-slate-500">ជាន់ឃ្លាំងកណ្តាល (WH-PP01)</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- មាតិកាខាងក្នុង -->
+        <main class="p-4 sm:p-6 space-y-6 flex-1">
+
+            <!-- កាតសង្ខេប -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
+                    <div>
+                        <p class="text-xs text-slate-500 font-medium">សន្លឹករាប់កំពុងដំណើរការ</p>
+                        <h3 class="text-2xl font-bold text-sky-600 mt-1" id="countActiveCount">1</h3>
+                        <p class="text-[11px] text-slate-400 mt-0.5">តំបន់ A (Aisle A)</p>
+                    </div>
+                    <div class="w-12 h-12 rounded-2xl bg-sky-50 text-sky-600 flex items-center justify-center text-xl">
+                        <i class="fas fa-spinner"></i>
+                    </div>
+                </div>
+
+                <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
+                    <div>
+                        <p class="text-xs text-slate-500 font-medium">ភាពលម្អៀងរកឃើញ (Variance)</p>
+                        <h3 class="text-2xl font-bold text-rose-600 mt-1" id="countVarianceCount">-1</h3>
+                        <p class="text-[11px] text-slate-400 mt-0.5">ខ្វះ 1 គ្រឿងក្នុងតំបន់ A</p>
+                    </div>
+                    <div class="w-12 h-12 rounded-2xl bg-rose-50 text-rose-600 flex items-center justify-center text-xl">
+                        <i class="fas fa-triangle-exclamation"></i>
+                    </div>
+                </div>
+
+                <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
+                    <div>
+                        <p class="text-xs text-slate-500 font-medium">សន្លឹកបានបញ្ជូនរួច (Submitted)</p>
+                        <h3 class="text-2xl font-bold text-emerald-600 mt-1" id="countSubmittedCount">1</h3>
+                        <p class="text-[11px] text-slate-400 mt-0.5">បញ្ជូនទៅកាន់អ្នកគ្រប់គ្រងឃ្លាំង</p>
+                    </div>
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl">
+                        <i class="fas fa-paper-plane"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- សន្លឹករាប់ស្តុកជាក់ស្តែង (Cycle Count Sheets) -->
+            <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
+                <div class="p-5 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div>
+                        <h3 class="text-sm font-bold text-slate-800 flex items-center gap-2">
+                            <i class="fas fa-clipboard-list text-sky-600"></i>
+                            <span>សន្លឹករាប់ស្តុកប្រចាំថ្ងៃតាមធ្នើរ និងតំបន់</span>
+                        </h3>
+                        <p class="text-xs text-slate-500 mt-0.5">បញ្ចូលចំនួនជាក់ស្តែងដែលបានរាប់ និងកត់ត្រាមូលហេតុប្រសិនបើមានភាពខុសគ្នា</p>
+                    </div>
+                    <button onclick="createNewCountSheet()" class="px-4 py-2 rounded-xl bg-primary hover:bg-primary-dark text-white text-xs font-semibold transition flex items-center gap-1.5 shadow-sm cursor-pointer self-start sm:self-auto">
+                        <i class="fas fa-plus"></i> បង្កើតសន្លឹករាប់ថ្មី
+                    </button>
+                </div>
+
+                <div id="countSheetsContainer" class="p-5 space-y-6">
+                    <!-- Dynamic Cycle Count Cards -->
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../shared/scripts/ui-components.js"></script>
+    <script src="data.js"></script>
+    <script src="../../shared/scripts/portal.js"></script>
+    <script>
+        function updateCountsOverview() {
+            const data = getWarehouseStaffData();
+            const active = data.cycleCounts.filter(c => c.status === 'in_progress').length;
+            const submitted = data.cycleCounts.filter(c => c.status === 'submitted').length;
+
+            let totalVar = 0;
+            data.cycleCounts.forEach(c => {
+                c.items.forEach(i => {
+                    totalVar += (i.variance || 0);
+                });
+            });
+
+            document.getElementById('countActiveCount').textContent = active;
+            document.getElementById('countVarianceCount').textContent = totalVar > 0 ? `+${totalVar}` : totalVar;
+            document.getElementById('countSubmittedCount').textContent = submitted;
+        }
+
+        function renderCountSheets() {
+            const data = getWarehouseStaffData();
+            const container = document.getElementById('countSheetsContainer');
+            if (!container) return;
+
+            if (data.cycleCounts.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12 text-slate-400">
+                        <i class="fas fa-inbox text-4xl mb-3 text-slate-300"></i>
+                        <p class="text-sm">មិនមានសន្លឹករាប់ស្តុកឡើយ</p>
+                    </div>`;
+                return;
+            }
+
+            container.innerHTML = data.cycleCounts.map(sheet => {
+                const isSubmitted = sheet.status === 'submitted';
+
+                let statusBadge = isSubmitted ?
+                    '<span class="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-semibold"><i class="fas fa-check-circle mr-1"></i> បានបញ្ជូនរួច</span>' :
+                    '<span class="px-2.5 py-1 rounded-full bg-sky-50 text-sky-700 border border-sky-200 text-xs font-semibold"><i class="fas fa-spinner mr-1"></i> កំពុងរាប់</span>';
+
+                const rowsHtml = sheet.items.map(item => {
+                    const variance = (item.countedQty || 0) - item.systemQty;
+                    let varBadge = '';
+                    if (variance === 0) {
+                        varBadge = '<span class="px-2 py-0.5 rounded-lg bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-200">0 (ត្រឹមត្រូវ)</span>';
+                    } else if (variance < 0) {
+                        varBadge = `<span class="px-2 py-0.5 rounded-lg bg-rose-50 text-rose-700 text-xs font-bold border border-rose-200">${variance} (ខ្វះ)</span>`;
+                    } else {
+                        varBadge = `<span class="px-2 py-0.5 rounded-lg bg-amber-50 text-amber-700 text-xs font-bold border border-amber-200">+${variance} (លើស)</span>`;
+                    }
+
+                    return `
+                        <tr class="hover:bg-slate-50/80 transition">
+                            <td class="py-3 px-3 text-xs font-mono font-bold text-sky-700">${item.sku}</td>
+                            <td class="py-3 px-3 text-xs font-medium text-slate-800">${item.name}</td>
+                            <td class="py-3 px-3 text-xs font-semibold text-purple-700">
+                                <span class="px-2 py-0.5 rounded-lg bg-purple-50 border border-purple-200"><i class="fas fa-location-dot mr-1"></i> ${item.bin}</span>
+                            </td>
+                            <td class="py-3 px-3 text-xs font-bold text-center text-slate-600">${item.systemQty}</td>
+                            <td class="py-3 px-3 text-xs font-bold text-center">
+                                ${isSubmitted ? `<span class="font-bold text-slate-800">${item.countedQty}</span>` : `
+                                    <input type="number" min="0" value="${item.countedQty}"
+                                        onchange="updateCountValue('${sheet.id}', '${item.sku}', this.value)"
+                                        class="w-20 bg-white border border-slate-200 rounded-lg py-1 px-2 text-center text-xs font-bold text-slate-800 focus:outline-none focus:border-sky-500">
+                                `}
+                            </td>
+                            <td class="py-3 px-3 text-center">${varBadge}</td>
+                            <td class="py-3 px-3 text-xs">
+                                ${isSubmitted ? `<span class="text-slate-600 text-[11px]">${item.note || '-'}</span>` : `
+                                    <input type="text" value="${item.note || ''}" placeholder="កត់ត្រាមូលហេតុ..."
+                                        onchange="updateCountNote('${sheet.id}', '${item.sku}', this.value)"
+                                        class="w-full bg-white border border-slate-200 rounded-lg py-1 px-2 text-xs text-slate-700 focus:outline-none focus:border-sky-500">
+                                `}
+                            </td>
+                        </tr>
+                    `;
+                }).join('');
+
+                return `
+                    <div class="p-5 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-700 flex items-center justify-center font-bold text-sm">
+                                    <i class="fas fa-list-check"></i>
+                                </div>
+                                <div>
+                                    <div class="flex items-center gap-2">
+                                        <h4 class="text-sm font-bold text-slate-800">${sheet.id}</h4>
+                                        <span class="text-xs font-semibold text-slate-600">&bull; ${sheet.zone}</span>
+                                    </div>
+                                    <p class="text-xs text-slate-500 mt-0.5">
+                                        <i class="fas fa-calendar mr-1 text-slate-400"></i> ${sheet.date} &bull; <i class="fas fa-user-check ml-1 mr-1 text-slate-400"></i> អ្នករាប់: ${sheet.assignedAuditor}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3 self-end sm:self-center">
+                                ${statusBadge}
+                                ${!isSubmitted ? `
+                                    <button onclick="submitCountSheet('${sheet.id}')" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold transition shadow-sm flex items-center gap-1.5 cursor-pointer">
+                                        <i class="fas fa-paper-plane"></i> បញ្ជូនទៅប្រធានឃ្លាំង
+                                    </button>
+                                ` : `
+                                    <button onclick="showToast('សន្លឹករាប់នេះត្រូវបានបញ្ជូនទៅអ្នកគ្រប់គ្រងឃ្លាំងដើម្បីពិនិត្យអនុម័តរួចរាល់', 'info')" class="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition flex items-center gap-1.5 cursor-pointer">
+                                        <i class="fas fa-print"></i> បោះពុម្ព
+                                    </button>
+                                `}
+                            </div>
+                        </div>
+
+                        <!-- តារាងរាប់ជាក់ស្តែង (Zero Price Policy) -->
+                        <div class="overflow-x-auto rounded-xl border border-slate-100 bg-slate-50/50">
+                            <table class="w-full text-left">
+                                <thead class="bg-slate-100/70 text-slate-600 text-[11px] font-bold uppercase tracking-wider">
+                                    <tr>
+                                        <th class="py-2.5 px-3">កូដ SKU</th>
+                                        <th class="py-2.5 px-3">ឈ្មោះទំនិញ</th>
+                                        <th class="py-2.5 px-3">ធ្នើរ</th>
+                                        <th class="py-2.5 px-3 text-center">ចំនួនក្នុងប្រព័ន្ធ</th>
+                                        <th class="py-2.5 px-3 text-center">ចំនួនរាប់ជាក់ស្តែង</th>
+                                        <th class="py-2.5 px-3 text-center">ភាពខុសគ្នា (Variance)</th>
+                                        <th class="py-2.5 px-3">កំណត់ចំណាំ</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-100 bg-white">
+                                    ${rowsHtml}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>`;
+            }).join('');
+        }
+
+        function updateCountValue(sheetId, sku, val) {
+            const data = getWarehouseStaffData();
+            const sheet = data.cycleCounts.find(s => s.id === sheetId);
+            if (!sheet) return;
+            const item = sheet.items.find(i => i.sku === sku);
+            if (item) {
+                item.countedQty = parseInt(val) || 0;
+                item.variance = item.countedQty - item.systemQty;
+                saveWarehouseStaffData(data);
+                updateCountsOverview();
+                renderCountSheets();
+            }
+        }
+
+        function updateCountNote(sheetId, sku, val) {
+            const data = getWarehouseStaffData();
+            const sheet = data.cycleCounts.find(s => s.id === sheetId);
+            if (!sheet) return;
+            const item = sheet.items.find(i => i.sku === sku);
+            if (item) {
+                item.note = val;
+                saveWarehouseStaffData(data);
+            }
+        }
+
+        function submitCountSheet(sheetId) {
+            const data = getWarehouseStaffData();
+            const sheet = data.cycleCounts.find(s => s.id === sheetId);
+            if (sheet) {
+                sheet.status = 'submitted';
+                saveWarehouseStaffData(data);
+                showToast(`សន្លឹករាប់ ${sheetId} ត្រូវបានបញ្ជូនទៅកាន់អ្នកគ្រប់គ្រងឃ្លាំងជោគជ័យ!`, 'success');
+                updateCountsOverview();
+                renderCountSheets();
+            }
+        }
+
+        function createNewCountSheet() {
+            const data = getWarehouseStaffData();
+            const newId = `CNT-2026-${String(data.cycleCounts.length + 45).padStart(3, '0')}`;
+            const newSheet = {
+                id: newId,
+                zone: 'តំបន់ C (Aisle C - C-01 ដល់ C-02)',
+                date: '2026-09-23',
+                assignedAuditor: 'សុខ ចាន់ថន',
+                status: 'in_progress',
+                items: [
+                    { sku: 'SKU-005', name: 'កង្ហារបញ្ឈរតេឡេបញ្ជា', bin: 'C-01-04', systemQty: 112, countedQty: 112, variance: 0, note: '' },
+                    { sku: 'SKU-006', name: 'ឆ្នាំងដាំបាយអេឡិចត្រូនិច 1.8L', bin: 'C-02-02', systemQty: 64, countedQty: 64, variance: 0, note: '' }
+                ]
+            };
+            data.cycleCounts.unshift(newSheet);
+            saveWarehouseStaffData(data);
+            showToast(`បានបង្កើតសន្លឹករាប់ថ្មី ${newId}`, 'success');
+            updateCountsOverview();
+            renderCountSheets();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCountsOverview();
+            renderCountSheets();
+        });
+    </script>
+</body>
+
+</html>

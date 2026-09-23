@@ -1,0 +1,193 @@
+/**
+ * ច្រកបម្រើ និងគាំទ្រអតិថិជន — ទិន្នន័យគំរូ និងម៉ាស៊ីនដំណើរការ (Customer Support Data)
+ * Data Scope: Read-Only លើវិក្កយបត្រ, តាមដានអ្នកដឹក, ដោះស្រាយបណ្តឹង Tickets, និង Zero Margin/Cost Leakage
+ */
+
+const CUSTOMER_SUPPORT_STORAGE_KEY = 'digitechkh_bms_customer_support_data';
+
+const DEFAULT_CUSTOMER_SUPPORT_DATA = {
+    userProfile: {
+        id: 'CS-012',
+        name: 'លី ស្រីមុំ',
+        role: 'បុគ្គលិកបម្រើអតិថិជន (Customer Support Specialist)',
+        channel: 'Telegram & Hotline Queue'
+    },
+    // បញ្ជីសំបុត្របណ្តឹង និងសំណើជំនួយ (Support Tickets)
+    tickets: [
+        {
+            id: 'TCK-2026-081',
+            customerName: 'អ៊ុច វ៉ាន់ដា',
+            phone: '012 345 678',
+            channel: 'Telegram Support',
+            category: 'សាកសួរទីតាំងដឹកជញ្ជូន',
+            priority: 'បន្ទាន់ (High)',
+            status: 'pending', // pending, in_progress, resolved
+            createdAt: '2026-09-23 09:10',
+            slaMinutesRemaining: 25,
+            relatedInvoice: 'INV-2026-0891',
+            subject: 'អតិថិជនសួរនាំអំពីម៉ោងមកដល់របស់ឡានដឹកទំនិញ',
+            messages: [
+                { sender: 'customer', text: 'សួស្តីបង ខ្ញុំបានកុម្ម៉ង់ទូរទស្សន៍ព្រឹកមិញ តើឡានដឹកមកដល់ម៉ោងប៉ុន្មានដែរ?', time: '09:10' }
+            ],
+            internalNotes: 'បានឆែកឃើញ Driver លេខ 2E-9932 កំពុងធ្វើដំណើរលើផ្លូវ 271'
+        },
+        {
+            id: 'TCK-2026-080',
+            customerName: 'ហាងលក់គ្រឿងបន្លាស់ ម៉េងហួរ',
+            phone: '098 765 432',
+            channel: 'Call Center',
+            category: 'ស្នើសុំប្តូរទំនិញ (RMA)',
+            priority: 'បន្ទាន់ខ្លាំង (Critical)',
+            status: 'in_progress',
+            createdAt: '2026-09-23 08:35',
+            slaMinutesRemaining: 15,
+            relatedInvoice: 'INV-2026-0885',
+            subject: 'កង្ហារបញ្ឈរមានស្នាមប្រេះកង្ហារពេលបកកេស',
+            messages: [
+                { sender: 'customer', text: 'ពេលទទួលកង្ហារមក ឃើញស្លាបកង្ហារប្រេះ ខ្ញុំចង់ប្តូរថ្មីមួយគ្រឿងបង', time: '08:35' },
+                { sender: 'support', text: 'ជម្រាបសួរលោកម្ចាស់ហាង! ខាងប្អូនបានទទួលរូបភាព និងបញ្ជូនសំណើ RMA ទៅឃ្លាំងដើម្បីត្រៀមដូរជូនហើយ', time: '08:42' }
+            ],
+            internalNotes: 'បានដាក់សំណើ RMA-2026-019 ទៅកាន់ Warehouse Manager រួចរាល់'
+        },
+        {
+            id: 'TCK-2026-078',
+            customerName: 'គ្លីនិក សុខភាពល្អ',
+            phone: '077 889 900',
+            channel: 'Walk-in / Hotline',
+            category: 'សុំចម្លងវិក្កយបត្រ VAT',
+            priority: 'ធម្មតា (Normal)',
+            status: 'resolved',
+            createdAt: '2026-09-22 16:20',
+            slaMinutesRemaining: 0,
+            relatedInvoice: 'INV-2026-0870',
+            subject: 'សុំទាញយកវិក្កយបត្រពន្ធ VAT PDF ឡើងវិញ',
+            messages: [
+                { sender: 'customer', text: 'សុំវិក្កយបត្រ PDF សម្រាប់ខែមុនផងបង', time: '16:20' },
+                { sender: 'support', text: 'បានផ្ញើឯកសារ PDF ផ្លូវការចូល Telegram រួចរាល់ហើយបង។ អរគុណច្រើន!', time: '16:28' }
+            ],
+            internalNotes: 'បានទាញយកវិក្កយបត្រពី Orders Lookup ហើយបញ្ជូនជូនអតិថិជន'
+        }
+    ],
+    // មូលដ្ឋានទិន្នន័យស្វែងរកវិក្កយបត្រ (Orders & Invoices Lookup)
+    orders: [
+        {
+            invoiceId: 'INV-2026-0891',
+            orderNo: 'SO-2026-1042',
+            date: '2026-09-23',
+            customerName: 'អ៊ុច វ៉ាន់ដា',
+            phone: '012 345 678',
+            address: 'ផ្ទះលេខ 12Eo ផ្លូវ 271 សង្កាត់ទឹកល្អក់3 ខណ្ឌទួលគោក ភ្នំពេញ',
+            paymentStatus: 'បានបង់ប្រាក់រួច (Bakong KHQR)',
+            deliveryStatus: 'out_for_delivery', // packing, dispatched, out_for_delivery, delivered
+            salesRep: 'ហេង វិច្ឆិកា',
+            driverName: 'កែវ សំណាង (011 223 344)',
+            vehiclePlate: 'ភ្នំពេញ 2E-9932 (ម៉ូតូរឺម៉ក)',
+            items: [
+                { sku: 'SKU-001', name: 'ម៉ាស៊ីនត្រជាក់ Inverter 1.5HP', qty: 2, unitPrice: 380.00, total: 760.00 },
+                { sku: 'SKU-005', name: 'កង្ហារបញ្ឈរតេឡេបញ្ជា', qty: 3, unitPrice: 35.00, total: 105.00 }
+            ],
+            grandTotal: 865.00
+        },
+        {
+            invoiceId: 'INV-2026-0885',
+            orderNo: 'SO-2026-1035',
+            date: '2026-09-22',
+            customerName: 'ហាងលក់គ្រឿងបន្លាស់ ម៉េងហួរ',
+            phone: '098 765 432',
+            address: 'បុរីពិភពថ្មី ចំការដូង ផ្ទះលេខ 45 ផ្លូវ 03',
+            paymentStatus: 'បានបង់ប្រាក់រួច (សាច់ប្រាក់)',
+            deliveryStatus: 'delivered',
+            salesRep: 'ស៊ុន ចាន់ដារ៉ា',
+            driverName: 'ជា សុផាត (016 554 433)',
+            vehiclePlate: 'ភ្នំពេញ 2B-8941 (រថយន្តដឹក)',
+            items: [
+                { sku: 'SKU-005', name: 'កង្ហារបញ្ឈរតេឡេបញ្ជា', qty: 10, unitPrice: 35.00, total: 350.00 }
+            ],
+            grandTotal: 350.00
+        },
+        {
+            invoiceId: 'INV-2026-0894',
+            orderNo: 'SO-2026-1048',
+            date: '2026-09-23',
+            customerName: 'ក្រុមហ៊ុន គឹមសេង ត្រេឌីង',
+            phone: '085 123 999',
+            address: 'ក្រុងសៀមរាប ផ្ញើតាមឡានក្រុងវីរៈប៊ុនថាំ',
+            paymentStatus: 'ជំពាក់ (Credit 30 ថ្ងៃ)',
+            deliveryStatus: 'dispatched',
+            salesRep: 'ហេង វិច្ឆិកា',
+            driverName: 'ម៉េង ហុង (092 887 766)',
+            vehiclePlate: 'ភ្នំពេញ 3A-1102 (ឡានដឹកធំ)',
+            items: [
+                { sku: 'SKU-002', name: 'ទូរទស្សន៍ឆ្លាតវៃ 55" 4K UHD', qty: 4, unitPrice: 420.00, total: 1680.00 },
+                { sku: 'SKU-006', name: 'ឆ្នាំងដាំបាយអេឡិចត្រូនិច 1.8L', qty: 5, unitPrice: 28.00, total: 140.00 }
+            ],
+            grandTotal: 1820.00
+        }
+    ],
+    // បញ្ជីតាមដានការដឹកជញ្ជូនជាក់ស្តែង (Live Delivery Tracking)
+    deliveries: [
+        {
+            trackingCode: 'TRK-2026-091',
+            invoiceId: 'INV-2026-0891',
+            customerName: 'អ៊ុច វ៉ាន់ដា',
+            phone: '012 345 678',
+            destination: 'ខណ្ឌទួលគោក ភ្នំពេញ',
+            driverName: 'កែវ សំណាង',
+            driverPhone: '011 223 344',
+            vehicle: 'ម៉ូតូរឺម៉កដឹក (2E-9932)',
+            currentStage: 3, // 1: Packed, 2: Dispatched, 3: Out for delivery, 4: Delivered
+            stageLabels: ['បានវេចខ្ចប់', 'បានចេញពីឃ្លាំង', 'កំពុងធ្វើដំណើរជិតដល់', 'បានប្រគល់ជោគជ័យ'],
+            estimatedArrival: '10:45 ព្រឹក ថ្ងៃនេះ',
+            lastUpdated: '10:05 ព្រឹក (នៅជិតស្តុបផ្សារដើមគ)',
+            itemsCount: 5
+        },
+        {
+            trackingCode: 'TRK-2026-092',
+            invoiceId: 'INV-2026-0894',
+            customerName: 'ក្រុមហ៊ុន គឹមសេង ត្រេឌីង',
+            phone: '085 123 999',
+            destination: 'ស្ថានីយ៍ឡានក្រុងវីរៈប៊ុនថាំ (ទៅសៀមរាប)',
+            driverName: 'ម៉េង ហុង',
+            driverPhone: '092 887 766',
+            vehicle: 'រថយន្តដឹកធំ (3A-1102)',
+            currentStage: 2,
+            stageLabels: ['បានវេចខ្ចប់', 'បានចេញពីឃ្លាំង', 'កំពុងធ្វើដំណើរជិតដល់', 'បានប្រគល់ជោគជ័យ'],
+            estimatedArrival: '11:30 ព្រឹក ថ្ងៃនេះ',
+            lastUpdated: '09:50 ព្រឹក (ចេញពីឃ្លាំងកណ្តាល)',
+            itemsCount: 9
+        },
+        {
+            trackingCode: 'TRK-2026-088',
+            invoiceId: 'INV-2026-0885',
+            customerName: 'ហាងលក់គ្រឿងបន្លាស់ ម៉េងហួរ',
+            phone: '098 765 432',
+            destination: 'បុរីពិភពថ្មី ចំការដូង',
+            driverName: 'ជា សុផាត',
+            driverPhone: '016 554 433',
+            vehicle: 'រថយន្តដឹក (2B-8941)',
+            currentStage: 4,
+            stageLabels: ['បានវេចខ្ចប់', 'បានចេញពីឃ្លាំង', 'កំពុងធ្វើដំណើរជិតដល់', 'បានប្រគល់ជោគជ័យ'],
+            estimatedArrival: 'បានប្រគល់រួច',
+            lastUpdated: 'ម្សិលមិញ 16:30',
+            itemsCount: 10
+        }
+    ]
+};
+
+function getCustomerSupportData() {
+    try {
+        const data = sessionStorage.getItem(CUSTOMER_SUPPORT_STORAGE_KEY);
+        if (data) return JSON.parse(data);
+    } catch (e) {
+        console.warn('SessionStorage not available, using default support data');
+    }
+    return DEFAULT_CUSTOMER_SUPPORT_DATA;
+}
+
+function saveCustomerSupportData(data) {
+    try {
+        sessionStorage.setItem(CUSTOMER_SUPPORT_STORAGE_KEY, JSON.stringify(data));
+    } catch (e) {
+        console.error('Error saving customer support data', e);
+    }
+}

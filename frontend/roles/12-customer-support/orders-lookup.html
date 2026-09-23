@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="km">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - ស្វែងរកវិក្កយបត្រ និងបញ្ជាទិញ (Orders Lookup)</title>
+    <link rel="icon" type="image/png" href="../../shared/assets/favicon.png">
+    <link rel="shortcut icon" type="image/png" href="../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1e3a5f",
+                        'primary-dark': "#142842",
+                        accent: "#0ea5e9",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../shared/styles/custom.css">
+    <link rel="stylesheet" href="../../shared/styles/portal.css">
+</head>
+
+<body id="csPortal" data-active="orders-lookup" class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col md:flex-row overflow-x-hidden">
+
+    <!-- របារចំហៀង -->
+    <div id="sidebarHost"></div>
+
+    <!-- ផ្ទៃមាតិកាចម្បង -->
+    <div class="flex-1 flex flex-col min-w-0 h-screen overflow-y-auto">
+
+        <!-- ក្បាលទំព័រ -->
+        <header class="h-[72px] px-6 flex items-center justify-between border-b border-slate-200 bg-white/80 backdrop-blur sticky top-0 z-10 flex-shrink-0">
+            <div class="flex items-center gap-3">
+                <button onclick="toggleMobileSidebar()" class="w-10 h-10 rounded-xl bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600 transition md:hidden">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div>
+                    <h2 class="text-base font-bold text-slate-800 flex items-center gap-2">
+                        <i class="fas fa-magnifying-glass-dollar text-sky-600"></i>
+                        <span>ស្វែងរកវិក្កយបត្រ និងបញ្ជាទិញ (Orders Lookup)</span>
+                    </h2>
+                    <p class="text-xs text-slate-500">ស្វែងរកតាមលេខទូរស័ព្ទអតិថិជន លេខវិក្កយបត្រ ឬឈ្មោះហាង</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <div class="flex items-center gap-2 pl-3 border-l border-slate-200">
+                    <div class="w-9 h-9 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-700 font-bold text-xs">លស</div>
+                    <div class="hidden lg:block text-left">
+                        <p class="text-xs font-bold text-slate-800 leading-tight">លី ស្រីមុំ</p>
+                        <p class="text-[11px] text-slate-500">ផ្នែកគាំទ្រអតិថិជន</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- មាតិកាខាងក្នុង -->
+        <main class="p-4 sm:p-6 space-y-6 flex-1">
+
+            <!-- ប្រអប់ស្វែងរកធំរហ័ស (Universal Fast Search Bar) -->
+            <div class="bg-gradient-to-r from-[#1e3a5f] to-[#142842] text-white p-6 rounded-3xl shadow-lg border border-slate-700">
+                <div class="max-w-2xl mx-auto text-center space-y-3">
+                    <h3 class="text-lg font-bold">ឧបករណ៍ស្វែងរកវិក្កយបត្រ និងព័ត៌មានកុម្ម៉ង់ទូទាំងប្រព័ន្ធ</h3>
+                    <p class="text-xs text-sky-200 font-light">បញ្ចូលលេខទូរស័ព្ទ (ឧ. 012 345 678), លេខវិក្កយបត្រ (INV-...) ឬឈ្មោះអតិថិជន</p>
+                    <div class="relative">
+                        <i class="fas fa-search absolute left-4 top-3.5 text-slate-400 text-sm"></i>
+                        <input type="text" id="universalSearch" oninput="handleSearch()" placeholder="វាយលេខទូរស័ព្ទ, លេខ INV-2026-..., ឬឈ្មោះហាង..."
+                            class="w-full bg-white text-slate-800 placeholder:text-slate-400 rounded-2xl pl-11 pr-28 py-3 text-sm focus:outline-none focus:ring-4 focus:ring-sky-400/30 shadow-inner font-medium">
+                        <button onclick="handleSearch()" class="absolute right-2 top-2 px-4 py-1.5 rounded-xl bg-primary hover:bg-primary-dark text-white text-xs font-semibold transition cursor-pointer">
+                            ស្វែងរក
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- លទ្ធផលនៃការស្វែងរក (Search Results Grid) -->
+            <div id="searchResultsContainer" class="space-y-4">
+                <!-- Dynamic Results -->
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Modal ស្នើសុំប្តូរទំនិញ RMA (Create RMA Request) -->
+    <div id="rmaModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+        <div class="bg-white rounded-3xl shadow-2xl border border-slate-100 w-full max-w-xl overflow-hidden">
+            <div class="p-6 bg-gradient-to-r from-[#0f2b5c] to-[#1e3a5f] text-white flex items-center justify-between">
+                <div>
+                    <h3 class="text-base font-bold flex items-center gap-2">
+                        <i class="fas fa-rotate-left text-sky-300"></i>
+                        <span>ស្នើសុំប្តូរទំនិញ ឬជួសជុល (RMA Request)</span>
+                    </h3>
+                    <p class="text-xs text-sky-200 mt-0.5" id="rmaModalSubtitle">វិក្កយបត្រ INV-2026-0891</p>
+                </div>
+                <button onclick="closeRMAModal()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition cursor-pointer">
+                    <i class="fas fa-xmark text-sm"></i>
+                </button>
+            </div>
+            <div class="p-6 space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1.5">ជ្រើសរើសទំនិញដែលស្នើសុំប្តូរ</label>
+                    <select id="rmaItemSelect" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-primary">
+                        <!-- Dynamic Options -->
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1.5">មូលហេតុនៃការប្តូរ</label>
+                    <select id="rmaReasonSelect" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-primary">
+                        <option value="damaged">ទំនិញខូចខាតពេលដឹកជញ្ជូន (Damaged in Transit)</option>
+                        <option value="defect">ទំនិញមានបញ្ហាបច្ចេកទេសពីរោងចក្រ (Factory Defect)</option>
+                        <option value="wrong_item">បញ្ជូនទំនិញខុសម៉ូឌែល (Wrong Item Dispatched)</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1.5">បរិយាយលម្អិតអំពីបញ្ហា</label>
+                    <textarea id="rmaDescription" rows="3" placeholder="បញ្ជាក់ពីស្ថានភាពជាក់ស្តែងរបស់ទំនិញ..."
+                        class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-xs focus:outline-none focus:border-primary"></textarea>
+                </div>
+
+                <div class="p-3 bg-amber-50 rounded-xl border border-amber-200 text-amber-900 text-xs flex items-center gap-2">
+                    <i class="fas fa-info-circle text-amber-600"></i>
+                    <span>សំណើ RMA នឹងត្រូវបញ្ជូនទៅកាន់អ្នកគ្រប់គ្រងឃ្លាំងដើម្បីពិនិត្យទំនិញ និងបញ្ចេញទំនិញថ្មីជំនួស។</span>
+                </div>
+            </div>
+            <div class="p-4 bg-slate-50 border-t border-slate-100 flex justify-end gap-3">
+                <button onclick="closeRMAModal()" class="px-4 py-2 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-700 font-medium text-xs transition cursor-pointer">
+                    ថយក្រោយ
+                </button>
+                <button onclick="submitRMARequest()" class="px-5 py-2 rounded-xl bg-primary hover:bg-primary-dark text-white font-semibold text-xs transition shadow-sm cursor-pointer flex items-center gap-1.5">
+                    <i class="fas fa-paper-plane"></i> បញ្ជូនសំណើ RMA
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../shared/scripts/ui-components.js"></script>
+    <script src="data.js"></script>
+    <script src="../../shared/scripts/portal.js"></script>
+    <script>
+        let activeRMAInvoice = null;
+
+        function handleSearch() {
+            const query = (document.getElementById('universalSearch')?.value || '').trim().toLowerCase();
+            const data = getCustomerSupportData();
+            const container = document.getElementById('searchResultsContainer');
+            if (!container) return;
+
+            let list = data.orders;
+            if (query) {
+                list = list.filter(o => 
+                    o.invoiceId.toLowerCase().includes(query) ||
+                    o.orderNo.toLowerCase().includes(query) ||
+                    o.customerName.toLowerCase().includes(query) ||
+                    o.phone.includes(query) ||
+                    o.items.some(i => i.name.toLowerCase().includes(query) || i.sku.toLowerCase().includes(query))
+                );
+            }
+
+            if (list.length === 0) {
+                container.innerHTML = `
+                    <div class="bg-white rounded-3xl border border-slate-200 p-12 text-center text-slate-400 shadow-sm">
+                        <i class="fas fa-search-minus text-4xl mb-3 text-slate-300"></i>
+                        <p class="text-sm font-medium">រកមិនឃើញវិក្កយបត្រ ឬបញ្ជាទិញដែលត្រូវគ្នានឹងពាក្យស្វែងរកឡើយ</p>
+                    </div>`;
+                return;
+            }
+
+            container.innerHTML = list.map(order => {
+                let deliveryBadge = '';
+                if (order.deliveryStatus === 'delivered') {
+                    deliveryBadge = '<span class="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-semibold"><i class="fas fa-check-double mr-1"></i> បានប្រគល់ជូន</span>';
+                } else if (order.deliveryStatus === 'out_for_delivery') {
+                    deliveryBadge = '<span class="px-2.5 py-1 rounded-full bg-sky-50 text-sky-700 border border-sky-200 text-xs font-semibold"><i class="fas fa-truck-fast mr-1"></i> កំពុងធ្វើដំណើរលើផ្លូវ</span>';
+                } else {
+                    deliveryBadge = '<span class="px-2.5 py-1 rounded-full bg-amber-50 text-amber-700 border border-amber-200 text-xs font-semibold"><i class="fas fa-box-archive mr-1"></i> បានចេញពីឃ្លាំង</span>';
+                }
+
+                const itemsHtml = order.items.map(item => `
+                    <tr class="hover:bg-slate-50/80 transition">
+                        <td class="py-2.5 px-3 text-xs font-mono font-bold text-sky-700">${item.sku}</td>
+                        <td class="py-2.5 px-3 text-xs font-medium text-slate-800">${item.name}</td>
+                        <td class="py-2.5 px-3 text-xs font-bold text-center text-slate-700">${item.qty}</td>
+                        <td class="py-2.5 px-3 text-xs font-semibold text-right text-slate-700">$${item.unitPrice.toFixed(2)}</td>
+                        <td class="py-2.5 px-3 text-xs font-bold text-right text-slate-900">$${item.total.toFixed(2)}</td>
+                    </tr>
+                `).join('');
+
+                return `
+                    <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-6 space-y-5 hover:border-slate-300 transition">
+                        <!-- Top Order Info -->
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-100">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-2xl bg-[#1e3a5f] text-white flex items-center justify-center font-bold text-lg shadow-sm">
+                                    <i class="fas fa-file-invoice-dollar"></i>
+                                </div>
+                                <div>
+                                    <div class="flex items-center gap-2">
+                                        <h3 class="text-base font-bold text-slate-800">${order.invoiceId}</h3>
+                                        <span class="text-xs font-mono text-slate-500">(${order.orderNo})</span>
+                                        <span class="px-2.5 py-0.5 rounded-full bg-sky-50 text-sky-700 border border-sky-200 text-xs font-semibold">${order.paymentStatus}</span>
+                                    </div>
+                                    <p class="text-xs text-slate-500 mt-0.5">
+                                        <i class="fas fa-calendar mr-1 text-slate-400"></i> ${order.date} &bull; អ្នកលក់: <span class="font-medium text-slate-700">${order.salesRep}</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3 self-end sm:self-center">
+                                ${deliveryBadge}
+                                <button onclick="openRMAModal('${order.invoiceId}')" class="px-3.5 py-2 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 text-xs font-semibold transition flex items-center gap-1.5 cursor-pointer">
+                                    <i class="fas fa-rotate-left"></i> ស្នើប្តូរ RMA
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Customer & Delivery Metadata -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-slate-50/70 p-4 rounded-2xl border border-slate-100 text-xs">
+                            <div class="space-y-1.5">
+                                <p class="text-slate-500 font-medium"><i class="fas fa-user mr-1 text-slate-400"></i> ព័ត៌មានអតិថិជន:</p>
+                                <p class="font-bold text-slate-800">${order.customerName} (<a href="tel:${order.phone}" class="text-sky-700 hover:underline font-mono">${order.phone}</a>)</p>
+                                <p class="text-slate-600 leading-relaxed"><i class="fas fa-location-dot mr-1 text-slate-400"></i> ${order.address}</p>
+                            </div>
+                            <div class="space-y-1.5">
+                                <p class="text-slate-500 font-medium"><i class="fas fa-truck mr-1 text-slate-400"></i> អ្នកដឹកជញ្ជូន:</p>
+                                <p class="font-bold text-slate-800">${order.driverName}</p>
+                                <p class="text-slate-600"><i class="fas fa-id-card mr-1 text-slate-400"></i> យានយន្ត: ${order.vehiclePlate}</p>
+                            </div>
+                        </div>
+
+                        <!-- Item Table -->
+                        <div class="overflow-x-auto rounded-xl border border-slate-100">
+                            <table class="w-full text-left">
+                                <thead class="bg-slate-100/70 text-slate-600 text-[11px] font-bold uppercase tracking-wider">
+                                    <tr>
+                                        <th class="py-2 px-3">កូដ SKU</th>
+                                        <th class="py-2 px-3">ឈ្មោះមុខទំនិញ</th>
+                                        <th class="py-2 px-3 text-center">ចំនួន</th>
+                                        <th class="py-2 px-3 text-right">តម្លៃរាយ</th>
+                                        <th class="py-2 px-3 text-right">សរុប</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-100 bg-white">
+                                    ${itemsHtml}
+                                </tbody>
+                                <tfoot class="bg-slate-50 font-bold text-xs">
+                                    <tr>
+                                        <td colspan="4" class="py-2.5 px-3 text-right text-slate-600">សរុបទឹកប្រាក់វិក្កយបត្រ (Grand Total):</td>
+                                        <td class="py-2.5 px-3 text-right text-emerald-700 font-mono text-sm">$${order.grandTotal.toFixed(2)}</td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>`;
+            }).join('');
+        }
+
+        function openRMAModal(invoiceId) {
+            const data = getCustomerSupportData();
+            const order = data.orders.find(o => o.invoiceId === invoiceId);
+            if (!order) return;
+
+            activeRMAInvoice = order;
+            document.getElementById('rmaModalSubtitle').textContent = `វិក្កយបត្រលេខ ${order.invoiceId} (${order.customerName})`;
+            const select = document.getElementById('rmaItemSelect');
+            select.innerHTML = order.items.map(i => `
+                <option value="${i.sku}">${i.name} (ចំនួន: ${i.qty})</option>
+            `).join('');
+
+            const modal = document.getElementById('rmaModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeRMAModal() {
+            const modal = document.getElementById('rmaModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            activeRMAInvoice = null;
+        }
+
+        function submitRMARequest() {
+            if (!activeRMAInvoice) return;
+            const itemSku = document.getElementById('rmaItemSelect').value;
+            const reason = document.getElementById('rmaReasonSelect').value;
+            const desc = document.getElementById('rmaDescription').value;
+
+            showToast(`សំណើ RMA សម្រាប់វិក្កយបត្រ ${activeRMAInvoice.invoiceId} ត្រូវបានបញ្ជូនទៅឃ្លាំងជោគជ័យ!`, 'success');
+            closeRMAModal();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            handleSearch();
+        });
+    </script>
+</body>
+
+</html>

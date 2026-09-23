@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - បញ្ជីប័ណ្ណកែតម្រូវស្តុក</title>
+    <link rel="icon" type="image/png" href="../../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1e3a5f",
+                        'primary-dark': "#142842",
+                        accent: "#0ea5e9",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../shared/styles/custom.css">
+    <link rel="stylesheet" href="../../../shared/styles/portal.css">
+</head>
+<body id="wmPortal" data-role-root=".." data-active="adjustments" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <div id="sidebarHost"></div>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div class="min-w-0">
+                <h2 class="text-xl font-semibold text-gray-800 leading-tight truncate">បញ្ជីប័ណ្ណកែតម្រូវស្តុក (Stock Adjustments)</h2>
+                <p class="sm-card-sub text-gray-500 mt-0.5 truncate">ពិនិត្យ និងអនុម័តគម្លាតនៃការរាប់ស្តុកជាក់ស្តែង (Cycle Count Variances)</p>
+            </div>
+
+            <div class="flex items-center space-x-3 flex-shrink-0">
+                <a href="create-adjustment.html" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#1e3a5f] hover:bg-[#142842] text-white font-semibold text-xs shadow-sm transition">
+                    <i class="fas fa-plus text-xs"></i>
+                    <span>បង្កើតប័ណ្ណកែតម្រូវថ្មី</span>
+                </a>
+            </div>
+        </header>
+
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-4">
+            <div class="w-full space-y-4">
+
+                <!-- Policy Threshold Banner -->
+                <div class="p-3.5 rounded-2xl bg-sky-50/70 border border-sky-200/80 flex items-center justify-between gap-3 text-xs text-sky-900">
+                    <div class="flex items-center gap-2.5">
+                        <i class="fas fa-shield-halved text-sky-600 text-sm flex-shrink-0"></i>
+                        <span><strong>គោលការណ៍អភិបាលកិច្ចស្តុក៖</strong> អ្នកគ្រប់គ្រងឃ្លាំងមានសិទ្ធិអនុម័តប័ណ្ណកែតម្រូវទំហំទឹកប្រាក់ ≤ $200.00 ដោយផ្ទាល់។ រាល់ប័ណ្ណលើសពី $200.00 ត្រូវបញ្ជូនទៅអភិបាលទូទៅ (GM)។</span>
+                    </div>
+                </div>
+
+                <!-- Tab Controls -->
+                <div class="bg-white rounded-2xl p-2 border border-slate-200/80 shadow-sm flex flex-wrap items-center gap-2">
+                    <button id="tabBtn-all" onclick="switchAdjTab('all')" class="sm-badge px-4 py-2 rounded-xl bg-[#1e3a5f] text-white font-semibold shadow-sm transition text-xs">
+                        ទាំងអស់ (<span id="count-all">0</span>)
+                    </button>
+                    <button id="tabBtn-pending_approval" onclick="switchAdjTab('pending_approval')" class="sm-badge px-4 py-2 rounded-xl text-slate-600 hover:bg-slate-100 font-medium transition text-xs flex items-center gap-1.5">
+                        <span>រង់ចាំការអនុម័ត</span>
+                        <span id="count-pending_approval" class="px-1.5 py-0.2 rounded-full bg-rose-500 text-white text-[10px] font-bold">0</span>
+                    </button>
+                    <button id="tabBtn-escalated_gm" onclick="switchAdjTab('escalated_gm')" class="sm-badge px-4 py-2 rounded-xl text-slate-600 hover:bg-slate-100 font-medium transition text-xs flex items-center gap-1.5">
+                        <span>បញ្ជូនទៅ GM (> $200)</span>
+                        <span id="count-escalated_gm" class="px-1.5 py-0.2 rounded-full bg-amber-100 text-amber-800 text-[10px] font-bold">0</span>
+                    </button>
+                    <button id="tabBtn-approved" onclick="switchAdjTab('approved')" class="sm-badge px-4 py-2 rounded-xl text-slate-600 hover:bg-slate-100 font-medium transition text-xs">
+                        បានអនុម័តរួច (<span id="count-approved">0</span>)
+                    </button>
+                </div>
+
+                <!-- Table Card -->
+                <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left">
+                            <thead class="bg-slate-50 text-slate-500 border-b border-slate-100">
+                                <tr>
+                                    <th class="sm-th py-3 px-4">កូដប័ណ្ណ</th>
+                                    <th class="sm-th py-3 px-4">កាលបរិច្ឆេទ</th>
+                                    <th class="sm-th py-3 px-4">ឃ្លាំង</th>
+                                    <th class="sm-th py-3 px-4">មុខទំនិញ</th>
+                                    <th class="sm-th py-3 px-4 text-center">ស្តុកប្រព័ន្ធ</th>
+                                    <th class="sm-th py-3 px-4 text-center">រាប់ជាក់ស្តែង</th>
+                                    <th class="sm-th py-3 px-4 text-center">គម្លាត</th>
+                                    <th class="sm-th py-3 px-4 text-right">តម្លៃគម្លាតសរុប</th>
+                                    <th class="sm-th py-3 px-4">មូលហេតុ</th>
+                                    <th class="sm-th py-3 px-4">ស្ថានភាព</th>
+                                    <th class="sm-th py-3 px-4 text-center">សកម្មភាព</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adjustmentsTableBody" class="divide-y divide-slate-100 text-slate-700"></tbody>
+                        </table>
+                    </div>
+                    <div id="emptyMessage" class="hidden py-14 text-center">
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-500 flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-circle-check text-xl"></i>
+                        </div>
+                        <p class="text-xs text-slate-500">គ្មានប័ណ្ណកែតម្រូវក្នុងផ្នែកនេះទេ</p>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Floating Row Action Menu (Standard 9) -->
+    <div id="rowActionMenu" data-floating-dropdown="true" class="hidden fixed bg-white rounded-2xl shadow-2xl border border-slate-200 py-1.5 z-50 min-w-[190px] text-xs">
+        <button onclick="handleViewDetail()" class="w-full text-left px-3.5 py-2 hover:bg-slate-50 flex items-center gap-2.5 text-slate-700">
+            <i class="fas fa-eye text-sky-600 w-4"></i>
+            <span>ពិនិត្យព័ត៌មានលម្អិត</span>
+        </button>
+        <button id="actionApproveBtn" onclick="handleApproveAdjustment()" class="w-full text-left px-3.5 py-2 hover:bg-slate-50 flex items-center gap-2.5 text-emerald-700">
+            <i class="fas fa-stamp text-emerald-600 w-4"></i>
+            <span>អនុម័តកែតម្រូវស្តុក</span>
+        </button>
+        <button id="actionRejectBtn" onclick="handleRejectAdjustment()" class="w-full text-left px-3.5 py-2 hover:bg-slate-50 flex items-center gap-2.5 text-rose-700">
+            <i class="fas fa-ban text-rose-600 w-4"></i>
+            <span>បដិសេធសំណើ</span>
+        </button>
+        <button onclick="handlePrintVoucher()" class="w-full text-left px-3.5 py-2 hover:bg-slate-50 flex items-center gap-2.5 text-slate-700 border-t border-slate-100 mt-1">
+            <i class="fas fa-print text-slate-400 w-4"></i>
+            <span>បោះពុម្ពប័ណ្ណកែតម្រូវ</span>
+        </button>
+    </div>
+
+    <!-- Detail Modal -->
+    <div id="adjDetailModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+        <div class="bg-white rounded-3xl shadow-2xl border border-slate-100 w-full max-w-xl overflow-hidden">
+            <div class="p-5 bg-[#1e3a5f] text-white flex items-center justify-between">
+                <div>
+                    <h3 class="text-base font-semibold" id="modalAdjId">ប័ណ្ណកែតម្រូវស្តុក</h3>
+                    <p class="text-xs text-sky-200 mt-0.5" id="modalAdjDate"></p>
+                </div>
+                <button onclick="closeDetailModal()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition">
+                    <i class="fas fa-xmark text-sm"></i>
+                </button>
+            </div>
+            <div class="p-5 space-y-4 max-h-[70vh] overflow-y-auto text-xs">
+                <div class="grid grid-cols-2 gap-3 p-3.5 bg-slate-50 rounded-xl">
+                    <div>
+                        <span class="text-slate-400 block">ឃ្លាំងទំនិញ:</span>
+                        <strong id="modalWh" class="text-slate-800"></strong>
+                    </div>
+                    <div>
+                        <span class="text-slate-400 block">អ្នករាយការណ៍:</span>
+                        <span id="modalReporter" class="text-slate-700 font-medium"></span>
+                    </div>
+                    <div>
+                        <span class="text-slate-400 block">មុខទំនិញ:</span>
+                        <strong id="modalProduct" class="text-slate-800"></strong>
+                    </div>
+                    <div>
+                        <span class="text-slate-400 block">មូលហេតុ:</span>
+                        <span id="modalReason" class="font-semibold text-slate-700"></span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-3 gap-3 p-3.5 bg-slate-100 rounded-xl text-center">
+                    <div>
+                        <span class="text-slate-400 block">ស្តុកប្រព័ន្ធ</span>
+                        <strong id="modalSysQty" class="text-slate-700 text-sm font-bold"></strong>
+                    </div>
+                    <div>
+                        <span class="text-slate-400 block">រាប់ជាក់ស្តែង</span>
+                        <strong id="modalPhysQty" class="text-slate-900 text-sm font-bold"></strong>
+                    </div>
+                    <div>
+                        <span class="text-slate-400 block">គម្លាត និងតម្លៃ</span>
+                        <strong id="modalDiffVal" class="text-sm font-bold"></strong>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-amber-50/60 rounded-xl border border-amber-200/80 text-amber-900">
+                    <span class="font-semibold block mb-0.5">កំណត់សម្គាល់ពីបុគ្គលិករាប់៖</span>
+                    <p id="modalNote" class="text-slate-600"></p>
+                </div>
+            </div>
+            <div class="p-4 bg-slate-50 border-t border-slate-100 flex justify-end gap-2">
+                <button onclick="closeDetailModal()" class="px-4 py-2 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-700 font-semibold text-xs transition">បិទផ្ទាំង</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../shared/scripts/ui-components.js"></script>
+    <script src="../data.js"></script>
+    <script src="../../../shared/scripts/portal.js"></script>
+    <script>
+        let currentTab = 'all';
+        let selectedAdjId = null;
+
+        const REASON_BADGES = {
+            damaged: { color: 'bg-rose-50 text-rose-700 border-rose-200' },
+            expired: { color: 'bg-amber-50 text-amber-700 border-amber-200' },
+            count_error: { color: 'bg-blue-50 text-blue-700 border-blue-200' },
+            sample_loss: { color: 'bg-purple-50 text-purple-700 border-purple-200' }
+        };
+
+        const STATUS_BADGES = {
+            approved: { label: 'បានអនុម័ត', color: 'bg-emerald-50 text-emerald-700 border-emerald-200' },
+            pending_approval: { label: 'រង់ចាំអនុម័ត (≤ $200)', color: 'bg-sky-50 text-sky-700 border-sky-200' },
+            escalated_gm: { label: 'បញ្ជូនទៅ GM (> $200)', color: 'bg-amber-50 text-amber-700 border-amber-200' },
+            rejected: { label: 'បានបដិសេធ', color: 'bg-rose-50 text-rose-700 border-rose-200' }
+        };
+
+        function switchAdjTab(tab) {
+            currentTab = tab;
+            ['all', 'pending_approval', 'escalated_gm', 'approved'].forEach(t => {
+                const btn = document.getElementById(`tabBtn-${t}`);
+                if (btn) {
+                    if (t === tab) {
+                        btn.className = 'sm-badge px-4 py-2 rounded-xl bg-[#1e3a5f] text-white font-semibold shadow-sm transition text-xs';
+                    } else {
+                        btn.className = 'sm-badge px-4 py-2 rounded-xl text-slate-600 hover:bg-slate-100 font-medium transition text-xs';
+                    }
+                }
+            });
+            renderTable();
+        }
+
+        function renderTable() {
+            const list = getAdjustments();
+            const tbody = document.getElementById('adjustmentsTableBody');
+            const emptyMsg = document.getElementById('emptyMessage');
+
+            // Update tab badge counts
+            document.getElementById('count-all').textContent = list.length;
+            document.getElementById('count-pending_approval').textContent = list.filter(a => a.status === 'pending_approval').length;
+            document.getElementById('count-escalated_gm').textContent = list.filter(a => a.status === 'escalated_gm').length;
+            document.getElementById('count-approved').textContent = list.filter(a => a.status === 'approved').length;
+
+            const filtered = list.filter(a => currentTab === 'all' || a.status === currentTab);
+
+            if (!filtered.length) {
+                tbody.innerHTML = '';
+                emptyMsg.classList.remove('hidden');
+                return;
+            }
+
+            emptyMsg.classList.add('hidden');
+            tbody.innerHTML = filtered.map(a => {
+                const prod = getProduct(a.sku);
+                const st = STATUS_BADGES[a.status] || { label: a.status, color: 'bg-slate-100 text-slate-600 border-slate-200' };
+                const diff = a.physicalQty - a.systemQty;
+                const diffText = diff > 0 ? `+${diff}` : `${diff}`;
+                const diffColor = diff > 0 ? 'text-emerald-600 font-bold' : 'text-rose-600 font-bold';
+                const totalDiffVal = Math.abs(diff * a.unitCost);
+                const reasonStyle = REASON_BADGES[a.reason] || { color: 'bg-slate-100 text-slate-600 border-slate-200' };
+
+                return `
+                    <tr class="hover:bg-slate-50 transition">
+                        <td class="py-3 px-4 sm-td-strong text-slate-800">${a.id}</td>
+                        <td class="py-3 px-4 sm-td text-slate-500">${fmtKhDate(a.date)}</td>
+                        <td class="py-3 px-4 sm-td">${getWarehouse(a.whId).name}</td>
+                        <td class="py-3 px-4 sm-td">
+                            <span class="font-medium text-slate-800 block">${prod ? prod.name : a.sku}</span>
+                            <span class="font-mono text-[11px] text-slate-400">${a.sku}</span>
+                        </td>
+                        <td class="py-3 px-4 text-center sm-td">${a.systemQty}</td>
+                        <td class="py-3 px-4 text-center sm-td-strong text-slate-800">${a.physicalQty}</td>
+                        <td class="py-3 px-4 text-center sm-td ${diffColor}">${diffText}</td>
+                        <td class="py-3 px-4 text-right sm-td-strong text-slate-800">${fmtUSD(totalDiffVal)}</td>
+                        <td class="py-3 px-4">
+                            <span class="sm-badge px-2.5 py-0.5 rounded-full ${reasonStyle.color} border text-[11px] font-medium">${a.reasonLabel}</span>
+                        </td>
+                        <td class="py-3 px-4">
+                            <span class="sm-badge px-2.5 py-0.5 rounded-full ${st.color} border font-semibold text-[11px]">${st.label}</span>
+                        </td>
+                        <td class="py-3 px-4 text-center">
+                            <button onclick="openActionMenu(event, '${a.id}', '${a.status}', ${totalDiffVal})" class="w-8 h-8 rounded-xl hover:bg-slate-100 text-slate-500 flex items-center justify-center transition cursor-pointer mx-auto">
+                                <i class="fas fa-ellipsis-vertical text-xs"></i>
+                            </button>
+                        </td>
+                    </tr>`;
+            }).join('');
+        }
+
+        function openActionMenu(e, id, status, totalDiffVal) {
+            selectedAdjId = id;
+            const menu = document.getElementById('rowActionMenu');
+            const approveBtn = document.getElementById('actionApproveBtn');
+            const rejectBtn = document.getElementById('actionRejectBtn');
+
+            // Only allow approval if pending and <= $200
+            const canApprove = status === 'pending_approval' && totalDiffVal <= 200;
+            if (approveBtn) approveBtn.style.display = canApprove ? 'flex' : 'none';
+            if (rejectBtn) rejectBtn.style.display = (status === 'pending_approval') ? 'flex' : 'none';
+
+            toggleRowActionMenu(e, 'rowActionMenu');
+        }
+
+        function handleViewDetail() {
+            closeFloatingDropdown(document.getElementById('rowActionMenu'));
+            const list = getAdjustments();
+            const a = list.find(it => it.id === selectedAdjId);
+            if (!a) return;
+
+            const prod = getProduct(a.sku);
+            const diff = a.physicalQty - a.systemQty;
+            const diffText = diff > 0 ? `+${diff}` : `${diff}`;
+            const totalDiffVal = Math.abs(diff * a.unitCost);
+
+            document.getElementById('modalAdjId').textContent = `ប័ណ្ណកែតម្រូវ ${a.id}`;
+            document.getElementById('modalAdjDate').textContent = `កាលបរិច្ឆេទ៖ ${fmtKhDateTime(a.date)}`;
+            document.getElementById('modalWh').textContent = getWarehouse(a.whId).name;
+            document.getElementById('modalReporter').textContent = a.reporter || '-';
+            document.getElementById('modalProduct').textContent = `${prod ? prod.name : a.sku} (${a.sku})`;
+            document.getElementById('modalReason').textContent = a.reasonLabel;
+            document.getElementById('modalSysQty').textContent = `${a.systemQty} ឯកតា`;
+            document.getElementById('modalPhysQty').textContent = `${a.physicalQty} ឯកតា`;
+            document.getElementById('modalDiffVal').textContent = `${diffText} ឯកតា (${fmtUSD(totalDiffVal)})`;
+            document.getElementById('modalNote').textContent = a.note || 'គ្មានកំណត់សម្គាល់';
+
+            const modal = document.getElementById('adjDetailModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeDetailModal() {
+            const modal = document.getElementById('adjDetailModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function handleApproveAdjustment() {
+            closeFloatingDropdown(document.getElementById('rowActionMenu'));
+            showCustomConfirm({
+                title: 'អនុម័តការកែតម្រូវស្តុក',
+                message: `តើលោកអ្នកពិតជាចង់អនុម័តប័ណ្ណកែតម្រូវ ${selectedAdjId} ដើម្បីកែប្រែចំនួនស្តុកប្រព័ន្ធឱ្យត្រូវនឹងចំនួនរាប់ជាក់ស្តែងមែនទេ?`,
+                confirmText: 'យល់ព្រមអនុម័ត'
+            }).then(confirmed => {
+                if (confirmed) {
+                    approveAdjustment(selectedAdjId);
+                    showToast(`បានអនុម័តប័ណ្ណកែតម្រូវ ${selectedAdjId} ដោយជោគជ័យ! ស្តុកត្រូវបានធ្វើបច្ចុប្បន្នភាព។`, 'success');
+                    renderTable();
+                }
+            });
+        }
+
+        function handleRejectAdjustment() {
+            closeFloatingDropdown(document.getElementById('rowActionMenu'));
+            showCustomConfirm({
+                title: 'បដិសេធប័ណ្ណកែតម្រូវ',
+                message: `តើលោកអ្នកពិតជាចង់បដិសេធប័ណ្ណកែតម្រូវ ${selectedAdjId} នេះមែនទេ?`,
+                type: 'danger',
+                confirmText: 'បដិសេធ'
+            }).then(confirmed => {
+                if (confirmed) {
+                    rejectAdjustment(selectedAdjId);
+                    showToast(`បានបដិសេធប័ណ្ណកែតម្រូវ ${selectedAdjId} រួចរាល់។`, 'info');
+                    renderTable();
+                }
+            });
+        }
+
+        function handlePrintVoucher() {
+            closeFloatingDropdown(document.getElementById('rowActionMenu'));
+            window.print();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderTable();
+        });
+    </script>
+</body>
+</html>

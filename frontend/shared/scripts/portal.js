@@ -7,36 +7,119 @@
    ត្រូវបង្កើតចេញពីអនុគមន៍តែមួយ របារចំហៀងគ្រប់ទំព័រដូចគ្នា 100%
    ដោយស្វ័យប្រវត្តិ ទោះស្ថិតក្នុងថតជាន់ផ្សេងគ្នាក៏ដោយ។ */
 
-const PORTAL_NAV = [
-    { id: 'dashboard', label: 'ផ្ទាំងគ្រប់គ្រង', icon: 'fa-chart-pie', href: 'dashboard.html' },
-    { id: 'approvals', label: 'ការអនុម័ត', icon: 'fa-stamp', href: 'approvals/approvals.html', badge: true },
-    { id: 'pipeline', label: 'បំពង់លំហូរការលក់', icon: 'fa-diagram-project', href: 'pipeline/pipeline.html' },
-    { id: 'reports', label: 'របាយការណ៍លក់', icon: 'fa-chart-column', href: 'reports/reports.html' }
-];
+// ផ្ទុក Iconify MDI Web Component ដោយស្វ័យប្រវត្តិ
+if (!document.querySelector('script[src*="iconify"]')) {
+    const iconifyScript = document.createElement('script');
+    iconifyScript.src = 'https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js';
+    document.head.appendChild(iconifyScript);
+}
+
+function getIconHtml(icon, extraClass = '') {
+    if (!icon) return '';
+    if (icon.startsWith('mdi:') || icon.startsWith('mdi-')) {
+        const iconName = icon.startsWith('mdi-') ? `mdi:${icon.replace('mdi-', '')}` : icon;
+        return `<iconify-icon icon="${iconName}" class="${extraClass} text-lg inline-block align-middle"></iconify-icon>`;
+    }
+    return `<i class="fas ${icon} ${extraClass}"></i>`;
+}
+
+const PORTAL_CONFIGS = {
+    smPortal: {
+        title: 'ច្រកគ្រប់គ្រងលក់',
+        roleName: 'អ្នកគ្រប់គ្រងផ្នែកលក់',
+        roleIcon: 'mdi:account-tie',
+        userInitials: 'ហវ',
+        userName: 'ហេង វិច្ឆិកា',
+        userRole: 'អ្នកគ្រប់គ្រងផ្នែកលក់',
+        policyNote: 'បញ្ចុះតម្លៃ 0.0% ដល់ 15.0% អនុម័តដោយផ្ទាល់។ លើសពី 15.0% ត្រូវបញ្ជូនទៅអភិបាលទូទៅ។',
+        nav: [
+            { id: 'dashboard', label: 'ផ្ទាំងគ្រប់គ្រង', icon: 'mdi:chart-pie', href: 'dashboard.html' },
+            { id: 'approvals', label: 'ការអនុម័ត', icon: 'mdi:stamper', href: 'approvals/approvals.html', badge: true },
+            { id: 'pipeline', label: 'បំពង់លំហូរការលក់', icon: 'mdi:sitemap-outline', href: 'pipeline/pipeline.html' },
+            { id: 'reports', label: 'របាយការណ៍លក់', icon: 'mdi:chart-bar', href: 'reports/reports.html' }
+        ]
+    },
+    wmPortal: {
+        title: 'ច្រកគ្រប់គ្រងស្តុក',
+        roleName: 'អ្នកគ្រប់គ្រងឃ្លាំងស្តុក',
+        roleIcon: 'mdi:store-24-hour',
+        userInitials: 'គវ',
+        userName: 'គង់ វិបុល',
+        userRole: 'អ្នកគ្រប់គ្រងឃ្លាំងស្តុក',
+        policyNote: 'អនុម័តការកែតម្រូវស្តុក ≤ $200.00 ដោយផ្ទាល់។ លើសពី $200.00 ត្រូវបញ្ជូនទៅអភិបាលទូទៅ។',
+        nav: [
+            { id: 'dashboard', label: 'ផ្ទាំងគ្រប់គ្រង', icon: 'mdi:chart-pie', href: 'dashboard.html' },
+            { id: 'movements', label: 'ប័ណ្ណផ្ទេរស្តុក', icon: 'mdi:truck-fast-outline', href: 'stock-movements/movements.html' },
+            { id: 'adjustments', label: 'ការកែតម្រូវស្តុក', icon: 'mdi:tune-vertical', href: 'stock-adjustments/adjustments.html', badge: true },
+            { id: 'alerts', label: 'ការដាស់តឿនស្តុក', icon: 'mdi:alert-circle-outline', href: 'stock-alerts/alerts.html', alertBadge: true }
+        ]
+    },
+    wsPortal: {
+        title: 'ច្រកបុគ្គលិកឃ្លាំង',
+        roleName: 'បុគ្គលិកជាន់ឃ្លាំង',
+        roleIcon: 'mdi:account-hard-hat',
+        userInitials: 'សច',
+        userName: 'សុខ ចាន់ថន',
+        userRole: 'បុគ្គលិកជាន់ឃ្លាំង (Floor)',
+        policyNote: 'Zero Price Leakage Policy — ឃើញតែបរិមាណ (Quantities) និងធ្នើរ (Bins) ប៉ុណ្ណោះ។',
+        nav: [
+            { id: 'pick-pack', label: 'រើស និងវេចខ្ចប់', icon: 'mdi:package-variant-closed', href: 'pick-and-pack.html' },
+            { id: 'receive-stock', label: 'ទទួលទំនិញ (GRN)', icon: 'mdi:truck-delivery-outline', href: 'receive-stock.html' },
+            { id: 'stock-count', label: 'រាប់ស្តុកជាក់ស្តែង', icon: 'mdi:clipboard-check-outline', href: 'stock-count.html' }
+        ]
+    },
+    csPortal: {
+        title: 'ច្រកបម្រើអតិថិជន',
+        roleName: 'ផ្នែកគាំទ្រអតិថិជន',
+        roleIcon: 'mdi:headset',
+        userInitials: 'លស',
+        userName: 'លី ស្រីមុំ',
+        userRole: 'ផ្នែកបម្រើអតិថិជន (CS)',
+        policyNote: 'ឆ្លើយតបសំណួរអតិថិជន, តាមដានអ្នកដឹក និងស្នើសុំ RMA ដោយសុវត្ថិភាព។',
+        nav: [
+            { id: 'dashboard', label: 'ផ្ទាំងសំណើ (Tickets)', icon: 'mdi:ticket-confirmation-outline', href: 'dashboard.html', badge: true },
+            { id: 'orders-lookup', label: 'ស្វែងរកវិក្កយបត្រ', icon: 'mdi:file-document-outline', href: 'orders-lookup.html' },
+            { id: 'delivery-status', label: 'តាមដានការដឹកជញ្ជូន', icon: 'mdi:truck-check-outline', href: 'delivery-status.html' }
+        ]
+    }
+};
 
 const NAV_ACTIVE_CLASS = 'flex items-center justify-between p-3 bg-white/15 text-white rounded-xl shadow-sm transition-all whitespace-nowrap border border-white/10';
 const NAV_IDLE_CLASS = 'flex items-center justify-between p-3 text-sky-100 hover:bg-white/10 hover:text-white rounded-xl transition-all whitespace-nowrap';
 
+function getRoleRoot() {
+    const loc = window.location.pathname.replace(/\\/g, '/');
+    const isSub = /\/(stock-[a-z]+|approvals|pipeline|reports)(\/|$)/.test(loc);
+    return isSub ? '..' : '.';
+}
+
 function renderPortalSidebar() {
-    const host = document.getElementById('sidebarHost');
+    const host = document.getElementById('sidebarHost') || document.querySelector('aside');
     if (!host) return;
 
-    const roleRoot = document.body.dataset.roleRoot || '.';
+    const portalId = document.body.id || 'smPortal';
+    const cfg = PORTAL_CONFIGS[portalId] || PORTAL_CONFIGS.smPortal;
+    const roleRoot = getRoleRoot();
     const activeId = document.body.dataset.active || '';
     const sharedRoot = `${roleRoot}/../../shared`;
 
-    const navHtml = PORTAL_NAV.map(item => {
+    const navHtml = cfg.nav.map(item => {
         const isActive = item.id === activeId;
-        const badge = item.badge
-            ? '<span id="navQueueBadge" class="sm-badge bg-rose-500 text-white px-2 py-0.5 rounded-full flex-shrink-0">0</span>'
-            : '';
+        let badgeHtml = '';
+        if (item.badge) {
+            badgeHtml = '<span id="navQueueBadge" class="sm-badge bg-rose-500 text-white px-2 py-0.5 rounded-full flex-shrink-0">0</span>';
+        } else if (item.alertBadge) {
+            badgeHtml = '<span id="navAlertBadge" class="sm-badge bg-amber-500 text-white px-2 py-0.5 rounded-full flex-shrink-0">0</span>';
+        }
         return `
             <a href="${roleRoot}/${item.href}" class="${isActive ? NAV_ACTIVE_CLASS : NAV_IDLE_CLASS}">
                 <span class="flex items-center min-w-0">
-                    <i class="fas ${item.icon} w-6 text-center text-sky-300 flex-shrink-0"></i>
+                    <span class="w-6 flex items-center justify-center text-sky-300 flex-shrink-0">
+                        ${getIconHtml(item.icon)}
+                    </span>
                     <span class="ml-3 sm-nav-label truncate">${item.label}</span>
                 </span>
-                ${badge}
+                ${badgeHtml}
             </a>`;
     }).join('');
 
@@ -48,7 +131,7 @@ function renderPortalSidebar() {
                 </div>
                 <div class="min-w-0">
                     <h1 class="text-lg font-semibold tracking-wider whitespace-nowrap text-white">DIGITECHKH</h1>
-                    <span class="sm-nav-note font-medium text-sky-300 uppercase tracking-wider block">ច្រកគ្រប់គ្រងលក់</span>
+                    <span class="sm-nav-note font-medium text-sky-300 uppercase tracking-wider block">${cfg.title}</span>
                 </div>
             </div>
 
@@ -56,28 +139,51 @@ function renderPortalSidebar() {
                 <div class="flex items-center justify-between">
                     <span class="sm-nav-note text-sky-200">តួនាទី:</span>
                     <span class="sm-badge inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-sky-500/20 text-sky-200 border border-sky-400/30">
-                        <i class="fas fa-user-tie text-[10px]"></i> អ្នកគ្រប់គ្រងផ្នែកលក់
+                        ${getIconHtml(cfg.roleIcon, 'text-[13px]')} ${cfg.roleName}
                     </span>
                 </div>
             </div>
 
             <nav class="flex-1 overflow-y-auto px-4 py-4 space-y-1.5 scrollbar-hide">
                 ${navHtml}
-                <div class="p-3 rounded-xl bg-white/5 border border-white/10 sm-nav-note text-sky-200 mt-6">
-                    <i class="fas fa-info-circle mr-1 text-sky-300"></i> បញ្ចុះតម្លៃ 0.0% ដល់ 15.0% អនុម័តដោយផ្ទាល់។ លើសពី 15.0% ត្រូវបញ្ជូនទៅអភិបាលទូទៅ។
+                <div class="p-3 rounded-xl bg-white/5 border border-white/10 sm-nav-note text-sky-200 mt-6 flex items-start gap-2">
+                    <iconify-icon icon="mdi:information-outline" class="text-sky-300 text-base mt-0.5 flex-shrink-0"></iconify-icon>
+                    <span>${cfg.policyNote}</span>
                 </div>
             </nav>
 
-            <div class="p-4 border-t border-white/10 bg-black/10">
-                <div class="flex items-center gap-3 px-2">
-                    <div class="w-9 h-9 rounded-full bg-white/15 border border-white/20 text-white flex items-center justify-center font-semibold text-xs flex-shrink-0">ហវ</div>
-                    <div class="min-w-0">
-                        <p class="sm-value text-white truncate">ហេង វិច្ឆិកា</p>
-                        <p class="sm-nav-note text-sky-300 truncate">អ្នកគ្រប់គ្រងផ្នែកលក់</p>
-                    </div>
-                </div>
+            <div class="p-3.5 border-t border-white/10 bg-black/20">
+                <button onclick="handleLogout()" type="button"
+                    class="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-white/10 hover:bg-rose-600 text-sky-100 hover:text-white text-sm font-semibold transition border border-white/10 shadow-sm cursor-pointer group">
+                    <iconify-icon icon="mdi:logout" class="text-lg text-rose-300 group-hover:text-white group-hover:translate-x-0.5 transition-transform"></iconify-icon>
+                    <span>ចាកចេញ</span>
+                </button>
             </div>
         </aside>`;
+}
+
+function handleLogout() {
+    if (typeof showCustomConfirm === 'function') {
+        showCustomConfirm({
+            title: 'ចាកចេញពីប្រព័ន្ធ',
+            message: 'តើលោកអ្នកពិតជាចង់ចាកចេញពីប្រព័ន្ធមែនទេ?',
+            confirmText: 'ចាកចេញ',
+            cancelText: 'បោះបង់',
+            confirmColor: 'danger',
+            onConfirm: () => {
+                showToast('កំពុងចាកចេញពីប្រព័ន្ធ...', 'info');
+                const roleRoot = getRoleRoot();
+                setTimeout(() => {
+                    window.location.href = `${roleRoot}/../01-auth/login.html`;
+                }, 400);
+            }
+        });
+    } else {
+        if (confirm('តើលោកអ្នកពិតជាចង់ចាកចេញពីប្រព័ន្ធមែនទេ?')) {
+            const roleRoot = getRoleRoot();
+            window.location.href = `${roleRoot}/../01-auth/login.html`;
+        }
+    }
 }
 
 /* ===== 1. របារចំហៀងចល័តសម្រាប់អេក្រង់តូច (< 1024px) ===== */
@@ -400,26 +506,157 @@ function notifyRangeChanged() {
 
 /* ===== 3. ម៉ឺនុយសកម្មភាពជួរតារាង (ស្តង់ដារលេខ 9) ===== */
 function toggleRowActionMenu(event, menuId) {
-    event.stopPropagation();
-    const btn = event.currentTarget;
+    if (event && event.stopPropagation) event.stopPropagation();
+    const btn = event ? event.currentTarget : null;
     const menu = document.getElementById(menuId);
     if (!menu) return;
 
     if (menu.dataset.floatingActive === 'true') {
-        closeFloatingDropdown(menu);
+        if (typeof closeFloatingDropdown === 'function') closeFloatingDropdown(menu);
     } else {
-        openFloatingDropdown(btn, menu);
+        if (typeof openFloatingDropdown === 'function') openFloatingDropdown(btn, menu);
+    }
+}
+
+/* ===== 4. ប្រព័ន្ធរុករកទំព័រភ្លាមៗឥត Reload (Seamless Instant SPA Navigation) ===== */
+function initSeamlessNavigation() {
+    document.addEventListener('click', (e) => {
+        const link = e.target.closest('a');
+        if (!link || !link.href) return;
+
+        // Skip if modifier keys or target blank or hash or javascript
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+        if (link.target === '_blank' || link.getAttribute('target') === '_blank') return;
+        if (link.href.startsWith('javascript:') || link.getAttribute('href') === '#') return;
+
+        // Check if internal link within the current site
+        const url = new URL(link.href, window.location.href);
+        if (url.origin !== window.location.origin) return;
+
+        // Only handle .html files within roles
+        if (!url.pathname.endsWith('.html') && !url.pathname.includes('.html')) return;
+
+        e.preventDefault();
+        navigateSeamlessly(url.href, true);
+    });
+
+    window.addEventListener('popstate', () => {
+        navigateSeamlessly(window.location.href, false);
+    });
+}
+
+async function navigateSeamlessly(targetUrl, pushState = true) {
+    try {
+        const res = await fetch(targetUrl);
+        if (!res.ok) throw new Error('Network error');
+
+        const htmlText = await res.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(htmlText, 'text/html');
+
+        const newMain = doc.querySelector('main');
+        const newHeader = doc.querySelector('header');
+        const currentMain = document.querySelector('main');
+        const currentHeader = document.querySelector('header');
+
+        if (!newMain) {
+            window.location.href = targetUrl;
+            return;
+        }
+
+        // Close any open modals or floating dropdowns
+        closeAllFloatingDropdowns?.();
+        closePortalDrawer();
+
+        // Smooth transition animation
+        if (currentMain) {
+            currentMain.style.transition = 'opacity 0.15s ease-out, transform 0.15s ease-out';
+            currentMain.style.opacity = '0';
+            currentMain.style.transform = 'translateY(4px)';
+        }
+
+        setTimeout(() => {
+            if (pushState) {
+                history.pushState({ path: targetUrl }, '', targetUrl);
+            }
+
+            // Update page metadata
+            document.title = doc.title || document.title;
+            if (doc.body.id) document.body.id = doc.body.id;
+            if (doc.body.dataset.active) document.body.dataset.active = doc.body.dataset.active;
+            if (doc.body.dataset.roleRoot) document.body.dataset.roleRoot = doc.body.dataset.roleRoot;
+
+            // Replace header and main content
+            if (currentHeader && newHeader) {
+                currentHeader.innerHTML = newHeader.innerHTML;
+            }
+            if (currentMain && newMain) {
+                currentMain.innerHTML = newMain.innerHTML;
+                currentMain.className = newMain.className;
+                currentMain.scrollTop = 0;
+            }
+
+            // Sync any modals/popovers that live outside main in the target document
+            const newModals = doc.querySelectorAll('[id$="Modal"], [id$="Menu"], [id$="Drawer"]');
+            newModals.forEach(m => {
+                const existing = document.getElementById(m.id);
+                if (existing) {
+                    existing.outerHTML = m.outerHTML;
+                } else {
+                    document.body.appendChild(m.cloneNode(true));
+                }
+            });
+
+            // Update sidebar navigation active highlight with updated location
+            renderPortalSidebar();
+            initPortalMobileDrawer();
+
+            // Update badge counters
+            updatePortalBadges();
+
+            // Execute scripts inside the target page
+            const scripts = doc.querySelectorAll('body script:not([src])');
+            scripts.forEach(s => {
+                try {
+                    const scriptFn = new Function(s.textContent);
+                    scriptFn();
+                } catch (err) {
+                    console.warn('Inline script execution:', err);
+                }
+            });
+
+            // Trigger DOMContentLoaded callbacks if any
+            if (typeof totalPending === 'function') updatePortalBadges();
+
+            // Fade in content
+            if (currentMain) {
+                currentMain.style.opacity = '1';
+                currentMain.style.transform = 'translateY(0)';
+            }
+        }, 150);
+
+    } catch (err) {
+        // Graceful fallback for environments where fetch might be restricted
+        window.location.href = targetUrl;
+    }
+}
+
+function updatePortalBadges() {
+    if (typeof totalPending === 'function') {
+        const badge = document.getElementById('navQueueBadge');
+        if (badge) badge.textContent = totalPending();
+    }
+    if (typeof totalAlerts === 'function') {
+        const alertBadge = document.getElementById('navAlertBadge');
+        if (alertBadge) alertBadge.textContent = totalAlerts();
     }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     renderPortalSidebar();
     initPortalMobileDrawer();
-
-    if (typeof totalPending === 'function') {
-        const badge = document.getElementById('navQueueBadge');
-        if (badge) badge.textContent = totalPending();
-    }
+    initSeamlessNavigation();
+    updatePortalBadges();
 
     document.addEventListener('click', (e) => {
         const popover = document.getElementById('datePickerPopover');

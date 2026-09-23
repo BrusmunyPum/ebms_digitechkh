@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - បង្កើតប័ណ្ណកែតម្រូវស្តុកថ្មី</title>
+    <link rel="icon" type="image/png" href="../../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1e3a5f",
+                        'primary-dark': "#142842",
+                        accent: "#0ea5e9",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../shared/styles/custom.css">
+    <link rel="stylesheet" href="../../../shared/styles/portal.css">
+</head>
+<body id="wmPortal" data-role-root=".." data-active="adjustments" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <div id="sidebarHost"></div>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <!-- Header with Unified Back Button (Standard 5) -->
+        <header class="bg-white px-6 h-[72px] flex items-center justify-between shadow-sm z-10 flex-shrink-0 w-full">
+            <div class="flex items-center gap-3 min-w-0">
+                <a href="adjustments.html" class="w-10 h-10 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-600 flex items-center justify-center transition border border-slate-200/70 flex-shrink-0" title="ត្រឡប់ទៅបញ្ជីប័ណ្ណកែតម្រូវ">
+                    <i class="fas fa-arrow-left text-sm"></i>
+                </a>
+                <div class="min-w-0">
+                    <h2 class="text-xl font-semibold text-gray-800 leading-tight truncate">បង្កើតប័ណ្ណកែតម្រូវស្តុកថ្មី</h2>
+                    <p class="sm-card-sub text-gray-500 mt-0.5 truncate">កត់ត្រាគម្លាតរាប់ស្តុកជាក់ស្តែង ទំនិញខូចខាត ឬបាត់បង់</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-2">
+                <a href="adjustments.html" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium text-xs transition">បោះបង់</a>
+                <button onclick="submitAdjustmentForm()" class="px-5 py-2 rounded-xl bg-[#1e3a5f] hover:bg-[#142842] text-white font-semibold text-xs shadow-sm transition flex items-center gap-1.5">
+                    <i class="fas fa-save text-xs"></i>
+                    <span>រក្សាទុកប័ណ្ណកែតម្រូវ</span>
+                </button>
+            </div>
+        </header>
+
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-5">
+            <form id="adjForm" onsubmit="event.preventDefault(); submitAdjustmentForm();" class="w-full space-y-5 max-w-4xl mx-auto">
+
+                <!-- Form Card -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-5">
+                    <h3 class="sm-card-title text-slate-800 border-b border-slate-100 pb-2 flex items-center gap-2">
+                        <i class="fas fa-sliders text-sky-600"></i>
+                        <span>ព័ត៌មានលម្អិតនៃប័ណ្ណកែតម្រូវ</span>
+                    </h3>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Warehouse -->
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">ឃ្លាំងទំនិញ <span class="text-rose-500">*</span></label>
+                            <select id="adjWhSelect" onchange="onSelectionChanged()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 font-medium outline-none focus:border-primary">
+                                <option value="WH-01">WH-01 — ឃ្លាំងកណ្តាល (ភ្នំពេញ)</option>
+                                <option value="WH-02">WH-02 — ឃ្លាំងសាខាទួលគោក</option>
+                                <option value="WH-03">WH-03 — ឃ្លាំងសាខាសៀមរាប</option>
+                                <option value="WH-04">WH-04 — ឃ្លាំងសាខាបាត់ដំបង</option>
+                            </select>
+                        </div>
+
+                        <!-- Product Selector -->
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">មុខទំនិញត្រូវកែតម្រូវ <span class="text-rose-500">*</span></label>
+                            <select id="adjSkuSelect" onchange="onSelectionChanged()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 font-medium outline-none focus:border-primary"></select>
+                        </div>
+
+                        <!-- Reason Code -->
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">មូលហេតុនៃការកែតម្រូវ <span class="text-rose-500">*</span></label>
+                            <select id="adjReasonSelect" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 font-medium outline-none focus:border-primary">
+                                <option value="damaged">ខូចខាតក្នុងឃ្លាំង (Damaged)</option>
+                                <option value="count_error">កំហុសរាប់ស្តុកលើកមុន (Count Error)</option>
+                                <option value="expired">ផុតកំណត់ប្រើប្រាស់ (Expired)</option>
+                                <option value="sample_loss">ដកជាគំរូតាំងបង្ហាញអតិថិជន (Sample)</option>
+                            </select>
+                        </div>
+
+                        <!-- Physical Counted Qty -->
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">ចំនួនរាប់ជាក់ស្តែង (Physical Count) <span class="text-rose-500">*</span></label>
+                            <input type="number" id="adjPhysicalQty" min="0" value="0" oninput="calculateVariance()"
+                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs font-bold text-slate-800 outline-none focus:border-primary">
+                        </div>
+                    </div>
+
+                    <!-- Live Calculation Card -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-100 text-center">
+                        <div class="p-3 bg-white rounded-xl border border-slate-200/70">
+                            <span class="text-xs text-slate-400 block mb-1">ស្តុកប្រព័ន្ធបច្ចុប្បន្ន</span>
+                            <span id="calcSysQty" class="text-base font-bold text-slate-700">0</span>
+                        </div>
+                        <div class="p-3 bg-white rounded-xl border border-slate-200/70">
+                            <span class="text-xs text-slate-400 block mb-1">គម្លាតស្តុក (Variance)</span>
+                            <span id="calcDiffQty" class="text-base font-bold text-slate-800">0</span>
+                        </div>
+                        <div class="p-3 bg-white rounded-xl border border-slate-200/70">
+                            <span class="text-xs text-slate-400 block mb-1">តម្លៃគម្លាតសរុប (MAC)</span>
+                            <span id="calcDiffVal" class="text-base font-bold text-[#1e3a5f]">$0.00</span>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Governance Threshold Alert -->
+                    <div id="governanceAlert" class="p-4 rounded-2xl border transition flex items-center gap-3 text-xs"></div>
+
+                    <!-- Note -->
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1.5">កំណត់សម្គាល់បន្ថែម / ភស្តុតាង</label>
+                        <textarea id="adjNoteInput" rows="3" placeholder="ពិពណ៌នាអំពីមូលហេតុជាក់ស្តែង..."
+                            class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-xs text-slate-800 outline-none focus:border-primary"></textarea>
+                    </div>
+                </div>
+
+            </form>
+        </main>
+    </div>
+
+    <script src="../../../shared/scripts/ui-components.js"></script>
+    <script src="../data.js"></script>
+    <script src="../../../shared/scripts/portal.js"></script>
+    <script>
+        let currentSystemStock = 0;
+        let currentUnitCost = 0;
+
+        function populateProducts() {
+            const select = document.getElementById('adjSkuSelect');
+            const products = getProducts();
+            select.innerHTML = products.map(p => `
+                <option value="${p.sku}">${p.sku} — ${p.name} (ថ្លៃដើម: ${fmtUSD(p.mac)})</option>
+            `).join('');
+            onSelectionChanged();
+        }
+
+        function onSelectionChanged() {
+            const sku = document.getElementById('adjSkuSelect').value;
+            const wh = document.getElementById('adjWhSelect').value;
+            const prod = getProduct(sku);
+
+            if (prod) {
+                currentSystemStock = prod.stocks[wh] || 0;
+                currentUnitCost = prod.mac;
+                document.getElementById('calcSysQty').textContent = `${fmtNumber(currentSystemStock)} ${prod.unit}`;
+                document.getElementById('adjPhysicalQty').value = currentSystemStock;
+                calculateVariance();
+            }
+        }
+
+        function calculateVariance() {
+            const physQty = parseInt(document.getElementById('adjPhysicalQty').value, 10) || 0;
+            const diff = physQty - currentSystemStock;
+            const totalDiffVal = Math.abs(diff * currentUnitCost);
+
+            const diffEl = document.getElementById('calcDiffQty');
+            const valEl = document.getElementById('calcDiffVal');
+            const alertEl = document.getElementById('governanceAlert');
+
+            if (diff > 0) {
+                diffEl.textContent = `+${diff}`;
+                diffEl.className = 'text-base font-bold text-emerald-600';
+            } else if (diff < 0) {
+                diffEl.textContent = `${diff}`;
+                diffEl.className = 'text-base font-bold text-rose-600';
+            } else {
+                diffEl.textContent = '0 (គ្មានគម្លាត)';
+                diffEl.className = 'text-base font-bold text-slate-500';
+            }
+
+            valEl.textContent = fmtUSD(totalDiffVal);
+
+            if (totalDiffVal <= 200) {
+                alertEl.className = 'p-4 rounded-2xl border bg-emerald-50/70 border-emerald-200 text-emerald-900 flex items-center gap-3 text-xs';
+                alertEl.innerHTML = `
+                    <i class="fas fa-circle-check text-emerald-600 text-base flex-shrink-0"></i>
+                    <div>
+                        <strong class="font-semibold block">ស្ថិតក្នុងដែនសមត្ថកិច្ចរបស់ Warehouse Manager (≤ $200.00)</strong>
+                        <span>ប័ណ្ណនេះអាចអនុម័ត និងកែសម្រួលស្តុកប្រព័ន្ធបានភ្លាមៗដោយអ្នកគ្រប់គ្រងឃ្លាំង។</span>
+                    </div>`;
+            } else {
+                alertEl.className = 'p-4 rounded-2xl border bg-amber-50/70 border-amber-200 text-amber-900 flex items-center gap-3 text-xs';
+                alertEl.innerHTML = `
+                    <i class="fas fa-triangle-exclamation text-amber-600 text-base flex-shrink-0"></i>
+                    <div>
+                        <strong class="font-semibold block">លើសពីកម្រិតកំណត់ $200.00 (${fmtUSD(totalDiffVal)})</strong>
+                        <span>ដោយសារទំហំទឹកប្រាក់លើសពី $200.00 ប័ណ្ណនេះនឹងត្រូវបានបញ្ជូនទៅកាន់ <strong>អភិបាលទូទៅ (General Manager)</strong> ដើម្បីត្រួតពិនិត្យ និងអនុម័ត។</span>
+                    </div>`;
+            }
+        }
+
+        function submitAdjustmentForm() {
+            const whId = document.getElementById('adjWhSelect').value;
+            const sku = document.getElementById('adjSkuSelect').value;
+            const physQty = parseInt(document.getElementById('adjPhysicalQty').value, 10) || 0;
+            const reason = document.getElementById('adjReasonSelect').value;
+            const reasonSelect = document.getElementById('adjReasonSelect');
+            const reasonLabel = reasonSelect.options[reasonSelect.selectedIndex].text;
+            const note = document.getElementById('adjNoteInput').value.trim();
+
+            if (physQty === currentSystemStock) {
+                showToast('ចំនួនរាប់ជាក់ស្តែងស្មើនឹងស្តុកប្រព័ន្ធ គ្មានគម្លាតត្រូវកែតម្រូវទេ!', 'info');
+                return;
+            }
+
+            const newAdj = createAdjustment({
+                whId,
+                sku,
+                systemQty: currentSystemStock,
+                physicalQty: physQty,
+                reason,
+                reasonLabel,
+                note
+            });
+
+            if (newAdj.status === 'escalated_gm') {
+                showToast(`បានបង្កើតប័ណ្ណ ${newAdj.id} និងបានបញ្ជូនទៅអភិបាលទូទៅ (GM) អនុម័ត!`, 'warning');
+            } else {
+                showToast(`បានបង្កើតប័ណ្ណកែតម្រូវ ${newAdj.id} រួចរាល់!`, 'success');
+            }
+
+            setTimeout(() => {
+                window.location.href = 'adjustments.html';
+            }, 800);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            populateProducts();
+        });
+    </script>
+</body>
+</html>

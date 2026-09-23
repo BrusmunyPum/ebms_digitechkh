@@ -279,19 +279,53 @@
                         </div>
                     </div>
 
-                    <!-- Warehouse Staff (Not Ready) -->
-                    <div onclick="selectDemoRole('inventory-staff', 'បុគ្គលិកផ្នែកស្តុកទំនិញ')" class="flex items-center gap-3.5 p-3.5 rounded-2xl border border-slate-200 bg-slate-50/70 opacity-60 cursor-not-allowed select-none transition hover:opacity-75">
-                        <div class="w-10 h-10 rounded-xl bg-slate-300 text-slate-600 flex items-center justify-center flex-shrink-0">
+                    <!-- Warehouse Manager (Active Portal) -->
+                    <a href="../07-warehouse-manager/dashboard.html" class="flex items-center gap-3.5 p-3.5 rounded-2xl border-2 border-sky-500 bg-sky-50/70 hover:bg-sky-100 transition group shadow-sm">
+                        <div class="w-10 h-10 rounded-xl bg-[#1e3a5f] text-white flex items-center justify-center flex-shrink-0 shadow-sm">
                             <i class="fas fa-boxes-stacked"></i>
                         </div>
                         <div class="min-w-0 flex-1">
                             <div class="flex items-center justify-between gap-1">
-                                <p class="text-sm font-medium text-slate-600 truncate">បុគ្គលិកផ្នែកស្តុកទំនិញ</p>
-                                <span class="px-2 py-0.5 rounded-full bg-slate-200 text-slate-500 text-[10px] font-medium flex-shrink-0">មិនទាន់បើក</span>
+                                <p class="text-sm font-semibold text-slate-800 group-hover:text-sky-900 truncate">អ្នកគ្រប់គ្រងឃ្លាំងស្តុក</p>
+                                <span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-[10px] font-semibold flex items-center gap-1 flex-shrink-0">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>សកម្ម
+                                </span>
                             </div>
-                            <p class="text-xs text-slate-400 truncate mt-0.5">តុល្យភាពស្តុក និងការផ្ទេរទំនិញ</p>
+                            <p class="text-xs text-slate-500 truncate mt-0.5">តុល្យភាពស្តុក ផ្ទេរ និងកែតម្រូវ</p>
                         </div>
-                    </div>
+                    </a>
+
+                    <!-- Warehouse Staff (Active Portal) -->
+                    <a href="../08-warehouse-staff/pick-and-pack.html" class="flex items-center gap-3.5 p-3.5 rounded-2xl border-2 border-sky-500 bg-sky-50/70 hover:bg-sky-100 transition group shadow-sm">
+                        <div class="w-10 h-10 rounded-xl bg-[#1e3a5f] text-white flex items-center justify-center flex-shrink-0 shadow-sm">
+                            <i class="fas fa-dolly"></i>
+                        </div>
+                        <div class="min-w-0 flex-1">
+                            <div class="flex items-center justify-between gap-1">
+                                <p class="text-sm font-semibold text-slate-800 group-hover:text-sky-900 truncate">បុគ្គលិកជាន់ឃ្លាំង</p>
+                                <span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-[10px] font-semibold flex items-center gap-1 flex-shrink-0">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>សកម្ម
+                                </span>
+                            </div>
+                            <p class="text-xs text-slate-500 truncate mt-0.5">រើសទំនិញ ទទួល GRN និងរាប់ស្តុក</p>
+                        </div>
+                    </a>
+
+                    <!-- Customer Support (Active Portal) -->
+                    <a href="../12-customer-support/dashboard.html" class="flex items-center gap-3.5 p-3.5 rounded-2xl border-2 border-sky-500 bg-sky-50/70 hover:bg-sky-100 transition group shadow-sm">
+                        <div class="w-10 h-10 rounded-xl bg-[#1e3a5f] text-white flex items-center justify-center flex-shrink-0 shadow-sm">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <div class="min-w-0 flex-1">
+                            <div class="flex items-center justify-between gap-1">
+                                <p class="text-sm font-semibold text-slate-800 group-hover:text-sky-900 truncate">ផ្នែកគាំទ្រអតិថិជន</p>
+                                <span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-[10px] font-semibold flex items-center gap-1 flex-shrink-0">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>សកម្ម
+                                </span>
+                            </div>
+                            <p class="text-xs text-slate-500 truncate mt-0.5">Tickets, ឆែកវិក្កយបត្រ & តាមដានដឹក</p>
+                        </div>
+                    </a>
                 </div>
             </div>
             <div class="p-4 bg-slate-50 border-t border-slate-100 text-right">
@@ -335,8 +369,20 @@
                 window.location.href = '../03-sales-manager/dashboard.html';
                 return;
             }
+            if (role === 'warehouse' || role === '07-warehouse-manager') {
+                window.location.href = '../07-warehouse-manager/dashboard.html';
+                return;
+            }
+            if (role === 'warehouse-staff' || role === '08-warehouse-staff') {
+                window.location.href = '../08-warehouse-staff/pick-and-pack.html';
+                return;
+            }
+            if (role === 'customer-support' || role === '12-customer-support') {
+                window.location.href = '../12-customer-support/dashboard.html';
+                return;
+            }
             // មិនអនុញ្ញាតឱ្យចូលប្រើប្រាស់តួនាទីដែលមិនទាន់មាន
-            showToast('ច្រក «' + (roleName || role) + '» មិនទាន់បើកដំណើរការនៅឡើយទេ! សូមចូលប្រើប្រាស់ច្រក «អ្នកគ្រប់គ្រងផ្នែកលក់»។', 'warning');
+            showToast('ច្រក «' + (roleName || role) + '» មិនទាន់បើកដំណើរការនៅឡើយទេ!', 'warning');
         }
 
         function handleLoginSubmit(event) {
@@ -345,8 +391,32 @@
             const val = (usernameInput ? usernameInput.value : '').trim().toLowerCase();
 
             // ផ្ទៀងផ្ទាត់គណនី
-            if (val.includes('admin') || val.includes('cashier') || val.includes('accountant') || val.includes('inventory') || val.includes('purchase')) {
-                showToast('គណនីតួនាទីនេះមិនទាន់បើកដំណើរការទេ។ សូមប្រើប្រាស់គណនីអ្នកគ្រប់គ្រងផ្នែកលក់ (manager@digitechkh.com)', 'warning');
+            if (val.includes('staff') || val.includes('floor') || val.includes('worker')) {
+                showToast('ចូលប្រព័ន្ធជោគជ័យ! កំពុងបញ្ជូនទៅកាន់ជាន់ឃ្លាំង...', 'success');
+                setTimeout(() => {
+                    window.location.href = '../08-warehouse-staff/pick-and-pack.html';
+                }, 800);
+                return;
+            }
+
+            if (val.includes('support') || val.includes('help') || val.includes('cs')) {
+                showToast('ចូលប្រព័ន្ធជោគជ័យ! កំពុងបញ្ជូនទៅកាន់ផ្នែកគាំទ្រអតិថិជន...', 'success');
+                setTimeout(() => {
+                    window.location.href = '../12-customer-support/dashboard.html';
+                }, 800);
+                return;
+            }
+
+            if (val.includes('warehouse') || val.includes('stock')) {
+                showToast('ចូលប្រព័ន្ធជោគជ័យ! កំពុងបញ្ជូនទៅកាន់ផ្ទាំងគ្រប់គ្រងឃ្លាំង...', 'success');
+                setTimeout(() => {
+                    window.location.href = '../07-warehouse-manager/dashboard.html';
+                }, 800);
+                return;
+            }
+
+            if (val.includes('admin') || val.includes('cashier') || val.includes('accountant') || val.includes('purchase')) {
+                showToast('គណនីតួនាទីនេះមិនទាន់បើកដំណើរការទេ។ សូមប្រើប្រាស់គណនីដែលមានស្រាប់', 'warning');
                 return;
             }
 

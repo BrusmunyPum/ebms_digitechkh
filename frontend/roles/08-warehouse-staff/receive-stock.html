@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="km">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - ទទួលទំនិញចូលឃ្លាំង (Receive Stock / GRN)</title>
+    <link rel="icon" type="image/png" href="../../shared/assets/favicon.png">
+    <link rel="shortcut icon" type="image/png" href="../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1e3a5f",
+                        'primary-dark': "#142842",
+                        accent: "#0ea5e9",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../shared/styles/custom.css">
+    <link rel="stylesheet" href="../../shared/styles/portal.css">
+</head>
+
+<body id="wsPortal" data-active="receive-stock" class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col md:flex-row overflow-x-hidden">
+
+    <!-- របារចំហៀង -->
+    <div id="sidebarHost"></div>
+
+    <!-- ផ្ទៃមាតិកាចម្បង -->
+    <div class="flex-1 flex flex-col min-w-0 h-screen overflow-y-auto">
+
+        <!-- ក្បាលទំព័រ -->
+        <header class="h-[72px] px-6 flex items-center justify-between border-b border-slate-200 bg-white/80 backdrop-blur sticky top-0 z-10 flex-shrink-0">
+            <div class="flex items-center gap-3">
+                <button onclick="toggleMobileSidebar()" class="w-10 h-10 rounded-xl bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600 transition md:hidden">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div>
+                    <h2 class="text-base font-bold text-slate-800 flex items-center gap-2">
+                        <i class="fas fa-truck-ramp-box text-sky-600"></i>
+                        <span>ទទួលទំនិញចូលឃ្លាំង (Receive Stock / GRN)</span>
+                    </h2>
+                    <p class="text-xs text-slate-500">ផ្ទៀងផ្ទាត់ទំនិញជាក់ស្តែងពីអ្នកផ្គត់ផ្គង់ ពិនិត្យការខូចខាត និងបញ្ចូលធ្នើរ</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 text-xs font-semibold">
+                    <i class="fas fa-shield-halved text-amber-600"></i>
+                    <span>Zero Price Policy</span>
+                </div>
+                <div class="flex items-center gap-2 pl-3 border-l border-slate-200">
+                    <div class="w-9 h-9 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-700 font-bold text-xs">សច</div>
+                    <div class="hidden lg:block text-left">
+                        <p class="text-xs font-bold text-slate-800 leading-tight">សុខ ចាន់ថន</p>
+                        <p class="text-[11px] text-slate-500">ជាន់ឃ្លាំងកណ្តាល (WH-PP01)</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- មាតិកាខាងក្នុង -->
+        <main class="p-4 sm:p-6 space-y-6 flex-1">
+
+            <!-- កាតសង្ខេប -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
+                    <div>
+                        <p class="text-xs text-slate-500 font-medium">រថយន្តដឹកមកដល់ (Arrived)</p>
+                        <h3 class="text-2xl font-bold text-amber-600 mt-1" id="arrivedCount">1</h3>
+                        <p class="text-[11px] text-slate-400 mt-0.5">រង់ចាំការទម្លាក់ និងរាប់</p>
+                    </div>
+                    <div class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl">
+                        <i class="fas fa-truck-front"></i>
+                    </div>
+                </div>
+
+                <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
+                    <div>
+                        <p class="text-xs text-slate-500 font-medium">កំពុងត្រួតពិនិត្យ (Inspecting)</p>
+                        <h3 class="text-2xl font-bold text-sky-600 mt-1" id="inspectingCount">1</h3>
+                        <p class="text-[11px] text-slate-400 mt-0.5">កំពុងផ្ទៀងផ្ទាត់គុណភាព</p>
+                    </div>
+                    <div class="w-12 h-12 rounded-2xl bg-sky-50 text-sky-600 flex items-center justify-center text-xl">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                </div>
+
+                <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
+                    <div>
+                        <p class="text-xs text-slate-500 font-medium">ទទួលចូលស្តុករួច (Completed)</p>
+                        <h3 class="text-2xl font-bold text-emerald-600 mt-1" id="completedCount">1</h3>
+                        <p class="text-[11px] text-slate-400 mt-0.5">បានបាញ់បញ្ចូលធ្នើររួច</p>
+                    </div>
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl">
+                        <i class="fas fa-circle-check"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- បញ្ជីប័ណ្ណទទួលទំនិញ (Inbound POs) -->
+            <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
+                <div class="p-5 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div class="flex items-center gap-2">
+                        <button onclick="filterGRNStatus('all')" class="grn-tab px-3.5 py-1.5 rounded-xl text-xs font-semibold transition bg-primary text-white" data-status="all">ទាំងអស់</button>
+                        <button onclick="filterGRNStatus('pending')" class="grn-tab px-3.5 py-1.5 rounded-xl text-xs font-semibold transition bg-slate-100 text-slate-600 hover:bg-slate-200" data-status="pending">រង់ចាំទទួល</button>
+                        <button onclick="filterGRNStatus('receiving')" class="grn-tab px-3.5 py-1.5 rounded-xl text-xs font-semibold transition bg-slate-100 text-slate-600 hover:bg-slate-200" data-status="receiving">កំពុងទទួល</button>
+                        <button onclick="filterGRNStatus('completed')" class="grn-tab px-3.5 py-1.5 rounded-xl text-xs font-semibold transition bg-slate-100 text-slate-600 hover:bg-slate-200" data-status="completed">បានបញ្ចប់</button>
+                    </div>
+                    <div class="relative w-full sm:w-64">
+                        <i class="fas fa-search absolute left-3 top-2.5 text-slate-400 text-xs"></i>
+                        <input type="text" id="searchGRN" oninput="renderGRNLists()" placeholder="ស្វែងរកតាមលេខ PO ឬអ្នកផ្គត់ផ្គង់..."
+                            class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-8 pr-3 py-1.5 text-xs focus:outline-none focus:border-primary">
+                    </div>
+                </div>
+
+                <div id="grnListContainer" class="p-5 space-y-5">
+                    <!-- Dynamic GRN List -->
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Modal ត្រួតពិនិត្យ និងបញ្ចប់ GRN -->
+    <div id="grnModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+        <div class="bg-white rounded-3xl shadow-2xl border border-slate-100 w-full max-w-2xl overflow-hidden">
+            <div class="p-6 bg-gradient-to-r from-[#0f2b5c] to-[#1e3a5f] text-white flex items-center justify-between">
+                <div>
+                    <h3 class="text-base font-bold flex items-center gap-2">
+                        <i class="fas fa-stamp text-sky-300"></i>
+                        <span>បញ្ចប់ការត្រួតពិនិត្យ និងចុះហត្ថលេខា GRN</span>
+                    </h3>
+                    <p class="text-xs text-sky-200 mt-0.5" id="grnModalSubtitle">ប័ណ្ណលេខ GRN-PO-9041</p>
+                </div>
+                <button onclick="closeGRNModal()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition cursor-pointer">
+                    <i class="fas fa-xmark text-sm"></i>
+                </button>
+            </div>
+            <div class="p-6 space-y-4">
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2 text-xs">
+                    <div class="flex justify-between">
+                        <span class="text-slate-500">អ្នកផ្គត់ផ្គង់:</span>
+                        <span class="font-bold text-slate-800" id="grnSupplier">-</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-slate-500">ព័ត៌មានអ្នកដឹក:</span>
+                        <span class="font-medium text-slate-700" id="grnDriver">-</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-slate-500">កាលបរិច្ឆេទមកដល់:</span>
+                        <span class="font-mono text-slate-700" id="grnArrival">-</span>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1.5">កំណត់ចំណាំពេលត្រួតពិនិត្យ (Inspection Notes)</label>
+                    <textarea id="grnInspectionNote" rows="2" placeholder="ឧទាហរណ៍៖ ទំនិញក្នុងកេះមានសភាពល្អ គ្មានស្នាមបែកបាក់..."
+                        class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-xs focus:outline-none focus:border-primary">ទំនិញត្រូវបានត្រួតពិនិត្យ និងដាក់បញ្ចូលទីតាំងធ្នើរបច្ចេកទេសរួចរាល់ 100%។</textarea>
+                </div>
+
+                <div class="p-3 bg-sky-50 rounded-xl border border-sky-200 text-sky-900 text-xs flex items-center gap-2">
+                    <i class="fas fa-info-circle text-sky-600"></i>
+                    <span>ចំនួនស្តុកនៅក្នុងប្រព័ន្ធនឹងកើនឡើងស្វ័យប្រវត្តទៅតាមចំនួនទទួលជាក់ស្តែង។</span>
+                </div>
+            </div>
+            <div class="p-4 bg-slate-50 border-t border-slate-100 flex justify-end gap-3">
+                <button onclick="closeGRNModal()" class="px-4 py-2 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-700 font-medium text-xs transition cursor-pointer">
+                    ថយក្រោយ
+                </button>
+                <button onclick="confirmCompleteGRN()" class="px-5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs transition shadow-sm cursor-pointer flex items-center gap-1.5">
+                    <i class="fas fa-check"></i> បញ្ជាក់បញ្ចប់ GRN
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../shared/scripts/ui-components.js"></script>
+    <script src="data.js"></script>
+    <script src="../../shared/scripts/portal.js"></script>
+    <script>
+        let currentGRNFilter = 'all';
+        let activeGRNId = null;
+
+        function updateGRNCounts() {
+            const data = getWarehouseStaffData();
+            const arrived = data.inboundPOs.filter(p => p.status === 'pending').length;
+            const inspecting = data.inboundPOs.filter(p => p.status === 'receiving').length;
+            const completed = data.inboundPOs.filter(p => p.status === 'completed').length;
+
+            document.getElementById('arrivedCount').textContent = arrived;
+            document.getElementById('inspectingCount').textContent = inspecting;
+            document.getElementById('completedCount').textContent = completed;
+        }
+
+        function filterGRNStatus(status) {
+            currentGRNFilter = status;
+            document.querySelectorAll('.grn-tab').forEach(tab => {
+                const isMatch = tab.dataset.status === status;
+                tab.className = isMatch ?
+                    'grn-tab px-3.5 py-1.5 rounded-xl text-xs font-semibold transition bg-primary text-white' :
+                    'grn-tab px-3.5 py-1.5 rounded-xl text-xs font-semibold transition bg-slate-100 text-slate-600 hover:bg-slate-200';
+            });
+            renderGRNLists();
+        }
+
+        function renderGRNLists() {
+            const data = getWarehouseStaffData();
+            const search = (document.getElementById('searchGRN')?.value || '').trim().toLowerCase();
+            const container = document.getElementById('grnListContainer');
+            if (!container) return;
+
+            let list = data.inboundPOs;
+            if (currentGRNFilter !== 'all') {
+                list = list.filter(p => p.status === currentGRNFilter);
+            }
+            if (search) {
+                list = list.filter(p => p.id.toLowerCase().includes(search) || p.poNo.toLowerCase().includes(search) || p.supplierName.toLowerCase().includes(search));
+            }
+
+            if (list.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12 text-slate-400">
+                        <i class="fas fa-inbox text-4xl mb-3 text-slate-300"></i>
+                        <p class="text-sm">មិនមានប័ណ្ណទទួលទំនិញតាមលក្ខខណ្ឌនេះឡើយ</p>
+                    </div>`;
+                return;
+            }
+
+            container.innerHTML = list.map(po => {
+                let statusBadge = '';
+                if (po.status === 'pending') {
+                    statusBadge = '<span class="px-2.5 py-1 rounded-full bg-amber-50 text-amber-700 border border-amber-200 text-xs font-semibold"><i class="fas fa-clock mr-1"></i> រង់ចាំទទួល</span>';
+                } else if (po.status === 'receiving') {
+                    statusBadge = '<span class="px-2.5 py-1 rounded-full bg-sky-50 text-sky-700 border border-sky-200 text-xs font-semibold"><i class="fas fa-box-open mr-1"></i> កំពុងទទួល</span>';
+                } else {
+                    statusBadge = '<span class="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-semibold"><i class="fas fa-check-circle mr-1"></i> បានបញ្ចប់</span>';
+                }
+
+                const itemsHtml = po.items.map(item => `
+                    <tr class="hover:bg-slate-50/80 transition">
+                        <td class="py-2.5 px-3 text-xs font-mono font-bold text-sky-700">${item.sku}</td>
+                        <td class="py-2.5 px-3 text-xs font-medium text-slate-800">${item.name}</td>
+                        <td class="py-2.5 px-3 text-xs font-mono text-purple-700">
+                            <span class="px-2 py-0.5 rounded-lg bg-purple-50 border border-purple-200"><i class="fas fa-tag mr-1"></i> ${item.batchNo}</span>
+                        </td>
+                        <td class="py-2.5 px-3 text-xs font-semibold text-slate-700">
+                            <span class="px-2 py-0.5 rounded-lg bg-slate-100 border border-slate-200"><i class="fas fa-location-dot mr-1 text-slate-400"></i> ${item.binTarget}</span>
+                        </td>
+                        <td class="py-2.5 px-3 text-xs font-bold text-center text-slate-700">${item.orderQty}</td>
+                        <td class="py-2.5 px-3 text-xs font-bold text-center text-emerald-600">
+                            ${po.status === 'completed' ? item.receivedQty : `
+                                <div class="inline-flex items-center gap-1">
+                                    <input type="number" min="0" max="${item.orderQty}" value="${item.receivedQty}"
+                                        onchange="updateItemReceivedQty('${po.id}', '${item.sku}', this.value)"
+                                        class="w-16 bg-white border border-slate-200 rounded-lg py-1 px-2 text-center text-xs font-bold text-emerald-700 focus:outline-none focus:border-emerald-500">
+                                </div>
+                            `}
+                        </td>
+                        <td class="py-2.5 px-3 text-xs font-bold text-center ${item.damagedQty > 0 ? 'text-rose-600' : 'text-slate-400'}">
+                            ${po.status === 'completed' ? (item.damagedQty || '0') : `
+                                <input type="number" min="0" value="${item.damagedQty || 0}"
+                                    onchange="updateItemDamagedQty('${po.id}', '${item.sku}', this.value)"
+                                    class="w-14 bg-white border border-slate-200 rounded-lg py-1 px-2 text-center text-xs font-bold text-rose-600 focus:outline-none focus:border-rose-500">
+                            `}
+                        </td>
+                        <td class="py-2.5 px-3 text-center">
+                            ${item.inspected ? 
+                                '<span class="text-emerald-500 text-sm" title="បានត្រួតពិនិត្យ"><i class="fas fa-circle-check"></i></span>' : 
+                                `<button onclick="markItemInspected('${po.id}', '${item.sku}')" class="px-2.5 py-1 rounded-lg bg-sky-50 hover:bg-sky-100 text-sky-700 border border-sky-200 text-[11px] font-semibold transition cursor-pointer">
+                                    ពិនិត្យ
+                                 </button>`}
+                        </td>
+                    </tr>
+                `).join('');
+
+                let actionBtn = '';
+                if (po.status === 'pending') {
+                    actionBtn = `
+                        <button onclick="startReceiving('${po.id}')" class="px-4 py-2 rounded-xl bg-sky-600 hover:bg-sky-700 text-white text-xs font-semibold transition shadow-sm flex items-center gap-1.5 cursor-pointer">
+                            <i class="fas fa-box-open"></i> ចាប់ផ្តើមទទួល
+                        </button>`;
+                } else if (po.status === 'receiving') {
+                    actionBtn = `
+                        <button onclick="openGRNModal('${po.id}')" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold transition shadow-sm flex items-center gap-1.5 cursor-pointer">
+                            <i class="fas fa-stamp"></i> បញ្ចប់ GRN
+                        </button>`;
+                } else {
+                    actionBtn = `
+                        <button onclick="showToast('ប័ណ្ណ GRN នេះត្រូវបានបញ្ចូលក្នុងស្តុក និងចុះហត្ថលេខារួចរាល់', 'info')" class="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition flex items-center gap-1.5 cursor-pointer">
+                            <i class="fas fa-file-invoice"></i> បោះពុម្ព GRN
+                        </button>`;
+                }
+
+                return `
+                    <div class="p-5 bg-white rounded-2xl border border-slate-200/80 hover:border-slate-300 transition shadow-sm space-y-4">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-sky-50 text-sky-700 flex items-center justify-center font-bold text-sm">
+                                    <i class="fas fa-truck-ramp-box"></i>
+                                </div>
+                                <div>
+                                    <div class="flex items-center gap-2">
+                                        <h4 class="text-sm font-bold text-slate-800">${po.id}</h4>
+                                        <span class="text-xs font-mono text-slate-500">(${po.poNo})</span>
+                                    </div>
+                                    <p class="text-xs text-slate-500 mt-0.5">
+                                        <i class="fas fa-building mr-1 text-slate-400"></i> ${po.supplierName} &bull; <i class="fas fa-truck ml-1 mr-1 text-slate-400"></i> ${po.driverInfo}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3 self-end sm:self-center">
+                                ${statusBadge}
+                                ${actionBtn}
+                            </div>
+                        </div>
+
+                        <!-- តារាងទំនិញទទួល (Zero Price Policy) -->
+                        <div class="overflow-x-auto rounded-xl border border-slate-100 bg-slate-50/50">
+                            <table class="w-full text-left">
+                                <thead class="bg-slate-100/70 text-slate-600 text-[11px] font-bold uppercase tracking-wider">
+                                    <tr>
+                                        <th class="py-2 px-3">កូដ SKU</th>
+                                        <th class="py-2 px-3">ឈ្មោះទំនិញ</th>
+                                        <th class="py-2 px-3">លេខឡូត៍ (Batch/Lot)</th>
+                                        <th class="py-2 px-3">ធ្នើរគោលដៅ</th>
+                                        <th class="py-2 px-3 text-center">ចំនួនបញ្ជាទិញ</th>
+                                        <th class="py-2 px-3 text-center">ចំនួនទទួល</th>
+                                        <th class="py-2 px-3 text-center">ខូចខាត</th>
+                                        <th class="py-2 px-3 text-center">ពិនិត្យ</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-100 bg-white">
+                                    ${itemsHtml}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>`;
+            }).join('');
+        }
+
+        function startReceiving(id) {
+            const data = getWarehouseStaffData();
+            const po = data.inboundPOs.find(p => p.id === id);
+            if (po) {
+                po.status = 'receiving';
+                saveWarehouseStaffData(data);
+                showToast(`បានចាប់ផ្តើមទទួលទំនិញសម្រាប់ ${id}`, 'success');
+                updateGRNCounts();
+                renderGRNLists();
+            }
+        }
+
+        function updateItemReceivedQty(poId, sku, val) {
+            const data = getWarehouseStaffData();
+            const po = data.inboundPOs.find(p => p.id === poId);
+            if (!po) return;
+            const item = po.items.find(i => i.sku === sku);
+            if (item) {
+                item.receivedQty = parseInt(val) || 0;
+                saveWarehouseStaffData(data);
+            }
+        }
+
+        function updateItemDamagedQty(poId, sku, val) {
+            const data = getWarehouseStaffData();
+            const po = data.inboundPOs.find(p => p.id === poId);
+            if (!po) return;
+            const item = po.items.find(i => i.sku === sku);
+            if (item) {
+                item.damagedQty = parseInt(val) || 0;
+                saveWarehouseStaffData(data);
+            }
+        }
+
+        function markItemInspected(poId, sku) {
+            const data = getWarehouseStaffData();
+            const po = data.inboundPOs.find(p => p.id === poId);
+            if (!po) return;
+            const item = po.items.find(i => i.sku === sku);
+            if (item) {
+                item.inspected = true;
+                if (item.receivedQty === 0) item.receivedQty = item.orderQty;
+                saveWarehouseStaffData(data);
+                showToast(`បានត្រួតពិនិត្យរួចរាល់ ${item.name}`, 'info');
+                renderGRNLists();
+            }
+        }
+
+        function openGRNModal(id) {
+            const data = getWarehouseStaffData();
+            const po = data.inboundPOs.find(p => p.id === id);
+            if (!po) return;
+
+            activeGRNId = id;
+            document.getElementById('grnModalSubtitle').textContent = `ប័ណ្ណលេខ ${po.id} (${po.poNo})`;
+            document.getElementById('grnSupplier').textContent = po.supplierName;
+            document.getElementById('grnDriver').textContent = po.driverInfo;
+            document.getElementById('grnArrival').textContent = po.arrivalDate;
+
+            const modal = document.getElementById('grnModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeGRNModal() {
+            const modal = document.getElementById('grnModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            activeGRNId = null;
+        }
+
+        function confirmCompleteGRN() {
+            if (!activeGRNId) return;
+            const data = getWarehouseStaffData();
+            const po = data.inboundPOs.find(p => p.id === activeGRNId);
+            if (po) {
+                po.status = 'completed';
+                saveWarehouseStaffData(data);
+                showToast(`ប័ណ្ណទទួលទំនិញ GRN ${po.id} ត្រូវបានបញ្ចប់ និងបញ្ចូលស្តុកជោគជ័យ!`, 'success');
+                closeGRNModal();
+                updateGRNCounts();
+                renderGRNLists();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateGRNCounts();
+            renderGRNLists();
+        });
+    </script>
+</body>
+
+</html>
