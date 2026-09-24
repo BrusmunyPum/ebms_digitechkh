@@ -1,11 +1,11 @@
 /* ច្រកគ្រប់គ្រងផ្នែកលក់ — Shared runtime
-   ផ្ទុក៖ ថតរបារចំហៀងចល័ត, តម្រងកាលបរិច្ឆេទរួម (ស្តង់ដារលេខ 3), ម៉ឺនុយសកម្មភាពជួរតារាង (ស្តង់ដារលេខ 9) */
+ផ្ទុក៖ ថតរបារចំហៀងចល័ត, តម្រងកាលបរិច្ឆេទរួម (ស្តង់ដារលេខ 3), ម៉ឺនុយសកម្មភាពជួរតារាង (ស្តង់ដារលេខ 9) */
 
 /* ===== 0. របារចំហៀង — បង្កើតចេញពីប្រភពតែមួយ =====
-   ទំព័រនីមួយៗគ្រាន់តែដាក់ <div id="sidebarHost"></div> ហើយកំណត់
-   data-role-root និង data-active លើ <body> ប៉ុណ្ណោះ។ ដោយសារ HTML
-   ត្រូវបង្កើតចេញពីអនុគមន៍តែមួយ របារចំហៀងគ្រប់ទំព័រដូចគ្នា 100%
-   ដោយស្វ័យប្រវត្តិ ទោះស្ថិតក្នុងថតជាន់ផ្សេងគ្នាក៏ដោយ។ */
+ទំព័រនីមួយៗគ្រាន់តែដាក់ <div id="sidebarHost"></div> ហើយកំណត់
+data-role-root និង data-active លើ <body> ប៉ុណ្ណោះ។ ដោយសារ HTML
+ត្រូវបង្កើតចេញពីអនុគមន៍តែមួយ របារចំហៀងគ្រប់ទំព័រដូចគ្នា 100%
+ដោយស្វ័យប្រវត្តិ ទោះស្ថិតក្នុងថតជាន់ផ្សេងគ្នាក៏ដោយ។ */
 
 // ផ្ទុក Iconify MDI Web Component ដោយស្វ័យប្រវត្តិ
 if (!document.querySelector('script[src*="iconify"]')) {
@@ -89,11 +89,11 @@ const PORTAL_CONFIGS = {
         roleIcon: 'mdi:account-hard-hat',
         userInitials: 'សច',
         userName: 'សុខ ចាន់ថន',
-        userRole: 'បុគ្គលិកជាន់ឃ្លាំង (Floor)',
-        policyNote: 'Zero Price Leakage Policy — ឃើញតែបរិមាណ (Quantities) និងធ្នើរ (Bins) ប៉ុណ្ណោះ។',
+        userRole: 'បុគ្គលិកជាន់ឃ្លាំង',
+        policyNote: 'គោលការណ៍រក្សាការសម្ងាត់ថ្លៃដើម — ឃើញតែចំនួនទំនិញ និងទីតាំងធ្នើរប៉ុណ្ណោះ។',
         nav: [
             { id: 'pick-pack', label: 'រើស និងវេចខ្ចប់', icon: 'mdi:package-variant-closed', href: 'pick-and-pack.html' },
-            { id: 'receive-stock', label: 'ទទួលទំនិញ (GRN)', icon: 'mdi:truck-delivery-outline', href: 'receive-stock.html' },
+            { id: 'receive-stock', label: 'ទទួលទំនិញចូលស្តុក', icon: 'mdi:truck-delivery-outline', href: 'receive-stock.html' },
             { id: 'stock-count', label: 'រាប់ស្តុកជាក់ស្តែង', icon: 'mdi:clipboard-check-outline', href: 'stock-count.html' }
         ]
     },
@@ -103,10 +103,10 @@ const PORTAL_CONFIGS = {
         roleIcon: 'mdi:headset',
         userInitials: 'លស',
         userName: 'លី ស្រីមុំ',
-        userRole: 'ផ្នែកបម្រើអតិថិជន (CS)',
-        policyNote: 'ឆ្លើយតបសំណួរអតិថិជន, តាមដានអ្នកដឹក និងស្នើសុំ RMA ដោយសុវត្ថិភាព។',
+        userRole: 'ផ្នែកបម្រើអតិថិជន',
+        policyNote: 'ឆ្លើយតបសំណួរអតិថិជន, តាមដានអ្នកដឹក និងស្នើសុំប្តូរទំនិញដោយសុវត្ថិភាព។',
         nav: [
-            { id: 'dashboard', label: 'ផ្ទាំងសំណើ (Tickets)', icon: 'mdi:ticket-confirmation-outline', href: 'dashboard.html', badge: true },
+            { id: 'dashboard', label: 'ផ្ទាំងសំណើ', icon: 'mdi:ticket-confirmation-outline', href: 'dashboard.html', badge: true },
             { id: 'orders-lookup', label: 'ស្វែងរកវិក្កយបត្រ', icon: 'mdi:file-document-outline', href: 'orders-lookup.html' },
             { id: 'delivery-status', label: 'តាមដានការដឹកជញ្ជូន', icon: 'mdi:truck-check-outline', href: 'delivery-status.html' }
         ]
@@ -133,8 +133,8 @@ const PORTAL_CONFIGS = {
         roleIcon: 'mdi:shield-crown-outline',
         userInitials: 'សភ',
         userName: 'អភិបាល ប្រព័ន្ធ',
-        userRole: 'Super Admin (Platform Root)',
-        policyNote: 'គ្រប់គ្រង Platform និង Tenant កម្រិតសកល។ គ្មានសិទ្ធិបង្កើត ឬកែប្រែប្រតិបត្តិការអាជីវកម្មផ្ទៃក្នុងក្រុមហ៊ុនឡើយ។',
+        userRole: 'ស៊ុបភើរ អភិបាលប្រព័ន្ធ',
+        policyNote: 'គ្រប់គ្រងប្រព័ន្ធ និងក្រុមហ៊ុនសាខាកម្រិតសកល។ គ្មានសិទ្ធិបង្កើត ឬកែប្រែប្រតិបត្តិការអាជីវកម្មផ្ទៃក្នុងក្រុមហ៊ុនឡើយ។',
         nav: [
             { id: 'dashboard', label: 'ផ្ទាំងគ្រប់គ្រង', icon: 'mdi:view-dashboard-outline', href: 'dashboard.html' },
             { id: 'companies', label: 'គ្រប់គ្រងក្រុមហ៊ុន', icon: 'mdi:domain', href: 'companies/companies.html' },

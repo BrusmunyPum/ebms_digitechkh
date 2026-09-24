@@ -9,18 +9,18 @@ const DEFAULT_CUSTOMER_SUPPORT_DATA = {
     userProfile: {
         id: 'CS-012',
         name: 'លី ស្រីមុំ',
-        role: 'បុគ្គលិកបម្រើអតិថិជន (Customer Support Specialist)',
-        channel: 'Telegram & Hotline Queue'
+        role: 'បុគ្គលិកបម្រើអតិថិជន',
+        channel: 'តេឡេក្រាម និងទូរស័ព្ទទាន់ហេតុការណ៍'
     },
-    // បញ្ជីសំបុត្របណ្តឹង និងសំណើជំនួយ (Support Tickets)
+    // បញ្ជីសំបុត្របណ្តឹង និងសំណើជំនួយ
     tickets: [
         {
             id: 'TCK-2026-081',
             customerName: 'អ៊ុច វ៉ាន់ដា',
             phone: '012 345 678',
-            channel: 'Telegram Support',
+            channel: 'តេឡេក្រាម',
             category: 'សាកសួរទីតាំងដឹកជញ្ជូន',
-            priority: 'បន្ទាន់ (High)',
+            priority: 'បន្ទាន់',
             status: 'pending', // pending, in_progress, resolved
             createdAt: '2026-09-23 09:10',
             slaMinutesRemaining: 25,
@@ -29,15 +29,15 @@ const DEFAULT_CUSTOMER_SUPPORT_DATA = {
             messages: [
                 { sender: 'customer', text: 'សួស្តីបង ខ្ញុំបានកុម្ម៉ង់ទូរទស្សន៍ព្រឹកមិញ តើឡានដឹកមកដល់ម៉ោងប៉ុន្មានដែរ?', time: '09:10' }
             ],
-            internalNotes: 'បានឆែកឃើញ Driver លេខ 2E-9932 កំពុងធ្វើដំណើរលើផ្លូវ 271'
+            internalNotes: 'បានពិនិត្យឃើញអ្នកដឹកលេខ 2E-9932 កំពុងធ្វើដំណើរលើផ្លូវ 271'
         },
         {
             id: 'TCK-2026-080',
             customerName: 'ហាងលក់គ្រឿងបន្លាស់ ម៉េងហួរ',
             phone: '098 765 432',
-            channel: 'Call Center',
-            category: 'ស្នើសុំប្តូរទំនិញ (RMA)',
-            priority: 'បន្ទាន់ខ្លាំង (Critical)',
+            channel: 'ទូរស័ព្ទផ្ទាល់',
+            category: 'ស្នើសុំប្តូរទំនិញថ្មី',
+            priority: 'បន្ទាន់ខ្លាំង',
             status: 'in_progress',
             createdAt: '2026-09-23 08:35',
             slaMinutesRemaining: 15,
@@ -45,30 +45,30 @@ const DEFAULT_CUSTOMER_SUPPORT_DATA = {
             subject: 'កង្ហារបញ្ឈរមានស្នាមប្រេះកង្ហារពេលបកកេស',
             messages: [
                 { sender: 'customer', text: 'ពេលទទួលកង្ហារមក ឃើញស្លាបកង្ហារប្រេះ ខ្ញុំចង់ប្តូរថ្មីមួយគ្រឿងបង', time: '08:35' },
-                { sender: 'support', text: 'ជម្រាបសួរលោកម្ចាស់ហាង! ខាងប្អូនបានទទួលរូបភាព និងបញ្ជូនសំណើ RMA ទៅឃ្លាំងដើម្បីត្រៀមដូរជូនហើយ', time: '08:42' }
+                { sender: 'support', text: 'ជម្រាបសួរលោកម្ចាស់ហាង! ខាងប្អូនបានទទួលរូបភាព និងបញ្ជូនសំណើទៅឃ្លាំងដើម្បីត្រៀមដូរជូនហើយ', time: '08:42' }
             ],
-            internalNotes: 'បានដាក់សំណើ RMA-2026-019 ទៅកាន់ Warehouse Manager រួចរាល់'
+            internalNotes: 'បានដាក់សំណើ RMA-2026-019 ទៅកាន់អ្នកគ្រប់គ្រងឃ្លាំងរួចរាល់'
         },
         {
             id: 'TCK-2026-078',
             customerName: 'គ្លីនិក សុខភាពល្អ',
             phone: '077 889 900',
-            channel: 'Walk-in / Hotline',
-            category: 'សុំចម្លងវិក្កយបត្រ VAT',
-            priority: 'ធម្មតា (Normal)',
+            channel: 'មកផ្ទាល់ / ទូរស័ព្ទបន្ទាន់',
+            category: 'សុំចម្លងវិក្កយបត្រពន្ធ',
+            priority: 'ធម្មតា',
             status: 'resolved',
             createdAt: '2026-09-22 16:20',
             slaMinutesRemaining: 0,
             relatedInvoice: 'INV-2026-0870',
-            subject: 'សុំទាញយកវិក្កយបត្រពន្ធ VAT PDF ឡើងវិញ',
+            subject: 'សុំទាញយកវិក្កយបត្រពន្ធឡើងវិញ',
             messages: [
-                { sender: 'customer', text: 'សុំវិក្កយបត្រ PDF សម្រាប់ខែមុនផងបង', time: '16:20' },
-                { sender: 'support', text: 'បានផ្ញើឯកសារ PDF ផ្លូវការចូល Telegram រួចរាល់ហើយបង។ អរគុណច្រើន!', time: '16:28' }
+                { sender: 'customer', text: 'សុំវិក្កយបត្រសម្រាប់ខែមុនផងបង', time: '16:20' },
+                { sender: 'support', text: 'បានផ្ញើឯកសារផ្លូវការចូលតេឡេក្រាមរួចរាល់ហើយបង។ អរគុណច្រើន!', time: '16:28' }
             ],
-            internalNotes: 'បានទាញយកវិក្កយបត្រពី Orders Lookup ហើយបញ្ជូនជូនអតិថិជន'
+            internalNotes: 'បានទាញយកវិក្កយបត្រពីផ្ទាំងស្វែងរកវិក្កយបត្រ ហើយបញ្ជូនជូនអតិថិជន'
         }
     ],
-    // មូលដ្ឋានទិន្នន័យស្វែងរកវិក្កយបត្រ (Orders & Invoices Lookup)
+    // មូលដ្ឋានទិន្នន័យស្វែងរកវិក្កយបត្រ
     orders: [
         {
             invoiceId: 'INV-2026-0891',
@@ -77,13 +77,13 @@ const DEFAULT_CUSTOMER_SUPPORT_DATA = {
             customerName: 'អ៊ុច វ៉ាន់ដា',
             phone: '012 345 678',
             address: 'ផ្ទះលេខ 12Eo ផ្លូវ 271 សង្កាត់ទឹកល្អក់3 ខណ្ឌទួលគោក ភ្នំពេញ',
-            paymentStatus: 'បានបង់ប្រាក់រួច (Bakong KHQR)',
+            paymentStatus: 'បានបង់ប្រាក់រួច (បាគង)',
             deliveryStatus: 'out_for_delivery', // packing, dispatched, out_for_delivery, delivered
             salesRep: 'ហេង វិច្ឆិកា',
             driverName: 'កែវ សំណាង (011 223 344)',
             vehiclePlate: 'ភ្នំពេញ 2E-9932 (ម៉ូតូរឺម៉ក)',
             items: [
-                { sku: 'SKU-001', name: 'ម៉ាស៊ីនត្រជាក់ Inverter 1.5HP', qty: 2, unitPrice: 380.00, total: 760.00 },
+                { sku: 'SKU-001', name: 'ម៉ាស៊ីនត្រជាក់ 1.5HP', qty: 2, unitPrice: 380.00, total: 760.00 },
                 { sku: 'SKU-005', name: 'កង្ហារបញ្ឈរតេឡេបញ្ជា', qty: 3, unitPrice: 35.00, total: 105.00 }
             ],
             grandTotal: 865.00
@@ -112,19 +112,19 @@ const DEFAULT_CUSTOMER_SUPPORT_DATA = {
             customerName: 'ក្រុមហ៊ុន គឹមសេង ត្រេឌីង',
             phone: '085 123 999',
             address: 'ក្រុងសៀមរាប ផ្ញើតាមឡានក្រុងវីរៈប៊ុនថាំ',
-            paymentStatus: 'ជំពាក់ (Credit 30 ថ្ងៃ)',
+            paymentStatus: 'ជំពាក់ (រយៈពេល 30 ថ្ងៃ)',
             deliveryStatus: 'dispatched',
             salesRep: 'ហេង វិច្ឆិកា',
             driverName: 'ម៉េង ហុង (092 887 766)',
             vehiclePlate: 'ភ្នំពេញ 3A-1102 (ឡានដឹកធំ)',
             items: [
-                { sku: 'SKU-002', name: 'ទូរទស្សន៍ឆ្លាតវៃ 55" 4K UHD', qty: 4, unitPrice: 420.00, total: 1680.00 },
+                { sku: 'SKU-002', name: 'ទូរទស្សន៍ឆ្លាតវៃ 55 អ៊ីញ', qty: 4, unitPrice: 420.00, total: 1680.00 },
                 { sku: 'SKU-006', name: 'ឆ្នាំងដាំបាយអេឡិចត្រូនិច 1.8L', qty: 5, unitPrice: 28.00, total: 140.00 }
             ],
             grandTotal: 1820.00
         }
     ],
-    // បញ្ជីតាមដានការដឹកជញ្ជូនជាក់ស្តែង (Live Delivery Tracking)
+    // បញ្ជីតាមដានការដឹកជញ្ជូនជាក់ស្តែង
     deliveries: [
         {
             trackingCode: 'TRK-2026-091',
