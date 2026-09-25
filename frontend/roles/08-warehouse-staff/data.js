@@ -16,14 +16,14 @@ const DEFAULT_WAREHOUSE_STAFF_DATA = {
     },
     // បញ្ជីមុខទំនិញ និងទីតាំងធ្នើរ (SKUs & Bin Locations - ZERO PRICE)
     inventoryItems: [
-        { sku: 'SKU-001', name: 'ម៉ាស៊ីនត្រជាក់ Inverter 1.5HP', category: 'គ្រឿងអេឡិចត្រូនិច', bin: 'A-01-03', barcode: '885123456001', onHand: 45, unit: 'គ្រឿង' },
-        { sku: 'SKU-002', name: 'ទូរទស្សន៍ឆ្លាតវៃ 55" 4K UHD', category: 'ទូរទស្សន៍', bin: 'A-02-01', barcode: '885123456002', onHand: 28, unit: 'គ្រឿង' },
-        { sku: 'SKU-003', name: 'ទូទឹកកក Side-by-Side 600L', category: 'គ្រឿងប្រើប្រាស់ផ្ទះបាយ', bin: 'B-01-02', barcode: '885123456003', onHand: 14, unit: 'គ្រឿង' },
-        { sku: 'SKU-004', name: 'ម៉ាស៊ីនបោកគក់ទ្វារមុខ 10kg', category: 'គ្រឿងអេឡិចត្រូនិច', bin: 'B-03-01', barcode: '885123456004', onHand: 19, unit: 'គ្រឿង' },
-        { sku: 'SKU-005', name: 'កង្ហារបញ្ឈរតេឡេបញ្ជា', category: 'កង្ហារ', bin: 'C-01-04', barcode: '885123456005', onHand: 112, unit: 'គ្រឿង' },
-        { sku: 'SKU-006', name: 'ឆ្នាំងដាំបាយអេឡិចត្រូនិច 1.8L', category: 'គ្រឿងប្រើប្រាស់ផ្ទះបាយ', bin: 'C-02-02', barcode: '885123456006', onHand: 64, unit: 'គ្រឿង' },
-        { sku: 'SKU-007', name: 'ម៉ាស៊ីនបន្សុទ្ធខ្យល់ UV Filter', category: 'សុខភាព & បរិស្ថាន', bin: 'D-01-01', barcode: '885123456007', onHand: 36, unit: 'គ្រឿង' },
-        { sku: 'SKU-008', name: 'អាំងភ្លើងកម្តៅស្វ័យប្រវត្ត', category: 'គ្រឿងប្រើប្រាស់ផ្ទះបាយ', bin: 'D-02-05', barcode: '885123456008', onHand: 50, unit: 'គ្រឿង' }
+        { sku: 'SKU-001', name: 'ម៉ាស៊ីនត្រជាក់ Inverter 1.5HP', category: 'គ្រឿងអេឡិចត្រូនិច', bin: 'A-01-03', barcode: '885123456001', onHand: 45, reorderPoint: 30, unit: 'គ្រឿង' },
+        { sku: 'SKU-002', name: 'ទូរទស្សន៍ឆ្លាតវៃ 55" 4K UHD', category: 'ទូរទស្សន៍', bin: 'A-02-01', barcode: '885123456002', onHand: 28, reorderPoint: 35, unit: 'គ្រឿង' },
+        { sku: 'SKU-003', name: 'ទូទឹកកក Side-by-Side 600L', category: 'គ្រឿងប្រើប្រាស់ផ្ទះបាយ', bin: 'B-01-02', barcode: '885123456003', onHand: 14, reorderPoint: 20, unit: 'គ្រឿង' },
+        { sku: 'SKU-004', name: 'ម៉ាស៊ីនបោកគក់ទ្វារមុខ 10kg', category: 'គ្រឿងអេឡិចត្រូនិច', bin: 'B-03-01', barcode: '885123456004', onHand: 19, reorderPoint: 25, unit: 'គ្រឿង' },
+        { sku: 'SKU-005', name: 'កង្ហារបញ្ឈរតេឡេបញ្ជា', category: 'កង្ហារ', bin: 'C-01-04', barcode: '885123456005', onHand: 112, reorderPoint: 50, unit: 'គ្រឿង' },
+        { sku: 'SKU-006', name: 'ឆ្នាំងដាំបាយអេឡិចត្រូនិច 1.8L', category: 'គ្រឿងប្រើប្រាស់ផ្ទះបាយ', bin: 'C-02-02', barcode: '885123456006', onHand: 64, reorderPoint: 40, unit: 'គ្រឿង' },
+        { sku: 'SKU-007', name: 'ម៉ាស៊ីនបន្សុទ្ធខ្យល់ UV Filter', category: 'សុខភាព & បរិស្ថាន', bin: 'D-01-01', barcode: '885123456007', onHand: 36, reorderPoint: 30, unit: 'គ្រឿង' },
+        { sku: 'SKU-008', name: 'អាំងភ្លើងកម្តៅស្វ័យប្រវត្ត', category: 'គ្រឿងប្រើប្រាស់ផ្ទះបាយ', bin: 'D-02-05', barcode: '885123456008', onHand: 50, reorderPoint: 45, unit: 'គ្រឿង' }
     ],
     // បញ្ជីរើស និងវេចខ្ចប់ទំនិញ (Dispatch Pick Lists)
     pickLists: [
@@ -152,4 +152,10 @@ function saveWarehouseStaffData(data) {
     } catch (e) {
         console.error('Error saving warehouse staff data', e);
     }
+}
+
+/* ===== ផ្លាកលេខក្នុងម៉ឺនុយចំហៀង (ហៅដោយ portal.js) ===== */
+
+function totalPending() {
+    return getWarehouseStaffData().inboundPOs.filter(po => po.status === 'pending').length;
 }

@@ -92,8 +92,9 @@ const PORTAL_CONFIGS = {
         userRole: 'បុគ្គលិកជាន់ឃ្លាំង',
         policyNote: 'គោលការណ៍រក្សាការសម្ងាត់ថ្លៃដើម — ឃើញតែចំនួនទំនិញ និងទីតាំងធ្នើរប៉ុណ្ណោះ។',
         nav: [
+            { id: 'dashboard', label: 'ផ្ទាំងគ្រប់គ្រងស្តុក', icon: 'mdi:view-dashboard-outline', href: 'dashboard.html' },
             { id: 'pick-pack', label: 'រើស និងវេចខ្ចប់', icon: 'mdi:package-variant-closed', href: 'pick-and-pack.html' },
-            { id: 'receive-stock', label: 'ទទួលទំនិញចូលស្តុក', icon: 'mdi:truck-delivery-outline', href: 'receive-stock.html' },
+            { id: 'receive-stock', label: 'ទទួលទំនិញចូលស្តុក', icon: 'mdi:truck-delivery-outline', href: 'receive-stock.html', badge: true },
             { id: 'stock-count', label: 'រាប់ស្តុកជាក់ស្តែង', icon: 'mdi:clipboard-check-outline', href: 'stock-count.html' }
         ]
     },

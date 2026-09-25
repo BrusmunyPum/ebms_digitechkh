@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="km">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - វិក្កយបត្ររបស់ខ្ញុំ</title>
+    <link rel="icon" type="image/png" href="../../../shared/assets/favicon.png">
+    <link rel="shortcut icon" type="image/png" href="../../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1e1b4b",
+                        'primary-dark': "#0f0e26",
+                        accent: "#a855f7",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../shared/styles/custom.css">
+    <style>
+        /* custom.css ដាក់ពណ៌បៃតងលើ <aside> ទាំងអស់ជាសកល — ច្រកអតិថិជននេះត្រូវការពណ៌ស្វាយ/ខៀវក្រម់ផ្ទាល់ខ្លួន ដូច្នេះត្រូវបដិសេធដោយ ID-scoped rule ដែលមាន specificity ខ្ពស់ជាង */
+        #cpPortal aside {
+            background-color: #1e1b4b !important;
+        }
+    </style>
+</head>
+
+<body id="cpPortal" class="bg-indigo-50/30 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <!-- របារចំហៀងអតិថិជន -->
+    <aside class="w-64 bg-[#1e1b4b] text-white flex flex-col flex-shrink-0 select-none z-20 border-r border-indigo-950">
+        <div class="h-[72px] px-6 flex items-center justify-between border-b border-white/10 flex-shrink-0">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-purple-500/20 border border-purple-400/30 flex items-center justify-center p-1 shadow-sm overflow-hidden flex-shrink-0">
+                    <img src="../../../shared/assets/logo-mark-transparent.png" alt="DIGITECHKH" class="w-full h-full object-contain">
+                </div>
+                <div>
+                    <h1 class="text-lg font-semibold tracking-wider whitespace-nowrap text-white">DIGITECHKH</h1>
+                    <span class="text-[11px] font-medium text-purple-300 uppercase tracking-wider block">អតិថិជន</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="px-5 py-3 border-b border-white/5 bg-black/20">
+            <div class="flex items-center justify-between">
+                <span class="text-xs text-indigo-300">គណនី:</span>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-purple-500/20 text-purple-300 border border-purple-500/30">
+                    <i class="fas fa-star text-[10px]"></i> អតិថិជន VIP
+                </span>
+            </div>
+        </div>
+
+        <nav class="flex-1 overflow-y-auto px-4 py-4 space-y-1.5 scrollbar-hide text-sm">
+            <a href="dashboard.html" class="flex items-center p-3 text-indigo-200 hover:bg-white/5 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-chart-pie w-6 text-center text-indigo-300"></i>
+                <span class="ml-3 text-[15px]">ទិដ្ឋភាពរួម</span>
+            </a>
+
+            <a href="my-invoices.html" class="flex items-center p-3 bg-white/10 text-purple-300 font-medium rounded-xl shadow-sm transition-all whitespace-nowrap border border-white/10">
+                <i class="fas fa-file-invoice-dollar w-6 text-center text-purple-400"></i>
+                <span class="ml-3 text-[15px]">វិក្កយបត្ររបស់ខ្ញុំ</span>
+            </a>
+
+            <a href="order-tracking.html" class="flex items-center p-3 text-indigo-200 hover:bg-white/5 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-truck-fast w-6 text-center text-indigo-300"></i>
+                <span class="ml-3 text-[15px]">តាមដានការដឹកជញ្ជូន</span>
+            </a>
+        </nav>
+
+        <div class="p-4 border-t border-white/10 bg-black/10">
+            <a href="../../00-auth/login.html" class="flex items-center text-[15px] text-indigo-300 hover:text-rose-400 transition-colors p-2 rounded-lg hover:bg-white/5">
+                <i class="fas fa-arrow-right-from-bracket w-6 mr-2"></i> ចាកចេញ
+            </a>
+        </div>
+    </aside>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div>
+                <h2 class="text-xl font-semibold text-gray-800 leading-tight">វិក្កយបត្ររបស់ខ្ញុំពី DIGITECHKH</h2>
+                <p class="text-xs font-normal text-gray-500 mt-0.5">ទាញយកវិក្កយបត្រផ្លូវការ និងពិនិត្យសមតុល្យ</p>
+            </div>
+        </header>
+
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-indigo-50/20 px-4 md:px-6 py-4">
+            <div class="w-full space-y-4">
+
+                <!-- តម្រង -->
+                <div class="bg-white rounded-2xl p-3 border border-purple-100 shadow-sm flex flex-wrap items-center justify-between gap-3">
+                    <div class="flex items-center gap-2">
+                        <button onclick="filterInvoiceStatus('all')" class="inv-tab px-3.5 py-1.5 rounded-xl text-xs font-semibold transition bg-primary text-white" data-status="all">ទាំងអស់</button>
+                        <button onclick="filterInvoiceStatus('unpaid')" class="inv-tab px-3.5 py-1.5 rounded-xl text-xs font-semibold transition bg-slate-100 text-slate-600 hover:bg-slate-200" data-status="unpaid">នៅជំពាក់</button>
+                        <button onclick="filterInvoiceStatus('overdue')" class="inv-tab px-3.5 py-1.5 rounded-xl text-xs font-semibold transition bg-slate-100 text-slate-600 hover:bg-slate-200" data-status="overdue">ហួសកាលកំណត់</button>
+                        <button onclick="filterInvoiceStatus('paid')" class="inv-tab px-3.5 py-1.5 rounded-xl text-xs font-semibold transition bg-slate-100 text-slate-600 hover:bg-slate-200" data-status="paid">បានទូទាត់</button>
+                    </div>
+                    <div class="relative w-full sm:w-64">
+                        <i class="fas fa-search absolute left-3 top-2.5 text-slate-400 text-xs"></i>
+                        <input type="text" id="searchInvoice" oninput="renderInvoiceList()" placeholder="ស្វែងរកតាមលេខវិក្កយបត្រ..."
+                            class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-8 pr-3 py-1.5 text-xs focus:outline-none focus:border-primary">
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl border border-purple-100 shadow-sm overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm">
+                            <thead class="bg-slate-50 text-slate-500 uppercase text-[11px] font-semibold border-b border-slate-100">
+                                <tr>
+                                    <th class="py-3 px-4">លេខវិក្កយបត្រ</th>
+                                    <th class="py-3 px-4">កាលបរិច្ឆេទ</th>
+                                    <th class="py-3 px-4">ទឹកប្រាក់សរុប</th>
+                                    <th class="py-3 px-4">បានទូទាត់</th>
+                                    <th class="py-3 px-4">នៅសល់</th>
+                                    <th class="py-3 px-4">ស្ថានភាព</th>
+                                    <th class="py-3 px-4 text-right">សកម្មភាព</th>
+                                </tr>
+                            </thead>
+                            <tbody id="invoiceListBody" class="divide-y divide-slate-100 text-slate-700 font-medium text-xs"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../shared/scripts/ui-components.js"></script>
+    <script src="data.js"></script>
+    <script>
+        let currentInvoiceFilter = 'all';
+
+        function filterInvoiceStatus(status) {
+            currentInvoiceFilter = status;
+            document.querySelectorAll('.inv-tab').forEach(tab => {
+                const isMatch = tab.dataset.status === status;
+                tab.className = isMatch ?
+                    'inv-tab px-3.5 py-1.5 rounded-xl text-xs font-semibold transition bg-primary text-white' :
+                    'inv-tab px-3.5 py-1.5 rounded-xl text-xs font-semibold transition bg-slate-100 text-slate-600 hover:bg-slate-200';
+            });
+            renderInvoiceList();
+        }
+
+        function renderInvoiceList() {
+            const data = getCustomerPortalData();
+            const search = (document.getElementById('searchInvoice')?.value || '').trim().toLowerCase();
+
+            let list = [...data.invoices].sort((a, b) => new Date(b.date) - new Date(a.date));
+            if (currentInvoiceFilter !== 'all') {
+                list = list.filter(inv => inv.status === currentInvoiceFilter);
+            }
+            if (search) {
+                list = list.filter(inv => inv.id.toLowerCase().includes(search));
+            }
+
+            const body = document.getElementById('invoiceListBody');
+            if (!list.length) {
+                body.innerHTML = `<tr><td colspan="7" class="text-center py-10 text-slate-400 text-xs">មិនមានវិក្កយបត្រតាមលក្ខខណ្ឌនេះឡើយ</td></tr>`;
+                return;
+            }
+
+            body.innerHTML = list.map(inv => {
+                const meta = cpInvoiceStatusMeta(inv);
+                const totals = cpInvoiceTotals(inv);
+                return `
+                    <tr class="hover:bg-slate-50 transition">
+                        <td class="py-3.5 px-4 font-bold text-slate-800"><a href="view-invoice.html?id=${inv.id}" class="hover:underline hover:text-purple-700">${inv.id}</a></td>
+                        <td class="py-3.5 px-4 text-slate-500">${cpFmtDate(inv.date)}</td>
+                        <td class="py-3.5 px-4 font-bold text-slate-900 text-sm">${cpFmtUSD(totals.grandTotal)}</td>
+                        <td class="py-3.5 px-4 text-slate-400">${cpFmtUSD(inv.paidAmount)}</td>
+                        <td class="py-3.5 px-4 font-bold ${totals.remaining > 0 ? 'text-purple-700' : 'text-slate-400'}">${cpFmtUSD(totals.remaining)}</td>
+                        <td class="py-3.5 px-4"><span class="px-2.5 py-0.5 rounded-full ${meta.badge} border font-semibold">${meta.label}</span></td>
+                        <td class="py-3.5 px-4 text-right">
+                            <div class="flex items-center justify-end gap-2">
+                                <button onclick="showToast('កំពុងទាញយកវិក្កយបត្រ ${inv.id} ជា PDF...', 'info')" class="p-2 text-slate-500 hover:text-purple-700" title="ទាញយក PDF">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                                <a href="view-invoice.html?id=${inv.id}" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-purple-50 hover:bg-purple-100 text-purple-700 rounded-lg text-xs font-medium border border-purple-200 transition">
+                                    <i class="fas fa-eye"></i> មើល និងទូទាត់
+                                </a>
+                            </div>
+                        </td>
+                    </tr>`;
+            }).join('');
+        }
+
+        document.addEventListener('DOMContentLoaded', renderInvoiceList);
+    </script>
+</body>
+
+</html>
