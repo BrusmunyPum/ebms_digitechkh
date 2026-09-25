@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - របាយការណ៍ហិរញ្ញវត្ថុកម្រិតនាយកប្រតិបត្តិ</title>
+    <link rel="icon" type="image/png" href="../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1e3a5f",
+                        'primary-dark': "#142842",
+                        accent: "#0ea5e9",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../shared/styles/custom.css">
+    <link rel="stylesheet" href="../../shared/styles/portal.css">
+</head>
+<body id="iaPortal" data-role-root="." data-active="financial-overview" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <!-- Unified Sidebar Runtime (Hidden on Print via custom.css) -->
+    <div id="sidebarHost"></div>
+
+    <!-- Main Content Wrapper -->
+    <div class="flex-1 flex flex-col min-w-0 h-screen overflow-hidden">
+
+        <!-- Top Header (Standard 2: h-[72px] px-6) -->
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-xs z-10 flex-shrink-0 w-full border-b border-slate-200/70">
+            <div>
+                <h2 class="text-xl font-semibold text-gray-800 leading-tight">របាយការណ៍ហិរញ្ញវត្ថុកម្រិតនាយកប្រតិបត្តិ</h2>
+                <p class="text-xs font-normal text-gray-500 mt-0.5">របាយការណ៍ចំណេញ-ខាត តារាងតុល្យការ និងលំហូរសាច់ប្រាក់តាមពេលវេលាជាក់ស្តែង</p>
+            </div>
+
+            <div class="flex items-center space-x-3">
+                <!-- Unified Date Range Picker (Standard 3) -->
+                <div id="dateFilterHost"></div>
+
+                <!-- Currency Switcher (USD / KHR) -->
+                <div class="flex items-center bg-slate-100 p-0.5 rounded-xl border border-slate-200">
+                    <button id="currBtnUSD" onclick="switchCurrency('USD')" class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-white text-slate-800 shadow-xs transition">ដុល្លារ ($)</button>
+                    <button id="currBtnKHR" onclick="switchCurrency('KHR')" class="px-2.5 py-1 text-xs font-semibold rounded-lg text-slate-500 hover:text-slate-800 transition">រៀល (៛)</button>
+                </div>
+
+                <!-- Print Button (Standard 12: Enterprise Print) -->
+                <button onclick="window.print()" class="h-9 px-3.5 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 text-xs font-medium rounded-xl flex items-center gap-1.5 shadow-xs transition cursor-pointer">
+                    <i class="fas fa-print text-xs"></i>
+                    <span class="hidden sm:inline">បោះពុម្ពរបាយការណ៍</span>
+                </button>
+
+                <div class="flex items-center sm:border-l sm:pl-3">
+                    <div class="w-10 h-10 rounded-full bg-[#1e3a5f] text-white flex items-center justify-center font-semibold text-sm shadow-sm" title="អ៊ុំ សុវណ្ណារ៉ា (សវនករផ្ទៃក្នុងជាន់ខ្ពស់)">
+                        អស
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-5">
+            <div class="w-full space-y-5">
+
+                <!-- Row 1: Executive Financial Summary (5 Cards) -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5">
+                    <div class="p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex flex-col justify-between">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-xs font-medium text-slate-500">ចំណូលសរុប</span>
+                            <div class="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center text-xs">
+                                <i class="fas fa-dollar-sign"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-800" id="cardRevenue">$68,450.00</h3>
+                        <p class="text-[11px] text-emerald-600 font-medium mt-1">+14.2% ធៀបខែមុន</p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex flex-col justify-between">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-xs font-medium text-slate-500">ថ្លៃដើមទំនិញលក់</span>
+                            <div class="w-7 h-7 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center text-xs">
+                                <i class="fas fa-boxes-stacked"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-800" id="cardCOGS">$42,100.00</h3>
+                        <p class="text-[11px] text-slate-500 font-medium mt-1">អត្រាថ្លៃដើម 61.5%</p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex flex-col justify-between">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-xs font-medium text-slate-500">ចំណេញដុល</span>
+                            <div class="w-7 h-7 rounded-lg bg-sky-50 text-sky-600 flex items-center justify-center text-xs">
+                                <i class="fas fa-chart-pie"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-800" id="cardGrossProfit">$26,350.00</h3>
+                        <p class="text-[11px] text-sky-600 font-medium mt-1">អត្រាចំណេញដុល 38.5%</p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex flex-col justify-between">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-xs font-medium text-slate-500">ចំណាយប្រតិបត្តិការ</span>
+                            <div class="w-7 h-7 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center text-xs">
+                                <i class="fas fa-receipt"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-800" id="cardOPEX">$11,980.00</h3>
+                        <p class="text-[11px] text-slate-500 font-medium mt-1">អត្រាចំណាយ 17.5%</p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex flex-col justify-between">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-xs font-medium text-slate-500">ចំណេញសុទ្ធក្រោយពន្ធ</span>
+                            <div class="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center text-xs">
+                                <i class="fas fa-sack-dollar"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-emerald-600" id="cardNetProfit">$11,496.00</h3>
+                        <p class="text-[11px] text-emerald-600 font-medium mt-1">អត្រាចំណេញសុទ្ធ 16.8%</p>
+                    </div>
+                </div>
+
+                <!-- Row 2: Tab Navigation Controls -->
+                <div class="bg-white rounded-2xl p-2 border border-slate-200/80 shadow-xs flex flex-wrap items-center justify-between gap-3">
+                    <div class="flex flex-wrap gap-1.5">
+                        <button id="tabBtn-pnl" onclick="switchFinTab('pnl')"
+                            class="px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition cursor-pointer bg-[#1e3a5f] text-white shadow-xs">
+                            <i class="fas fa-scale-balanced text-xs"></i>
+                            <span>របាយការណ៍ចំណេញ-ខាត</span>
+                        </button>
+                        <button id="tabBtn-bs" onclick="switchFinTab('bs')"
+                            class="px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition cursor-pointer text-slate-600 hover:bg-slate-100">
+                            <i class="fas fa-building-columns text-xs"></i>
+                            <span>តារាងតុល្យការ</span>
+                        </button>
+                        <button id="tabBtn-cf" onclick="switchFinTab('cf')"
+                            class="px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition cursor-pointer text-slate-600 hover:bg-slate-100">
+                            <i class="fas fa-money-bill-transfer text-xs"></i>
+                            <span>របាយការណ៍លំហូរសាច់ប្រាក់</span>
+                        </button>
+                    </div>
+
+                    <div class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200/70 text-xs text-slate-500">
+                        <i class="fas fa-circle-info text-primary"></i>
+                        <span>អត្រាប្តូរប្រាក់ផ្លូវការ: <strong>4,100 រៀល/ដុល្លារ</strong></span>
+                    </div>
+                </div>
+
+                <!-- Tab 1: Income Statement (P&L) -->
+                <div id="tabContent-pnl" class="bg-white rounded-2xl border border-slate-200/80 shadow-xs p-6">
+                    <div class="text-center pb-5 mb-5 border-b border-slate-200">
+                        <h3 class="text-base font-bold text-slate-900 uppercase tracking-wide">របាយការណ៍ចំណេញ-ខាត</h3>
+                        <p class="text-xs text-slate-500 mt-1">សម្រាប់គ្រាបញ្ចប់ត្រឹមថ្ងៃទី 30 ខែកញ្ញា ឆ្នាំ 2026</p>
+                    </div>
+
+                    <div class="w-full space-y-6">
+                        <!-- Revenue Section -->
+                        <div>
+                            <div class="flex justify-between items-center py-2 border-b border-slate-200 font-semibold text-slate-800 text-xs">
+                                <span>១. ចំណូលពីប្រតិបត្តិការ</span>
+                                <span class="text-slate-400">ទឹកប្រាក់</span>
+                            </div>
+                            <div class="divide-y divide-slate-100 text-xs text-slate-700">
+                                <div class="flex justify-between py-2 pl-4">
+                                    <span>ការលក់គ្រឿងបន្លាស់ និងបរិក្ខារបច្ចេកវិទ្យា</span>
+                                    <span class="font-mono text-slate-800" id="valHardware">$54,200.00</span>
+                                </div>
+                                <div class="flex justify-between py-2 pl-4">
+                                    <span>ចំណូលពីការលក់អាជ្ញាប័ណ្ណកម្មវិធី និងសេវាកម្មឌីជីថល</span>
+                                    <span class="font-mono text-slate-800" id="valSoftware">$9,800.00</span>
+                                </div>
+                                <div class="flex justify-between py-2 pl-4">
+                                    <span>ចំណូលពីកិច្ចសន្យាថែទាំ និងគាំទ្របច្ចេកទេស</span>
+                                    <span class="font-mono text-slate-800" id="valMaintenance">$4,450.00</span>
+                                </div>
+                                <div class="flex justify-between py-2 bg-slate-50 font-bold text-slate-900 px-3 rounded-lg">
+                                    <span>ចំណូលសរុប</span>
+                                    <span class="font-mono text-primary" id="valTotalRevenue">$68,450.00</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- COGS Section -->
+                        <div>
+                            <div class="flex justify-between items-center py-2 border-b border-slate-200 font-semibold text-slate-800 text-xs">
+                                <span>២. ថ្លៃដើមទំនិញលក់</span>
+                                <span class="text-slate-400">ទឹកប្រាក់</span>
+                            </div>
+                            <div class="divide-y divide-slate-100 text-xs text-slate-700">
+                                <div class="flex justify-between py-2 pl-4">
+                                    <span>ស្តុកទំនិញដើមគ្រា</span>
+                                    <span class="font-mono text-slate-600" id="valInvBegin">$78,200.00</span>
+                                </div>
+                                <div class="flex justify-between py-2 pl-4">
+                                    <span>បូក: ការទិញទំនិញចូលក្នុងគ្រា</span>
+                                    <span class="font-mono text-slate-600" id="valPurchases">$48,400.00</span>
+                                </div>
+                                <div class="flex justify-between py-2 pl-4">
+                                    <span>ដក: ស្តុកទំនិញជាក់ស្តែងចុងគ្រា</span>
+                                    <span class="font-mono text-rose-600" id="valInvEnd">($84,500.00)</span>
+                                </div>
+                                <div class="flex justify-between py-2 bg-slate-50 font-bold text-slate-900 px-3 rounded-lg">
+                                    <span>ថ្លៃដើមទំនិញលក់សរុប</span>
+                                    <span class="font-mono text-amber-700" id="valTotalCOGS">$42,100.00</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Gross Profit Row -->
+                        <div class="p-3.5 rounded-xl bg-sky-50 border border-sky-200 flex justify-between items-center text-xs">
+                            <div>
+                                <span class="font-bold text-sky-950 text-sm">ប្រាក់ចំណេញដុល (ចំណូល - ថ្លៃដើម)</span>
+                                <span class="text-sky-700 block text-[11px] mt-0.5">អត្រាចំណេញដុល: 38.5% នៃចំណូលសរុប</span>
+                            </div>
+                            <span class="font-mono font-bold text-lg text-sky-900" id="valGrossProfit">$26,350.00</span>
+                        </div>
+
+                        <!-- OPEX Section -->
+                        <div>
+                            <div class="flex justify-between items-center py-2 border-b border-slate-200 font-semibold text-slate-800 text-xs">
+                                <span>៣. ចំណាយប្រតិបត្តិការ</span>
+                                <span class="text-slate-400">ទឹកប្រាក់</span>
+                            </div>
+                            <div class="divide-y divide-slate-100 text-xs text-slate-700">
+                                <div class="flex justify-between py-2 pl-4">
+                                    <span>ប្រាក់បៀវត្ស និងអត្ថប្រយោជន៍បុគ្គលិក</span>
+                                    <span class="font-mono text-slate-800" id="valSalaries">$6,200.00</span>
+                                </div>
+                                <div class="flex justify-between py-2 pl-4">
+                                    <span>ថ្លៃជួលការិយាល័យ និងឃ្លាំង</span>
+                                    <span class="font-mono text-slate-800" id="valRent">$2,800.00</span>
+                                </div>
+                                <div class="flex justify-between py-2 pl-4">
+                                    <span>ថ្លៃទឹក ភ្លើង និងបណ្តាញអ៊ីនធឺណិត</span>
+                                    <span class="font-mono text-slate-800" id="valUtilities">$680.00</span>
+                                </div>
+                                <div class="flex justify-between py-2 pl-4">
+                                    <span>ការផ្សព្វផ្សាយពាណិជ្ជកម្ម និងទីផ្សារ</span>
+                                    <span class="font-mono text-slate-800" id="valMarketing">$1,200.00</span>
+                                </div>
+                                <div class="flex justify-between py-2 pl-4">
+                                    <span>រំលស់ទ្រព្យសកម្មអចល័ត</span>
+                                    <span class="font-mono text-slate-800" id="valDepreciation">$650.00</span>
+                                </div>
+                                <div class="flex justify-between py-2 pl-4">
+                                    <span>ចំណាយរដ្ឋបាល និងប្រតិបត្តិការផ្សេងៗ</span>
+                                    <span class="font-mono text-slate-800" id="valOtherAdmin">$450.00</span>
+                                </div>
+                                <div class="flex justify-between py-2 bg-slate-50 font-bold text-slate-900 px-3 rounded-lg">
+                                    <span>ចំណាយប្រតិបត្តិការសរុប</span>
+                                    <span class="font-mono text-indigo-700" id="valTotalOPEX">$11,980.00</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Net Profit Breakdown -->
+                        <div class="space-y-2 pt-2 border-t border-slate-200">
+                            <div class="flex justify-between text-xs py-1.5 px-3">
+                                <span class="font-semibold text-slate-800">ប្រាក់ចំណេញពីប្រតិបត្តិការ (មុនបង់ពន្ធ)</span>
+                                <span class="font-mono font-bold text-slate-900" id="valOperatingProfit">$14,370.00</span>
+                            </div>
+                            <div class="flex justify-between text-xs py-1.5 px-3">
+                                <span class="text-slate-600">ដក: ពន្ធលើប្រាក់ចំណេញប៉ាន់ស្មាន 20%</span>
+                                <span class="font-mono text-rose-600" id="valTax">($2,874.00)</span>
+                            </div>
+                            <div class="p-4 rounded-xl bg-emerald-50 border border-emerald-200 flex justify-between items-center">
+                                <div>
+                                    <h4 class="font-bold text-emerald-950 text-sm">ប្រាក់ចំណេញសុទ្ធក្រោយបង់ពន្ធ</h4>
+                                    <p class="text-emerald-700 text-xs mt-0.5">អត្រាចំណេញសុទ្ធ: 16.8% នៃចំណូលសរុប</p>
+                                </div>
+                                <span class="font-mono font-bold text-xl text-emerald-700" id="valNetProfit">$11,496.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 2: Balance Sheet -->
+                <div id="tabContent-bs" class="hidden bg-white rounded-2xl border border-slate-200/80 shadow-xs p-6">
+                    <div class="text-center pb-5 mb-5 border-b border-slate-200">
+                        <h3 class="text-base font-bold text-slate-900 uppercase tracking-wide">តារាងតុល្យការ</h3>
+                        <p class="text-xs text-slate-500 mt-1">គិតត្រឹមថ្ងៃទី 30 ខែកញ្ញា ឆ្នាំ 2026</p>
+                    </div>
+
+                    <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Left: Assets -->
+                        <div class="space-y-4">
+                            <h4 class="font-bold text-slate-900 text-xs uppercase tracking-wider pb-2 border-b-2 border-[#1e3a5f]">
+                                ទ្រព្យសកម្ម
+                            </h4>
+
+                            <!-- Current Assets -->
+                            <div>
+                                <div class="font-semibold text-slate-800 text-xs mb-1.5">ក. ទ្រព្យសកម្មចរន្ត</div>
+                                <div class="divide-y divide-slate-100 text-xs pl-3">
+                                    <div class="flex justify-between py-1.5">
+                                        <span class="text-slate-600">សាច់ប្រាក់ និងប្រាក់បញ្ញើធនាគារ</span>
+                                        <span class="font-mono text-slate-800" id="bsCash">$42,180.00</span>
+                                    </div>
+                                    <div class="flex justify-between py-1.5">
+                                        <span class="text-slate-600">គណនីត្រូវទារ (បំណុលអតិថិជន)</span>
+                                        <span class="font-mono text-slate-800" id="bsAR">$18,240.00</span>
+                                    </div>
+                                    <div class="flex justify-between py-1.5">
+                                        <span class="text-slate-600">ស្តុកទំនិញក្នុងឃ្លាំង</span>
+                                        <span class="font-mono text-slate-800" id="bsInv">$84,500.00</span>
+                                    </div>
+                                    <div class="flex justify-between py-1.5">
+                                        <span class="text-slate-600">ចំណាយបង់មុន</span>
+                                        <span class="font-mono text-slate-800" id="bsPrepaid">$3,400.00</span>
+                                    </div>
+                                    <div class="flex justify-between py-1.5 font-bold text-slate-800 bg-slate-50 px-2 rounded">
+                                        <span>សរុបទ្រព្យសកម្មចរន្ត</span>
+                                        <span class="font-mono text-primary" id="bsTotalCurrentAssets">$148,320.00</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Non-Current Assets -->
+                            <div>
+                                <div class="font-semibold text-slate-800 text-xs mb-1.5">ខ. ទ្រព្យសកម្មអចល័ត</div>
+                                <div class="divide-y divide-slate-100 text-xs pl-3">
+                                    <div class="flex justify-between py-1.5">
+                                        <span class="text-slate-600">អចលនទ្រព្យ និងបរិក្ខារ</span>
+                                        <span class="font-mono text-slate-800" id="bsPPE">$36,500.00</span>
+                                    </div>
+                                    <div class="flex justify-between py-1.5">
+                                        <span class="text-slate-600">ដក: រំលស់សន្សំ</span>
+                                        <span class="font-mono text-rose-600" id="bsAccDep">($8,200.00)</span>
+                                    </div>
+                                    <div class="flex justify-between py-1.5">
+                                        <span class="text-slate-600">ទ្រព្យសកម្មអរូបី (កម្មវិធី)</span>
+                                        <span class="font-mono text-slate-800" id="bsIntangible">$1,880.00</span>
+                                    </div>
+                                    <div class="flex justify-between py-1.5 font-bold text-slate-800 bg-slate-50 px-2 rounded">
+                                        <span>សរុបទ្រព្យសកម្មអចល័ត</span>
+                                        <span class="font-mono text-primary" id="bsTotalNonCurrentAssets">$30,180.00</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Total Assets Grand Total -->
+                            <div class="p-3.5 rounded-xl bg-slate-900 text-white flex justify-between items-center text-xs">
+                                <span class="font-bold text-sm">ទ្រព្យសកម្មសរុប</span>
+                                <span class="font-mono font-bold text-base text-emerald-400" id="bsGrandTotalAssets">$178,500.00</span>
+                            </div>
+                        </div>
+
+                        <!-- Right: Liabilities & Equity -->
+                        <div class="space-y-4">
+                            <h4 class="font-bold text-slate-900 text-xs uppercase tracking-wider pb-2 border-b-2 border-amber-600">
+                                បំណុល និងមូលធនម្ចាស់
+                            </h4>
+
+                            <!-- Liabilities -->
+                            <div>
+                                <div class="font-semibold text-slate-800 text-xs mb-1.5">ក. បំណុលត្រូវសង</div>
+                                <div class="divide-y divide-slate-100 text-xs pl-3">
+                                    <div class="flex justify-between py-1.5">
+                                        <span class="text-slate-600">គណនីត្រូវសង (បំណុលអ្នកផ្គត់ផ្គង់)</span>
+                                        <span class="font-mono text-slate-800" id="bsAP">$12,600.00</span>
+                                    </div>
+                                    <div class="flex justify-between py-1.5">
+                                        <span class="text-slate-600">ពន្ធដែលត្រូវបង់បង្គរ</span>
+                                        <span class="font-mono text-slate-800" id="bsAccTax">$4,800.00</span>
+                                    </div>
+                                    <div class="flex justify-between py-1.5">
+                                        <span class="text-slate-600">កម្ចីធនាគាររយៈពេលខ្លី</span>
+                                        <span class="font-mono text-slate-800" id="bsShortLoan">$15,000.00</span>
+                                    </div>
+                                    <div class="flex justify-between py-1.5">
+                                        <span class="text-slate-600">បំណុលរយៈពេលវែង</span>
+                                        <span class="font-mono text-slate-800" id="bsLongDebt">$10,000.00</span>
+                                    </div>
+                                    <div class="flex justify-between py-1.5 font-bold text-slate-800 bg-slate-50 px-2 rounded">
+                                        <span>បំណុលសរុប</span>
+                                        <span class="font-mono text-amber-700" id="bsTotalLiab">$46,200.00</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Equity -->
+                            <div>
+                                <div class="font-semibold text-slate-800 text-xs mb-1.5">ខ. មូលធនម្ចាស់</div>
+                                <div class="divide-y divide-slate-100 text-xs pl-3">
+                                    <div class="flex justify-between py-1.5">
+                                        <span class="text-slate-600">ដើមទុនចុះបញ្ជី</span>
+                                        <span class="font-mono text-slate-800" id="bsShareCap">$80,000.00</span>
+                                    </div>
+                                    <div class="flex justify-between py-1.5">
+                                        <span class="text-slate-600">ប្រាក់ចំណេញរក្សាទុកពីមុន</span>
+                                        <span class="font-mono text-slate-800" id="bsRetained">$40,804.00</span>
+                                    </div>
+                                    <div class="flex justify-between py-1.5">
+                                        <span class="text-slate-600">ប្រាក់ចំណេញសុទ្ធក្នុងគ្រានេះ</span>
+                                        <span class="font-mono text-emerald-600 font-semibold" id="bsPeriodProfit">$11,496.00</span>
+                                    </div>
+                                    <div class="flex justify-between py-1.5 font-bold text-slate-800 bg-slate-50 px-2 rounded">
+                                        <span>មូលធនម្ចាស់សរុប</span>
+                                        <span class="font-mono text-indigo-700" id="bsTotalEquity">$132,300.00</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Total Liab + Equity Grand Total -->
+                            <div class="p-3.5 rounded-xl bg-slate-900 text-white flex justify-between items-center text-xs">
+                                <span class="font-bold text-sm">បំណុល និងមូលធនម្ចាស់សរុប</span>
+                                <span class="font-mono font-bold text-base text-emerald-400" id="bsGrandTotalLiabEquity">$178,500.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 3: Cash Flow Statement -->
+                <div id="tabContent-cf" class="hidden bg-white rounded-2xl border border-slate-200/80 shadow-xs p-6">
+                    <div class="text-center pb-5 mb-5 border-b border-slate-200">
+                        <h3 class="text-base font-bold text-slate-900 uppercase tracking-wide">របាយការណ៍លំហូរសាច់ប្រាក់</h3>
+                        <p class="text-xs text-slate-500 mt-1">សម្រាប់គ្រាបញ្ចប់ត្រឹមថ្ងៃទី 30 ខែកញ្ញា ឆ្នាំ 2026</p>
+                    </div>
+
+                    <div class="w-full space-y-4 text-xs">
+                        <div class="flex justify-between py-2.5 px-3 rounded-lg bg-slate-50 font-bold text-slate-800">
+                            <span>១. លំហូរសាច់ប្រាក់ពីសកម្មភាពប្រតិបត្តិការ</span>
+                            <span class="font-mono text-emerald-600" id="cfOperating">+$18,400.00</span>
+                        </div>
+                        <div class="pl-4 text-slate-600 space-y-1">
+                            <p>• ប្រាក់ចំណេញពីប្រតិបត្តិការ: $14,370.00</p>
+                            <p>• បូក: រំលស់ទ្រព្យសកម្មមិនប៉ះពាល់សាច់ប្រាក់: $650.00</p>
+                            <p>• បម្រែបម្រួលទុនបង្វិលសុទ្ធ (បំណុលត្រូវទារ បំណុលត្រូវសង និងស្តុកទំនិញ): +$3,380.00</p>
+                        </div>
+
+                        <div class="flex justify-between py-2.5 px-3 rounded-lg bg-slate-50 font-bold text-slate-800">
+                            <span>២. លំហូរសាច់ប្រាក់ពីសកម្មភាពវិនិយោគ</span>
+                            <span class="font-mono text-rose-600" id="cfInvesting">-$4,500.00</span>
+                        </div>
+                        <div class="pl-4 text-slate-600 space-y-1">
+                            <p>• ទិញម៉ាស៊ីនមេ និងឧបករណ៍បណ្តាញថ្មី: -$4,500.00</p>
+                        </div>
+
+                        <div class="flex justify-between py-2.5 px-3 rounded-lg bg-slate-50 font-bold text-slate-800">
+                            <span>៣. លំហូរសាច់ប្រាក់ពីសកម្មភាពហិរញ្ញប្បទាន</span>
+                            <span class="font-mono text-slate-600" id="cfFinancing">$0.00</span>
+                        </div>
+                        <div class="pl-4 text-slate-600 space-y-1">
+                            <p>• មិនមានការខ្ចីប្រាក់បន្ថែម ឬបង់សងប្រាក់ដើមកម្ចីក្នុងគ្រានេះឡើយ</p>
+                        </div>
+
+                        <div class="pt-3 border-t border-slate-200 space-y-2">
+                            <div class="flex justify-between py-2 px-3 font-semibold text-slate-800">
+                                <span>បម្រែបម្រួលសាច់ប្រាក់សុទ្ធក្នុងគ្រា</span>
+                                <span class="font-mono font-bold text-emerald-600" id="cfNetChange">+$13,900.00</span>
+                            </div>
+                            <div class="flex justify-between py-2 px-3 text-slate-600">
+                                <span>សាច់ប្រាក់ និងសមមូលសាច់ប្រាក់ដើមគ្រា</span>
+                                <span class="font-mono text-slate-800" id="cfBegin">$28,280.00</span>
+                            </div>
+                            <div class="p-3.5 rounded-xl bg-slate-900 text-white flex justify-between items-center">
+                                <span class="font-bold text-sm">សាច់ប្រាក់ និងសមមូលសាច់ប្រាក់ចុងគ្រា</span>
+                                <span class="font-mono font-bold text-base text-emerald-400" id="cfEnd">$42,180.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../shared/scripts/ui-components.js"></script>
+    <script src="data.js"></script>
+    <script src="../../shared/scripts/portal.js"></script>
+    <script>
+        let currentCurrency = 'USD';
+        const EXCHANGE_RATE = 4100;
+
+        function fmtMoney(amountUSD) {
+            if (currentCurrency === 'KHR') {
+                const khr = Math.round(amountUSD * EXCHANGE_RATE);
+                return khr.toLocaleString('en-US') + ' ៛';
+            }
+            return '$' + amountUSD.toLocaleString('en-US', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+        }
+
+        function switchCurrency(curr) {
+            currentCurrency = curr;
+            const btnUSD = document.getElementById('currBtnUSD');
+            const btnKHR = document.getElementById('currBtnKHR');
+            if (curr === 'USD') {
+                btnUSD.className = 'px-2.5 py-1 text-xs font-semibold rounded-lg bg-white text-slate-800 shadow-xs transition';
+                btnKHR.className = 'px-2.5 py-1 text-xs font-semibold rounded-lg text-slate-500 hover:text-slate-800 transition';
+            } else {
+                btnKHR.className = 'px-2.5 py-1 text-xs font-semibold rounded-lg bg-white text-slate-800 shadow-xs transition';
+                btnUSD.className = 'px-2.5 py-1 text-xs font-semibold rounded-lg text-slate-500 hover:text-slate-800 transition';
+            }
+            renderFinancialSuite();
+        }
+
+        function switchFinTab(tabId) {
+            const tabs = ['pnl', 'bs', 'cf'];
+            tabs.forEach(t => {
+                const btn = document.getElementById(`tabBtn-${t}`);
+                const content = document.getElementById(`tabContent-${t}`);
+                if (t === tabId) {
+                    btn.className = 'px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition cursor-pointer bg-[#1e3a5f] text-white shadow-xs';
+                    content.classList.remove('hidden');
+                } else {
+                    btn.className = 'px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition cursor-pointer text-slate-600 hover:bg-slate-100';
+                    content.classList.add('hidden');
+                }
+            });
+        }
+
+        function renderFinancialSuite() {
+            const fin = BMS_IA.getFinancialOverview();
+            const pnl = fin.incomeStatement;
+            const bs = fin.balanceSheet;
+            const cf = fin.cashFlow;
+
+            // 1. Top Summary Cards
+            document.getElementById('cardRevenue').textContent = fmtMoney(pnl.revenue.totalRevenue);
+            document.getElementById('cardCOGS').textContent = fmtMoney(pnl.cogs.totalCOGS);
+            document.getElementById('cardGrossProfit').textContent = fmtMoney(pnl.grossProfit);
+            document.getElementById('cardOPEX').textContent = fmtMoney(pnl.operatingExpenses.totalOPEX);
+            document.getElementById('cardNetProfit').textContent = fmtMoney(pnl.netProfitAfterTax);
+
+            // 2. P&L Statement Values
+            document.getElementById('valHardware').textContent = fmtMoney(pnl.revenue.hardwareSales);
+            document.getElementById('valSoftware').textContent = fmtMoney(pnl.revenue.softwareLicenses);
+            document.getElementById('valMaintenance').textContent = fmtMoney(pnl.revenue.maintenanceServices);
+            document.getElementById('valTotalRevenue').textContent = fmtMoney(pnl.revenue.totalRevenue);
+
+            document.getElementById('valInvBegin').textContent = fmtMoney(pnl.cogs.inventoryBeginning);
+            document.getElementById('valPurchases').textContent = fmtMoney(pnl.cogs.purchases);
+            document.getElementById('valInvEnd').textContent = '(' + fmtMoney(pnl.cogs.inventoryEnding) + ')';
+            document.getElementById('valTotalCOGS').textContent = fmtMoney(pnl.cogs.totalCOGS);
+            document.getElementById('valGrossProfit').textContent = fmtMoney(pnl.grossProfit);
+
+            document.getElementById('valSalaries').textContent = fmtMoney(pnl.operatingExpenses.salariesAndBenefits);
+            document.getElementById('valRent').textContent = fmtMoney(pnl.operatingExpenses.officeRent);
+            document.getElementById('valUtilities').textContent = fmtMoney(pnl.operatingExpenses.utilitiesAndInternet);
+            document.getElementById('valMarketing').textContent = fmtMoney(pnl.operatingExpenses.marketingAndSales);
+            document.getElementById('valDepreciation').textContent = fmtMoney(pnl.operatingExpenses.depreciation);
+            document.getElementById('valOtherAdmin').textContent = fmtMoney(pnl.operatingExpenses.otherAdminExpenses);
+            document.getElementById('valTotalOPEX').textContent = fmtMoney(pnl.operatingExpenses.totalOPEX);
+
+            document.getElementById('valOperatingProfit').textContent = fmtMoney(pnl.operatingProfit);
+            document.getElementById('valTax').textContent = '(' + fmtMoney(pnl.incomeTaxEstimated) + ')';
+            document.getElementById('valNetProfit').textContent = fmtMoney(pnl.netProfitAfterTax);
+
+            // 3. Balance Sheet Values
+            document.getElementById('bsCash').textContent = fmtMoney(bs.assets.currentAssets.cashAndBank);
+            document.getElementById('bsAR').textContent = fmtMoney(bs.assets.currentAssets.accountsReceivable);
+            document.getElementById('bsInv').textContent = fmtMoney(bs.assets.currentAssets.inventory);
+            document.getElementById('bsPrepaid').textContent = fmtMoney(bs.assets.currentAssets.prepaidExpenses);
+            document.getElementById('bsTotalCurrentAssets').textContent = fmtMoney(bs.assets.currentAssets.totalCurrentAssets);
+
+            document.getElementById('bsPPE').textContent = fmtMoney(bs.assets.nonCurrentAssets.propertyAndEquipment);
+            document.getElementById('bsAccDep').textContent = '(' + fmtMoney(Math.abs(bs.assets.nonCurrentAssets.accumulatedDepreciation)) + ')';
+            document.getElementById('bsIntangible').textContent = fmtMoney(bs.assets.nonCurrentAssets.intangibleAssets);
+            document.getElementById('bsTotalNonCurrentAssets').textContent = fmtMoney(bs.assets.nonCurrentAssets.totalNonCurrentAssets);
+            document.getElementById('bsGrandTotalAssets').textContent = fmtMoney(bs.assets.totalAssets);
+
+            document.getElementById('bsAP').textContent = fmtMoney(bs.liabilities.currentLiabilities.accountsPayable);
+            document.getElementById('bsAccTax').textContent = fmtMoney(bs.liabilities.currentLiabilities.accruedTaxes);
+            document.getElementById('bsShortLoan').textContent = fmtMoney(bs.liabilities.currentLiabilities.shortTermLoans);
+            document.getElementById('bsLongDebt').textContent = fmtMoney(bs.liabilities.nonCurrentLiabilities.longTermDebt);
+            document.getElementById('bsTotalLiab').textContent = fmtMoney(bs.liabilities.totalLiabilities);
+
+            document.getElementById('bsShareCap').textContent = fmtMoney(bs.equity.shareCapital);
+            document.getElementById('bsRetained').textContent = fmtMoney(bs.equity.retainedEarnings);
+            document.getElementById('bsPeriodProfit').textContent = fmtMoney(bs.equity.currentPeriodProfit);
+            document.getElementById('bsTotalEquity').textContent = fmtMoney(bs.equity.totalEquity);
+            document.getElementById('bsGrandTotalLiabEquity').textContent = fmtMoney(bs.liabilities.totalLiabilities + bs.equity.totalEquity);
+
+            // 4. Cash Flow Values
+            document.getElementById('cfOperating').textContent = '+' + fmtMoney(cf.operatingCashFlow);
+            document.getElementById('cfInvesting').textContent = '-' + fmtMoney(Math.abs(cf.investingCashFlow));
+            document.getElementById('cfFinancing').textContent = fmtMoney(cf.financingCashFlow);
+            document.getElementById('cfNetChange').textContent = '+' + fmtMoney(cf.netCashChange);
+            document.getElementById('cfBegin').textContent = fmtMoney(cf.beginningCash);
+            document.getElementById('cfEnd').textContent = fmtMoney(cf.endingCash);
+        }
+
+        function initFinancialOverview() {
+            try {
+                if (typeof renderPortalSidebar === 'function') {
+                    renderPortalSidebar();
+                }
+            } catch (e) {
+                console.error('Sidebar render error:', e);
+            }
+            try {
+                if (typeof renderDateRangePicker === 'function') {
+                    renderDateRangePicker('dateFilterHost');
+                }
+            } catch (e) {
+                console.error('Date picker render error:', e);
+            }
+            try {
+                renderFinancialSuite();
+            } catch (e) {
+                console.error('Financial suite render error:', e);
+            }
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initFinancialOverview);
+        } else {
+            initFinancialOverview();
+        }
+    </script>
+</body>
+</html>

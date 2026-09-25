@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - របាយការណ៍សវនកម្មផ្លូវការ</title>
+    <link rel="icon" type="image/png" href="../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1e3a5f",
+                        'primary-dark': "#142842",
+                        accent: "#0ea5e9",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../shared/styles/custom.css">
+    <link rel="stylesheet" href="../../shared/styles/portal.css">
+</head>
+<body id="iaPortal" data-role-root="." data-active="reports" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <!-- Unified Sidebar Runtime -->
+    <div id="sidebarHost"></div>
+
+    <!-- Main Content Wrapper -->
+    <div class="flex-1 flex flex-col min-w-0 h-screen overflow-hidden">
+
+        <!-- Top Header (Standard 2: h-[72px] px-6) -->
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-xs z-10 flex-shrink-0 w-full border-b border-slate-200/70">
+            <div>
+                <h2 class="text-xl font-semibold text-gray-800 leading-tight">របាយការណ៍សវនកម្មផ្លូវការ</h2>
+                <p class="text-xs font-normal text-gray-500 mt-0.5">របាយការណ៍ត្រួតពិនិត្យទូទៅ សវនកម្មស្តុក និងអនុលោមភាពពន្ធដារសម្រាប់នាយកប្រតិបត្តិ</p>
+            </div>
+
+            <div class="flex items-center space-x-3">
+                <!-- Unified Date Range Picker (Standard 3) -->
+                <div id="dateFilterHost"></div>
+
+                <!-- Print Button (Standard 12) -->
+                <button onclick="window.print()" class="h-9 px-3.5 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 text-xs font-medium rounded-xl flex items-center gap-1.5 shadow-xs transition cursor-pointer">
+                    <i class="fas fa-print text-xs"></i>
+                    <span class="hidden sm:inline">បោះពុម្ពទម្រង់ A4</span>
+                </button>
+
+                <div class="flex items-center sm:border-l sm:pl-3">
+                    <div class="w-10 h-10 rounded-full bg-[#1e3a5f] text-white flex items-center justify-center font-semibold text-sm shadow-sm" title="អ៊ុំ សុវណ្ណារ៉ា (សវនករផ្ទៃក្នុងជាន់ខ្ពស់)">
+                        អស
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-5">
+            <div class="w-full space-y-5">
+
+                <!-- Row 1: Reports Summary (4 Metrics) -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+                    <div class="p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex items-center justify-between">
+                        <div>
+                            <span class="text-xs font-medium text-slate-500 block">របាយការណ៍សវនកម្មរួចរាល់</span>
+                            <h3 class="text-xl font-bold text-slate-800 mt-1">4 ឯកសារ</h3>
+                            <span class="text-[11px] text-emerald-600 font-medium">ត្រៀមរួចជាស្រេចសម្រាប់ការបោះពុម្ព</span>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-sm flex-shrink-0">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex items-center justify-between">
+                        <div>
+                            <span class="text-xs font-medium text-slate-500 block">ទំព័រសរុប</span>
+                            <h3 class="text-xl font-bold text-slate-800 mt-1">40 ទំព័រ</h3>
+                            <span class="text-[11px] text-slate-500 font-medium">ទម្រង់ស្តង់ដារក្រដាស A4</span>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-sm flex-shrink-0">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex items-center justify-between">
+                        <div>
+                            <span class="text-xs font-medium text-slate-500 block">ការត្រួតពិនិត្យប្រចាំត្រីមាស</span>
+                            <h3 class="text-xl font-bold text-slate-800 mt-1">ត្រីមាសទី 3 ឆ្នាំ 2026</h3>
+                            <span class="text-[11px] text-emerald-600 font-medium">បានចុះហត្ថលេខាបញ្ជាក់</span>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-sm flex-shrink-0">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex items-center justify-between">
+                        <div>
+                            <span class="text-xs font-medium text-slate-500 block">អត្រាអនុលោមភាពសកល</span>
+                            <h3 class="text-xl font-bold text-slate-800 mt-1">96.8%</h3>
+                            <span class="text-[11px] text-sky-600 font-medium">ស្ថិតក្នុងកម្រិតសុវត្ថិភាពខ្ពស់</span>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-sm flex-shrink-0">
+                            <i class="fas fa-shield-check"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 2: Reports Directory Table -->
+                <div class="bg-white rounded-2xl border border-slate-200/80 shadow-xs overflow-hidden">
+                    <div class="p-4 border-b border-slate-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                        <div>
+                            <h3 class="text-sm font-semibold text-slate-800">បញ្ជីឯកសាររបាយការណ៍សវនកម្ម</h3>
+                            <p class="text-xs text-slate-400 mt-0.5">ចុចលើប៊ូតុងសកម្មភាពដើម្បីមើលគំរូទម្រង់ A4 ឬទាញយកឯកសារ</p>
+                        </div>
+                        <div class="relative w-full sm:w-64">
+                            <i class="fas fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                            <input type="text" id="reportSearchInput" oninput="filterReports()"
+                                placeholder="ស្វែងរកតាមចំណងជើង..."
+                                class="w-full pl-8 pr-3 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-primary">
+                        </div>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-slate-50/75 border-b border-slate-200/70 text-[11px] font-semibold text-slate-600 uppercase tracking-wider">
+                                    <th class="py-3.5 px-4 whitespace-nowrap">លេខកូដ</th>
+                                    <th class="py-3.5 px-4 min-w-[260px]">ចំណងជើងរបាយការណ៍ផ្លូវការ</th>
+                                    <th class="py-3.5 px-4 whitespace-nowrap">ប្រភេទសវនកម្ម</th>
+                                    <th class="py-3.5 px-4 whitespace-nowrap">គ្រាត្រួតពិនិត្យ</th>
+                                    <th class="py-3.5 px-4 whitespace-nowrap">កាលបរិច្ឆេទបង្កើត</th>
+                                    <th class="py-3.5 px-4 whitespace-nowrap text-center">ចំនួនទំព័រ</th>
+                                    <th class="py-3.5 px-4 whitespace-nowrap">ស្ថានភាព</th>
+                                    <!-- Standard 9: Single ⋮ button only -->
+                                    <th class="py-3.5 px-4 text-center whitespace-nowrap w-12">សកម្មភាព</th>
+                                </tr>
+                            </thead>
+                            <tbody id="reportsTableBody" class="divide-y divide-slate-100 text-xs text-slate-700">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Row 3: Official Enterprise A4 Report Sheet (Standard 12) -->
+                <div class="bg-white rounded-2xl border border-slate-200/80 shadow-xs p-6 sm:p-8">
+                    <div class="flex flex-wrap items-center justify-between gap-3 pb-5 mb-5 border-b border-slate-200">
+                        <div>
+                            <span class="text-xs font-semibold text-primary uppercase tracking-wider block">គំរូសន្លឹករបាយការណ៍ផ្លូវការ</span>
+                            <h3 class="text-lg font-bold text-slate-900 mt-0.5" id="previewReportTitle">របាយការណ៍សវនកម្មផ្ទៃក្នុងប្រចាំត្រីមាសទី 3</h3>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200 flex items-center gap-1.5">
+                                <i class="fas fa-check-circle text-xs"></i>
+                                <span>បានត្រួតពិនិត្យពេញលេញ</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Printable A4 Paper Container -->
+                    <div class="w-full bg-white border border-slate-200 rounded-xl p-6 sm:p-10 shadow-xs space-y-6 print:border-none print:shadow-none print:p-0">
+                        
+                        <!-- Official Letterhead -->
+                        <div class="flex justify-between items-start pb-5 border-b-2 border-slate-800">
+                            <div>
+                                <h1 class="text-xl font-bold tracking-wider text-slate-900">ឌីជីថេក ខេមបូឌា ឯ.ក</h1>
+                                <p class="text-xs text-slate-500 mt-0.5">ការិយាល័យសវនកម្មផ្ទៃក្នុង និងអភិបាលកិច្ចសហគ្រាស</p>
+                                <p class="text-[11px] text-slate-400 mt-0.5">អាសយដ្ឋាន: មហាវិថីព្រះមុនីវង្ស រាជធានីភ្នំពេញ • ទូរស័ព្ទ: 023 999 888</p>
+                            </div>
+                            <div class="text-right">
+                                <span class="px-2.5 py-1 rounded bg-slate-900 text-white font-mono text-xs font-bold block mb-1">
+                                    #AUD-REP-2026-Q3
+                                </span>
+                                <span class="text-xs text-slate-500 block">កាលបរិច្ឆេទ: <strong>23 កញ្ញា 2026</strong></span>
+                                <span class="text-[11px] text-rose-600 font-semibold block mt-0.5">ឯកសារសម្ងាត់ផ្ទៃក្នុង</span>
+                            </div>
+                        </div>
+
+                        <!-- Report Title Header -->
+                        <div class="text-center py-2">
+                            <h2 class="text-lg font-bold text-slate-900 uppercase">របាយការណ៍សវនកម្មប្រតិបត្តិការ និងការគ្រប់គ្រងផ្ទៃក្នុង</h2>
+                            <p class="text-xs text-slate-500 mt-1">គ្រាត្រួតពិនិត្យ: ថ្ងៃទី 01 ខែកក្កដា ដល់ ថ្ងៃទី 30 ខែកញ្ញា ឆ្នាំ 2026</p>
+                        </div>
+
+                        <!-- 1. Executive Summary -->
+                        <div class="space-y-2 text-xs text-slate-700 leading-relaxed">
+                            <h4 class="font-bold text-slate-900 text-sm uppercase tracking-wide border-b border-slate-200 pb-1">
+                                ១. សេចក្តីសង្ខេបប្រតិបត្តិ
+                            </h4>
+                            <p>
+                                យោងតាមផែនការសវនកម្មប្រចាំឆ្នាំ ២០២៦ ក្រុមការងារសវនកម្មផ្ទៃក្នុងបានបញ្ចប់ការត្រួតពិនិត្យលើប្រតិបត្តិការស្នូលរបស់ក្រុមហ៊ុន រួមមាន ផ្នែកលក់ និងឥណទាន, ផ្នែកលទ្ធកម្ម និងការផ្ទៀងផ្ទាត់វិក្កយបត្រ, ការគ្រប់គ្រងស្តុកឃ្លាំង, និងការបិទបញ្ជីគណនេយ្យ។ ជាទូទៅ ប្រព័ន្ធគ្រប់គ្រងផ្ទៃក្នុងមានដំណើរការល្អប្រសើរ និងមានអត្រាអនុលោមភាព <strong>96.8%</strong>។
+                            </p>
+                        </div>
+
+                        <!-- 2. Key Audit Findings Table -->
+                        <div class="space-y-2 text-xs">
+                            <h4 class="font-bold text-slate-900 text-sm uppercase tracking-wide border-b border-slate-200 pb-1">
+                                ២. ការរកឃើញសំខាន់ៗ និងអនុសាសន៍កែលម្អ
+                            </h4>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left border border-slate-200 divide-y divide-slate-200">
+                                    <thead class="bg-slate-50 text-[11px] font-semibold text-slate-700">
+                                        <tr>
+                                            <th class="py-2.5 px-3 border-r border-slate-200 w-12 text-center">ល.រ</th>
+                                            <th class="py-2.5 px-3 border-r border-slate-200 whitespace-nowrap">ផ្នែករង</th>
+                                            <th class="py-2.5 px-3 border-r border-slate-200">ការពិពណ៌នាអំពីបញ្ហា</th>
+                                            <th class="py-2.5 px-3 border-r border-slate-200 whitespace-nowrap text-center">ហានិភ័យ</th>
+                                            <th class="py-2.5 px-3">អនុសាសន៍របស់សវនករ</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-slate-100 text-[11px] text-slate-700">
+                                        <tr>
+                                            <td class="py-2.5 px-3 border-r border-slate-200 text-center font-mono">01</td>
+                                            <td class="py-2.5 px-3 border-r border-slate-200 font-medium">ផ្នែកលក់</td>
+                                            <td class="py-2.5 px-3 border-r border-slate-200">រកឃើញករណីបញ្ចុះតម្លៃ 25% លើវិក្កយបត្រ INV-2026-0120 គ្មានលិខិតយោងអនុម័ត។</td>
+                                            <td class="py-2.5 px-3 border-r border-slate-200 text-center">
+                                                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-rose-50 text-rose-700">ខ្ពស់</span>
+                                            </td>
+                                            <td class="py-2.5 px-3">កំណត់ប្រព័ន្ធចាក់សោរមិនឱ្យបញ្ចុះតម្លៃលើស 5% បើគ្មានលេខកូដអនុម័តពីអភិបាលទូទៅឡើយ។</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-2.5 px-3 border-r border-slate-200 text-center font-mono">02</td>
+                                            <td class="py-2.5 px-3 border-r border-slate-200 font-medium">ផ្នែកលទ្ធកម្ម</td>
+                                            <td class="py-2.5 px-3 border-r border-slate-200">ភាពមិនស៊ីគ្នា 10 គ្រឿងលើការទទួលទំនិញធៀបនឹងវិក្កយបត្រអ្នកផ្គត់ផ្គង់ ($850.00)។</td>
+                                            <td class="py-2.5 px-3 border-r border-slate-200 text-center">
+                                                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-50 text-amber-700">មធ្យម</span>
+                                            </td>
+                                            <td class="py-2.5 px-3">ផ្អាកការទូទាត់រហូតដល់អ្នកផ្គត់ផ្គង់ចេញលិខិតឥណទានទូទាត់ជាផ្លូវការ។</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-2.5 px-3 border-r border-slate-200 text-center font-mono">03</td>
+                                            <td class="py-2.5 px-3 border-r border-slate-200 font-medium">បេឡាសាច់ប្រាក់</td>
+                                            <td class="py-2.5 px-3 border-r border-slate-200">ខ្វះសាច់ប្រាក់បន្តិចបន្តួចជាមធ្យម $12.50 លើការបិទវេនបញ្ជរ 01 ចំនួន 2 លើក។</td>
+                                            <td class="py-2.5 px-3 border-r border-slate-200 text-center">
+                                                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-sky-50 text-sky-700">ទាប</span>
+                                            </td>
+                                            <td class="py-2.5 px-3">ពង្រឹងការរាប់ប្រាក់មុនពេលប្រគល់វេន និងបណ្តុះបណ្តាលបុគ្គលិកគិតប្រាក់ឡើងវិញ។</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- 3. Official Sign-off Block (Standard 12) -->
+                        <div class="pt-8 grid grid-cols-2 gap-8 text-center text-xs text-slate-700">
+                            <div>
+                                <p class="text-slate-500 mb-16">រៀបចំ និងត្រួតពិនិត្យដោយសវនករផ្ទៃក្នុង</p>
+                                <div class="w-48 mx-auto border-b border-slate-400 pb-1 font-bold text-slate-900">
+                                    អ៊ុំ សុវណ្ណារ៉ា
+                                </div>
+                                <span class="text-[11px] text-slate-500 mt-1 block">សវនករផ្ទៃក្នុងជាន់ខ្ពស់</span>
+                            </div>
+
+                            <div>
+                                <p class="text-slate-500 mb-16">បានពិនិត្យ និងយល់ព្រមដោយនាយកប្រតិបត្តិ</p>
+                                <div class="w-48 mx-auto border-b border-slate-400 pb-1 font-bold text-slate-900">
+                                    លី ហាក់សេង
+                                </div>
+                                <span class="text-[11px] text-slate-500 mt-1 block">អភិបាលក្រុមហ៊ុន / អ្នកគ្រប់គ្រងទូទៅ</span>
+                            </div>
+                        </div>
+
+                        <!-- Print Footer (Standard 12) -->
+                        <div class="pt-6 border-t border-slate-200 flex justify-between items-center text-[10px] text-slate-400 print:flex">
+                            <span>ទំព័រ 1 នៃ 14 • ឯកសារសវនកម្មសម្ងាត់</span>
+                            <span>ប្រព័ន្ធគ្រប់គ្រងសហគ្រាស DIGITECHKH</span>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Floating Row Action Dropdown Menu (Standard 9) -->
+    <div id="rowActionDropdown" class="fixed hidden bg-white rounded-2xl shadow-xl border border-slate-200 py-1.5 w-56 z-50 transition-opacity duration-150">
+        <div class="px-3.5 py-2 border-b border-slate-100 mb-1">
+            <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider block">សកម្មភាពរបាយការណ៍</span>
+            <span id="dropdownReportTitle" class="text-xs font-bold text-slate-800 truncate block mt-0.5"></span>
+        </div>
+
+        <button onclick="handlePreviewReport()" class="w-full flex items-center gap-2.5 px-3.5 py-2 text-xs text-slate-700 hover:bg-slate-50 transition text-left cursor-pointer">
+            <div class="w-6 h-6 rounded-lg bg-sky-50 text-sky-600 flex items-center justify-center text-[11px]">
+                <i class="fas fa-eye"></i>
+            </div>
+            <span>មើលគំរូទម្រង់ A4</span>
+        </button>
+
+        <button onclick="handleDownloadPDF()" class="w-full flex items-center gap-2.5 px-3.5 py-2 text-xs text-slate-700 hover:bg-slate-50 transition text-left cursor-pointer">
+            <div class="w-6 h-6 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center text-[11px]">
+                <i class="fas fa-file-pdf"></i>
+            </div>
+            <span>ទាញយកឯកសាររបាយការណ៍</span>
+        </button>
+
+        <button onclick="window.print()" class="w-full flex items-center gap-2.5 px-3.5 py-2 text-xs text-slate-700 hover:bg-slate-50 transition text-left cursor-pointer">
+            <div class="w-6 h-6 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center text-[11px]">
+                <i class="fas fa-print"></i>
+            </div>
+            <span>បោះពុម្ពសន្លឹក A4</span>
+        </button>
+
+        <button onclick="handleSendToBoard()" class="w-full flex items-center gap-2.5 px-3.5 py-2 text-xs text-slate-700 hover:bg-slate-50 transition text-left cursor-pointer border-t border-slate-100 mt-1">
+            <div class="w-6 h-6 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center text-[11px]">
+                <i class="fas fa-paper-plane"></i>
+            </div>
+            <span>ផ្ញើជូនក្រុមប្រឹក្សាភិបាល</span>
+        </button>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../shared/scripts/ui-components.js"></script>
+    <script src="data.js"></script>
+    <script src="../../shared/scripts/portal.js"></script>
+    <script>
+        let activeReportId = null;
+        let activeReportObj = null;
+
+        function renderReportsTable(filterQuery = '') {
+            const tbody = document.getElementById('reportsTableBody');
+            if (!tbody) return;
+
+            let reports = BMS_IA.getReports();
+            if (filterQuery) {
+                const q = filterQuery.toLowerCase();
+                reports = reports.filter(r => r.title.toLowerCase().includes(q) || r.type.toLowerCase().includes(q));
+            }
+
+            tbody.innerHTML = reports.map(r => `
+                <tr class="hover:bg-slate-50/70 transition">
+                    <td class="py-3 px-4 whitespace-nowrap font-mono font-semibold text-[#1e3a5f]">
+                        ${r.id}
+                    </td>
+                    <td class="py-3 px-4 font-medium text-slate-800">
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-file-pdf text-purple-500 text-sm"></i>
+                            <span>${r.title}</span>
+                        </div>
+                    </td>
+                    <td class="py-3 px-4 whitespace-nowrap">
+                        <span class="px-2 py-0.5 rounded bg-slate-100 text-slate-700 text-[11px] font-medium">
+                            ${r.type}
+                        </span>
+                    </td>
+                    <td class="py-3 px-4 whitespace-nowrap text-slate-600">
+                        ${r.period}
+                    </td>
+                    <td class="py-3 px-4 whitespace-nowrap font-mono text-[11px] text-slate-500">
+                        ${r.generatedDate}
+                    </td>
+                    <td class="py-3 px-4 whitespace-nowrap text-center font-mono">
+                        ${r.pages} ទំព័រ
+                    </td>
+                    <td class="py-3 px-4 whitespace-nowrap">
+                        <span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                            រួចរាល់
+                        </span>
+                    </td>
+                    <td class="py-3 px-4 text-center whitespace-nowrap">
+                        <button onclick="openRowAction(event, '${r.id}')"
+                            class="w-8 h-8 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-slate-100 flex items-center justify-center transition cursor-pointer mx-auto">
+                            <i class="fas fa-ellipsis-vertical text-sm"></i>
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function filterReports() {
+            const query = document.getElementById('reportSearchInput').value.trim();
+            renderReportsTable(query);
+        }
+
+        // Row Action Dropdown
+        function openRowAction(event, id) {
+            event.stopPropagation();
+            activeReportId = id;
+            const reports = BMS_IA.getReports();
+            activeReportObj = reports.find(r => r.id === id);
+            if (!activeReportObj) return;
+
+            const dropdown = document.getElementById('rowActionDropdown');
+            document.getElementById('dropdownReportTitle').textContent = activeReportObj.title;
+
+            const btnRect = event.currentTarget.getBoundingClientRect();
+            dropdown.style.top = `${btnRect.bottom + window.scrollY + 4}px`;
+            dropdown.style.left = `${btnRect.right - 224}px`;
+            dropdown.classList.remove('hidden');
+        }
+
+        function closeDropdown() {
+            const dropdown = document.getElementById('rowActionDropdown');
+            if (dropdown) dropdown.classList.add('hidden');
+        }
+
+        document.addEventListener('click', closeDropdown);
+
+        function handlePreviewReport() {
+            closeDropdown();
+            if (!activeReportObj) return;
+            document.getElementById('previewReportTitle').textContent = activeReportObj.title;
+            showToast(`កំពុងបង្ហាញគំរូសន្លឹក A4 សម្រាប់ ${activeReportObj.title}...`, 'info');
+        }
+
+        function handleDownloadPDF() {
+            closeDropdown();
+            if (!activeReportObj) return;
+            showToast(`កំពុងទាញយកឯកសារ ${activeReportObj.fileName}...`, 'success');
+        }
+
+        function handleSendToBoard() {
+            closeDropdown();
+            if (!activeReportObj) return;
+            showCustomConfirm({
+                title: 'ផ្ញើរបាយការណ៍ជូនក្រុមប្រឹក្សាភិបាល',
+                message: `តើលោកអ្នកចង់បញ្ជូន «${activeReportObj.title}» ទៅកាន់អ៊ីមែលផ្លូវការរបស់សមាជិកក្រុមប្រឹក្សាភិបាល និងនាយកប្រតិបត្តិមែនទេ?`,
+                confirmText: 'បញ្ជូនរបាយការណ៍',
+                confirmClass: 'bg-[#1e3a5f] text-white',
+                onConfirm: () => {
+                    showToast('បានបញ្ជូនរបាយការណ៍សវនកម្មជូនក្រុមប្រឹក្សាភិបាលរួចរាល់!', 'success');
+                }
+            });
+        }
+
+        function initReports() {
+            try {
+                if (typeof renderPortalSidebar === 'function') {
+                    renderPortalSidebar();
+                }
+            } catch (e) {
+                console.error('Sidebar render error:', e);
+            }
+            try {
+                if (typeof renderDateRangePicker === 'function') {
+                    renderDateRangePicker('dateFilterHost');
+                }
+            } catch (e) {
+                console.error('Date picker render error:', e);
+            }
+            try {
+                renderReportsTable();
+            } catch (e) {
+                console.error('Reports table render error:', e);
+            }
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initReports);
+        } else {
+            initReports();
+        }
+    </script>
+</body>
+</html>

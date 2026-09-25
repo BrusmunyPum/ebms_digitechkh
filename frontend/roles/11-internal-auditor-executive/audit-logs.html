@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - កំណត់ហេតុសវនកម្មសកល</title>
+    <link rel="icon" type="image/png" href="../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1e3a5f",
+                        'primary-dark': "#142842",
+                        accent: "#0ea5e9",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../shared/styles/custom.css">
+    <link rel="stylesheet" href="../../shared/styles/portal.css">
+</head>
+<body id="iaPortal" data-role-root="." data-active="audit-logs" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <!-- Unified Sidebar Runtime -->
+    <div id="sidebarHost"></div>
+
+    <!-- Main Content Wrapper -->
+    <div class="flex-1 flex flex-col min-w-0 h-screen overflow-hidden">
+
+        <!-- Top Header (Standard 2: h-[72px] px-6) -->
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-xs z-10 flex-shrink-0 w-full border-b border-slate-200/70">
+            <div>
+                <h2 class="text-xl font-semibold text-gray-800 leading-tight">កំណត់ហេតុសវនកម្មសកល</h2>
+                <p class="text-xs font-normal text-gray-500 mt-0.5">តាមដានរាល់ប្រតិបត្តិការ និងការកែប្រែទិន្នន័យដែលមិនអាចលុបបានទូទាំងប្រព័ន្ធ</p>
+            </div>
+
+            <div class="flex items-center space-x-3">
+                <!-- Unified Date Range Picker (Standard 3) -->
+                <div id="dateFilterHost"></div>
+
+                <div class="flex items-center sm:border-l sm:pl-3">
+                    <div class="w-10 h-10 rounded-full bg-[#1e3a5f] text-white flex items-center justify-center font-semibold text-sm shadow-sm" title="អ៊ុំ សុវណ្ណារ៉ា (សវនករផ្ទៃក្នុងជាន់ខ្ពស់)">
+                        អស
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area (Standard 8: w-full, no max-w) -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-5">
+            <div class="w-full space-y-5">
+
+                <!-- Row 1: Audit Activity Summary (4 Metrics) -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+                    <div class="p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex items-center justify-between">
+                        <div>
+                            <span class="text-xs font-medium text-slate-500 block">ព្រឹត្តិការណ៍សវនកម្មសរុប</span>
+                            <h3 class="text-xl font-bold text-slate-800 mt-1">1,420</h3>
+                            <span class="text-[11px] text-emerald-600 font-medium">កត់ត្រាស្វ័យប្រវត្តិតាមពេលវេលាជាក់ស្តែង</span>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-sm flex-shrink-0">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex items-center justify-between">
+                        <div>
+                            <span class="text-xs font-medium text-slate-500 block">ការកែប្រែទិន្នន័យ</span>
+                            <h3 class="text-xl font-bold text-slate-800 mt-1">18</h3>
+                            <span class="text-[11px] text-slate-500 font-medium">មានការប្រៀបធៀបទិន្នន័យចាស់-ថ្មី</span>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-sm flex-shrink-0">
+                            <i class="fas fa-pen-to-square"></i>
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex items-center justify-between">
+                        <div>
+                            <span class="text-xs font-medium text-slate-500 block">ការលុបចោលវិក្កយបត្រ</span>
+                            <h3 class="text-xl font-bold text-amber-600 mt-1">3</h3>
+                            <span class="text-[11px] text-amber-600 font-medium">ប្រតិបត្តិការលុបចោលលើបញ្ជរ</span>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-sm flex-shrink-0">
+                            <i class="fas fa-ban"></i>
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex items-center justify-between">
+                        <div>
+                            <span class="text-xs font-medium text-slate-500 block">សកម្មភាពគួរឱ្យសង្ស័យ</span>
+                            <h3 class="text-xl font-bold text-rose-600 mt-1">4</h3>
+                            <span class="text-[11px] text-rose-600 font-medium">ត្រូវការការស៊ើបអង្កេតបន្ទាន់</span>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center text-sm flex-shrink-0">
+                            <i class="fas fa-triangle-exclamation"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 2: Search, Filters & Action Bar -->
+                <div class="bg-white rounded-2xl p-4 border border-slate-200/80 shadow-xs space-y-3">
+                    <div class="flex flex-col lg:flex-row gap-3 items-stretch lg:items-center justify-between">
+                        
+                        <!-- Search Box -->
+                        <div class="relative flex-1">
+                            <i class="fas fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                            <input type="text" id="searchInput" oninput="handleSearch()"
+                                placeholder="ស្វែងរកតាមលេខកូដសវនកម្ម, ឈ្មោះអ្នកប្រតិបត្តិ, លេខឯកសារយោង, ឬអាសយដ្ឋាន IP..."
+                                class="w-full pl-9 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-primary focus:bg-white transition">
+                        </div>
+
+                        <!-- Dropdown Filters -->
+                        <div class="flex flex-wrap items-center gap-2">
+                            <!-- Module Filter Custom Dropdown -->
+                            <div class="relative" id="moduleFilterDropdown">
+                                <button type="button" onclick="toggleDropdown('moduleFilterMenu')"
+                                    class="h-9 px-3 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 text-xs rounded-xl flex items-center gap-2 shadow-xs transition cursor-pointer">
+                                    <i class="fas fa-layer-group text-slate-400 text-xs"></i>
+                                    <span id="moduleFilterLabel" class="font-medium text-slate-800">គ្រប់ផ្នែកទាំងអស់</span>
+                                    <i class="fas fa-chevron-down text-[10px] text-slate-400 ml-1"></i>
+                                </button>
+                                <div id="moduleFilterMenu" class="hidden absolute right-0 mt-1 w-48 bg-white border border-slate-200 rounded-xl shadow-lg py-1 z-30">
+                                    <button onclick="setModuleFilter('all', 'គ្រប់ផ្នែកទាំងអស់')" class="w-full text-left px-3 py-1.5 text-xs text-slate-700 hover:bg-slate-50">គ្រប់ផ្នែកទាំងអស់</button>
+                                    <button onclick="setModuleFilter('sales', 'ផ្នែកលក់')" class="w-full text-left px-3 py-1.5 text-xs text-slate-700 hover:bg-slate-50">ផ្នែកលក់</button>
+                                    <button onclick="setModuleFilter('cashier', 'បញ្ជរលក់រាយ')" class="w-full text-left px-3 py-1.5 text-xs text-slate-700 hover:bg-slate-50">បញ្ជរលក់រាយ</button>
+                                    <button onclick="setModuleFilter('procurement', 'ផ្នែកលទ្ធកម្ម')" class="w-full text-left px-3 py-1.5 text-xs text-slate-700 hover:bg-slate-50">ផ្នែកលទ្ធកម្ម</button>
+                                    <button onclick="setModuleFilter('warehouse', 'ផ្នែកឃ្លាំងស្តុក')" class="w-full text-left px-3 py-1.5 text-xs text-slate-700 hover:bg-slate-50">ផ្នែកឃ្លាំងស្តុក</button>
+                                    <button onclick="setModuleFilter('finance', 'ផ្នែកហិរញ្ញវត្ថុ')" class="w-full text-left px-3 py-1.5 text-xs text-slate-700 hover:bg-slate-50">ផ្នែកហិរញ្ញវត្ថុ</button>
+                                    <button onclick="setModuleFilter('accounting', 'ផ្នែកគណនេយ្យ')" class="w-full text-left px-3 py-1.5 text-xs text-slate-700 hover:bg-slate-50">ផ្នែកគណនេយ្យ</button>
+                                    <button onclick="setModuleFilter('settings', 'ការកំណត់ប្រព័ន្ធ')" class="w-full text-left px-3 py-1.5 text-xs text-slate-700 hover:bg-slate-50">ការកំណត់ប្រព័ន្ធ</button>
+                                </div>
+                            </div>
+
+                            <!-- Action Filter Custom Dropdown -->
+                            <div class="relative" id="actionFilterDropdown">
+                                <button type="button" onclick="toggleDropdown('actionFilterMenu')"
+                                    class="h-9 px-3 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 text-xs rounded-xl flex items-center gap-2 shadow-xs transition cursor-pointer">
+                                    <i class="fas fa-bolt text-slate-400 text-xs"></i>
+                                    <span id="actionFilterLabel" class="font-medium text-slate-800">គ្រប់សកម្មភាព</span>
+                                    <i class="fas fa-chevron-down text-[10px] text-slate-400 ml-1"></i>
+                                </button>
+                                <div id="actionFilterMenu" class="hidden absolute right-0 mt-1 w-44 bg-white border border-slate-200 rounded-xl shadow-lg py-1 z-30">
+                                    <button onclick="setActionFilter('all', 'គ្រប់សកម្មភាព')" class="w-full text-left px-3 py-1.5 text-xs text-slate-700 hover:bg-slate-50">គ្រប់សកម្មភាព</button>
+                                    <button onclick="setActionFilter('create', 'បង្កើតថ្មី')" class="w-full text-left px-3 py-1.5 text-xs text-slate-700 hover:bg-slate-50">បង្កើតថ្មី</button>
+                                    <button onclick="setActionFilter('update', 'កែប្រែទិន្នន័យ')" class="w-full text-left px-3 py-1.5 text-xs text-slate-700 hover:bg-slate-50">កែប្រែទិន្នន័យ</button>
+                                    <button onclick="setActionFilter('void', 'លុបចោលវិក្កយបត្រ')" class="w-full text-left px-3 py-1.5 text-xs text-slate-700 hover:bg-slate-50">លុបចោលវិក្កយបត្រ</button>
+                                    <button onclick="setActionFilter('approve', 'អនុម័តផ្លូវការ')" class="w-full text-left px-3 py-1.5 text-xs text-slate-700 hover:bg-slate-50">អនុម័តផ្លូវការ</button>
+                                    <button onclick="setActionFilter('override', 'កែតម្រូវស្តុក')" class="w-full text-left px-3 py-1.5 text-xs text-slate-700 hover:bg-slate-50">កែតម្រូវស្តុក</button>
+                                </div>
+                            </div>
+
+                            <!-- Reset Filter Button -->
+                            <button onclick="resetFilters()" title="សម្អាតតម្រង"
+                                class="h-9 px-3 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-600 text-xs rounded-xl flex items-center justify-center transition cursor-pointer">
+                                <i class="fas fa-arrow-rotate-left"></i>
+                            </button>
+
+                            <!-- Export CSV Button -->
+                            <button onclick="exportAuditLogsCSV()"
+                                class="h-9 px-3.5 bg-[#1e3a5f] hover:bg-[#162c47] text-white text-xs font-medium rounded-xl flex items-center gap-2 shadow-xs transition cursor-pointer">
+                                <i class="fas fa-file-arrow-down text-xs"></i>
+                                <span>នាំចេញទិន្នន័យ</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 3: Audit Trail Table -->
+                <div class="bg-white rounded-2xl border border-slate-200/80 shadow-xs overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-slate-50/75 border-b border-slate-200/70 text-[11px] font-semibold text-slate-600 uppercase tracking-wider">
+                                    <th class="py-3.5 px-4 whitespace-nowrap">លេខកូដសវនកម្ម</th>
+                                    <th class="py-3.5 px-4 whitespace-nowrap">កាលបរិច្ឆេទ & ម៉ោង</th>
+                                    <th class="py-3.5 px-4 whitespace-nowrap">អ្នកប្រតិបត្តិ</th>
+                                    <th class="py-3.5 px-4 whitespace-nowrap">ផ្នែក</th>
+                                    <th class="py-3.5 px-4 whitespace-nowrap">សកម្មភាព</th>
+                                    <th class="py-3.5 px-4 whitespace-nowrap">ឯកសារយោង</th>
+                                    <th class="py-3.5 px-4 min-w-[260px]">បម្រែបម្រួលទិន្នន័យ</th>
+                                    <th class="py-3.5 px-4 whitespace-nowrap">អាសយដ្ឋាន IP</th>
+                                    <!-- Standard 9: Action column single ⋮ button only -->
+                                    <th class="py-3.5 px-4 text-center whitespace-nowrap w-12">សកម្មភាព</th>
+                                </tr>
+                            </thead>
+                            <tbody id="auditTableBody" class="divide-y divide-slate-100 text-xs text-slate-700">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Table Footer / Pagination -->
+                    <div class="px-5 py-3.5 bg-slate-50/50 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
+                        <div>
+                            <span>បង្ហាញ <strong id="showingCount" class="font-semibold text-slate-800">0</strong> ក្នុងចំណោម <strong id="totalCount" class="font-semibold text-slate-800">0</strong> ព្រឹត្តិការណ៍</span>
+                        </div>
+                        <div class="flex items-center space-x-1.5">
+                            <button class="px-2.5 py-1 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-600 disabled:opacity-50 text-xs" disabled>
+                                <i class="fas fa-chevron-left text-[10px]"></i>
+                            </button>
+                            <span class="px-3 py-1 rounded-lg bg-[#1e3a5f] text-white font-medium text-xs">1</span>
+                            <button class="px-2.5 py-1 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-600 disabled:opacity-50 text-xs" disabled>
+                                <i class="fas fa-chevron-right text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Floating Row Action Dropdown Menu (Standard 9) -->
+    <div id="rowActionDropdown" class="fixed hidden bg-white rounded-2xl shadow-xl border border-slate-200 py-1.5 w-56 z-50 transition-opacity duration-150">
+        <div class="px-3.5 py-2 border-b border-slate-100 mb-1">
+            <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider block">កូដសវនកម្ម</span>
+            <span id="dropdownAuditId" class="text-xs font-bold text-slate-800 truncate block mt-0.5"></span>
+        </div>
+        
+        <!-- Standard 5: Dedicated Full Page View Link -->
+        <a id="dropdownViewDetailLink" href="#" class="flex items-center gap-2.5 px-3.5 py-2 text-xs text-slate-700 hover:bg-slate-50 transition">
+            <div class="w-6 h-6 rounded-lg bg-sky-50 text-sky-600 flex items-center justify-center text-[11px]">
+                <i class="fas fa-clock-rotate-left"></i>
+            </div>
+            <span>ពិនិត្យព័ត៌មានលម្អិត</span>
+        </a>
+
+        <button onclick="handleCopyAuditId()" class="w-full flex items-center gap-2.5 px-3.5 py-2 text-xs text-slate-700 hover:bg-slate-50 transition text-left cursor-pointer">
+            <div class="w-6 h-6 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center text-[11px]">
+                <i class="fas fa-copy"></i>
+            </div>
+            <span>ចម្លងលេខកូដសវនកម្ម</span>
+        </button>
+
+        <button onclick="handleInspectRefDoc()" class="w-full flex items-center gap-2.5 px-3.5 py-2 text-xs text-slate-700 hover:bg-slate-50 transition text-left cursor-pointer">
+            <div class="w-6 h-6 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center text-[11px]">
+                <i class="fas fa-file-invoice"></i>
+            </div>
+            <span>ពិនិត្យឯកសារយោង</span>
+        </button>
+
+        <button onclick="handleExportSingleLog()" class="w-full flex items-center gap-2.5 px-3.5 py-2 text-xs text-slate-700 hover:bg-slate-50 transition text-left cursor-pointer border-t border-slate-100 mt-1">
+            <div class="w-6 h-6 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center text-[11px]">
+                <i class="fas fa-shield-halved"></i>
+            </div>
+            <span>ទាញយកភស្តុតាងសវនកម្ម</span>
+        </button>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../shared/scripts/ui-components.js"></script>
+    <script src="data.js"></script>
+    <script src="../../shared/scripts/portal.js"></script>
+    <script>
+        let currentModuleFilter = 'all';
+        let currentActionFilter = 'all';
+        let currentSearchQuery = '';
+        let activeAuditLogId = null;
+
+        function toggleDropdown(menuId) {
+            const menu = document.getElementById(menuId);
+            if (!menu) return;
+            const isHidden = menu.classList.contains('hidden');
+            closeAllFilterMenus();
+            if (isHidden) {
+                menu.classList.remove('hidden');
+            }
+        }
+
+        function closeAllFilterMenus() {
+            ['moduleFilterMenu', 'actionFilterMenu'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.classList.add('hidden');
+            });
+        }
+
+        function setModuleFilter(val, label) {
+            currentModuleFilter = val;
+            document.getElementById('moduleFilterLabel').textContent = label;
+            closeAllFilterMenus();
+            renderTable();
+        }
+
+        function setActionFilter(val, label) {
+            currentActionFilter = val;
+            document.getElementById('actionFilterLabel').textContent = label;
+            closeAllFilterMenus();
+            renderTable();
+        }
+
+        function handleSearch() {
+            currentSearchQuery = document.getElementById('searchInput').value.trim();
+            renderTable();
+        }
+
+        function resetFilters() {
+            currentModuleFilter = 'all';
+            currentActionFilter = 'all';
+            currentSearchQuery = '';
+            document.getElementById('searchInput').value = '';
+            document.getElementById('moduleFilterLabel').textContent = 'គ្រប់ផ្នែកទាំងអស់';
+            document.getElementById('actionFilterLabel').textContent = 'គ្រប់សកម្មភាព';
+            closeAllFilterMenus();
+            renderTable();
+            showToast('បានសម្អាតតម្រងរួចរាល់', 'info');
+        }
+
+        function renderTable() {
+            const tbody = document.getElementById('auditTableBody');
+            if (!tbody) return;
+
+            const logs = BMS_IA.getAuditLogs(currentModuleFilter, currentActionFilter, currentSearchQuery);
+            document.getElementById('showingCount').textContent = logs.length;
+            document.getElementById('totalCount').textContent = BMS_IA.getAuditLogs().length;
+
+            if (logs.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="9" class="py-12 text-center text-slate-400">
+                            <i class="fas fa-folder-open text-3xl mb-2 text-slate-300 block"></i>
+                            <span>មិនមានទិន្នន័យកំណត់ហេតុសវនកម្មត្រូវគ្នានឹងការស្វែងរកឡើយ</span>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            tbody.innerHTML = logs.map(l => {
+                let actionBadge = '';
+                if (l.action === 'create') {
+                    actionBadge = '<span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">បង្កើតថ្មី</span>';
+                } else if (l.action === 'update') {
+                    actionBadge = '<span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-sky-50 text-sky-700 border border-sky-200">កែប្រែ</span>';
+                } else if (l.action === 'void') {
+                    actionBadge = '<span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-rose-50 text-rose-700 border border-rose-200">លុបចោល</span>';
+                } else if (l.action === 'approve') {
+                    actionBadge = '<span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-purple-50 text-purple-700 border border-purple-200">អនុម័ត</span>';
+                } else {
+                    actionBadge = '<span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-amber-50 text-amber-700 border border-amber-200">កែតម្រូវ</span>';
+                }
+
+                const suspiciousTag = l.isSuspicious 
+                    ? '<span class="ml-1.5 px-1.5 py-0.5 rounded bg-rose-100 text-rose-700 text-[10px] font-bold">គួរឱ្យសង្ស័យ</span>'
+                    : '';
+
+                return `
+                    <tr class="hover:bg-slate-50/70 transition">
+                        <td class="py-3 px-4 whitespace-nowrap">
+                            <div class="flex items-center gap-1.5 font-medium text-slate-900">
+                                <i class="fas fa-lock text-[10px] text-slate-400"></i>
+                                <span class="font-mono text-xs font-semibold text-[#1e3a5f]">${l.id}</span>
+                                ${suspiciousTag}
+                            </div>
+                        </td>
+                        <td class="py-3 px-4 whitespace-nowrap text-slate-500 font-mono text-[11px]">
+                            ${l.timestamp}
+                        </td>
+                        <td class="py-3 px-4 whitespace-nowrap">
+                            <div class="flex items-center gap-2">
+                                <div class="w-6 h-6 rounded-full bg-slate-100 border border-slate-200 text-slate-700 font-bold flex items-center justify-center text-[10px] flex-shrink-0">
+                                    ${l.avatar}
+                                </div>
+                                <div>
+                                    <span class="font-medium text-slate-800 block leading-tight">${l.user}</span>
+                                    <span class="text-[10px] text-slate-400 leading-tight">${l.role}</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="py-3 px-4 whitespace-nowrap">
+                            <span class="px-2 py-0.5 rounded bg-slate-100 text-slate-600 text-[11px] font-medium">
+                                ${l.moduleKh}
+                            </span>
+                        </td>
+                        <td class="py-3 px-4 whitespace-nowrap">
+                            ${actionBadge}
+                        </td>
+                        <td class="py-3 px-4 whitespace-nowrap font-mono text-xs text-primary font-medium">
+                            ${l.refCode}
+                        </td>
+                        <td class="py-3 px-4 text-xs text-slate-600 leading-snug">
+                            <div class="truncate max-w-xs" title="${l.diffSummary}">
+                                ${l.diffSummary}
+                            </div>
+                        </td>
+                        <td class="py-3 px-4 whitespace-nowrap font-mono text-[11px] text-slate-500">
+                            <div class="flex items-center gap-1">
+                                <i class="fas fa-network-wired text-[10px] text-slate-400"></i>
+                                <span>${l.ipAddress}</span>
+                            </div>
+                        </td>
+                        <!-- Standard 9: Single ⋮ button only -->
+                        <td class="py-3 px-4 text-center whitespace-nowrap">
+                            <button onclick="openRowAction(event, '${l.id}')"
+                                class="w-8 h-8 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-slate-100 flex items-center justify-center transition cursor-pointer mx-auto">
+                                <i class="fas fa-ellipsis-vertical text-sm"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        // Row Action Dropdown Handling
+        function openRowAction(event, id) {
+            event.stopPropagation();
+            activeAuditLogId = id;
+            const log = BMS_IA.getAuditLogById(id);
+            if (!log) return;
+
+            const dropdown = document.getElementById('rowActionDropdown');
+            document.getElementById('dropdownAuditId').textContent = `${log.id} • ${log.refCode}`;
+            document.getElementById('dropdownViewDetailLink').href = `view-audit-detail.html?id=${id}`;
+
+            const btnRect = event.currentTarget.getBoundingClientRect();
+            dropdown.style.top = `${btnRect.bottom + window.scrollY + 4}px`;
+            dropdown.style.left = `${btnRect.right - 224}px`;
+            dropdown.classList.remove('hidden');
+        }
+
+        function closeDropdown() {
+            const dropdown = document.getElementById('rowActionDropdown');
+            if (dropdown) dropdown.classList.add('hidden');
+            closeAllFilterMenus();
+        }
+
+        document.addEventListener('click', closeDropdown);
+
+        function handleCopyAuditId() {
+            if (!activeAuditLogId) return;
+            closeDropdown();
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(activeAuditLogId);
+            }
+            showToast(`បានចម្លងលេខកូដសវនកម្ម ${activeAuditLogId} ដោយជោគជ័យ!`, 'success');
+        }
+
+        function handleInspectRefDoc() {
+            if (!activeAuditLogId) return;
+            const log = BMS_IA.getAuditLogById(activeAuditLogId);
+            closeDropdown();
+            showToast(`កំពុងផ្ទៀងផ្ទាត់ឯកសារយោង ${log.refCode} ពីប្រព័ន្ធទិន្នន័យ...`, 'info');
+            setTimeout(() => {
+                window.location.href = `view-audit-detail.html?id=${activeAuditLogId}`;
+            }, 500);
+        }
+
+        function handleExportSingleLog() {
+            if (!activeAuditLogId) return;
+            const log = BMS_IA.getAuditLogById(activeAuditLogId);
+            closeDropdown();
+            showToast(`បានបង្កើតឯកសារភស្តុតាងសវនកម្ម ${log.id} រួចរាល់!`, 'success');
+        }
+
+        function exportAuditLogsCSV() {
+            const logs = BMS_IA.getAuditLogs(currentModuleFilter, currentActionFilter, currentSearchQuery);
+            let csv = "\uFEFFលេខកូដសវនកម្ម,កាលបរិច្ឆេទ,អ្នកប្រតិបត្តិ,តួនាទី,ផ្នែក,សកម្មភាព,ឯកសារយោង,បម្រែបម្រួល,អាសយដ្ឋាន IP\n";
+            logs.forEach(l => {
+                csv += `"${l.id}","${l.timestamp}","${l.user}","${l.role}","${l.moduleKh}","${l.actionKh}","${l.refCode}","${l.diffSummary}","${l.ipAddress}"\n`;
+            });
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Audit_Logs_${new Date().toISOString().slice(0, 10)}.csv`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            showToast('បានទាញយកឯកសារកំណត់ហេតុសវនកម្មជា CSV រួចរាល់!', 'success');
+        }
+
+        function initAuditLogs() {
+            try {
+                if (typeof renderPortalSidebar === 'function') {
+                    renderPortalSidebar();
+                }
+            } catch (e) {
+                console.error('Sidebar render error:', e);
+            }
+            try {
+                if (typeof renderDateRangePicker === 'function') {
+                    renderDateRangePicker('dateFilterHost');
+                }
+            } catch (e) {
+                console.error('Date picker render error:', e);
+            }
+            try {
+                renderTable();
+            } catch (e) {
+                console.error('Table render error:', e);
+            }
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initAuditLogs);
+        } else {
+            initAuditLogs();
+        }
+    </script>
+</body>
+</html>

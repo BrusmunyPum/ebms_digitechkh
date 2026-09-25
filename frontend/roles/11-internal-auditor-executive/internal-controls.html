@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - មជ្ឈមណ្ឌលត្រួតពិនិត្យផ្ទៃក្នុង និងអនុលោមភាព</title>
+    <link rel="icon" type="image/png" href="../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1e3a5f",
+                        'primary-dark': "#142842",
+                        accent: "#0ea5e9",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../shared/styles/custom.css">
+    <link rel="stylesheet" href="../../shared/styles/portal.css">
+</head>
+<body id="iaPortal" data-role-root="." data-active="internal-controls" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <!-- Unified Sidebar Runtime -->
+    <div id="sidebarHost"></div>
+
+    <!-- Main Content Wrapper -->
+    <div class="flex-1 flex flex-col min-w-0 h-screen overflow-hidden">
+
+        <!-- Top Header (Standard 2: h-[72px] px-6) -->
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-xs z-10 flex-shrink-0 w-full border-b border-slate-200/70">
+            <div>
+                <h2 class="text-xl font-semibold text-gray-800 leading-tight">មជ្ឈមណ្ឌលត្រួតពិនិត្យផ្ទៃក្នុង និងអនុលោមភាព</h2>
+                <p class="text-xs font-normal text-gray-500 mt-0.5">ការតាមដានការបែងចែកភារកិច្ច ការផ្ទៀងផ្ទាត់ 3 ច្រក និងការបំពានដែនកំណត់ឥណទាន</p>
+            </div>
+
+            <div class="flex items-center space-x-3">
+                <!-- Unified Date Range Picker (Standard 3) -->
+                <div id="dateFilterHost"></div>
+
+                <div class="flex items-center sm:border-l sm:pl-3">
+                    <div class="w-10 h-10 rounded-full bg-[#1e3a5f] text-white flex items-center justify-center font-semibold text-sm shadow-sm" title="អ៊ុំ សុវណ្ណារ៉ា (សវនករផ្ទៃក្នុងជាន់ខ្ពស់)">
+                        អស
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-5">
+            <div class="w-full space-y-5">
+
+                <!-- Row 1: Compliance Metric Cards (4 Cards) -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+                    <!-- SoD Card -->
+                    <div onclick="switchTab('sod')" class="p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex items-center justify-between cursor-pointer hover:border-primary/50 transition">
+                        <div>
+                            <span class="text-xs font-medium text-slate-500 block">ការបែងចែកភារកិច្ចជាន់គ្នា</span>
+                            <h3 class="text-xl font-bold text-rose-600 mt-1" id="sodMetric">2</h3>
+                            <span class="text-[11px] text-rose-600 font-medium">ហានិភ័យបន្លំកម្រិតខ្ពស់</span>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center text-sm flex-shrink-0">
+                            <i class="fas fa-user-lock"></i>
+                        </div>
+                    </div>
+
+                    <!-- 3-Way Match Card -->
+                    <div onclick="switchTab('threeway')" class="p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex items-center justify-between cursor-pointer hover:border-primary/50 transition">
+                        <div>
+                            <span class="text-xs font-medium text-slate-500 block">ការផ្ទៀងផ្ទាត់ 3 ច្រកមិនស៊ីគ្នា</span>
+                            <h3 class="text-xl font-bold text-amber-600 mt-1" id="threewayMetric">2</h3>
+                            <span class="text-[11px] text-amber-600 font-medium">ទឹកប្រាក់ខុស $1,100.00</span>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-sm flex-shrink-0">
+                            <i class="fas fa-arrows-split-up-and-left"></i>
+                        </div>
+                    </div>
+
+                    <!-- Credit Breaches Card -->
+                    <div onclick="switchTab('credit')" class="p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex items-center justify-between cursor-pointer hover:border-primary/50 transition">
+                        <div>
+                            <span class="text-xs font-medium text-slate-500 block">បំពានដែនកំណត់ឥណទាន</span>
+                            <h3 class="text-xl font-bold text-purple-600 mt-1" id="creditMetric">1</h3>
+                            <span class="text-[11px] text-purple-600 font-medium">លើសពិដានកំណត់ $4,000.00</span>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-sm flex-shrink-0">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                    </div>
+
+                    <!-- Cashier Variances Card -->
+                    <div onclick="switchTab('cashier')" class="p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex items-center justify-between cursor-pointer hover:border-primary/50 transition">
+                        <div>
+                            <span class="text-xs font-medium text-slate-500 block">ភាពខុសគ្នានៃការបិទវេនសាច់ប្រាក់</span>
+                            <h3 class="text-xl font-bold text-sky-600 mt-1" id="cashierMetric">3</h3>
+                            <span class="text-[11px] text-sky-600 font-medium">ខ្វះសាច់ប្រាក់ -$25.50</span>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-sm flex-shrink-0">
+                            <i class="fas fa-cash-register"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 2: Tabs Navigation Bar -->
+                <div class="bg-white rounded-2xl p-2 border border-slate-200/80 shadow-xs flex flex-wrap gap-1.5">
+                    <button id="tabBtn-sod" onclick="switchTab('sod')"
+                        class="px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition cursor-pointer bg-[#1e3a5f] text-white shadow-xs">
+                        <i class="fas fa-user-shield text-xs"></i>
+                        <span>ការបែងចែកភារកិច្ចជាន់គ្នា</span>
+                        <span class="px-1.5 py-0.5 rounded-full text-[10px] bg-white/20 text-white font-mono">2</span>
+                    </button>
+
+                    <button id="tabBtn-threeway" onclick="switchTab('threeway')"
+                        class="px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition cursor-pointer text-slate-600 hover:bg-slate-100">
+                        <i class="fas fa-file-circle-check text-xs"></i>
+                        <span>ការផ្ទៀងផ្ទាត់ 3 ច្រក</span>
+                        <span class="px-1.5 py-0.5 rounded-full text-[10px] bg-slate-200 text-slate-700 font-mono">2</span>
+                    </button>
+
+                    <button id="tabBtn-credit" onclick="switchTab('credit')"
+                        class="px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition cursor-pointer text-slate-600 hover:bg-slate-100">
+                        <i class="fas fa-hand-holding-dollar text-xs"></i>
+                        <span>ការបំពានដែនកំណត់ឥណទាន</span>
+                        <span class="px-1.5 py-0.5 rounded-full text-[10px] bg-slate-200 text-slate-700 font-mono">1</span>
+                    </button>
+
+                    <button id="tabBtn-cashier" onclick="switchTab('cashier')"
+                        class="px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition cursor-pointer text-slate-600 hover:bg-slate-100">
+                        <i class="fas fa-vault text-xs"></i>
+                        <span>ភាពខុសគ្នានៃការបិទវេនសាច់ប្រាក់</span>
+                        <span class="px-1.5 py-0.5 rounded-full text-[10px] bg-slate-200 text-slate-700 font-mono">3</span>
+                    </button>
+                </div>
+
+                <!-- Tab 1: SoD Violations Table View -->
+                <div id="tabContent-sod" class="bg-white rounded-2xl border border-slate-200/80 shadow-xs overflow-hidden">
+                    <div class="p-4 border-b border-slate-100 flex items-center justify-between">
+                        <div>
+                            <h3 class="text-sm font-semibold text-slate-800">បញ្ជីករណីបំពានការបែងចែកភារកិច្ច</h3>
+                            <p class="text-xs text-slate-400 mt-0.5">បុគ្គលិកម្នាក់មានសិទ្ធិអនុវត្តទាំងជំហានស្នើសុំ និងជំហានអនុម័ត/ទទួលទំនិញក្នុងពេលតែមួយ</p>
+                        </div>
+                        <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-rose-50 text-rose-700 border border-rose-200">
+                            <i class="fas fa-shield-virus mr-1"></i> ហានិភ័យកម្រិតធ្ងន់
+                        </span>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-slate-50/75 border-b border-slate-200/70 text-[11px] font-semibold text-slate-600 uppercase tracking-wider">
+                                    <th class="py-3.5 px-4 whitespace-nowrap w-24">លេខកូដ</th>
+                                    <th class="py-3.5 px-4">ករណីបំពាន និងភស្តុតាងសវនកម្ម</th>
+                                    <th class="py-3.5 px-4 whitespace-nowrap">បុគ្គលិកប្រតិបត្តិ</th>
+                                    <th class="py-3.5 px-4 whitespace-nowrap">កាលបរិច្ឆេទ</th>
+                                    <th class="py-3.5 px-4 whitespace-nowrap">កម្រិតហានិភ័យ</th>
+                                    <th class="py-3.5 px-4 text-center whitespace-nowrap w-12">សកម្មភាព</th>
+                                </tr>
+                            </thead>
+                            <tbody id="sodTableBody" class="divide-y divide-slate-100 text-xs text-slate-700">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Tab 2: 3-Way Matching Mismatches Table View -->
+                <div id="tabContent-threeway" class="hidden bg-white rounded-2xl border border-slate-200/80 shadow-xs overflow-hidden">
+                    <div class="p-4 border-b border-slate-100 flex items-center justify-between">
+                        <div>
+                            <h3 class="text-sm font-semibold text-slate-800">ការផ្ទៀងផ្ទាត់ 3 ច្រក: ការបញ្ជាទិញ • ការទទួលចូលឃ្លាំង • វិក្កយបត្រ</h3>
+                            <p class="text-xs text-slate-400 mt-0.5">ការប្រៀបធៀបបរិមាណ និងទឹកប្រាក់រវាងលិខិតបញ្ជាទិញ ប័ណ្ណទទួលទំនិញ និងវិក្កយបត្រអ្នកផ្គត់ផ្គង់</p>
+                        </div>
+                        <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-amber-50 text-amber-700 border border-amber-200">
+                            <i class="fas fa-triangle-exclamation mr-1"></i> មានភាពខុសគ្នា
+                        </span>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-slate-50/75 border-b border-slate-200/70 text-[11px] font-semibold text-slate-600 uppercase tracking-wider">
+                                    <th class="py-3.5 px-4 whitespace-nowrap">ឯកសារយោង និងអ្នកផ្គត់ផ្គង់</th>
+                                    <th class="py-3.5 px-4 whitespace-nowrap text-right">ការបញ្ជាទិញ</th>
+                                    <th class="py-3.5 px-4 whitespace-nowrap text-right">ឃ្លាំងទទួល</th>
+                                    <th class="py-3.5 px-4 whitespace-nowrap text-right">វិក្កយបត្រទារប្រាក់</th>
+                                    <th class="py-3.5 px-4 whitespace-nowrap text-right">ភាពខុសគ្នា</th>
+                                    <th class="py-3.5 px-4 min-w-[200px]">មូលហេតុ និងកំណត់សម្គាល់</th>
+                                    <th class="py-3.5 px-4 text-center whitespace-nowrap w-12">សកម្មភាព</th>
+                                </tr>
+                            </thead>
+                            <tbody id="threewayTableBody" class="divide-y divide-slate-100 text-xs text-slate-700">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Tab 3: Credit Limit Breaches Table View -->
+                <div id="tabContent-credit" class="hidden bg-white rounded-2xl border border-slate-200/80 shadow-xs overflow-hidden">
+                    <div class="p-4 border-b border-slate-100 flex items-center justify-between">
+                        <div>
+                            <h3 class="text-sm font-semibold text-slate-800">បញ្ជីវិក្កយបត្រលក់បំពានដែនកំណត់ឥណទាន</h3>
+                            <p class="text-xs text-slate-400 mt-0.5">ការចេញវិក្កយបត្រជំពាក់ថ្មីជូនអតិថិជនដែលមានបំណុលចាស់លើសពីដែនកំណត់ ឬលើសកាលកំណត់សង</p>
+                        </div>
+                        <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-purple-50 text-purple-700 border border-purple-200">
+                            <i class="fas fa-ban mr-1"></i> លើសពិដានកំណត់
+                        </span>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-slate-50/75 border-b border-slate-200/70 text-[11px] font-semibold text-slate-600 uppercase tracking-wider">
+                                    <th class="py-3.5 px-4 whitespace-nowrap">អតិថិជន និងវិក្កយបត្រ</th>
+                                    <th class="py-3.5 px-4 whitespace-nowrap text-right">តម្លៃវិក្កយបត្រ</th>
+                                    <th class="py-3.5 px-4 whitespace-nowrap text-right">ដែនកំណត់ & បំណុលចាស់</th>
+                                    <th class="py-3.5 px-4 whitespace-nowrap text-right">បំណុលសរុបថ្មី</th>
+                                    <th class="py-3.5 px-4 whitespace-nowrap text-right">ទឹកប្រាក់លើស</th>
+                                    <th class="py-3.5 px-4 whitespace-nowrap">អ្នកចុះហត្ថលេខា</th>
+                                    <th class="py-3.5 px-4 text-center whitespace-nowrap w-12">សកម្មភាព</th>
+                                </tr>
+                            </thead>
+                            <tbody id="creditTableBody" class="divide-y divide-slate-100 text-xs text-slate-700">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Tab 4: Cashier Shift Variances Table View -->
+                <div id="tabContent-cashier" class="hidden bg-white rounded-2xl border border-slate-200/80 shadow-xs overflow-hidden">
+                    <div class="p-4 border-b border-slate-100 flex items-center justify-between">
+                        <div>
+                            <h3 class="text-sm font-semibold text-slate-800">របាយការណ៍ផ្ទៀងផ្ទាត់ការបិទវេនសាច់ប្រាក់</h3>
+                            <p class="text-xs text-slate-400 mt-0.5">ការប្រៀបធៀបសាច់ប្រាក់ជាក់ស្តែងក្នុងថតបេឡា ធៀបនឹងរបាយការណ៍បិទវេនដែលប្រព័ន្ធបានកត់ត្រា</p>
+                        </div>
+                        <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-sky-50 text-sky-700 border border-sky-200">
+                            <i class="fas fa-coins mr-1"></i> សវនកម្មបេឡា
+                        </span>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-slate-50/75 border-b border-slate-200/70 text-[11px] font-semibold text-slate-600 uppercase tracking-wider">
+                                    <th class="py-3.5 px-4 whitespace-nowrap">លេខកូដវេន</th>
+                                    <th class="py-3.5 px-4 whitespace-nowrap">អ្នកគិតប្រាក់ & បញ្ជរ</th>
+                                    <th class="py-3.5 px-4 whitespace-nowrap">កាលបរិច្ឆេទ</th>
+                                    <th class="py-3.5 px-4 whitespace-nowrap text-right">សាច់ប្រាក់ក្នុងប្រព័ន្ធ</th>
+                                    <th class="py-3.5 px-4 whitespace-nowrap text-right">សាច់ប្រាក់ជាក់ស្តែង</th>
+                                    <th class="py-3.5 px-4 whitespace-nowrap text-right">ភាពខុសគ្នា & ស្ថានភាព</th>
+                                    <th class="py-3.5 px-4 text-center whitespace-nowrap w-12">សកម្មភាព</th>
+                                </tr>
+                            </thead>
+                            <tbody id="cashierTableBody" class="divide-y divide-slate-100 text-xs text-slate-700">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Floating Row Action Dropdown Menu (Standard 9) -->
+    <div id="rowActionDropdown" class="fixed hidden bg-white rounded-2xl shadow-xl border border-slate-200 py-1.5 w-56 z-50 transition-opacity duration-150">
+        <div class="px-3.5 py-2 border-b border-slate-100 mb-1">
+            <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider block">សកម្មភាពសវនកម្ម</span>
+            <span id="dropdownItemTitle" class="text-xs font-bold text-slate-800 truncate block mt-0.5"></span>
+        </div>
+
+        <button onclick="handleAuditNote()" class="w-full flex items-center gap-2.5 px-3.5 py-2 text-xs text-slate-700 hover:bg-slate-50 transition text-left cursor-pointer">
+            <div class="w-6 h-6 rounded-lg bg-sky-50 text-sky-600 flex items-center justify-center text-[11px]">
+                <i class="fas fa-note-sticky"></i>
+            </div>
+            <span>កត់ត្រាកំណត់សម្គាល់សវនកម្ម</span>
+        </button>
+
+        <button onclick="handleNotifyExecutive()" class="w-full flex items-center gap-2.5 px-3.5 py-2 text-xs text-slate-700 hover:bg-slate-50 transition text-left cursor-pointer">
+            <div class="w-6 h-6 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center text-[11px]">
+                <i class="fas fa-bell"></i>
+            </div>
+            <span>រាយការណ៍ជូននាយកប្រតិបត្តិ</span>
+        </button>
+
+        <button onclick="handleCopyExceptionCode()" class="w-full flex items-center gap-2.5 px-3.5 py-2 text-xs text-slate-700 hover:bg-slate-50 transition text-left cursor-pointer">
+            <div class="w-6 h-6 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center text-[11px]">
+                <i class="fas fa-copy"></i>
+            </div>
+            <span>ចម្លងលេខកូដសម្គាល់</span>
+        </button>
+
+        <button onclick="handleExportExceptionEvidence()" class="w-full flex items-center gap-2.5 px-3.5 py-2 text-xs text-slate-700 hover:bg-slate-50 transition text-left cursor-pointer border-t border-slate-100 mt-1">
+            <div class="w-6 h-6 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center text-[11px]">
+                <i class="fas fa-file-shield"></i>
+            </div>
+            <span>ទាញយករបាយការណ៍ភស្តុតាង</span>
+        </button>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../shared/scripts/ui-components.js"></script>
+    <script src="data.js"></script>
+    <script src="../../shared/scripts/portal.js"></script>
+    <script>
+        let currentTab = 'sod';
+        let activeExceptionId = null;
+        let activeExceptionTitle = '';
+
+        function switchTab(tabId) {
+            currentTab = tabId;
+            const tabs = ['sod', 'threeway', 'credit', 'cashier'];
+            tabs.forEach(t => {
+                const btn = document.getElementById(`tabBtn-${t}`);
+                const content = document.getElementById(`tabContent-${t}`);
+                if (t === tabId) {
+                    btn.className = 'px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition cursor-pointer bg-[#1e3a5f] text-white shadow-xs';
+                    const badge = btn.querySelector('span:last-child');
+                    if (badge) badge.className = 'px-1.5 py-0.5 rounded-full text-[10px] bg-white/20 text-white font-mono';
+                    content.classList.remove('hidden');
+                } else {
+                    btn.className = 'px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition cursor-pointer text-slate-600 hover:bg-slate-100';
+                    const badge = btn.querySelector('span:last-child');
+                    if (badge) badge.className = 'px-1.5 py-0.5 rounded-full text-[10px] bg-slate-200 text-slate-700 font-mono';
+                    content.classList.add('hidden');
+                }
+            });
+        }
+
+        function renderInternalControls() {
+            const exp = BMS_IA.getComplianceExceptions();
+
+            // 1. Render SoD Violations Table
+            const sodBody = document.getElementById('sodTableBody');
+            if (sodBody && exp.sodViolations) {
+                sodBody.innerHTML = exp.sodViolations.map(s => `
+                    <tr class="hover:bg-slate-50/70 transition">
+                        <td class="py-3 px-4 whitespace-nowrap font-mono font-semibold text-[#1e3a5f]">
+                            ${s.id}
+                        </td>
+                        <td class="py-3 px-4">
+                            <div class="font-medium text-slate-800 leading-snug">${s.title}</div>
+                            <div class="text-[12px] text-slate-500 mt-1 flex items-start gap-1.5 leading-relaxed">
+                                <i class="fas fa-file-shield text-slate-400 mt-0.5 flex-shrink-0 text-[11px]"></i>
+                                <span>${s.evidence}</span>
+                            </div>
+                        </td>
+                        <td class="py-3 px-4 whitespace-nowrap">
+                            <div class="font-medium text-slate-800 leading-tight">${s.actor}</div>
+                            <div class="text-[11px] text-slate-400 mt-0.5 leading-tight">${s.actorRole} • <span class="text-slate-600 font-normal">${s.category}</span></div>
+                        </td>
+                        <td class="py-3 px-4 whitespace-nowrap text-slate-500 font-mono text-[11px]">
+                            ${s.detectedAt}
+                        </td>
+                        <td class="py-3 px-4 whitespace-nowrap">
+                            <span class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-rose-50 text-rose-700 border border-rose-200 inline-flex items-center gap-1">
+                                <i class="fas fa-shield-virus text-[10px]"></i>
+                                <span>ហានិភ័យខ្ពស់</span>
+                            </span>
+                        </td>
+                        <td class="py-3 px-4 text-center whitespace-nowrap">
+                            <button onclick="openRowAction(event, '${s.id}', '${s.id} - ${s.title.slice(0, 20)}...')"
+                                class="w-8 h-8 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-slate-100 flex items-center justify-center transition cursor-pointer mx-auto"
+                                title="សកម្មភាព">
+                                <i class="fas fa-ellipsis-vertical text-sm"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `).join('');
+            }
+
+            // 2. Render 3-Way Mismatches Table
+            const threeWayBody = document.getElementById('threewayTableBody');
+            if (threeWayBody && exp.threeWayMismatches) {
+                threeWayBody.innerHTML = exp.threeWayMismatches.map(m => `
+                    <tr class="hover:bg-slate-50/70 transition">
+                        <td class="py-3 px-4 whitespace-nowrap">
+                            <div class="font-medium text-slate-800 leading-tight">${m.supplierName}</div>
+                            <div class="font-mono text-xs text-[#1e3a5f] font-semibold mt-0.5">${m.poCode} <span class="text-slate-400 font-normal">• ${m.grnCode} • ${m.billCode}</span></div>
+                        </td>
+                        <td class="py-3 px-4 whitespace-nowrap text-right font-mono text-xs">
+                            <div>${m.poQty} គ្រឿង</div>
+                            <div class="text-slate-400 text-[10px]">$${m.poAmount.toLocaleString('en-US', {minimumFractionDigits: 2})}</div>
+                        </td>
+                        <td class="py-3 px-4 whitespace-nowrap text-right font-mono text-xs text-rose-600 font-semibold">
+                            ${m.grnQty} គ្រឿង
+                        </td>
+                        <td class="py-3 px-4 whitespace-nowrap text-right font-mono text-xs">
+                            <div>${m.billQty} គ្រឿង</div>
+                            <div class="text-slate-800 text-[11px] font-medium">$${m.billAmount.toLocaleString('en-US', {minimumFractionDigits: 2})}</div>
+                        </td>
+                        <td class="py-3 px-4 whitespace-nowrap text-right font-mono text-xs text-rose-600 font-bold">
+                            <div>${m.varianceQty !== 0 ? m.varianceQty + ' គ្រឿង' : '-'}</div>
+                            <div>+$${m.varianceAmount.toLocaleString('en-US', {minimumFractionDigits: 2})}</div>
+                        </td>
+                        <td class="py-3 px-4 text-xs text-slate-600 leading-snug">
+                            ${m.note}
+                        </td>
+                        <td class="py-3 px-4 text-center whitespace-nowrap">
+                            <button onclick="openRowAction(event, '${m.id}', '${m.poCode}')"
+                                class="w-8 h-8 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-slate-100 flex items-center justify-center transition cursor-pointer mx-auto"
+                                title="សកម្មភាព">
+                                <i class="fas fa-ellipsis-vertical text-sm"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `).join('');
+            }
+
+            // 3. Render Credit Breaches Table
+            const creditBody = document.getElementById('creditTableBody');
+            if (creditBody && exp.creditBreaches) {
+                creditBody.innerHTML = exp.creditBreaches.map(c => `
+                    <tr class="hover:bg-slate-50/70 transition">
+                        <td class="py-3 px-4 whitespace-nowrap">
+                            <div class="font-medium text-slate-800 leading-tight">${c.customerName}</div>
+                            <div class="text-primary font-mono text-xs font-semibold mt-0.5">${c.invoiceCode}</div>
+                        </td>
+                        <td class="py-3 px-4 whitespace-nowrap text-right font-mono text-xs font-semibold text-slate-800">
+                            $${c.invoiceAmount.toLocaleString('en-US', {minimumFractionDigits: 2})}
+                        </td>
+                        <td class="py-3 px-4 whitespace-nowrap text-right font-mono text-xs">
+                            <div class="text-amber-600 font-medium">$${c.existingDebt.toLocaleString('en-US', {minimumFractionDigits: 2})}</div>
+                            <div class="text-slate-400 text-[10px]">ដែនកំណត់: $${c.creditLimit.toLocaleString('en-US', {minimumFractionDigits: 2})}</div>
+                        </td>
+                        <td class="py-3 px-4 whitespace-nowrap text-right font-mono text-xs font-bold text-slate-900">
+                            $${c.newTotalDebt.toLocaleString('en-US', {minimumFractionDigits: 2})}
+                        </td>
+                        <td class="py-3 px-4 whitespace-nowrap text-right font-mono text-xs text-rose-600 font-bold">
+                            +$${c.exceededAmount.toLocaleString('en-US', {minimumFractionDigits: 2})}
+                        </td>
+                        <td class="py-3 px-4 whitespace-nowrap text-xs text-slate-600">
+                            ${c.approvedBy}
+                        </td>
+                        <td class="py-3 px-4 text-center whitespace-nowrap">
+                            <button onclick="openRowAction(event, '${c.id}', '${c.invoiceCode}')"
+                                class="w-8 h-8 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-slate-100 flex items-center justify-center transition cursor-pointer mx-auto"
+                                title="សកម្មភាព">
+                                <i class="fas fa-ellipsis-vertical text-sm"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `).join('');
+            }
+
+            // 4. Render Cashier Variances Table
+            const cashierBody = document.getElementById('cashierTableBody');
+            if (cashierBody && exp.cashierVariances) {
+                cashierBody.innerHTML = exp.cashierVariances.map(v => {
+                    const isShort = v.variance < 0;
+                    const diffText = isShort 
+                        ? `-$${Math.abs(v.variance).toFixed(2)}`
+                        : `+$${v.variance.toFixed(2)}`;
+                    const statusBadge = isShort
+                        ? '<span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-rose-50 text-rose-700 border border-rose-200">ខ្វះសាច់ប្រាក់</span>'
+                        : '<span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">លើសសាច់ប្រាក់</span>';
+
+                    return `
+                        <tr class="hover:bg-slate-50/70 transition">
+                            <td class="py-3 px-4 whitespace-nowrap font-mono font-semibold text-[#1e3a5f]">
+                                ${v.shiftCode}
+                            </td>
+                            <td class="py-3 px-4 whitespace-nowrap">
+                                <div class="font-medium text-slate-800 leading-tight">${v.cashierName}</div>
+                                <div class="text-slate-400 text-[11px] mt-0.5 leading-tight">${v.terminal}</div>
+                            </td>
+                            <td class="py-3 px-4 whitespace-nowrap font-mono text-[11px] text-slate-500">
+                                ${v.shiftDate}
+                            </td>
+                            <td class="py-3 px-4 whitespace-nowrap text-right font-mono text-xs text-slate-600">
+                                $${v.expectedCash.toLocaleString('en-US', {minimumFractionDigits: 2})}
+                            </td>
+                            <td class="py-3 px-4 whitespace-nowrap text-right font-mono text-xs font-semibold text-slate-800">
+                                $${v.actualCash.toLocaleString('en-US', {minimumFractionDigits: 2})}
+                            </td>
+                            <td class="py-3 px-4 whitespace-nowrap text-right">
+                                <div class="font-mono text-xs font-bold ${isShort ? 'text-rose-600' : 'text-emerald-600'}">${diffText}</div>
+                                <div class="mt-0.5">${statusBadge}</div>
+                            </td>
+                            <td class="py-3 px-4 text-center whitespace-nowrap">
+                                <button onclick="openRowAction(event, '${v.id}', '${v.shiftCode}')"
+                                    class="w-8 h-8 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-slate-100 flex items-center justify-center transition cursor-pointer mx-auto"
+                                    title="សកម្មភាព">
+                                    <i class="fas fa-ellipsis-vertical text-sm"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    `;
+                }).join('');
+            }
+        }
+
+        // Row Action Dropdown Handling
+        function openRowAction(event, id, title) {
+            event.stopPropagation();
+            activeExceptionId = id;
+            activeExceptionTitle = title;
+
+            const dropdown = document.getElementById('rowActionDropdown');
+            document.getElementById('dropdownItemTitle').textContent = title;
+
+            const btnRect = event.currentTarget.getBoundingClientRect();
+            dropdown.style.top = `${btnRect.bottom + window.scrollY + 4}px`;
+            dropdown.style.left = `${btnRect.right - 224}px`;
+            dropdown.classList.remove('hidden');
+        }
+
+        function closeDropdown() {
+            const dropdown = document.getElementById('rowActionDropdown');
+            if (dropdown) dropdown.classList.add('hidden');
+        }
+
+        document.addEventListener('click', closeDropdown);
+
+        function handleAuditNote() {
+            closeDropdown();
+            showCustomConfirm({
+                title: 'កត់ត្រាកំណត់សម្គាល់សវនកម្ម',
+                message: `លោកអ្នកកំពុងកត់ត្រាកំណត់សម្គាល់សម្រាប់ការត្រួតពិនិត្យករណី ${activeExceptionTitle}។ ប្រព័ន្ធនឹងរក្សាទុកក្នុងកំណត់ហេតុសវនកម្មដោយស្វ័យប្រវត្តិ។`,
+                confirmText: 'រក្សាទុកកំណត់សម្គាល់',
+                confirmClass: 'bg-[#1e3a5f] text-white',
+                onConfirm: () => {
+                    showToast('បានកត់ត្រាកំណត់សម្គាល់សវនកម្មដោយជោគជ័យ!', 'success');
+                }
+            });
+        }
+
+        function handleNotifyExecutive() {
+            closeDropdown();
+            showCustomConfirm({
+                title: 'រាយការណ៍ជូននាយកប្រតិបត្តិ',
+                message: `តើលោកអ្នកចង់ផ្ញើរបាយការណ៍ហានិភ័យបន្ទាន់អំពី ${activeExceptionTitle} ទៅកាន់នាយកប្រតិបត្តិ និងក្រុមប្រឹក្សាភិបាលមែនទេ?`,
+                confirmText: 'ផ្ញើរបាយការណ៍',
+                confirmClass: 'bg-rose-600 text-white',
+                onConfirm: () => {
+                    showToast('បានផ្ញើដំណឹងរាយការណ៍ហានិភ័យបន្ទាន់រួចរាល់!', 'success');
+                }
+            });
+        }
+
+        function handleCopyExceptionCode() {
+            closeDropdown();
+            if (activeExceptionId && navigator.clipboard) {
+                navigator.clipboard.writeText(activeExceptionId);
+            }
+            showToast(`បានចម្លងលេខកូដ ${activeExceptionId} ដោយជោគជ័យ!`, 'success');
+        }
+
+        function handleExportExceptionEvidence() {
+            closeDropdown();
+            showToast(`កំពុងទាញយកឯកសារភស្តុតាងសម្រាប់ ${activeExceptionId}...`, 'info');
+        }
+
+        function initInternalControls() {
+            try {
+                if (typeof renderPortalSidebar === 'function') {
+                    renderPortalSidebar();
+                }
+            } catch (e) {
+                console.error('Sidebar render error:', e);
+            }
+            try {
+                if (typeof renderDateRangePicker === 'function') {
+                    renderDateRangePicker('dateFilterHost');
+                }
+            } catch (e) {
+                console.error('Date picker render error:', e);
+            }
+            try {
+                renderInternalControls();
+            } catch (e) {
+                console.error('Internal controls render error:', e);
+            }
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initInternalControls);
+        } else {
+            initInternalControls();
+        }
+    </script>
+</body>
+</html>

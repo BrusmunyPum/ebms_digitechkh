@@ -141,6 +141,22 @@ const PORTAL_CONFIGS = {
             { id: 'subscriptions', label: 'កញ្ចប់សេវា & ការជាវ', icon: 'mdi:credit-card-outline', href: 'subscriptions/subscriptions.html' },
             { id: 'audit-logs', label: 'កំណត់ហេតុសវនកម្ម', icon: 'mdi:clipboard-text-clock-outline', href: 'audit-logs/audit-logs.html' }
         ]
+    },
+    iaPortal: {
+        title: 'ច្រកសវនករផ្ទៃក្នុង',
+        roleName: 'សវនករផ្ទៃក្នុង / នាយកប្រតិបត្តិ',
+        roleIcon: 'mdi:shield-search',
+        userInitials: 'អស',
+        userName: 'អ៊ុំ សុវណ្ណារ៉ា',
+        userRole: 'សវនករផ្ទៃក្នុងជាន់ខ្ពស់ / នាយកប្រតិបត្តិ',
+        policyNote: 'សិទ្ធិត្រួតពិនិត្យទិន្នន័យសកល (មើលប៉ុណ្ណោះ)។ គ្មានសិទ្ធិកែប្រែប្រតិបត្តិការអាជីវកម្មឡើយ។',
+        nav: [
+            { id: 'dashboard', label: 'ផ្ទាំងគ្រប់គ្រង', icon: 'mdi:view-dashboard-outline', href: 'dashboard.html' },
+            { id: 'audit-logs', label: 'កំណត់ហេតុសវនកម្ម', icon: 'mdi:clipboard-text-clock-outline', href: 'audit-logs.html' },
+            { id: 'internal-controls', label: 'ការគ្រប់គ្រងផ្ទៃក្នុង', icon: 'mdi:shield-alert-outline', href: 'internal-controls.html', alertBadge: true },
+            { id: 'financial-overview', label: 'របាយការណ៍ហិរញ្ញវត្ថុ', icon: 'mdi:finance', href: 'financial-overview.html' },
+            { id: 'reports', label: 'របាយការណ៍សវនកម្ម', icon: 'mdi:file-chart-outline', href: 'reports.html' }
+        ]
     }
 };
 

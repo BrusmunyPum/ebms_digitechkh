@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - ព័ត៌មានលម្អិតសវនកម្មស៊ីជម្រៅ</title>
+    <link rel="icon" type="image/png" href="../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1e3a5f",
+                        'primary-dark': "#142842",
+                        accent: "#0ea5e9",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../shared/styles/custom.css">
+    <link rel="stylesheet" href="../../shared/styles/portal.css">
+</head>
+<body id="iaPortal" data-role-root="." data-active="audit-logs" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <!-- Unified Sidebar Runtime -->
+    <div id="sidebarHost"></div>
+
+    <!-- Main Content Wrapper -->
+    <div class="flex-1 flex flex-col min-w-0 h-screen overflow-hidden">
+
+        <!-- Top Header (Standard 2 & 5: Unified Back Button & Header Alignment) -->
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-xs z-10 flex-shrink-0 w-full border-b border-slate-200/70">
+            <div class="flex items-center gap-4">
+                <!-- Standard 5: Unified Icon-Only Back Button -->
+                <a href="audit-logs.html" 
+                   class="w-10 h-10 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-600 flex items-center justify-center transition border border-slate-200/70 cursor-pointer" 
+                   title="ត្រឡប់ទៅបញ្ជីកំណត់ហេតុសវនកម្ម">
+                    <i class="fas fa-arrow-left text-sm"></i>
+                </a>
+                <div>
+                    <h2 class="text-xl font-semibold text-gray-800 leading-tight">ព័ត៌មានលម្អិតសវនកម្មស៊ីជម្រៅ</h2>
+                    <p class="text-xs font-normal text-gray-500 mt-0.5">
+                        លេខកូដសវនកម្ម: <strong id="headerAuditId" class="text-primary font-mono font-semibold">#AUD-2026-0042</strong> • កំណត់ហេតុមិនអាចកែប្រែបានឡើយ
+                    </p>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-2.5">
+                <button onclick="handleCopyCurrentId()" 
+                    class="h-9 px-3.5 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 text-xs font-medium rounded-xl flex items-center gap-1.5 shadow-xs transition cursor-pointer">
+                    <i class="fas fa-copy text-xs text-slate-500"></i>
+                    <span>ចម្លងលេខកូដ</span>
+                </button>
+
+                <button onclick="window.print()" 
+                    class="h-9 px-3.5 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 text-xs font-medium rounded-xl flex items-center gap-1.5 shadow-xs transition cursor-pointer">
+                    <i class="fas fa-print text-xs text-slate-500"></i>
+                    <span>បោះពុម្ពភស្តុតាង</span>
+                </button>
+
+                <div class="flex items-center sm:border-l sm:pl-3">
+                    <div class="w-10 h-10 rounded-full bg-[#1e3a5f] text-white flex items-center justify-center font-semibold text-sm shadow-sm" title="អ៊ុំ សុវណ្ណារ៉ា (សវនករផ្ទៃក្នុងជាន់ខ្ពស់)">
+                        អស
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area (Standard 8: w-full) -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-5">
+            <div class="w-full space-y-5">
+
+                <!-- Audit Banner Alert (if suspicious) -->
+                <div id="suspiciousAlertBox" class="p-4 rounded-2xl bg-rose-50 border border-rose-200 flex items-start justify-between gap-3 shadow-xs">
+                    <div class="flex items-start gap-3">
+                        <div class="w-9 h-9 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center text-base flex-shrink-0 mt-0.5">
+                            <i class="fas fa-shield-virus"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-rose-900">សកម្មភាពត្រូវបានប្រព័ន្ធដាក់ទង់រំលេចថា «គួរឱ្យសង្ស័យខ្ពស់»</h4>
+                            <p class="text-xs text-rose-700 mt-0.5 leading-relaxed" id="suspiciousDesc">
+                                ការបញ្ចុះតម្លៃពិសេស 25% ត្រូវបានអនុវត្តលើសពីដែនកំណត់ 5% ដោយគ្មានការចុះហត្ថលេខាយល់ព្រមពីអភិបាលទូទៅឡើយ។
+                            </p>
+                        </div>
+                    </div>
+                    <span class="px-2.5 py-1 rounded-full text-xs font-bold bg-rose-200 text-rose-800 flex-shrink-0">
+                        ហានិភ័យខ្ពស់
+                    </span>
+                </div>
+
+                <!-- 2-Column Forensic Layout -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+
+                    <!-- Left: Chronological Visual Diff & Evidence Timeline (2 cols / 65%) -->
+                    <div class="lg:col-span-2 space-y-5">
+
+                        <!-- Card 1: Event Identification & Metadata -->
+                        <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs space-y-4">
+                            <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-8 h-8 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-sm font-semibold">
+                                        <i class="fas fa-fingerprint"></i>
+                                    </div>
+                                    <h3 class="text-sm font-semibold text-slate-800">អត្តសញ្ញាណព្រឹត្តិការណ៍សវនកម្ម</h3>
+                                </div>
+                                <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200 flex items-center gap-1.5">
+                                    <i class="fas fa-lock text-[10px]"></i>
+                                    <span>ទិន្នន័យចាក់សោរមិនអាចលុបបាន</span>
+                                </span>
+                            </div>
+
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 text-xs">
+                                <div>
+                                    <span class="text-slate-400 block mb-0.5">លេខកូដសវនកម្ម</span>
+                                    <span class="font-mono font-bold text-slate-800 text-sm" id="detailAuditId">#AUD-2026-0042</span>
+                                </div>
+                                <div>
+                                    <span class="text-slate-400 block mb-0.5">កាលបរិច្ឆេទ & ម៉ោងជាក់ស្តែង</span>
+                                    <span class="font-mono text-slate-700" id="detailTimestamp">23 កញ្ញា 2026, 14:23:05</span>
+                                </div>
+                                <div>
+                                    <span class="text-slate-400 block mb-0.5">ផ្នែក / ម៉ូឌុល</span>
+                                    <span class="px-2 py-0.5 rounded bg-slate-100 text-slate-700 font-medium inline-block" id="detailModule">ផ្នែកលក់</span>
+                                </div>
+                                <div>
+                                    <span class="text-slate-400 block mb-0.5">ប្រភេទសកម្មភាព</span>
+                                    <span class="px-2 py-0.5 rounded bg-sky-50 text-sky-700 border border-sky-200 font-semibold inline-block" id="detailAction">កែប្រែទិន្នន័យ</span>
+                                </div>
+                                <div>
+                                    <span class="text-slate-400 block mb-0.5">លេខកូដឯកសារយោង</span>
+                                    <span class="font-mono font-bold text-primary inline-block" id="detailRefCode">INV-2026-0120</span>
+                                </div>
+                                <div>
+                                    <span class="text-slate-400 block mb-0.5">អាសយដ្ឋាន IP អ្នកប្រតិបត្តិ</span>
+                                    <span class="font-mono text-slate-700 flex items-center gap-1">
+                                        <i class="fas fa-network-wired text-[10px] text-slate-400"></i>
+                                        <span id="detailIpAddress">192.168.1.45</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: Visual Comparison (Before vs After) -->
+                        <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs space-y-4">
+                            <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-8 h-8 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-sm font-semibold">
+                                        <i class="fas fa-code-compare"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-sm font-semibold text-slate-800">ការប្រៀបធៀបបម្រែបម្រួលទិន្នន័យ</h3>
+                                        <p class="text-[11px] text-slate-400 mt-0.5">ប្រៀបធៀបទិន្នន័យដើមមុនពេលកែប្រែ ធៀបនឹងទិន្នន័យថ្មីក្រោយពេលកែប្រែ</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <!-- Old Value (Before Edit) -->
+                                <div class="p-4 rounded-xl bg-rose-50/50 border border-rose-200 space-y-2">
+                                    <div class="flex items-center justify-between text-xs pb-2 border-b border-rose-200/70">
+                                        <span class="font-bold text-rose-800 flex items-center gap-1.5">
+                                            <i class="fas fa-circle-minus text-rose-500"></i>
+                                            <span>ទិន្នន័យដើមមុនពេលកែប្រែ</span>
+                                        </span>
+                                        <span class="text-[10px] text-rose-600 font-mono">ស្ថានភាពចាស់</span>
+                                    </div>
+                                    <div class="p-3 bg-white rounded-lg border border-rose-100 font-mono text-xs text-rose-900 leading-relaxed" id="detailOldValue">
+                                        បញ្ចុះតម្លៃ 5.0% ($50.00) • ទឹកប្រាក់សរុប $950.00
+                                    </div>
+                                    <div class="text-[11px] text-rose-700">
+                                        <span>• ការបញ្ចុះតម្លៃក្នុងដែនកំណត់អនុញ្ញាត (5%)</span>
+                                    </div>
+                                </div>
+
+                                <!-- New Value (After Edit) -->
+                                <div class="p-4 rounded-xl bg-emerald-50/50 border border-emerald-200 space-y-2">
+                                    <div class="flex items-center justify-between text-xs pb-2 border-b border-emerald-200/70">
+                                        <span class="font-bold text-emerald-800 flex items-center gap-1.5">
+                                            <i class="fas fa-circle-plus text-emerald-500"></i>
+                                            <span>ទិន្នន័យថ្មីក្រោយពេលកែប្រែ</span>
+                                        </span>
+                                        <span class="text-[10px] text-emerald-600 font-mono">ស្ថានភាពថ្មី</span>
+                                    </div>
+                                    <div class="p-3 bg-white rounded-lg border border-emerald-100 font-mono text-xs text-emerald-900 leading-relaxed font-semibold" id="detailNewValue">
+                                        បញ្ចុះតម្លៃ 25.0% ($250.00) • ទឹកប្រាក់សរុប $750.00
+                                    </div>
+                                    <div class="text-[11px] text-emerald-700">
+                                        <span>• កាត់បន្ថយចំណូលក្រុមហ៊ុន -$200.00 ដោយផ្ទាល់</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Summary Change Callout -->
+                            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-700 flex items-start gap-2.5">
+                                <i class="fas fa-circle-info text-primary mt-0.5 flex-shrink-0"></i>
+                                <div>
+                                    <span class="font-semibold text-slate-800 block">សេចក្តីសង្ខេបនៃបម្រែបម្រួល:</span>
+                                    <span id="detailSummaryText" class="text-slate-600">កែប្រែបញ្ចុះតម្លៃពី 5.0% ទៅ 25.0% (ទឹកប្រាក់ -$250.00)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: Cryptographic Integrity & Hash Block -->
+                        <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs space-y-3">
+                            <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+                                <h3 class="text-sm font-semibold text-slate-800">ការផ្ទៀងផ្ទាត់សុចរិតភាពទិន្នន័យ</h3>
+                                <span class="text-[11px] text-emerald-600 font-semibold flex items-center gap-1">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>សុចរិតភាព ១០០%</span>
+                                </span>
+                            </div>
+                            <div class="space-y-2 text-xs">
+                                <div>
+                                    <span class="text-slate-400 block text-[11px]">ហត្ថលេខាសម្ងាត់កូដ SHA-256:</span>
+                                    <code class="block p-2 bg-slate-100 rounded-lg text-slate-800 font-mono text-[10px] break-all border border-slate-200">
+                                        e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855b7218698
+                                    </code>
+                                </div>
+                                <div>
+                                    <span class="text-slate-400 block text-[11px]">ហត្ថលេខាសម្ងាត់ប្លុកមុន:</span>
+                                    <code class="block p-2 bg-slate-100 rounded-lg text-slate-500 font-mono text-[10px] break-all border border-slate-200">
+                                        8f434346648f6b96df89dda901c5176b10a6d83961dd3c1ac88b59b2dc327aa490184712
+                                    </code>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Right: Entity & Compliance Profile (1 col / 35%) -->
+                    <div class="space-y-5">
+
+                        <!-- Card 1: User Profile & Risk Level -->
+                        <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs space-y-4">
+                            <h3 class="text-sm font-semibold text-slate-800 pb-2 border-b border-slate-100">
+                                ព័ត៌មានបុគ្គលិកប្រតិបត្តិ
+                            </h3>
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-2xl bg-[#1e3a5f] text-white flex items-center justify-center font-bold text-base shadow-sm" id="detailUserAvatar">
+                                    ហវ
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-800" id="detailUserName">ហេង វិច្ឆិកា</h4>
+                                    <p class="text-xs text-slate-400" id="detailUserRole">បុគ្គលិកផ្នែកលក់</p>
+                                    <span class="text-[10px] text-primary font-medium">សាខាកណ្តាល (រាជធានីភ្នំពេញ)</span>
+                                </div>
+                            </div>
+
+                            <div class="pt-2 border-t border-slate-100 space-y-2 text-xs">
+                                <div class="flex justify-between">
+                                    <span class="text-slate-500">កម្រិតហានិភ័យបុគ្គលិក:</span>
+                                    <span class="font-semibold text-amber-600">មធ្យម (2 ករណីបំពាន)</span>
+                                </div>
+                                <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+                                    <div class="bg-amber-500 h-2 rounded-full" style="width: 45%"></div>
+                                </div>
+                                <div class="flex justify-between text-[11px] text-slate-400 pt-1">
+                                    <span>ព្រឹត្តិការណ៍សរុបក្នុងខែនេះ:</span>
+                                    <strong class="text-slate-700">128 ប្រតិបត្តិការ</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: Document Context -->
+                        <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs space-y-3">
+                            <h3 class="text-sm font-semibold text-slate-800 pb-2 border-b border-slate-100">
+                                ឯកសារយោងអាជីវកម្ម
+                            </h3>
+                            <div class="space-y-2 text-xs text-slate-600">
+                                <div class="flex justify-between py-1 border-b border-slate-50">
+                                    <span class="text-slate-400">ប្រភេទឯកសារ:</span>
+                                    <span class="font-medium text-slate-800">វិក្កយបត្រលក់</span>
+                                </div>
+                                <div class="flex justify-between py-1 border-b border-slate-50">
+                                    <span class="text-slate-400">លេខកូដ:</span>
+                                    <span class="font-mono font-bold text-primary" id="sideRefCode">INV-2026-0120</span>
+                                </div>
+                                <div class="flex justify-between py-1 border-b border-slate-50">
+                                    <span class="text-slate-400">អតិថិជន:</span>
+                                    <span class="font-medium text-slate-800">ក្រុមហ៊ុន សុវណ្ណភូមិ ត្រេឌីង</span>
+                                </div>
+                                <div class="flex justify-between py-1 border-b border-slate-50">
+                                    <span class="text-slate-400">តម្លៃសរុបចុងក្រោយ:</span>
+                                    <span class="font-mono font-bold text-slate-900">$750.00</span>
+                                </div>
+                            </div>
+
+                            <div class="pt-2">
+                                <button onclick="handleInspectSourceDoc()" 
+                                    class="w-full py-2 px-3 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 text-xs font-semibold flex items-center justify-center gap-1.5 transition cursor-pointer">
+                                    <i class="fas fa-file-invoice text-xs text-primary"></i>
+                                    <span>បើកមើលឯកសារវិក្កយបត្រដើម</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: Auditor Verification Sign-off Box -->
+                        <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs space-y-3">
+                            <h3 class="text-sm font-semibold text-slate-800 pb-2 border-b border-slate-100">
+                                ការត្រួតពិនិត្យរបស់សវនករ
+                            </h3>
+                            <div class="space-y-2 text-xs text-slate-600">
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="checkbox" checked disabled class="rounded text-primary focus:ring-0">
+                                    <span>បានផ្ទៀងផ្ទាត់ទិន្នន័យចាស់ និងថ្មី</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="checkbox" checked disabled class="rounded text-primary focus:ring-0">
+                                    <span>បានផ្ទៀងផ្ទាត់អាសយដ្ឋាន IP និងម៉ោង</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="checkbox" id="chkManagerConfirm" class="rounded text-primary focus:ring-0">
+                                    <span>បានទាក់ទងសួរនាំអ្នកគ្រប់គ្រងផ្ទាល់</span>
+                                </label>
+                            </div>
+
+                            <div class="pt-3 border-t border-slate-100">
+                                <div class="p-3 rounded-xl bg-slate-50 border border-slate-200/70 text-center">
+                                    <span class="text-[10px] text-slate-400 block uppercase tracking-wider">សវនករទទួលបន្ទុកពិនិត្យ</span>
+                                    <span class="text-xs font-bold text-slate-800 block mt-0.5">អ៊ុំ សុវណ្ណារ៉ា</span>
+                                    <span class="text-[10px] text-slate-500">សវនករផ្ទៃក្នុងជាន់ខ្ពស់ / នាយកប្រតិបត្តិ</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../shared/scripts/ui-components.js"></script>
+    <script src="data.js"></script>
+    <script src="../../shared/scripts/portal.js"></script>
+    <script>
+        let currentAuditId = 'AUD-2026-0042';
+
+        function loadAuditDetail() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const paramId = urlParams.get('id');
+            if (paramId) {
+                currentAuditId = paramId;
+            }
+
+            const log = BMS_IA.getAuditLogById(currentAuditId) || BMS_IA.getAuditLogs()[0];
+            if (!log) return;
+
+            // Populate Header & ID
+            document.getElementById('headerAuditId').textContent = log.id;
+            document.getElementById('detailAuditId').textContent = log.id;
+            document.getElementById('detailTimestamp').textContent = log.timestamp;
+            document.getElementById('detailModule').textContent = log.moduleKh;
+            document.getElementById('detailAction').textContent = log.actionKh;
+            document.getElementById('detailRefCode').textContent = log.refCode;
+            document.getElementById('sideRefCode').textContent = log.refCode;
+            document.getElementById('detailIpAddress').textContent = log.ipAddress;
+
+            // Visual Diff
+            document.getElementById('detailOldValue').textContent = log.oldValue;
+            document.getElementById('detailNewValue').textContent = log.newValue;
+            document.getElementById('detailSummaryText').textContent = log.diffSummary;
+
+            // User Profile
+            document.getElementById('detailUserName').textContent = log.user;
+            document.getElementById('detailUserRole').textContent = log.role;
+            document.getElementById('detailUserAvatar').textContent = log.avatar;
+
+            // Suspicious Box toggle
+            const suspBox = document.getElementById('suspiciousAlertBox');
+            if (suspBox) {
+                if (log.isSuspicious) {
+                    suspBox.classList.remove('hidden');
+                    document.getElementById('suspiciousDesc').textContent = log.diffSummary;
+                } else {
+                    suspBox.classList.add('hidden');
+                }
+            }
+        }
+
+        function handleCopyCurrentId() {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(currentAuditId);
+            }
+            showToast(`បានចម្លងលេខកូដសវនកម្ម ${currentAuditId} ដោយជោគជ័យ!`, 'success');
+        }
+
+        function handleInspectSourceDoc() {
+            showToast('កំពុងបើកមើលឯកសារយោងក្នុងរបៀបមើលទិន្នន័យតែមួយគត់...', 'info');
+        }
+
+        function initViewAuditDetail() {
+            try {
+                if (typeof renderPortalSidebar === 'function') {
+                    renderPortalSidebar();
+                }
+            } catch (e) {
+                console.error('Sidebar render error:', e);
+            }
+            try {
+                loadAuditDetail();
+            } catch (e) {
+                console.error('Audit detail load error:', e);
+            }
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initViewAuditDetail);
+        } else {
+            initViewAuditDetail();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - ផ្ទាំងបញ្ជាការដ្ឋានសវនករផ្ទៃក្នុង និងនាយកប្រតិបត្តិ</title>
+    <link rel="icon" type="image/png" href="../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1e3a5f",
+                        'primary-dark': "#142842",
+                        accent: "#0ea5e9",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../shared/styles/custom.css">
+    <link rel="stylesheet" href="../../shared/styles/portal.css">
+</head>
+<body id="iaPortal" data-role-root="." data-active="dashboard" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <!-- Unified Sidebar Runtime -->
+    <div id="sidebarHost"></div>
+
+    <!-- Main Content Wrapper -->
+    <div class="flex-1 flex flex-col min-w-0 h-screen overflow-hidden">
+
+        <!-- Top Header (Standard 2: h-[72px] px-6) -->
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-xs z-10 flex-shrink-0 w-full border-b border-slate-200/70">
+            <div>
+                <h2 class="text-xl font-semibold text-gray-800 leading-tight">ផ្ទាំងគ្រប់គ្រងសវនកម្ម និងនាយកប្រតិបត្តិ</h2>
+                <p class="text-xs font-normal text-gray-500 mt-0.5">ការត្រួតពិនិត្យសុខភាពអាជីវកម្ម ហានិភ័យប្រតិបត្តិការ និងអនុលោមភាពច្បាប់</p>
+            </div>
+
+            <div class="flex items-center space-x-3">
+                <!-- Unified Date Range Picker (Standard 3) -->
+                <div id="dateFilterHost"></div>
+
+                <div class="flex items-center sm:border-l sm:pl-3">
+                    <div class="w-10 h-10 rounded-full bg-[#1e3a5f] text-white flex items-center justify-center font-semibold text-sm shadow-sm" title="អ៊ុំ សុវណ្ណារ៉ា (សវនករផ្ទៃក្នុងជាន់ខ្ពស់)">
+                        អស
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-5">
+            <div class="w-full space-y-5">
+
+                <!-- Row 1: Executive Key Metrics (5 KPIs) -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5" id="kpiRow">
+                    <!-- Populated dynamically via JS -->
+                </div>
+
+                <!-- Row 2: 12-Month Financial Trend Chart & Red Flags Live Feed -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+                    <!-- 12-Month Financial Chart (2 cols) - Perfect Height, No White Space Void -->
+                    <div class="lg:col-span-2 bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm flex flex-col">
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                            <div>
+                                <h3 class="text-base font-semibold text-slate-800">និន្នាការហិរញ្ញវត្ថុ 12 ខែ</h3>
+                                <p class="text-xs text-slate-400 mt-0.5">ការប្រៀបធៀបចំណូលសរុប ចំណាយប្រតិបត្តិការ និងប្រាក់ចំណេញសុទ្ធ</p>
+                            </div>
+                            <span class="text-xs font-medium px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
+                                <i class="fas fa-arrow-trend-up mr-1"></i> កំណើនចំណូល 14.2%
+                            </span>
+                        </div>
+                        <div id="financialChart" class="w-full flex-1 min-h-[340px]"></div>
+                    </div>
+
+                    <!-- Red Flags & Anomalies Live Feed (1 col) -->
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-8 h-8 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center text-sm font-semibold">
+                                        <i class="fas fa-triangle-exclamation"></i>
+                                    </div>
+                                    <h3 class="text-base font-semibold text-slate-800">សកម្មភាពគួរឱ្យសង្ស័យ</h3>
+                                </div>
+                                <a href="internal-controls.html" class="text-xs text-primary hover:underline font-medium">មើលទាំងអស់ (<span id="redFlagsCountLabel">4</span>)</a>
+                            </div>
+                            <p class="text-xs text-slate-400 mb-3">ភាពមិនប្រក្រតីដែលប្រព័ន្ធបានរកឃើញដោយស្វ័យប្រវត្តិតាមក្បួនហានិភ័យ</p>
+                            <div id="redFlagsList" class="space-y-2.5">
+                                <!-- Populated dynamically -->
+                            </div>
+                        </div>
+
+                        <div class="pt-3 border-t border-slate-100 mt-3 text-right">
+                            <a href="internal-controls.html" class="text-xs text-primary hover:underline font-medium inline-flex items-center gap-1">
+                                <span>ចូលទៅមជ្ឈមណ្ឌលត្រួតពិនិត្យផ្ទៃក្នុង</span>
+                                <i class="fas fa-arrow-right text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 3: Cross-Department Operations Health & Quick Forensic Access -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+                    <!-- Cross-Department Operations Health (2 cols) -->
+                    <div class="lg:col-span-2 bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
+                        <div class="flex items-center justify-between mb-4">
+                            <div>
+                                <h3 class="text-base font-semibold text-slate-800">ស្ថានភាពអនុលោមភាពឆ្លងផ្នែក</h3>
+                                <p class="text-xs text-slate-400 mt-0.5">ការត្រួតពិនិត្យការបែងចែកភារកិច្ច និងសុចរិតភាពនៃលំហូរឯកសារ</p>
+                            </div>
+                            <span class="text-xs px-2.5 py-1 rounded-full bg-slate-100 text-slate-600 font-medium">
+                                ធ្វើបច្ចុប្បន្នភាពជាក់ស្តែង
+                            </span>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/70 space-y-2">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-semibold text-slate-800 text-xs">ផ្នែកលក់: ការបញ្ចុះតម្លៃ និងឥណទាន</span>
+                                    <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-amber-50 text-amber-700 border border-amber-200">មានហានិភ័យ</span>
+                                </div>
+                                <p class="text-[11px] text-slate-500 leading-snug">រកឃើញករណីបញ្ចុះតម្លៃខ្ពស់ 25% គ្មានលិខិតយោង និងការលក់ជំពាក់លើសដែនកំណត់ 1 ករណី។</p>
+                                <div class="pt-1 flex items-center justify-between text-[11px] text-slate-400">
+                                    <span>អត្រាអនុលោមភាព:</span>
+                                    <strong class="text-amber-600 font-bold">92.4%</strong>
+                                </div>
+                            </div>
+
+                            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/70 space-y-2">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-semibold text-slate-800 text-xs">ផ្នែកលទ្ធកម្ម: ការផ្ទៀងផ្ទាត់ 3 ច្រក</span>
+                                    <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-rose-50 text-rose-700 border border-rose-200">ខុសតួលេខ</span>
+                                </div>
+                                <p class="text-[11px] text-slate-500 leading-snug">ភាពមិនស៊ីគ្នារវាងការបញ្ជាទិញចូល និងការទទួលជាក់ស្តែងក្នុងឃ្លាំង ទំហំទឹកប្រាក់ $850.00។</p>
+                                <div class="pt-1 flex items-center justify-between text-[11px] text-slate-400">
+                                    <span>អត្រាអនុលោមភាព:</span>
+                                    <strong class="text-rose-600 font-bold">88.5%</strong>
+                                </div>
+                            </div>
+
+                            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/70 space-y-2">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-semibold text-slate-800 text-xs">ផ្នែកឃ្លាំង: ចលនាស្តុក និងកាត់កង</span>
+                                    <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">ល្អប្រសើរ</span>
+                                </div>
+                                <p class="text-[11px] text-slate-500 leading-snug">ការរាប់ស្តុកជាក់ស្តែងផ្ទៀងផ្ទាត់ត្រឹមត្រូវ 99.2%។ ការកាត់កងទំនិញខូចខាតមានលិខិតអនុម័តគ្រប់គ្រាន់។</p>
+                                <div class="pt-1 flex items-center justify-between text-[11px] text-slate-400">
+                                    <span>ភាពត្រឹមត្រូវនៃស្តុក:</span>
+                                    <strong class="text-emerald-600 font-bold">99.2%</strong>
+                                </div>
+                            </div>
+
+                            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/70 space-y-2">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-semibold text-slate-800 text-xs">ផ្នែកគណនេយ្យ: សារពើពន្ធ និងបិទបញ្ជី</span>
+                                    <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">អនុលោមពេញលេញ</span>
+                                </div>
+                                <p class="text-[11px] text-slate-500 leading-snug">ពន្ធ អតប 10% និងពន្ធកាត់ទុកត្រូវបានផ្ទៀងផ្ទាត់រួចរាល់។ គ្រាគណនេយ្យខែចាស់ៗត្រូវបានចាក់សោរត្រឹមត្រូវ។</p>
+                                <div class="pt-1 flex items-center justify-between text-[11px] text-slate-400">
+                                    <span>អត្រាអនុលោមភាព:</span>
+                                    <strong class="text-emerald-600 font-bold">99.8%</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Forensic Access & Overview (1 col) -->
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-8 h-8 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-sm font-semibold">
+                                        <i class="fas fa-shield-halved"></i>
+                                    </div>
+                                    <h3 class="text-base font-semibold text-slate-800">ច្រកស៊ើបអង្កេតរហ័ស</h3>
+                                </div>
+                            </div>
+                            <p class="text-xs text-slate-400 mb-3">ឧបករណ៍ជំនួយការស៊ើបអង្កេត និងការទាញយករបាយការណ៍សវនកម្មផ្លូវការ</p>
+                            
+                            <div class="space-y-2.5 text-xs">
+                                <a href="audit-logs.html" class="p-3 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-100 flex items-center justify-between transition group">
+                                    <div class="flex items-center gap-2.5">
+                                        <div class="w-7 h-7 rounded-lg bg-sky-50 text-sky-600 flex items-center justify-center">
+                                            <i class="fas fa-list-check"></i>
+                                        </div>
+                                        <div>
+                                            <span class="font-semibold text-slate-800 block group-hover:text-primary transition">កំណត់ហេតុសវនកម្មសកល</span>
+                                            <span class="text-[11px] text-slate-400">តាមដានស្នាមជើងឌីជីថលគ្រប់អ្នកប្រើប្រាស់</span>
+                                        </div>
+                                    </div>
+                                    <i class="fas fa-chevron-right text-slate-300 group-hover:text-primary transition text-xs"></i>
+                                </a>
+
+                                <a href="financial-overview.html" class="p-3 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-100 flex items-center justify-between transition group">
+                                    <div class="flex items-center gap-2.5">
+                                        <div class="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center">
+                                            <i class="fas fa-chart-line"></i>
+                                        </div>
+                                        <div>
+                                            <span class="font-semibold text-slate-800 block group-hover:text-primary transition">របាយការណ៍ហិរញ្ញវត្ថុផ្លូវការ</span>
+                                            <span class="text-[11px] text-slate-400">របាយការណ៍ចំណេញ-ខាត និងតារាងតុល្យការ</span>
+                                        </div>
+                                    </div>
+                                    <i class="fas fa-chevron-right text-slate-300 group-hover:text-primary transition text-xs"></i>
+                                </a>
+
+                                <a href="reports.html" class="p-3 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-100 flex items-center justify-between transition group">
+                                    <div class="flex items-center gap-2.5">
+                                        <div class="w-7 h-7 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center">
+                                            <i class="fas fa-file-pdf"></i>
+                                        </div>
+                                        <div>
+                                            <span class="font-semibold text-slate-800 block group-hover:text-primary transition">ទាញយករបាយការណ៍សវនកម្ម A4</span>
+                                            <span class="text-[11px] text-slate-400">រៀបចំជូនក្រុមប្រឹក្សាភិបាល និងម្ចាស់ក្រុមហ៊ុន</span>
+                                        </div>
+                                    </div>
+                                    <i class="fas fa-chevron-right text-slate-300 group-hover:text-primary transition text-xs"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="pt-3 border-t border-slate-100 mt-4 text-center">
+                            <span class="text-[11px] text-slate-400 flex items-center justify-center gap-1.5">
+                                <i class="fas fa-lock text-[10px]"></i>
+                                <span>របៀបមើលទិន្នន័យតែមួយគត់ • កំណត់ហេតុមិនអាចលុបបាន</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../shared/scripts/ui-components.js"></script>
+    <script src="data.js"></script>
+    <script src="../../shared/scripts/portal.js"></script>
+    <script>
+        function kpiCard(opts) {
+            return `
+                <div class="p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex flex-col justify-between">
+                    <div class="flex items-center justify-between mb-2 gap-2">
+                        <span class="text-xs font-medium text-slate-500">${opts.label}</span>
+                        <div class="w-7 h-7 rounded-lg bg-${opts.tone}-50 text-${opts.tone}-600 flex items-center justify-center text-xs flex-shrink-0">
+                            <i class="fas ${opts.icon}"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800">${opts.value}</h3>
+                    <p class="text-[11px] ${opts.subTone || 'text-slate-500'} mt-1 font-medium">${opts.sub}</p>
+                </div>
+            `;
+        }
+
+        function renderDashboard() {
+            const k = BMS_IA.getKPIs();
+            const redFlags = BMS_IA.getRedFlags();
+
+            // Render 5 KPI Cards
+            const kpiRow = document.getElementById('kpiRow');
+            if (kpiRow) {
+                kpiRow.innerHTML = 
+                    kpiCard({
+                        label: 'ចំណូលសរុប (ខែនេះ)',
+                        icon: 'fa-dollar-sign',
+                        tone: 'emerald',
+                        value: BMS_IA.fmtCurrencyKh(k.revenueMTD),
+                        sub: `+${k.revenueGrowthPct}% ធៀបនឹងខែមុន`,
+                        subTone: 'text-emerald-600'
+                    }) +
+                    kpiCard({
+                        label: 'ប្រាក់ចំណេញសុទ្ធ',
+                        icon: 'fa-chart-line',
+                        tone: 'sky',
+                        value: BMS_IA.fmtCurrencyKh(k.netProfit),
+                        sub: `អត្រាចំណេញសុទ្ធ ${k.netProfitMarginPct}%`,
+                        subTone: 'text-sky-600'
+                    }) +
+                    kpiCard({
+                        label: 'សាច់ប្រាក់ & ធនាគារ',
+                        icon: 'fa-vault',
+                        tone: 'indigo',
+                        value: BMS_IA.fmtCurrencyKh(k.cashLiquidity),
+                        sub: 'សមតុល្យជាក់ស្តែងក្នុងដៃ',
+                        subTone: 'text-indigo-600'
+                    }) +
+                    kpiCard({
+                        label: 'ហានិភ័យសកម្ម',
+                        icon: 'fa-triangle-exclamation',
+                        tone: 'rose',
+                        value: `${k.activeExceptionsCount} <span class="text-xs font-normal text-slate-400">ករណី</span>`,
+                        sub: 'ទាមទារការស៊ើបអង្កេត',
+                        subTone: 'text-rose-600 font-bold'
+                    }) +
+                    kpiCard({
+                        label: 'តម្លៃស្តុកទំនិញសរុប',
+                        icon: 'fa-boxes-stacked',
+                        tone: 'purple',
+                        value: BMS_IA.fmtCurrencyKh(k.inventoryValuation),
+                        sub: 'គណនាតាមថ្លៃដើមមធ្យម',
+                        subTone: 'text-purple-600'
+                    });
+            }
+
+            // Render Red Flags Live Feed (Quick 4)
+            const redFlagsContainer = document.getElementById('redFlagsList');
+            if (redFlagsContainer) {
+                document.getElementById('redFlagsCountLabel').textContent = redFlags.length;
+                redFlagsContainer.innerHTML = redFlags.map(rf => `
+                    <div class="p-3 rounded-xl bg-slate-50 hover:bg-slate-100/80 border border-slate-200/60 transition flex items-center justify-between gap-3">
+                        <div class="min-w-0">
+                            <div class="flex items-center gap-2">
+                                <span class="px-2 py-0.5 rounded text-[10px] font-semibold ${rf.severity === 'critical' ? 'bg-rose-50 text-rose-700 border border-rose-200' : 'bg-amber-50 text-amber-700 border border-amber-200'}">${rf.severityKh}</span>
+                                <span class="text-xs font-semibold text-slate-800 truncate">${rf.code}</span>
+                            </div>
+                            <p class="text-xs text-slate-600 truncate mt-1">${rf.title}</p>
+                            <div class="flex items-center gap-2 mt-1 text-[11px] text-slate-400">
+                                <span>${rf.actor} • ${rf.role}</span>
+                                <span>•</span>
+                                <span class="font-medium text-slate-700">${BMS_IA.fmtCurrencyKh(rf.amount)}</span>
+                            </div>
+                        </div>
+                        <a href="view-audit-detail.html?id=${rf.code}" class="px-2.5 py-1.5 rounded-lg bg-white hover:bg-slate-200 text-primary border border-slate-200 text-xs font-medium transition shadow-xs flex-shrink-0 flex items-center gap-1" title="ស៊ើបអង្កេតលម្អិត">
+                            <span>ពិនិត្យ</span>
+                            <i class="fas fa-chevron-right text-[10px]"></i>
+                        </a>
+                    </div>
+                `).join('');
+            }
+
+            // Setup ECharts (Revenue vs Expense vs Net Profit)
+            const chartDom = document.getElementById('financialChart');
+            if (chartDom) {
+                const myChart = echarts.init(chartDom);
+                const store = BMS_IA.getStore();
+                const m = store.kpis.monthlyChart;
+
+                const option = {
+                    tooltip: {
+                        trigger: 'axis',
+                        textStyle: { fontFamily: 'Kantumruy Pro' }
+                    },
+                    legend: {
+                        data: ['ចំណូលសរុប', 'ចំណាយប្រតិបត្តិការ', 'ចំណេញសុទ្ធ'],
+                        bottom: 0,
+                        textStyle: { fontFamily: 'Kantumruy Pro', fontSize: 11 }
+                    },
+                    grid: { top: 25, left: '2%', right: '3%', bottom: 40, containLabel: true },
+                    xAxis: {
+                        type: 'category',
+                        data: m.months.slice(0, 9),
+                        axisLabel: { fontFamily: 'Kantumruy Pro', fontSize: 11 }
+                    },
+                    yAxis: {
+                        type: 'value',
+                        axisLabel: {
+                            fontFamily: 'Kantumruy Pro',
+                            formatter: '${value}'
+                        }
+                    },
+                    series: [
+                        {
+                            name: 'ចំណូលសរុប',
+                            type: 'bar',
+                            data: m.revenue.slice(0, 9),
+                            itemStyle: { color: '#1e3a5f', borderRadius: [4, 4, 0, 0] }
+                        },
+                        {
+                            name: 'ចំណាយប្រតិបត្តិការ',
+                            type: 'bar',
+                            data: m.expense.slice(0, 9),
+                            itemStyle: { color: '#f59e0b', borderRadius: [4, 4, 0, 0] }
+                        },
+                        {
+                            name: 'ចំណេញសុទ្ធ',
+                            type: 'line',
+                            smooth: true,
+                            data: m.netProfit.slice(0, 9),
+                            itemStyle: { color: '#10b981' },
+                            lineStyle: { width: 3 }
+                        }
+                    ]
+                };
+                myChart.setOption(option);
+                window.addEventListener('resize', () => myChart.resize());
+                if (window.ResizeObserver) {
+                    const ro = new ResizeObserver(() => myChart.resize());
+                    ro.observe(chartDom);
+                }
+            }
+        }
+
+        function initDashboard() {
+            try {
+                if (typeof renderPortalSidebar === 'function') {
+                    renderPortalSidebar();
+                }
+            } catch (e) {
+                console.error('Sidebar render error:', e);
+            }
+            try {
+                if (typeof renderDateRangePicker === 'function') {
+                    renderDateRangePicker('dateFilterHost');
+                }
+            } catch (e) {
+                console.error('Date picker render error:', e);
+            }
+            try {
+                renderDashboard();
+            } catch (e) {
+                console.error('Dashboard render error:', e);
+            }
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initDashboard);
+        } else {
+            initDashboard();
+        }
+    </script>
+</body>
+</html>
