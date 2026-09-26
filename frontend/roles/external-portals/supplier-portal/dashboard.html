@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="km">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - ច្រកអ្នកផ្គត់ផ្គង់ស្វ័យសេវា</title>
+    <link rel="icon" type="image/png" href="../../../shared/assets/favicon.png">
+    <link rel="shortcut icon" type="image/png" href="../../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#0b253a",
+                        'primary-dark': "#071826",
+                        accent: "#0284c7",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../shared/styles/custom.css">
+    <style>
+        #spPortal aside {
+            background-color: #0b253a !important;
+        }
+    </style>
+</head>
+
+<body id="spPortal" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <!-- របារចំហៀងអ្នកផ្គត់ផ្គង់ -->
+    <aside class="w-64 bg-[#0b253a] text-white flex flex-col flex-shrink-0 select-none z-20 border-r border-slate-800">
+        <div class="h-[72px] px-6 flex items-center justify-between border-b border-white/10 flex-shrink-0">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-cyan-500/20 border border-cyan-400/30 flex items-center justify-center p-1 shadow-sm overflow-hidden flex-shrink-0">
+                    <img src="../../../shared/assets/logo-mark-transparent.png" alt="DIGITECHKH" class="w-full h-full object-contain">
+                </div>
+                <div>
+                    <h1 class="text-lg font-semibold tracking-wider whitespace-nowrap text-white">DIGITECHKH</h1>
+                    <span class="text-[11px] font-medium text-cyan-300 uppercase tracking-wider block">អ្នកផ្គត់ផ្គង់</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="px-5 py-3 border-b border-white/5 bg-black/20">
+            <div class="flex items-center justify-between">
+                <span class="text-xs text-slate-300">គណនី:</span>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                    <i class="fas fa-certificate text-[10px]"></i> ដៃគូកម្រិតមាស
+                </span>
+            </div>
+            <div class="mt-1.5 text-xs text-white font-medium truncate" id="sideCompanyName">
+                ក្រុមហ៊ុន ហ៊ុន ត្រេឌីង ឯ.ក
+            </div>
+        </div>
+
+        <nav class="flex-1 overflow-y-auto px-4 py-4 space-y-1.5 scrollbar-hide text-sm">
+            <a href="dashboard.html" class="flex items-center p-3 bg-white/10 text-cyan-300 font-medium rounded-xl shadow-sm transition-all whitespace-nowrap border border-white/10">
+                <i class="fas fa-chart-pie w-6 text-center text-cyan-400"></i>
+                <span class="ml-3 text-[15px]">ទិដ្ឋភាពរួម</span>
+            </a>
+
+            <a href="purchase-orders.html" class="flex items-center p-3 text-slate-300 hover:bg-white/5 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-file-contract w-6 text-center text-slate-400"></i>
+                <span class="ml-3 text-[15px]">ការបញ្ជាទិញ (PO)</span>
+            </a>
+
+            <a href="bills.html" class="flex items-center p-3 text-slate-300 hover:bg-white/5 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-file-invoice-dollar w-6 text-center text-slate-400"></i>
+                <span class="ml-3 text-[15px]">វិក្កយបត្ររបស់ខ្ញុំ</span>
+            </a>
+
+            <a href="delivery-tracking.html" class="flex items-center p-3 text-slate-300 hover:bg-white/5 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-truck-fast w-6 text-center text-slate-400"></i>
+                <span class="ml-3 text-[15px]">តាមដានការដឹកជញ្ជូន</span>
+            </a>
+        </nav>
+
+        <div class="p-4 border-t border-white/10 bg-black/10">
+            <a href="../../00-auth/login.html" class="flex items-center text-[15px] text-slate-300 hover:text-rose-400 transition-colors p-2 rounded-lg hover:bg-white/5">
+                <i class="fas fa-arrow-right-from-bracket w-6 mr-2"></i> ចាកចេញ
+            </a>
+        </div>
+    </aside>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <!-- Content Top Header -->
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div>
+                <h2 class="text-xl font-semibold text-gray-800 leading-tight">ច្រកអ្នកផ្គត់ផ្គង់ស្វ័យសេវា</h2>
+                <p class="text-xs font-normal text-gray-500 mt-0.5" id="welcomeText">សូមស្វាគមន៍ ក្រុមហ៊ុន ហ៊ុន ត្រេឌីង ឯ.ក</p>
+            </div>
+
+            <div class="flex items-center space-x-3">
+                <div class="flex items-center gap-2 bg-amber-50 text-amber-800 px-3 py-1.5 rounded-xl border border-amber-200 text-xs font-semibold">
+                    <i class="fas fa-medal text-amber-500"></i> ដៃគូកម្រិតមាស
+                </div>
+                <div class="flex items-center border-l pl-3">
+                    <div id="userAvatar" class="w-10 h-10 rounded-full bg-[#0b253a] text-cyan-300 flex items-center justify-center font-bold text-sm shadow-sm">ហត</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-4">
+            <div class="w-full space-y-5">
+
+                <!-- KPI Cards Row -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm">
+                        <span class="text-xs font-medium text-slate-500 block mb-1">ការបញ្ជាទិញរង់ចាំឆ្លើយតប</span>
+                        <h3 class="text-2xl font-bold text-amber-600" id="kpiPendingPOs">1</h3>
+                        <p class="text-xs text-slate-400 mt-1">ទាមទារការពិនិត្យ និងទទួលយក</p>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm">
+                        <span class="text-xs font-medium text-slate-500 block mb-1">ទឹកប្រាក់បានទូទាត់រួចក្នុងខែ</span>
+                        <h3 class="text-2xl font-bold text-emerald-600" id="kpiPaidRevenue">$8910.00</h3>
+                        <p class="text-xs text-emerald-600 mt-1 font-semibold">ផ្ទេរចូលគណនី ABA រួច</p>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm">
+                        <span class="text-xs font-medium text-slate-500 block mb-1">ទឹកប្រាក់រង់ចាំបើក</span>
+                        <h3 class="text-2xl font-bold text-primary" id="kpiPendingPayment">$3377.00</h3>
+                        <p class="text-xs text-slate-400 mt-1">វិក្កយបត្រ BILL-2026-0044</p>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm">
+                        <span class="text-xs font-medium text-slate-500 block mb-1">ការដឹកជញ្ជូនសកម្ម</span>
+                        <h3 class="text-2xl font-bold text-sky-600" id="kpiActiveDeliveries">1</h3>
+                        <p class="text-xs text-sky-600 mt-1 font-semibold">កំពុងធ្វើដំណើរទៅឃ្លាំង</p>
+                    </div>
+                </div>
+
+                <!-- Recent Purchase Orders Section -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                    <div class="p-5 border-b border-slate-100 flex items-center justify-between">
+                        <div>
+                            <h3 class="text-base font-semibold text-slate-800">ការបញ្ជាទិញថ្មីៗពី DIGITECHKH</h3>
+                            <p class="text-xs text-slate-500 mt-0.5">សូមពិនិត្យមុខទំនិញ និងចុចទទួលយកដើម្បីដំណើរការរៀបចំទំនិញ</p>
+                        </div>
+                        <a href="purchase-orders.html" class="text-xs font-semibold text-primary hover:text-accent flex items-center gap-1 transition">
+                            <span>មើលទាំងអស់</span>
+                            <i class="fas fa-chevron-right text-[10px]"></i>
+                        </a>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs">
+                            <thead class="bg-slate-50/80 border-b border-slate-200 text-slate-500 font-semibold uppercase text-[11px]">
+                                <tr>
+                                    <th class="py-3 px-4">លេខបញ្ជាទិញ (PO)</th>
+                                    <th class="py-3 px-4">កាលបរិច្ឆេទ</th>
+                                    <th class="py-3 px-4">បរិយាយមុខទំនិញ</th>
+                                    <th class="py-3 px-4 text-right">ទឹកប្រាក់សរុប</th>
+                                    <th class="py-3 px-4 text-center">ស្ថានភាព</th>
+                                    <th class="py-3 px-4 text-center">សកម្មភាព</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recentPOTableBody" class="divide-y divide-slate-100 text-slate-700 font-medium"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Two Column Layout: Invoices & Buyer Info -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+                    <!-- Recent Bills (2 cols) -->
+                    <div class="lg:col-span-2 bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                        <div class="p-5 border-b border-slate-100 flex items-center justify-between">
+                            <h3 class="text-base font-semibold text-slate-800">វិក្កយបត្រថ្មីៗរបស់ខ្ញុំ</h3>
+                            <a href="bills.html" class="text-xs font-semibold text-primary hover:text-accent">មើលទាំងអស់</a>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-xs">
+                                <thead class="bg-slate-50/80 border-b border-slate-200 text-slate-500 font-semibold uppercase text-[11px]">
+                                    <tr>
+                                        <th class="py-3 px-4">លេខវិក្កយបត្រ</th>
+                                        <th class="py-3 px-4">យោងលេខ PO</th>
+                                        <th class="py-3 px-4">កាលបរិច្ឆេទ</th>
+                                        <th class="py-3 px-4 text-right">ទឹកប្រាក់សុទ្ធ</th>
+                                        <th class="py-3 px-4 text-center">ស្ថានភាព</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="recentBillsTableBody" class="divide-y divide-slate-100 text-slate-700 font-medium"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Buyer Contact Card (1 col) -->
+                    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 space-y-4">
+                        <div class="border-b border-slate-100 pb-3">
+                            <h3 class="text-sm font-semibold text-slate-800 flex items-center gap-2">
+                                <i class="fas fa-building text-primary text-xs"></i>
+                                <span>ព័ត៌មានអ្នកទិញ (DIGITECHKH)</span>
+                            </h3>
+                            <p class="text-xs text-slate-500 mt-0.5">ទំនាក់ទំនងផ្នែកលទ្ធកម្ម និងហិរញ្ញវត្ថុ</p>
+                        </div>
+
+                        <div class="space-y-3 text-xs">
+                            <div>
+                                <span class="text-slate-400 block mb-0.5">ឈ្មោះក្រុមហ៊ុន:</span>
+                                <span class="font-bold text-slate-900">ក្រុមហ៊ុន ឌីជីថេក ខេអេច ឯ.ក</span>
+                            </div>
+                            <div>
+                                <span class="text-slate-400 block mb-0.5">អ្នកទំនាក់ទំនងលទ្ធកម្ម:</span>
+                                <span class="font-semibold text-primary">លោក ហុង ដារ៉ា (អ្នកគ្រប់គ្រងលទ្ធកម្ម)</span>
+                            </div>
+                            <div>
+                                <span class="text-slate-400 block mb-0.5">ទូរស័ព្ទ / តេឡេក្រាម:</span>
+                                <span class="font-medium text-slate-800">023 999 888 / 012 999 111</span>
+                            </div>
+                            <div>
+                                <span class="text-slate-400 block mb-0.5">ទីតាំងឃ្លាំងប្រគល់ទំនិញ:</span>
+                                <span class="text-slate-700">អគារ 128 មហាវិថីសហព័ន្ធរុស្ស៊ី រាជធានីភ្នំពេញ</span>
+                            </div>
+                        </div>
+
+                        <div class="pt-3 border-t border-slate-100">
+                            <a href="create-bill.html" class="w-full py-2.5 bg-primary hover:bg-primary-dark text-white rounded-xl text-xs font-semibold flex items-center justify-center gap-2 transition shadow-sm">
+                                <i class="fas fa-plus"></i>
+                                <span>ចេញវិក្កយបត្រថ្មីជូន DIGITECHKH</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../../shared/scripts/ui-components.js"></script>
+    <script src="data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            renderDashboard();
+        });
+
+        function renderDashboard() {
+            const store = getSupplierStore();
+
+            // Set Profile Header
+            document.getElementById('sideCompanyName').innerText = store.profile.companyName;
+            document.getElementById('welcomeText').innerText = `សូមស្វាគមន៍ ${store.profile.companyName} (${store.profile.contactName})`;
+
+            // Set KPIs
+            const pendingPOs = store.purchaseOrders.filter(p => p.status === 'pending').length;
+            const activeDeliveries = store.deliveries.filter(d => d.status === 'in_transit').length;
+
+            document.getElementById('kpiPendingPOs').innerText = pendingPOs;
+            document.getElementById('kpiActiveDeliveries').innerText = activeDeliveries;
+
+            // Render Recent POs
+            const poTbody = document.getElementById('recentPOTableBody');
+            const statusBadges = {
+                pending: '<span class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-amber-50 text-amber-700 border border-amber-200">រង់ចាំការឆ្លើយតប</span>',
+                confirmed: '<span class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">បានទទួលយក</span>',
+                completed: '<span class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-blue-50 text-blue-700 border border-blue-200">បានបញ្ចប់</span>',
+                rejected: '<span class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-rose-50 text-rose-700 border border-rose-200">បានបដិសេធ</span>'
+            };
+
+            poTbody.innerHTML = store.purchaseOrders.slice(0, 3).map(p => `
+                <tr class="hover:bg-slate-50/80 transition-colors">
+                    <td class="py-3 px-4 font-bold text-primary">
+                        <a href="view-po.html?id=${p.id}" class="hover:underline">${p.id}</a>
+                    </td>
+                    <td class="py-3 px-4 text-slate-600">${p.date}</td>
+                    <td class="py-3 px-4 font-medium text-slate-900">${p.description}</td>
+                    <td class="py-3 px-4 text-right font-bold text-slate-900">$${p.totalAmount.toFixed(2)}</td>
+                    <td class="py-3 px-4 text-center">${statusBadges[p.status] || p.status}</td>
+                    <td class="py-3 px-4 text-center">
+                        <div class="flex items-center justify-center gap-1.5">
+                            <a href="view-po.html?id=${p.id}" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs transition">ពិនិត្យ</a>
+                            ${p.status === 'pending' ? `
+                                <button onclick="handleQuickAccept('${p.id}')" class="px-2.5 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs transition">ទទួលយក</button>
+                            ` : ''}
+                        </div>
+                    </td>
+                </tr>
+            `).join('');
+
+            // Render Recent Bills
+            const billsTbody = document.getElementById('recentBillsTableBody');
+            const billStatusBadges = {
+                pending_payment: '<span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-amber-50 text-amber-700 border border-amber-200">រង់ចាំបើកប្រាក់</span>',
+                paid: '<span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">បានទូទាត់រួច</span>'
+            };
+
+            billsTbody.innerHTML = store.bills.map(b => `
+                <tr class="hover:bg-slate-50/80 transition-colors">
+                    <td class="py-3 px-4 font-bold text-primary">${b.id}</td>
+                    <td class="py-3 px-4 text-slate-600">${b.poId}</td>
+                    <td class="py-3 px-4 text-slate-600">${b.date}</td>
+                    <td class="py-3 px-4 text-right font-bold text-slate-900">$${b.netAmount.toFixed(2)}</td>
+                    <td class="py-3 px-4 text-center">${billStatusBadges[b.status] || b.status}</td>
+                </tr>
+            `).join('');
+        }
+
+        function handleQuickAccept(poId) {
+            acceptPO(poId);
+            showToast('បានទទួលយកការបញ្ជាទិញ ' + poId + ' ដោយជោគជ័យ!', 'success');
+            renderDashboard();
+        }
+    </script>
+</body>
+
+</html>

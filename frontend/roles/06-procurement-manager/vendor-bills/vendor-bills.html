@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="km">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - វិក្កយបត្រអ្នកផ្គត់ផ្គង់</title>
+    <link rel="icon" type="image/png" href="../../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1e3a5f",
+                        'primary-dark': "#142842",
+                        accent: "#0ea5e9",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../shared/styles/custom.css">
+    <link rel="stylesheet" href="../../../shared/styles/portal.css">
+</head>
+
+<body id="pmPortal" data-role-root=".." data-active="vendor-bills" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <div id="sidebarHost"></div>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <!-- Content Top Header -->
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div class="min-w-0">
+                <h2 class="text-xl font-semibold text-gray-800 leading-tight truncate">វិក្កយបត្រអ្នកផ្គត់ផ្គង់</h2>
+                <p class="text-xs font-normal text-gray-500 mt-0.5 truncate">ផ្ទៀងផ្ទាត់ 3-Way Matching (PO + GRN ឃ្លាំង + Bill) មុនបញ្ជូនទៅទូទាត់</p>
+            </div>
+
+            <div class="flex items-center space-x-3 flex-shrink-0">
+                <span class="px-3.5 py-1.5 rounded-xl bg-purple-50 text-purple-700 font-semibold text-xs border border-purple-200">
+                    <i class="fas fa-shield-halved mr-1"></i> 3-Way Matching Standard
+                </span>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-4">
+            <div class="w-full space-y-4">
+
+                <!-- Alert Notice for 3-Way Matching Rule -->
+                <div class="bg-blue-50/70 border border-blue-200/80 rounded-2xl p-4 flex items-start gap-3">
+                    <div class="w-8 h-8 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <i class="fas fa-scale-balanced text-sm"></i>
+                    </div>
+                    <div class="text-xs text-blue-900 leading-relaxed">
+                        <span class="font-bold">គោលការណ៍ត្រួតពិនិត្យ 3-Way Matching:</span>
+                        វិក្កយបត្រអ្នកផ្គត់ផ្គង់អាចដាក់ស្នើសុំទូទាត់បាន លុះត្រាតែមានការផ្ទៀងផ្ទាត់ត្រូវគ្នាល្អឥតខ្ចោះរវាង៖
+                        (1) ការបញ្ជាទិញដើម (PO), (2) ប័ណ្ណទទួលទំនិញចូលឃ្លាំង (GRN), និង (3) តម្លៃជាក់ស្តែងលើវិក្កយបត្រ (Vendor Bill)។
+                    </div>
+                </div>
+
+                <!-- Table Card -->
+                <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+                    <div class="p-4 border-b border-slate-100 flex flex-wrap items-center justify-between gap-3">
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-receipt text-slate-400 text-xs"></i>
+                            <span class="text-xs font-semibold text-slate-700">បញ្ជីវិក្កយបត្រទិញចូលទាំងអស់</span>
+                        </div>
+                        <span class="text-xs text-slate-500">សរុប: <strong id="billCount" class="text-slate-800">0</strong> វិក្កយបត្រ</span>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs">
+                            <thead class="bg-slate-50/70 border-b border-slate-200/70 text-slate-500 font-semibold uppercase tracking-wider text-[11px]">
+                                <tr>
+                                    <th class="py-3 px-4">លេខវិក្កយបត្រ</th>
+                                    <th class="py-3 px-4">យោងលេខ PO</th>
+                                    <th class="py-3 px-4">អ្នកផ្គត់ផ្គង់</th>
+                                    <th class="py-3 px-4">កាលបរិច្ឆេទចេញ</th>
+                                    <th class="py-3 px-4">កាលបរិច្ឆេទផុតកំណត់</th>
+                                    <th class="py-3 px-4 text-right">ទឹកប្រាក់សរុប</th>
+                                    <th class="py-3 px-4 text-center">3-Way Match</th>
+                                    <th class="py-3 px-4 text-center">ស្ថានភាព</th>
+                                    <th class="py-3 px-4 text-center">សកម្មភាព</th>
+                                </tr>
+                            </thead>
+                            <tbody id="billTableBody" class="divide-y divide-slate-100 text-slate-700 font-medium"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../../shared/scripts/portal.js"></script>
+    <script src="../../../shared/scripts/ui-components.js"></script>
+    <script src="../data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            renderPortalSidebar();
+            renderBillsTable();
+        });
+
+        function renderBillsTable() {
+            const store = getPMStore();
+            const tbody = document.getElementById('billTableBody');
+            document.getElementById('billCount').innerText = store.vendorBills.length;
+
+            const matchBadges = {
+                matched: '<span class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200 inline-flex items-center gap-1"><i class="fas fa-check-circle"></i> ត្រូវគ្នា 100%</span>',
+                pending_grn: '<span class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-amber-50 text-amber-700 border border-amber-200 inline-flex items-center gap-1"><i class="fas fa-clock"></i> ខ្វះប័ណ្ណឃ្លាំង</span>'
+            };
+
+            const statusBadges = {
+                pending_match: '<span class="px-2 py-0.5 rounded-full text-[11px] bg-amber-50 text-amber-700">រង់ចាំផ្ទៀងផ្ទាត់</span>',
+                matched: '<span class="px-2 py-0.5 rounded-full text-[11px] bg-purple-50 text-purple-700">ផ្ទៀងផ្ទាត់រួច</span>',
+                approved: '<span class="px-2 py-0.5 rounded-full text-[11px] bg-blue-50 text-blue-700">បានអនុម័ត</span>',
+                paid: '<span class="px-2 py-0.5 rounded-full text-[11px] bg-emerald-50 text-emerald-700">បានទូទាត់</span>'
+            };
+
+            tbody.innerHTML = store.vendorBills.map(bill => `
+                <tr class="hover:bg-slate-50/80 transition-colors">
+                    <td class="py-3 px-4 font-bold text-primary">${bill.id}</td>
+                    <td class="py-3 px-4 font-semibold text-slate-600">
+                        <a href="../purchase-orders/view-po.html?id=${bill.poId}" class="hover:underline text-sky-700">${bill.poId}</a>
+                    </td>
+                    <td class="py-3 px-4 font-medium text-slate-800">${bill.supplierName}</td>
+                    <td class="py-3 px-4 text-slate-600">${bill.billDate}</td>
+                    <td class="py-3 px-4 text-slate-600">${bill.dueDate}</td>
+                    <td class="py-3 px-4 text-right font-bold text-slate-800">$${bill.amount.toFixed(2)}</td>
+                    <td class="py-3 px-4 text-center">${matchBadges[bill.threeWayMatch] || bill.threeWayMatch}</td>
+                    <td class="py-3 px-4 text-center">${statusBadges[bill.status] || bill.status}</td>
+                    <td class="py-3 px-4 text-center">
+                        ${bill.threeWayMatch === 'matched' && bill.status === 'matched' ? `
+                            <button type="button" onclick="requestDisbursement('${bill.id}')" class="px-3 py-1 rounded-lg bg-primary hover:bg-[#142842] text-white text-[11px] font-medium transition shadow-sm">
+                                ស្នើសុំទូទាត់
+                            </button>
+                        ` : bill.status === 'paid' ? `
+                            <span class="text-emerald-600 font-semibold text-[11px]"><i class="fas fa-check"></i> រួចរាល់</span>
+                        ` : `
+                            <span class="text-slate-400 text-[11px]">រង់ចាំដំណើរការ</span>
+                        `}
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function requestDisbursement(billId) {
+            showToast('បានដាក់សំណើសុំប័ណ្ណចំណាយទូទាត់សម្រាប់វិក្កយបត្រ ' + billId + ' ទៅកាន់គណនេយ្យកររួចរាល់!', 'success');
+            const store = getPMStore();
+            const b = store.vendorBills.find(x => x.id === billId);
+            if (b) {
+                b.status = 'approved';
+                savePMStore(store);
+                setTimeout(() => renderBillsTable(), 600);
+            }
+        }
+    </script>
+</body>
+
+</html>

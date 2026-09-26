@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="km">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - បញ្ជីការបញ្ជាទិញទំនិញ</title>
+    <link rel="icon" type="image/png" href="../../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1e3a5f",
+                        'primary-dark': "#142842",
+                        accent: "#0ea5e9",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../shared/styles/custom.css">
+    <link rel="stylesheet" href="../../../shared/styles/portal.css">
+</head>
+
+<body id="pmPortal" data-role-root=".." data-active="purchase-orders" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <div id="sidebarHost"></div>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <!-- Content Top Header -->
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div class="min-w-0">
+                <h2 class="text-xl font-semibold text-gray-800 leading-tight truncate">បញ្ជីការបញ្ជាទិញទំនិញ</h2>
+                <p class="text-xs font-normal text-gray-500 mt-0.5 truncate">គ្រប់គ្រងការចេញបញ្ជាទិញទំនិញចូល តាមដានការដឹកជញ្ជូន និងផ្ទៀងផ្ទាត់ប័ណ្ណទំនិញ</p>
+            </div>
+
+            <div class="flex items-center space-x-3 flex-shrink-0">
+                <a href="create-po.html" class="px-4 py-2 rounded-xl bg-primary hover:bg-[#142842] text-white font-medium text-xs flex items-center gap-2 shadow-sm transition">
+                    <i class="fas fa-plus"></i>
+                    <span>បង្កើតការបញ្ជាទិញថ្មី</span>
+                </a>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-4">
+            <div class="w-full space-y-4">
+
+                <!-- Filters & Search Bar -->
+                <div class="bg-white rounded-2xl p-4 border border-slate-200/80 shadow-sm flex flex-wrap items-center justify-between gap-3">
+                    <div class="flex flex-wrap items-center gap-3 flex-1 min-w-[280px]">
+                        <!-- Search Box -->
+                        <div class="relative flex-1 min-w-[220px]">
+                            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                                <i class="fas fa-search text-xs"></i>
+                            </span>
+                            <input type="text" id="searchInput" oninput="applyFilters()" placeholder="ស្វែងរកតាមលេខ PO ឬឈ្មោះអ្នកផ្គត់ផ្គង់..."
+                                class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-9 pr-3 py-2 text-xs focus:bg-white focus:border-primary outline-none transition font-medium">
+                        </div>
+
+                        <!-- Status Filter -->
+                        <select id="statusFilter" onchange="applyFilters()" class="bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-700 outline-none focus:border-primary font-medium cursor-pointer">
+                            <option value="">ស្ថានភាពទាំងអស់</option>
+                            <option value="sent">បានផ្ញើ (Sent)</option>
+                            <option value="received">បានទទួល (Received)</option>
+                            <option value="matched">បានផ្គូផ្គង (Matched)</option>
+                            <option value="draft">សេចក្តីព្រាង (Draft)</option>
+                        </select>
+
+                        <!-- 3-Way Match Filter -->
+                        <select id="matchFilter" onchange="applyFilters()" class="bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-700 outline-none focus:border-primary font-medium cursor-pointer">
+                            <option value="">ការផ្ទៀងផ្ទាត់ 3-Way ទាំងអស់</option>
+                            <option value="matched">ត្រូវគ្នា 100%</option>
+                            <option value="pending_grn">រង់ចាំទំនិញចូល (GRN)</option>
+                            <option value="pending_bill">រង់ចាំវិក្កយបត្រ (Bill)</option>
+                        </select>
+                    </div>
+
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs text-slate-400">សរុប: <strong id="totalCount" class="text-slate-700">0</strong> កំណត់ត្រា</span>
+                    </div>
+                </div>
+
+                <!-- Table Card -->
+                <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs">
+                            <thead class="bg-slate-50/70 border-b border-slate-200/70 text-slate-500 font-semibold uppercase tracking-wider text-[11px]">
+                                <tr>
+                                    <th class="py-3 px-4">លេខកូដ PO</th>
+                                    <th class="py-3 px-4">អ្នកផ្គត់ផ្គង់</th>
+                                    <th class="py-3 px-4">កាលបរិច្ឆេទចេញ</th>
+                                    <th class="py-3 px-4">កាលបរិច្ឆេទដឹក</th>
+                                    <th class="py-3 px-4">ឃ្លាំងទទួល</th>
+                                    <th class="py-3 px-4 text-right">ទឹកប្រាក់សរុប</th>
+                                    <th class="py-3 px-4 text-center">3-Way Match</th>
+                                    <th class="py-3 px-4 text-center">ស្ថានភាព</th>
+                                    <th class="py-3 px-4 text-center">សកម្មភាព</th>
+                                </tr>
+                            </thead>
+                            <tbody id="poTableBody" class="divide-y divide-slate-100 text-slate-700 font-medium"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../../shared/scripts/portal.js"></script>
+    <script src="../../../shared/scripts/ui-components.js"></script>
+    <script src="../data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            renderPortalSidebar();
+            renderTable();
+        });
+
+        function renderTable() {
+            const store = getPMStore();
+            const search = (document.getElementById('searchInput').value || '').trim().toLowerCase();
+            const status = document.getElementById('statusFilter').value;
+            const match = document.getElementById('matchFilter').value;
+
+            let filtered = store.purchaseOrders.filter(po => {
+                const matchSearch = po.id.toLowerCase().includes(search) || po.supplierName.toLowerCase().includes(search);
+                const matchStatus = !status || po.status === status;
+                const match3Way = !match || po.threeWayStatus === match;
+                return matchSearch && matchStatus && match3Way;
+            });
+
+            document.getElementById('totalCount').innerText = filtered.length;
+
+            const statusBadges = {
+                sent: '<span class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-blue-50 text-blue-700 border border-blue-200">បានផ្ញើ</span>',
+                received: '<span class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">បានទទួល</span>',
+                matched: '<span class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-purple-50 text-purple-700 border border-purple-200">បានផ្គូផ្គង</span>',
+                draft: '<span class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-slate-100 text-slate-600">សេចក្តីព្រាង</span>'
+            };
+
+            const matchBadges = {
+                matched: '<span class="text-emerald-600 font-semibold inline-flex items-center gap-1.5"><i class="fas fa-check-circle"></i> ត្រូវគ្នា 100%</span>',
+                pending_grn: '<span class="text-amber-600 font-medium inline-flex items-center gap-1.5"><i class="fas fa-clock"></i> រង់ចាំទំនិញចូល</span>',
+                pending_bill: '<span class="text-sky-600 font-medium inline-flex items-center gap-1.5"><i class="fas fa-file-invoice"></i> រង់ចាំវិក្កយបត្រ</span>'
+            };
+
+            const tbody = document.getElementById('poTableBody');
+            if (filtered.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="9" class="py-8 text-center text-slate-400">ពុំមានទិន្នន័យការបញ្ជាទិញឡើយ</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = filtered.map(po => `
+                <tr class="hover:bg-slate-50/80 transition-colors">
+                    <td class="py-3 px-4 font-bold text-primary">
+                        <a href="view-po.html?id=${po.id}" class="hover:underline">${po.id}</a>
+                    </td>
+                    <td class="py-3 px-4">
+                        <div class="font-medium text-slate-800">${po.supplierName}</div>
+                        <div class="text-[11px] text-slate-400">${po.paymentTerms}</div>
+                    </td>
+                    <td class="py-3 px-4 text-slate-600">${po.date}</td>
+                    <td class="py-3 px-4 text-slate-600">${po.deliveryDate}</td>
+                    <td class="py-3 px-4 text-slate-500 text-[11px]">${po.warehouse}</td>
+                    <td class="py-3 px-4 text-right font-bold text-slate-800">
+                        $${po.totalAmount.toFixed(2)}
+                    </td>
+                    <td class="py-3 px-4 text-center text-[11px]">
+                        ${matchBadges[po.threeWayStatus] || '-'}
+                    </td>
+                    <td class="py-3 px-4 text-center">
+                        ${statusBadges[po.status] || po.status}
+                    </td>
+                    <td class="py-3 px-4 text-center">
+                        <div class="flex items-center justify-center gap-1.5">
+                            <a href="view-po.html?id=${po.id}" class="w-8 h-8 rounded-lg bg-slate-100 hover:bg-primary hover:text-white text-slate-600 flex items-center justify-center transition" title="មើលលម្អិត">
+                                <i class="fas fa-eye text-xs"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function applyFilters() {
+            renderTable();
+        }
+    </script>
+</body>
+
+</html>

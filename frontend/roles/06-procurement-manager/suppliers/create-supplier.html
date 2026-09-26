@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="km">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - ចុះឈ្មោះអ្នកផ្គត់ផ្គង់ថ្មី</title>
+    <link rel="icon" type="image/png" href="../../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1e3a5f",
+                        'primary-dark': "#142842",
+                        accent: "#0ea5e9",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../shared/styles/custom.css">
+    <link rel="stylesheet" href="../../../shared/styles/portal.css">
+</head>
+
+<body id="pmPortal" data-role-root=".." data-active="suppliers" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <div id="sidebarHost"></div>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <!-- Content Top Header with Unified Back Button -->
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div class="flex items-center gap-3">
+                <a href="suppliers.html" class="w-10 h-10 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-600 flex items-center justify-center transition border border-slate-200/70" title="ត្រឡប់ទៅបញ្ជីអ្នកផ្គត់ផ្គង់">
+                    <i class="fas fa-arrow-left text-sm"></i>
+                </a>
+                <div>
+                    <h2 class="text-xl font-semibold text-gray-800 leading-tight">ចុះឈ្មោះអ្នកផ្គត់ផ្គង់ថ្មី</h2>
+                    <p class="text-xs font-normal text-gray-500 mt-0.5">បញ្ចូលព័ត៌មានក្រុមហ៊ុន លេខអត្តសញ្ញាណកម្មពន្ធ TIN និងគណនីធនាគារ</p>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-3">
+                <button type="button" onclick="window.location.href='suppliers.html'" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium text-xs transition">
+                    បោះបង់
+                </button>
+                <button type="button" onclick="handleSaveSupplier()" class="px-5 py-2 rounded-xl bg-primary hover:bg-[#142842] text-white font-medium text-xs shadow-sm transition flex items-center gap-2">
+                    <i class="fas fa-check"></i>
+                    <span>រក្សាទុកអ្នកផ្គត់ផ្គង់</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Form Container -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-6">
+            <div class="w-full max-w-4xl mx-auto space-y-5">
+
+                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-4">
+                    <h3 class="text-sm font-semibold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <i class="fas fa-building text-primary text-xs"></i>
+                        <span>ព័ត៌មានទូទៅរបស់ក្រុមហ៊ុន</span>
+                    </h3>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1.5">ឈ្មោះក្រុមហ៊ុនអ្នកផ្គត់ផ្គង់ <span class="text-rose-500">*</span></label>
+                            <input type="text" id="supName" placeholder="ឧ. ក្រុមហ៊ុន ខេមបូឌា អាយធី សឹបផ្លាយ ឯ.ក" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 outline-none focus:border-primary font-medium">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1.5">ប្រភេទអ្នកផ្គត់ផ្គង់</label>
+                            <select id="supCategory" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 outline-none focus:border-primary font-medium cursor-pointer">
+                                <option value="ក្រុមហ៊ុននាំចូលផ្ទាល់">ក្រុមហ៊ុននាំចូលផ្ទាល់</option>
+                                <option value="ដេប៉ូចែកចាយធំ">ដេប៉ូចែកចាយធំ</option>
+                                <option value="តំណាងចែកចាយម៉ាកល្បី">តំណាងចែកចាយម៉ាកល្បី</option>
+                                <option value="រោងចក្រក្នុងស្រុក">រោងចក្រក្នុងស្រុក</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1.5">ឈ្មោះអ្នកទំនាក់ទំនង</label>
+                            <input type="text" id="contactName" placeholder="ឧ. លោក សុខ ចិន្តា" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 outline-none focus:border-primary font-medium">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1.5">លេខទូរស័ព្ទ <span class="text-rose-500">*</span></label>
+                            <input type="text" id="supPhone" placeholder="012 345 678" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 outline-none focus:border-primary font-medium">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1.5">អាសយដ្ឋានអ៊ីមែល</label>
+                            <input type="email" id="supEmail" placeholder="supplier@example.com" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 outline-none focus:border-primary font-medium">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1.5">លេខអត្តសញ្ញាណកម្មពន្ធដារ (TIN)</label>
+                            <input type="text" id="supTin" placeholder="K001-901823901" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 outline-none focus:border-primary font-medium">
+                        </div>
+                    </div>
+
+                    <div class="pt-2 text-xs">
+                        <label class="block font-semibold text-slate-700 mb-1.5">អាសយដ្ឋានទីតាំងក្រុមហ៊ុន</label>
+                        <input type="text" id="supAddress" placeholder="ផ្ទះលេខ ផ្លូវ សង្កាត់ ខណ្ឌ រាជធានី/ខេត្ត..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 outline-none focus:border-primary font-medium">
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-4">
+                    <h3 class="text-sm font-semibold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <i class="fas fa-building-columns text-primary text-xs"></i>
+                        <span>ព័ត៌មានធនាគារ និងលក្ខខណ្ឌទូទាត់</span>
+                    </h3>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1.5">ឈ្មោះធនាគារ</label>
+                            <input type="text" id="bankName" value="ធនាគារ អេប៊ីអេ (ABA Bank USD)" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 outline-none focus:border-primary font-medium">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1.5">លេខគណនីធនាគារ</label>
+                            <input type="text" id="bankAccount" placeholder="001 234 567" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 outline-none focus:border-primary font-medium">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1.5">លក្ខខណ្ឌឥណទាន (Payment Terms)</label>
+                            <select id="paymentTerms" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 outline-none focus:border-primary font-medium cursor-pointer">
+                                <option value="30 ថ្ងៃ (Net 30)">30 ថ្ងៃ (Net 30)</option>
+                                <option value="15 ថ្ងៃ (Net 15)">15 ថ្ងៃ (Net 15)</option>
+                                <option value="60 ថ្ងៃ (Net 60)">60 ថ្ងៃ (Net 60)</option>
+                                <option value="សាច់ប្រាក់ភ្លាមៗ (COD)">សាច់ប្រាក់ភ្លាមៗ (COD)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../../shared/scripts/portal.js"></script>
+    <script src="../../../shared/scripts/ui-components.js"></script>
+    <script src="../data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            renderPortalSidebar();
+        });
+
+        function handleSaveSupplier() {
+            const name = document.getElementById('supName').value.trim();
+            const phone = document.getElementById('supPhone').value.trim();
+
+            if (!name || !phone) {
+                showToast('សូមបញ្ចូលឈ្មោះក្រុមហ៊ុន និងលេខទូរស័ព្ទ!', 'warning');
+                return;
+            }
+
+            const store = getPMStore();
+            const newSup = {
+                id: `SUP-00${store.suppliers.length + 1}`,
+                name,
+                contactName: document.getElementById('contactName').value.trim() || 'មិនបានបញ្ជាក់',
+                phone,
+                email: document.getElementById('supEmail').value.trim() || '',
+                category: document.getElementById('supCategory').value,
+                tin: document.getElementById('supTin').value.trim() || '',
+                bankName: document.getElementById('bankName').value.trim() || 'ABA Bank USD',
+                bankAccount: document.getElementById('bankAccount').value.trim() || '000 000 000',
+                paymentTerms: document.getElementById('paymentTerms').value,
+                rating: 5.0,
+                totalOrders: 0,
+                status: 'active',
+                address: document.getElementById('supAddress').value.trim() || 'រាជធានីភ្នំពេញ'
+            };
+
+            store.suppliers.push(newSup);
+            savePMStore(store);
+
+            showToast('បានចុះឈ្មោះអ្នកផ្គត់ផ្គង់ «' + name + '» ដោយជោគជ័យ!', 'success');
+            setTimeout(() => {
+                window.location.href = 'suppliers.html';
+            }, 800);
+        }
+    </script>
+</body>
+
+</html>

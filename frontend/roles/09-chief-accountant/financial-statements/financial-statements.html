@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="km">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - របាយការណ៍ហិរញ្ញវត្ថុផ្លូវការ</title>
+    <link rel="icon" type="image/png" href="../../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1e3a5f",
+                        'primary-dark': "#142842",
+                        accent: "#0ea5e9",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../shared/styles/custom.css">
+    <link rel="stylesheet" href="../../../shared/styles/portal.css">
+</head>
+
+<body id="caPortal" data-role-root=".." data-active="financial-statements" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <div id="sidebarHost"></div>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <!-- Content Top Header -->
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full no-print">
+            <div class="min-w-0">
+                <h2 class="text-xl font-semibold text-gray-800 leading-tight truncate">របាយការណ៍ហិរញ្ញវត្ថុផ្លូវការ</h2>
+                <p class="text-xs font-normal text-gray-500 mt-0.5 truncate">តារាងលទ្ធផលអាជីវកម្ម (P&L), តារាងតុល្យការ (Balance Sheet), និងសមតុល្យសាកល្បង CIFRS for SMEs</p>
+            </div>
+
+            <div class="flex items-center space-x-3 flex-shrink-0">
+                <button type="button" onclick="window.print()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium text-xs transition flex items-center gap-2">
+                    <i class="fas fa-print"></i>
+                    <span>បោះពុម្ពរបាយការណ៍</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-4">
+            <div class="w-full space-y-4 max-w-5xl mx-auto">
+
+                <!-- Navigation Tabs Bar -->
+                <div class="bg-white rounded-2xl p-2 border border-slate-200/80 shadow-sm flex items-center gap-2 no-print">
+                    <button type="button" onclick="switchTab('pnl')" id="tabBtnPnl" class="px-5 py-2.5 rounded-xl font-semibold text-xs transition flex items-center gap-2 bg-primary text-white shadow-sm">
+                        <i class="fas fa-chart-pie"></i>
+                        <span>តារាងលទ្ធផលអាជីវកម្ម (P&L)</span>
+                    </button>
+                    <button type="button" onclick="switchTab('bs')" id="tabBtnBs" class="px-5 py-2.5 rounded-xl font-medium text-xs text-slate-600 hover:bg-slate-100 transition flex items-center gap-2">
+                        <i class="fas fa-scale-balanced"></i>
+                        <span>តារាងតុល្យការ (Balance Sheet)</span>
+                    </button>
+                    <button type="button" onclick="switchTab('tb')" id="tabBtnTb" class="px-5 py-2.5 rounded-xl font-medium text-xs text-slate-600 hover:bg-slate-100 transition flex items-center gap-2">
+                        <i class="fas fa-list-check"></i>
+                        <span>តារាងសមតុល្យសាកល្បង (Trial Balance)</span>
+                    </button>
+                </div>
+
+                <!-- Tab 1: P&L Statement -->
+                <div id="pnlSection" class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200/80 shadow-sm space-y-6">
+                    <div class="text-center border-b border-slate-100 pb-5">
+                        <h3 class="text-lg font-bold text-slate-900">ក្រុមហ៊ុន ឌីជីថេក ខេអេច ឯ.ក</h3>
+                        <h4 class="text-sm font-bold text-primary mt-0.5">របាយការណ៍លទ្ធផលអាជីវកម្ម (Income Statement / P&L)</h4>
+                        <p class="text-xs text-slate-400 mt-1">សម្រាប់គ្រា 1 មករា 2026 ដល់ 30 កញ្ញា 2026 (គិតជា USD)</p>
+                    </div>
+
+                    <div class="space-y-4 text-xs">
+                        <!-- Revenue -->
+                        <div class="border-b border-slate-100 pb-3">
+                            <div class="font-bold text-slate-800 text-sm mb-2 flex justify-between">
+                                <span>ចំណូលពីប្រតិបត្តិការអាជីវកម្ម (Operating Revenue)</span>
+                                <span class="text-primary font-bold" id="pnlTotalRev">$510,950.00</span>
+                            </div>
+                            <div class="pl-4 space-y-1.5 text-slate-600">
+                                <div class="flex justify-between"><span>ចំណូលពីការលក់ទំនិញ:</span><span>$504,000.00</span></div>
+                                <div class="flex justify-between"><span>ចំណូលពីសេវាកម្មដំឡើង និងថែទាំ:</span><span>$15,450.00</span></div>
+                                <div class="flex justify-between text-rose-600"><span>ការបញ្ចុះតម្លៃលក់:</span><span>-$8,500.00</span></div>
+                            </div>
+                        </div>
+
+                        <!-- COGS -->
+                        <div class="border-b border-slate-100 pb-3">
+                            <div class="font-bold text-slate-800 text-sm mb-2 flex justify-between">
+                                <span>ថ្លៃដើមទំនិញលក់ (Cost of Goods Sold - COGS)</span>
+                                <span class="text-rose-600 font-bold" id="pnlTotalCogs">-$322,500.00</span>
+                            </div>
+                            <div class="pl-4 space-y-1.5 text-slate-600">
+                                <div class="flex justify-between"><span>ស្តុកដើមគ្រា:</span><span>$62,000.00</span></div>
+                                <div class="flex justify-between"><span>ទិញទំនិញចូលក្នុងគ្រា:</span><span>$345,000.00</span></div>
+                                <div class="flex justify-between text-emerald-600"><span>ដក៖ ស្តុកចុងគ្រា (Ending Stock):</span><span>-$84,500.00</span></div>
+                            </div>
+                        </div>
+
+                        <!-- Gross Profit -->
+                        <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 flex justify-between text-sm font-bold text-slate-900">
+                            <span>ប្រាក់ចំណេញដុល (Gross Profit)</span>
+                            <span class="text-emerald-700 text-base" id="pnlGrossProfit">$188,450.00 (36.9%)</span>
+                        </div>
+
+                        <!-- OPEX -->
+                        <div class="border-b border-slate-100 pb-3">
+                            <div class="font-bold text-slate-800 text-sm mb-2 flex justify-between">
+                                <span>ចំណាយប្រតិបត្តិការទូទៅ (Operating Expenses - OPEX)</span>
+                                <span class="text-rose-600 font-bold" id="pnlTotalOpex">-$102,220.00</span>
+                            </div>
+                            <div class="pl-4 space-y-1.5 text-slate-600">
+                                <div class="flex justify-between"><span>ប្រាក់បៀវត្ស និងអត្ថប្រយោជន៍បុគ្គលិក:</span><span>$68,000.00</span></div>
+                                <div class="flex justify-between"><span>ថ្លៃជួលទីតាំងការិយាល័យ & ឃ្លាំង:</span><span>$13,500.00</span></div>
+                                <div class="flex justify-between"><span>ទឹក ភ្លើង និងអ៊ីនធឺណិត:</span><span>$4,800.00</span></div>
+                                <div class="flex justify-between"><span>ទីផ្សារ និងការផ្សព្វផ្សាយ:</span><span>$7,200.00</span></div>
+                                <div class="flex justify-between"><span>ចំណាយរំលស់ទ្រព្យសកម្ម (Depreciation):</span><span>$3,600.00</span></div>
+                                <div class="flex justify-between"><span>ចំណាយរដ្ឋបាលផ្សេងៗ:</span><span>$5,120.00</span></div>
+                            </div>
+                        </div>
+
+                        <!-- Net Profit -->
+                        <div class="p-4 rounded-xl bg-primary text-white flex justify-between items-center text-sm font-bold shadow-sm">
+                            <div>
+                                <span class="text-base block">ប្រាក់ចំណេញសុទ្ធក្រោយបង់ពន្ធ (Net Profit After Tax)</span>
+                                <span class="text-xs text-sky-200 font-normal">អត្រាចំណេញសុទ្ធ 13.5% ស្របតាម CIFRS for SMEs</span>
+                            </div>
+                            <span class="text-xl font-bold text-emerald-400" id="pnlNetProfit">$68,984.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 2: Balance Sheet -->
+                <div id="bsSection" class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200/80 shadow-sm space-y-6 hidden">
+                    <div class="text-center border-b border-slate-100 pb-5">
+                        <h3 class="text-lg font-bold text-slate-900">ក្រុមហ៊ុន ឌីជីថេក ខេអេច ឯ.ក</h3>
+                        <h4 class="text-sm font-bold text-primary mt-0.5">តារាងតុល្យការ (Balance Sheet)</h4>
+                        <p class="text-xs text-slate-400 mt-1">គិតត្រឹមថ្ងៃទី 30 កញ្ញា 2026 (ទ្រព្យសកម្ម = បំណុល + ទុន)</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
+                        <!-- Left: Assets -->
+                        <div class="space-y-4">
+                            <h4 class="text-sm font-bold text-primary border-b border-primary/20 pb-2">ទ្រព្យសកម្ម (ASSETS)</h4>
+                            <div class="space-y-3">
+                                <div>
+                                    <div class="font-bold text-slate-800 mb-1 flex justify-between">
+                                        <span>ទ្រព្យសកម្មចរន្ត (Current Assets)</span>
+                                        <span>$148,120.00</span>
+                                    </div>
+                                    <div class="pl-3 space-y-1 text-slate-600">
+                                        <div class="flex justify-between"><span>សាច់ប្រាក់ក្នុងដៃ និងធនាគារ:</span><span>$42,180.00</span></div>
+                                        <div class="flex justify-between"><span>បំណុលត្រូវទារពីអតិថិជន (AR):</span><span>$18,240.00</span></div>
+                                        <div class="flex justify-between"><span>ស្តុកទំនិញក្នុងឃ្លាំង:</span><span>$84,500.00</span></div>
+                                        <div class="flex justify-between"><span>ចំណាយបង់មុន:</span><span>$3,200.00</span></div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class="font-bold text-slate-800 mb-1 flex justify-between">
+                                        <span>ទ្រព្យសកម្មអចល័ត (Non-Current Assets)</span>
+                                        <span>$16,800.00</span>
+                                    </div>
+                                    <div class="pl-3 space-y-1 text-slate-600">
+                                        <div class="flex justify-between"><span>បរិក្ខារការិយាល័យ & កុំព្យូទ័រ:</span><span>$24,000.00</span></div>
+                                        <div class="flex justify-between text-rose-600"><span>ដក៖ រំលស់បង្គរ:</span><span>-$7,200.00</span></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="p-3 rounded-xl bg-slate-100 font-bold text-slate-900 flex justify-between text-sm mt-4 border border-slate-200">
+                                <span>ទ្រព្យសកម្មសរុប (TOTAL ASSETS):</span>
+                                <span class="text-primary text-base">$164,920.00</span>
+                            </div>
+                        </div>
+
+                        <!-- Right: Liabilities & Equity -->
+                        <div class="space-y-4">
+                            <h4 class="text-sm font-bold text-rose-700 border-b border-rose-200 pb-2">បំណុល និងមូលធន (LIABILITIES & EQUITY)</h4>
+                            <div class="space-y-3">
+                                <div>
+                                    <div class="font-bold text-slate-800 mb-1 flex justify-between">
+                                        <span>បំណុលចរន្ត (Current Liabilities)</span>
+                                        <span>$20,920.00</span>
+                                    </div>
+                                    <div class="pl-3 space-y-1 text-slate-600">
+                                        <div class="flex justify-between"><span>បំណុលត្រូវសងអ្នកផ្គត់ផ្គង់ (AP):</span><span>$12,600.00</span></div>
+                                        <div class="flex justify-between"><span>ពន្ធត្រូវបង់ (អតប & WHT):</span><span>$4,520.00</span></div>
+                                        <div class="flex justify-between"><span>ចំណាយបង្គរត្រូវទូទាត់:</span><span>$3,800.00</span></div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class="font-bold text-slate-800 mb-1 flex justify-between">
+                                        <span>មូលធនម្ចាស់ (Owner's Equity)</span>
+                                        <span>$144,000.00</span>
+                                    </div>
+                                    <div class="pl-3 space-y-1 text-slate-600">
+                                        <div class="flex justify-between"><span>ដើមទុនចុះបញ្ជី:</span><span>$75,000.00</span></div>
+                                        <div class="flex justify-between"><span>ប្រាក់ចំណេញរក្សាទុក:</span><span>$69,000.00</span></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="p-3 rounded-xl bg-slate-100 font-bold text-slate-900 flex justify-between text-sm mt-4 border border-slate-200">
+                                <span>បំណុល និងទុនសរុប (LIABILITIES & EQUITY):</span>
+                                <span class="text-rose-700 text-base">$164,920.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 3: Trial Balance -->
+                <div id="tbSection" class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200/80 shadow-sm space-y-4 hidden">
+                    <div class="text-center border-b border-slate-100 pb-4">
+                        <h3 class="text-lg font-bold text-slate-900">ក្រុមហ៊ុន ឌីជីថេក ខេអេច ឯ.ក</h3>
+                        <h4 class="text-sm font-bold text-primary mt-0.5">តារាងសមតុល្យសាកល្បង (Trial Balance)</h4>
+                        <p class="text-xs text-slate-400 mt-1">ផ្ទៀងផ្ទាត់ជំពាក់ (Debit) និងសង (Credit) ត្រូវគ្នាល្អឥតខ្ចោះ 100%</p>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs">
+                            <thead class="bg-slate-50 border-b border-slate-200 text-slate-500 font-semibold uppercase">
+                                <tr>
+                                    <th class="py-2.5 px-3">លេខកូដ GL</th>
+                                    <th class="py-2.5 px-3">ឈ្មោះគណនីទូទៅ</th>
+                                    <th class="py-2.5 px-3 text-right w-40">សមតុល្យជំពាក់ (Debit $)</th>
+                                    <th class="py-2.5 px-3 text-right w-40">សមតុល្យសង (Credit $)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbTableBody" class="divide-y divide-slate-100 text-slate-700 font-medium"></tbody>
+                            <tfoot class="border-t-2 border-slate-400 font-bold text-slate-900">
+                                <tr class="bg-slate-50">
+                                    <td colspan="2" class="py-3 px-3 text-right">សមតុល្យសរុប (Debit = Credit):</td>
+                                    <td class="py-3 px-3 text-right text-emerald-700 font-bold text-sm" id="tbTotalDebit">$0.00</td>
+                                    <td class="py-3 px-3 text-right text-emerald-700 font-bold text-sm" id="tbTotalCredit">$0.00</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../../shared/scripts/portal.js"></script>
+    <script src="../../../shared/scripts/ui-components.js"></script>
+    <script src="../data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            renderPortalSidebar();
+            renderTrialBalance();
+        });
+
+        function switchTab(tab) {
+            const pnl = document.getElementById('pnlSection');
+            const bs = document.getElementById('bsSection');
+            const tb = document.getElementById('tbSection');
+
+            const btnPnl = document.getElementById('tabBtnPnl');
+            const btnBs = document.getElementById('tabBtnBs');
+            const btnTb = document.getElementById('tabBtnTb');
+
+            pnl.classList.add('hidden');
+            bs.classList.add('hidden');
+            tb.classList.add('hidden');
+
+            const inactiveClass = 'px-5 py-2.5 rounded-xl font-medium text-xs text-slate-600 hover:bg-slate-100 transition flex items-center gap-2';
+            const activeClass = 'px-5 py-2.5 rounded-xl font-semibold text-xs transition flex items-center gap-2 bg-primary text-white shadow-sm';
+
+            btnPnl.className = inactiveClass;
+            btnBs.className = inactiveClass;
+            btnTb.className = inactiveClass;
+
+            if (tab === 'pnl') {
+                pnl.classList.remove('hidden');
+                btnPnl.className = activeClass;
+            } else if (tab === 'bs') {
+                bs.classList.remove('hidden');
+                btnBs.className = activeClass;
+            } else if (tab === 'tb') {
+                tb.classList.remove('hidden');
+                btnTb.className = activeClass;
+            }
+        }
+
+        function renderTrialBalance() {
+            const store = getCAStore();
+            const tbody = document.getElementById('tbTableBody');
+            let totalDebit = 0;
+            let totalCredit = 0;
+
+            tbody.innerHTML = store.financialStatements.trialBalance.map(r => {
+                totalDebit += r.debit;
+                totalCredit += r.credit;
+                return `
+                    <tr class="hover:bg-slate-50/50">
+                        <td class="py-2.5 px-3 font-bold text-slate-800">${r.code}</td>
+                        <td class="py-2.5 px-3">${r.name}</td>
+                        <td class="py-2.5 px-3 text-right font-medium text-slate-800">${r.debit > 0 ? '$' + r.debit.toLocaleString('en-US', { minimumFractionDigits: 2 }) : '-'}</td>
+                        <td class="py-2.5 px-3 text-right font-medium text-slate-800">${r.credit > 0 ? '$' + r.credit.toLocaleString('en-US', { minimumFractionDigits: 2 }) : '-'}</td>
+                    </tr>
+                `;
+            }).join('');
+
+            document.getElementById('tbTotalDebit').innerText = '$' + totalDebit.toLocaleString('en-US', { minimumFractionDigits: 2 });
+            document.getElementById('tbTotalCredit').innerText = '$' + totalCredit.toLocaleString('en-US', { minimumFractionDigits: 2 });
+        }
+    </script>
+</body>
+
+</html>

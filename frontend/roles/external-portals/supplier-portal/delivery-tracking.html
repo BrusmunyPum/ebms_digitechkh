@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="km">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - តាមដានការដឹកជញ្ជូន</title>
+    <link rel="icon" type="image/png" href="../../../shared/assets/favicon.png">
+    <link rel="shortcut icon" type="image/png" href="../../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#0b253a",
+                        'primary-dark': "#071826",
+                        accent: "#0284c7",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../shared/styles/custom.css">
+    <style>
+        #spPortal aside {
+            background-color: #0b253a !important;
+        }
+    </style>
+</head>
+
+<body id="spPortal" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <!-- របារចំហៀងអ្នកផ្គត់ផ្គង់ -->
+    <aside class="w-64 bg-[#0b253a] text-white flex flex-col flex-shrink-0 select-none z-20 border-r border-slate-800">
+        <div class="h-[72px] px-6 flex items-center justify-between border-b border-white/10 flex-shrink-0">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-cyan-500/20 border border-cyan-400/30 flex items-center justify-center p-1 shadow-sm overflow-hidden flex-shrink-0">
+                    <img src="../../../shared/assets/logo-mark-transparent.png" alt="DIGITECHKH" class="w-full h-full object-contain">
+                </div>
+                <div>
+                    <h1 class="text-lg font-semibold tracking-wider whitespace-nowrap text-white">DIGITECHKH</h1>
+                    <span class="text-[11px] font-medium text-cyan-300 uppercase tracking-wider block">អ្នកផ្គត់ផ្គង់</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="px-5 py-3 border-b border-white/5 bg-black/20">
+            <div class="flex items-center justify-between">
+                <span class="text-xs text-slate-300">គណនី:</span>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                    <i class="fas fa-certificate text-[10px]"></i> ដៃគូកម្រិតមាស
+                </span>
+            </div>
+            <div class="mt-1.5 text-xs text-white font-medium truncate">
+                ក្រុមហ៊ុន ហ៊ុន ត្រេឌីង ឯ.ក
+            </div>
+        </div>
+
+        <nav class="flex-1 overflow-y-auto px-4 py-4 space-y-1.5 scrollbar-hide text-sm">
+            <a href="dashboard.html" class="flex items-center p-3 text-slate-300 hover:bg-white/5 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-chart-pie w-6 text-center text-slate-400"></i>
+                <span class="ml-3 text-[15px]">ទិដ្ឋភាពរួម</span>
+            </a>
+
+            <a href="purchase-orders.html" class="flex items-center p-3 text-slate-300 hover:bg-white/5 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-file-contract w-6 text-center text-slate-400"></i>
+                <span class="ml-3 text-[15px]">ការបញ្ជាទិញ (PO)</span>
+            </a>
+
+            <a href="bills.html" class="flex items-center p-3 text-slate-300 hover:bg-white/5 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-file-invoice-dollar w-6 text-center text-slate-400"></i>
+                <span class="ml-3 text-[15px]">វិក្កយបត្ររបស់ខ្ញុំ</span>
+            </a>
+
+            <a href="delivery-tracking.html" class="flex items-center p-3 bg-white/10 text-cyan-300 font-medium rounded-xl shadow-sm transition-all whitespace-nowrap border border-white/10">
+                <i class="fas fa-truck-fast w-6 text-center text-cyan-400"></i>
+                <span class="ml-3 text-[15px]">តាមដានការដឹកជញ្ជូន</span>
+            </a>
+        </nav>
+
+        <div class="p-4 border-t border-white/10 bg-black/10">
+            <a href="../../00-auth/login.html" class="flex items-center text-[15px] text-slate-300 hover:text-rose-400 transition-colors p-2 rounded-lg hover:bg-white/5">
+                <i class="fas fa-arrow-right-from-bracket w-6 mr-2"></i> ចាកចេញ
+            </a>
+        </div>
+    </aside>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <!-- Content Top Header -->
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div>
+                <h2 class="text-xl font-semibold text-gray-800 leading-tight">តាមដានការដឹកជញ្ជូន</h2>
+                <p class="text-xs font-normal text-gray-500 mt-0.5">ស្ថានភាពដឹកជញ្ជូនទំនិញចូលឃ្លាំងក្រុមហ៊ុន ឌីជីថេក ខេអេច ឯ.ក</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-6">
+            <div class="w-full space-y-6">
+
+                <!-- Active Delivery Progress Card -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-6">
+                    <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-4">
+                        <div>
+                            <span class="text-xs text-cyan-700 font-semibold uppercase tracking-wider block">ការដឹកជញ្ជូនសកម្មបច្ចុប្បន្ន</span>
+                            <h3 class="text-lg font-bold text-slate-800 flex items-center gap-2 mt-0.5">
+                                <span>កញ្ចប់ដឹកលេខ DO-2026-0082</span>
+                                <span class="text-xs px-2.5 py-0.5 rounded-full bg-sky-50 text-sky-700 border border-sky-200 font-semibold">កំពុងដឹកជញ្ជូន</span>
+                            </h3>
+                            <p class="text-xs text-slate-500 mt-1">យោងការបញ្ជាទិញ: <strong class="text-primary">PO-2026-0045</strong> (Logitech MX Series)</p>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-xs text-slate-400 block">ប៉ាន់ស្មានពេលទៅដល់:</span>
+                            <span class="text-sm font-bold text-slate-800">2026-09-27 10:00 ព្រឹក</span>
+                        </div>
+                    </div>
+
+                    <!-- 4-Step Progress Bar -->
+                    <div class="relative py-4">
+                        <div class="absolute left-8 right-8 top-1/2 -translate-y-1/2 h-1.5 bg-slate-100 -z-0"></div>
+                        <div class="absolute left-8 top-1/2 -translate-y-1/2 h-1.5 bg-cyan-600 -z-0" style="width: 40%"></div>
+
+                        <div class="w-full flex items-center justify-between relative z-10 text-xs">
+                            <!-- Step 1 -->
+                            <div class="flex flex-col items-center">
+                                <div class="w-10 h-10 rounded-full bg-cyan-600 text-white flex items-center justify-center font-bold shadow-md ring-4 ring-white">
+                                    <i class="fas fa-check text-xs"></i>
+                                </div>
+                                <span class="font-bold text-slate-900 mt-2">រៀបចំរួចរាល់</span>
+                                <span class="text-[10px] text-slate-400">2026-09-26 08:30</span>
+                            </div>
+
+                            <!-- Step 2 -->
+                            <div class="flex flex-col items-center">
+                                <div class="w-10 h-10 rounded-full bg-cyan-600 text-white flex items-center justify-center font-bold shadow-md ring-4 ring-white animate-pulse">
+                                    <i class="fas fa-truck text-xs"></i>
+                                </div>
+                                <span class="font-bold text-cyan-700 mt-2">កំពុងធ្វើដំណើរ</span>
+                                <span class="text-[10px] text-slate-400">2026-09-26 14:00</span>
+                            </div>
+
+                            <!-- Step 3 -->
+                            <div class="flex flex-col items-center">
+                                <div class="w-10 h-10 rounded-full bg-slate-200 text-slate-500 flex items-center justify-center font-bold ring-4 ring-white">
+                                    3
+                                </div>
+                                <span class="font-medium text-slate-500 mt-2">មកដល់ឃ្លាំង</span>
+                                <span class="text-[10px] text-slate-400">រង់ចាំ</span>
+                            </div>
+
+                            <!-- Step 4 -->
+                            <div class="flex flex-col items-center">
+                                <div class="w-10 h-10 rounded-full bg-slate-200 text-slate-500 flex items-center justify-center font-bold ring-4 ring-white">
+                                    4
+                                </div>
+                                <span class="font-medium text-slate-500 mt-2">ទទួលចូលស្តុក</span>
+                                <span class="text-[10px] text-slate-400">ចេញប័ណ្ណទទួល</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Carrier & Destination Info Row -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-slate-100 text-xs">
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200/70 space-y-1.5">
+                            <span class="font-bold text-slate-700 flex items-center gap-1.5">
+                                <i class="fas fa-id-card text-cyan-600"></i>
+                                <span>ព័ត៌មានក្រុមហ៊ុនដឹកជញ្ជូន</span>
+                            </span>
+                            <p class="text-slate-600">ក្រុមហ៊ុនដឹក: <strong class="text-slate-900">ក្រុមហ៊ុន ភ្នំពេញ ឡូជីស្ទិក</strong></p>
+                            <p class="text-slate-600">អ្នកបើកបរ: <strong class="text-slate-900">ជា ពិសិដ្ឋ (098 765 432)</strong></p>
+                            <p class="text-slate-600">លេខកូដតាមដាន: <strong class="text-cyan-700">PPL-889921</strong></p>
+                        </div>
+
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200/70 space-y-1.5">
+                            <span class="font-bold text-slate-700 flex items-center gap-1.5">
+                                <i class="fas fa-warehouse text-cyan-600"></i>
+                                <span>ទីតាំងគោលដៅប្រគល់ទំនិញ</span>
+                            </span>
+                            <p class="text-slate-600">អ្នកទទួល: <strong class="text-slate-900">ឃ្លាំងកណ្តាល DIGITECHKH (សុខ ចាន់ថន)</strong></p>
+                            <p class="text-slate-600">អាសយដ្ឋាន: <strong class="text-slate-900">អគារ 128 មហាវិថីសហព័ន្ធរុស្ស៊ី រាជធានីភ្នំពេញ</strong></p>
+                            <p class="text-slate-600">ទូរស័ព្ទឃ្លាំង: <strong class="text-slate-900">012 999 111</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Delivery History Table -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                    <div class="p-5 border-b border-slate-100">
+                        <h3 class="text-base font-semibold text-slate-800">ប្រវត្តិការដឹកជញ្ជូនទាំងអស់</h3>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs">
+                            <thead class="bg-slate-50/80 border-b border-slate-200 text-slate-500 font-semibold uppercase text-[11px]">
+                                <tr>
+                                    <th class="py-3 px-4">លេខប័ណ្ណដឹក</th>
+                                    <th class="py-3 px-4">យោងលេខ PO</th>
+                                    <th class="py-3 px-4">ក្រុមហ៊ុនដឹក / អ្នកបើកបរ</th>
+                                    <th class="py-3 px-4">លេខកូដតាមដាន</th>
+                                    <th class="py-3 px-4">កាលបរិច្ឆេទ</th>
+                                    <th class="py-3 px-4">គោលដៅ</th>
+                                    <th class="py-3 px-4 text-center">ស្ថានភាព</th>
+                                </tr>
+                            </thead>
+                            <tbody id="deliveriesTableBody" class="divide-y divide-slate-100 text-slate-700 font-medium"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../../shared/scripts/ui-components.js"></script>
+    <script src="data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            renderDeliveries();
+        });
+
+        function renderDeliveries() {
+            const store = getSupplierStore();
+            const tbody = document.getElementById('deliveriesTableBody');
+
+            const statusBadges = {
+                in_transit: '<span class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-sky-50 text-sky-700 border border-sky-200">កំពុងដឹកជញ្ជូន</span>',
+                delivered: '<span class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">បានប្រគល់រួច</span>'
+            };
+
+            tbody.innerHTML = store.deliveries.map(d => `
+                <tr class="hover:bg-slate-50/80 transition-colors">
+                    <td class="py-3 px-4 font-bold text-primary">${d.id}</td>
+                    <td class="py-3 px-4 text-slate-600">${d.poId}</td>
+                    <td class="py-3 px-4 text-slate-800">${d.carrier} • ${d.driverName}</td>
+                    <td class="py-3 px-4 font-mono text-cyan-800">${d.trackingNo}</td>
+                    <td class="py-3 px-4 text-slate-600">${d.date}</td>
+                    <td class="py-3 px-4 text-slate-600">${d.destination}</td>
+                    <td class="py-3 px-4 text-center">${statusBadges[d.status] || d.status}</td>
+                </tr>
+            `).join('');
+        }
+    </script>
+</body>
+
+</html>

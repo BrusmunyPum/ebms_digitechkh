@@ -158,6 +158,50 @@ const PORTAL_CONFIGS = {
             { id: 'financial-overview', label: 'របាយការណ៍ហិរញ្ញវត្ថុ', icon: 'mdi:finance', href: 'financial-overview.html' },
             { id: 'reports', label: 'របាយការណ៍សវនកម្ម', icon: 'mdi:file-chart-outline', href: 'reports.html' }
         ]
+    },
+    pmPortal: {
+        title: 'ច្រកគ្រប់គ្រងលទ្ធកម្ម',
+        roleName: 'អ្នកគ្រប់គ្រងលទ្ធកម្ម',
+        roleIcon: 'mdi:cart-outline',
+        userInitials: 'ហដ',
+        userName: 'ហុង ដារ៉ា',
+        userRole: 'អ្នកគ្រប់គ្រងផ្នែកលទ្ធកម្ម',
+        policyNote: 'អនុម័ត PO ≤ $1,000.00 ដោយផ្ទាល់។ លើសពី $1,000.00 ត្រូវបញ្ជូនទៅអភិបាលទូទៅ។ ហាមឃើញចំណូលលក់ និងទិន្នន័យអតិថិជន។',
+        nav: [
+            { id: 'dashboard', label: 'ផ្ទាំងគ្រប់គ្រង', icon: 'mdi:chart-pie', href: 'dashboard.html' },
+            { id: 'purchase-orders', label: 'បញ្ជាទិញទំនិញ PO', icon: 'mdi:clipboard-text-outline', href: 'purchase-orders/purchase-orders.html', badge: true },
+            { id: 'vendor-bills', label: 'វិក្កយបត្រទិញចូល', icon: 'mdi:receipt-text-outline', href: 'vendor-bills/vendor-bills.html', alertBadge: true },
+            { id: 'suppliers', label: 'អ្នកផ្គត់ផ្គង់', icon: 'mdi:truck-delivery-outline', href: 'suppliers/suppliers.html' }
+        ]
+    },
+    caPortal: {
+        title: 'ច្រកប្រធានគណនេយ្យ',
+        roleName: 'ប្រធានគណនេយ្យ',
+        roleIcon: 'mdi:bank',
+        userInitials: 'ទវ',
+        userName: 'ទៀង វណ្ណារ៉ា',
+        userRole: 'ប្រធានគណនេយ្យ និងហិរញ្ញវត្ថុ',
+        policyNote: 'សិទ្ធិផ្តាច់មុខលើតារាងគណនី (COA), ចាក់សោរគ្រាហិរញ្ញវត្ថុ, អនុម័តប័ណ្ណចំណាយ > $500, និងរបាយការណ៍ពន្ធដារ GDT ផ្លូវការ។',
+        nav: [
+            { id: 'dashboard', label: 'ផ្ទាំងគ្រប់គ្រង', icon: 'mdi:chart-pie', href: 'dashboard.html' },
+            { id: 'approvals', label: 'មជ្ឈមណ្ឌលអនុម័ត', icon: 'mdi:stamper', href: 'approvals/approvals.html', badge: true },
+            { id: 'financial-statements', label: 'របាយការណ៍ហិរញ្ញវត្ថុ', icon: 'mdi:finance', href: 'financial-statements/financial-statements.html' },
+            { id: 'tax-reports', label: 'របាយការណ៍ពន្ធដារ GDT', icon: 'mdi:file-percent-outline', href: 'tax-reports/tax-reports.html' }
+        ]
+    },
+    aparPortal: {
+        title: 'ច្រកគណនេយ្យករទូទាត់',
+        roleName: 'គណនេយ្យករបំណុល និងទារប្រាក់',
+        roleIcon: 'mdi:cash-multiple',
+        userInitials: 'អម',
+        userName: 'អ៊ុំ ម៉ានី',
+        userRole: 'គណនេយ្យករបំណុល និងការទារប្រាក់ (AP/AR)',
+        policyNote: 'គ្រប់គ្រងចរន្តសាច់ប្រាក់ប្រចាំថ្ងៃ, បង្កាន់ដៃទទួលប្រាក់ AR, ប័ណ្ណចំណាយ AP (ភ្ជាប់ពន្ធ WHT), និងផ្ទៀងផ្ទាត់ 3-Way Match។ ហាមកែប្រែ COA ឬបិទបញ្ជី។',
+        nav: [
+            { id: 'dashboard', label: 'ផ្ទាំងចរន្តសាច់ប្រាក់', icon: 'mdi:chart-pie', href: 'dashboard.html' },
+            { id: 'receipts', label: 'បង្កាន់ដៃទទួលប្រាក់ AR', icon: 'mdi:receipt-text-check-outline', href: 'receipts/receipts.html', badge: true },
+            { id: 'vouchers', label: 'ប័ណ្ណចំណាយទូទាត់ AP', icon: 'mdi:file-document-edit-outline', href: 'vouchers/vouchers.html', alertBadge: true }
+        ]
     }
 };
 
@@ -169,7 +213,7 @@ function getRoleRoot() {
         return document.body.dataset.roleRoot;
     }
     const loc = window.location.pathname.replace(/\\/g, '/');
-    const isSub = /\/(stock-[a-z]+|approvals|pipeline|reports|companies|subscriptions|audit-logs|users|company-profile|system-settings|customers|quotes|invoices|receipts)(\/|$)/.test(loc);
+    const isSub = /\/(stock-[a-z]+|approvals|pipeline|reports|companies|subscriptions|audit-logs|users|company-profile|system-settings|customers|quotes|invoices|receipts|purchase-orders|vendor-bills|suppliers|financial-statements|tax-reports|vouchers)(\/|$)/.test(loc);
     return isSub ? '..' : '.';
 }
 

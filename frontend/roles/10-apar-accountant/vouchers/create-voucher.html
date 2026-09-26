@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="km">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - បង្កើតប័ណ្ណចំណាយទូទាត់</title>
+    <link rel="icon" type="image/png" href="../../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1e3a5f",
+                        'primary-dark': "#142842",
+                        accent: "#0ea5e9",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../shared/styles/custom.css">
+    <link rel="stylesheet" href="../../../shared/styles/portal.css">
+</head>
+
+<body id="aparPortal" data-role-root=".." data-active="vouchers" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <div id="sidebarHost"></div>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <!-- Content Top Header with Unified Back Button -->
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div class="flex items-center gap-3">
+                <a href="vouchers.html" class="w-10 h-10 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-600 flex items-center justify-center transition border border-slate-200/70" title="ត្រឡប់ទៅបញ្ជីប័ណ្ណចំណាយ">
+                    <i class="fas fa-arrow-left text-sm"></i>
+                </a>
+                <div>
+                    <h2 class="text-xl font-semibold text-gray-800 leading-tight">បង្កើតប័ណ្ណចំណាយទូទាត់</h2>
+                    <p class="text-xs font-normal text-gray-500 mt-0.5">រៀបចំប័ណ្ណចំណាយទូទាត់បំណុលជូនអ្នកផ្គត់ផ្គង់ គណនាពន្ធកាត់ទុក និងស្នើសុំការអនុម័ត</p>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-3">
+                <button type="button" onclick="window.location.href='vouchers.html'" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium text-xs transition">
+                    បោះបង់
+                </button>
+                <button type="button" onclick="handleSaveVoucher()" class="px-5 py-2 rounded-xl bg-primary hover:bg-[#142842] text-white font-medium text-xs shadow-sm transition flex items-center gap-2">
+                    <i class="fas fa-paper-plane"></i>
+                    <span>ស្នើសុំអនុម័តប័ណ្ណចំណាយ</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Form Container -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-6">
+            <div class="w-full max-w-4xl mx-auto space-y-5">
+
+                <!-- Form Card -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-5">
+                    <h3 class="text-sm font-semibold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <i class="fas fa-money-check-dollar text-primary text-xs"></i>
+                        <span>ព័ត៌មានលម្អិតប័ណ្ណចំណាយទូទាត់</span>
+                    </h3>
+
+                    <!-- Row 1: Code, Date, Category -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1.5">លេខប័ណ្ណចំណាយ</label>
+                            <input type="text" id="voucherId" value="DIS-2026-0090" readonly class="w-full bg-slate-100 border border-slate-200 rounded-xl px-3 py-2.5 font-bold text-primary outline-none">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1.5">កាលបរិច្ឆេទស្នើ <span class="text-rose-500">*</span></label>
+                            <input type="date" id="voucherDate" value="2026-09-26" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 outline-none focus:border-primary font-medium">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1.5">ប្រភេទចំណាយ <span class="text-rose-500">*</span></label>
+                            <select id="voucherCategory" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 outline-none focus:border-primary font-medium cursor-pointer">
+                                <option value="ទិញទំនិញចូលស្តុក">ទិញទំនិញចូលស្តុក</option>
+                                <option value="សេវាកម្មដំឡើង និងជួសជុល">សេវាកម្មដំឡើង និងជួសជុល</option>
+                                <option value="ថ្លៃជួលការិយាល័យ & ឃ្លាំង">ថ្លៃជួលការិយាល័យ & ឃ្លាំង</option>
+                                <option value="សម្ភារៈការិយាល័យ & ផ្សេងៗ">សម្ភារៈការិយាល័យ & ផ្សេងៗ</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Row 2: Supplier, Bill Ref, PO Ref -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1.5">អ្នកផ្គត់ផ្គង់ / អ្នកទទួលប្រាក់ <span class="text-rose-500">*</span></label>
+                            <select id="vendorSelect" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 outline-none focus:border-primary font-medium cursor-pointer">
+                                <option value="ក្រុមហ៊ុន ហ៊ុន ត្រេឌីង ឯ.ក">ក្រុមហ៊ុន ហ៊ុន ត្រេឌីង ឯ.ក</option>
+                                <option value="ក្រុមហ៊ុន ស៊ីងហ្គាពួរ អេឡិចត្រូនិច ត្រេឌីង">ក្រុមហ៊ុន ស៊ីងហ្គាពួរ អេឡិចត្រូនិច ត្រេឌីង</option>
+                                <option value="ក្រុមហ៊ុន សេវាកម្មបច្ចេកវិទ្យា ខ្មែរ IT">ក្រុមហ៊ុន សេវាកម្មបច្ចេកវិទ្យា ខ្មែរ IT</option>
+                                <option value="ម្ចាស់អគារជួលការិយាល័យ ឫស្សីកែវ">ម្ចាស់អគារជួលការិយាល័យ ឫស្សីកែវ</option>
+                                <option value="ក្រុមហ៊ុន ភ្នំពេញ ឡូជីស្ទិក">ក្រុមហ៊ុន ភ្នំពេញ ឡូជីស្ទិក</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1.5">យោងលេខវិក្កយបត្រ <span class="text-rose-500">*</span></label>
+                            <input type="text" id="billRef" value="BILL-2026-0045" placeholder="BILL-2026-XXXX" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 outline-none focus:border-primary font-medium">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1.5">យោងលេខការបញ្ជាទិញ</label>
+                            <input type="text" id="poRef" value="PO-2026-0045" placeholder="PO-2026-XXXX" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 outline-none focus:border-primary font-medium">
+                        </div>
+                    </div>
+
+                    <!-- Row 3: Payment Method, Account Number -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1.5">វិធីសាស្ត្រទូទាត់ <span class="text-rose-500">*</span></label>
+                            <select id="paymentMethod" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 outline-none focus:border-primary font-medium cursor-pointer">
+                                <option value="ធនាគារ អេប៊ីអេ">ធនាគារ អេប៊ីអេ</option>
+                                <option value="ធនាគារ កាណាឌីយ៉ា">ធនាគារ កាណាឌីយ៉ា</option>
+                                <option value="ធនាគារ អេស៊ីលីដា">ធនាគារ អេស៊ីលីដា</option>
+                                <option value="សាច់ប្រាក់សុទ្ធ">សាច់ប្រាក់សុទ្ធ</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1.5">លេខគណនីធនាគារអ្នកទទួល <span class="text-rose-500">*</span></label>
+                            <input type="text" id="bankAccount" value="001 984 321" placeholder="000 000 000" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 outline-none focus:border-primary font-medium">
+                        </div>
+                    </div>
+
+                    <!-- Row 4: Financial Calculations with WHT -->
+                    <div class="bg-slate-50 rounded-2xl p-4 border border-slate-200/70 space-y-3">
+                        <div class="text-xs font-semibold text-slate-700 flex items-center justify-between">
+                            <span>ការគណនាទឹកប្រាក់ និងពន្ធកាត់ទុក</span>
+                            <span class="text-[11px] text-slate-500 font-normal">គណនាស្វ័យប្រវត្តិតាមអត្រាកំណត់</span>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+                            <div>
+                                <label class="block font-semibold text-slate-700 mb-1.5">ទឹកប្រាក់សរុបដើម ($) <span class="text-rose-500">*</span></label>
+                                <input type="number" step="0.01" id="grossAmount" value="2500.00" oninput="calculateAmounts()" class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2.5 text-sm font-bold text-slate-900 outline-none focus:border-primary">
+                            </div>
+                            <div>
+                                <label class="block font-semibold text-slate-700 mb-1.5">អត្រាពន្ធកាត់ទុក <span class="text-rose-500">*</span></label>
+                                <select id="whtRate" onchange="calculateAmounts()" class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2.5 outline-none focus:border-primary font-medium cursor-pointer">
+                                    <option value="0">0% (ទំនិញទូទៅ)</option>
+                                    <option value="10">10% (ថ្លៃជួលអគារ/ទ្រព្យសម្បត្តិ)</option>
+                                    <option value="15">15% (សេវាកម្មបុគ្គល)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block font-semibold text-slate-700 mb-1.5">ទឹកប្រាក់ពន្ធកាត់ទុក ($)</label>
+                                <input type="text" id="whtAmount" value="0.00" readonly class="w-full bg-slate-100 border border-slate-200 rounded-xl px-3 py-2.5 text-sm font-bold text-rose-600 outline-none">
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between pt-2 border-t border-slate-200/60">
+                            <span class="text-xs font-semibold text-slate-700">ទឹកប្រាក់បើកសុទ្ធជាក់ស្តែង:</span>
+                            <span class="text-xl font-bold text-primary" id="netAmountDisplay">$2500.00</span>
+                        </div>
+                    </div>
+
+                    <!-- Row 5: Notes -->
+                    <div class="text-xs">
+                        <label class="block font-semibold text-slate-700 mb-1.5">បរិយាយ និងមូលហេតុចំណាយ</label>
+                        <textarea id="voucherNote" rows="2" placeholder="បញ្ជាក់លម្អិតអំពីការទូទាត់នេះ..." class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 outline-none focus:border-primary font-medium">ទូទាត់ថ្លៃសម្ភារៈកុំព្យូទ័រ និងគ្រឿងបន្លាស់តាមវិក្កយបត្រ BILL-2026-0045</textarea>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../../shared/scripts/portal.js"></script>
+    <script src="../../../shared/scripts/ui-components.js"></script>
+    <script src="../data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            renderPortalSidebar();
+            calculateAmounts();
+        });
+
+        function calculateAmounts() {
+            const gross = parseFloat(document.getElementById('grossAmount').value || 0);
+            const rate = parseFloat(document.getElementById('whtRate').value || 0);
+            const wht = (gross * rate) / 100;
+            const net = gross - wht;
+
+            document.getElementById('whtAmount').value = wht.toFixed(2);
+            document.getElementById('netAmountDisplay').innerText = '$' + net.toFixed(2);
+        }
+
+        function handleSaveVoucher() {
+            const gross = parseFloat(document.getElementById('grossAmount').value || 0);
+            if (gross <= 0) {
+                showToast('សូមបញ្ចូលទឹកប្រាក់សរុបដើមត្រឹមត្រូវ!', 'warning');
+                return;
+            }
+
+            const rate = parseFloat(document.getElementById('whtRate').value || 0);
+            const wht = (gross * rate) / 100;
+            const net = gross - wht;
+
+            const store = getAPARStore();
+            const newVoucher = {
+                id: document.getElementById('voucherId').value,
+                vendorName: document.getElementById('vendorSelect').value,
+                billId: document.getElementById('billRef').value.trim() || 'BILL-2026-0045',
+                poId: document.getElementById('poRef').value.trim() || '-',
+                date: document.getElementById('voucherDate').value,
+                category: document.getElementById('voucherCategory').value,
+                grossAmount: gross,
+                whtRate: rate,
+                whtAmount: wht,
+                netAmount: net,
+                paymentMethod: document.getElementById('paymentMethod').value,
+                bankAccount: document.getElementById('bankAccount').value.trim() || '001 984 321',
+                status: 'pending',
+                preparer: 'អ៊ុំ ម៉ានី (AP/AR)',
+                reviewer: 'ទៀង វណ្ណារ៉ា (Chief Acct)',
+                approver: 'លី ហាក់សេង (GM)',
+                note: document.getElementById('voucherNote').value.trim() || 'ទូទាត់បំណុល'
+            };
+
+            store.vouchers.unshift(newVoucher);
+            saveAPARStore(store);
+
+            showToast('បានបង្កើត និងស្នើសុំអនុម័តប័ណ្ណចំណាយ ' + newVoucher.id + ' ដោយជោគជ័យ!', 'success');
+            setTimeout(() => {
+                window.location.href = 'vouchers.html';
+            }, 800);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="km">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - ផ្ទាំងគ្រប់គ្រងប្រធានគណនេយ្យ</title>
+    <link rel="icon" type="image/png" href="../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1e3a5f",
+                        'primary-dark': "#142842",
+                        accent: "#0ea5e9",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../shared/styles/custom.css">
+    <link rel="stylesheet" href="../../shared/styles/portal.css">
+</head>
+
+<body id="caPortal" data-role-root="." data-active="dashboard" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <div id="sidebarHost"></div>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <!-- Content Top Header -->
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div class="min-w-0">
+                <h2 class="text-xl font-semibold text-gray-800 leading-tight truncate">ផ្ទាំងបញ្ជាការដ្ឋានហិរញ្ញវត្ថុ និងគណនេយ្យ</h2>
+                <p class="text-xs font-normal text-gray-500 mt-0.5 truncate">អភិបាលកិច្ចហិរញ្ញវត្ថុកំពូល ត្រួតពិនិត្យសៀវភៅធំ និងអនុលោមភាពពន្ធដារកម្ពុជា</p>
+            </div>
+
+            <div class="flex items-center space-x-3 flex-shrink-0">
+                <!-- Period Lock Pill -->
+                <button type="button" onclick="togglePeriodLock()" id="periodLockBtn" class="px-3.5 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 border border-amber-200 text-amber-800 font-semibold text-xs flex items-center gap-2 transition">
+                    <i class="fas fa-lock-open text-amber-600" id="lockIcon"></i>
+                    <span id="periodLockText">គ្រាហិរញ្ញវត្ថុ: កញ្ញា 2026 (បើក)</span>
+                </button>
+
+                <a href="approvals/approvals.html" class="hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-purple-50 hover:bg-purple-100 border border-purple-200 text-purple-700 font-semibold text-xs transition">
+                    <span class="w-2 h-2 rounded-full bg-purple-600 animate-pulse"></span>
+                    <span>រង់ចាំអនុម័ត: 3</span>
+                </a>
+
+                <div class="flex items-center sm:border-l sm:pl-3">
+                    <div class="w-10 h-10 rounded-full bg-indigo-700 text-white flex items-center justify-center font-semibold text-sm shadow-sm" title="ទៀង វណ្ណារ៉ា">ទវ</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-4">
+            <div class="w-full space-y-5">
+
+                <!-- Filter Toolbar -->
+                <div class="bg-white rounded-2xl p-3 border border-slate-200/80 shadow-sm flex flex-wrap items-center justify-between gap-3">
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-landmark text-slate-400 text-xs"></i>
+                        <span class="text-xs font-semibold text-slate-700">របាយការណ៍ហិរញ្ញវត្ថុស្របតាមស្តង់ដារ CIFRS for SMEs</span>
+                    </div>
+                    <div id="dateFilterHost" class="flex items-center"></div>
+                </div>
+
+                <!-- KPI Cards Row -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <!-- KPI 1 -->
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm flex flex-col justify-between">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-medium text-slate-500">សមតុល្យសាច់ប្រាក់ & ធនាគារ</span>
+                            <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center">
+                                <i class="fas fa-vault text-sm"></i>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <div class="text-2xl font-bold text-slate-800">$42,180.00</div>
+                            <div class="flex items-center justify-between mt-1 text-xs text-slate-500">
+                                <span>3 គណនីធនាគារ + បេឡា</span>
+                                <span class="text-emerald-600 font-medium">សាច់ប្រាក់ងាយស្រួល</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- KPI 2 -->
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm flex flex-col justify-between">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-medium text-slate-500">ចំណូលលក់សរុប (ខែនេះ)</span>
+                            <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
+                                <i class="fas fa-chart-line-up text-sm"></i>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <div class="text-2xl font-bold text-slate-800">$68,450.00</div>
+                            <div class="flex items-center justify-between mt-1 text-xs">
+                                <span class="text-slate-500">កំណើនធៀបខែមុន</span>
+                                <span class="text-emerald-600 font-bold">+14.2%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- KPI 3 -->
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm flex flex-col justify-between">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-medium text-slate-500">ប្រាក់ចំណេញសុទ្ធ (Net Profit)</span>
+                            <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center">
+                                <i class="fas fa-sack-dollar text-sm"></i>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <div class="text-2xl font-bold text-purple-700">$14,370.00</div>
+                            <div class="flex items-center justify-between mt-1 text-xs">
+                                <span class="text-slate-500">អត្រាចំណេញសុទ្ធ</span>
+                                <span class="text-purple-700 font-bold">21.0%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- KPI 4 -->
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm flex flex-col justify-between">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-medium text-slate-500">បំណុល AR vs AP</span>
+                            <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center">
+                                <i class="fas fa-scale-unbalanced text-sm"></i>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <div class="flex items-baseline justify-between">
+                                <span class="text-sm font-semibold text-emerald-600">AR: $18.2k</span>
+                                <span class="text-sm font-semibold text-rose-600">AP: $12.6k</span>
+                            </div>
+                            <div class="flex items-center justify-between mt-1 text-xs text-slate-500">
+                                <span>ទ្រព្យសកម្មសុទ្ធ AR-AP</span>
+                                <span class="text-emerald-700 font-bold">+$5,640.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Financial Performance Chart (9 Months) -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
+                    <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                        <div>
+                            <h3 class="text-sm font-semibold text-slate-800">លទ្ធផលហិរញ្ញវត្ថុ 9 ខែ (Revenue vs Expense vs Net Profit)</h3>
+                            <p class="text-xs text-slate-500 mt-0.5">ទំហំចំណូល ចំណាយប្រតិបត្តិការ និងប្រាក់ចំណេញសុទ្ធគិតជា USD</p>
+                        </div>
+                        <div class="flex items-center gap-3 text-xs">
+                            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-primary"></span> ចំណូល</span>
+                            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-rose-500"></span> ចំណាយ</span>
+                            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-emerald-500"></span> ចំណេញសុទ្ធ</span>
+                        </div>
+                    </div>
+                    <div id="financialTrendChart" class="w-full h-72"></div>
+                </div>
+
+                <!-- Two Column Grid: Bank Liquidity Breakdown & Urgent Approvals -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                    <!-- Bank Balances Card -->
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
+                        <div class="flex items-center justify-between mb-4">
+                            <div>
+                                <h3 class="text-sm font-semibold text-slate-800">សមតុល្យតាមគណនីធនាគារ និងបេឡា</h3>
+                                <p class="text-xs text-slate-500 mt-0.5">ការផ្ទៀងផ្ទាត់សមតុល្យជាក់ស្តែង (Bank Reconciliation)</p>
+                            </div>
+                            <span class="text-xs font-bold text-primary">$42,180.00</span>
+                        </div>
+                        <div id="bankAccountsList" class="space-y-3"></div>
+                    </div>
+
+                    <!-- Pending Approvals Card -->
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <div>
+                                    <h3 class="text-sm font-semibold text-slate-800">សំណើរង់ចាំការអនុម័ត (> $500.00)</h3>
+                                    <p class="text-xs text-slate-500 mt-0.5">ប័ណ្ណចំណាយទូទាត់ និងការកែតម្រូវទ្វេបញ្ជី</p>
+                                </div>
+                                <a href="approvals/approvals.html" class="text-xs font-semibold text-sky-700 hover:underline">
+                                    មើលទាំងអស់
+                                </a>
+                            </div>
+                            <div id="approvalsList" class="space-y-3"></div>
+                        </div>
+
+                        <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                            <span>អនុលោមភាព SoD: ការចំណាយ > $500 ទាមទារ 2 ហត្ថលេខា</span>
+                            <span class="font-semibold text-primary">Chief Acct + GM</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Links Bar: Financial Statements & Tax Returns -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <a href="financial-statements/financial-statements.html" class="p-5 rounded-2xl bg-gradient-to-r from-slate-900 to-[#1e3a5f] text-white shadow-sm hover:shadow-md transition flex items-center justify-between group">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center text-xl text-sky-300">
+                                <i class="fas fa-file-invoice-dollar"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white group-hover:text-sky-200 transition">របាយការណ៍ហិរញ្ញវត្ថុផ្លូវការ CIFRS</h4>
+                                <p class="text-xs text-sky-200 mt-0.5">តារាងលទ្ធផលអាជីវកម្ម P&L, តារាងតុល្យការ និងសមតុល្យសាកល្បង</p>
+                            </div>
+                        </div>
+                        <i class="fas fa-arrow-right text-sm text-sky-300 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+
+                    <a href="tax-reports/tax-reports.html" class="p-5 rounded-2xl bg-gradient-to-r from-purple-900 to-indigo-900 text-white shadow-sm hover:shadow-md transition flex items-center justify-between group">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center text-xl text-purple-300">
+                                <i class="fas fa-file-circle-percent"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white group-hover:text-purple-200 transition">របាយការណ៍ពន្ធដារកម្ពុជា (GDT Returns)</h4>
+                                <p class="text-xs text-purple-200 mt-0.5">អាករលើតម្លៃបន្ថែម អតប 10%, ពន្ធកាត់ទុក WHT និងពន្ធលើប្រាក់ចំណេញ</p>
+                            </div>
+                        </div>
+                        <i class="fas fa-arrow-right text-sm text-purple-300 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../shared/scripts/portal.js"></script>
+    <script src="../../shared/scripts/ui-components.js"></script>
+    <script src="data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            renderPortalSidebar();
+            initDateFilter();
+            initFinancialTrendChart();
+            renderBankAccounts();
+            renderApprovals();
+            updateLockStatusUI();
+        });
+
+        function initDateFilter() {
+            const host = document.getElementById('dateFilterHost');
+            if (!host) return;
+            host.innerHTML = `
+                <div class="flex items-center gap-2">
+                    <span class="text-xs text-slate-400 hidden sm:inline">កាលបរិច្ឆេទ:</span>
+                    <button type="button" class="h-9 px-3 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 text-xs rounded-xl flex items-center gap-2 shadow-sm transition-all focus:outline-none cursor-pointer">
+                        <i class="fas fa-calendar-days text-primary text-xs"></i>
+                        <span class="font-medium text-slate-800">ខែកញ្ញា 2026 (ត្រីមាសទី 3)</span>
+                    </button>
+                </div>
+            `;
+        }
+
+        function initFinancialTrendChart() {
+            const chartEl = document.getElementById('financialTrendChart');
+            if (!chartEl) return;
+            const store = getCAStore();
+            const chart = echarts.init(chartEl);
+
+            chart.setOption({
+                tooltip: { trigger: 'axis' },
+                grid: { top: 25, right: 20, bottom: 25, left: 60 },
+                xAxis: {
+                    type: 'category',
+                    data: store.kpis.monthlyTrend.months,
+                    axisLine: { lineStyle: { color: '#cbd5e1' } },
+                    axisLabel: { color: '#64748b', fontSize: 11, fontFamily: 'Kantumruy Pro' }
+                },
+                yAxis: {
+                    type: 'value',
+                    axisLine: { show: false },
+                    splitLine: { lineStyle: { color: '#f1f5f9' } },
+                    axisLabel: {
+                        color: '#64748b',
+                        fontSize: 10,
+                        formatter: v => '$' + (v / 1000) + 'k'
+                    }
+                },
+                series: [
+                    {
+                        name: 'ចំណូល',
+                        type: 'line',
+                        smooth: true,
+                        data: store.kpis.monthlyTrend.revenue,
+                        itemStyle: { color: '#1e3a5f' },
+                        lineStyle: { width: 3 }
+                    },
+                    {
+                        name: 'ចំណាយ',
+                        type: 'line',
+                        smooth: true,
+                        data: store.kpis.monthlyTrend.expense,
+                        itemStyle: { color: '#ef4444' },
+                        lineStyle: { width: 2, type: 'dashed' }
+                    },
+                    {
+                        name: 'ចំណេញសុទ្ធ',
+                        type: 'bar',
+                        data: store.kpis.monthlyTrend.netProfit,
+                        itemStyle: { color: '#10b981', borderRadius: [4, 4, 0, 0] },
+                        barWidth: '35%'
+                    }
+                ]
+            });
+            window.addEventListener('resize', () => chart.resize());
+        }
+
+        function renderBankAccounts() {
+            const container = document.getElementById('bankAccountsList');
+            if (!container) return;
+            const store = getCAStore();
+
+            container.innerHTML = store.kpis.bankBalances.map(b => `
+                <div class="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-100 text-xs">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-xl ${b.type === 'សាច់ប្រាក់' ? 'bg-amber-100 text-amber-700' : 'bg-blue-100 text-blue-700'} flex items-center justify-center font-bold">
+                            <i class="fas ${b.type === 'សាច់ប្រាក់' ? 'fa-money-bill-wave' : 'fa-building-columns'} text-xs"></i>
+                        </div>
+                        <div>
+                            <div class="font-bold text-slate-800">${b.bank}</div>
+                            <div class="text-[11px] text-slate-400">គណនី: ${b.account}</div>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <div class="font-bold text-slate-900 text-sm">$${b.balance.toLocaleString('en-US', { minimumFractionDigits: 2 })}</div>
+                        <span class="text-[10px] text-emerald-600 font-semibold"><i class="fas fa-check"></i> ផ្ទៀងផ្ទាត់រួច</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderApprovals() {
+            const container = document.getElementById('approvalsList');
+            if (!container) return;
+            const store = getCAStore();
+
+            const pending = store.approvals.filter(a => a.status === 'pending');
+            if (pending.length === 0) {
+                container.innerHTML = `<div class="py-6 text-center text-slate-400 text-xs">គ្មានសំណើរង់ចាំការអនុម័តឡើយ</div>`;
+                return;
+            }
+
+            container.innerHTML = pending.map(a => `
+                <div class="p-3 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-between gap-3 text-xs">
+                    <div class="min-w-0 flex-1">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="font-bold text-primary">${a.refNo}</span>
+                            <span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-purple-100 text-purple-700">
+                                ${a.type === 'disbursement' ? 'ប័ណ្ណចំណាយ' : a.type === 'adjustment' ? 'កែតម្រូវ' : 'លុបបំណុល'}
+                            </span>
+                        </div>
+                        <div class="font-medium text-slate-800 truncate">${a.title}</div>
+                        <div class="text-[11px] text-slate-400">${a.requestor} • ${a.date}</div>
+                    </div>
+                    <div class="text-right flex-shrink-0">
+                        <div class="font-bold text-slate-900 text-sm">$${a.amount.toFixed(2)}</div>
+                        <a href="approvals/view-approval.html?id=${a.id}" class="mt-1 px-3 py-1 rounded-lg bg-primary hover:bg-[#142842] text-white text-[11px] font-medium inline-block transition shadow-sm">
+                            ពិនិត្យអនុម័ត
+                        </a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function updateLockStatusUI() {
+            const store = getCAStore();
+            const btn = document.getElementById('periodLockBtn');
+            const icon = document.getElementById('lockIcon');
+            const txt = document.getElementById('periodLockText');
+            if (!btn || !icon || !txt) return;
+
+            if (store.kpis.periodLockStatus === 'locked') {
+                btn.className = 'px-3.5 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 border border-rose-200 text-rose-800 font-semibold text-xs flex items-center gap-2 transition cursor-pointer';
+                icon.className = 'fas fa-lock text-rose-600';
+                txt.innerText = 'គ្រាហិរញ្ញវត្ថុ: កញ្ញា 2026 (ចាក់សោររួច)';
+            } else {
+                btn.className = 'px-3.5 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 border border-amber-200 text-amber-800 font-semibold text-xs flex items-center gap-2 transition cursor-pointer';
+                icon.className = 'fas fa-lock-open text-amber-600';
+                txt.innerText = 'គ្រាហិរញ្ញវត្ថុ: កញ្ញា 2026 (បើក)';
+            }
+        }
+
+        function togglePeriodLock() {
+            const store = getCAStore();
+            const isCurrentlyLocked = store.kpis.periodLockStatus === 'locked';
+
+            if (isCurrentlyLocked) {
+                showToast('គ្រាហិរញ្ញវត្ថុត្រូវបានចាក់សោររួចហើយ! ទាមទារការយល់ព្រមពី General Manager ដើម្បីដោះសោរ', 'warning');
+                return;
+            }
+
+            if (typeof showCustomConfirm === 'function') {
+                showCustomConfirm({
+                    title: 'ចាក់សោរគ្រាហិរញ្ញវត្ថុ (Period Lock)',
+                    message: 'តើលោកអ្នកពិតជាចង់ចាក់សោរគ្រា «កញ្ញា 2026» មែនទេ? ក្រោយពេលចាក់សោរ គ្មានបុគ្គលិកណាអាចកែប្រែទិន្នន័យអតីតកាលបានឡើយ។',
+                    confirmText: 'ចាក់សោរឥឡូវនេះ',
+                    cancelText: 'បោះបង់',
+                    confirmColor: 'danger',
+                    onConfirm: () => {
+                        store.kpis.periodLockStatus = 'locked';
+                        saveCAStore(store);
+                        updateLockStatusUI();
+                        showToast('គ្រាហិរញ្ញវត្ថុ កញ្ញា 2026 ត្រូវបានចាក់សោរជាផ្លូវការ 100%!', 'success');
+                    }
+                });
+            } else {
+                if (confirm('តើលោកអ្នកពិតជាចង់ចាក់សោរគ្រា កញ្ញា 2026 មែនទេ?')) {
+                    store.kpis.periodLockStatus = 'locked';
+                    saveCAStore(store);
+                    updateLockStatusUI();
+                    showToast('គ្រាហិរញ្ញវត្ថុ កញ្ញា 2026 ត្រូវបានចាក់សោរជាផ្លូវការ 100%!', 'success');
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

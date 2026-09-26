@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="km">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - ចេញវិក្កយបត្រទារប្រាក់</title>
+    <link rel="icon" type="image/png" href="../../../shared/assets/favicon.png">
+    <link rel="shortcut icon" type="image/png" href="../../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#0b253a",
+                        'primary-dark': "#071826",
+                        accent: "#0284c7",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../shared/styles/custom.css">
+    <style>
+        #spPortal aside {
+            background-color: #0b253a !important;
+        }
+    </style>
+</head>
+
+<body id="spPortal" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <!-- របារចំហៀងអ្នកផ្គត់ផ្គង់ -->
+    <aside class="w-64 bg-[#0b253a] text-white flex flex-col flex-shrink-0 select-none z-20 border-r border-slate-800">
+        <div class="h-[72px] px-6 flex items-center justify-between border-b border-white/10 flex-shrink-0">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-cyan-500/20 border border-cyan-400/30 flex items-center justify-center p-1 shadow-sm overflow-hidden flex-shrink-0">
+                    <img src="../../../shared/assets/logo-mark-transparent.png" alt="DIGITECHKH" class="w-full h-full object-contain">
+                </div>
+                <div>
+                    <h1 class="text-lg font-semibold tracking-wider whitespace-nowrap text-white">DIGITECHKH</h1>
+                    <span class="text-[11px] font-medium text-cyan-300 uppercase tracking-wider block">អ្នកផ្គត់ផ្គង់</span>
+                </div>
+            </div>
+        </div>
+
+        <nav class="flex-1 overflow-y-auto px-4 py-4 space-y-1.5 scrollbar-hide text-sm">
+            <a href="dashboard.html" class="flex items-center p-3 text-slate-300 hover:bg-white/5 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-chart-pie w-6 text-center text-slate-400"></i>
+                <span class="ml-3 text-[15px]">ទិដ្ឋភាពរួម</span>
+            </a>
+
+            <a href="purchase-orders.html" class="flex items-center p-3 text-slate-300 hover:bg-white/5 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-file-contract w-6 text-center text-slate-400"></i>
+                <span class="ml-3 text-[15px]">ការបញ្ជាទិញ (PO)</span>
+            </a>
+
+            <a href="bills.html" class="flex items-center p-3 bg-white/10 text-cyan-300 font-medium rounded-xl shadow-sm transition-all whitespace-nowrap border border-white/10">
+                <i class="fas fa-file-invoice-dollar w-6 text-center text-cyan-400"></i>
+                <span class="ml-3 text-[15px]">វិក្កយបត្ររបស់ខ្ញុំ</span>
+            </a>
+
+            <a href="delivery-tracking.html" class="flex items-center p-3 text-slate-300 hover:bg-white/5 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-truck-fast w-6 text-center text-slate-400"></i>
+                <span class="ml-3 text-[15px]">តាមដានការដឹកជញ្ជូន</span>
+            </a>
+        </nav>
+
+        <div class="p-4 border-t border-white/10 bg-black/10">
+            <a href="../../00-auth/login.html" class="flex items-center text-[15px] text-slate-300 hover:text-rose-400 transition-colors p-2 rounded-lg hover:bg-white/5">
+                <i class="fas fa-arrow-right-from-bracket w-6 mr-2"></i> ចាកចេញ
+            </a>
+        </div>
+    </aside>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <!-- Content Top Header with Unified Back Button -->
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div class="flex items-center gap-3">
+                <a href="bills.html" class="w-10 h-10 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-600 flex items-center justify-center transition border border-slate-200/70" title="ត្រឡប់ទៅបញ្ជីវិក្កយបត្រ">
+                    <i class="fas fa-arrow-left text-sm"></i>
+                </a>
+                <div>
+                    <h2 class="text-xl font-semibold text-gray-800 leading-tight">ចេញវិក្កយបត្រទារប្រាក់ថ្មី</h2>
+                    <p class="text-xs font-normal text-gray-500 mt-0.5">ដាក់ស្នើវិក្កយបត្រជូនក្រុមហ៊ុន ឌីជីថេក ខេអេច ឯ.ក ដើម្បីដំណើរការទូទាត់</p>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-3">
+                <button type="button" onclick="window.location.href='bills.html'" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium text-xs transition">
+                    បោះបង់
+                </button>
+                <button type="button" onclick="handleSaveBill()" class="px-5 py-2 rounded-xl bg-primary hover:bg-primary-dark text-white font-medium text-xs shadow-sm transition flex items-center gap-2">
+                    <i class="fas fa-paper-plane"></i>
+                    <span>ដាក់ស្នើវិក្កយបត្រ</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Form Container -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-6">
+            <div class="w-full max-w-4xl mx-auto space-y-5">
+
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-5">
+                    <h3 class="text-sm font-semibold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <i class="fas fa-file-invoice-dollar text-primary text-xs"></i>
+                        <span>ព័ត៌មានលម្អិតវិក្កយបត្រ</span>
+                    </h3>
+
+                    <!-- Row 1: Bill Number, PO Reference, Bill Date -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1.5">លេខវិក្កយបត្រ <span class="text-rose-500">*</span></label>
+                            <input type="text" id="billId" value="BILL-2026-0046" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 font-bold text-primary outline-none focus:border-primary">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1.5">យោងការបញ្ជាទិញ (PO) <span class="text-rose-500">*</span></label>
+                            <select id="poSelect" onchange="handlePOChange()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 outline-none focus:border-primary font-medium cursor-pointer">
+                                <option value="PO-2026-0045" data-amount="3325.00" data-desc="ការបញ្ជាទិញគ្រឿងបន្លាស់កុំព្យូទ័រ និងសម្ភារៈការិយាល័យ">PO-2026-0045 ($3325.00)</option>
+                                <option value="PO-2026-0044" data-amount="3377.00" data-desc="ការបញ្ជាទិញអេក្រង់កុំព្យូទ័រ Dell UltraSharp">PO-2026-0044 ($3377.00)</option>
+                                <option value="PO-2026-0041" data-amount="2090.00" data-desc="ការបញ្ជាទិញអង្គចងចាំ RAM DDR5">PO-2026-0041 ($2090.00)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1.5">កាលបរិច្ឆេទចេញវិក្កយបត្រ <span class="text-rose-500">*</span></label>
+                            <input type="date" id="billDate" value="2026-09-26" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 outline-none focus:border-primary font-medium">
+                        </div>
+                    </div>
+
+                    <!-- Row 2: Due Date, Amount, Bank Account -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1.5">កាលកំណត់ទូទាត់ <span class="text-rose-500">*</span></label>
+                            <input type="date" id="dueDate" value="2026-10-11" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 outline-none focus:border-primary font-medium">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1.5">ទឹកប្រាក់ទារប្រាក់ ($) <span class="text-rose-500">*</span></label>
+                            <input type="number" step="0.01" id="billAmount" value="3325.00" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm font-bold text-slate-900 outline-none focus:border-primary">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1.5">គណនីធនាគារទទួលប្រាក់ <span class="text-rose-500">*</span></label>
+                            <input type="text" id="bankInfo" value="ធនាគារ អេប៊ីអេ (001 234 567)" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 outline-none focus:border-primary font-medium">
+                        </div>
+                    </div>
+
+                    <!-- Row 3: Description -->
+                    <div class="text-xs">
+                        <label class="block font-semibold text-slate-700 mb-1.5">បរិយាយវិក្កយបត្រ <span class="text-rose-500">*</span></label>
+                        <input type="text" id="billDesc" value="ការបញ្ជាទិញគ្រឿងបន្លាស់កុំព្យូទ័រ និងសម្ភារៈការិយាល័យ" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 outline-none focus:border-primary font-medium">
+                    </div>
+
+                    <!-- Row 4: Notes -->
+                    <div class="text-xs">
+                        <label class="block font-semibold text-slate-700 mb-1.5">សម្គាល់ និងលក្ខខណ្ឌបន្ថែម</label>
+                        <textarea id="billNote" rows="2" placeholder="ព័ត៌មានបន្ថែមជូនផ្នែកគណនេយ្យ..." class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 outline-none focus:border-primary font-medium">ទំនិញបានត្រួតពិនិត្យគុណភាពត្រឹមត្រូវ សូមមេត្តាពិនិត្យ និងបើកប្រាក់តាមកាលកំណត់។</textarea>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../../shared/scripts/ui-components.js"></script>
+    <script src="data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const poId = urlParams.get('poId');
+            if (poId) {
+                const sel = document.getElementById('poSelect');
+                for (let i = 0; i < sel.options.length; i++) {
+                    if (sel.options[i].value === poId) {
+                        sel.selectedIndex = i;
+                        handlePOChange();
+                        break;
+                    }
+                }
+            }
+        });
+
+        function handlePOChange() {
+            const sel = document.getElementById('poSelect');
+            const opt = sel.options[sel.selectedIndex];
+            if (opt) {
+                const amount = opt.dataset.amount || '0.00';
+                const desc = opt.dataset.desc || '';
+                document.getElementById('billAmount').value = amount;
+                document.getElementById('billDesc').value = desc;
+            }
+        }
+
+        function handleSaveBill() {
+            const amount = parseFloat(document.getElementById('billAmount').value || 0);
+            if (amount <= 0) {
+                showToast('សូមបញ្ចូលទឹកប្រាក់វិក្កយបត្រត្រឹមត្រូវ!', 'warning');
+                return;
+            }
+
+            const store = getSupplierStore();
+            const poId = document.getElementById('poSelect').value;
+
+            const newBill = {
+                id: document.getElementById('billId').value.trim(),
+                poId: poId,
+                date: document.getElementById('billDate').value,
+                dueDate: document.getElementById('dueDate').value,
+                description: document.getElementById('billDesc').value.trim(),
+                grossAmount: amount,
+                whtRate: 0,
+                whtAmount: 0.00,
+                netAmount: amount,
+                paymentMethod: 'ធនាគារ អេប៊ីអេ',
+                bankAccount: '001 234 567',
+                status: 'pending_payment',
+                paidDate: null,
+                note: document.getElementById('billNote').value.trim()
+            };
+
+            store.bills.unshift(newBill);
+
+            // Mark PO as billed
+            const targetPO = store.purchaseOrders.find(p => p.id === poId);
+            if (targetPO) {
+                targetPO.billed = true;
+                targetPO.billId = newBill.id;
+            }
+
+            saveSupplierStore(store);
+
+            showToast('បានដាក់ស្នើវិក្កយបត្រ ' + newBill.id + ' ដោយជោគជ័យ!', 'success');
+            setTimeout(() => {
+                window.location.href = 'bills.html';
+            }, 800);
+        }
+    </script>
+</body>
+
+</html>

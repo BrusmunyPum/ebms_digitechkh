@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="km">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - បង្កើតការបញ្ជាទិញថ្មី</title>
+    <link rel="icon" type="image/png" href="../../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1e3a5f",
+                        'primary-dark': "#142842",
+                        accent: "#0ea5e9",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../shared/styles/custom.css">
+    <link rel="stylesheet" href="../../../shared/styles/portal.css">
+</head>
+
+<body id="pmPortal" data-role-root=".." data-active="purchase-orders" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <div id="sidebarHost"></div>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <!-- Content Top Header with Unified Back Button -->
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div class="flex items-center gap-3">
+                <a href="purchase-orders.html" class="w-10 h-10 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-600 flex items-center justify-center transition border border-slate-200/70" title="ត្រឡប់ទៅបញ្ជីការបញ្ជាទិញ">
+                    <i class="fas fa-arrow-left text-sm"></i>
+                </a>
+                <div>
+                    <h2 class="text-xl font-semibold text-gray-800 leading-tight">បង្កើតការបញ្ជាទិញថ្មី</h2>
+                    <p class="text-xs font-normal text-gray-500 mt-0.5">បំពេញព័ត៌មានអ្នកផ្គត់ផ្គង់ និងមុខទំនិញដែលត្រូវបញ្ជាទិញចូលស្តុក</p>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-3">
+                <button type="button" onclick="window.location.href='purchase-orders.html'" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium text-xs transition">
+                    បោះបង់
+                </button>
+                <button type="button" onclick="handleSavePO()" class="px-5 py-2 rounded-xl bg-primary hover:bg-[#142842] text-white font-medium text-xs shadow-sm transition flex items-center gap-2">
+                    <i class="fas fa-check"></i>
+                    <span>ចេញការបញ្ជាទិញផ្លូវការ</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Form Container -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-5">
+            <div class="w-full max-w-5xl mx-auto space-y-5">
+
+                <!-- Form Card: Header Information -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-4">
+                    <h3 class="text-sm font-semibold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <i class="fas fa-circle-info text-primary text-xs"></i>
+                        <span>ព័ត៌មានទូទៅនៃការបញ្ជាទិញ</span>
+                    </h3>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 text-xs">
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1.5">លេខកូដ PO</label>
+                            <input type="text" id="poId" value="PO-2026-0046" readonly class="w-full bg-slate-100 border border-slate-200 rounded-xl px-3 py-2.5 font-bold text-primary outline-none">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1.5">អ្នកផ្គត់ផ្គង់ <span class="text-rose-500">*</span></label>
+                            <select id="supplierSelect" onchange="updateSupplierTerms()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 outline-none focus:border-primary font-medium cursor-pointer">
+                                <option value="">-- ជ្រើសរើសអ្នកផ្គត់ផ្គង់ --</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1.5">កាលបរិច្ឆេទចេញបញ្ជាទិញ <span class="text-rose-500">*</span></label>
+                            <input type="date" id="poDate" value="2026-09-26" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 outline-none focus:border-primary font-medium">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1.5">កាលបរិច្ឆេទដឹកជញ្ជូនរំពឹងទុក <span class="text-rose-500">*</span></label>
+                            <input type="date" id="deliveryDate" value="2026-10-02" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 outline-none focus:border-primary font-medium">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-xs pt-1">
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1.5">ឃ្លាំងទទួលទំនិញ <span class="text-rose-500">*</span></label>
+                            <select id="warehouseSelect" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 outline-none focus:border-primary font-medium cursor-pointer">
+                                <option value="ឃ្លាំងកណ្តាលឫស្សីកែវ (WH-01)">ឃ្លាំងកណ្តាលឫស្សីកែវ (WH-01)</option>
+                                <option value="ឃ្លាំងចាក់អង្រែក្រោម (WH-02)">ឃ្លាំងចាក់អង្រែក្រោម (WH-02)</option>
+                                <option value="ឃ្លាំងទួលគោក (WH-03)">ឃ្លាំងទួលគោក (WH-03)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1.5">លក្ខខណ្ឌទូទាត់</label>
+                            <input type="text" id="paymentTerms" value="30 ថ្ងៃ (Net 30)" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 outline-none focus:border-primary font-medium">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1.5">ចំណាំបន្ថែម</label>
+                            <input type="text" id="poNotes" placeholder="ការណែនាំដឹកជញ្ជូន ឬលេខយោង..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 outline-none focus:border-primary font-medium">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Card: Line Items Table -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-4">
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                        <h3 class="text-sm font-semibold text-slate-800 flex items-center gap-2">
+                            <i class="fas fa-boxes-stacked text-primary text-xs"></i>
+                            <span>មុខទំនិញបញ្ជាទិញចូល (Line Items)</span>
+                        </h3>
+                        <button type="button" onclick="addRow()" class="px-3.5 py-1.5 rounded-xl bg-sky-50 hover:bg-sky-100 text-sky-700 font-semibold text-xs transition flex items-center gap-1.5">
+                            <i class="fas fa-plus text-[10px]"></i>
+                            <span>បន្ថែមមុខទំនិញ</span>
+                        </button>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs">
+                            <thead class="bg-slate-50 border-b border-slate-200/80 text-slate-500 font-semibold">
+                                <tr>
+                                    <th class="py-2.5 px-3 w-10 text-center">#</th>
+                                    <th class="py-2.5 px-3 min-w-[260px]">មុខទំនិញ</th>
+                                    <th class="py-2.5 px-3 w-28 text-center">ចំនួន (Qty)</th>
+                                    <th class="py-2.5 px-3 w-24 text-center">ឯកតា</th>
+                                    <th class="py-2.5 px-3 w-32 text-right">ថ្លៃទិញ/ឯកតា ($)</th>
+                                    <th class="py-2.5 px-3 w-32 text-right">សរុប ($)</th>
+                                    <th class="py-2.5 px-3 w-12 text-center"></th>
+                                </tr>
+                            </thead>
+                            <tbody id="lineItemsBody" class="divide-y divide-slate-100 text-slate-700"></tbody>
+                        </table>
+                    </div>
+
+                    <!-- Financial Summary Standard -->
+                    <div class="pt-4 border-t border-slate-100 flex justify-end">
+                        <div class="w-full max-w-xs space-y-2 text-xs">
+                            <div class="flex items-center justify-between text-slate-600">
+                                <span>សរុបរងមុខទំនិញ:</span>
+                                <span id="subtotalDisplay" class="font-semibold text-slate-800">$0.00</span>
+                            </div>
+                            <div class="flex items-center justify-between text-slate-600">
+                                <span>អាករលើតម្លៃបន្ថែម (អតប 10%):</span>
+                                <span id="vatDisplay" class="font-semibold text-slate-800">$0.00</span>
+                            </div>
+                            <div class="flex items-center justify-between text-sm font-bold text-slate-900 pt-2 border-t border-slate-200">
+                                <span>ទឹកប្រាក់សរុបចុងក្រោយ:</span>
+                                <span id="grandTotalDisplay" class="text-primary text-base">$0.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../../shared/scripts/portal.js"></script>
+    <script src="../../../shared/scripts/ui-components.js"></script>
+    <script src="../data.js"></script>
+    <script>
+        let rowCount = 0;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderPortalSidebar();
+            populateSuppliers();
+            // Add initial 2 rows
+            addRow('SKU-LOGI-MX3', 10);
+            addRow('SKU-DELL-U2723', 4);
+        });
+
+        function populateSuppliers() {
+            const store = getPMStore();
+            const select = document.getElementById('supplierSelect');
+            store.suppliers.forEach(sup => {
+                const opt = document.createElement('option');
+                opt.value = sup.id;
+                opt.innerText = sup.name;
+                select.appendChild(opt);
+            });
+            if (store.suppliers.length > 0) {
+                select.value = store.suppliers[0].id;
+                updateSupplierTerms();
+            }
+        }
+
+        function updateSupplierTerms() {
+            const store = getPMStore();
+            const supId = document.getElementById('supplierSelect').value;
+            const sup = store.suppliers.find(s => s.id === supId);
+            if (sup) {
+                document.getElementById('paymentTerms').value = sup.paymentTerms;
+            }
+        }
+
+        function addRow(defaultSku = '', defaultQty = 1) {
+            rowCount++;
+            const store = getPMStore();
+            const tbody = document.getElementById('lineItemsBody');
+            const tr = document.createElement('tr');
+            tr.id = `row-${rowCount}`;
+            tr.className = 'hover:bg-slate-50/50';
+
+            const itemOptions = store.catalogItems.map(item => `
+                <option value="${item.sku}" data-price="${item.costPrice}" data-unit="${item.unit}" ${item.sku === defaultSku ? 'selected' : ''}>
+                    ${item.name} (${item.sku})
+                </option>
+            `).join('');
+
+            tr.innerHTML = `
+                <td class="py-2.5 px-3 text-center text-slate-400 font-medium">${tbody.children.length + 1}</td>
+                <td class="py-2.5 px-3">
+                    <select class="w-full bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs outline-none focus:border-primary font-medium item-sku" onchange="handleItemChange(${rowCount})">
+                        ${itemOptions}
+                    </select>
+                </td>
+                <td class="py-2.5 px-3 text-center">
+                    <input type="number" min="1" value="${defaultQty}" class="w-20 text-center bg-slate-50 border border-slate-200 rounded-lg px-2 py-1.5 text-xs outline-none focus:border-primary font-medium item-qty" oninput="calculateTotals()">
+                </td>
+                <td class="py-2.5 px-3 text-center text-slate-500 font-medium item-unit">គ្រឿង</td>
+                <td class="py-2.5 px-3 text-right">
+                    <input type="number" step="0.01" value="0.00" class="w-24 text-right bg-slate-50 border border-slate-200 rounded-lg px-2 py-1.5 text-xs outline-none focus:border-primary font-medium item-price" oninput="calculateTotals()">
+                </td>
+                <td class="py-2.5 px-3 text-right font-bold text-slate-800 item-total">$0.00</td>
+                <td class="py-2.5 px-3 text-center">
+                    <button type="button" onclick="removeRow(${rowCount})" class="text-slate-400 hover:text-rose-500 transition">
+                        <i class="fas fa-trash text-xs"></i>
+                    </button>
+                </td>
+            `;
+            tbody.appendChild(tr);
+            handleItemChange(rowCount);
+        }
+
+        function removeRow(id) {
+            const tr = document.getElementById(`row-${id}`);
+            if (tr) {
+                tr.remove();
+                calculateTotals();
+                // reindex
+                const tbody = document.getElementById('lineItemsBody');
+                Array.from(tbody.children).forEach((r, idx) => {
+                    r.children[0].innerText = idx + 1;
+                });
+            }
+        }
+
+        function handleItemChange(rowId) {
+            const tr = document.getElementById(`row-${rowId}`);
+            if (!tr) return;
+            const select = tr.querySelector('.item-sku');
+            const selectedOpt = select.options[select.selectedIndex];
+            const price = parseFloat(selectedOpt.getAttribute('data-price') || 0);
+            const unit = selectedOpt.getAttribute('data-unit') || 'គ្រឿង';
+
+            tr.querySelector('.item-unit').innerText = unit;
+            tr.querySelector('.item-price').value = price.toFixed(2);
+            calculateTotals();
+        }
+
+        function calculateTotals() {
+            const rows = document.querySelectorAll('#lineItemsBody tr');
+            let subtotal = 0;
+            rows.forEach(tr => {
+                const qty = parseFloat(tr.querySelector('.item-qty').value || 0);
+                const price = parseFloat(tr.querySelector('.item-price').value || 0);
+                const rowTotal = qty * price;
+                tr.querySelector('.item-total').innerText = '$' + rowTotal.toFixed(2);
+                subtotal += rowTotal;
+            });
+
+            const vat = subtotal * 0.10;
+            const grandTotal = subtotal + vat;
+
+            document.getElementById('subtotalDisplay').innerText = '$' + subtotal.toFixed(2);
+            document.getElementById('vatDisplay').innerText = '$' + vat.toFixed(2);
+            document.getElementById('grandTotalDisplay').innerText = '$' + grandTotal.toFixed(2);
+        }
+
+        function handleSavePO() {
+            const store = getPMStore();
+            const supSelect = document.getElementById('supplierSelect');
+            const supId = supSelect.value;
+            const supName = supSelect.options[supSelect.selectedIndex].text;
+            const poId = document.getElementById('poId').value;
+            const poDate = document.getElementById('poDate').value;
+            const deliveryDate = document.getElementById('deliveryDate').value;
+            const warehouse = document.getElementById('warehouseSelect').value;
+            const paymentTerms = document.getElementById('paymentTerms').value;
+            const notes = document.getElementById('poNotes').value;
+
+            const rows = document.querySelectorAll('#lineItemsBody tr');
+            if (rows.length === 0) {
+                showToast('សូមបញ្ចូលមុខទំនិញយ៉ាងហោចណាស់ 1 មុខ!', 'warning');
+                return;
+            }
+
+            let items = [];
+            let subtotal = 0;
+            rows.forEach((tr, i) => {
+                const select = tr.querySelector('.item-sku');
+                const sku = select.value;
+                const name = select.options[select.selectedIndex].text.split(' (')[0];
+                const qty = parseFloat(tr.querySelector('.item-qty').value || 0);
+                const unit = tr.querySelector('.item-unit').innerText;
+                const costPrice = parseFloat(tr.querySelector('.item-price').value || 0);
+                const total = qty * costPrice;
+                subtotal += total;
+                items.push({ id: `ITM-0${i+1}`, sku, name, qty, unit, costPrice, total });
+            });
+
+            const vatAmount = subtotal * 0.10;
+            const totalAmount = subtotal + vatAmount;
+
+            const newPO = {
+                id: poId,
+                supplierId: supId,
+                supplierName: supName,
+                date: poDate,
+                deliveryDate,
+                warehouse,
+                paymentTerms,
+                status: 'sent',
+                threeWayStatus: 'pending_grn',
+                items,
+                subtotal,
+                vatRate: 10,
+                vatAmount,
+                totalAmount,
+                notes
+            };
+
+            store.purchaseOrders.unshift(newPO);
+            store.kpis.totalPOsMonth += 1;
+            store.kpis.totalPOValueMonth += totalAmount;
+            savePMStore(store);
+
+            showToast('ការបញ្ជាទិញ ' + poId + ' ត្រូវបានបង្កើតដោយជោគជ័យ!', 'success');
+            setTimeout(() => {
+                window.location.href = 'purchase-orders.html';
+            }, 800);
+        }
+    </script>
+</body>
+
+</html>

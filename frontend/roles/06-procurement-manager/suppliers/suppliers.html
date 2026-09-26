@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="km">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - បញ្ជីអ្នកផ្គត់ផ្គង់</title>
+    <link rel="icon" type="image/png" href="../../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1e3a5f",
+                        'primary-dark': "#142842",
+                        accent: "#0ea5e9",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../shared/styles/custom.css">
+    <link rel="stylesheet" href="../../../shared/styles/portal.css">
+</head>
+
+<body id="pmPortal" data-role-root=".." data-active="suppliers" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <div id="sidebarHost"></div>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <!-- Content Top Header -->
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div class="min-w-0">
+                <h2 class="text-xl font-semibold text-gray-800 leading-tight truncate">បញ្ជីអ្នកផ្គត់ផ្គង់</h2>
+                <p class="text-xs font-normal text-gray-500 mt-0.5 truncate">គ្រប់គ្រងដៃគូផ្គត់ផ្គង់ ព័ត៌មានធនាគារ និងលក្ខខណ្ឌឥណទានទូទាត់</p>
+            </div>
+
+            <div class="flex items-center space-x-3 flex-shrink-0">
+                <a href="create-supplier.html" class="px-4 py-2 rounded-xl bg-primary hover:bg-[#142842] text-white font-medium text-xs flex items-center gap-2 shadow-sm transition">
+                    <i class="fas fa-plus"></i>
+                    <span>ចុះឈ្មោះអ្នកផ្គត់ផ្គង់ថ្មី</span>
+                </a>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-4">
+            <div class="w-full space-y-4">
+
+                <!-- Search & Filters -->
+                <div class="bg-white rounded-2xl p-4 border border-slate-200/80 shadow-sm flex flex-wrap items-center justify-between gap-3">
+                    <div class="relative flex-1 min-w-[240px]">
+                        <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                            <i class="fas fa-search text-xs"></i>
+                        </span>
+                        <input type="text" id="supplierSearch" oninput="renderSuppliers()" placeholder="ស្វែងរកតាមឈ្មោះអ្នកផ្គត់ផ្គង់ ឬលេខទូរស័ព្ទ..."
+                            class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-9 pr-3 py-2 text-xs focus:bg-white focus:border-primary outline-none transition font-medium">
+                    </div>
+                    <span class="text-xs text-slate-500">សរុប: <strong id="supplierCount" class="text-slate-800">0</strong> ក្រុមហ៊ុន</span>
+                </div>
+
+                <!-- Suppliers Cards Grid -->
+                <div id="suppliersGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../../shared/scripts/portal.js"></script>
+    <script src="../../../shared/scripts/ui-components.js"></script>
+    <script src="../data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            renderPortalSidebar();
+            renderSuppliers();
+        });
+
+        function renderSuppliers() {
+            const store = getPMStore();
+            const search = (document.getElementById('supplierSearch').value || '').trim().toLowerCase();
+            const filtered = store.suppliers.filter(s => s.name.toLowerCase().includes(search) || s.phone.includes(search));
+
+            document.getElementById('supplierCount').innerText = filtered.length;
+            const container = document.getElementById('suppliersGrid');
+
+            if (filtered.length === 0) {
+                container.innerHTML = `<div class="col-span-full py-12 text-center text-slate-400">ពុំមានអ្នកផ្គត់ផ្គង់ដែលត្រូវនឹងការស្វែងរកឡើយ</div>`;
+                return;
+            }
+
+            container.innerHTML = filtered.map(sup => `
+                <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-start justify-between gap-2 mb-3">
+                            <div class="w-10 h-10 rounded-xl bg-primary/10 text-primary font-bold flex items-center justify-center text-sm flex-shrink-0">
+                                ${sup.name.slice(0, 2)}
+                            </div>
+                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                                សកម្ម
+                            </span>
+                        </div>
+                        <h4 class="text-sm font-bold text-slate-900 mb-1">${sup.name}</h4>
+                        <p class="text-xs text-slate-500 mb-3">${sup.category}</p>
+
+                        <div class="space-y-1.5 text-xs text-slate-600 bg-slate-50 p-3 rounded-xl mb-4">
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-user text-slate-400 text-[10px] w-3"></i>
+                                <span>${sup.contactName}</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-phone text-slate-400 text-[10px] w-3"></i>
+                                <span>${sup.phone}</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-building-columns text-slate-400 text-[10px] w-3"></i>
+                                <span>${sup.bankName}: <strong class="text-slate-800">${sup.bankAccount}</strong></span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-credit-card text-slate-400 text-[10px] w-3"></i>
+                                <span>លក្ខខណ្ឌ: ${sup.paymentTerms}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+                        <span class="text-slate-500">PO សរុប: <strong class="text-primary">${sup.totalOrders}</strong></span>
+                        <div class="flex items-center gap-1 text-amber-500 font-semibold">
+                            <i class="fas fa-star text-[11px]"></i>
+                            <span>${sup.rating}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+    </script>
+</body>
+
+</html>

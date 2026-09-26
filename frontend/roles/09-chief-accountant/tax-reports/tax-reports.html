@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="km">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - របាយការណ៍ពន្ធដារកម្ពុជា</title>
+    <link rel="icon" type="image/png" href="../../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1e3a5f",
+                        'primary-dark': "#142842",
+                        accent: "#0ea5e9",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../shared/styles/custom.css">
+    <link rel="stylesheet" href="../../../shared/styles/portal.css">
+</head>
+
+<body id="caPortal" data-role-root=".." data-active="tax-reports" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <div id="sidebarHost"></div>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <!-- Content Top Header -->
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full no-print">
+            <div class="min-w-0">
+                <h2 class="text-xl font-semibold text-gray-800 leading-tight truncate">របាយការណ៍ពន្ធដារកម្ពុជា</h2>
+                <p class="text-xs font-normal text-gray-500 mt-0.5 truncate">រៀបចំ និងទាញយកទិន្នន័យប្រកាសពន្ធប្រចាំខែ (VAT 10%, WHT, និងពន្ធលើប្រាក់បៀវត្ស)</p>
+            </div>
+
+            <div class="flex items-center space-x-3 flex-shrink-0">
+                <button type="button" onclick="exportGdtEfiling()" class="px-4 py-2 rounded-xl bg-primary hover:bg-[#142842] text-white font-medium text-xs shadow-sm transition flex items-center gap-2">
+                    <i class="fas fa-file-arrow-down"></i>
+                    <span>ទាញយកទិន្នន័យ GDT e-Filing</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-4">
+            <div class="w-full space-y-5 max-w-5xl mx-auto">
+
+                <!-- Monthly Tax Status Banner -->
+                <div class="bg-purple-900 text-white rounded-2xl p-6 shadow-sm flex flex-wrap items-center justify-between gap-4">
+                    <div>
+                        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 text-purple-200 text-xs font-semibold mb-2">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                            <span>ការប្រកាសពន្ធប្រចាំខែ: កញ្ញា 2026</span>
+                        </div>
+                        <h3 class="text-lg font-bold">កាលបរិច្ឆេទកំណត់ប្រកាសពន្ធ (GDT Deadline)</h3>
+                        <p class="text-xs text-purple-200 mt-1 font-light">ត្រូវដាក់លិខិតប្រកាសពន្ធតាមប្រព័ន្ធអនឡាញ e-Filing យ៉ាងយូរបំផុតត្រឹមថ្ងៃទី 20 តុលា 2026</p>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-xs text-purple-200">ទឹកប្រាក់ពន្ធត្រូវបង់សរុប (Net Tax)</div>
+                        <div class="text-3xl font-bold text-white mt-1">$4,520.00</div>
+                        <div class="text-xs text-emerald-300 mt-0.5 font-medium">VAT $4,000 + WHT $520</div>
+                    </div>
+                </div>
+
+                <!-- Two Column Grid: VAT vs WHT -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <!-- Section 1: Output vs Input VAT (10%) -->
+                    <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-4">
+                        <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-receipt text-primary text-sm"></i>
+                                <h4 class="text-sm font-bold text-slate-800">អាករលើតម្លៃបន្ថែម (VAT 10%)</h4>
+                            </div>
+                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-blue-50 text-blue-700 border border-blue-200">
+                                ធាតុចេញ vs ធាតុចូល
+                            </span>
+                        </div>
+
+                        <div class="space-y-3 text-xs">
+                            <div class="p-3 rounded-xl bg-slate-50 border border-slate-100 flex justify-between items-center">
+                                <div>
+                                    <span class="text-slate-500 block">ចំណូលលក់ជាប់ពន្ធ (Taxable Sales):</span>
+                                    <span class="font-bold text-slate-800 text-sm">$68,450.00</span>
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-slate-500 block">អាករលើធាតុចេញ (Output VAT 10%):</span>
+                                    <span class="font-bold text-primary text-sm">+$6,845.00</span>
+                                </div>
+                            </div>
+
+                            <div class="p-3 rounded-xl bg-slate-50 border border-slate-100 flex justify-between items-center">
+                                <div>
+                                    <span class="text-slate-500 block">ការទិញទំនិញជាប់ពន្ធ (Taxable Purchases):</span>
+                                    <span class="font-bold text-slate-800 text-sm">$28,450.00</span>
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-slate-500 block">ឥណទានអាករធាតុចូល (Input VAT 10%):</span>
+                                    <span class="font-bold text-emerald-600 text-sm">-$2,845.00</span>
+                                </div>
+                            </div>
+
+                            <div class="pt-3 border-t border-slate-200 flex justify-between items-center text-sm font-bold text-slate-900">
+                                <span>អាករត្រូវបង់សុទ្ធ (Net VAT Payable):</span>
+                                <span class="text-primary text-base">$4,000.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 2: Withholding Tax (WHT) -->
+                    <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-4">
+                        <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-hand-holding-dollar text-purple-700 text-sm"></i>
+                                <h4 class="text-sm font-bold text-slate-800">ពន្ធកាត់ទុក (Withholding Tax - WHT)</h4>
+                            </div>
+                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-purple-50 text-purple-700 border border-purple-200">
+                                អនុលោមភាព CIFRS
+                            </span>
+                        </div>
+
+                        <div class="space-y-3 text-xs">
+                            <div class="flex justify-between items-center p-3 rounded-xl bg-slate-50 border border-slate-100">
+                                <div>
+                                    <span class="font-bold text-slate-800 block">សេវាកម្មទូទៅ (Services 15%)</span>
+                                    <span class="text-slate-500 text-[11px]">មូលដ្ឋានទូទាត់: $2,000.00</span>
+                                </div>
+                                <span class="font-bold text-purple-700 text-sm">$300.00</span>
+                            </div>
+
+                            <div class="flex justify-between items-center p-3 rounded-xl bg-slate-50 border border-slate-100">
+                                <div>
+                                    <span class="font-bold text-slate-800 block">ថ្លៃជួលអគារ/ឃ្លាំង (Rent 10%)</span>
+                                    <span class="text-slate-500 text-[11px]">មូលដ្ឋានទូទាត់: $1,500.00</span>
+                                </div>
+                                <span class="font-bold text-purple-700 text-sm">$150.00</span>
+                            </div>
+
+                            <div class="flex justify-between items-center p-3 rounded-xl bg-slate-50 border border-slate-100">
+                                <div>
+                                    <span class="font-bold text-slate-800 block">ការប្រាក់បញ្ញើ (Interest WHT)</span>
+                                    <span class="text-slate-500 text-[11px]">គណនីធនាគារនីតិបុគ្គល</span>
+                                </div>
+                                <span class="font-bold text-purple-700 text-sm">$70.00</span>
+                            </div>
+
+                            <div class="pt-3 border-t border-slate-200 flex justify-between items-center text-sm font-bold text-slate-900">
+                                <span>ពន្ធកាត់ទុកសរុប (Total WHT):</span>
+                                <span class="text-purple-700 text-base">$520.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../../shared/scripts/portal.js"></script>
+    <script src="../../../shared/scripts/ui-components.js"></script>
+    <script src="../data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            renderPortalSidebar();
+        });
+
+        function exportGdtEfiling() {
+            showToast('ទិន្នន័យប្រកាសពន្ធប្រចាំខែកញ្ញា 2026 ត្រូវបានរៀបចំរួចរាល់សម្រាប់ប្រព័ន្ធ GDT e-Filing!', 'success');
+        }
+    </script>
+</body>
+
+</html>

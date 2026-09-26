@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="km">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - ព័ត៌មានលម្អិតការបញ្ជាទិញ</title>
+    <link rel="icon" type="image/png" href="../../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1e3a5f",
+                        'primary-dark': "#142842",
+                        accent: "#0ea5e9",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../shared/styles/custom.css">
+    <link rel="stylesheet" href="../../../shared/styles/portal.css">
+</head>
+
+<body id="pmPortal" data-role-root=".." data-active="purchase-orders" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <div id="sidebarHost"></div>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <!-- Content Top Header -->
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full no-print">
+            <div class="flex items-center gap-3">
+                <a href="purchase-orders.html" class="w-10 h-10 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-600 flex items-center justify-center transition border border-slate-200/70" title="ត្រឡប់ទៅបញ្ជីការបញ្ជាទិញ">
+                    <i class="fas fa-arrow-left text-sm"></i>
+                </a>
+                <div>
+                    <h2 class="text-xl font-semibold text-gray-800 leading-tight flex items-center gap-2">
+                        <span>ការបញ្ជាទិញ</span>
+                        <span id="headerPoId" class="text-primary font-bold">PO-2026-0045</span>
+                    </h2>
+                    <p class="text-xs font-normal text-gray-500 mt-0.5">ព័ត៌មានលម្អិតការបញ្ជាទិញផ្លូវការ ស្ថានភាព 3-Way Match និងសន្លឹកបោះពុម្ព A4</p>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-3">
+                <button type="button" onclick="window.print()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium text-xs transition flex items-center gap-2">
+                    <i class="fas fa-print"></i>
+                    <span>បោះពុម្ព PO</span>
+                </button>
+                <button type="button" onclick="markAsReceived()" id="receiveBtn" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-medium text-xs shadow-sm transition flex items-center gap-2">
+                    <i class="fas fa-check-double"></i>
+                    <span>បញ្ជាក់ទទួលទំនិញ (GRN)</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Printable Document Area -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-100/70 p-4 md:p-8">
+            <div class="w-full max-w-4xl mx-auto bg-white rounded-2xl shadow-md border border-slate-200 p-8 sm:p-12 print:shadow-none print:border-none print:p-0 print:m-0 print:max-w-full">
+
+                <!-- Company Header & PO Title -->
+                <div class="flex items-start justify-between border-b border-slate-200 pb-6 mb-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-14 h-14 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-center p-2 shadow-sm flex-shrink-0">
+                            <img src="../../../shared/assets/logo-mark-transparent.png" alt="DIGITECHKH" class="w-full h-full object-contain">
+                        </div>
+                        <div>
+                            <h1 class="text-xl font-bold text-slate-900 tracking-wider">ក្រុមហ៊ុន ឌីជីថេក ខេអេច ឯ.ក</h1>
+                            <p class="text-xs text-slate-500 mt-0.5">DIGITECHKH CO., LTD. • លេខអត្តសញ្ញាណកម្ម TIN: K002-90188231</p>
+                            <p class="text-xs text-slate-500">អគារ 128 មហាវិថីសហព័ន្ធរុស្ស៊ី សង្កាត់ទឹកថ្លា ខណ្ឌសែនសុខ រាជធានីភ្នំពេញ</p>
+                            <p class="text-xs text-slate-500">ទូរស័ព្ទ: 023 999 888 • អ៊ីមែល: procurement@digitechkh.com</p>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <div class="inline-block px-3 py-1 rounded-lg bg-primary/10 text-primary font-bold text-xs uppercase tracking-wider mb-2">
+                            ការបញ្ជាទិញទំនិញផ្លូវការ
+                        </div>
+                        <div class="text-2xl font-bold text-primary" id="poNumberDisplay">PO-2026-0045</div>
+                        <div class="text-xs text-slate-500 mt-1" id="poStatusBadge"></div>
+                    </div>
+                </div>
+
+                <!-- Info Grid: Supplier vs Order Meta -->
+                <div class="grid grid-cols-2 gap-8 mb-6 text-xs">
+                    <!-- Left: Supplier Details -->
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                        <span class="font-bold text-slate-700 uppercase tracking-wider text-[11px] block mb-2 text-primary">ចេញជូនអ្នកផ្គត់ផ្គង់:</span>
+                        <h3 class="text-sm font-bold text-slate-900 mb-1" id="supplierNameDisplay">ក្រុមហ៊ុន ហ៊ុន ត្រេឌីង ឯ.ក</h3>
+                        <p class="text-slate-600 mb-1" id="supplierContactDisplay">អ្នកទំនាក់ទំនង: លោក ហ៊ុន សុខហេង</p>
+                        <p class="text-slate-600 mb-1" id="supplierPhoneDisplay">ទូរស័ព្ទ: 012 888 999</p>
+                        <p class="text-slate-600" id="supplierAddressDisplay">អាសយដ្ឋាន: អគារ 12 ផ្លូវសហព័ន្ធរុស្ស៊ី រាជធានីភ្នំពេញ</p>
+                    </div>
+
+                    <!-- Right: Delivery & Order Meta -->
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 space-y-1.5">
+                        <div class="flex justify-between">
+                            <span class="text-slate-500">កាលបរិច្ឆេទចេញ:</span>
+                            <span class="font-semibold text-slate-800" id="poDateDisplay">2026-09-22</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-slate-500">កាលបរិច្ឆេទដឹកជញ្ជូន:</span>
+                            <span class="font-semibold text-slate-800" id="deliveryDateDisplay">2026-09-28</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-slate-500">ទីតាំងឃ្លាំងទទួល:</span>
+                            <span class="font-semibold text-slate-800" id="warehouseDisplay">ឃ្លាំងកណ្តាលឫស្សីកែវ (WH-01)</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-slate-500">លក្ខខណ្ឌទូទាត់:</span>
+                            <span class="font-semibold text-slate-800" id="termsDisplay">30 ថ្ងៃ (Net 30)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Line Items Table -->
+                <div class="mb-6 overflow-hidden rounded-xl border border-slate-200">
+                    <table class="w-full text-left text-xs">
+                        <thead class="bg-slate-50 text-slate-600 font-semibold border-b border-slate-200">
+                            <tr>
+                                <th class="py-3 px-3 w-10 text-center">#</th>
+                                <th class="py-3 px-3">លេខកូដ SKU</th>
+                                <th class="py-3 px-3">បរិយាយមុខទំនិញ</th>
+                                <th class="py-3 px-3 w-20 text-center">ចំនួន</th>
+                                <th class="py-3 px-3 w-20 text-center">ឯកតា</th>
+                                <th class="py-3 px-3 w-28 text-right">ថ្លៃទិញ/ឯកតា</th>
+                                <th class="py-3 px-3 w-32 text-right">ទឹកប្រាក់សរុប</th>
+                            </tr>
+                        </thead>
+                        <tbody id="poItemsBody" class="divide-y divide-slate-100 text-slate-700 font-medium"></tbody>
+                    </table>
+                </div>
+
+                <!-- Financial Summary Standard -->
+                <div class="flex justify-between items-start mb-8 text-xs">
+                    <div class="max-w-md text-slate-500">
+                        <span class="font-bold text-slate-700 block mb-1">ចំណាំ និងលក្ខខណ្ឌ:</span>
+                        <p id="poNotesDisplay" class="leading-relaxed">ទំនិញត្រូវតែថ្មី 100% និងមានការធានាផ្លូវការ។ រាល់ការខូចខាតពេលដឹកជញ្ជូនជាបន្ទុករបស់អ្នកផ្គត់ផ្គង់។</p>
+                    </div>
+                    <div class="w-72 space-y-2">
+                        <div class="flex justify-between text-slate-600">
+                            <span>សរុបរងមុខទំនិញ:</span>
+                            <span id="subtotalVal" class="font-semibold text-slate-800">$0.00</span>
+                        </div>
+                        <div class="flex justify-between text-slate-600">
+                            <span>អាករលើតម្លៃបន្ថែម (អតប 10%):</span>
+                            <span id="vatVal" class="font-semibold text-slate-800">$0.00</span>
+                        </div>
+                        <div class="flex justify-between text-sm font-bold text-slate-900 pt-2 border-t border-slate-200">
+                            <span>ទឹកប្រាក់សរុបចុងក្រោយ:</span>
+                            <span id="grandTotalVal" class="text-primary text-base">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Official Signatures (4 Signatures Standard) -->
+                <div class="pt-8 border-t border-slate-200 grid grid-cols-3 gap-6 text-center text-xs">
+                    <div>
+                        <p class="text-slate-500 mb-14">អ្នករៀបចំបញ្ជាទិញ (Prepared By)</p>
+                        <div class="border-t border-slate-300 pt-2">
+                            <span class="font-bold text-slate-800 block">ហុង ដារ៉ា</span>
+                            <span class="text-[11px] text-slate-400">អ្នកគ្រប់គ្រងលទ្ធកម្ម</span>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-slate-500 mb-14">អ្នកត្រួតពិនិត្យ (Reviewed By)</p>
+                        <div class="border-t border-slate-300 pt-2">
+                            <span class="font-bold text-slate-800 block">ទៀង វណ្ណារ៉ា</span>
+                            <span class="text-[11px] text-slate-400">ប្រធានគណនេយ្យ</span>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-slate-500 mb-14">អ្នកអនុម័តចុងក្រោយ (Approved By)</p>
+                        <div class="border-t border-slate-300 pt-2">
+                            <span class="font-bold text-slate-800 block">លី ហាក់សេង</span>
+                            <span class="text-[11px] text-slate-400">អភិបាលទូទៅ</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../../shared/scripts/portal.js"></script>
+    <script src="../../../shared/scripts/ui-components.js"></script>
+    <script src="../data.js"></script>
+    <script>
+        let currentPO = null;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderPortalSidebar();
+            loadPODetails();
+        });
+
+        function loadPODetails() {
+            const params = new URLSearchParams(window.location.search);
+            const poId = params.get('id') || 'PO-2026-0045';
+            const store = getPMStore();
+            currentPO = store.purchaseOrders.find(p => p.id === poId) || store.purchaseOrders[0];
+
+            if (!currentPO) return;
+
+            document.getElementById('headerPoId').innerText = currentPO.id;
+            document.getElementById('poNumberDisplay').innerText = currentPO.id;
+            document.getElementById('supplierNameDisplay').innerText = currentPO.supplierName;
+            document.getElementById('poDateDisplay').innerText = currentPO.date;
+            document.getElementById('deliveryDateDisplay').innerText = currentPO.deliveryDate;
+            document.getElementById('warehouseDisplay').innerText = currentPO.warehouse;
+            document.getElementById('termsDisplay').innerText = currentPO.paymentTerms;
+            if (currentPO.notes) {
+                document.getElementById('poNotesDisplay').innerText = currentPO.notes;
+            }
+
+            // Status Badge
+            const statusBadges = {
+                sent: '<span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-200">បានផ្ញើ (Sent)</span>',
+                received: '<span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">បានទទួល (Received)</span>',
+                matched: '<span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-purple-50 text-purple-700 border border-purple-200">បានផ្គូផ្គង (Matched)</span>',
+                draft: '<span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-600">សេចក្តីព្រាង</span>'
+            };
+            document.getElementById('poStatusBadge').innerHTML = statusBadges[currentPO.status] || currentPO.status;
+
+            if (currentPO.status === 'received' || currentPO.status === 'matched') {
+                const btn = document.getElementById('receiveBtn');
+                if (btn) {
+                    btn.classList.add('opacity-50', 'pointer-events-none');
+                    btn.innerHTML = '<i class="fas fa-check"></i> <span>បានទទួលរួចរាល់</span>';
+                }
+            }
+
+            // Items
+            const tbody = document.getElementById('poItemsBody');
+            tbody.innerHTML = currentPO.items.map((item, idx) => `
+                <tr class="hover:bg-slate-50/50">
+                    <td class="py-3 px-3 text-center text-slate-400">${idx + 1}</td>
+                    <td class="py-3 px-3 font-semibold text-slate-600">${item.sku}</td>
+                    <td class="py-3 px-3 font-medium text-slate-900">${item.name}</td>
+                    <td class="py-3 px-3 text-center font-bold text-slate-800">${item.qty}</td>
+                    <td class="py-3 px-3 text-center text-slate-500">${item.unit}</td>
+                    <td class="py-3 px-3 text-right font-medium text-slate-700">$${item.costPrice.toFixed(2)}</td>
+                    <td class="py-3 px-3 text-right font-bold text-slate-900">$${item.total.toFixed(2)}</td>
+                </tr>
+            `).join('');
+
+            document.getElementById('subtotalVal').innerText = '$' + currentPO.subtotal.toFixed(2);
+            document.getElementById('vatVal').innerText = '$' + currentPO.vatAmount.toFixed(2);
+            document.getElementById('grandTotalVal').innerText = '$' + currentPO.totalAmount.toFixed(2);
+        }
+
+        function markAsReceived() {
+            if (!currentPO) return;
+            const store = getPMStore();
+            const po = store.purchaseOrders.find(p => p.id === currentPO.id);
+            if (po) {
+                po.status = 'received';
+                po.threeWayStatus = 'pending_bill';
+                savePMStore(store);
+                showToast('បានកត់ត្រាការទទួលទំនិញចូលឃ្លាំង ' + po.id + ' រួចរាល់!', 'success');
+                setTimeout(() => {
+                    location.reload();
+                }, 700);
+            }
+        }
+    </script>
+</body>
+
+</html>

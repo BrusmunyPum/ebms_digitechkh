@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="km">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - វិក្កយបត្ររបស់ខ្ញុំ</title>
+    <link rel="icon" type="image/png" href="../../../shared/assets/favicon.png">
+    <link rel="shortcut icon" type="image/png" href="../../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#0b253a",
+                        'primary-dark': "#071826",
+                        accent: "#0284c7",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../shared/styles/custom.css">
+    <style>
+        #spPortal aside {
+            background-color: #0b253a !important;
+        }
+    </style>
+</head>
+
+<body id="spPortal" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <!-- របារចំហៀងអ្នកផ្គត់ផ្គង់ -->
+    <aside class="w-64 bg-[#0b253a] text-white flex flex-col flex-shrink-0 select-none z-20 border-r border-slate-800">
+        <div class="h-[72px] px-6 flex items-center justify-between border-b border-white/10 flex-shrink-0">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-cyan-500/20 border border-cyan-400/30 flex items-center justify-center p-1 shadow-sm overflow-hidden flex-shrink-0">
+                    <img src="../../../shared/assets/logo-mark-transparent.png" alt="DIGITECHKH" class="w-full h-full object-contain">
+                </div>
+                <div>
+                    <h1 class="text-lg font-semibold tracking-wider whitespace-nowrap text-white">DIGITECHKH</h1>
+                    <span class="text-[11px] font-medium text-cyan-300 uppercase tracking-wider block">អ្នកផ្គត់ផ្គង់</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="px-5 py-3 border-b border-white/5 bg-black/20">
+            <div class="flex items-center justify-between">
+                <span class="text-xs text-slate-300">គណនី:</span>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                    <i class="fas fa-certificate text-[10px]"></i> ដៃគូកម្រិតមាស
+                </span>
+            </div>
+            <div class="mt-1.5 text-xs text-white font-medium truncate">
+                ក្រុមហ៊ុន ហ៊ុន ត្រេឌីង ឯ.ក
+            </div>
+        </div>
+
+        <nav class="flex-1 overflow-y-auto px-4 py-4 space-y-1.5 scrollbar-hide text-sm">
+            <a href="dashboard.html" class="flex items-center p-3 text-slate-300 hover:bg-white/5 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-chart-pie w-6 text-center text-slate-400"></i>
+                <span class="ml-3 text-[15px]">ទិដ្ឋភាពរួម</span>
+            </a>
+
+            <a href="purchase-orders.html" class="flex items-center p-3 text-slate-300 hover:bg-white/5 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-file-contract w-6 text-center text-slate-400"></i>
+                <span class="ml-3 text-[15px]">ការបញ្ជាទិញ (PO)</span>
+            </a>
+
+            <a href="bills.html" class="flex items-center p-3 bg-white/10 text-cyan-300 font-medium rounded-xl shadow-sm transition-all whitespace-nowrap border border-white/10">
+                <i class="fas fa-file-invoice-dollar w-6 text-center text-cyan-400"></i>
+                <span class="ml-3 text-[15px]">វិក្កយបត្ររបស់ខ្ញុំ</span>
+            </a>
+
+            <a href="delivery-tracking.html" class="flex items-center p-3 text-slate-300 hover:bg-white/5 hover:text-white rounded-xl transition-all whitespace-nowrap">
+                <i class="fas fa-truck-fast w-6 text-center text-slate-400"></i>
+                <span class="ml-3 text-[15px]">តាមដានការដឹកជញ្ជូន</span>
+            </a>
+        </nav>
+
+        <div class="p-4 border-t border-white/10 bg-black/10">
+            <a href="../../00-auth/login.html" class="flex items-center text-[15px] text-slate-300 hover:text-rose-400 transition-colors p-2 rounded-lg hover:bg-white/5">
+                <i class="fas fa-arrow-right-from-bracket w-6 mr-2"></i> ចាកចេញ
+            </a>
+        </div>
+    </aside>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <!-- Content Top Header -->
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div>
+                <h2 class="text-xl font-semibold text-gray-800 leading-tight">វិក្កយបត្ររបស់ខ្ញុំ</h2>
+                <p class="text-xs font-normal text-gray-500 mt-0.5">តាមដានវិក្កយបត្រទារប្រាក់ និងស្ថានភាពការទូទាត់ពី DIGITECHKH</p>
+            </div>
+
+            <div class="flex items-center space-x-3">
+                <a href="create-bill.html" class="px-4 py-2 rounded-xl bg-primary hover:bg-primary-dark text-white font-medium text-xs flex items-center gap-2 shadow-sm transition">
+                    <i class="fas fa-plus"></i>
+                    <span>ចេញវិក្កយបត្រថ្មី</span>
+                </a>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-4">
+            <div class="w-full space-y-4">
+
+                <!-- Search & Filters -->
+                <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm flex flex-wrap items-center justify-between gap-3">
+                    <div class="relative flex-1 min-w-[240px]">
+                        <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                            <i class="fas fa-search text-xs"></i>
+                        </span>
+                        <input type="text" id="billSearch" oninput="renderBillsTable()" placeholder="ស្វែងរកតាមលេខវិក្កយបត្រ ឬលេខ PO..."
+                            class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-9 pr-3 py-2 text-xs focus:bg-white focus:border-primary outline-none transition font-medium">
+                    </div>
+                    <span class="text-xs text-slate-500">សរុប: <strong id="billCount" class="text-slate-800">0</strong> វិក្កយបត្រ</span>
+                </div>
+
+                <!-- Table Card -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs">
+                            <thead class="bg-slate-50/80 border-b border-slate-200 text-slate-500 font-semibold uppercase text-[11px]">
+                                <tr>
+                                    <th class="py-3 px-4">លេខវិក្កយបត្រ</th>
+                                    <th class="py-3 px-4">យោងលេខ PO</th>
+                                    <th class="py-3 px-4">កាលបរិច្ឆេទចេញ</th>
+                                    <th class="py-3 px-4">កាលកំណត់ទូទាត់</th>
+                                    <th class="py-3 px-4">បរិយាយ</th>
+                                    <th class="py-3 px-4 text-right">ទឹកប្រាក់សរុប</th>
+                                    <th class="py-3 px-4 text-right">ទឹកប្រាក់សុទ្ធ</th>
+                                    <th class="py-3 px-4 text-center">ស្ថានភាព</th>
+                                    <th class="py-3 px-4 text-center">កាលបរិច្ឆេទបើក</th>
+                                </tr>
+                            </thead>
+                            <tbody id="billsTableBody" class="divide-y divide-slate-100 text-slate-700 font-medium"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../../shared/scripts/ui-components.js"></script>
+    <script src="data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            renderBillsTable();
+        });
+
+        function renderBillsTable() {
+            const store = getSupplierStore();
+            const search = (document.getElementById('billSearch').value || '').trim().toLowerCase();
+
+            const filtered = store.bills.filter(b =>
+                b.id.toLowerCase().includes(search) ||
+                b.poId.toLowerCase().includes(search) ||
+                b.description.toLowerCase().includes(search)
+            );
+
+            document.getElementById('billCount').innerText = filtered.length;
+            const tbody = document.getElementById('billsTableBody');
+
+            const statusBadges = {
+                pending_payment: '<span class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-amber-50 text-amber-700 border border-amber-200">រង់ចាំបើកប្រាក់</span>',
+                paid: '<span class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">បានទូទាត់រួច</span>'
+            };
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="9" class="py-8 text-center text-slate-400">ពុំមានទិន្នន័យវិក្កយបត្រឡើយ</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = filtered.map(b => `
+                <tr class="hover:bg-slate-50/80 transition-colors">
+                    <td class="py-3 px-4 font-bold text-primary">${b.id}</td>
+                    <td class="py-3 px-4 text-slate-600">${b.poId}</td>
+                    <td class="py-3 px-4 text-slate-600">${b.date}</td>
+                    <td class="py-3 px-4 text-slate-600">${b.dueDate}</td>
+                    <td class="py-3 px-4 font-medium text-slate-900">${b.description}</td>
+                    <td class="py-3 px-4 text-right text-slate-700">$${b.grossAmount.toFixed(2)}</td>
+                    <td class="py-3 px-4 text-right font-bold text-slate-900 text-sm">$${b.netAmount.toFixed(2)}</td>
+                    <td class="py-3 px-4 text-center">${statusBadges[b.status] || b.status}</td>
+                    <td class="py-3 px-4 text-center text-slate-600">${b.paidDate || '-'}</td>
+                </tr>
+            `).join('');
+        }
+    </script>
+</body>
+
+</html>

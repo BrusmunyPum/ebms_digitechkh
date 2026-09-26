@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="km">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECHKH - ផ្ទាំងគ្រប់គ្រងអ្នកគ្រប់គ្រងលទ្ធកម្ម</title>
+    <link rel="icon" type="image/png" href="../../shared/assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1e3a5f",
+                        'primary-dark': "#142842",
+                        accent: "#0ea5e9",
+                    },
+                    fontFamily: {
+                        sans: ["'Kantumruy Pro'", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../shared/styles/custom.css">
+    <link rel="stylesheet" href="../../shared/styles/portal.css">
+</head>
+
+<body id="pmPortal" data-role-root="." data-active="dashboard" class="bg-slate-50 font-sans text-gray-800 text-[16px] flex h-screen overflow-hidden">
+
+    <div id="sidebarHost"></div>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <!-- Content Top Header -->
+        <header class="bg-white px-6 h-[72px] flex justify-between items-center shadow-sm z-10 flex-shrink-0 w-full">
+            <div class="min-w-0">
+                <h2 class="text-xl font-semibold text-gray-800 leading-tight truncate">ផ្ទាំងគ្រប់គ្រងអ្នកគ្រប់គ្រងលទ្ធកម្ម</h2>
+                <p class="text-xs font-normal text-gray-500 mt-0.5 truncate">តាមដានការបញ្ជាទិញទំនិញចូល ការផ្គត់ផ្គង់ និងការផ្ទៀងផ្ទាត់វិក្កយបត្រ 3-Way Match</p>
+            </div>
+
+            <div class="flex items-center space-x-3 flex-shrink-0">
+                <a href="purchase-orders/purchase-orders.html" class="hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 border border-amber-200 text-amber-800 font-medium text-xs transition">
+                    <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+                    <span>រង់ចាំទទួលទំនិញ: 4</span>
+                </a>
+                <a href="vendor-bills/vendor-bills.html" class="hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 border border-rose-200 text-rose-700 font-medium text-xs transition">
+                    <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
+                    <span>ត្រូវផ្ទៀងផ្ទាត់: 3</span>
+                </a>
+
+                <div class="flex items-center sm:border-l sm:pl-3">
+                    <div class="w-10 h-10 rounded-full bg-[#1e3a5f] text-white flex items-center justify-center font-semibold text-sm shadow-sm" title="ហុង ដារ៉ា">ហដ</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 px-4 md:px-6 py-4">
+            <div class="w-full space-y-5">
+
+                <!-- Filter Toolbar -->
+                <div class="bg-white rounded-2xl p-3 border border-slate-200/80 shadow-sm flex flex-wrap items-center justify-between gap-3">
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-boxes-packing text-slate-400 text-xs"></i>
+                        <span class="text-xs font-medium text-slate-600">ទិន្នន័យប្រតិបត្តិការលទ្ធកម្មទូទាំងក្រុមហ៊ុន</span>
+                    </div>
+                    <div id="dateFilterHost" class="flex items-center"></div>
+                </div>
+
+                <!-- KPI Cards Row -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <!-- KPI 1 -->
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm flex flex-col justify-between">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-medium text-slate-500">PO ចេញក្នុងខែនេះ</span>
+                            <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
+                                <i class="fas fa-file-invoice text-sm"></i>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <div class="text-2xl font-bold text-slate-800">$28,450.00</div>
+                            <div class="flex items-center justify-between mt-1 text-xs">
+                                <span class="text-slate-500">ចំនួន 18 ការបញ្ជាទិញ</span>
+                                <span class="text-emerald-600 font-medium">+12.5%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- KPI 2 -->
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm flex flex-col justify-between">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-medium text-slate-500">រង់ចាំទទួលទំនិញចូល</span>
+                            <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center">
+                                <i class="fas fa-truck-ramp-box text-sm"></i>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <div class="text-2xl font-bold text-amber-600">4 POs</div>
+                            <div class="flex items-center justify-between mt-1 text-xs">
+                                <span class="text-slate-500">ទឹកប្រាក់សរុប $6,200.00</span>
+                                <span class="text-amber-600 font-medium">តាមដានអ្នកដឹក</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- KPI 3 -->
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm flex flex-col justify-between">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-medium text-slate-500">វិក្កយបត្រត្រូវផ្ទៀងផ្ទាត់ (3-Way)</span>
+                            <div class="w-10 h-10 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center">
+                                <i class="fas fa-scale-balanced text-sm"></i>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <div class="text-2xl font-bold text-rose-600">3 វិក្កយបត្រ</div>
+                            <div class="flex items-center justify-between mt-1 text-xs">
+                                <span class="text-slate-500">ទំហំទឹកប្រាក់ $4,850.00</span>
+                                <span class="text-rose-600 font-medium">រង់ចាំប័ណ្ណឃ្លាំង</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- KPI 4 -->
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm flex flex-col justify-between">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-medium text-slate-500">សំណើសុំទូទាត់រង់ចាំអនុម័ត</span>
+                            <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center">
+                                <i class="fas fa-money-check-dollar text-sm"></i>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <div class="text-2xl font-bold text-slate-800">2 សំណើ</div>
+                            <div class="flex items-center justify-between mt-1 text-xs">
+                                <span class="text-slate-500">ទឹកប្រាក់សរុប $3,100.00</span>
+                                <span class="text-purple-600 font-medium">នៅគណនេយ្យ</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Row -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+                    <!-- Spend Trend Chart -->
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm lg:col-span-2">
+                        <div class="flex items-center justify-between mb-4">
+                            <div>
+                                <h3 class="text-sm font-semibold text-slate-800">និន្នាការចំណាយទិញទំនិញចូល (6 ខែចុងក្រោយ)</h3>
+                                <p class="text-xs text-slate-500 mt-0.5">ទំហំទឹកប្រាក់បញ្ជាទិញសរុបគិតជាដុល្លារអាមេរិក (USD)</p>
+                            </div>
+                            <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-100 text-slate-600">សរុប: $148,550.00</span>
+                        </div>
+                        <div id="spendChart" class="w-full h-64"></div>
+                    </div>
+
+                    <!-- Category Share Pie -->
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
+                        <div class="mb-4">
+                            <h3 class="text-sm font-semibold text-slate-800">សមាមាត្រមុខទំនិញទិញចូល</h3>
+                            <p class="text-xs text-slate-500 mt-0.5">បែងចែកតាមប្រភេទផលិតផលសំខាន់ៗ</p>
+                        </div>
+                        <div id="categoryChart" class="w-full h-64"></div>
+                    </div>
+                </div>
+
+                <!-- Two Column Widgets: Active POs & Suppliers Performance -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+                    <!-- Active POs Table (2 Cols) -->
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm lg:col-span-2">
+                        <div class="flex items-center justify-between mb-4">
+                            <div>
+                                <h3 class="text-sm font-semibold text-slate-800">ការបញ្ជាទិញទំនិញចុងក្រោយ (POs List)</h3>
+                                <p class="text-xs text-slate-500 mt-0.5">បញ្ជីបញ្ជាទិញ និងស្ថានភាពផ្ទៀងផ្ទាត់ 3-Way Matching</p>
+                            </div>
+                            <a href="purchase-orders/purchase-orders.html" class="text-xs font-semibold text-sky-700 hover:text-sky-900 inline-flex items-center gap-1 transition">
+                                <span>មើលទាំងអស់</span> <i class="fas fa-arrow-right text-[10px]"></i>
+                            </a>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-xs">
+                                <thead>
+                                    <tr class="border-b border-slate-100 text-slate-400 font-semibold">
+                                        <th class="py-2.5 px-3">លេខកូដ PO</th>
+                                        <th class="py-2.5 px-3">អ្នកផ្គត់ផ្គង់</th>
+                                        <th class="py-2.5 px-3">ថ្ងៃចេញ & ដឹក</th>
+                                        <th class="py-2.5 px-3 text-right">ទឹកប្រាក់សរុប</th>
+                                        <th class="py-2.5 px-3 text-center">3-Way Match</th>
+                                        <th class="py-2.5 px-3 text-center">ស្ថានភាព</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="recentPoTable" class="divide-y divide-slate-50 text-slate-700 font-medium"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions & Top Suppliers (1 Col) -->
+                    <div class="space-y-5">
+                        <!-- Quick Actions Box -->
+                        <div class="bg-gradient-to-br from-[#1e3a5f] to-[#0f2b5c] rounded-2xl p-5 text-white shadow-sm">
+                            <h4 class="text-sm font-semibold mb-1">សកម្មភាពរហ័ស</h4>
+                            <p class="text-xs text-sky-200 mb-4 font-light">បង្កើតប្រតិបត្តិការទិញ និងគ្រប់គ្រងអ្នកផ្គត់ផ្គង់</p>
+                            <div class="space-y-2">
+                                <a href="purchase-orders/create-po.html" class="w-full bg-white text-slate-800 hover:bg-sky-50 font-medium py-2.5 px-3.5 rounded-xl transition text-xs flex items-center justify-between shadow-sm">
+                                    <span class="flex items-center gap-2">
+                                        <i class="fas fa-plus-circle text-primary"></i>
+                                        <span>បង្កើតការបញ្ជាទិញថ្មី (PO)</span>
+                                    </span>
+                                    <i class="fas fa-arrow-right text-[10px] text-slate-400"></i>
+                                </a>
+                                <a href="suppliers/create-supplier.html" class="w-full bg-white/10 hover:bg-white/20 text-white font-medium py-2.5 px-3.5 rounded-xl transition text-xs flex items-center justify-between border border-white/15">
+                                    <span class="flex items-center gap-2">
+                                        <i class="fas fa-truck-field text-sky-300"></i>
+                                        <span>ចុះឈ្មោះអ្នកផ្គត់ផ្គង់ថ្មី</span>
+                                    </span>
+                                    <i class="fas fa-arrow-right text-[10px] text-sky-300"></i>
+                                </a>
+                                <a href="vendor-bills/vendor-bills.html" class="w-full bg-white/10 hover:bg-white/20 text-white font-medium py-2.5 px-3.5 rounded-xl transition text-xs flex items-center justify-between border border-white/15">
+                                    <span class="flex items-center gap-2">
+                                        <i class="fas fa-file-circle-check text-sky-300"></i>
+                                        <span>ផ្ទៀងផ្ទាត់វិក្កយបត្រ 3-Way Match</span>
+                                    </span>
+                                    <i class="fas fa-arrow-right text-[10px] text-sky-300"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Top Suppliers List -->
+                        <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
+                            <div class="flex items-center justify-between mb-3">
+                                <h4 class="text-sm font-semibold text-slate-800">អ្នកផ្គត់ផ្គង់ចម្បង</h4>
+                                <a href="suppliers/suppliers.html" class="text-xs text-sky-700 hover:underline">មើលទាំងអស់</a>
+                            </div>
+                            <div id="topSuppliersList" class="space-y-3"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../shared/scripts/portal.js"></script>
+    <script src="../../shared/scripts/ui-components.js"></script>
+    <script src="data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            renderPortalSidebar();
+            initDateFilter();
+            initCharts();
+            renderRecentPOs();
+            renderTopSuppliers();
+        });
+
+        function initDateFilter() {
+            const host = document.getElementById('dateFilterHost');
+            if (!host) return;
+            host.innerHTML = `
+                <div class="flex items-center gap-2">
+                    <span class="text-xs text-slate-400 hidden sm:inline">កាលបរិច្ឆេទ:</span>
+                    <button type="button" class="h-9 px-3 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 text-xs rounded-xl flex items-center gap-2 shadow-sm transition-all focus:outline-none cursor-pointer">
+                        <i class="fas fa-calendar-days text-primary text-xs"></i>
+                        <span class="font-medium text-slate-800">ខែនេះ (1 កញ្ញា - 30 កញ្ញា)</span>
+                    </button>
+                </div>
+            `;
+        }
+
+        function initCharts() {
+            const store = getPMStore();
+
+            // Spend Chart
+            const spendEl = document.getElementById('spendChart');
+            if (spendEl) {
+                const chart = echarts.init(spendEl);
+                chart.setOption({
+                    tooltip: { trigger: 'axis' },
+                    grid: { top: 20, right: 20, bottom: 25, left: 50 },
+                    xAxis: {
+                        type: 'category',
+                        data: store.kpis.monthlySpendChart.months,
+                        axisLine: { lineStyle: { color: '#cbd5e1' } },
+                        axisLabel: { color: '#64748b', fontSize: 11, fontFamily: 'Kantumruy Pro' }
+                    },
+                    yAxis: {
+                        type: 'value',
+                        axisLine: { show: false },
+                        splitLine: { lineStyle: { color: '#f1f5f9' } },
+                        axisLabel: {
+                            color: '#64748b',
+                            fontSize: 10,
+                            formatter: (v) => '$' + (v / 1000) + 'k'
+                        }
+                    },
+                    series: [{
+                        data: store.kpis.monthlySpendChart.spend,
+                        type: 'bar',
+                        barWidth: '40%',
+                        itemStyle: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                                { offset: 0, color: '#1e3a5f' },
+                                { offset: 1, color: '#3b82f6' }
+                            ]),
+                            borderRadius: [6, 6, 0, 0]
+                        }
+                    }]
+                });
+                window.addEventListener('resize', () => chart.resize());
+            }
+
+            // Category Share Chart
+            const catEl = document.getElementById('categoryChart');
+            if (catEl) {
+                const chart = echarts.init(catEl);
+                chart.setOption({
+                    tooltip: { trigger: 'item', formatter: '{b}: {c}%' },
+                    legend: { bottom: 0, textStyle: { fontSize: 10, color: '#64748b', fontFamily: 'Kantumruy Pro' } },
+                    series: [{
+                        type: 'pie',
+                        radius: ['45%', '70%'],
+                        center: ['50%', '42%'],
+                        avoidLabelOverlap: false,
+                        label: { show: false },
+                        data: store.kpis.categoryShare,
+                        color: ['#1e3a5f', '#0ea5e9', '#10b981', '#f59e0b']
+                    }]
+                });
+                window.addEventListener('resize', () => chart.resize());
+            }
+        }
+
+        function renderRecentPOs() {
+            const tbody = document.getElementById('recentPoTable');
+            if (!tbody) return;
+            const store = getPMStore();
+
+            const statusBadges = {
+                sent: '<span class="px-2 py-0.5 rounded-full text-[11px] bg-blue-50 text-blue-700 border border-blue-200">បានផ្ញើ</span>',
+                received: '<span class="px-2 py-0.5 rounded-full text-[11px] bg-emerald-50 text-emerald-700 border border-emerald-200">បានទទួល</span>',
+                matched: '<span class="px-2 py-0.5 rounded-full text-[11px] bg-purple-50 text-purple-700 border border-purple-200">បានផ្គូផ្គង</span>',
+                draft: '<span class="px-2 py-0.5 rounded-full text-[11px] bg-slate-100 text-slate-600">សេចក្តីព្រាង</span>'
+            };
+
+            const matchBadges = {
+                matched: '<span class="text-emerald-600 inline-flex items-center gap-1"><i class="fas fa-check-circle"></i> ត្រូវគ្នា 100%</span>',
+                pending_grn: '<span class="text-amber-600 inline-flex items-center gap-1"><i class="fas fa-clock"></i> រង់ចាំទំនិញ</span>',
+                pending_bill: '<span class="text-sky-600 inline-flex items-center gap-1"><i class="fas fa-file-invoice"></i> រង់ចាំវិក្កយបត្រ</span>'
+            };
+
+            tbody.innerHTML = store.purchaseOrders.slice(0, 5).map(po => `
+                <tr class="hover:bg-slate-50/80 transition-colors">
+                    <td class="py-2.5 px-3 font-semibold text-primary">
+                        <a href="purchase-orders/view-po.html?id=${po.id}" class="hover:underline">${po.id}</a>
+                    </td>
+                    <td class="py-2.5 px-3">
+                        <div class="font-medium text-slate-800">${po.supplierName}</div>
+                    </td>
+                    <td class="py-2.5 px-3 text-slate-500">
+                        <div>ចេញ: ${po.date}</div>
+                        <div class="text-[10px] text-slate-400">ដឹក: ${po.deliveryDate}</div>
+                    </td>
+                    <td class="py-2.5 px-3 text-right font-bold text-slate-800">
+                        $${po.totalAmount.toFixed(2)}
+                    </td>
+                    <td class="py-2.5 px-3 text-center text-[11px]">
+                        ${matchBadges[po.threeWayStatus] || '-'}
+                    </td>
+                    <td class="py-2.5 px-3 text-center">
+                        ${statusBadges[po.status] || po.status}
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function renderTopSuppliers() {
+            const container = document.getElementById('topSuppliersList');
+            if (!container) return;
+            const store = getPMStore();
+
+            container.innerHTML = store.suppliers.slice(0, 4).map(sup => `
+                <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+                    <div class="min-w-0 pr-2">
+                        <h5 class="text-xs font-semibold text-slate-800 truncate">${sup.name}</h5>
+                        <p class="text-[11px] text-slate-500 truncate">${sup.category} • ${sup.paymentTerms}</p>
+                    </div>
+                    <div class="text-right flex-shrink-0">
+                        <div class="text-xs font-bold text-primary">${sup.totalOrders} POs</div>
+                        <div class="text-[10px] text-amber-500 flex items-center gap-0.5 justify-end">
+                            <i class="fas fa-star text-[9px]"></i> ${sup.rating}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+    </script>
+</body>
+
+</html>
